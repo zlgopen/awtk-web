@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<body>
+<script type="text/javascript" src="src/js/utils.js"></script>
+<script type="text/javascript" src="src/js/image_cache.js"></script>
+<script type="text/javascript" src="src/js/vgcanvas_web.js"></script>
+<script type="text/javascript" src="awtk.js"></script>
+<script>
+
+awtkInit = Module.cwrap('awtkInit', 'number', []);
+awtkDeinit = Module.cwrap('awtkDeinit', 'number', []);
+awtkMainLoopStep = Module.cwrap('awtkMainLoopStep', 'number', ['number']);
+
+function step(timestamp) {
+    awtkMainLoopStep(10);
+
+    window.requestAnimationFrame(step);
+}
+
+window.onload = function() {
+    awtkInit(); 
+    window.requestAnimationFrame(step);
+}
+
+window.onunload = function() {
+    awtkDeinit(); 
+}
+
+</script>
+<canvas id="awtk-lcd" width="480" height="320" style="border:1"></canvas>
+</body>
+
