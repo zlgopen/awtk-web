@@ -17,12 +17,12 @@ AWTK_EXT_WIDGETS=$(AWTK_SRC)/ext_widgets
 
 CC      = emcc 
 OUTPUT  = -o awtk.js
-EXTRA_FLAGS=
-EXPORT_FUNCTIONS=-s EXPORTED_FUNCTIONS="['_awtkMainLoopStep', '_awtkInit', '_awtkDeinit']"
+EXTRA_FLAGS=-DSAFE_HEAP=1
+EXPORT_FUNCTIONS=-s EXPORTED_FUNCTIONS=@configs/export_funcs.json
 #CC      = cppcheck
 #EXTRA_FLAGS= --enable=warning  --enable=performance -DWITH_CPPCHECK
 CPPFLAGS= -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB \
-					-I$(AWTK_ROOT) -I$(AWTK_SRC) -I$(AWTK_SRC)/ext_widgets
+					-I$(AWTK_ROOT) -I$(AWTK_SRC) -I$(AWTK_SRC)/ext_widgets -I./
 
 include ./build-scripts/tkc_files.mk
 include ./build-scripts/xml_files.mk
@@ -38,25 +38,26 @@ include ./build-scripts/vgcanvas_files.mk
 include ./build-scripts/awtk_files.mk
 include ./build-scripts/app_files.mk
 include ./build-scripts/ext_widgets_files.mk
+include ./build-scripts/awtk_web_files.mk
 
 ALL_FILES=$(TKC_FILES) \
 					$(XML_FILES) \
 					$(BASE_FILES) \
-#					$(LAYOUTERS_FILES) \
-#					$(WIDGETS_FILES) \
-#					$(UI_LOADER_FILES) \
-#					$(SVG_FILES) \
-#					$(CLIPBOARD_FILES) \
-#					$(WIDGET_ANIMATORS_FILES) \
-#					$(WINDOW_ANIMATORS_FILES) \
-#					$(EXT_WIDGETS_FILES) \
-#					$(AWTK_FILES) \
-#					$(APP_FILES)
-#
-OTHER_FILES=src/c/vgcanvas_web.c src/c/dummy.c src/c/main.c
+					$(LAYOUTERS_FILES) \
+					$(WIDGETS_FILES) \
+					$(UI_LOADER_FILES) \
+					$(SVG_FILES) \
+					$(CLIPBOARD_FILES) \
+					$(WIDGET_ANIMATORS_FILES) \
+					$(WINDOW_ANIMATORS_FILES) \
+					$(EXT_WIDGETS_FILES) \
+					$(AWTK_FILES) \
+					$(APP_FILES) \
+					$(AWTK_WEB_FILES)
+
 
 all:
-	$(CC) $(EXPORT_FUNCTIONS) $(CPPFLAGS) $(EXTRA_FLAGS) $(ALL_FILES) $(OTHER_FILES) $(OUTPUT)
+	$(CC) $(EXPORT_FUNCTIONS) $(CPPFLAGS) $(EXTRA_FLAGS) $(ALL_FILES) $(OUTPUT)
 
 .PHONY:clean
 clean:

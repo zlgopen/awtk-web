@@ -21,6 +21,7 @@ BASE_FILES=$(AWTK_BASE)/assets_manager.c\
 	$(AWTK_BASE)/input_method.c\
 	$(AWTK_BASE)/layout.c\
 	$(AWTK_BASE)/lcd.c\
+	$(AWTK_BASE)/lcd_profile.c\
 	$(AWTK_BASE)/line_break.c\
 	$(AWTK_BASE)/locale_info.c\
 	$(AWTK_BASE)/main_loop.c\
@@ -47,6 +48,9 @@ BASE_FILES=$(AWTK_BASE)/assets_manager.c\
 	$(AWTK_BASE)/widget_pool.c\
 	$(AWTK_BASE)/widget_vtable.c\
 	$(AWTK_BASE)/window_animator.c\
+	$(AWTK_BASE)/window_animator_factory.c\
 	$(AWTK_BASE)/window_base.c\
+	$(AWTK_BASE)/dialog_highlighter.c\
+	$(AWTK_BASE)/dialog_highlighter_factory.c\
 	$(AWTK_BASE)/window_manager.c
 

@@ -4,7 +4,7 @@ function awtkCanvasInit() {
   var canvas = document.getElementById('awtk-lcd');
 
   gAwtkCanvasInfo.canvas = canvas;
-  gAwtkCanvasInfo.ctx = canvas.getContext('2d'); 
+  gAwtkCanvasInfo.ctx = canvas.getContext('2d');
 
   console.log("awtkCanvasInit");
 
@@ -12,13 +12,13 @@ function awtkCanvasInit() {
 }
 
 function awtkCanvasCreateFBO() {
-  let canvas = gAwtkCanvasInfo.canvas; 
+  let canvas = gAwtkCanvasInfo.canvas;
   let fbo = document.createElement("canvas");
 
-  fbo.name="fbo";
+  fbo.name = "fbo";
   fbo.width = canvas.width;
   fbo.height = canvas.height;
-  
+
   return imageCacheAddImage(fbo);
 }
 
@@ -31,15 +31,15 @@ function awtkCanvasDestroyFBO(id) {
 function awtkCanvasBindFBO(id) {
   let fbo = imageCacheGetImage(id);
 
-  gAwtkCanvasInfo.ctx = fbo.getContext('2d'); 
+  gAwtkCanvasInfo.ctx = fbo.getContext('2d');
 
   return true;
 }
 
 function awtkCanvasUnbindFBO(id) {
-  let canvas = gAwtkCanvasInfo.canvas; 
+  let canvas = gAwtkCanvasInfo.canvas;
 
-  gAwtkCanvasInfo.ctx = canvas.getContext('2d'); 
+  gAwtkCanvasInfo.ctx = canvas.getContext('2d');
 
   return true;
 }
@@ -211,20 +211,24 @@ function awtkCanvasEllipse(x, y, rx, ry) {
 }
 
 function awtkCanvasRoundRect(x, y, w, h, radius) {
-  var r = x + w;
-  var b = y + h;
   let ctx = gAwtkCanvasInfo.ctx;
 
-  ctx.beginPath();
-  ctx.moveTo(x + radius, y);
-  ctx.lineTo(r - radius, y);
-  ctx.quadraticCurveTo(r, y, r, y + radius);
-  ctx.lineTo(r, y + h - radius);
-  ctx.quadraticCurveTo(r, b, r - radius, b);
-  ctx.lineTo(x + radius, b);
-  ctx.quadraticCurveTo(x, b, x, b - radius);
-  ctx.lineTo(x, y + radius);
-  ctx.quadraticCurveTo(x, y, x + radius, y);
+  if (radius > 1) {
+    var r = x + w;
+    var b = y + h;
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(r - radius, y);
+    ctx.quadraticCurveTo(r, y, r, y + radius);
+    ctx.lineTo(r, y + h - radius);
+    ctx.quadraticCurveTo(r, b, r - radius, b);
+    ctx.lineTo(x + radius, b);
+    ctx.quadraticCurveTo(x, b, x, b - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+  } else {
+    ctx.rect(x, y, w, h);
+  }
 
   return true;
 }
@@ -266,7 +270,7 @@ function awtkCanvasFillText(text, x, y, max_width) {
 
 function awtkCanvasMeasureText(text) {
   let str = pointerToString(text);
-  
+
   let width = gAwtkCanvasInfo.ctx.measureText(str).width;
 
   return Math.round(width);
