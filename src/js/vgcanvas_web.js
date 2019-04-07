@@ -237,10 +237,12 @@ function awtkCanvasRoundRect(x, y, w, h, radius) {
 }
 
 function awtkCanvasClipRect(x, y, w, h) {
-  gAwtkCanvasInfo.ctx.beginPath();
+//?  gAwtkCanvasInfo.ctx.beginPath();
   gAwtkCanvasInfo.ctx.rect(x, y, w, h);
   gAwtkCanvasInfo.ctx.clip();
   gAwtkCanvasInfo.ctx.beginPath();
+
+//  console.log(`clip ${x} ${y} ${w} ${h}`);
   
   return true;
 }
