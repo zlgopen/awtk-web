@@ -241,7 +241,7 @@ function awtkCanvasClipRect(x, y, w, h) {
   gAwtkCanvasInfo.ctx.rect(x, y, w, h);
   gAwtkCanvasInfo.ctx.clip();
   gAwtkCanvasInfo.ctx.beginPath();
-  console.log(`clip ${x} ${y} ${w} ${h}`);
+  
   return true;
 }
 

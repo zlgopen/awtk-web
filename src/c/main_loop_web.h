@@ -36,6 +36,11 @@ typedef struct _main_loop_web_t main_loop_web_t;
 
 struct _main_loop_web_t {
   main_loop_t base;
+  bool_t pressed;
+  bool_t key_pressed;
+  xy_t last_x;
+  xy_t last_y;
+  uint8_t last_key;
 };
 
 main_loop_t* main_loop_init(int w, int h);
