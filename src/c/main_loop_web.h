@@ -34,13 +34,12 @@ BEGIN_C_DECLS
 struct _main_loop_web_t;
 typedef struct _main_loop_web_t main_loop_web_t;
 
-struct _main_loop_web_t
-{
+struct _main_loop_web_t {
   main_loop_t base;
 };
 
-main_loop_t *main_loop_init(int w, int h);
-ret_t main_loop_web_step(main_loop_t *l);
+main_loop_t* main_loop_init(int w, int h);
+ret_t main_loop_web_step(main_loop_t* l);
 
 END_C_DECLS
 

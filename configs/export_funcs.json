@@ -1,6 +1,5 @@
 [
     "_awtk_web_init",
-    "_awtk_web_run",
     "_awtk_web_deinit",
     "_awtk_web_main_loop_step",
     "_awtk_web_on_key_down",

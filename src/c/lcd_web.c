@@ -30,4 +30,3 @@ lcd_t* lcd_web_init(void) {
 
   return lcd_vgcanvas_init(vg->w, vg->h, vg);
 }
-

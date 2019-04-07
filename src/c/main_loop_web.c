@@ -21,13 +21,13 @@
 
 #include <stdio.h>
 #include <emscripten.h>
+
 #include "lcd_web.h"
 #include "tkc/time_now.h"
 #include "main_loop_web.h"
 
 static ret_t main_loop_web_queue_event(main_loop_t* l, const event_queue_req_t* r) {
-  ret_t ret = RET_FAIL;
-  return ret;
+  return RET_OK;
 }
 
 ret_t main_loop_web_step(main_loop_t* l) {
@@ -36,21 +36,19 @@ ret_t main_loop_web_step(main_loop_t* l) {
   timer_dispatch();
   idle_dispatch();
   window_manager_paint(loop->base.wm, &(loop->base.canvas));
-  printf("%p window_nr=%d\n", loop->base.wm, widget_count_children(loop->base.wm));
+
   return RET_OK;
 }
 
 static ret_t main_loop_web_quit(main_loop_t* l) {
-  EM_ASM_INT({ return mainLoopQuit(); }, 0);
+  /*do nothing: as it can not be blocked in browser.*/
+
   return RET_OK;
 }
 
 static ret_t main_loop_web_run(main_loop_t* l) {
-  main_loop_t *loop = main_loop();
-  printf("run1 %p window_nr=%d\n", loop->wm, widget_count_children(loop->wm));
+  /*do nothing: as it can not be blocked in browser.*/
 
-  EM_ASM_INT({ return mainLoopRun(); }, 0);
-  printf("run2 %p window_nr=%d\n", loop->wm, widget_count_children(loop->wm));
   return RET_OK;
 }
 
@@ -82,8 +80,7 @@ main_loop_t* main_loop_init(int w, int h) {
   return &(loop->base);
 }
 
-int32_t awtk_web_on_key_down(int32_t key, uint32_t timestamp)
-{
+int32_t awtk_web_on_key_down(int32_t key, uint32_t timestamp) {
   key_event_t e;
   widget_t* wm = (main_loop()->wm);
 
@@ -97,8 +94,7 @@ int32_t awtk_web_on_key_down(int32_t key, uint32_t timestamp)
   return TRUE;
 }
 
-int32_t awtk_web_on_key_up(int32_t key, uint32_t timestamp)
-{
+int32_t awtk_web_on_key_up(int32_t key, uint32_t timestamp) {
   key_event_t e;
   widget_t* wm = (main_loop()->wm);
 
@@ -108,12 +104,11 @@ int32_t awtk_web_on_key_up(int32_t key, uint32_t timestamp)
   e.e.time = timestamp;
 
   window_manager_dispatch_input_event(wm, (event_t*)(&e));
-  
+
   return TRUE;
 }
 
-int32_t awtk_web_on_wheel(int32_t delta, uint32_t timestamp)
-{
+int32_t awtk_web_on_wheel(int32_t delta, uint32_t timestamp) {
   wheel_event_t e;
   widget_t* wm = (main_loop()->wm);
 
@@ -123,12 +118,11 @@ int32_t awtk_web_on_wheel(int32_t delta, uint32_t timestamp)
   e.e.time = timestamp;
 
   window_manager_dispatch_input_event(wm, (event_t*)(&e));
-  
+
   return TRUE;
 }
 
-int32_t awtk_web_on_pointer_down(int32_t x, int32_t y, uint32_t timestamp)
-{
+int32_t awtk_web_on_pointer_down(int32_t x, int32_t y, uint32_t timestamp) {
   pointer_event_t e;
   widget_t* wm = (main_loop()->wm);
 
@@ -139,12 +133,11 @@ int32_t awtk_web_on_pointer_down(int32_t x, int32_t y, uint32_t timestamp)
   e.e.time = timestamp;
 
   window_manager_dispatch_input_event(wm, (event_t*)(&e));
-  
+
   return TRUE;
 }
 
-int32_t awtk_web_on_pointer_move(int32_t x, int32_t y, uint32_t timestamp)
-{
+int32_t awtk_web_on_pointer_move(int32_t x, int32_t y, uint32_t timestamp) {
   pointer_event_t e;
   widget_t* wm = (main_loop()->wm);
 
@@ -155,12 +148,11 @@ int32_t awtk_web_on_pointer_move(int32_t x, int32_t y, uint32_t timestamp)
   e.e.time = timestamp;
 
   window_manager_dispatch_input_event(wm, (event_t*)(&e));
-  
+
   return TRUE;
 }
 
-int32_t awtk_web_on_pointer_up(int32_t x, int32_t y, uint32_t timestamp)
-{
+int32_t awtk_web_on_pointer_up(int32_t x, int32_t y, uint32_t timestamp) {
   pointer_event_t e;
   widget_t* wm = (main_loop()->wm);
 
@@ -171,6 +163,7 @@ int32_t awtk_web_on_pointer_up(int32_t x, int32_t y, uint32_t timestamp)
   e.e.time = timestamp;
 
   window_manager_dispatch_input_event(wm, (event_t*)(&e));
-  
+
   return TRUE;
 }
+

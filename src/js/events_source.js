@@ -258,7 +258,7 @@ EventsSource.prototype.attachToElement = function (element) {
 		element.addEventListener('MSPointerMove', this.onPointerMoveGlobal.bind(this));
 		element.addEventListener('MSPointerUp', this.onPointerUpGlobal.bind(this));
 		element.addEventListener('mousewheel', this.onWheelGlobal.bind(this));
-	} else if (isMobile()) {
+	} else if (TBrowser.isMobile()) {
 		EventsSource.pointerDeviceType = "touch";
 		element.addEventListener('MSPointerDown', this.onPointerDownGlobal.bind(this));
 		element.addEventListener('touchstart', this.onTouchStartGlobal.bind(this));
@@ -287,14 +287,14 @@ EventsSource.points = [{}, {}, {}, {}, {}, {}, {}, {}];
 EventsSource.prototype.getAbsPoint = function (e, i) {
 	var index = i || 0;
 	var p = EventsSource.points[index];
-
+	var dpr = TBrowser.getDevicePixelRatio();
 	if (e) {
 		p.x = Math.max(e.pageX, e.x || e.clientX);
 		p.y = Math.max(e.pageY, e.y || e.clientY);
 		p.event = e;
 
-		this.lastPoint.x = p.x;
-		this.lastPoint.y = p.y;
+		this.lastPoint.x = p.x * dpr;
+		this.lastPoint.y = p.y * dpr;
 		this.lastPointEvent = e;
 	} else {
 		p = this.lastPoint;
@@ -501,29 +501,56 @@ EventsSource.prototype.onPointerUpGlobal = function (event) {
 }
 
 EventsSource.prototype.onKeyDown = function (key, event) {
-  mainLoopPost({type:'keydown', key:key, timeStamp:event.timeStamp});
+	mainLoopPost({
+		type: 'keydown',
+		key: key,
+		timeStamp: event.timeStamp
+	});
 }
 
 EventsSource.prototype.onKeyUp = function (key, event) {
-  mainLoopPost({type:'keyup', key:key, timeStamp:event.timeStamp});
+	mainLoopPost({
+		type: 'keyup',
+		key: key,
+		timeStamp: event.timeStamp
+	});
 }
 
 EventsSource.prototype.onWheel = function (delta, event) {
-  mainLoopPost({type:'wheel', delta:delta, timeStamp:event.timeStamp});
+	mainLoopPost({
+		type: 'wheel',
+		delta: delta,
+		timeStamp: event.timeStamp
+	});
 }
 
 EventsSource.prototype.onMultiTouch = function (action, points, event) {}
 
 EventsSource.prototype.onPointerDown = function (point, event) {
-  mainLoopPost({type:'pointerdown', x:point.x, y:point.y, timeStamp:event.timeStamp});
+	mainLoopPost({
+		type: 'pointerdown',
+		x: point.x,
+		y: point.y,
+		timeStamp: event.timeStamp
+	});
 }
 
 EventsSource.prototype.onPointerMove = function (point, event) {
-  mainLoopPost({type:'pointermove', x:point.x, y:point.y, timeStamp:event.timeStamp});
+	mainLoopPost({
+		type: 'pointermove',
+		x: point.x,
+		y: point.y,
+		timeStamp: event.timeStamp
+	});
 }
 
 EventsSource.prototype.onPointerUp = function (point, event) {
-  mainLoopPost({type:'pointerup', x:point.x, y:point.y, timeStamp:event.timeStamp});
+	mainLoopPost({
+		type: 'pointerup',
+		x: point.x,
+		y: point.y,
+		timeStamp: event.timeStamp
+	});
 }
 
 EventsSource.prototype.getPointerDeviceType = function () {

@@ -3,10 +3,13 @@ let gAwtkCanvasInfo = {};
 function awtkCanvasInit() {
   var canvas = document.getElementById('awtk-lcd');
 
+  TBrowser.adjustCanvas(canvas);
   gAwtkCanvasInfo.canvas = canvas;
   gAwtkCanvasInfo.ctx = canvas.getContext('2d');
+  gAwtkCanvasInfo.width = parseInt(canvas.style.width);
+  gAwtkCanvasInfo.height = parseInt(canvas.style.height);
 
-  console.log("awtkCanvasInit");
+  console.log(`awtkCanvasInit ${gAwtkCanvasInfo.width} x ${gAwtkCanvasInfo.height} `);
 
   return true;
 }
@@ -16,8 +19,8 @@ function awtkCanvasCreateFBO() {
   let fbo = document.createElement("canvas");
 
   fbo.name = "fbo";
-  fbo.width = canvas.width;
-  fbo.height = canvas.height;
+  fbo.width = gAwtkCanvasInfo.width;
+  fbo.height = gAwtkCanvasInfo.height;
 
   return imageCacheAddImage(fbo);
 }
@@ -45,15 +48,15 @@ function awtkCanvasUnbindFBO(id) {
 }
 
 function awtkCanvasGetWidth() {
-  return gAwtkCanvasInfo.canvas.width;
+  return gAwtkCanvasInfo.width;
 }
 
 function awtkCanvasGetHeight() {
-  return gAwtkCanvasInfo.canvas.height;
+  return gAwtkCanvasInfo.height;
 }
 
 function awtkCanvasGetDevicePixelRatio() {
-  return window.devicePixelRatio;
+  return TBrowser.getDevicePixelRatio();
 }
 
 function awtkCanvasSave() {
@@ -238,12 +241,15 @@ function awtkCanvasClipRect(x, y, w, h) {
   gAwtkCanvasInfo.ctx.rect(x, y, w, h);
   gAwtkCanvasInfo.ctx.clip();
   gAwtkCanvasInfo.ctx.beginPath();
-
+  console.log(`clip ${x} ${y} ${w} ${h}`);
   return true;
 }
 
 function awtkCanvasSetFont(name, size) {
-  let font = Math.round(size) + "px " + pointerToString(name);
+  let fontSize = (size || 18);
+  let font = Math.round(fontSize) + "px " + "Sans";
+  //let font = Math.round(fontSize) + "px " + pointerToString(name);
+
   gAwtkCanvasInfo.ctx.font = font;
 
   return true;
