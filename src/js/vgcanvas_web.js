@@ -1,220 +1,221 @@
-let gAwtkCanvasInfo = {};
+function  VGCanvas() {
+}
 
-function awtkCanvasInit() {
+VGCanvas.init = function() {
   var canvas = document.getElementById('awtk-lcd');
 
+  VGCanvas.canvas = canvas;
   TBrowser.adjustCanvas(canvas);
-  gAwtkCanvasInfo.canvas = canvas;
-  gAwtkCanvasInfo.ctx = canvas.getContext('2d');
-  gAwtkCanvasInfo.width = parseInt(canvas.style.width);
-  gAwtkCanvasInfo.height = parseInt(canvas.style.height);
+  VGCanvas.ctx = canvas.getContext('2d');
+  VGCanvas.width = parseInt(canvas.style.width);
+  VGCanvas.height = parseInt(canvas.style.height);
 
-  console.log(`awtkCanvasInit ${gAwtkCanvasInfo.width} x ${gAwtkCanvasInfo.height} `);
+  console.log(`VGCanvas.init ${VGCanvas.width} x ${VGCanvas.height} `);
 
   return true;
 }
 
-function awtkCanvasCreateFBO() {
-  let canvas = gAwtkCanvasInfo.canvas;
+VGCanvas.createFBO = function() {
+  let canvas = VGCanvas.canvas;
   let fbo = document.createElement("canvas");
 
   fbo.name = "fbo";
-  fbo.width = gAwtkCanvasInfo.width;
-  fbo.height = gAwtkCanvasInfo.height;
+  fbo.width = VGCanvas.width;
+  fbo.height = VGCanvas.height;
 
   return ImageCache.add(fbo);
 }
 
-function awtkCanvasDestroyFBO(id) {
+VGCanvas.destroyFBO = function(id) {
   ImageCache.remove(id);
 
   return true;
 }
 
-function awtkCanvasBindFBO(id) {
+VGCanvas.bindFBO = function(id) {
   let fbo = ImageCache.get(id);
 
-  gAwtkCanvasInfo.ctx = fbo.getContext('2d');
+  VGCanvas.ctx = fbo.getContext('2d');
 
   return true;
 }
 
-function awtkCanvasUnbindFBO(id) {
-  let canvas = gAwtkCanvasInfo.canvas;
+VGCanvas.unbindFBO = function(id) {
+  let canvas = VGCanvas.canvas;
 
-  gAwtkCanvasInfo.ctx = canvas.getContext('2d');
+  VGCanvas.ctx = canvas.getContext('2d');
 
   return true;
 }
 
-function awtkCanvasGetWidth() {
-  return gAwtkCanvasInfo.width;
+VGCanvas.getWidth = function() {
+  return VGCanvas.width;
 }
 
-function awtkCanvasGetHeight() {
-  return gAwtkCanvasInfo.height;
+VGCanvas.getHeight = function() {
+  return VGCanvas.height;
 }
 
-function awtkCanvasGetDevicePixelRatio() {
+VGCanvas.getDevicePixelRatio = function() {
   return TBrowser.getDevicePixelRatio();
 }
 
-function awtkCanvasSave() {
-  gAwtkCanvasInfo.ctx.save();
+VGCanvas.save = function() {
+  VGCanvas.ctx.save();
 
   return true;
 }
 
-function awtkCanvasRestore() {
-  gAwtkCanvasInfo.ctx.restore();
+VGCanvas.restore = function() {
+  VGCanvas.ctx.restore();
 
   return true;
 }
 
-function awtkCanvasSetMitterLimit(value) {
-  gAwtkCanvasInfo.ctx.miterLimit = value;
+VGCanvas.setMitterLimit = function(value) {
+  VGCanvas.ctx.miterLimit = value;
 
   return true;
 }
 
-function awtkCanvasSetLineJoint(value) {
-  gAwtkCanvasInfo.ctx.lineJoin = value;
+VGCanvas.setLineJoint = function(value) {
+  VGCanvas.ctx.lineJoin = value;
 
   return true;
 }
 
-function awtkCanvasSetLineCap(value) {
-  gAwtkCanvasInfo.ctx.lineCap = value;
+VGCanvas.setLineCap = function(value) {
+  VGCanvas.ctx.lineCap = value;
 
   return true;
 }
 
-function awtkCanvasSetStrokeColor(value) {
-  gAwtkCanvasInfo.ctx.strokeStyle = pointerToString(value);
+VGCanvas.setStrokeColor = function(value) {
+  VGCanvas.ctx.strokeStyle = pointerToString(value);
 
   return true;
 }
 
-function awtkCanvasSetFillColor(value) {
-  gAwtkCanvasInfo.ctx.fillStyle = pointerToString(value);
+VGCanvas.setFillColor = function(value) {
+  VGCanvas.ctx.fillStyle = pointerToString(value);
 
   return true;
 }
 
-function awtkCanvasSetGlobalAlpha(value) {
-  gAwtkCanvasInfo.ctx.globalAlpha = value;
+VGCanvas.setGlobalAlpha = function(value) {
+  VGCanvas.ctx.globalAlpha = value;
 
   return true;
 }
 
-function awtkCanvasSetLineWidth(value) {
-  gAwtkCanvasInfo.ctx.lineWidth = value;
+VGCanvas.setLineWidth = function(value) {
+  VGCanvas.ctx.lineWidth = value;
 
   return true;
 }
 
-function awtkCanvasFill() {
-  gAwtkCanvasInfo.ctx.fill();
+VGCanvas.fill = function() {
+  VGCanvas.ctx.fill();
 
   return true;
 }
 
-function awtkCanvasStroke() {
-  gAwtkCanvasInfo.ctx.stroke();
+VGCanvas.stroke = function() {
+  VGCanvas.ctx.stroke();
 
   return true;
 }
 
-function awtkCanvasBeginPath() {
-  gAwtkCanvasInfo.ctx.beginPath();
+VGCanvas.beginPath = function() {
+  VGCanvas.ctx.beginPath();
 
   return true;
 }
 
-function awtkCanvasClosePath() {
-  gAwtkCanvasInfo.ctx.closePath();
+VGCanvas.closePath = function() {
+  VGCanvas.ctx.closePath();
 
   return true;
 }
 
-function awtkCanvasMoveTo(x, y) {
-  gAwtkCanvasInfo.ctx.moveTo(x, y);
+VGCanvas.moveTo = function(x, y) {
+  VGCanvas.ctx.moveTo(x, y);
 
   return true;
 }
 
-function awtkCanvasLineTo(x, y) {
-  gAwtkCanvasInfo.ctx.lineTo(x, y);
+VGCanvas.lineTo = function(x, y) {
+  VGCanvas.ctx.lineTo(x, y);
 
   return true;
 }
 
-function awtkCanvasQuadTo(cpx, cpy, x, y) {
-  gAwtkCanvasInfo.ctx.quadraticCurveTo(cpx, cpy, x, y);
+VGCanvas.quadTo = function(cpx, cpy, x, y) {
+  VGCanvas.ctx.quadraticCurveTo(cpx, cpy, x, y);
 
   return true;
 }
 
-function awtkCanvasBezierTo(cp1x, cp1y, cp2x, cp2y, x, y) {
-  gAwtkCanvasInfo.ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+VGCanvas.bezierTo = function(cp1x, cp1y, cp2x, cp2y, x, y) {
+  VGCanvas.ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
 
   return true;
 }
 
-function awtkCanvasArcTo(x1, y1, x2, y2, r) {
-  gAwtkCanvasInfo.ctx.arcTo(x1, y1, x2, y2, r);
+VGCanvas.arcTo = function(x1, y1, x2, y2, r) {
+  VGCanvas.ctx.arcTo(x1, y1, x2, y2, r);
 
   return true;
 }
 
-function awtkCanvasArc(x, y, r, start, end, ccw) {
-  gAwtkCanvasInfo.ctx.arc(x, y, r, start, end, ccw);
+VGCanvas.arc = function(x, y, r, start, end, ccw) {
+  VGCanvas.ctx.arc(x, y, r, start, end, ccw);
 
   return true;
 }
 
-function awtkCanvasRotate(rad) {
-  gAwtkCanvasInfo.ctx.rotate(rad);
+VGCanvas.rotate = function(rad) {
+  VGCanvas.ctx.rotate(rad);
 
   return true;
 }
 
-function awtkCanvasScale(x, y) {
-  gAwtkCanvasInfo.ctx.scale(x, y);
+VGCanvas.scale = function(x, y) {
+  VGCanvas.ctx.scale(x, y);
 
   return true;
 }
 
-function awtkCanvasTranslate(x, y) {
-  gAwtkCanvasInfo.ctx.translate(x, y);
+VGCanvas.translate = function(x, y) {
+  VGCanvas.ctx.translate(x, y);
 
   return true;
 }
 
-function awtkCanvasIsPointIntPath(x, y) {
-  return gAwtkCanvasInfo.ctx.isPointInPath(x, y);
+VGCanvas.isPointIntPath = function(x, y) {
+  return VGCanvas.ctx.isPointInPath(x, y);
 }
 
-function awtkCanvasTransform(a, b, c, d, e, f) {
-  gAwtkCanvasInfo.ctx.transform(a, b, c, d, e, f);
+VGCanvas.transform = function(a, b, c, d, e, f) {
+  VGCanvas.ctx.transform(a, b, c, d, e, f);
 
   return true;
 }
 
-function awtkCanvasSetTransform(a, b, c, d, e, f) {
-  gAwtkCanvasInfo.ctx.setTransform(a, b, c, d, e, f);
+VGCanvas.setTransform = function(a, b, c, d, e, f) {
+  VGCanvas.ctx.setTransform(a, b, c, d, e, f);
 
   return true;
 }
 
-function awtkCanvasEllipse(x, y, rx, ry) {
-  gAwtkCanvasInfo.ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
+VGCanvas.ellipse = function(x, y, rx, ry) {
+  VGCanvas.ctx.ellipse(x, y, rx, ry, 0, 0, Math.PI * 2);
 
   return true;
 }
 
-function awtkCanvasRoundRect(x, y, w, h, radius) {
-  let ctx = gAwtkCanvasInfo.ctx;
+VGCanvas.roundRect = function(x, y, w, h, radius) {
+  let ctx = VGCanvas.ctx;
 
   if (radius > 1) {
     var r = x + w;
@@ -236,65 +237,62 @@ function awtkCanvasRoundRect(x, y, w, h, radius) {
   return true;
 }
 
-function awtkCanvasClipRect(x, y, w, h) {
-  //?  gAwtkCanvasInfo.ctx.beginPath();
-  gAwtkCanvasInfo.ctx.rect(x, y, w, h);
-  gAwtkCanvasInfo.ctx.clip();
-  gAwtkCanvasInfo.ctx.beginPath();
-
-  //  console.log(`clip ${x} ${y} ${w} ${h}`);
+VGCanvas.clipRect = function(x, y, w, h) {
+  VGCanvas.ctx.rect(x, y, w, h);
+  VGCanvas.ctx.clip();
+  VGCanvas.ctx.beginPath();
 
   return true;
 }
 
-function awtkCanvasSetFont(name, size) {
+VGCanvas.setFont = function(name, size) {
   let fontSize = (size || 18);
   let font = Math.round(fontSize) + "px " + "Sans";
   //let font = Math.round(fontSize) + "px " + pointerToString(name);
 
-  gAwtkCanvasInfo.ctx.font = font;
+  VGCanvas.ctx.font = font;
 
   return true;
 }
 
-function awtkCanvasSetTextAlign(value) {
-  gAwtkCanvasInfo.ctx.textAlign = pointerToString(value);
+VGCanvas.setTextAlign = function(value) {
+  VGCanvas.ctx.textAlign = pointerToString(value);
 
   return true;
 }
 
-function awtkCanvasSetTextBaseline(value) {
-  gAwtkCanvasInfo.ctx.textBaseline = pointerToString(value);
+VGCanvas.setTextBaseline = function(value) {
+  VGCanvas.ctx.textBaseline = pointerToString(value);
 
   return true;
 }
 
-function awtkCanvasFillText(text, x, y, max_width) {
+VGCanvas.fillText = function(text, x, y, max_width) {
   let str = pointerToString(text);
-  gAwtkCanvasInfo.ctx.fillText(str, x, y, max_width);
+  VGCanvas.ctx.fillText(str, x, y, max_width);
 
   return true;
 }
 
-function awtkCanvasMeasureText(text) {
+VGCanvas.measureText = function(text) {
   let str = pointerToString(text);
 
-  let width = gAwtkCanvasInfo.ctx.measureText(str).width;
+  let width = VGCanvas.ctx.measureText(str).width;
 
   return Math.round(width);
 }
 
-function awtkCanvasDrawImage(id, sx, sy, sw, sh, dx, dy, dw, dh) {
+VGCanvas.drawImage = function(id, sx, sy, sw, sh, dx, dy, dw, dh) {
   let image = ImageCache.get(id);
-  gAwtkCanvasInfo.ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
+  VGCanvas.ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
 
   return true;
 }
 
-function awtkCanvasSetFillLinearGradient(sx, sy, ex, ey, scolor, ecolor) {
+VGCanvas.setFillLinearGradient = function(sx, sy, ex, ey, scolor, ecolor) {
   let startColor = pointerToString(scolor);
   let endColor = pointerToString(ecolor);
-  let ctx = gAwtkCanvasInfo.ctx;
+  let ctx = VGCanvas.ctx;
 
   grd = ctx.createLinearGradient(sx, sy, ex, ey);
   grd.addColorStop(0.000, startColor);
@@ -305,10 +303,10 @@ function awtkCanvasSetFillLinearGradient(sx, sy, ex, ey, scolor, ecolor) {
   return true;
 }
 
-function awtkCanvasSetStrokeLinearGradient(sx, sy, ex, ey, scolor, ecolor) {
+VGCanvas.setStrokeLinearGradient = function(sx, sy, ex, ey, scolor, ecolor) {
   let startColor = pointerToString(scolor);
   let endColor = pointerToString(ecolor);
-  let ctx = gAwtkCanvasInfo.ctx;
+  let ctx = VGCanvas.ctx;
 
   grd = ctx.createLinearGradient(sx, sy, ex, ey);
   grd.addColorStop(0.000, startColor);
@@ -319,10 +317,10 @@ function awtkCanvasSetStrokeLinearGradient(sx, sy, ex, ey, scolor, ecolor) {
   return true;
 }
 
-function awtkCanvasSetFillRadialGradient(cx, cy, ir, or, scolor, ecolor) {
+VGCanvas.setFillRadialGradient = function(cx, cy, ir, or, scolor, ecolor) {
   let startColor = pointerToString(scolor);
   let endColor = pointerToString(ecolor);
-  let ctx = gAwtkCanvasInfo.ctx;
+  let ctx = VGCanvas.ctx;
 
   grd = ctx.createRadialGradient(cx, cy, ir, cx, cy, or);
   grd.addColorStop(0.000, startColor);
@@ -333,10 +331,10 @@ function awtkCanvasSetFillRadialGradient(cx, cy, ir, or, scolor, ecolor) {
   return true;
 }
 
-function awtkCanvasSetStrokeRadialGradient(cx, cy, ir, or, scolor, ecolor) {
+VGCanvas.setStrokeRadialGradient = function(cx, cy, ir, or, scolor, ecolor) {
   let startColor = pointerToString(scolor);
   let endColor = pointerToString(ecolor);
-  let ctx = gAwtkCanvasInfo.ctx;
+  let ctx = VGCanvas.ctx;
 
   grd = ctx.createRadialGradient(cx, cy, ir, cx, cy, or);
   grd.addColorStop(0.000, startColor);
