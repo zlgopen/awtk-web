@@ -23,7 +23,7 @@
 #include <stdio.h>
 
 ret_t application_init(void) {
-  widget_t* win = window_open("main");
+  widget_t* win = window_open("basic");
   printf("win name=%s\n", win->name);
   
   return RET_OK;

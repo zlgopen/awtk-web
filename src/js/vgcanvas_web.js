@@ -22,17 +22,17 @@ function awtkCanvasCreateFBO() {
   fbo.width = gAwtkCanvasInfo.width;
   fbo.height = gAwtkCanvasInfo.height;
 
-  return imageCacheAddImage(fbo);
+  return ImageCache.add(fbo);
 }
 
 function awtkCanvasDestroyFBO(id) {
-  imageCacheRemoveImage(id);
+  ImageCache.remove(id);
 
   return true;
 }
 
 function awtkCanvasBindFBO(id) {
-  let fbo = imageCacheGetImage(id);
+  let fbo = ImageCache.get(id);
 
   gAwtkCanvasInfo.ctx = fbo.getContext('2d');
 
@@ -237,13 +237,13 @@ function awtkCanvasRoundRect(x, y, w, h, radius) {
 }
 
 function awtkCanvasClipRect(x, y, w, h) {
-//?  gAwtkCanvasInfo.ctx.beginPath();
+  //?  gAwtkCanvasInfo.ctx.beginPath();
   gAwtkCanvasInfo.ctx.rect(x, y, w, h);
   gAwtkCanvasInfo.ctx.clip();
   gAwtkCanvasInfo.ctx.beginPath();
 
-//  console.log(`clip ${x} ${y} ${w} ${h}`);
-  
+  //  console.log(`clip ${x} ${y} ${w} ${h}`);
+
   return true;
 }
 
@@ -285,7 +285,7 @@ function awtkCanvasMeasureText(text) {
 }
 
 function awtkCanvasDrawImage(id, sx, sy, sw, sh, dx, dy, dw, dh) {
-  let image = imageCacheGetImage(id);
+  let image = ImageCache.get(id);
   gAwtkCanvasInfo.ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
 
   return true;

@@ -12,7 +12,7 @@ TBrowser.adjustCanvas = function (canvas) {
 
     canvas.width = view.width * dpr;
     canvas.height = view.height * dpr;
-    
+
     canvas.style.position = 'absolute';
     canvas.style.left = "0px";
     canvas.style.top = "0px";
@@ -47,8 +47,6 @@ TBrowser.getViewPort = function () {
     };
 }
 
-TBrowser.isMobile = function() {
-	return false;
+TBrowser.isMobile = function () {
+    return false;
 }
-
-

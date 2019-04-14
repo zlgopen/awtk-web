@@ -1,27 +1,45 @@
-let AwtkNextImageID = 100;
-let AwtkImageCaches = {};
+function ImageCache() {
 
-function imageCacheAddImage(image) {
-    let id = AwtkNextImageID++;
-    let key = id.toString();
-
-    AwtkImageCaches[key] = image;
-
-    return id;
 }
 
-function imageCacheGetImage(id) {
-    let key = id.toString();
-    let image = AwtkImageCaches[key];
+ImageCache.nextID = 100;
+ImageCache.images = {};
+ImageCache.invalidImageId = 0;
 
-    return image;
+ImageCache.add = function (image) {
+  let id = ImageCache.nextID++;
+  let key = id.toString();
+
+  ImageCache.images[key] = image;
+
+  return id;
 }
 
-function imageCacheRemoveImage(id) {
-    let key = id.toString();
-    let image = AwtkImageCaches[key];
+ImageCache.remove = function (id) {
+  let key = id.toString();
+  let image = ImageCache.images[key];
 
-    delete AwtkImageCaches[key];
+  delete ImageCache.images[key];
 
-    return image;
+  return image;
+}
+
+ImageCache.get = function (id) {
+  let key = id.toString();
+  let image = ImageCache.images[key];
+
+  return image;
+}
+
+ImageCache.getIdOfName = function (name) {
+  const images = ImageCache.images;
+
+  for (const key in images) {
+    const image = images[key];
+    if (image.name === name) {
+      return key;
+    }
+  }
+
+  return ImageCache.invalidImageId;
 }

@@ -19,6 +19,7 @@
  *
  */
 
+#include "tkc/utils.h"
 #include <emscripten.h>
 #include "base/vgcanvas.h"
 
@@ -263,7 +264,7 @@ static float_t vgcanvas_web_measure_text(vgcanvas_t* vgcanvas, const char* text)
 static ret_t vgcanvas_web_draw_image(vgcanvas_t* vgcanvas, bitmap_t* img, float_t sx, float_t sy,
                                      float_t sw, float_t sh, float_t dx, float_t dy, float_t dw,
                                      float_t dh) {
-  int32_t id = (char*)(img->specific) - (char*)NULL;
+  int32_t id = tk_pointer_to_int(img->specific);
   EM_ASM_INT({ return awtkCanvasDrawImage($0, $1, $2, $3, $4, $5, $6, $7, $8); }, id, sx, sy, sw,
              sh, dx, dy, dw, dh);
 

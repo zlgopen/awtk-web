@@ -1,4 +1,4 @@
 APP_FILES= \
-	 app/assets.c \
+  app/assets.c \
 	app/label.c
 						

@@ -11,12 +11,12 @@ Awtk.init = function () {
     Awtk._onKeyUp = Module.cwrap('awtk_web_on_key_up', 'number', ['number', 'number']);
     Awtk._onWheel = Module.cwrap('awtk_web_on_wheel', 'number', ['number', 'number']);
 
-    Awtk._onPointerDown = Module.cwrap('awtk_web_on_pointer_down', 'number', 
-      ['number', 'number', 'number']);
-    Awtk._onPointerMove = Module.cwrap('awtk_web_on_pointer_move', 'number', 
-      ['number', 'number', 'number']);
-    Awtk._onPointerUp = Module.cwrap('awtk_web_on_pointer_up', 'number', 
-      ['number', 'number', 'number']);
+    Awtk._onPointerDown = Module.cwrap('awtk_web_on_pointer_down', 'number',
+        ['number', 'number', 'number']);
+    Awtk._onPointerMove = Module.cwrap('awtk_web_on_pointer_move', 'number',
+        ['number', 'number', 'number']);
+    Awtk._onPointerUp = Module.cwrap('awtk_web_on_pointer_up', 'number',
+        ['number', 'number', 'number']);
 
     return Awtk._init();
 }

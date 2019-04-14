@@ -196,7 +196,6 @@ EventsSource.prototype.onKeyUpGlobal = function (event) {
 
 EventsSource.prototype.onWheelGlobal = function (event) {
 	var e = window.event || event;
-	if (EditorElement.imeOpen) return true;
 
 	if (e.target && e.target.localName !== "canvas") {
 		return this.cancelDefaultAction(e);
