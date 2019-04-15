@@ -18,6 +18,8 @@ Awtk.init = function () {
     Awtk._onPointerUp = Module.cwrap('awtk_web_on_pointer_up', 'number',
         ['number', 'number', 'number']);
 
+    EventsSource.init(document.getElementById("awtk-lcd"))
+
     return Awtk._init();
 }
 
@@ -60,3 +62,4 @@ Awtk.onPointerMove = function (x, y, timestamp) {
 Awtk.onPointerUp = function (x, y, timestamp) {
     return Awtk._onPointerUp(x, y, timestamp);
 }
+

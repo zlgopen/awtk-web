@@ -555,3 +555,12 @@ EventsSource.prototype.onPointerUp = function (point, event) {
 EventsSource.prototype.getPointerDeviceType = function () {
 	return EventsSource.pointerDeviceType;
 }
+
+EventsSource.init = function(canvas) {
+  let eventsSource = new EventsSource();
+  eventsSource.attachToElement(canvas);
+
+  console.log('EventsSource.init');
+  return;
+}
+

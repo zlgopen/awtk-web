@@ -22,7 +22,7 @@ AWTK-WEB让AWTK能够在浏览器中运行，其包括两个方面的意思：
 2.编译
 
 ```
-make
+python build.py ../awtk/demos/demo_ui_web.json all
 ```
 
 ## 运行
@@ -31,10 +31,10 @@ make
 
 ```
 npm install http-server -g
-http-server .
+http-server webroot
 ```
 
-2.用浏览器打开[http://localhost:8080/index.html](http://localhost:8080/index.html)
+2.用浏览器打开[http://localhost:8080/demoui/index.html](http://localhost:8080/demoui/index.html)
 
 ## 参考资源
 

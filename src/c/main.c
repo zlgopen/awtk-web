@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "awtk.h"
-#include "app/assets.h"
 #include "base/vgcanvas.h"
 #include "main_loop_web.h"
 
+extern ret_t assets_init(void);;
 extern ret_t application_init(void);
 
 int32_t awtk_web_init(void) {

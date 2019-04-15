@@ -38,4 +38,3 @@ function testImageLoader() {
   id = ImageLoader.load('me');
 }
 
-//testImageLoader();

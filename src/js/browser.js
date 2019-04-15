@@ -50,3 +50,4 @@ TBrowser.getViewPort = function () {
 TBrowser.isMobile = function () {
     return false;
 }
+
