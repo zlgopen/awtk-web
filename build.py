@@ -127,6 +127,7 @@ def build_awtk_js(src_app_root, config):
     output = join_path(get_js_dir(config), "awtk.js")
     CPPFLAGS = '-s EXPORTED_FUNCTIONS=@configs/export_funcs.json -o ' + output
     CPPFLAGS = CPPFLAGS + ' -DSAFE_HEAP=1 -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB -Isrc/c '
+    CPPFLAGS = CPPFLAGS + ' -DWITH_WINDOW_ANIMATORS -DWITH_NANOVG_GPU '
     awtk.run('emcc', CPPFLAGS, all_files)
 
 
@@ -156,6 +157,7 @@ with open(filename, 'r') as load_f:
         build_app_assets(src_app_root, config)
         build_awtk_js(src_app_root, config)
         build_awtk_web_js(config)
+#        clean_temp_files(config)
     elif action == 'assets':
         build_app_assets(src_app_root, config)
     elif action == 'awtk_js':
@@ -165,4 +167,3 @@ with open(filename, 'r') as load_f:
     else:
         print(action + ' is invalid action!')
 
-    clean_temp_files(config)

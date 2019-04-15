@@ -43,20 +43,21 @@ static ret_t vgcanvas_web_reinit(vgcanvas_t* vg, uint32_t w, uint32_t h, uint32_
 }
 
 static ret_t vgcanvas_web_begin_frame(vgcanvas_t* vgcanvas, rect_t* dirty_rect) {
-  vgcanvas_save(vgcanvas);
-  vgcanvas_scale(vgcanvas, vgcanvas->ratio, vgcanvas->ratio);
+  EM_ASM_INT({ return VGCanvas.beginFrame(); }, 0);
 
   return RET_OK;
 }
 
 static ret_t vgcanvas_web_end_frame(vgcanvas_t* vgcanvas) {
-  vgcanvas_restore(vgcanvas);
+  EM_ASM_INT({ return VGCanvas.endFrame(); }, 0);
+
   return RET_OK;
 }
 
 static ret_t vgcanvas_web_create_fbo(vgcanvas_t* vgcanvas, framebuffer_object_t* fbo) {
   fbo->w = vgcanvas->w;
   fbo->h = vgcanvas->h;
+  fbo->ratio = vgcanvas->ratio;
   fbo->id = EM_ASM_INT({ return VGCanvas.createFBO(); }, 0);
 
   return RET_OK;

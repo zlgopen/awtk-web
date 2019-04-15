@@ -9,10 +9,20 @@ VGCanvas.init = function() {
   VGCanvas.ctx = canvas.getContext('2d');
   VGCanvas.width = parseInt(canvas.style.width);
   VGCanvas.height = parseInt(canvas.style.height);
+  VGCanvas.ratio = TBrowser.getDevicePixelRatio();
 
   console.log(`VGCanvas.init ${VGCanvas.width} x ${VGCanvas.height} `);
 
   return true;
+}
+
+VGCanvas.beginFrame = function() {
+  VGCanvas.save();
+  VGCanvas.scale(VGCanvas.ratio, VGCanvas.ratio);
+}
+
+VGCanvas.endFrame = function() {
+  VGCanvas.restore();
 }
 
 VGCanvas.createFBO = function() {
@@ -20,10 +30,13 @@ VGCanvas.createFBO = function() {
   let fbo = document.createElement("canvas");
 
   fbo.name = "fbo";
-  fbo.width = VGCanvas.width;
-  fbo.height = VGCanvas.height;
+  fbo.width = canvas.width; 
+  fbo.height = canvas.height;
+  let id = ImageCache.add(fbo);
 
-  return ImageCache.add(fbo);
+  fbo.id = "fbo" + id;
+
+  return id;
 }
 
 VGCanvas.destroyFBO = function(id) {
