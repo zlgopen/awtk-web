@@ -51,3 +51,34 @@ TBrowser.isMobile = function () {
     return false;
 }
 
+TBrowser.updateDate = function () {
+  TBrowser.date = new Date();
+}
+
+TBrowser.getFullYear = function () {
+  return TBrowser.date.getFullYear();
+}
+
+TBrowser.getMonth = function () {
+  return TBrowser.date.getMonth() + 1;
+}
+
+TBrowser.getDate = function () {
+  return TBrowser.date.getDate();
+}
+
+TBrowser.getHours = function () {
+  return TBrowser.date.getHours();
+}
+
+TBrowser.getMinutes = function () {
+  return TBrowser.date.getMinutes();
+}
+
+TBrowser.getSeconds = function () {
+  return TBrowser.date.getSeconds();
+}
+
+TBrowser.getDay = function () {
+  return TBrowser.date.getDay();
+}
