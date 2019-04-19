@@ -108,7 +108,9 @@ def build_app_assets(src_app_root, config):
     target_assets_dir = get_target_assets_dir(config)
     src_assets_dir = get_src_assets_dir(src_app_root, config)
     copy_and_overwrite(src_assets_dir, target_assets_dir)
+    target_app= join_path(get_app_target_dir(config), 'app.html');
     target_index = join_path(get_app_target_dir(config), 'index.html');
+    shutil.copyfile('data/app.html', target_app);
     shutil.copyfile('data/index.html', target_index);
     update_assets(config)
 
