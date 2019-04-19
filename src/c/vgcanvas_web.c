@@ -223,7 +223,10 @@ static ret_t vgcanvas_web_stroke(vgcanvas_t* vgcanvas) {
 }
 
 static ret_t vgcanvas_web_paint(vgcanvas_t* vgcanvas, bool_t stroke, bitmap_t* img) {
-  /*TODO*/
+  int32_t id = tk_pointer_to_int(img->specific);
+
+  EM_ASM_INT({ return VGCanvas.paint($0, $1); }, stroke, id);
+
   return RET_OK;
 }
 

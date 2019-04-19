@@ -139,6 +139,21 @@ VGCanvas.stroke = function() {
   return true;
 }
 
+VGCanvas.paint = function(stroke, id) {
+  let ctx = VGCanvas.ctx;
+  let image = ImageCache.get(id);
+
+  if(stroke) {
+    ctx.strokeStyle = ctx.createPattern(image, 'no-repeat');
+    ctx.stroke();
+  } else {
+    ctx.fillStyle = ctx.createPattern(image, 'no-repeat');
+    ctx.fill();
+  }
+
+  return true;
+}
+
 VGCanvas.beginPath = function() {
   VGCanvas.ctx.beginPath();
 

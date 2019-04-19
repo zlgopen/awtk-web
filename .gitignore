@@ -54,3 +54,4 @@ dkms.conf
 .vscode
 tags
 webroot
+*.swp
