@@ -352,7 +352,7 @@ EventsSource.prototype.onDoubleClickGlobal = function (event) {
 	}
 
 	if (!this.isRightMouseEvent(e)) {
-		this.onDoubleClick(this.getAbsPoint(e), e);
+		//this.onDoubleClick(this.getAbsPoint(e), e);
 	}
 
 	return this.cancelDefaultAction(e);

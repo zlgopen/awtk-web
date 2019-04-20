@@ -12,17 +12,17 @@ function mainLoopStep(timestamp) {
     switch (e.type) {
       case 'keydown':
         {
-          if (e.key == KeyEvent.DOM_VK_ESCAPE) {
-            mainLoopQuit();
-          } else if (e.key == KeyEvent.DOM_VK_1) {
-            mainLoopRun();
-          }
           Awtk.onKeyDown(e.key, e.timeStamp);
           break;
         }
       case 'keyup':
         {
           Awtk.onKeyUp(e.key, e.timeStamp);
+          break;
+        }
+      case 'im_commit':
+        {
+          Awtk.onImCommit(e.text, e.timeStamp);
           break;
         }
       case 'wheel':

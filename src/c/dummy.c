@@ -7,10 +7,6 @@ ret_t image_copy(bitmap_t* dst, bitmap_t* src, rect_t* src_r, xy_t dx, xy_t dy) 
   return RET_OK;
 }
 
-input_method_t* input_method_create(void) {
-  return NULL;
-}
-
 void awtk_draw(vgcanvas_t* vg) {
   int32_t w = 0;
   bitmap_t bmp;

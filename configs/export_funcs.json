@@ -7,5 +7,6 @@
     "_awtk_web_on_wheel",
     "_awtk_web_on_pointer_down",
     "_awtk_web_on_pointer_move",
+    "_awtk_web_on_im_commit",
     "_awtk_web_on_pointer_up"
 ]

@@ -25,6 +25,7 @@
 #include "lcd_web.h"
 #include "tkc/time_now.h"
 #include "main_loop_web.h"
+#include "base/input_method.h"
 
 static ret_t main_loop_web_queue_event(main_loop_t* l, const event_queue_req_t* r) {
   return RET_OK;
@@ -189,5 +190,11 @@ int32_t awtk_web_on_pointer_up(int32_t x, int32_t y, uint32_t timestamp) {
   window_manager_dispatch_input_event(wm, (event_t*)(&e));
 
   return TRUE;
+}
+
+int32_t awtk_web_on_im_commit(const char* text, uint32_t timestamp) {
+  log_debug("awtk_web_on_im_commit text=%s\n", text);
+
+  return input_method_commit_text_ex(input_method(), TRUE, text) == RET_OK;
 }
 

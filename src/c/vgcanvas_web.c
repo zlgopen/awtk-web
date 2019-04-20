@@ -257,6 +257,8 @@ static ret_t vgcanvas_web_set_text_baseline(vgcanvas_t* vgcanvas, const char* te
 
 static ret_t vgcanvas_web_fill_text(vgcanvas_t* vgcanvas, const char* text, float_t x, float_t y,
                                     float_t max_width) {
+  return_value_if_fail(text != NULL, RET_BAD_PARAMS);
+
   EM_ASM_INT({ return VGCanvas.fillText($0, $1, $2, $3); }, text, x, y, max_width);
   return RET_OK;
 }
