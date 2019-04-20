@@ -82,3 +82,26 @@ TBrowser.getSeconds = function () {
 TBrowser.getDay = function () {
   return TBrowser.date.getDay();
 }
+
+TBrowser.getParam = function(name, defval) {
+  let search = window.location.search;
+
+  if(search) {
+    let start = search.indexOf(name + '=');
+
+    if(start >= 0) {
+      start += name.length + 1;
+      let str = search.substring(start);
+      let end = str.indexOf('&');
+
+      if(end >= 0) {
+        str = str.substring(0, end);
+      }
+      
+      return str;
+    }
+  }
+
+  return defval; 
+}
+

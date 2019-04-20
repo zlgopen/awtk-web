@@ -3,6 +3,18 @@
 <html>
 <head>
   <title>ZLG AWTK 演示</title>
+  <script type="text/javascript" src="js/awtk_web.js"></script>
+  <script>
+
+  window.onload = function() {
+    let iframe = document.getElementById('app'); 
+    
+    iframe.width = TBrowser.getParam('width', 800);
+    iframe.height = TBrowser.getParam('height', 480);
+    iframe.src="app.html"
+  }
+
+  </script>
 </head>
 <body>
   <a href="http://www.zlg.cn">
@@ -13,7 +25,7 @@
   <tr style="height: 500px;">
     <td style="width: 10%; "></td>
     <td style="width: 80%; ">
-      <p align="center"><iframe src="app.html" width="800" height="480"></iframe></p>
+      <p align="center"><iframe id="app"></iframe></p>
     </td>
     <td style="width: 10%; "></td>
   </tr>

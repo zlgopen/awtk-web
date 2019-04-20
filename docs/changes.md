@@ -1,3 +1,7 @@
+* 2019/4/20
+  * 支持vgcanvas paint.
+  * 支持动态修改width/height
+
 * 2019/4/16
   * 支持date time
 
