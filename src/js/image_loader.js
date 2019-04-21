@@ -9,7 +9,7 @@ ImageLoader.getWidth = function (name) {
 ImageLoader.getHeight = function (name) {
   let image = AssetsManager.getImage(name);
 
-  return image ? image.w : 0;
+  return image ? image.h : 0;
 }
 
 ImageLoader.load = function (name) {
