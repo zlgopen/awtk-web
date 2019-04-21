@@ -47,10 +47,6 @@ TBrowser.getViewPort = function () {
     };
 }
 
-TBrowser.isMobile = function () {
-    return false;
-}
-
 TBrowser.updateDate = function () {
   TBrowser.date = new Date();
 }
@@ -104,4 +100,32 @@ TBrowser.getParam = function(name, defval) {
 
   return defval; 
 }
+
+TBrowser.init = function() {
+  var u = navigator.userAgent;
+
+  TBrowser.ie9 = u.indexOf('MSIE 9.0') >=0;
+  TBrowser.ie10 = u.indexOf('MSIE 10.0') >=0;
+  TBrowser.ie = u.indexOf('MSIE') >=0 || u.indexOf('Trident') >=0;
+  TBrowser.android = u.indexOf('Android') >=0 && u.indexOf('Linux') >=0;
+  TBrowser.iPhone = u.indexOf('iPhone') >=0;
+  TBrowser.iPad = u.indexOf('iPad') >=0;
+  TBrowser.blackberry = u.indexOf('BlackBerry') >=0;
+  TBrowser.firefoxMobile = u.indexOf('Mobile') >=0 && u.indexOf('Firefox') >=0;
+  TBrowser.windowPhone = u.indexOf('Windows Phone') >=0;
+  TBrowser.webkit = u.indexOf("WebKit") >=0;
+  TBrowser.weixin = u.indexOf("MicroMessenger") >= 0;
+  TBrowser.weibo = u.indexOf("weibo") >= 0;
+  TBrowser.qq = u.indexOf("QQ") >= 0;
+  TBrowser.linux = u.indexOf("Linux") >= 0;
+  TBrowser.windows = u.indexOf("Windows") >= 0;
+  TBrowser.macosx = u.indexOf("Mac OS X") >= 0;
+}
+
+TBrowser.isMobile = function () {
+    return TBrowser.iPhone || TBrowser.android || TBrowser.windowPhone;
+}
+
+
+TBrowser.init();
 

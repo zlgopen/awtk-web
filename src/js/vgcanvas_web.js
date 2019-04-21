@@ -311,8 +311,14 @@ VGCanvas.measureText = function(text) {
 }
 
 VGCanvas.drawImage = function(id, sx, sy, sw, sh, dx, dy, dw, dh) {
-  let image = ImageCache.get(id);
-  VGCanvas.ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
+  try {
+    let image = ImageCache.get(id);
+    if(image && image.width && image.height) {
+      VGCanvas.ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
+    }
+  }catch(e) {
+    console.log(e);
+  }
 
   return true;
 }
