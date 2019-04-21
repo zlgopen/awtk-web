@@ -32,8 +32,9 @@ typedef struct _vgcanvas_web_t {
   char end_color[TK_COLOR_RGBA_LEN + 1];
 } vgcanvas_web_t;
 
-static ret_t vgcanvas_web_reinit(vgcanvas_t* vg, uint32_t w, uint32_t h, uint32_t stride,
-                                 bitmap_format_t format, void* data) {
+static ret_t vgcanvas_web_reinit(vgcanvas_t *vg, uint32_t w, uint32_t h,
+                                 uint32_t stride, bitmap_format_t format,
+                                 void *data) {
   (void)vg;
   (void)w;
   (void)h;
@@ -42,19 +43,21 @@ static ret_t vgcanvas_web_reinit(vgcanvas_t* vg, uint32_t w, uint32_t h, uint32_
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_begin_frame(vgcanvas_t* vgcanvas, rect_t* dirty_rect) {
+static ret_t vgcanvas_web_begin_frame(vgcanvas_t *vgcanvas,
+                                      rect_t *dirty_rect) {
   EM_ASM_INT({ return VGCanvas.beginFrame(); }, 0);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_end_frame(vgcanvas_t* vgcanvas) {
+static ret_t vgcanvas_web_end_frame(vgcanvas_t *vgcanvas) {
   EM_ASM_INT({ return VGCanvas.endFrame(); }, 0);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_create_fbo(vgcanvas_t* vgcanvas, framebuffer_object_t* fbo) {
+static ret_t vgcanvas_web_create_fbo(vgcanvas_t *vgcanvas,
+                                     framebuffer_object_t *fbo) {
   fbo->w = vgcanvas->w;
   fbo->h = vgcanvas->h;
   fbo->ratio = vgcanvas->ratio;
@@ -63,40 +66,41 @@ static ret_t vgcanvas_web_create_fbo(vgcanvas_t* vgcanvas, framebuffer_object_t*
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_destroy_fbo(vgcanvas_t* vgcanvas, framebuffer_object_t* fbo) {
+static ret_t vgcanvas_web_destroy_fbo(vgcanvas_t *vgcanvas,
+                                      framebuffer_object_t *fbo) {
   EM_ASM_INT({ return VGCanvas.destroyFBO($0); }, fbo->id);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_bind_fbo(vgcanvas_t* vgcanvas, framebuffer_object_t* fbo) {
+static ret_t vgcanvas_web_bind_fbo(vgcanvas_t *vgcanvas,
+                                   framebuffer_object_t *fbo) {
   EM_ASM_INT({ return VGCanvas.bindFBO($0); }, fbo->id);
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_unbind_fbo(vgcanvas_t* vgcanvas, framebuffer_object_t* fbo) {
+static ret_t vgcanvas_web_unbind_fbo(vgcanvas_t *vgcanvas,
+                                     framebuffer_object_t *fbo) {
   EM_ASM_INT({ return VGCanvas.unbindFBO($0); }, fbo->id);
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_destroy(vgcanvas_t* vgcanvas) {
-  return RET_OK;
-}
+static ret_t vgcanvas_web_destroy(vgcanvas_t *vgcanvas) { return RET_OK; }
 
-static ret_t vgcanvas_web_reset(vgcanvas_t* vgcanvas) {
+static ret_t vgcanvas_web_reset(vgcanvas_t *vgcanvas) {
   (void)vgcanvas;
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_flush(vgcanvas_t* vgcanvas) {
+static ret_t vgcanvas_web_flush(vgcanvas_t *vgcanvas) {
   (void)vgcanvas;
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_clear_rect(vgcanvas_t* vgcanvas, float_t x, float_t y, float_t w,
-                                     float_t h, color_t c) {
+static ret_t vgcanvas_web_clear_rect(vgcanvas_t *vgcanvas, float_t x, float_t y,
+                                     float_t w, float_t h, color_t c) {
   vgcanvas_set_fill_color(vgcanvas, c);
   vgcanvas_rect(vgcanvas, x, y, w, h);
   vgcanvas_fill(vgcanvas);
@@ -104,125 +108,137 @@ static ret_t vgcanvas_web_clear_rect(vgcanvas_t* vgcanvas, float_t x, float_t y,
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_begin_path(vgcanvas_t* vgcanvas) {
+static ret_t vgcanvas_web_begin_path(vgcanvas_t *vgcanvas) {
   EM_ASM_INT({ return VGCanvas.beginPath(); }, 0);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_move_to(vgcanvas_t* vgcanvas, float_t x, float_t y) {
+static ret_t vgcanvas_web_move_to(vgcanvas_t *vgcanvas, float_t x, float_t y) {
   EM_ASM_INT({ return VGCanvas.moveTo($0, $1); }, x, y);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_line_to(vgcanvas_t* vgcanvas, float_t x, float_t y) {
+static ret_t vgcanvas_web_line_to(vgcanvas_t *vgcanvas, float_t x, float_t y) {
   EM_ASM_INT({ return VGCanvas.lineTo($0, $1); }, x, y);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_quad_to(vgcanvas_t* vgcanvas, float_t cpx, float_t cpy, float_t x,
-                                  float_t y) {
+static ret_t vgcanvas_web_quad_to(vgcanvas_t *vgcanvas, float_t cpx,
+                                  float_t cpy, float_t x, float_t y) {
   EM_ASM_INT({ return VGCanvas.quadTo($0, $1, $2, $3); }, cpx, cpy, x, y);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_bezier_to(vgcanvas_t* vgcanvas, float_t cp1x, float_t cp1y, float_t cp2x,
-                                    float_t cp2y, float_t x, float_t y) {
-  EM_ASM_INT({ return VGCanvas.bezierTo($0, $1, $2, $3, $4, $5); }, cp1x, cp1y, cp2x, cp2y, x, y);
+static ret_t vgcanvas_web_bezier_to(vgcanvas_t *vgcanvas, float_t cp1x,
+                                    float_t cp1y, float_t cp2x, float_t cp2y,
+                                    float_t x, float_t y) {
+  EM_ASM_INT({ return VGCanvas.bezierTo($0, $1, $2, $3, $4, $5); }, cp1x, cp1y,
+             cp2x, cp2y, x, y);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_arc_to(vgcanvas_t* vgcanvas, float_t x1, float_t y1, float_t x2,
-                                 float_t y2, float_t r) {
+static ret_t vgcanvas_web_arc_to(vgcanvas_t *vgcanvas, float_t x1, float_t y1,
+                                 float_t x2, float_t y2, float_t r) {
   EM_ASM_INT({ return VGCanvas.arcTo($0, $1, $2, $3, $4); }, x1, y1, x2, y2, r);
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_arc(vgcanvas_t* vgcanvas, float_t x, float_t y, float_t r, float_t start,
-                              float_t end, bool_t ccw) {
-  EM_ASM_INT({ return VGCanvas.arc($0, $1, $2, $3, $4, $5); }, x, y, r, start, end, ccw);
+static ret_t vgcanvas_web_arc(vgcanvas_t *vgcanvas, float_t x, float_t y,
+                              float_t r, float_t start, float_t end,
+                              bool_t ccw) {
+  EM_ASM_INT({ return VGCanvas.arc($0, $1, $2, $3, $4, $5); }, x, y, r, start,
+             end, ccw);
 
   return RET_OK;
 }
 
-static bool_t vgcanvas_web_is_point_in_path(vgcanvas_t* vgcanvas, float_t x, float_t y) {
+static bool_t vgcanvas_web_is_point_in_path(vgcanvas_t *vgcanvas, float_t x,
+                                            float_t y) {
   return (bool_t)EM_ASM_INT({ return VGCanvas.isPointIntPath($0, $1); }, x, y);
 }
 
-static ret_t vgcanvas_web_rotate(vgcanvas_t* vgcanvas, float_t rad) {
+static ret_t vgcanvas_web_rotate(vgcanvas_t *vgcanvas, float_t rad) {
   EM_ASM_INT({ return VGCanvas.rotate($0); }, rad);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_scale(vgcanvas_t* vgcanvas, float_t x, float_t y) {
+static ret_t vgcanvas_web_scale(vgcanvas_t *vgcanvas, float_t x, float_t y) {
   EM_ASM_INT({ return VGCanvas.scale($0, $1); }, x, y);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_translate(vgcanvas_t* vgcanvas, float_t x, float_t y) {
+static ret_t vgcanvas_web_translate(vgcanvas_t *vgcanvas, float_t x,
+                                    float_t y) {
   EM_ASM_INT({ return VGCanvas.translate($0, $1); }, x, y);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_transform(vgcanvas_t* vgcanvas, float_t a, float_t b, float_t c,
-                                    float_t d, float_t e, float_t f) {
-  EM_ASM_INT({ return VGCanvas.transform($0, $1, $2, $3, $4, $5); }, a, b, c, d, e, f);
+static ret_t vgcanvas_web_transform(vgcanvas_t *vgcanvas, float_t a, float_t b,
+                                    float_t c, float_t d, float_t e,
+                                    float_t f) {
+  EM_ASM_INT({ return VGCanvas.transform($0, $1, $2, $3, $4, $5); }, a, b, c, d,
+             e, f);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_transform(vgcanvas_t* vgcanvas, float_t a, float_t b, float_t c,
-                                        float_t d, float_t e, float_t f) {
-  EM_ASM_INT({ return VGCanvas.setTransform($0, $1, $2, $3, $4, $5); }, a, b, c, d, e, f);
+static ret_t vgcanvas_web_set_transform(vgcanvas_t *vgcanvas, float_t a,
+                                        float_t b, float_t c, float_t d,
+                                        float_t e, float_t f) {
+  EM_ASM_INT({ return VGCanvas.setTransform($0, $1, $2, $3, $4, $5); }, a, b, c,
+             d, e, f);
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_rounded_rect(vgcanvas_t* vgcanvas, float_t x, float_t y, float_t w,
-                                       float_t h, float_t r) {
+static ret_t vgcanvas_web_rounded_rect(vgcanvas_t *vgcanvas, float_t x,
+                                       float_t y, float_t w, float_t h,
+                                       float_t r) {
   EM_ASM_INT({ return VGCanvas.roundRect($0, $1, $2, $3, $4); }, x, y, w, h, r);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_ellipse(vgcanvas_t* vgcanvas, float_t x, float_t y, float_t rx,
-                                  float_t ry) {
+static ret_t vgcanvas_web_ellipse(vgcanvas_t *vgcanvas, float_t x, float_t y,
+                                  float_t rx, float_t ry) {
   EM_ASM_INT({ return VGCanvas.ellipse($0, $1, $2, $3); }, x, y, rx, ry);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_close_path(vgcanvas_t* vgcanvas) {
+static ret_t vgcanvas_web_close_path(vgcanvas_t *vgcanvas) {
   EM_ASM_INT({ return VGCanvas.closePath(); }, 0);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_clip_rect(vgcanvas_t* vgcanvas, float_t x, float_t y, float_t w,
-                                    float_t h) {
+static ret_t vgcanvas_web_clip_rect(vgcanvas_t *vgcanvas, float_t x, float_t y,
+                                    float_t w, float_t h) {
   EM_ASM_INT({ return VGCanvas.clipRect($0, $1, $2, $3); }, x, y, w, h);
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_fill(vgcanvas_t* vgcanvas) {
+static ret_t vgcanvas_web_fill(vgcanvas_t *vgcanvas) {
   EM_ASM_INT({ return VGCanvas.fill(); }, 0);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_stroke(vgcanvas_t* vgcanvas) {
+static ret_t vgcanvas_web_stroke(vgcanvas_t *vgcanvas) {
   EM_ASM_INT({ return VGCanvas.stroke(); }, 0);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_paint(vgcanvas_t* vgcanvas, bool_t stroke, bitmap_t* img) {
+static ret_t vgcanvas_web_paint(vgcanvas_t *vgcanvas, bool_t stroke,
+                                bitmap_t *img) {
   int32_t id = tk_pointer_to_int(img->specific);
 
   EM_ASM_INT({ return VGCanvas.paint($0, $1); }, stroke, id);
@@ -230,75 +246,81 @@ static ret_t vgcanvas_web_paint(vgcanvas_t* vgcanvas, bool_t stroke, bitmap_t* i
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_font_size(vgcanvas_t* vgcanvas, float_t size) {
+static ret_t vgcanvas_web_set_font_size(vgcanvas_t *vgcanvas, float_t size) {
   float_t font_size = vgcanvas->font_size;
-  const char* font = vgcanvas->font != NULL ? vgcanvas->font : "Sans";
+  const char *font = vgcanvas->font != NULL ? vgcanvas->font : "Sans";
   EM_ASM_INT({ return VGCanvas.setFont($0, $1); }, font, font_size);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_font(vgcanvas_t* vgcanvas, const char* name) {
-  const char* font = name != NULL ? name : "Sans";
+static ret_t vgcanvas_web_set_font(vgcanvas_t *vgcanvas, const char *name) {
+  const char *font = name != NULL ? name : "Sans";
   EM_ASM_INT({ return VGCanvas.setFont($0, $1); }, font, vgcanvas->font_size);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_text_align(vgcanvas_t* vgcanvas, const char* text_align) {
+static ret_t vgcanvas_web_set_text_align(vgcanvas_t *vgcanvas,
+                                         const char *text_align) {
   EM_ASM_INT({ return VGCanvas.setTextAlign($0); }, text_align);
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_text_baseline(vgcanvas_t* vgcanvas, const char* text_baseline) {
+static ret_t vgcanvas_web_set_text_baseline(vgcanvas_t *vgcanvas,
+                                            const char *text_baseline) {
   EM_ASM_INT({ return VGCanvas.setTextBaseline($0); }, text_baseline);
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_fill_text(vgcanvas_t* vgcanvas, const char* text, float_t x, float_t y,
-                                    float_t max_width) {
+static ret_t vgcanvas_web_fill_text(vgcanvas_t *vgcanvas, const char *text,
+                                    float_t x, float_t y, float_t max_width) {
   return_value_if_fail(text != NULL, RET_BAD_PARAMS);
 
-  EM_ASM_INT({ return VGCanvas.fillText($0, $1, $2, $3); }, text, x, y, max_width);
+  EM_ASM_INT({ return VGCanvas.fillText($0, $1, $2, $3); }, text, x, y,
+             max_width);
   return RET_OK;
 }
 
-static float_t vgcanvas_web_measure_text(vgcanvas_t* vgcanvas, const char* text) {
+static float_t vgcanvas_web_measure_text(vgcanvas_t *vgcanvas,
+                                         const char *text) {
   return EM_ASM_INT({ return VGCanvas.measureText($0); }, text);
 }
 
-static ret_t vgcanvas_web_draw_image(vgcanvas_t* vgcanvas, bitmap_t* img, float_t sx, float_t sy,
-                                     float_t sw, float_t sh, float_t dx, float_t dy, float_t dw,
-                                     float_t dh) {
+static ret_t vgcanvas_web_draw_image(vgcanvas_t *vgcanvas, bitmap_t *img,
+                                     float_t sx, float_t sy, float_t sw,
+                                     float_t sh, float_t dx, float_t dy,
+                                     float_t dw, float_t dh) {
   int32_t id = tk_pointer_to_int(img->specific);
-  EM_ASM_INT({ return VGCanvas.drawImage($0, $1, $2, $3, $4, $5, $6, $7, $8); }, id, sx, sy, sw,
-             sh, dx, dy, dw, dh);
+  EM_ASM_INT({ return VGCanvas.drawImage($0, $1, $2, $3, $4, $5, $6, $7, $8); },
+             id, sx, sy, sw, sh, dx, dy, dw, dh);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_antialias(vgcanvas_t* vgcanvas, bool_t value) {
+static ret_t vgcanvas_web_set_antialias(vgcanvas_t *vgcanvas, bool_t value) {
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_line_width(vgcanvas_t* vgcanvas, float_t value) {
-  vgcanvas_web_t* web = (vgcanvas_web_t*)vgcanvas;
+static ret_t vgcanvas_web_set_line_width(vgcanvas_t *vgcanvas, float_t value) {
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
 
   EM_ASM_INT({ return VGCanvas.setLineWidth($0); }, value);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_global_alpha(vgcanvas_t* vgcanvas, float_t value) {
-  vgcanvas_web_t* web = (vgcanvas_web_t*)vgcanvas;
+static ret_t vgcanvas_web_set_global_alpha(vgcanvas_t *vgcanvas,
+                                           float_t value) {
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
 
   EM_ASM_INT({ return VGCanvas.setGlobalAlpha($0); }, value);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_fill_color(vgcanvas_t* vgcanvas, color_t c) {
-  vgcanvas_web_t* web = (vgcanvas_web_t*)vgcanvas;
+static ret_t vgcanvas_web_set_fill_color(vgcanvas_t *vgcanvas, color_t c) {
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
 
   color_rgba_str(c, web->fill_color);
   EM_ASM_INT({ return VGCanvas.setFillColor($0); }, web->fill_color);
@@ -306,35 +328,39 @@ static ret_t vgcanvas_web_set_fill_color(vgcanvas_t* vgcanvas, color_t c) {
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_fill_linear_gradient(vgcanvas_t* vgcanvas, float_t sx, float_t sy,
-                                                   float_t ex, float_t ey, color_t icolor,
+static ret_t vgcanvas_web_set_fill_linear_gradient(vgcanvas_t *vgcanvas,
+                                                   float_t sx, float_t sy,
+                                                   float_t ex, float_t ey,
+                                                   color_t icolor,
                                                    color_t ocolor) {
-  vgcanvas_web_t* web = (vgcanvas_web_t*)vgcanvas;
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
 
   color_rgba_str(icolor, web->start_color);
   color_rgba_str(ocolor, web->end_color);
 
-  EM_ASM_INT({ return VGCanvas.setFillLinearGradient($0, $1, $2, $3, $4, $5); }, sx, sy, ex, ey,
-             web->start_color, web->end_color);
+  EM_ASM_INT({ return VGCanvas.setFillLinearGradient($0, $1, $2, $3, $4, $5); },
+             sx, sy, ex, ey, web->start_color, web->end_color);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_fill_radial_gradient(vgcanvas_t* vgcanvas, float_t cx, float_t cy,
-                                                   float_t inr, float_t outr, color_t icolor,
+static ret_t vgcanvas_web_set_fill_radial_gradient(vgcanvas_t *vgcanvas,
+                                                   float_t cx, float_t cy,
+                                                   float_t inr, float_t outr,
+                                                   color_t icolor,
                                                    color_t ocolor) {
-  vgcanvas_web_t* web = (vgcanvas_web_t*)vgcanvas;
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
   color_rgba_str(icolor, web->start_color);
   color_rgba_str(ocolor, web->end_color);
 
-  EM_ASM_INT({ return VGCanvas.setFillRadialGradient($0, $1, $2, $3, $4, $5); }, cx, cy, inr, outr,
-             web->start_color, web->end_color);
+  EM_ASM_INT({ return VGCanvas.setFillRadialGradient($0, $1, $2, $3, $4, $5); },
+             cx, cy, inr, outr, web->start_color, web->end_color);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_stroke_color(vgcanvas_t* vgcanvas, color_t c) {
-  vgcanvas_web_t* web = (vgcanvas_web_t*)vgcanvas;
+static ret_t vgcanvas_web_set_stroke_color(vgcanvas_t *vgcanvas, color_t c) {
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
 
   color_rgba_str(c, web->stroke_color);
   EM_ASM_INT({ return VGCanvas.setStrokeColor($0); }, web->stroke_color);
@@ -342,56 +368,64 @@ static ret_t vgcanvas_web_set_stroke_color(vgcanvas_t* vgcanvas, color_t c) {
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_stroke_linear_gradient(vgcanvas_t* vgcanvas, float_t sx, float_t sy,
-                                                     float_t ex, float_t ey, color_t icolor,
+static ret_t vgcanvas_web_set_stroke_linear_gradient(vgcanvas_t *vgcanvas,
+                                                     float_t sx, float_t sy,
+                                                     float_t ex, float_t ey,
+                                                     color_t icolor,
                                                      color_t ocolor) {
-  vgcanvas_web_t* web = (vgcanvas_web_t*)vgcanvas;
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
   color_rgba_str(icolor, web->start_color);
   color_rgba_str(ocolor, web->end_color);
 
-  EM_ASM_INT({ return VGCanvas.setStrokeLinearGradient($0, $1, $2, $3, $4, $5); }, sx, sy, ex, ey,
-             web->start_color, web->end_color);
+  EM_ASM_INT({
+    return VGCanvas.setStrokeLinearGradient($0, $1, $2, $3, $4, $5);
+  }, sx, sy, ex, ey, web->start_color, web->end_color);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_stroke_radial_gradient(vgcanvas_t* vgcanvas, float_t cx, float_t cy,
-                                                     float_t inr, float_t outr, color_t icolor,
+static ret_t vgcanvas_web_set_stroke_radial_gradient(vgcanvas_t *vgcanvas,
+                                                     float_t cx, float_t cy,
+                                                     float_t inr, float_t outr,
+                                                     color_t icolor,
                                                      color_t ocolor) {
-  vgcanvas_web_t* web = (vgcanvas_web_t*)vgcanvas;
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
   color_rgba_str(icolor, web->start_color);
   color_rgba_str(ocolor, web->end_color);
 
-  EM_ASM_INT({ return VGCanvas.setStrokeRadialGradient($0, $1, $2, $3, $4, $5); }, cx, cy, inr,
-             outr, web->start_color, web->end_color);
+  EM_ASM_INT({
+    return VGCanvas.setStrokeRadialGradient($0, $1, $2, $3, $4, $5);
+  }, cx, cy, inr, outr, web->start_color, web->end_color);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_line_cap(vgcanvas_t* vgcanvas, const char* value) {
+static ret_t vgcanvas_web_set_line_cap(vgcanvas_t *vgcanvas,
+                                       const char *value) {
   int32_t ret = EM_ASM_INT({ return VGCanvas.setLineCap($0); }, value);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_line_join(vgcanvas_t* vgcanvas, const char* value) {
+static ret_t vgcanvas_web_set_line_join(vgcanvas_t *vgcanvas,
+                                        const char *value) {
   int32_t ret = EM_ASM_INT({ return VGCanvas.setLineJoint($0); }, value);
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_miter_limit(vgcanvas_t* vgcanvas, float_t value) {
+static ret_t vgcanvas_web_set_miter_limit(vgcanvas_t *vgcanvas, float_t value) {
   int32_t ret = EM_ASM_INT({ return VGCanvas.setMitterLimit($0); }, value);
 
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_save(vgcanvas_t* vgcanvas) {
+static ret_t vgcanvas_web_save(vgcanvas_t *vgcanvas) {
   int32_t ret = EM_ASM_INT({ return VGCanvas.save(); }, 0);
 
   return ret ? RET_OK : RET_FAIL;
 }
 
-static ret_t vgcanvas_web_restore(vgcanvas_t* vgcanvas) {
+static ret_t vgcanvas_web_restore(vgcanvas_t *vgcanvas) {
   int32_t ret = EM_ASM_INT({ return VGCanvas.restore(); }, 0);
 
   return ret ? RET_OK : RET_FAIL;
@@ -451,9 +485,9 @@ static const vgcanvas_vtable_t vt = {
     .unbind_fbo = vgcanvas_web_unbind_fbo,
     .destroy = vgcanvas_web_destroy};
 
-vgcanvas_t* vgcanvas_create(uint32_t w, uint32_t h, uint32_t stride, bitmap_format_t format,
-                            void* sdl_window) {
-  vgcanvas_web_t* web = (vgcanvas_web_t*)malloc(sizeof(vgcanvas_web_t));
+vgcanvas_t *vgcanvas_create(uint32_t w, uint32_t h, uint32_t stride,
+                            bitmap_format_t format, void *sdl_window) {
+  vgcanvas_web_t *web = (vgcanvas_web_t *)malloc(sizeof(vgcanvas_web_t));
   return_value_if_fail(web != NULL, NULL);
 
   web->base.vt = &vt;
@@ -461,7 +495,8 @@ vgcanvas_t* vgcanvas_create(uint32_t w, uint32_t h, uint32_t stride, bitmap_form
 
   web->base.w = EM_ASM_INT({ return VGCanvas.getWidth(); }, 0);
   web->base.h = EM_ASM_INT({ return VGCanvas.getHeight(); }, 0);
-  web->base.ratio = EM_ASM_DOUBLE({ return VGCanvas.getDevicePixelRatio(); }, 0);
+  web->base.ratio =
+      EM_ASM_DOUBLE({ return VGCanvas.getDevicePixelRatio(); }, 0);
 
   printf("w=%d h=%d r=%lf\n", web->base.w, web->base.h, web->base.ratio);
 

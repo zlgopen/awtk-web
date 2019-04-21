@@ -24,8 +24,8 @@
 #include "base/vgcanvas.h"
 #include "lcd/lcd_vgcanvas.inc"
 
-lcd_t* lcd_web_init(void) {
-  vgcanvas_t* vg = vgcanvas_create(0, 0, 0, 0, NULL);
+lcd_t *lcd_web_init(void) {
+  vgcanvas_t *vg = vgcanvas_create(0, 0, 0, 0, NULL);
   return_value_if_fail(vg != NULL, NULL);
 
   return lcd_vgcanvas_init(vg->w, vg->h, vg);

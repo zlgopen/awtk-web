@@ -139,7 +139,7 @@ action = 'all'
 filename = os.path.abspath('./demo.json')
 
 if len(sys.argv) < 3:
-    print('Usage: python build.py app.json action(all|assets|awtk_web_js|awtk_js)')
+    print('Usage: python build.py app.json action(all|assets|awtk_web_js|awtk_js|js)')
     sys.exit(0)
 else:
     action = sys.argv[2]
@@ -168,6 +168,9 @@ with open(filename, 'r') as load_f:
         build_awtk_js(src_app_root, config)
     elif action == 'awtk_web_js':
         build_awtk_web_js(config)
+    elif action == 'js':
+        build_awtk_web_js(config)
+        build_awtk_js(src_app_root, config)
     else:
         print(action + ' is invalid action!')
 

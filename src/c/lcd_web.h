@@ -26,7 +26,7 @@
 
 BEGIN_C_DECLS
 
-lcd_t* lcd_web_init(void);
+lcd_t *lcd_web_init(void);
 
 END_C_DECLS
 

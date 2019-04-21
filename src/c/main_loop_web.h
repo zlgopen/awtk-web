@@ -43,8 +43,8 @@ struct _main_loop_web_t {
   uint8_t last_key;
 };
 
-main_loop_t* main_loop_init(int w, int h);
-ret_t main_loop_web_step(main_loop_t* l);
+main_loop_t *main_loop_init(int w, int h);
+ret_t main_loop_web_step(main_loop_t *l);
 
 END_C_DECLS
 

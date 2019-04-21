@@ -25,12 +25,14 @@
 #ifdef AWTK_WEB
 #include <emscripten.h>
 
-static ret_t image_loader_web_load(image_loader_t* l, const asset_info_t* asset, bitmap_t* image) {
+static ret_t image_loader_web_load(image_loader_t *l, const asset_info_t *asset,
+                                   bitmap_t *image) {
   int32_t w = 0;
   int32_t h = 0;
   int32_t id = 0;
-  const char* name = NULL;
-  return_value_if_fail(l != NULL && asset != NULL && image != NULL, RET_BAD_PARAMS);
+  const char *name = NULL;
+  return_value_if_fail(l != NULL && asset != NULL && image != NULL,
+                       RET_BAD_PARAMS);
 
   name = asset->name;
   id = EM_ASM_INT({ return ImageLoader.load(pointerToString($0)); }, name);
@@ -47,8 +49,6 @@ static ret_t image_loader_web_load(image_loader_t* l, const asset_info_t* asset,
 
 static const image_loader_t s_web_loader = {.load = image_loader_web_load};
 
-image_loader_t* image_loader_web() {
-  return (image_loader_t*)&s_web_loader;
-}
+image_loader_t *image_loader_web() { return (image_loader_t *)&s_web_loader; }
 
-#endif/*AWTK_WEB*/
+#endif /*AWTK_WEB*/

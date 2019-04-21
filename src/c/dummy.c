@@ -3,11 +3,12 @@
 #include "base/main_loop.h"
 #include "base/input_method.h"
 
-ret_t image_copy(bitmap_t* dst, bitmap_t* src, rect_t* src_r, xy_t dx, xy_t dy) {
+ret_t image_copy(bitmap_t *dst, bitmap_t *src, rect_t *src_r, xy_t dx,
+                 xy_t dy) {
   return RET_OK;
 }
 
-void awtk_draw(vgcanvas_t* vg) {
+void awtk_draw(vgcanvas_t *vg) {
   int32_t w = 0;
   bitmap_t bmp;
   framebuffer_object_t fbo;
@@ -133,11 +134,11 @@ void awtk_draw(vgcanvas_t* vg) {
 
   return;
 }
-  
+
 void awtk_test_draw(void) {
-  vgcanvas_t* vg = NULL;
-  canvas_t* canvas = NULL;
-  main_loop_t* loop = main_loop();
+  vgcanvas_t *vg = NULL;
+  canvas_t *canvas = NULL;
+  main_loop_t *loop = main_loop();
 
   canvas = &(loop->canvas);
   canvas_begin_frame(canvas, NULL, 0);

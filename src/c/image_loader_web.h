@@ -43,7 +43,7 @@ BEGIN_C_DECLS
  *
  * @return {image_loader_t*} 返回图片加载器对象。
  */
-image_loader_t* image_loader_web(void);
+image_loader_t *image_loader_web(void);
 
 END_C_DECLS
 

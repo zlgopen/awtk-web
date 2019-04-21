@@ -24,7 +24,7 @@
 
 #include <emscripten.h>
 
-static ret_t date_time_get_now_impl(date_time_t* dt) {
+static ret_t date_time_get_now_impl(date_time_t *dt) {
   return_value_if_fail(dt != NULL, RET_BAD_PARAMS);
 
   EM_ASM_INT({ return TBrowser.updateDate(); }, 0);
@@ -45,9 +45,8 @@ uint32_t get_time_ms() {
 
 ret_t platform_prepare(void) {
   date_time_set_impl(date_time_get_now_impl);
-  
+
   EM_ASM_INT({ console.log('platform_prepare'); }, 0);
 
   return RET_OK;
 }
-
