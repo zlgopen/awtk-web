@@ -7,11 +7,15 @@
   <script>
 
   window.onload = function() {
-    let iframe = document.getElementById('app'); 
-    
-    iframe.width = TBrowser.getParam('width', 800);
-    iframe.height = TBrowser.getParam('height', 480);
-    iframe.src="app.html"
+    if(TBrowser.isMobile()) {
+      window.location.href = "app.html";
+    } else {
+      let iframe = document.getElementById('app'); 
+      
+      iframe.width = TBrowser.getParam('width', 800);
+      iframe.height = TBrowser.getParam('height', 480);
+      iframe.src="app.html"
+    }
   }
 
   </script>
