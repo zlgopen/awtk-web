@@ -137,7 +137,7 @@ def build_awtk_js(src_app_root, config):
     CPPFLAGS = '-s EXPORTED_FUNCTIONS=@configs/export_funcs.json -o ' + output
     CPPFLAGS = CPPFLAGS + ' -DSAFE_HEAP=1 -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB -Isrc/c '
     CPPFLAGS = CPPFLAGS + ' -DWITH_WINDOW_ANIMATORS -DWITH_NANOVG_GPU '
-    awtk.run('emcc -v ', CPPFLAGS, all_files)
+    awtk.runArgsInFile('emcc -v ', CPPFLAGS, all_files)
 
 
 action = 'all'

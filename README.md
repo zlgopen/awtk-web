@@ -86,7 +86,7 @@ python build.py your_app_path_your_app.json all
 * 不支持GIF文件(正在研究)。
 * 不支持颜色选择器(正在研究)。
 * 不支持mutable image(正在研究)。
-
+* 加载特殊字体(正在研究)。
 
 
 
