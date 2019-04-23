@@ -50,7 +50,7 @@ def prepare_update_res(config):
 
     fo = open(infile, "r+")
     str = fo.read()
-    str = str.replace('$AWTK_ROOT', AWTK_ROOT_DIR)
+    str = str.replace('$AWTK_ROOT', AWTK_ROOT_DIR).replace('\\', '\\\\');
     fo.close()
 
     fo = open(outfile, "w")
@@ -117,6 +117,7 @@ def build_app_assets(src_app_root, config):
     update_assets(config)
 
 def build_awtk_js(src_app_root, config):
+    cwd = os.path.abspath(os.getcwd())
     app_target_dir = get_app_target_dir(config)
     assert_c = join_path(app_target_dir, 'assets_web.c')
 
@@ -126,13 +127,17 @@ def build_awtk_js(src_app_root, config):
         app_files.append(os.path.normpath(os.path.join(src_app_root, f)))
 
     web_files = glob.glob('src/c/*.c')
-    all_files = awtk.getWebFiles() + web_files + app_files
+    files = awtk.getWebFiles() + web_files + app_files
+    all_files = [];
+    for f in files:
+        all_files.append(os.path.normpath(os.path.abspath(f)))
+    
 
     output = join_path(get_js_dir(config), "awtk.js")
     CPPFLAGS = '-s EXPORTED_FUNCTIONS=@configs/export_funcs.json -o ' + output
     CPPFLAGS = CPPFLAGS + ' -DSAFE_HEAP=1 -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB -Isrc/c '
     CPPFLAGS = CPPFLAGS + ' -DWITH_WINDOW_ANIMATORS -DWITH_NANOVG_GPU '
-    awtk.run('emcc', CPPFLAGS, all_files)
+    awtk.run('emcc -v ', CPPFLAGS, all_files)
 
 
 action = 'all'
