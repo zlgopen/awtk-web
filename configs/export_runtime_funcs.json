@@ -1,0 +1,9 @@
+[
+    "ccall",
+    "cwrap",
+    "addOnPostRun",
+    "addOnInit",
+    "addOnExit",
+    "addOnPreMain",
+    "UTF8ToString"
+]

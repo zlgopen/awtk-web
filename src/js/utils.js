@@ -1,4 +1,4 @@
 function pointerToString(pointer) {
-  return pointer && Module.Pointer_stringify(pointer) || null;
+  return pointer && Module.UTF8ToString(pointer, 1024) || null;
 }
 

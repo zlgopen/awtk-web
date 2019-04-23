@@ -8,7 +8,9 @@
 <script>
 
 window.onload = function() {
-  Awtk.init();
+  Module.onRuntimeInitialized = function() {
+    Awtk.init();
+  }
 }
 
 window.onunload = function() {
