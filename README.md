@@ -18,12 +18,28 @@ AWTK-WEB让AWTK能够在浏览器中运行，其包括两个方面的意思：
 
 ## 二、编译demoui
 
-1.先安装[emscripten](https://emscripten.org/docs/getting_started/downloads.html#sdk-download-and-install)和[python](https://www.python.org/)，并设置环境变量。
+1.先安装必要的软件包
 
+* [scons](https://scons.org/)
+* [python](https://www.python.org/)。
+* [nodejs](https://nodejs.org/en/)
+* [emscripten](https://emscripten.org/docs/getting_started/downloads.html#sdk-download-and-install)
 
-2.编译demoui
+> 设置emscripten的环境变量。
+
+2.编译awtk本身
 
 ```
+git clone https://github.com/zlgopen/awtk.git
+cd awtk
+scons -j 8
+```
+
+3.编译demoui
+
+```
+git clone https://github.com/zlgopen/awtk-web.git
+cd awtk-web
 python build.py ../awtk/demos/demo_ui_web.json all
 ```
 
@@ -87,6 +103,15 @@ python build.py your_app_path_your_app.json all
 * 不支持颜色选择器(正在研究)。
 * 不支持mutable image(正在研究)。
 * 加载特殊字体(正在研究)。
+
+
+## 六、注意事项
+
+* 1. 在Windows下emscripten自带的python环境与系统的python环境有冲突，需要指定python的完整路径。如:
+
+```
+C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk\demos\demo_ui_web.json all
+```
 
 
 

@@ -67,9 +67,9 @@ def update_assets(config):
     cwd = os.getcwd()
     app_target_dir = get_app_target_dir(config)
     os.chdir(app_target_dir)
-    os.system('python update_res.py all')
-    os.system('python update_res.py json')
-    os.system('python update_res.py web')
+    os.system(sys.executable + ' update_res.py all')
+    os.system(sys.executable + ' update_res.py json')
+    os.system(sys.executable + ' update_res.py web')
     os.chdir(cwd)
 
 
@@ -110,9 +110,11 @@ def build_app_assets(src_app_root, config):
     target_assets_dir = get_target_assets_dir(config)
     src_assets_dir = get_src_assets_dir(src_app_root, config)
     copy_and_overwrite(src_assets_dir, target_assets_dir)
-    target_app= join_path(get_app_target_dir(config), 'app.html');
+    target_app_js = join_path(get_app_target_dir(config), 'app_js.html');
+    target_app_asm = join_path(get_app_target_dir(config), 'app_asm.html');	
     target_index = join_path(get_app_target_dir(config), 'index.html');
-    shutil.copyfile('data/app.html', target_app);
+    shutil.copyfile('data/app_js.html', target_app_js);
+    shutil.copyfile('data/app_asm.html', target_app_asm);
     shutil.copyfile('data/index.html', target_index);
     update_assets(config)
 
@@ -132,15 +134,19 @@ def build_awtk_js(src_app_root, config):
     for f in files:
         all_files.append(os.path.normpath(os.path.abspath(f)))
     
-
+    COMMON_FLAGS=' '
+    COMMON_FLAGS = COMMON_FLAGS + ' -s EXPORTED_FUNCTIONS=@configs/export_app_funcs.json '
+    COMMON_FLAGS = COMMON_FLAGS + ' -s EXTRA_EXPORTED_RUNTIME_METHODS=@configs/export_runtime_funcs.json '
+    COMMON_FLAGS = COMMON_FLAGS + ' -DSAFE_HEAP=1 -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB -Isrc/c '
+    COMMON_FLAGS = COMMON_FLAGS + ' -DWITH_WINDOW_ANIMATORS -DWITH_NANOVG_GPU '
+	
     output = join_path(get_js_dir(config), "awtk.js")
-    CPPFLAGS = ' -o ' + output;
-    CPPFLAGS = CPPFLAGS + ' -s EXPORTED_FUNCTIONS=@configs/export_app_funcs.json '
-    CPPFLAGS = CPPFLAGS + ' -s EXTRA_EXPORTED_RUNTIME_METHODS=@configs/export_runtime_funcs.json '
-    CPPFLAGS = CPPFLAGS + ' -DSAFE_HEAP=1 -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB -Isrc/c '
-    CPPFLAGS = CPPFLAGS + ' -DWITH_WINDOW_ANIMATORS -DWITH_NANOVG_GPU '
-    awtk.runArgsInFile('emcc -v ', CPPFLAGS, all_files)
-
+    CPPFLAGS_JS = ' -o ' + output + ' -s WASM=0 ' + COMMON_FLAGS;
+    awtk.runArgsInFile('emcc -v ', CPPFLAGS_JS, all_files)
+	
+    output = join_path(get_js_dir(config), "awtk_asm.js")
+    CPPFLAGS_ASM = ' -o ' + output + COMMON_FLAGS;
+    awtk.runArgsInFile('emcc -v ', CPPFLAGS_ASM, all_files)
 
 action = 'all'
 filename = os.path.abspath('./demo.json')

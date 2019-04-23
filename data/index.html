@@ -7,14 +7,15 @@
   <script>
 
   window.onload = function() {
+    const target = TBrowser.supportWebAssembly() ? "app_asm.html" : "app_js.html"
     if(TBrowser.isMobile()) {
-      window.location.href = "app.html";
+      window.location.href = target
     } else {
       let iframe = document.getElementById('app'); 
       
       iframe.width = TBrowser.getParam('width', 800);
       iframe.height = TBrowser.getParam('height', 480);
-      iframe.src="app.html"
+      iframe.src=target
     }
   }
 
