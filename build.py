@@ -134,7 +134,7 @@ def build_awtk_js(src_app_root, config):
     for f in files:
         all_files.append(os.path.normpath(os.path.abspath(f)))
     
-    COMMON_FLAGS=' '
+    COMMON_FLAGS=' -Os '
     COMMON_FLAGS = COMMON_FLAGS + ' -s EXPORTED_FUNCTIONS=@configs/export_app_funcs.json '
     COMMON_FLAGS = COMMON_FLAGS + ' -s EXTRA_EXPORTED_RUNTIME_METHODS=@configs/export_runtime_funcs.json '
     COMMON_FLAGS = COMMON_FLAGS + ' -DSAFE_HEAP=1 -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB -Isrc/c '
