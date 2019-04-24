@@ -1,51 +1,54 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 
 <html>
+
 <head>
   <title>ZLG AWTK 演示</title>
   <script type="text/javascript" src="js/awtk_web.js"></script>
   <script>
 
-  window.onload = function() {
-    const target = TBrowser.supportWebAssembly() ? "app_asm.html" : "app_js.html"
-    if(TBrowser.isMobile()) {
-      window.location.href = target
-    } else {
-      let iframe = document.getElementById('app'); 
-      
-      iframe.width = TBrowser.getParam('width', 800);
-      iframe.height = TBrowser.getParam('height', 480);
-      iframe.src=target
-    }
+    window.onload = function () {
+      const target = TBrowser.supportWebAssembly() ? "app_asm.html" : "app_js.html"
+      if (TBrowser.isMobile()) {
+        window.location.href = target
+      } else {
+        let iframe = document.getElementById('app');
 
-    console.log(target);
-  }
+        iframe.width = TBrowser.getParam('width', 800);
+        iframe.height = TBrowser.getParam('height', 480);
+        iframe.src = target
+      }
+
+      console.log(target);
+    }
 
   </script>
 </head>
+
 <body>
   <a href="http://www.zlg.cn">
-    <img style="width:200;" src="http://www.zlg.cn/tpl/zlg//Public/images/logo_v2_b.svg"/>
+    <img style="width:200;" src="http://www.zlg.cn/tpl/zlg//Public/images/logo_v2_b.svg" />
   </a>
   <table style="width: 100%; height:600px">
-  <tbody>
-  <tr style="height: 500px;">
-    <td style="width: 10%; "></td>
-    <td style="width: 80%; ">
-      <p align="center"><iframe id="app"></iframe></p>
-    </td>
-    <td style="width: 10%; "></td>
-  </tr>
+    <tbody>
+      <tr style="height: 500px;">
+        <td style="width: 10%; "></td>
+        <td style="width: 80%; ">
+          <p align="center"><iframe id="app"></iframe></p>
+        </td>
+        <td style="width: 10%; "></td>
+      </tr>
 
-  <tr style="height: 30px;">
-    <td style="width: 10%; "></td>
-    <td style="width: 80%; ">
-      <center>AWTK DEMOUI</center>
-      <center>ZLG开源GUI引擎AWTK: <a href="https://github.com/zlgopen/awtk">https://github.com/zlgopen/awtk</a></center>
-    </td>
-    <td style="width: 10%; "></td>
-  </tr>
-  </tbody>
+      <tr style="height: 30px;">
+        <td style="width: 10%; "></td>
+        <td style="width: 80%; ">
+          <center>AWTK DEMOUI</center>
+          <center>ZLG开源GUI引擎AWTK: <a href="https://github.com/zlgopen/awtk">https://github.com/zlgopen/awtk</a></center>
+        </td>
+        <td style="width: 10%; "></td>
+      </tr>
+    </tbody>
   </table>
 </body>
+
 </html>

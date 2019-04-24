@@ -535,9 +535,12 @@ EventsSource.prototype.onPointerMove = function (point, event) {
 }
 
 EventsSource.prototype.onPointerDown = function (point, event) {
-  EventsSource.instance.pressed = true;
-  EventsSource.instance.lastTimeStamp = event.timeStamp;
-  EventsSource.instance.lastPoint = {x : point.x, y : point.y};
+	EventsSource.instance.pressed = true;
+	EventsSource.instance.lastTimeStamp = event.timeStamp;
+	EventsSource.instance.lastPoint = {
+		x: point.x,
+		y: point.y
+	};
 
 	mainLoopPost({
 		type: 'pointerdown',
@@ -555,28 +558,29 @@ EventsSource.prototype.onPointerUp = function (point, event) {
 		timeStamp: event.timeStamp
 	});
 
-  EventsSource.instance.pressed = false;
+	EventsSource.instance.pressed = false;
 }
 
 EventsSource.fixPointerUp = function () {
-  if(EventsSource.instance.pressed) {
-    let e = {timeStamp: EventsSource.instance.lastTimeStamp};
-    EventsSource.instance.onPointerUp(EventsSource.instance.lastPoint, e);
+	if (EventsSource.instance.pressed) {
+		let e = {
+			timeStamp: EventsSource.instance.lastTimeStamp
+		};
+		EventsSource.instance.onPointerUp(EventsSource.instance.lastPoint, e);
 
-    console.log('EventsSource.fixPointerUp');
-  }
+		console.log('EventsSource.fixPointerUp');
+	}
 }
 
 EventsSource.prototype.getPointerDeviceType = function () {
 	return EventsSource.pointerDeviceType;
 }
 
-EventsSource.init = function(canvas) {
-  let eventsSource = new EventsSource();
-  eventsSource.attachToElement(canvas);
-  EventsSource.instance = eventsSource;
+EventsSource.init = function (canvas) {
+	let eventsSource = new EventsSource();
+	eventsSource.attachToElement(canvas);
+	EventsSource.instance = eventsSource;
 
-  console.log('EventsSource.init');
-  return;
+	console.log('EventsSource.init');
+	return;
 }
-

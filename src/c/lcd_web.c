@@ -25,8 +25,14 @@
 #include "lcd/lcd_vgcanvas.inc"
 
 lcd_t *lcd_web_init(void) {
+  lcd_t* lcd = NULL;
   vgcanvas_t *vg = vgcanvas_create(0, 0, 0, 0, NULL);
   return_value_if_fail(vg != NULL, NULL);
 
-  return lcd_vgcanvas_init(vg->w, vg->h, vg);
+  lcd = lcd_vgcanvas_init(vg->w, vg->h, vg);
+  return_value_if_fail(lcd != NULL, NULL);
+
+  lcd->support_dirty_rect = TRUE;
+
+  return lcd;
 }

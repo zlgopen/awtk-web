@@ -26,7 +26,7 @@ ImageCache.remove = function (id) {
 
 ImageCache.get = function (id) {
   let key = id.toString();
-  if(ImageCache.images.hasOwnProperty(key)) {
+  if (ImageCache.images.hasOwnProperty(key)) {
     return ImageCache.images[key];
   } else {
     return null;

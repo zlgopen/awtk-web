@@ -37,4 +37,3 @@ function testImageLoader() {
   console.log(`me: ${id} ${w} ${h}`);
   id = ImageLoader.load('me');
 }
-
