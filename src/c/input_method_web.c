@@ -31,6 +31,13 @@ static ret_t input_method_web_on_window_close(void* ctx, event_t* e) {
   return RET_REMOVE;
 }
 
+static widget_need_custom_keyboard(widget_t* widget) {
+  if(widget != NULL && widget_get_prop_int(widget, WIDGET_PROP_INPUT_TYPE, 0) == INPUT_CUSTOM) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
 static ret_t input_method_web_request(input_method_t *im, widget_t *widget) {
   if (widget != NULL) {
     rect_t r;
@@ -41,6 +48,12 @@ static ret_t input_method_web_request(input_method_t *im, widget_t *widget) {
     uint32_t font_size = 18;
     const char *bg_color = "white";
     const char *text_color = "black";
+
+    if(widget_need_custom_keyboard(widget)) {
+      log_debug("custom keyboard open ime\n");
+      im->widget = widget;
+      return RET_OK;
+    }
 
     widget_to_screen(widget, &p);
     r = rect_init(p.x, p.y, widget->w, widget->h);
@@ -59,6 +72,12 @@ static ret_t input_method_web_request(input_method_t *im, widget_t *widget) {
                font, font_size, text_color, bg_color);
     widget_on(widget_get_window(widget), EVT_WINDOW_CLOSE, input_method_web_on_window_close, NULL);
   } else {
+    if(widget_need_custom_keyboard(im->widget)) {
+      log_debug("custom keyboard close ime\n");
+      im->widget = NULL;
+      return RET_OK;
+    }
+
     EM_ASM_INT({ return InputMethodWeb.stop(); }, 0);
   }
 
