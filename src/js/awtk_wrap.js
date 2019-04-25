@@ -68,11 +68,24 @@ Awtk.onPointerUp = function (x, y, timestamp) {
   return Awtk._onPointerUp(x, y, timestamp);
 }
 
+window.isLoaded = false;
+window.onload = function() {
+  window.isLoaded = true;
+}
+
 var Module = typeof Module !== 'undefined' ? Module : {};
 Module.onRuntimeInitialized = function () {
-  Awtk.init();
+  if(!(window.isLoaded)) {
+    window.onload = function() {
+      window.isLoaded = true;
+      Awtk.init();
+    }
+  } else {
+     Awtk.init();
+  }
 }
 
 window.onunload = function() {
   Awtk.deinit();
 }
+
