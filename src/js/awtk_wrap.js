@@ -21,6 +21,8 @@ Awtk.init = function () {
 
   EventsSource.init(document.getElementById("awtk-lcd"))
 
+  AssetsManager.preloadFonts();
+
   return Awtk._init();
 }
 

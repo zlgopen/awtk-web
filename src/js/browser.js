@@ -135,5 +135,23 @@ TBrowser.isMobile = function () {
   return TBrowser.iPhone || TBrowser.android || TBrowser.windowPhone;
 }
 
+TBrowser.injectCSS = function(str) {
+  var node = document.createElement('style');
+  node.innerHTML = str;
+  document.body.appendChild(node);
+  
+  console.log('injectCSS: ' + str);
+
+  return true;
+}
+
+TBrowser.loadFont = function(name, url) {
+  let css = `@font-face { 
+    font-family: ${name}; 
+    src: url('${url}'); 
+    }`;
+
+  return TBrowser.injectCSS(css);
+}
 
 TBrowser.init();

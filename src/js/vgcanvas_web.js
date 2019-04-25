@@ -274,10 +274,16 @@ VGCanvas.clipRect = function (x, y, w, h) {
 
 VGCanvas.setFont = function (name, size) {
   let fontSize = (size || 18);
-  let font = Math.round(fontSize) + "px " + "Sans";
-  //let font = Math.round(fontSize) + "px " + pointerToString(name);
+  let fontName = pointerToString(name);
+  let font = Math.round(fontSize) + "px ";
+  if(!(fontName) || fontName.indexOf('default') == 0) {
+    font = font + "Sans";
+  } else {
+    font = font + fontName;
+  }
 
   VGCanvas.ctx.font = font;
+  console.log('VGCanvas.setFont:' + font);
 
   return true;
 }

@@ -48,6 +48,20 @@ AssetsManager.getFontURI = function (name) {
   return null;
 }
 
+AssetsManager.preloadFonts = function () {
+  const fonts = g_awtk_assets['font'];
+  if(fonts && fonts.length > 0) {
+    fonts.forEach(function(iter){
+      if(iter.name.indexOf('default') != 0) {
+        TBrowser.loadFont(iter.name, iter.uri);         
+      }
+    });
+  }
+
+  return true;
+}
+
+
 function testAssetManager() {
   console.log(AssetsManager.exist('image', 'msg'));
   console.log(AssetsManager.getImage('msg'));
