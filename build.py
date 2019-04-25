@@ -205,7 +205,7 @@ with open(filename, 'r') as load_f:
         build_awtk_web_js(config)
     elif action == 'js':
         build_awtk_web_js(config)
-        build_awtk_js(src_app_root, config, True)
+        build_awtk_js(src_app_root, config, '')
     else:
         show_usage()
 
