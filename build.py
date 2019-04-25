@@ -118,7 +118,7 @@ def build_app_assets(src_app_root, config):
     shutil.copyfile('data/index.html', target_index);
     update_assets(config)
 
-def build_awtk_js(src_app_root, config, debug):
+def build_awtk_js(src_app_root, config, flags):
     cwd = os.path.abspath(os.getcwd())
     app_target_dir = get_app_target_dir(config)
     assert_c = join_path(app_target_dir, 'assets_web.c')
@@ -134,13 +134,7 @@ def build_awtk_js(src_app_root, config, debug):
     for f in files:
         all_files.append(os.path.normpath(os.path.abspath(f)))
     
-    COMMON_FLAGS= ' ';
-
-    if debug:
-        COMMON_FLAGS = COMMON_FLAGS + ' -g '
-    else:
-        COMMON_FLAGS = COMMON_FLAGS + ' -Os '
-
+    COMMON_FLAGS = ' ' + flags + ' ';
     COMMON_FLAGS = COMMON_FLAGS + ' -s EXPORTED_FUNCTIONS=@configs/export_app_funcs.json '
     COMMON_FLAGS = COMMON_FLAGS + ' -s EXTRA_EXPORTED_RUNTIME_METHODS=@configs/export_runtime_funcs.json '
     COMMON_FLAGS = COMMON_FLAGS + ' -DSAFE_HEAP=1 -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB -Isrc/c '
@@ -190,19 +184,23 @@ with open(filename, 'r') as load_f:
     src_app_root = os.path.dirname(filename)
     prepare_app_target_dir(config);
 
-    if action == 'all' or action == 'debug':
+    if action == 'all':
         build_app_assets(src_app_root, config)
-        build_awtk_js(src_app_root, config, True)
+        build_awtk_js(src_app_root, config, '')
+        build_awtk_web_js(config)
+    elif action == 'debug':
+        build_app_assets(src_app_root, config)
+        build_awtk_js(src_app_root, config, '-g')
         build_awtk_web_js(config)
     elif action == 'release':
         build_app_assets(src_app_root, config)
-        build_awtk_js(src_app_root, config, False)
+        build_awtk_js(src_app_root, config, '-Os')
         build_awtk_web_js(config)
         clean_temp_files(config)
     elif action == 'assets':
         build_app_assets(src_app_root, config)
     elif action == 'awtk_js':
-        build_awtk_js(src_app_root, config, True)
+        build_awtk_js(src_app_root, config, '')
     elif action == 'awtk_web_js':
         build_awtk_web_js(config)
     elif action == 'js':
