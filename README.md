@@ -40,7 +40,7 @@ scons -j 8
 ```
 git clone https://github.com/zlgopen/awtk-web.git
 cd awtk-web
-python build.py ../awtk/demos/demo_ui_web.json all
+python build.py ../awtk/demos/demo_ui_web.json debug
 ```
 
 ## 三、运行
@@ -89,7 +89,7 @@ http-server webroot
 然后使用buid.py编译：
 
 ```
-python build.py your_app_path_your_app.json all
+python build.py your_app_path_your_app.json debug
 ```
 
 生成的文件在webroot目录下，以项目名为名的子目录中，部署的时候直接把该目录拷贝到web服务器上即可。
@@ -110,7 +110,7 @@ python build.py your_app_path_your_app.json all
 * 1. 在Windows下emscripten自带的python环境与系统的python环境有冲突，需要指定python的完整路径。如:
 
 ```
-C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk\demos\demo_ui_web.json all
+C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk\demos\demo_ui_web.json debug
 ```
 
 

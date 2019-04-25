@@ -118,7 +118,7 @@ def build_app_assets(src_app_root, config):
     shutil.copyfile('data/index.html', target_index);
     update_assets(config)
 
-def build_awtk_js(src_app_root, config):
+def build_awtk_js(src_app_root, config, debug):
     cwd = os.path.abspath(os.getcwd())
     app_target_dir = get_app_target_dir(config)
     assert_c = join_path(app_target_dir, 'assets_web.c')
@@ -134,7 +134,13 @@ def build_awtk_js(src_app_root, config):
     for f in files:
         all_files.append(os.path.normpath(os.path.abspath(f)))
     
-    COMMON_FLAGS=' -Os '
+    COMMON_FLAGS= ' ';
+
+    if debug:
+        COMMON_FLAGS = COMMON_FLAGS + ' -g '
+    else:
+        COMMON_FLAGS = COMMON_FLAGS + ' -Os '
+
     COMMON_FLAGS = COMMON_FLAGS + ' -s EXPORTED_FUNCTIONS=@configs/export_app_funcs.json '
     COMMON_FLAGS = COMMON_FLAGS + ' -s EXTRA_EXPORTED_RUNTIME_METHODS=@configs/export_runtime_funcs.json '
     COMMON_FLAGS = COMMON_FLAGS + ' -DSAFE_HEAP=1 -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB -Isrc/c '
@@ -151,9 +157,23 @@ def build_awtk_js(src_app_root, config):
 action = 'all'
 filename = os.path.abspath('./demo.json')
 
-if len(sys.argv) < 3:
-    print('Usage: python build.py app.json action(all|assets|awtk_web_js|awtk_js|js)')
+def show_usage():
+    print('Usage: python build.py app.json action(all|debug|release|assets|awtk_web_js|awtk_js|js)')
+    print('=============================================================');
+    print('  debug:        build debug version.');
+    print('  release:      build release version.');
+    print('  assets:       build assets only.');
+    print('  awtk_js:      build awtk_js only.');
+    print('  awtk_web_js:  build awtk_web_js only.');
+    print('  js:           build awtk_js and awtk_web_js only.');
+    print('  all:          same as debug. build debug version.');
+    print('=============================================================');
+
     sys.exit(0)
+
+if len(sys.argv) < 3:
+    show_usage()
+
 else:
     action = sys.argv[2]
     filename = os.path.abspath(sys.argv[1])
@@ -170,20 +190,24 @@ with open(filename, 'r') as load_f:
     src_app_root = os.path.dirname(filename)
     prepare_app_target_dir(config);
 
-    if action == 'all':
+    if action == 'all' or action == 'debug':
         build_app_assets(src_app_root, config)
-        build_awtk_js(src_app_root, config)
+        build_awtk_js(src_app_root, config, True)
         build_awtk_web_js(config)
-#        clean_temp_files(config)
+    elif action == 'release':
+        build_app_assets(src_app_root, config)
+        build_awtk_js(src_app_root, config, False)
+        build_awtk_web_js(config)
+        clean_temp_files(config)
     elif action == 'assets':
         build_app_assets(src_app_root, config)
     elif action == 'awtk_js':
-        build_awtk_js(src_app_root, config)
+        build_awtk_js(src_app_root, config, True)
     elif action == 'awtk_web_js':
         build_awtk_web_js(config)
     elif action == 'js':
         build_awtk_web_js(config)
-        build_awtk_js(src_app_root, config)
+        build_awtk_js(src_app_root, config, True)
     else:
-        print(action + ' is invalid action!')
+        show_usage()
 
