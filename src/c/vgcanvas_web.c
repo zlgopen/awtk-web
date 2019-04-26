@@ -292,6 +292,12 @@ static ret_t vgcanvas_web_draw_image(vgcanvas_t *vgcanvas, bitmap_t *img,
                                      float_t sh, float_t dx, float_t dy,
                                      float_t dw, float_t dh) {
   int32_t id = tk_pointer_to_int(img->specific);
+  return_value_if_fail(id > 0, RET_BAD_PARAMS);
+
+  if(img->flags & BITMAP_FLAG_CHANGED) {
+    EM_ASM_INT({ return VGCanvas.updateMutableImage($0); }, id);
+  }
+
   EM_ASM_INT({ return VGCanvas.drawImage($0, $1, $2, $3, $4, $5, $6, $7, $8); },
              id, sx, sy, sw, sh, dx, dy, dw, dh);
 

@@ -1,3 +1,7 @@
+* 2019/4/26
+  * 更新文档。
+  * 支持mutable bitmap，color picker works.
+
 * 2019/4/25
   * 完善编译脚本
   * 修改slide menu裁剪的问题。

@@ -283,7 +283,6 @@ VGCanvas.setFont = function (name, size) {
   }
 
   VGCanvas.ctx.font = font;
-  console.log('VGCanvas.setFont:' + font);
 
   return true;
 }
@@ -380,6 +379,53 @@ VGCanvas.setStrokeRadialGradient = function (cx, cy, ir, or, scolor, ecolor) {
   grd.addColorStop(1.000, endColor);
 
   ctx.strokeStyle = grd;
+
+  return true;
+}
+
+VGCanvas.createMutableImage = function (addr, w, h, line_length, format) {
+  let mutableImage = document.createElement("canvas");
+  let id = ImageCache.add(mutableImage);
+
+  mutableImage.width = w;
+  mutableImage.height = h;
+  mutableImage.addr = addr;
+  mutableImage.format = format;
+  mutableImage.name = "mutableImage";
+  mutableImage.id = "mutableImage" + id;
+  mutableImage.line_length = line_length;
+
+  console.log(`VGCanvas.createMutableImage:${addr}, ${w}, ${h}, ${line_length}, ${format}`);
+
+  return id;
+}
+
+VGCanvas.updateMutableImage = function (id) {
+  let mutableImage = ImageCache.get(id);
+
+  let w = mutableImage.width;
+  let h = mutableImage.height;
+  let size = mutableImage.width * mutableImage.height;
+  let start = mutableImage.addr >> 2;
+  let end = start + size;
+  let array = Module.HEAP32.subarray(start, end);
+  let ctx = mutableImage.getContext('2d');
+  let imageData = ctx.getImageData(0, 0, w, h);
+  let data = new Int32Array(imageData.data.buffer);
+
+  for(let i = 0; i < size; i++) {
+    data[i] = array[i];
+  }
+  ctx.putImageData(imageData, 0, 0, 0, 0, w, h);
+
+  //console.log(`VGCanvas.updateMutableImage ${id} ${start} ${size}`);
+
+  return true;
+}
+
+VGCanvas.destroyMutableImage = function (id) {
+  console.log(`VGCanvas.destroyMutableImage ${id}`); 
+  ImageCache.remove(id);
 
   return true;
 }
