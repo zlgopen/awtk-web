@@ -465,7 +465,7 @@ EventsSource.prototype.onTouchEndGlobal = function (event) {
 			}
 		}
 		if (dbClick) {
-			this.onDoubleClick(this.getAbsPoint(null), e);
+			//this.onDoubleClick(this.getAbsPoint(null), e);
 		}
 		this.onPointerUp(this.getAbsPoint(null), e);
 	}

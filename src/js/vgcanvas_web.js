@@ -1,5 +1,25 @@
 function VGCanvas() {}
 
+VGCanvas.getFBO = function() {
+  if(VGCanvas.fbos.length < 1) {
+    let canvas = VGCanvas.canvas;
+    let fbo = document.createElement("canvas");
+
+    fbo.name = "fbo";
+    fbo.width = canvas.width;
+    fbo.height = canvas.height;
+    let id = ImageCache.add(fbo);
+    fbo.id = id;
+
+    VGCanvas.fbos.push(fbo);
+    console.log(`VGCanvas createFBO ${id}`);
+  } else {
+    console.log(`VGCanvas getFBO: ${VGCanvas.fbos.length}`);
+  }
+
+  return VGCanvas.fbos.pop();
+}
+
 VGCanvas.init = function () {
   var canvas = document.getElementById('awtk-lcd');
 
@@ -9,6 +29,7 @@ VGCanvas.init = function () {
   VGCanvas.width = parseInt(canvas.style.width);
   VGCanvas.height = parseInt(canvas.style.height);
   VGCanvas.ratio = TBrowser.getDevicePixelRatio();
+  VGCanvas.fbos = [];
 
   console.log(`VGCanvas.init ${VGCanvas.width} x ${VGCanvas.height} `);
 
@@ -25,21 +46,16 @@ VGCanvas.endFrame = function () {
 }
 
 VGCanvas.createFBO = function () {
-  let canvas = VGCanvas.canvas;
-  let fbo = document.createElement("canvas");
+  let fbo = VGCanvas.getFBO();
 
-  fbo.name = "fbo";
-  fbo.width = canvas.width;
-  fbo.height = canvas.height;
-  let id = ImageCache.add(fbo);
-
-  fbo.id = "fbo" + id;
-
-  return id;
+  return parseInt(fbo.id);
 }
 
 VGCanvas.destroyFBO = function (id) {
-  ImageCache.remove(id);
+  let fbo = ImageCache.get(id);
+
+  VGCanvas.fbos.push(fbo);
+  console.log(`VGCanvas.destroyFBO: ${VGCanvas.fbos.length}`);
 
   return true;
 }
@@ -315,13 +331,14 @@ VGCanvas.measureText = function (text) {
 }
 
 VGCanvas.drawImage = function (id, sx, sy, sw, sh, dx, dy, dw, dh) {
+  let image = ImageCache.get(id);
   try {
-    let image = ImageCache.get(id);
-    if (image && image.width && image.height) {
+    if (image && image.width && image.height && sw > 0 && sh > 0 && dw > 0 && dh > 0) {
       VGCanvas.ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
     }
   } catch (e) {
     console.log(e);
+    console.log(`${image.src} ${image.width} ${image.height} ${sx} ${sy} ${sw} ${sh}`);
   }
 
   return true;
