@@ -1,3 +1,7 @@
+* 2019/4/28
+  * dpr限制为2。
+  * 修改android点击无效的问题。
+
 * 2019/4/26
   * 更新文档。
   * 支持mutable bitmap，color picker works.

@@ -3,7 +3,9 @@ function TBrowser() {
 }
 
 TBrowser.getDevicePixelRatio = function () {
-  return window.devicePixelRatio || 1;
+  const dpr = window.devicePixelRatio || 1;
+
+  return Math.min(2, dpr);
 }
 
 TBrowser.adjustCanvas = function (canvas) {

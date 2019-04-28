@@ -286,14 +286,13 @@ EventsSource.points = [{}, {}, {}, {}, {}, {}, {}, {}];
 EventsSource.prototype.getAbsPoint = function (e, i) {
 	var index = i || 0;
 	var p = EventsSource.points[index];
-	var dpr = TBrowser.getDevicePixelRatio();
 	if (e) {
 		p.x = Math.max(e.pageX, e.x || e.clientX);
 		p.y = Math.max(e.pageY, e.y || e.clientY);
 		p.event = e;
 
-		this.lastPoint.x = p.x * dpr;
-		this.lastPoint.y = p.y * dpr;
+		this.lastPoint.x = p.x;
+		this.lastPoint.y = p.y;
 		this.lastPointEvent = e;
 	} else {
 		p = this.lastPoint;
