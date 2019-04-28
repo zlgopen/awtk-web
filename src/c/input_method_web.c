@@ -31,7 +31,7 @@ static ret_t input_method_web_on_window_close(void* ctx, event_t* e) {
   return RET_REMOVE;
 }
 
-static widget_need_custom_keyboard(widget_t* widget) {
+static bool_t widget_need_custom_keyboard(widget_t* widget) {
   if(widget != NULL && widget_get_prop_int(widget, WIDGET_PROP_INPUT_TYPE, 0) == INPUT_CUSTOM) {
     return TRUE;
   }
