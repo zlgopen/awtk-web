@@ -89,6 +89,7 @@ def build_awtk_web_js(config):
     outfile = join_path(get_js_dir(config), 'awtk_web.js')
     awtk_web_js_files = [assert_js,
                          'src/js/browser.js',
+                         'src/js/webgl2d.js',
                          'src/js/image_cache.js',
                          'src/js/assets_manager.js',
                          'src/js/image_loader.js',
