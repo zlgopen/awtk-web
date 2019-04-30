@@ -1,5 +1,24 @@
-function TBrowser() {
+function TBrowser() {}
 
+TBrowser.supportWebGL = function () {
+  var canvas = document.createElement("canvas");
+  var gl = canvas.getContext("webgl") ||
+    canvas.getContext("experimental-webgl");
+
+  if (gl && gl instanceof WebGLRenderingContext) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+TBrowser.supportWebAssembly = function () {
+  if (typeof WebAssembly === "object" &&
+    typeof WebAssembly.instantiate === "function") {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 TBrowser.getDevicePixelRatio = function () {
@@ -8,7 +27,7 @@ TBrowser.getDevicePixelRatio = function () {
   return Math.min(2, dpr);
 }
 
-TBrowser.adjustCanvas = function (canvas) {
+TBrowser.adjustCanvasToViewPort = function (canvas) {
   let view = TBrowser.getViewPort();
   let dpr = TBrowser.getDevicePixelRatio();
 
@@ -27,9 +46,9 @@ TBrowser.adjustCanvas = function (canvas) {
 TBrowser.createCanvas = function (name, w, h) {
   const canvas = document.createElement("canvas");
 
-  canvas.name = name;
   canvas.width = w;
   canvas.height = h;
+  canvas.name = name;
 
   return canvas;
 }
@@ -38,7 +57,7 @@ TBrowser.createMainCanvas = function () {
   if (!TBrowser.mainCanvas) {
     const canvas = TBrowser.createCanvas("awtk-lcd", 0, 0);
 
-    TBrowser.adjustCanvas(canvas);
+    TBrowser.adjustCanvasToViewPort(canvas);
 
     TBrowser.mainCanvas = canvas;
     document.body.appendChild(canvas);
@@ -51,33 +70,32 @@ TBrowser.createAnimCanvas = function () {
   if (!TBrowser.animCanvas) {
     const canvas = TBrowser.createCanvas("awtk-lcd-anim", 0, 0);
 
-    TBrowser.adjustCanvas(canvas);
+    TBrowser.adjustCanvasToViewPort(canvas);
 
     TBrowser.animCanvas = canvas;
     document.body.appendChild(canvas);
-    canvas.opacity = 0;
-    canvas.visibility = 'hidden';
+    canvas.hidden = true;
   }
 
   return TBrowser.animCanvas;
 }
 
 TBrowser.activateCanvas = function (anim) {
-  if(TBrowser.activeCanvas) {
+  if (TBrowser.activeCanvas) {
     TBrowser.activeCanvas.hidden = true;
   }
 
-  if(anim) {
-    TBrowser.activeCanvas = TBrowser.animCanvas; 
+  if (anim) {
+    TBrowser.activeCanvas = TBrowser.animCanvas;
     console.log(`start animate`);
   } else {
-    TBrowser.activeCanvas = TBrowser.mainCanvas; 
+    TBrowser.activeCanvas = TBrowser.mainCanvas;
     let ctx = TBrowser.getActiveContext();
     ctx.drawImage(TBrowser.animCanvas, 0, 0);
     console.log(`stop animate`);
   }
-  
-  if(TBrowser.activeCanvas) {
+
+  if (TBrowser.activeCanvas) {
     TBrowser.activeCanvas.hidden = false;
   }
 
@@ -86,14 +104,15 @@ TBrowser.activateCanvas = function (anim) {
 
 TBrowser.getActiveContext = function () {
   let ctx = null;
-  if(TBrowser.activeCanvas === TBrowser.animCanvas) {
-    if(!TBrowser.animCanvas.ctxwebgl) {
-      ctx = CanvasRenderingContext2DWebGL.create(TBrowser.activeCanvas, {});
-      TBrowser.animCanvas.ctxwebgl = ctx;
-    }
-    ctx = TBrowser.animCanvas.ctxwebgl;
+  let canvas = TBrowser.activeCanvas;
+  if (canvas === TBrowser.mainCanvas) {
+    ctx = canvas.getContext('2d');
   } else {
-    ctx = TBrowser.activeCanvas.getContext('2d');
+    if (!canvas.ctxwebgl) {
+      ctx = CanvasRenderingContext2DWebGL.create(canvas, {});
+      canvas.ctxwebgl = ctx;
+    }
+    ctx = canvas.ctxwebgl;
   }
 
   return ctx;
@@ -112,15 +131,6 @@ TBrowser.createMutableImage = function (name, addr, w, h, line_length, format) {
   image.line_length = line_length;
 
   return image;
-}
-
-TBrowser.supportWebAssembly = function () {
-  if (typeof WebAssembly === "object" &&
-    typeof WebAssembly.instantiate === "function") {
-    return true;
-  } else {
-    return false;
-  }
 }
 
 TBrowser.getViewPort = function () {
@@ -222,6 +232,26 @@ TBrowser.init = function () {
   TBrowser.linux = u.indexOf("Linux") >= 0;
   TBrowser.windows = u.indexOf("Windows") >= 0;
   TBrowser.macosx = u.indexOf("Mac OS X") >= 0;
+
+  if (!TBrowser.supportWebGL()) {
+    TBrowser.getActiveContext = function () {
+      return TBrowser.mainCanvas.getContext('2d');
+    }
+
+    TBrowser.activateCanvas = function (anim) {
+      return true;
+    }
+
+    TBrowser.createAnimCanvas = function () {
+      return null;
+    }
+    
+    console.log('TBrowser.init: webgl not supported.');
+  } else {
+    console.log('TBrowser.init: webgl supported.');
+  }
+
+  return true;
 }
 
 TBrowser.isMobile = function () {
@@ -230,10 +260,9 @@ TBrowser.isMobile = function () {
 
 TBrowser.injectCSS = function (str) {
   var node = document.createElement('style');
+
   node.innerHTML = str;
   document.body.appendChild(node);
-
-  console.log('injectCSS: ' + str);
 
   return true;
 }
