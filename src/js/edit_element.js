@@ -71,19 +71,15 @@ EditElement.prototype.getText = function () {
 }
 
 EditElement.prototype.show = function () {
-  this.edit.style.visibility = 'visible';
-  this.edit.style.zIndex = 8;
-  this.edit.style.opacity = 1;
   this.edit.focus();
+  this.edit.hidden = false;
 
   return true;
 }
 
 EditElement.prototype.hide = function () {
-  this.edit.style.opacity = 0;
-  this.edit.style.zIndex = 0;
-  this.edit.style.visibility = 'hidden';
   this.edit.blur();
+  this.edit.hidden = true;
   this.edit.onchange = null;
 
   return true;

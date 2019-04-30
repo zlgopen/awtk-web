@@ -98,6 +98,7 @@ def build_awtk_web_js(config):
                          'src/js/edit_element.js',
                          'src/js/vgcanvas_web.js',
                          'src/js/awtk_wrap.js',
+                         'src/js/key_event.js',
                          'src/js/events_source.js',
                          'src/js/main_loop_web.js']
     merge_js_files(awtk_web_js_files, outfile)
