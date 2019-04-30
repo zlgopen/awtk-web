@@ -373,540 +373,7 @@ mat2d.transformPoints = function(m, arr) {
 mat2d.sin = Math.sinFast;
 mat2d.cos = Math.cosFast;
 
-/**
- * Based on the Public Domain MaxRectanglesBinPack.cpp source by Jukka Jylänki
- * https://github.com/juj/RectangleBinPack/
- *
- * Based on C# port by Sven Magnus
- * http://unifycommunity.com/wiki/index.php?title=MaxRectanglesBinPack
- *
- * Based on ActionScript3 by DUZENGQIANG
- * http://www.duzengqiang.com/blog/post/971.html
- *
- * Ported to javascript by 06wj
- * https://github.com/06wj/MaxRectsBinPack
- */
-(function(){
-    /**
-     * Rect
-     * @param {Number} x      矩形坐标x
-     * @param {Number} y      矩形坐标y
-     * @param {Number} width  矩形宽
-     * @param {Number} height 矩形高
-     */
-    function Rect(x, y, width, height){
-        this.x = x||0;
-        this.y = y||0;
-        this.width = width||0;
-        this.height = height||0;
-    }
-
-    Rect.prototype = {
-        constructor:Rect,
-        /**
-         * clone 复制
-         * @return {Rect}
-         */
-        clone:function(){
-            return new Rect(this.x, this.y, this.width, this.height);
-        }
-    };
-
-    Rect.isContainedIn = function(a, b){
-        return a.x >= b.x && a.y >= b.y
-            && a.x+a.width <= b.x+b.width
-            && a.y+a.height <= b.y+b.height;
-    };
-
-    var BestShortSideFit = 0; ///< -BSSF: Positions the Rectangle against the short side of a free Rectangle into which it fits the best.
-    var BestLongSideFit = 1; ///< -BLSF: Positions the Rectangle against the long side of a free Rectangle into which it fits the best.
-    var BestAreaFit = 2; ///< -BAF: Positions the Rectangle into the smallest free Rectangle into which it fits.
-    var BottomLeftRule = 3; ///< -BL: Does the Tetris placement.
-    var ContactPointRule = 4; ///< -CP: Choosest the placement where the Rectangle touches other Rectangles as much as possible.
-
-    /**
-     * MaxRectanglesBinPack
-     * @param {Number} width 容器宽度
-     * @param {Number} height 容器高度
-     * @param {Boolean} allowRotate 是否允许旋转
-     */
-    function MaxRectsBinPack(width, height, allowRotate){
-        this.binWidth = 0;
-        this.binHeight = 0;
-        this.allowRotate = false;
-
-        this.usedRectangles = [];
-        this.freeRectangles = [];
-
-        this.init(width, height, allowRotate);
-    }
-
-    MaxRectsBinPack.prototype = {
-        constructor:MaxRectsBinPack,
-        /**
-         * 初始化
-         * @param {Number} width 容器宽度
-         * @param {Number} height 容器高度
-         * @param {Boolean} allowRotate 是否允许旋转
-         */
-        init:function(width, height, allowRotate){
-            this.binWidth = width;
-            this.binHeight = height;
-            this.allowRotate = allowRotate||false;
-
-            this.usedRectangles.length = 0;
-            this.freeRectangles.length = 0;
-            this.freeRectangles.push(new Rect(0, 0, width, height));
-        },
-        /**
-         * insert a new rect
-         * @param  {Number} width  矩形宽
-         * @param  {Number} height 矩形高
-         * @param  {Number} method 分配方法 0~4
-         * @return {Rect}
-         */
-        insert:function(width, height,  method){
-            var newNode = new Rect();
-            var score1 = {
-                value:0
-            };
-
-            var score2 = {
-                value:0
-            };
-            method = method||0;
-            switch(method) {
-                case BestShortSideFit:
-                    newNode = this._findPositionForNewNodeBestShortSideFit(width, height, score1, score2);
-                    break;
-                case BottomLeftRule:
-                    newNode = this._findPositionForNewNodeBottomLeft(width, height, score1, score2);
-                    break;
-                case ContactPointRule:
-                    newNode = this._findPositionForNewNodeContactPoint(width, height, score1);
-                    break;
-                case BestLongSideFit:
-                    newNode = this._findPositionForNewNodeBestLongSideFit(width, height, score2, score1);
-                    break;
-                case BestAreaFit:
-                    newNode = this._findPositionForNewNodeBestAreaFit(width, height, score1, score2);
-                    break;
-            }
-
-            if (newNode.height === 0){
-                return newNode;
-            }
-
-            this._placeRectangle(newNode);
-            return newNode;
-        },
-        /**
-         * 插入一组矩形
-         * @param  {Array} rectangles 矩形数组
-         * @param  {Number} method 分配方法 0~4
-         * @return {Array} 成功插入的数组
-         */
-        insert2:function(rectangles, method){
-            var res = [];
-            while(rectangles.length > 0) {
-                var bestScore1 = Infinity;
-                var bestScore2 = Infinity;
-                var bestRectangleIndex = -1;
-                var bestNode = new Rect();
-
-                for(var i= 0; i < rectangles.length; i++) {
-                    var score1 = {
-                        value:0
-                    };
-                    var score2 = {
-                        value:0
-                    };
-                    var newNode = this._scoreRectangle(rectangles[i].width, rectangles[i].height, method, score1, score2);
-
-                    if (score1.value < bestScore1 || (score1.value == bestScore1 && score2.value < bestScore2)) {
-                        bestScore1 = score1.value;
-                        bestScore2 = score2.value;
-                        bestNode = newNode;
-                        bestRectangleIndex = i;
-                    }
-                }
-
-                if (bestRectangleIndex == -1){
-                    return res;
-                }
-
-                this._placeRectangle(bestNode);
-                var rect = rectangles.splice(bestRectangleIndex, 1)[0];
-                rect.x = bestNode.x;
-                rect.y = bestNode.y;
-
-                res.push(rect);
-            }
-            return res;
-        },
-        _placeRectangle:function(node){
-            var numRectanglesToProcess = this.freeRectangles.length;
-            for(var i= 0; i < numRectanglesToProcess; i++) {
-                if (this._splitFreeNode(this.freeRectangles[i], node)) {
-                    this.freeRectangles.splice(i,1);
-                    i--;
-                    numRectanglesToProcess--;
-                }
-            }
-
-            this._pruneFreeList();
-            this.usedRectangles.push(node);
-        },
-        _scoreRectangle:function(width, height, method, score1, score2){
-            var newNode = new Rect();
-            score1.value = Infinity;
-            score2.value = Infinity;
-            switch(method) {
-                case BestShortSideFit:
-                    newNode = this._findPositionForNewNodeBestShortSideFit(width, height, score1, score2);
-                    break;
-                case BottomLeftRule:
-                    newNode = this._findPositionForNewNodeBottomLeft(width, height, score1, score2);
-                    break;
-                case ContactPointRule:
-                    newNode = this._findPositionForNewNodeContactPoint(width, height, score1);
-                    // todo: reverse
-                    score1 = -score1; // Reverse since we are minimizing, but for contact point score bigger is better.
-                    break;
-                case BestLongSideFit:
-                    newNode = this._findPositionForNewNodeBestLongSideFit(width, height, score2, score1);
-                    break;
-                case BestAreaFit:
-                    newNode = this._findPositionForNewNodeBestAreaFit(width, height, score1, score2);
-                    break;
-            }
-
-            // Cannot fit the current Rectangle.
-            if (newNode.height === 0) {
-                score1.value = Infinity;
-                score2.value = Infinity;
-            }
-
-            return newNode;
-        },
-        _occupancy:function(){
-            var usedRectangles = this.usedRectangles;
-            var usedSurfaceArea = 0;
-            for(var i= 0; i < usedRectangles.length; i++){
-                usedSurfaceArea += usedRectangles[i].width * usedRectangles[i].height;
-            }
-
-            return usedSurfaceArea/(this.binWidth * this.binHeight);
-        },
-        _findPositionForNewNodeBottomLeft:function(width, height, bestY, bestX){
-            var freeRectangles = this.freeRectangles;
-            var bestNode = new Rect();
-            //memset(bestNode, 0, sizeof(Rectangle));
-
-            bestY.value = Infinity;
-            var rect;
-            var topSideY;
-            for(var i= 0; i < freeRectangles.length; i++) {
-                rect = freeRectangles[i];
-                // Try to place the Rectangle in upright (non-flipped) orientation.
-                if (rect.width >= width && rect.height >= height) {
-                    topSideY = rect.y + height;
-                    if (topSideY < bestY.value || (topSideY == bestY.value && rect.x < bestX.value)) {
-                        bestNode.x = rect.x;
-                        bestNode.y = rect.y;
-                        bestNode.width = width;
-                        bestNode.height = height;
-                        bestY.value = topSideY;
-                        bestX.value = rect.x;
-                    }
-                }
-                if (this.allowRotate && rect.width >= height && rect.height >= width) {
-                    topSideY = rect.y + width;
-                    if (topSideY < bestY.value || (topSideY == bestY.value && rect.x < bestX.value)) {
-                        bestNode.x = rect.x;
-                        bestNode.y = rect.y;
-                        bestNode.width = height;
-                        bestNode.height = width;
-                        bestY.value = topSideY;
-                        bestX.value = rect.x;
-                    }
-                }
-            }
-            return bestNode;
-        },
-        _findPositionForNewNodeBestShortSideFit:function(width, height, bestShortSideFit, bestLongSideFit){
-            var freeRectangles = this.freeRectangles;
-            var bestNode = new Rect();
-            //memset(&bestNode, 0, sizeof(Rectangle));
-
-            bestShortSideFit.value = Infinity;
-
-            var rect;
-            var leftoverHoriz;
-            var leftoverVert;
-            var shortSideFit;
-            var longSideFit;
-
-            for(var i= 0; i < freeRectangles.length; i++) {
-                rect = freeRectangles[i];
-                // Try to place the Rectangle in upright (non-flipped) orientation.
-                if (rect.width >= width && rect.height >= height) {
-                    leftoverHoriz = Math.abs(rect.width - width);
-                    leftoverVert = Math.abs(rect.height - height);
-                    shortSideFit = Math.min(leftoverHoriz, leftoverVert);
-                    longSideFit = Math.max(leftoverHoriz, leftoverVert);
-
-                    if (shortSideFit < bestShortSideFit.value || (shortSideFit == bestShortSideFit.value && longSideFit < bestLongSideFit.value)) {
-                        bestNode.x = rect.x;
-                        bestNode.y = rect.y;
-                        bestNode.width = width;
-                        bestNode.height = height;
-                        bestShortSideFit.value = shortSideFit;
-                        bestLongSideFit.value = longSideFit;
-                    }
-                }
-                var flippedLeftoverHoriz;
-                var flippedLeftoverVert;
-                var flippedShortSideFit;
-                var flippedLongSideFit;
-                if (this.allowRotate && rect.width >= height && rect.height >= width) {
-                    flippedLeftoverHoriz = Math.abs(rect.width - height);
-                    flippedLeftoverVert = Math.abs(rect.height - width);
-                    flippedShortSideFit = Math.min(flippedLeftoverHoriz, flippedLeftoverVert);
-                    flippedLongSideFit = Math.max(flippedLeftoverHoriz, flippedLeftoverVert);
-
-                    if (flippedShortSideFit < bestShortSideFit.value || (flippedShortSideFit == bestShortSideFit.value && flippedLongSideFit < bestLongSideFit.value)) {
-                        bestNode.x = rect.x;
-                        bestNode.y = rect.y;
-                        bestNode.width = height;
-                        bestNode.height = width;
-                        bestShortSideFit.value = flippedShortSideFit;
-                        bestLongSideFit.value = flippedLongSideFit;
-                    }
-                }
-            }
-
-            return bestNode;
-        },
-        _findPositionForNewNodeBestLongSideFit:function(width, height, bestShortSideFit, bestLongSideFit){
-            var freeRectangles = this.freeRectangles;
-            var bestNode = new Rect();
-            //memset(&bestNode, 0, sizeof(Rectangle));
-            bestLongSideFit.value = Infinity;
-            var rect;
-
-            var leftoverHoriz;
-            var leftoverVert;
-            var shortSideFit;
-            var longSideFit;
-            for(var i= 0; i < freeRectangles.length; i++) {
-                rect = freeRectangles[i];
-                // Try to place the Rectangle in upright (non-flipped) orientation.
-                if (rect.width >= width && rect.height >= height) {
-                    leftoverHoriz = Math.abs(rect.width - width);
-                    leftoverVert = Math.abs(rect.height - height);
-                    shortSideFit = Math.min(leftoverHoriz, leftoverVert);
-                    longSideFit = Math.max(leftoverHoriz, leftoverVert);
-
-                    if (longSideFit < bestLongSideFit.value || (longSideFit == bestLongSideFit.value && shortSideFit < bestShortSideFit.value)) {
-                        bestNode.x = rect.x;
-                        bestNode.y = rect.y;
-                        bestNode.width = width;
-                        bestNode.height = height;
-                        bestShortSideFit.value = shortSideFit;
-                        bestLongSideFit.value = longSideFit;
-                    }
-                }
-
-                if (this.allowRotate && rect.width >= height && rect.height >= width) {
-                    leftoverHoriz = Math.abs(rect.width - height);
-                    leftoverVert = Math.abs(rect.height - width);
-                    shortSideFit = Math.min(leftoverHoriz, leftoverVert);
-                    longSideFit = Math.max(leftoverHoriz, leftoverVert);
-
-                    if (longSideFit < bestLongSideFit.value || (longSideFit == bestLongSideFit.value && shortSideFit < bestShortSideFit.value)) {
-                        bestNode.x = rect.x;
-                        bestNode.y = rect.y;
-                        bestNode.width = height;
-                        bestNode.height = width;
-                        bestShortSideFit.value = shortSideFit;
-                        bestLongSideFit.value = longSideFit;
-                    }
-                }
-            }
-            return bestNode;
-        },
-        _findPositionForNewNodeBestAreaFit:function(width, height, bestAreaFit, bestShortSideFit){
-            var freeRectangles = this.freeRectangles;
-            var bestNode = new Rect();
-            //memset(&bestNode, 0, sizeof(Rectangle));
-
-            bestAreaFit.value = Infinity;
-
-            var rect;
-
-            var leftoverHoriz;
-            var leftoverVert;
-            var shortSideFit;
-            var areaFit;
-
-            for(var i= 0; i < freeRectangles.length; i++) {
-                rect = freeRectangles[i];
-                areaFit = rect.width * rect.height - width * height;
-
-                // Try to place the Rectangle in upright (non-flipped) orientation.
-                if (rect.width >= width && rect.height >= height) {
-                    leftoverHoriz = Math.abs(rect.width - width);
-                    leftoverVert = Math.abs(rect.height - height);
-                    shortSideFit = Math.min(leftoverHoriz, leftoverVert);
-
-                    if (areaFit < bestAreaFit.value || (areaFit == bestAreaFit.value && shortSideFit < bestShortSideFit.value)) {
-                        bestNode.x = rect.x;
-                        bestNode.y = rect.y;
-                        bestNode.width = width;
-                        bestNode.height = height;
-                        bestShortSideFit.value = shortSideFit;
-                        bestAreaFit = areaFit;
-                    }
-                }
-
-                if (this.allowRotate && rect.width >= height && rect.height >= width) {
-                    leftoverHoriz = Math.abs(rect.width - height);
-                    leftoverVert = Math.abs(rect.height - width);
-                    shortSideFit = Math.min(leftoverHoriz, leftoverVert);
-
-                    if (areaFit < bestAreaFit.value || (areaFit == bestAreaFit.value && shortSideFit < bestShortSideFit.value)) {
-                        bestNode.x = rect.x;
-                        bestNode.y = rect.y;
-                        bestNode.width = height;
-                        bestNode.height = width;
-                        bestShortSideFit.value = shortSideFit;
-                        bestAreaFit.value = areaFit;
-                    }
-                }
-            }
-            return bestNode;
-        },
-        /// Returns 0 if the two intervals i1 and i2 are disjoint, or the length of their overlap otherwise.
-        _commonIntervalLength:function(i1start, i1end, i2start, i2end){
-            if (i1end < i2start || i2end < i1start){
-                return 0;
-            }
-            return Math.min(i1end, i2end) - Math.max(i1start, i2start);
-        },
-        _contactPointScoreNode:function(x, y, width, height){
-            var usedRectangles = this.usedRectangles;
-            var score = 0;
-
-            if (x == 0 || x + width === this.binWidth)
-                score += height;
-            if (y == 0 || y + height === this.binHeight)
-                score += width;
-            var rect;
-            for(var i= 0; i < usedRectangles.length; i++) {
-                rect = usedRectangles[i];
-                if (rect.x == x + width || rect.x + rect.width == x)
-                    score += this._commonIntervalLength(rect.y, rect.y + rect.height, y, y + height);
-                if (rect.y == y + height || rect.y + rect.height == y)
-                    score += this._commonIntervalLength(rect.x, rect.x + rect.width, x, x + width);
-            }
-            return score;
-        },
-        _findPositionForNewNodeContactPoint:function(width, height, bestContactScore){
-            var freeRectangles = this.freeRectangles;
-            var bestNode = new Rect();
-            //memset(&bestNode, 0, sizeof(Rectangle));
-
-            bestContactScore.value = -1;
-
-            var rect;
-            var score;
-            for(var i= 0; i < freeRectangles.length; i++) {
-                rect = freeRectangles[i];
-                // Try to place the Rectangle in upright (non-flipped) orientation.
-                if (rect.width >= width && rect.height >= height) {
-                    score = this._contactPointScoreNode(rect.x, rect.y, width, height);
-                    if (score > bestContactScore.value) {
-                        bestNode.x = rect.x;
-                        bestNode.y = rect.y;
-                        bestNode.width = width;
-                        bestNode.height = height;
-                        bestContactScore = score;
-                    }
-                }
-                if (this.allowRotate && rect.width >= height && rect.height >= width) {
-                    score = this._contactPointScoreNode(rect.x, rect.y, height, width);
-                    if (score > bestContactScore.value) {
-                        bestNode.x = rect.x;
-                        bestNode.y = rect.y;
-                        bestNode.width = height;
-                        bestNode.height = width;
-                        bestContactScore.value = score;
-                    }
-                }
-            }
-            return bestNode;
-        },
-        _splitFreeNode:function(freeNode, usedNode){
-            var freeRectangles = this.freeRectangles;
-            // Test with SAT if the Rectangles even intersect.
-            if (usedNode.x >= freeNode.x + freeNode.width || usedNode.x + usedNode.width <= freeNode.x ||
-                usedNode.y >= freeNode.y + freeNode.height || usedNode.y + usedNode.height <= freeNode.y)
-                return false;
-            var newNode;
-            if (usedNode.x < freeNode.x + freeNode.width && usedNode.x + usedNode.width > freeNode.x) {
-                // New node at the top side of the used node.
-                if (usedNode.y > freeNode.y && usedNode.y < freeNode.y + freeNode.height) {
-                    newNode = freeNode.clone();
-                    newNode.height = usedNode.y - newNode.y;
-                    freeRectangles.push(newNode);
-                }
-
-                // New node at the bottom side of the used node.
-                if (usedNode.y + usedNode.height < freeNode.y + freeNode.height) {
-                    newNode = freeNode.clone();
-                    newNode.y = usedNode.y + usedNode.height;
-                    newNode.height = freeNode.y + freeNode.height - (usedNode.y + usedNode.height);
-                    freeRectangles.push(newNode);
-                }
-            }
-
-            if (usedNode.y < freeNode.y + freeNode.height && usedNode.y + usedNode.height > freeNode.y) {
-                // New node at the left side of the used node.
-                if (usedNode.x > freeNode.x && usedNode.x < freeNode.x + freeNode.width) {
-                    newNode = freeNode.clone();
-                    newNode.width = usedNode.x - newNode.x;
-                    freeRectangles.push(newNode);
-                }
-
-                // New node at the right side of the used node.
-                if (usedNode.x + usedNode.width < freeNode.x + freeNode.width) {
-                    newNode = freeNode.clone();
-                    newNode.x = usedNode.x + usedNode.width;
-                    newNode.width = freeNode.x + freeNode.width - (usedNode.x + usedNode.width);
-                    freeRectangles.push(newNode);
-                }
-            }
-
-            return true;
-        },
-        _pruneFreeList:function(){
-            var freeRectangles = this.freeRectangles;
-            for(var i = 0;i < freeRectangles.length; i++)
-                for(var j= i+1; j < freeRectangles.length; j++) {
-                    if (Rect.isContainedIn(freeRectangles[i], freeRectangles[j])) {
-                        freeRectangles.splice(i,1);
-                        break;
-                    }
-                    if (Rect.isContainedIn(freeRectangles[j], freeRectangles[i])) {
-                        freeRectangles.splice(j,1);
-                    }
-                }
-        }
-    };
-
-    window.MaxRectsBinPack = MaxRectsBinPack;
-})();/*
+/*
  * File: shader.js
  * Author:  Li XianJing <xianjimli@hotmail.com>
  * Brief: webgl shader program
@@ -984,260 +451,6 @@ WebGLProgram.prototype.getDataBufferElementSize = function() {
 WebGLProgram.prototype.getDataBufferElementType = function() {
 	return this.gl.SHORT;
 }
-
-/*
- * File: auto_packer.js
- * Author:  Li XianJing <xianjimli@hotmail.com>
- * Brief: auto packer glyphs and small images into a big canvas.
- * 
- * Copyright (c) 2015 - 2016 Holaverse Inc.
- * Copyright (c) 2018 - 2019  Guangzhou ZHIYUAN Electronics Co.,Ltd.
- * 
- */
-
-function AutoPacker() {
-}
-
-AutoPacker.prototype.init = function(gl) {
-	this.gl = gl;
-	this.w = 512;
-	this.h = 1024;
-	this.imageMaxWidth  = 256;
-	this.imageMaxHeight = 256;
-	this.canvas = document.createElement("canvas");
-	this.canvas.cannotPack = true;
-	this.glyphCache = {};
-	this.imagesCache = [];
-	this.createTexture();
-	this.setOverflow(false);
-
-	return this.reset();
-}
-
-AutoPacker.prototype.resetImagesCache = function() {
-	var imagesCache = this.imagesCache;
-	var n = imagesCache.length;
-	for(var i = 0; i < n; i++) {
-		var image = imagesCache[i];
-		image.ox = 0;
-		image.oy = 0;
-		image.packed = false;
-		image.texture = null;
-	}
-
-	imagesCache.length = 0;
-}
-
-AutoPacker.prototype.extendCanvas = function() {
-	if(this.isOverflow()) {
-		if(this.w < 2048 || this.h < 2048) {
-			if(this.w < this.h) {
-				this.w = this.w << 1;
-			}else{
-				this.h = this.h << 1;
-			}
-		}else{
-			if(this.imageMaxWidth > this.imageMaxHeight) {
-				this.imageMaxWidth = this.imageMaxWidth << 1;
-			}
-			else {
-				this.imageMaxHeight = this.imageMaxHeight << 1;
-			}
-		}
-
-		this.setOverflow(false);
-		console.log("extend canvas to " + this.w + "x" + this.h);
-	}
-	
-	this.canvas.width = this.w;
-	this.canvas.height = this.h;
-	this.ctx = this.canvas.getContext("2d");
-}
-
-AutoPacker.prototype.reset = function() {
-	this.resetImagesCache();
-	this.glyphCache = {};
-	this.extendCanvas();
-
-	var ctx = this.ctx;
-	ctx.textAlign = "left";
-	ctx.textBaseline = "middle";
-	ctx.clearRect(0, 0, this.w, this.h);
-
-	this.binPacker = new MaxRectsBinPack(this.w, this.h, false);
-
-	return this;
-}
-
-AutoPacker.prototype.getAvailableRect = function(w, h) {
-	var r = this.binPacker.insert(w, h, 0);
-
-	if(r) {
-		r.w = w;
-		r.h = h;
-	}
-
-	return r;
-}
-
-AutoPacker.prototype.addGlyph = function(font, fontSize, color, c) {
-	var ctx = this.ctx;
-	if(ctx.font !== font) {
-		ctx.font = font;
-	}
-
-	if(ctx.fillStyle !== color) {
-		ctx.fillStyle = color;
-	}
-
-	var charWidth = Math.ceil(ctx.measureText(c).width);
-	var charHeight = Math.ceil(fontSize * 1.3);
-	var hMargin = charWidth >> 2;
-	var vMargin = fontSize >> 2;
-
-	var rect = this.getAvailableRect(charWidth + hMargin*2, charHeight + vMargin*2);
-
-	if(rect) {
-		rect.x += hMargin;
-		rect.y += vMargin;
-		rect.w = charWidth;
-		rect.h = charHeight;
-		if(font.indexOf("italic") >= 0) {
-			rect.charW = rect.w + hMargin;
-		}else{
-			rect.charW = rect.w;
-		}
-
-		var key = AutoPacker.toGlyphKey(font, c, color);
-
-		ctx.fillText(c, rect.x, rect.y + (rect.h >> 1));
-		this.glyphCache[key] = rect;
-		this.setDirty(true);
-	}
-
-	return rect;
-}
-
-AutoPacker.prototype.measureText = function(font, str, color, outRect) {
-	var width = 0;
-	var n = str.length;
-	var fontSize = parseFontSize(font);
-
-	for(var i = 0; i < n; i++) {
-		var c = str[i];
-		var r = this.getGlyph(font, c, color);
-
-		if(!r) {
-			r = this.addGlyph(font, fontSize, color, c);
-		}
-
-		if(r) {
-			width += r.w;
-		}
-	}
-
-	outRect.w = width;
-	outRect.h = fontSize;
-
-	return outRect;
-}
-
-AutoPacker.toGlyphKey = function(font, c, color) {
-	return font+c+color;
-}
-
-AutoPacker.prototype.hasGlyph = function(font, c, color) {
-	return !!this.glyphCache[AutoPacker.toGlyphKey(font, c, color)];
-}
-
-AutoPacker.prototype.setOverflow = function(overflow) {
-	this.overflow = overflow;
-}
-
-AutoPacker.prototype.isOverflow = function(overflow) {
-	return this.overflow;
-}
-
-AutoPacker.prototype.getGlyph = function(font, c, color) {
-	return this.glyphCache[AutoPacker.toGlyphKey(font, c, color)];	
-}
-
-AutoPacker.prototype.packImage = function(image) {
-	if(!image.src || image.src.indexOf("data:") === 0 || image.width > this.imageMaxWidth || image.height > this.imageMaxHeight) {
-		image.ox = 0;
-		image.oy = 0;
-		image.cannotPack = true;
-		return;
-	}
-
-	var rect = this.getAvailableRect(image.width + 4, image.height + 4);
-	if(rect.height < image.height) {
-		image.ox = 0;
-		image.oy = 0;
-		this.setOverflow(true);
-
-		return;
-	}
-
-	var x = rect.x + 2;
-	var y = rect.y + 2;
-	var texture = this.canvas.texture;
-
-	this.setDirty(true);
-	this.ctx.drawImage(image, x, y);
-	
-	image.ox = x;
-	image.oy = y;
-	image.packed = true;
-
-	if(image.texture && image.texture !== texture)  {
-		this.gl.deleteTexture(image.texture);
-	}
-
-	image.texture = this.canvas.texture;
-	this.imagesCache.push(image);
-
-	return;
-}
-
-AutoPacker.prototype.setDirty = function(dirty) {
-	this.canvas.texture.setDirty(dirty);
-}
-
-AutoPacker.prototype.createTexture = function() {
-	var gl = this.gl;
-	var texture = gl.createTexture();
-	
-	texture.src = null;
-	texture.image = this.canvas;
-	this.canvas.texture = texture;
-
-	texture.dirty = true;
-	texture.setDirty = function(dirty) {
-		this.dirty = dirty;
-	}
-
-	texture.update = function() {
-		if(!this.dirty) return;
-		
-		var image = this.image;
-		this.dirty = false;
-		this.w = image.width;
-		this.h = image.height;
-		gl.bindTexture(gl.TEXTURE_2D, this);
-		gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-		gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
-		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-		gl.bindTexture(gl.TEXTURE_2D, null);
-	}
-}
-
-AutoPacker.prototype.getImage = function() {
-	return this.canvas;
-}
-
 
 /*
  * File: draw_image.js
@@ -1328,7 +541,7 @@ WebGLProgramDrawImage.prototype.draw = function(image, _bufferData) {
 	var stride = elementSize * 6;
 
 	var texture = image.texture;
-	if(texture.dirty) {
+	if(image.dirty) {
 		texture.update();
 	}
 
@@ -1352,12 +565,8 @@ WebGLProgramDrawImage.prototype.draw = function(image, _bufferData) {
 }
 
 WebGLProgramDrawImage.defaultCustomFs = [
-	"  vec4 c = texture2D(texture, vTextureCoord) * color;",
-	"  if(c.a > 0.01) {",
-	"     gl_FragColor = c;",
-	"  }else{",
-	"     discard;",
-	"  }",
+	"  vec4 c = texture2D(texture, vTextureCoord);",
+	"  gl_FragColor = vec4(c.xyz*color.w,color.w);",
 	""].join("\n");
 
 WebGLProgramDrawImage.create = function(gl, buffer) {
@@ -2795,55 +2004,6 @@ CanvasRenderingContext2DWebGL.prototype.drawGlyph = function(image, program, sx,
 }
 
 CanvasRenderingContext2DWebGL.prototype.doFillText = function(text, x, y, maxWidth) {
-	var ox = x;
-	var oy = y;
-	var gl = this.gl;
-	var r = this.tempRect;
-	var font = this.font || "16px sans";
-	var gc = this.autoPacker;
-	var fillStyle = this.state.fillStyle;
-	var color = fillStyle.str;
-
-	if(!this.autoPacker.measureText(font, text, color, r)) {
-		console.log("invalid font size");	
-		return;
-	}
-
-	var image = this.autoPacker.getImage();
-
-	switch(this.textAlign) {
-		case "right": {
-			ox = x - r.w;
-			break;
-		}
-		case "center": {
-			ox = x - (r.w >> 1);
-			break;
-		}
-		default: break;
-	}
-
-	switch(this.textBaseline) {
-		case "bottom": {
-			oy = y - r.h;
-			break;
-		}
-		case "middle": {
-			oy = y - (r.h >> 1);
-			break;
-		}
-		default:break;
-	}
-	var n = text.length;
-	var program = WebGLProgramDrawImage.get("normal");
-	for(var i = 0; i < n; i++) {
-		var c = text[i];
-		var rc = gc.getGlyph(font, c, color);
-		if(rc) {
-			this.drawGlyph(image, program, rc.x, rc.y, rc.charW, rc.h, ox, oy, rc.charW, rc.h);
-			ox += rc.w;
-		}
-	}
 	return;
 }
 
@@ -2986,16 +2146,10 @@ CanvasRenderingContext2DWebGL.prototype.prepareDrawImage = function(image, progr
 			this.commitDrawImage();
 			drawImageQueue.image = image; 
 			drawImageQueue.program = program;
-			if(!image.cannotPack && !image.packed) {
-				this.autoPacker.packImage(image);
-				this.loadTextureWithImage(image);
-			}
+		  this.loadTextureWithImage(image);
 		}
 	}else{
-		if(!image.cannotPack && !image.packed) {
-			this.autoPacker.packImage(image);
-			this.loadTextureWithImage(image);
-		}
+		this.loadTextureWithImage(image);
 
 		drawImageQueue.image = image; 
 		drawImageQueue.program = program;
@@ -3545,8 +2699,8 @@ CanvasRenderingContext2DWebGL.prototype.loadTextureWithImage = function(image) {
 
 	//NPOT
 	if(this.isPOT(image.width) && this.isPOT(image.height)) {
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 	}
 	else {
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
@@ -3554,6 +2708,21 @@ CanvasRenderingContext2DWebGL.prototype.loadTextureWithImage = function(image) {
 	}
 
 	gl.bindTexture(gl.TEXTURE_2D, null);
+
+	texture.update = function() {
+    if(image.dirty) {
+      image.dirty = false;
+      this.w = image.width;
+      this.h = image.height;
+      gl.bindTexture(gl.TEXTURE_2D, this);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.bindTexture(gl.TEXTURE_2D, null);
+    }
+	}
 
 	return image;
 }
@@ -3624,10 +2793,6 @@ CanvasRenderingContext2DWebGL.prototype.beginFrame = function() {
 	this.stencilColor = CanvasRenderingContext2DWebGL.stencilColor;
 	this.globalCompositeOperation = "source-over";
 	this.beginPath();
-
-	if(this.autoPacker.isOverflow()) {
-		this.autoPacker.reset();
-	}
 }
 
 CanvasRenderingContext2DWebGL.prototype.drawStat = function(stat) {
@@ -3779,8 +2944,6 @@ CanvasRenderingContext2DWebGL.prototype.init = function(canvas) {
 	this.drawPrimitiveQueue = {};
 	this.drawPrimitiveQueue.paths = Int16Array.create(1024);
 	this.drawPrimitiveQueue.dataBuffer = this.drawPrimitivesProgram.createDataBuffer(20*1024);
-	this.autoPacker = new AutoPacker();
-	this.autoPacker.init(this.gl);
 	this.statusFont = "20px sans";
 	this.statusFontColor = "Green";
 	this.statusBgColor = "rgba(0,0,0,1)";
@@ -3789,21 +2952,12 @@ CanvasRenderingContext2DWebGL.prototype.init = function(canvas) {
 }
 
 CanvasRenderingContext2DWebGL.prototype.ensureCtx2d = function() {
-	if(this.ctx2d) {
-		return;
-	}
-	this.canvas2d = document.createElement("canvas");
-	this.ctx2d = this.canvas2d.getContext("2d");
 }
 
 CanvasRenderingContext2DWebGL.prototype.measureText = function(text) {
-	this.ensureCtx2d();
-	this.ctx2d.font = this.font;
-	return this.ctx2d.measureText(text);
 }
 
 CanvasRenderingContext2DWebGL.prototype.setShowFPS = function(showFPS) {
-	this.showFPS = showFPS;
 }
 
 CanvasRenderingContext2DWebGL.create = function(canvas, options) {
@@ -3814,20 +2968,4 @@ CanvasRenderingContext2DWebGL.create = function(canvas, options) {
 	CanvasRenderingContext2DWebGL.stencilColor = CanvasRenderingContext2DWebGL.parseColor("white");
 
 	return ctx.init(canvas);
-}
-
-HTMLCanvasElement.prototype.getContextOrg = HTMLCanvasElement.prototype.getContext;
-HTMLCanvasElement.prototype.getContext = function(type, options) {
-	if(this.webglCtx) {
-		return this.webglCtx;
-	}
-
-	if(type === "2d-webgl") {
-		if(!this.webglCtx) {
-			this.webglCtx = CanvasRenderingContext2DWebGL.create(this, options);
-		}
-		return this.webglCtx;
-	}else{
-		return HTMLCanvasElement.prototype.getContextOrg.call(this, type, options);
-	}
 }

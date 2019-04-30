@@ -21,6 +21,97 @@ TBrowser.adjustCanvas = function (canvas) {
   canvas.style.width = view.width + "px";
   canvas.style.height = view.height + "px";
 
+  return true;
+}
+
+TBrowser.createCanvas = function (name, w, h) {
+  const canvas = document.createElement("canvas");
+
+  canvas.name = name;
+  canvas.width = w;
+  canvas.height = h;
+
+  return canvas;
+}
+
+TBrowser.createMainCanvas = function () {
+  if (!TBrowser.mainCanvas) {
+    const canvas = TBrowser.createCanvas("awtk-lcd", 0, 0);
+
+    TBrowser.adjustCanvas(canvas);
+
+    TBrowser.mainCanvas = canvas;
+    document.body.appendChild(canvas);
+  }
+
+  return TBrowser.mainCanvas;
+}
+
+TBrowser.createAnimCanvas = function () {
+  if (!TBrowser.animCanvas) {
+    const canvas = TBrowser.createCanvas("awtk-lcd-anim", 0, 0);
+
+    TBrowser.adjustCanvas(canvas);
+
+    TBrowser.animCanvas = canvas;
+    document.body.appendChild(canvas);
+    canvas.opacity = 0;
+    canvas.visibility = 'hidden';
+  }
+
+  return TBrowser.animCanvas;
+}
+
+TBrowser.activateCanvas = function (anim) {
+  if(TBrowser.activeCanvas) {
+    TBrowser.activeCanvas.hidden = true;
+  }
+
+  if(anim) {
+    TBrowser.activeCanvas = TBrowser.animCanvas; 
+    console.log(`start animate`);
+  } else {
+    TBrowser.activeCanvas = TBrowser.mainCanvas; 
+    let ctx = TBrowser.getActiveContext();
+    ctx.drawImage(TBrowser.animCanvas, 0, 0);
+    console.log(`stop animate`);
+  }
+  
+  if(TBrowser.activeCanvas) {
+    TBrowser.activeCanvas.hidden = false;
+  }
+
+  return true;
+}
+
+TBrowser.getActiveContext = function () {
+  let ctx = null;
+  if(TBrowser.activeCanvas === TBrowser.animCanvas) {
+    if(!TBrowser.animCanvas.ctxwebgl) {
+      ctx = CanvasRenderingContext2DWebGL.create(TBrowser.activeCanvas, {});
+      TBrowser.animCanvas.ctxwebgl = ctx;
+    }
+    ctx = TBrowser.animCanvas.ctxwebgl;
+  } else {
+    ctx = TBrowser.activeCanvas.getContext('2d');
+  }
+
+  return ctx;
+}
+
+TBrowser.createOfflineCanvas = function (name, w, h) {
+  return TBrowser.createCanvas(name, w, h);
+}
+
+TBrowser.createMutableImage = function (name, addr, w, h, line_length, format) {
+  const image = TBrowser.createCanvas(name, w, h);
+
+  image.name = name;
+  image.addr = addr;
+  image.format = format;
+  image.line_length = line_length;
+
+  return image;
 }
 
 TBrowser.supportWebAssembly = function () {
@@ -137,17 +228,17 @@ TBrowser.isMobile = function () {
   return TBrowser.iPhone || TBrowser.android || TBrowser.windowPhone;
 }
 
-TBrowser.injectCSS = function(str) {
+TBrowser.injectCSS = function (str) {
   var node = document.createElement('style');
   node.innerHTML = str;
   document.body.appendChild(node);
-  
+
   console.log('injectCSS: ' + str);
 
   return true;
 }
 
-TBrowser.loadFont = function(name, url) {
+TBrowser.loadFont = function (name, url) {
   let css = `@font-face { 
     font-family: ${name}; 
     src: url('${url}'); 

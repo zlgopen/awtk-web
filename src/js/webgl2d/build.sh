@@ -1,8 +1,6 @@
 cat  math.js \
   matrix.js \
-  MaxRectsBinPack.js	\
   shader.js \
-  auto_packer.js		\
   shader_draw_image.js \
   shader_draw_primitives.js \
   color-string.js		\

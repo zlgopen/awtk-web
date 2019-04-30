@@ -87,7 +87,7 @@ WebGLProgramDrawImage.prototype.draw = function(image, _bufferData) {
 	var stride = elementSize * 6;
 
 	var texture = image.texture;
-	if(texture.dirty) {
+	if(image.dirty) {
 		texture.update();
 	}
 
@@ -111,12 +111,8 @@ WebGLProgramDrawImage.prototype.draw = function(image, _bufferData) {
 }
 
 WebGLProgramDrawImage.defaultCustomFs = [
-	"  vec4 c = texture2D(texture, vTextureCoord) * color;",
-	"  if(c.a > 0.01) {",
-	"     gl_FragColor = c;",
-	"  }else{",
-	"     discard;",
-	"  }",
+	"  vec4 c = texture2D(texture, vTextureCoord);",
+	"  gl_FragColor = vec4(c.xyz*color.w,color.w);",
 	""].join("\n");
 
 WebGLProgramDrawImage.create = function(gl, buffer) {

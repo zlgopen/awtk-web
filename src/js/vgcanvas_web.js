@@ -1,18 +1,14 @@
 function VGCanvas() {}
 
-VGCanvas.getFBO = function() {
-  if(VGCanvas.fbos.length < 1) {
+VGCanvas.getFBO = function () {
+  if (VGCanvas.fbos.length < 1) {
     let canvas = VGCanvas.canvas;
-    let fbo = document.createElement("canvas");
+    let fbo = TBrowser.createOfflineCanvas('fbo', canvas.width, canvas.height);
 
-    fbo.name = "fbo";
-    fbo.width = canvas.width;
-    fbo.height = canvas.height;
-    let id = ImageCache.add(fbo);
-    fbo.id = id;
+    fbo.id = ImageCache.add(fbo);
 
     VGCanvas.fbos.push(fbo);
-    console.log(`VGCanvas createFBO ${id}`);
+    console.log(`VGCanvas createFBO ${fbo.id}`);
   } else {
     console.log(`VGCanvas getFBO: ${VGCanvas.fbos.length}`);
   }
@@ -21,28 +17,53 @@ VGCanvas.getFBO = function() {
 }
 
 VGCanvas.init = function () {
-  var canvas = document.getElementById('awtk-lcd');
-
+  const canvas = TBrowser.createMainCanvas();
+  VGCanvas.fbos = [];
   VGCanvas.canvas = canvas;
-  TBrowser.adjustCanvas(canvas);
-  VGCanvas.ctx = canvas.getContext('2d');
+  TBrowser.createAnimCanvas();
+  TBrowser.activateCanvas(false);
+  VGCanvas.ctx = TBrowser.getActiveContext();
   VGCanvas.width = parseInt(canvas.style.width);
   VGCanvas.height = parseInt(canvas.style.height);
   VGCanvas.ratio = TBrowser.getDevicePixelRatio();
-  VGCanvas.fbos = [];
 
   console.log(`VGCanvas.init ${VGCanvas.width} x ${VGCanvas.height} `);
 
   return true;
 }
 
+VGCanvas.animateBegin = function () {
+  TBrowser.activateCanvas(true);
+  VGCanvas.ctx = TBrowser.getActiveContext();
+
+  return true;
+}
+
+VGCanvas.animateEnd = function () {
+  TBrowser.activateCanvas(false);
+  VGCanvas.ctx = TBrowser.getActiveContext();
+
+  return true;
+}
+
 VGCanvas.beginFrame = function () {
+  if(VGCanvas.ctx.beginFrame) {
+    VGCanvas.ctx.beginFrame();
+  }
+
   VGCanvas.save();
   VGCanvas.scale(VGCanvas.ratio, VGCanvas.ratio);
+  
+  return true;
 }
 
 VGCanvas.endFrame = function () {
   VGCanvas.restore();
+  if(VGCanvas.ctx.endFrame) {
+    VGCanvas.ctx.endFrame();
+  }
+
+  return true;
 }
 
 VGCanvas.createFBO = function () {
@@ -64,14 +85,15 @@ VGCanvas.bindFBO = function (id) {
   let fbo = ImageCache.get(id);
 
   VGCanvas.ctx = fbo.getContext('2d');
+  VGCanvas.ctx.clearRect(0, 0, fbo.width, fbo.height);
 
   return true;
 }
 
 VGCanvas.unbindFBO = function (id) {
-  let canvas = VGCanvas.canvas;
-
-  VGCanvas.ctx = canvas.getContext('2d');
+  let fbo = ImageCache.get(id);
+  fbo.dirty = true;
+  VGCanvas.ctx = TBrowser.getActiveContext();
 
   return true;
 }
@@ -292,7 +314,7 @@ VGCanvas.setFont = function (name, size) {
   let fontSize = (size || 18);
   let fontName = pointerToString(name);
   let font = Math.round(fontSize) + "px ";
-  if(!(fontName) || fontName.indexOf('default') == 0) {
+  if (!(fontName) || fontName.indexOf('default') == 0) {
     font = font + "Sans";
   } else {
     font = font + fontName;
@@ -401,16 +423,10 @@ VGCanvas.setStrokeRadialGradient = function (cx, cy, ir, or, scolor, ecolor) {
 }
 
 VGCanvas.createMutableImage = function (addr, w, h, line_length, format) {
-  let mutableImage = document.createElement("canvas");
-  let id = ImageCache.add(mutableImage);
+  const mutableImage = TBrowser.createMutableImage("mutableImage", addr, w, h, line_length, format);
+  const id = ImageCache.add(mutableImage);
 
-  mutableImage.width = w;
-  mutableImage.height = h;
-  mutableImage.addr = addr;
-  mutableImage.format = format;
-  mutableImage.name = "mutableImage";
   mutableImage.id = "mutableImage" + id;
-  mutableImage.line_length = line_length;
 
   console.log(`VGCanvas.createMutableImage:${addr}, ${w}, ${h}, ${line_length}, ${format}`);
 
@@ -430,7 +446,7 @@ VGCanvas.updateMutableImage = function (id) {
   let imageData = ctx.getImageData(0, 0, w, h);
   let data = new Int32Array(imageData.data.buffer);
 
-  for(let i = 0; i < size; i++) {
+  for (let i = 0; i < size; i++) {
     data[i] = array[i];
   }
   ctx.putImageData(imageData, 0, 0, 0, 0, w, h);
@@ -441,7 +457,7 @@ VGCanvas.updateMutableImage = function (id) {
 }
 
 VGCanvas.destroyMutableImage = function (id) {
-  console.log(`VGCanvas.destroyMutableImage ${id}`); 
+  console.log(`VGCanvas.destroyMutableImage ${id}`);
   ImageCache.remove(id);
 
   return true;
