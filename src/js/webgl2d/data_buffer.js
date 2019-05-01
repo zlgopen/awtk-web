@@ -142,22 +142,3 @@ Int16DataBuffer.create = function(initSize) {
 	return db;
 }
 
-Int16DataBuffer.prototype.dump = function() {
-	var n = this.size;
-	var buffer = this.init16Buffer;
-
-	console.log(this.size + " " + this.capacity + " " + this.getBufferType() + " " + this.getElementBytes());
-
-	console.log(Array.prototype.join.call(buffer, ","));
-}
-
-Int16DataBuffer.test = function() {
-	var db = Int16DataBuffer.create(4);
-	db.pushX(1, 2, 3, 3, 5, 6, 7, 8, 9, 10, 11);
-	db.dump();
-
-	var buffer = db.getReadBuffer();
-	console.log("buffer(" + buffer.length + ")["+ Array.prototype.join.call(buffer, ",") + "]");
-}
-
-Int16DataBuffer.test();

@@ -108,16 +108,17 @@ def prepare_app_target_dir(config):
     js_dir = get_js_dir(config)
     mkdir_if_not_exist(js_dir)
 
+def copy_data_file(config, filename):
+    src_filename = 'data/' + filename;
+    target_filename = join_path(get_app_target_dir(config), filename);
+    shutil.copyfile(src_filename, target_filename);
+
 def build_app_assets(src_app_root, config):
     target_assets_dir = get_target_assets_dir(config)
     src_assets_dir = get_src_assets_dir(src_app_root, config)
     copy_and_overwrite(src_assets_dir, target_assets_dir)
-    target_app_js = join_path(get_app_target_dir(config), 'app_js.html');
-    target_app_asm = join_path(get_app_target_dir(config), 'app_asm.html');	
-    target_index = join_path(get_app_target_dir(config), 'index.html');
-    shutil.copyfile('data/app_js.html', target_app_js);
-    shutil.copyfile('data/app_asm.html', target_app_asm);
-    shutil.copyfile('data/index.html', target_index);
+    copy_data_file(config, 'app.html');
+    copy_data_file(config, 'index.html');
     update_assets(config)
 
 def build_awtk_js(src_app_root, config, flags):

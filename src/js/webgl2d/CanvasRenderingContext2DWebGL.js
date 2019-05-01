@@ -782,24 +782,6 @@ CanvasRenderingContext2DWebGL.prototype.getHeight = function() {
 	return this.canvas.h || this.canvas.height;
 }
 
-CanvasRenderingContext2DWebGL.prototype.bigRect = function(p1, p2, p3, p4) {
-	var cw10 = this.canvasWidth10;
-	var ch10 = this.canvasHeight10;
-	var ret = Math.polygonclip([[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], [p4.x, p4.y]], [-10, -10, cw10+20, ch10+20]);
-
-	if(ret) {
-		var n = ret.length;
-		for(var i = 0; i < n; i++) {
-			var p = ret[i];
-			if(!i) {
-				this.addPoint(p[0], p[1], true);
-			}else {
-				this.addPoint(p[0], p[1], false);
-			}
-		}
-	}
-}
-
 CanvasRenderingContext2DWebGL.prototype.rect = function(x, y, w, h) {
 	var m = this.state.m;
 	var p1 = mat2d.transformPointInt(m, x, y, 0);
@@ -818,16 +800,11 @@ CanvasRenderingContext2DWebGL.prototype.rect = function(x, y, w, h) {
 		return;
 	}
 
-	if(w > (cw+1) || h > (ch+1)) {
-		//clip big rect
-		this.bigRect(p1, p2, p3, p4);
-	}else{
-		this.addPoint(p1.x, p1.y, true);
-		this.addPoint(p2.x, p2.y, false);
-		this.addPoint(p3.x, p3.y, false);
-		this.addPoint(p4.x, p4.y, false);
-		this.addPoint(p1.x, p1.y, false);
-	}
+  this.addPoint(p1.x, p1.y, true);
+  this.addPoint(p2.x, p2.y, false);
+  this.addPoint(p3.x, p3.y, false);
+  this.addPoint(p4.x, p4.y, false);
+  this.addPoint(p1.x, p1.y, false);
 };
 
 

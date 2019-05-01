@@ -19,9 +19,14 @@ Awtk.init = function () {
   Awtk._onPointerUp = Module.cwrap('awtk_web_on_pointer_up', 'number',
     ['number', 'number', 'number']);
 
+  AssetsManager.preloadFonts();
   EventsSource.init(document.getElementById("awtk-lcd"))
 
-  AssetsManager.preloadFonts();
+  let loading = document.getElementById("loading");
+
+  if(loading) {
+    loading.remove();
+  }
 
   return Awtk._init();
 }

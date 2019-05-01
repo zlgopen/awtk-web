@@ -1437,25 +1437,6 @@ Int16DataBuffer.create = function(initSize) {
 	return db;
 }
 
-Int16DataBuffer.prototype.dump = function() {
-	var n = this.size;
-	var buffer = this.init16Buffer;
-
-	console.log(this.size + " " + this.capacity + " " + this.getBufferType() + " " + this.getElementBytes());
-
-	console.log(Array.prototype.join.call(buffer, ","));
-}
-
-Int16DataBuffer.test = function() {
-	var db = Int16DataBuffer.create(4);
-	db.pushX(1, 2, 3, 3, 5, 6, 7, 8, 9, 10, 11);
-	db.dump();
-
-	var buffer = db.getReadBuffer();
-	console.log("buffer(" + buffer.length + ")["+ Array.prototype.join.call(buffer, ",") + "]");
-}
-
-Int16DataBuffer.test();
 
 Math.normalize = function(x, y, r)
 {
@@ -1513,81 +1494,6 @@ function parseFontSize(font) {
 	return fontSize;
 }
 
-;
-(function(m) {
-'use strict';
-
-// Sutherland-Hodgeman polygon clipping algorithm
-
-function polygonclip(points, bbox) {
-
-    var result, edge, prev, prevInside, i, p, inside;
-
-    // clip against each side of the clip rectangle
-    for (edge = 1; edge <= 8; edge *= 2) {
-        result = [];
-        prev = points[points.length - 1];
-        prevInside = !(bitCode(prev, bbox) & edge);
-
-        for (i = 0; i < points.length; i++) {
-            p = points[i];
-            inside = !(bitCode(p, bbox) & edge);
-
-            // if segment goes through the clip window, add an intersection
-            if (inside !== prevInside) result.push(intersect(prev, p, edge, bbox));
-
-            if (inside) result.push(p); // add a point if it's inside
-
-            prev = p;
-            prevInside = inside;
-        }
-
-        points = result;
-
-        if (!points.length) break;
-    }
-
-    return result;
-}
-
-// intersect a segment against one of the 4 lines that make up the bbox
-
-function intersect(a, b, edge, bbox) {
-    return edge & 8 ? [a[0] + (b[0] - a[0]) * (bbox[3] - a[1]) / (b[1] - a[1]), bbox[3]] : // top
-           edge & 4 ? [a[0] + (b[0] - a[0]) * (bbox[1] - a[1]) / (b[1] - a[1]), bbox[1]] : // bottom
-           edge & 2 ? [bbox[2], a[1] + (b[1] - a[1]) * (bbox[2] - a[0]) / (b[0] - a[0])] : // right
-           edge & 1 ? [bbox[0], a[1] + (b[1] - a[1]) * (bbox[0] - a[0]) / (b[0] - a[0])] : // left
-           null;
-}
-
-// bit code reflects the point position relative to the bbox:
-
-//         left  mid  right
-//    top  1001  1000  1010
-//    mid  0001  0000  0010
-// bottom  0101  0100  0110
-
-function bitCode(p, bbox) {
-    var code = 0;
-
-    if (p[0] < bbox[0]) code |= 1; // left
-    else if (p[0] > bbox[2]) code |= 2; // right
-
-    if (p[1] < bbox[1]) code |= 4; // bottom
-    else if (p[1] > bbox[3]) code |= 8; // top
-
-    return code;
-}
-
-Math.polygonclip = polygonclip;
-console.log(this);
-}(this));
-
-var result = Math.polygonclip(
-	[[10, -10], [10, 30], [20, 30], [20, -10]],
-	[0, 0, 20, 20]);
-
-console.log(result);	
 function CanvasRenderingContext2DWebGL(options){
 	this.distTol = 0.01;
 	this.tessTol = 0.0025;
@@ -2372,24 +2278,6 @@ CanvasRenderingContext2DWebGL.prototype.getHeight = function() {
 	return this.canvas.h || this.canvas.height;
 }
 
-CanvasRenderingContext2DWebGL.prototype.bigRect = function(p1, p2, p3, p4) {
-	var cw10 = this.canvasWidth10;
-	var ch10 = this.canvasHeight10;
-	var ret = Math.polygonclip([[p1.x, p1.y], [p2.x, p2.y], [p3.x, p3.y], [p4.x, p4.y]], [-10, -10, cw10+20, ch10+20]);
-
-	if(ret) {
-		var n = ret.length;
-		for(var i = 0; i < n; i++) {
-			var p = ret[i];
-			if(!i) {
-				this.addPoint(p[0], p[1], true);
-			}else {
-				this.addPoint(p[0], p[1], false);
-			}
-		}
-	}
-}
-
 CanvasRenderingContext2DWebGL.prototype.rect = function(x, y, w, h) {
 	var m = this.state.m;
 	var p1 = mat2d.transformPointInt(m, x, y, 0);
@@ -2408,16 +2296,11 @@ CanvasRenderingContext2DWebGL.prototype.rect = function(x, y, w, h) {
 		return;
 	}
 
-	if(w > (cw+1) || h > (ch+1)) {
-		//clip big rect
-		this.bigRect(p1, p2, p3, p4);
-	}else{
-		this.addPoint(p1.x, p1.y, true);
-		this.addPoint(p2.x, p2.y, false);
-		this.addPoint(p3.x, p3.y, false);
-		this.addPoint(p4.x, p4.y, false);
-		this.addPoint(p1.x, p1.y, false);
-	}
+  this.addPoint(p1.x, p1.y, true);
+  this.addPoint(p2.x, p2.y, false);
+  this.addPoint(p3.x, p3.y, false);
+  this.addPoint(p4.x, p4.y, false);
+  this.addPoint(p1.x, p1.y, false);
 };
 
 

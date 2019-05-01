@@ -251,6 +251,12 @@ TBrowser.init = function () {
     console.log('TBrowser.init: webgl supported.');
   }
 
+  if (TBrowser.supportWebAssembly()) {
+    TBrowser.loadScript('js/awtk_asm.js');
+  } else {
+    TBrowser.loadScript('js/awtk_js.js');
+  }
+
   return true;
 }
 
@@ -258,11 +264,24 @@ TBrowser.isMobile = function () {
   return TBrowser.iPhone || TBrowser.android || TBrowser.windowPhone;
 }
 
+TBrowser.loadScript= function (url) {
+  var node = document.createElement('script');
+
+  node.src=url;
+  node.onload = function() {
+    console.log('loaded: ' + url);
+  }
+
+  document.head.appendChild(node);
+
+  return true;
+}
+
 TBrowser.injectCSS = function (str) {
   var node = document.createElement('style');
 
   node.innerHTML = str;
-  document.body.appendChild(node);
+  document.head.appendChild(node);
 
   return true;
 }
