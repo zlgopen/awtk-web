@@ -1,6 +1,8 @@
 [
     "ccall",
     "cwrap",
+    "addFunction",
+    "removeFunction",
     "addOnPostRun",
     "addOnInit",
     "addOnExit",
