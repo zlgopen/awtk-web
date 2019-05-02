@@ -1,1194 +1,2384 @@
-declare function tk_quit();
-declare function asset_info_t_get_prop_type(nativeObj);
-declare function asset_info_t_get_prop_subtype(nativeObj);
-declare function asset_info_t_get_prop_is_in_rom(nativeObj);
-declare function asset_info_t_get_prop_size(nativeObj);
-declare function asset_info_t_get_prop_refcount(nativeObj);
-declare function asset_info_t_get_prop_name(nativeObj);
-declare function assets_manager();
-declare function assets_manager_ref(am, type, name);
-declare function assets_manager_unref(am, info);
-declare function get_BITMAP_FMT_NONE();
-declare function get_BITMAP_FMT_RGBA8888();
-declare function get_BITMAP_FMT_ABGR8888();
-declare function get_BITMAP_FMT_BGRA8888();
-declare function get_BITMAP_FMT_ARGB8888();
-declare function get_BITMAP_FMT_RGB565();
-declare function get_BITMAP_FMT_BGR565();
-declare function get_BITMAP_FMT_RGB888();
-declare function get_BITMAP_FMT_BGR888();
-declare function get_BITMAP_FLAG_NONE();
-declare function get_BITMAP_FLAG_OPAQUE();
-declare function get_BITMAP_FLAG_IMMUTABLE();
-declare function get_BITMAP_FLAG_TEXTURE();
-declare function get_BITMAP_FLAG_CHANGED();
-declare function bitmap_create();
-declare function bitmap_create_ex(w, h, line_length, format);
-declare function bitmap_get_bpp(bitmap);
-declare function bitmap_destroy(bitmap);
-declare function bitmap_t_get_prop_w(nativeObj);
-declare function bitmap_t_get_prop_h(nativeObj);
-declare function bitmap_t_get_prop_line_length(nativeObj);
-declare function bitmap_t_get_prop_flags(nativeObj);
-declare function bitmap_t_get_prop_format(nativeObj);
-declare function bitmap_t_get_prop_name(nativeObj);
-declare function get_IMAGE_DRAW_DEFAULT();
-declare function get_IMAGE_DRAW_CENTER();
-declare function get_IMAGE_DRAW_ICON();
-declare function get_IMAGE_DRAW_SCALE();
-declare function get_IMAGE_DRAW_SCALE_AUTO();
-declare function get_IMAGE_DRAW_SCALE_DOWN();
-declare function get_IMAGE_DRAW_SCALE_W();
-declare function get_IMAGE_DRAW_SCALE_H();
-declare function get_IMAGE_DRAW_REPEAT();
-declare function get_IMAGE_DRAW_REPEAT_X();
-declare function get_IMAGE_DRAW_REPEAT_Y();
-declare function get_IMAGE_DRAW_PATCH9();
-declare function get_IMAGE_DRAW_PATCH3_X();
-declare function get_IMAGE_DRAW_PATCH3_Y();
-declare function get_IMAGE_DRAW_PATCH3_X_SCALE_Y();
-declare function get_IMAGE_DRAW_PATCH3_Y_SCALE_X();
-declare function canvas_get_width(c);
-declare function canvas_get_height(c);
-declare function canvas_get_clip_rect(c, r);
-declare function canvas_set_clip_rect(c, r);
-declare function canvas_set_clip_rect_ex(c, r, translate);
-declare function canvas_set_fill_color_str(c, color);
-declare function canvas_set_text_color_str(c, color);
-declare function canvas_set_stroke_color_str(c, color);
-declare function canvas_set_global_alpha(c, alpha);
-declare function canvas_translate(c, dx, dy);
-declare function canvas_untranslate(c, dx, dy);
-declare function canvas_draw_vline(c, x, y, h);
-declare function canvas_draw_hline(c, x, y, w);
-declare function canvas_fill_rect(c, x, y, w, h);
-declare function canvas_stroke_rect(c, x, y, w, h);
-declare function canvas_set_font(c, name, size);
-declare function canvas_measure_utf8(c, str);
-declare function canvas_draw_utf8(c, str, x, y);
-declare function canvas_draw_utf8_in_rect(c, str, r);
-declare function canvas_draw_icon(c, img, cx, cy);
-declare function canvas_draw_image(c, img, src, dst);
-declare function canvas_get_vgcanvas(c);
-declare function canvas_cast(c);
-declare function canvas_t_get_prop_ox(nativeObj);
-declare function canvas_t_get_prop_oy(nativeObj);
-declare function get_CLIP_BOARD_DATA_TYPE_NONE();
-declare function get_CLIP_BOARD_DATA_TYPE_TEXT();
-declare function clip_board_set_text(text);
-declare function clip_board_get_text();
-declare function get_EVT_POINTER_DOWN();
-declare function get_EVT_POINTER_DOWN_ABORT();
-declare function get_EVT_POINTER_MOVE();
-declare function get_EVT_POINTER_UP();
-declare function get_EVT_WHEEL();
-declare function get_EVT_CONTEXT_MENU();
-declare function get_EVT_POINTER_ENTER();
-declare function get_EVT_POINTER_LEAVE();
-declare function get_EVT_LONG_PRESS();
-declare function get_EVT_CLICK();
-declare function get_EVT_FOCUS();
-declare function get_EVT_BLUR();
-declare function get_EVT_KEY_DOWN();
-declare function get_EVT_KEY_REPEAT();
-declare function get_EVT_KEY_UP();
-declare function get_EVT_WILL_MOVE();
-declare function get_EVT_MOVE();
-declare function get_EVT_WILL_RESIZE();
-declare function get_EVT_RESIZE();
-declare function get_EVT_WILL_MOVE_RESIZE();
-declare function get_EVT_MOVE_RESIZE();
-declare function get_EVT_VALUE_WILL_CHANGE();
-declare function get_EVT_VALUE_CHANGED();
-declare function get_EVT_VALUE_CHANGING();
-declare function get_EVT_PAINT();
-declare function get_EVT_BEFORE_PAINT();
-declare function get_EVT_AFTER_PAINT();
-declare function get_EVT_PAINT_DONE();
-declare function get_EVT_LOCALE_CHANGED();
-declare function get_EVT_ANIM_START();
-declare function get_EVT_ANIM_STOP();
-declare function get_EVT_ANIM_PAUSE();
-declare function get_EVT_ANIM_ONCE();
-declare function get_EVT_ANIM_END();
-declare function get_EVT_WINDOW_LOAD();
-declare function get_EVT_WINDOW_WILL_OPEN();
-declare function get_EVT_WINDOW_OPEN();
-declare function get_EVT_WINDOW_CLOSE();
-declare function get_EVT_REQUEST_CLOSE_WINDOW();
-declare function get_EVT_TOP_WINDOW_CHANGED();
-declare function get_EVT_IM_COMMIT();
-declare function get_EVT_IM_SHOW_CANDIDATES();
-declare function get_EVT_IM_ACTION();
-declare function get_EVT_IM_ACTION_INFO();
-declare function get_EVT_DRAG_START();
-declare function get_EVT_DRAG();
-declare function get_EVT_DRAG_END();
-declare function get_EVT_SCREEN_SAVER();
-declare function get_EVT_REQ_START();
-declare function get_EVT_USER_START();
-declare function font_manager_unload_font(fm, name, size);
-declare function idle_add(on_idle, ctx);
-declare function idle_remove(idle_id);
-declare function image_manager();
-declare function image_manager_get_bitmap(imm, name, image);
-declare function get_INPUT_TEXT();
-declare function get_INPUT_INT();
-declare function get_INPUT_UINT();
-declare function get_INPUT_HEX();
-declare function get_INPUT_FLOAT();
-declare function get_INPUT_UFLOAT();
-declare function get_INPUT_EMAIL();
-declare function get_INPUT_PASSWORD();
-declare function get_INPUT_PHONE();
-declare function get_INPUT_CUSTOM();
-declare function input_method_commit_text(im, text);
-declare function input_method_dispatch_key(im, key);
-declare function input_method();
-declare function get_TK_KEY_RETURN();
-declare function get_TK_KEY_ESCAPE();
-declare function get_TK_KEY_BACKSPACE();
-declare function get_TK_KEY_TAB();
-declare function get_TK_KEY_SPACE();
-declare function get_TK_KEY_EXCLAIM();
-declare function get_TK_KEY_QUOTEDBL();
-declare function get_TK_KEY_HASH();
-declare function get_TK_KEY_PERCENT();
-declare function get_TK_KEY_DOLLAR();
-declare function get_TK_KEY_AMPERSAND();
-declare function get_TK_KEY_QUOTE();
-declare function get_TK_KEY_LEFTPAREN();
-declare function get_TK_KEY_RIGHTPAREN();
-declare function get_TK_KEY_ASTERISK();
-declare function get_TK_KEY_PLUS();
-declare function get_TK_KEY_COMMA();
-declare function get_TK_KEY_MINUS();
-declare function get_TK_KEY_PERIOD();
-declare function get_TK_KEY_SLASH();
-declare function get_TK_KEY_0();
-declare function get_TK_KEY_1();
-declare function get_TK_KEY_2();
-declare function get_TK_KEY_3();
-declare function get_TK_KEY_4();
-declare function get_TK_KEY_5();
-declare function get_TK_KEY_6();
-declare function get_TK_KEY_7();
-declare function get_TK_KEY_8();
-declare function get_TK_KEY_9();
-declare function get_TK_KEY_COLON();
-declare function get_TK_KEY_SEMICOLON();
-declare function get_TK_KEY_LESS();
-declare function get_TK_KEY_EQUAL();
-declare function get_TK_KEY_GREATER();
-declare function get_TK_KEY_QUESTION();
-declare function get_TK_KEY_AT();
-declare function get_TK_KEY_LEFTBRACKET();
-declare function get_TK_KEY_BACKSLASH();
-declare function get_TK_KEY_RIGHTBRACKET();
-declare function get_TK_KEY_CARET();
-declare function get_TK_KEY_UNDERSCORE();
-declare function get_TK_KEY_BACKQUOTE();
-declare function get_TK_KEY_a();
-declare function get_TK_KEY_b();
-declare function get_TK_KEY_c();
-declare function get_TK_KEY_d();
-declare function get_TK_KEY_e();
-declare function get_TK_KEY_f();
-declare function get_TK_KEY_g();
-declare function get_TK_KEY_h();
-declare function get_TK_KEY_i();
-declare function get_TK_KEY_j();
-declare function get_TK_KEY_k();
-declare function get_TK_KEY_l();
-declare function get_TK_KEY_m();
-declare function get_TK_KEY_n();
-declare function get_TK_KEY_o();
-declare function get_TK_KEY_p();
-declare function get_TK_KEY_q();
-declare function get_TK_KEY_r();
-declare function get_TK_KEY_s();
-declare function get_TK_KEY_t();
-declare function get_TK_KEY_u();
-declare function get_TK_KEY_v();
-declare function get_TK_KEY_w();
-declare function get_TK_KEY_x();
-declare function get_TK_KEY_y();
-declare function get_TK_KEY_z();
-declare function get_TK_KEY_A();
-declare function get_TK_KEY_B();
-declare function get_TK_KEY_C();
-declare function get_TK_KEY_D();
-declare function get_TK_KEY_E();
-declare function get_TK_KEY_F();
-declare function get_TK_KEY_G();
-declare function get_TK_KEY_H();
-declare function get_TK_KEY_I();
-declare function get_TK_KEY_J();
-declare function get_TK_KEY_K();
-declare function get_TK_KEY_L();
-declare function get_TK_KEY_M();
-declare function get_TK_KEY_N();
-declare function get_TK_KEY_O();
-declare function get_TK_KEY_P();
-declare function get_TK_KEY_Q();
-declare function get_TK_KEY_R();
-declare function get_TK_KEY_S();
-declare function get_TK_KEY_T();
-declare function get_TK_KEY_U();
-declare function get_TK_KEY_V();
-declare function get_TK_KEY_W();
-declare function get_TK_KEY_X();
-declare function get_TK_KEY_Y();
-declare function get_TK_KEY_Z();
-declare function get_TK_KEY_DOT();
-declare function get_TK_KEY_DELETE();
-declare function get_TK_KEY_LEFTBRACE();
-declare function get_TK_KEY_RIGHTBRACE();
-declare function locale_info();
-declare function locale_info_tr(locale_info, text);
-declare function locale_info_change(locale_info, language, country);
-declare function locale_info_on(locale_info, type, on_event, ctx);
-declare function locale_info_off(locale_info, id);
-declare function get_STYLE_ID_BG_COLOR();
-declare function get_STYLE_ID_FG_COLOR();
-declare function get_STYLE_ID_MASK_COLOR();
-declare function get_STYLE_ID_FONT_NAME();
-declare function get_STYLE_ID_FONT_SIZE();
-declare function get_STYLE_ID_FONT_STYLE();
-declare function get_STYLE_ID_TEXT_COLOR();
-declare function get_STYLE_ID_TIPS_TEXT_COLOR();
-declare function get_STYLE_ID_TEXT_ALIGN_H();
-declare function get_STYLE_ID_TEXT_ALIGN_V();
-declare function get_STYLE_ID_BORDER_COLOR();
-declare function get_STYLE_ID_BORDER();
-declare function get_STYLE_ID_BG_IMAGE();
-declare function get_STYLE_ID_BG_IMAGE_DRAW_TYPE();
-declare function get_STYLE_ID_ICON();
-declare function get_STYLE_ID_FG_IMAGE();
-declare function get_STYLE_ID_FG_IMAGE_DRAW_TYPE();
-declare function get_STYLE_ID_MARGIN();
-declare function get_STYLE_ID_ICON_AT();
-declare function get_STYLE_ID_ACTIVE_ICON();
-declare function get_STYLE_ID_X_OFFSET();
-declare function get_STYLE_ID_Y_OFFSET();
-declare function get_STYLE_ID_SELECTED_BG_COLOR();
-declare function get_STYLE_ID_SELECTED_FG_COLOR();
-declare function get_STYLE_ID_SELECTED_TEXT_COLOR();
-declare function get_STYLE_ID_ROUND_RADIUS();
-declare function style_notify_widget_state_changed(s, widget);
-declare function style_is_valid(s);
-declare function style_get_int(s, name, defval);
-declare function style_get_str(s, name, defval);
-declare function theme();
-declare function timer_add(on_timer, ctx, duration);
-declare function timer_remove(timer_id);
-declare function timer_reset(timer_id);
-declare function get_ALIGN_V_NONE();
-declare function get_ALIGN_V_MIDDLE();
-declare function get_ALIGN_V_TOP();
-declare function get_ALIGN_V_BOTTOM();
-declare function get_ALIGN_H_NONE();
-declare function get_ALIGN_H_CENTER();
-declare function get_ALIGN_H_LEFT();
-declare function get_ALIGN_H_RIGHT();
-declare function vgcanvas_cast(vg);
-declare function vgcanvas_flush(vg);
-declare function vgcanvas_begin_path(vg);
-declare function vgcanvas_move_to(vg, x, y);
-declare function vgcanvas_line_to(vg, x, y);
-declare function vgcanvas_quad_to(vg, cpx, cpy, x, y);
-declare function vgcanvas_bezier_to(vg, cp1x, cp1y, cp2x, cp2y, x, y);
-declare function vgcanvas_arc_to(vg, x1, y1, x2, y2, r);
-declare function vgcanvas_arc(vg, x, y, r, start_angle, end_angle, ccw);
-declare function vgcanvas_is_point_in_path(vg, x, y);
-declare function vgcanvas_rect(vg, x, y, w, h);
-declare function vgcanvas_rounded_rect(vg, x, y, w, h, r);
-declare function vgcanvas_ellipse(vg, x, y, rx, ry);
-declare function vgcanvas_close_path(vg);
-declare function vgcanvas_rotate(vg, rad);
-declare function vgcanvas_scale(vg, x, y);
-declare function vgcanvas_translate(vg, x, y);
-declare function vgcanvas_transform(vg, a, b, c, d, e, f);
-declare function vgcanvas_set_transform(vg, a, b, c, d, e, f);
-declare function vgcanvas_clip_rect(vg, x, y, w, h);
-declare function vgcanvas_fill(vg);
-declare function vgcanvas_stroke(vg);
-declare function vgcanvas_paint(vg, stroke, img);
-declare function vgcanvas_set_font(vg, font);
-declare function vgcanvas_set_font_size(vg, font);
-declare function vgcanvas_set_text_align(vg, value);
-declare function vgcanvas_set_text_baseline(vg, value);
-declare function vgcanvas_fill_text(vg, text, x, y, max_width);
-declare function vgcanvas_measure_text(vg, text);
-declare function vgcanvas_draw_image(vg, img, sx, sy, sw, sh, dx, dy, dw, dh);
-declare function vgcanvas_draw_icon(vg, img, sx, sy, sw, sh, dx, dy, dw, dh);
-declare function vgcanvas_set_antialias(vg, value);
-declare function vgcanvas_set_global_alpha(vg, alpha);
-declare function vgcanvas_set_line_width(vg, value);
-declare function vgcanvas_set_fill_color_str(vg, color);
-declare function vgcanvas_set_stroke_color_str(vg, color);
-declare function vgcanvas_set_line_cap(vg, value);
-declare function vgcanvas_set_line_join(vg, value);
-declare function vgcanvas_set_miter_limit(vg, value);
-declare function vgcanvas_save(vg);
-declare function vgcanvas_restore(vg);
-declare function vgcanvas_t_get_prop_w(nativeObj);
-declare function vgcanvas_t_get_prop_h(nativeObj);
-declare function vgcanvas_t_get_prop_ratio(nativeObj);
-declare function vgcanvas_t_get_prop_anti_alias(nativeObj);
-declare function vgcanvas_t_get_prop_line_width(nativeObj);
-declare function vgcanvas_t_get_prop_global_alpha(nativeObj);
-declare function vgcanvas_t_get_prop_miter_limit(nativeObj);
-declare function vgcanvas_t_get_prop_line_cap(nativeObj);
-declare function vgcanvas_t_get_prop_line_join(nativeObj);
-declare function vgcanvas_t_get_prop_font(nativeObj);
-declare function vgcanvas_t_get_prop_font_size(nativeObj);
-declare function vgcanvas_t_get_prop_text_align(nativeObj);
-declare function vgcanvas_t_get_prop_text_baseline(nativeObj);
-declare function get_WIDGET_PROP_X();
-declare function get_WIDGET_PROP_Y();
-declare function get_WIDGET_PROP_W();
-declare function get_WIDGET_PROP_H();
-declare function get_WIDGET_PROP_HIGHLIGHT();
-declare function get_WIDGET_PROP_BAR_SIZE();
-declare function get_WIDGET_PROP_OPACITY();
-declare function get_WIDGET_PROP_MIN_W();
-declare function get_WIDGET_PROP_MAX_W();
-declare function get_WIDGET_PROP_CHILDREN_LAYOUT();
-declare function get_WIDGET_PROP_LAYOUT();
-declare function get_WIDGET_PROP_SELF_LAYOUT();
-declare function get_WIDGET_PROP_LAYOUT_W();
-declare function get_WIDGET_PROP_LAYOUT_H();
-declare function get_WIDGET_PROP_VIRTUAL_W();
-declare function get_WIDGET_PROP_VIRTUAL_H();
-declare function get_WIDGET_PROP_NAME();
-declare function get_WIDGET_PROP_CLOSABLE();
-declare function get_WIDGET_PROP_CURSOR();
-declare function get_WIDGET_PROP_VALUE();
-declare function get_WIDGET_PROP_LENGTH();
-declare function get_WIDGET_PROP_TEXT();
-declare function get_WIDGET_PROP_TR_TEXT();
-declare function get_WIDGET_PROP_STYLE();
-declare function get_WIDGET_PROP_ENABLE();
-declare function get_WIDGET_PROP_FLOATING();
-declare function get_WIDGET_PROP_MARGIN();
-declare function get_WIDGET_PROP_SPACING();
-declare function get_WIDGET_PROP_LEFT_MARGIN();
-declare function get_WIDGET_PROP_RIGHT_MARGIN();
-declare function get_WIDGET_PROP_TOP_MARGIN();
-declare function get_WIDGET_PROP_BOTTOM_MARGIN();
-declare function get_WIDGET_PROP_STEP();
-declare function get_WIDGET_PROP_VISIBLE();
-declare function get_WIDGET_PROP_SENSITIVE();
-declare function get_WIDGET_PROP_ANIMATION();
-declare function get_WIDGET_PROP_ANIM_HINT();
-declare function get_WIDGET_PROP_FULLSCREEN();
-declare function get_WIDGET_PROP_OPEN_ANIM_HINT();
-declare function get_WIDGET_PROP_CLOSE_ANIM_HINT();
-declare function get_WIDGET_PROP_MIN();
-declare function get_WIDGET_PROP_TIPS();
-declare function get_WIDGET_PROP_INPUT_TYPE();
-declare function get_WIDGET_PROP_READONLY();
-declare function get_WIDGET_PROP_PASSWORD_VISIBLE();
-declare function get_WIDGET_PROP_ACTIVE();
-declare function get_WIDGET_PROP_VERTICAL();
-declare function get_WIDGET_PROP_SHOW_TEXT();
-declare function get_WIDGET_PROP_XOFFSET();
-declare function get_WIDGET_PROP_YOFFSET();
-declare function get_WIDGET_PROP_ALIGN_V();
-declare function get_WIDGET_PROP_ALIGN_H();
-declare function get_WIDGET_PROP_AUTO_PLAY();
-declare function get_WIDGET_PROP_LOOP();
-declare function get_WIDGET_PROP_AUTO_FIX();
-declare function get_WIDGET_PROP_X_MIN();
-declare function get_WIDGET_PROP_X_MAX();
-declare function get_WIDGET_PROP_Y_MIN();
-declare function get_WIDGET_PROP_Y_MAX();
-declare function get_WIDGET_PROP_MAX();
-declare function get_WIDGET_PROP_ROW();
-declare function get_WIDGET_PROP_STATE_FOR_STYLE();
-declare function get_WIDGET_PROP_THEME();
-declare function get_WIDGET_PROP_STAGE();
-declare function get_WIDGET_PROP_IMAGE_MANAGER();
-declare function get_WIDGET_PROP_ASSETS_MANAGER();
-declare function get_WIDGET_PROP_LOCALE_INFO();
-declare function get_WIDGET_PROP_FONT_MANAGER();
-declare function get_WIDGET_PROP_THEME_OBJ();
-declare function get_WIDGET_PROP_DEFAULT_THEME_OBJ();
-declare function get_WIDGET_PROP_ITEM_WIDTH();
-declare function get_WIDGET_PROP_ITEM_HEIGHT();
-declare function get_WIDGET_PROP_DEFAULT_ITEM_HEIGHT();
-declare function get_WIDGET_PROP_XSLIDABLE();
-declare function get_WIDGET_PROP_YSLIDABLE();
-declare function get_WIDGET_PROP_REPEAT();
-declare function get_WIDGET_PROP_ENABLE_LONG_PRESS();
-declare function get_WIDGET_PROP_ANIMATABLE();
-declare function get_WIDGET_PROP_AUTO_HIDE_SCROLL_BAR();
-declare function get_WIDGET_PROP_IMAGE();
-declare function get_WIDGET_PROP_FORMAT();
-declare function get_WIDGET_PROP_DRAW_TYPE();
-declare function get_WIDGET_PROP_SELECTABLE();
-declare function get_WIDGET_PROP_CLICKABLE();
-declare function get_WIDGET_PROP_SCALE_X();
-declare function get_WIDGET_PROP_SCALE_Y();
-declare function get_WIDGET_PROP_ANCHOR_X();
-declare function get_WIDGET_PROP_ANCHOR_Y();
-declare function get_WIDGET_PROP_ROTATION();
-declare function get_WIDGET_PROP_COMPACT();
-declare function get_WIDGET_PROP_ICON();
-declare function get_WIDGET_PROP_OPTIONS();
-declare function get_WIDGET_PROP_SELECTED();
-declare function get_WIDGET_PROP_CHECKED();
-declare function get_WIDGET_PROP_ACTIVE_ICON();
-declare function get_WIDGET_PROP_OPEN_WINDOW();
-declare function get_WIDGET_PROP_SELECTED_INDEX();
-declare function get_WIDGET_PROP_CLOSE_WHEN_CLICK();
-declare function get_WIDGET_PROP_CLOSE_WHEN_CLICK_OUTSIDE();
-declare function get_WIDGET_PROP_LINE_GAP();
-declare function get_WIDGET_PROP_BG_COLOR();
-declare function get_WIDGET_PROP_BORDER_COLOR();
-declare function get_WIDGET_PROP_DELAY();
-declare function get_WIDGET_PROP_IS_KEYBOARD();
-declare function get_WIDGET_PROP_FOCUS();
-declare function get_WIDGET_PROP_FOCUSABLE();
-declare function get_WIDGET_TYPE_NONE();
-declare function get_WIDGET_TYPE_WINDOW_MANAGER();
-declare function get_WIDGET_TYPE_NORMAL_WINDOW();
-declare function get_WIDGET_TYPE_TOOL_BAR();
-declare function get_WIDGET_TYPE_DIALOG();
-declare function get_WIDGET_TYPE_POPUP();
-declare function get_WIDGET_TYPE_SYSTEM_BAR();
-declare function get_WIDGET_TYPE_SPRITE();
-declare function get_WIDGET_TYPE_KEYBOARD();
-declare function get_WIDGET_TYPE_DND();
-declare function get_WIDGET_TYPE_LABEL();
-declare function get_WIDGET_TYPE_BUTTON();
-declare function get_WIDGET_TYPE_IMAGE();
-declare function get_WIDGET_TYPE_EDIT();
-declare function get_WIDGET_TYPE_PROGRESS_BAR();
-declare function get_WIDGET_TYPE_GROUP_BOX();
-declare function get_WIDGET_TYPE_CHECK_BUTTON();
-declare function get_WIDGET_TYPE_RADIO_BUTTON();
-declare function get_WIDGET_TYPE_DIALOG_TITLE();
-declare function get_WIDGET_TYPE_DIALOG_CLIENT();
-declare function get_WIDGET_TYPE_SLIDER();
-declare function get_WIDGET_TYPE_VIEW();
-declare function get_WIDGET_TYPE_COMBO_BOX();
-declare function get_WIDGET_TYPE_COMBO_BOX_ITEM();
-declare function get_WIDGET_TYPE_SLIDE_VIEW();
-declare function get_WIDGET_TYPE_PAGES();
-declare function get_WIDGET_TYPE_TAB_BUTTON();
-declare function get_WIDGET_TYPE_TAB_CONTROL();
-declare function get_WIDGET_TYPE_TAB_BUTTON_GROUP();
-declare function get_WIDGET_TYPE_BUTTON_GROUP();
-declare function get_WIDGET_TYPE_CANDIDATES();
-declare function get_WIDGET_TYPE_SPIN_BOX();
-declare function get_WIDGET_TYPE_DRAGGER();
-declare function get_WIDGET_TYPE_SCROLL_BAR();
-declare function get_WIDGET_TYPE_SCROLL_BAR_DESKTOP();
-declare function get_WIDGET_TYPE_SCROLL_BAR_MOBILE();
-declare function get_WIDGET_TYPE_SCROLL_VIEW();
-declare function get_WIDGET_TYPE_LIST_VIEW();
-declare function get_WIDGET_TYPE_LIST_VIEW_H();
-declare function get_WIDGET_TYPE_LIST_ITEM();
-declare function get_WIDGET_TYPE_COLOR_PICKER();
-declare function get_WIDGET_TYPE_COLOR_COMPONENT();
-declare function get_WIDGET_TYPE_COLOR_TILE();
-declare function get_WIDGET_TYPE_RICH_TEXT();
-declare function get_WIDGET_TYPE_APP_BAR();
-declare function get_WIDGET_TYPE_GRID();
-declare function get_WIDGET_TYPE_GRID_ITEM();
-declare function get_WIDGET_TYPE_ROW();
-declare function get_WIDGET_TYPE_COLUMN();
-declare function get_WIDGET_TYPE_CALIBRATION_WIN();
-declare function get_WINDOW_STAGE_NONE();
-declare function get_WINDOW_STAGE_CREATED();
-declare function get_WINDOW_STAGE_OPENED();
-declare function get_WINDOW_STAGE_CLOSED();
-declare function get_WINDOW_CLOSABLE_YES();
-declare function get_WINDOW_CLOSABLE_NO();
-declare function get_WINDOW_CLOSABLE_CONFIRM();
-declare function get_WIDGET_STATE_NONE();
-declare function get_WIDGET_STATE_NORMAL();
-declare function get_WIDGET_STATE_PRESSED();
-declare function get_WIDGET_STATE_OVER();
-declare function get_WIDGET_STATE_DISABLE();
-declare function get_WIDGET_STATE_FOCUSED();
-declare function get_WIDGET_STATE_CHECKED();
-declare function get_WIDGET_STATE_UNCHECKED();
-declare function get_WIDGET_STATE_EMPTY();
-declare function get_WIDGET_STATE_ERROR();
-declare function get_WIDGET_STATE_SELECTED();
-declare function get_WIDGET_STATE_NORMAL_OF_CHECKED();
-declare function get_WIDGET_STATE_PRESSED_OF_CHECKED();
-declare function get_WIDGET_STATE_OVER_OF_CHECKED();
-declare function get_WIDGET_STATE_NORMAL_OF_ACTIVE();
-declare function get_WIDGET_STATE_PRESSED_OF_ACTIVE();
-declare function get_WIDGET_STATE_OVER_OF_ACTIVE();
-declare function widget_count_children(widget);
-declare function widget_get_child(widget, index);
-declare function widget_index_of(widget);
-declare function widget_move(widget, x, y);
-declare function widget_resize(widget, w, h);
-declare function widget_move_resize(widget, x, y, w, h);
-declare function widget_set_value(widget, value);
-declare function widget_animate_value_to(widget, value, duration);
-declare function widget_add_value(widget, delta);
-declare function widget_use_style(widget, style);
-declare function widget_set_text_utf8(widget, text);
-declare function widget_set_tr_text(widget, text);
-declare function widget_get_value(widget);
-declare function widget_get_text(widget);
-declare function widget_set_name(widget, name);
-declare function widget_set_cursor(widget, cursor);
-declare function widget_set_animation(widget, animation);
-declare function widget_create_animator(widget, animation);
-declare function widget_start_animator(widget, name);
-declare function widget_set_animator_time_scale(widget, name, time_scale);
-declare function widget_pause_animator(widget, name);
-declare function widget_stop_animator(widget, name);
-declare function widget_destroy_animator(widget, name);
-declare function widget_set_enable(widget, enable);
-declare function widget_set_floating(widget, floating);
-declare function widget_set_focused(widget, focused);
-declare function widget_child(widget, name);
-declare function widget_lookup(widget, name, recursive);
-declare function widget_lookup_by_type(widget, type, recursive);
-declare function widget_set_visible(widget, visible, recursive);
-declare function widget_set_sensitive(widget, sensitive);
-declare function widget_on(widget, type, on_event, ctx);
-declare function widget_off(widget, id);
-declare function widget_invalidate_force(widget, r);
-declare function widget_set_prop_str(widget, name, v);
-declare function widget_get_prop_str(widget, name, defval);
-declare function widget_set_prop_int(widget, name, v);
-declare function widget_get_prop_int(widget, name, defval);
-declare function widget_set_prop_bool(widget, name, v);
-declare function widget_get_prop_bool(widget, name, defval);
-declare function widget_is_window_opened(widget);
-declare function widget_is_window(widget);
-declare function widget_is_designing_window(widget);
-declare function widget_is_window_manager(widget);
-declare function widget_foreach(widget, visit, ctx);
-declare function widget_get_window(widget);
-declare function widget_get_window_manager(widget);
-declare function widget_get_type(widget);
-declare function widget_clone(widget, parent);
-declare function widget_equal(widget, other);
-declare function widget_cast(widget);
-declare function widget_destroy(widget);
-declare function widget_layout(widget);
-declare function widget_set_self_layout(widget, params);
-declare function widget_set_children_layout(widget, params);
-declare function widget_set_self_layout_params(widget, x, y, w, h);
-declare function widget_t_get_prop_x(nativeObj);
-declare function widget_t_get_prop_y(nativeObj);
-declare function widget_t_get_prop_w(nativeObj);
-declare function widget_t_get_prop_h(nativeObj);
-declare function widget_t_get_prop_name(nativeObj);
-declare function widget_t_get_prop_tr_text(nativeObj);
-declare function widget_t_get_prop_style(nativeObj);
-declare function widget_t_get_prop_animation(nativeObj);
-declare function widget_t_get_prop_enable(nativeObj);
-declare function widget_t_get_prop_visible(nativeObj);
-declare function widget_t_set_prop_visible(nativeObj, value);
-declare function widget_t_get_prop_sensitive(nativeObj);
-declare function widget_t_set_prop_sensitive(nativeObj, value);
-declare function widget_t_get_prop_floating(nativeObj);
-declare function get_ASSET_TYPE_NONE();
-declare function get_ASSET_TYPE_FONT();
-declare function get_ASSET_TYPE_IMAGE();
-declare function get_ASSET_TYPE_STYLE();
-declare function get_ASSET_TYPE_UI();
-declare function get_ASSET_TYPE_XML();
-declare function get_ASSET_TYPE_STRINGS();
-declare function get_ASSET_TYPE_SCRIPT();
-declare function get_ASSET_TYPE_DATA();
-declare function color_create(r, b, g, a);
-declare function color_from_str(c, str);
-declare function color_r(c);
-declare function color_g(c);
-declare function color_b(c);
-declare function color_a(c);
-declare function color_cast(color);
-declare function color_destroy(c);
-declare function color_t_get_prop_color(nativeObj);
-declare function color_t_set_prop_color(nativeObj, value);
-declare function date_time_create();
-declare function date_time_destroy(dt);
-declare function date_time_t_get_prop_second(nativeObj);
-declare function date_time_t_get_prop_minute(nativeObj);
-declare function date_time_t_get_prop_hour(nativeObj);
-declare function date_time_t_get_prop_day(nativeObj);
-declare function date_time_t_get_prop_wday(nativeObj);
-declare function date_time_t_get_prop_month(nativeObj);
-declare function date_time_t_get_prop_year(nativeObj);
-declare function emitter_create();
-declare function emitter_dispatch(emitter, e);
-declare function emitter_dispatch_simple_event(emitter, type);
-declare function emitter_on(emitter, type, on_event, ctx);
-declare function emitter_off(emitter, id);
-declare function emitter_enable(emitter);
-declare function emitter_disable(emitter);
-declare function emitter_size(emitter);
-declare function emitter_destroy(emitter);
-declare function emitter_cast(emitter);
-declare function get_EVT_NONE();
-declare function get_EVT_PROP_WILL_CHANGE();
-declare function get_EVT_PROP_CHANGED();
-declare function get_EVT_ITEMS_WILL_CHANGE();
-declare function get_EVT_ITEMS_CHANGED();
-declare function get_EVT_PROPS_CHANGED();
-declare function get_EVT_DESTROY();
-declare function event_cast(event);
-declare function event_create(type, target);
-declare function event_destroy(event);
-declare function event_t_get_prop_type(nativeObj);
-declare function event_t_get_prop_time(nativeObj);
-declare function event_t_get_prop_target(nativeObj);
-declare function named_value_create();
-declare function named_value_cast(nv);
-declare function named_value_set_name(nv, name);
-declare function named_value_set_value(nv, value);
-declare function named_value_get_value(nv);
-declare function named_value_destroy(nv);
-declare function named_value_t_get_prop_name(nativeObj);
-declare function rect_create(x, y, w, h);
-declare function rect_set(rect, x, y, w, h);
-declare function rect_cast(rect);
-declare function rect_destroy(r);
-declare function rect_t_get_prop_x(nativeObj);
-declare function rect_t_get_prop_y(nativeObj);
-declare function rect_t_get_prop_w(nativeObj);
-declare function rect_t_get_prop_h(nativeObj);
-declare function time_now_s();
-declare function time_now_ms();
-declare function get_RET_OK();
-declare function get_RET_OOM();
-declare function get_RET_FAIL();
-declare function get_RET_NOT_IMPL();
-declare function get_RET_QUIT();
-declare function get_RET_FOUND();
-declare function get_RET_BUSY();
-declare function get_RET_REMOVE();
-declare function get_RET_REPEAT();
-declare function get_RET_NOT_FOUND();
-declare function get_RET_DONE();
-declare function get_RET_STOP();
-declare function get_RET_CONTINUE();
-declare function get_RET_OBJECT_CHANGED();
-declare function get_RET_ITEMS_CHANGED();
-declare function get_RET_BAD_PARAMS();
-declare function get_VALUE_TYPE_INVALID();
-declare function get_VALUE_TYPE_BOOL();
-declare function get_VALUE_TYPE_INT8();
-declare function get_VALUE_TYPE_UINT8();
-declare function get_VALUE_TYPE_INT16();
-declare function get_VALUE_TYPE_UINT16();
-declare function get_VALUE_TYPE_INT32();
-declare function get_VALUE_TYPE_UINT32();
-declare function get_VALUE_TYPE_INT64();
-declare function get_VALUE_TYPE_UINT64();
-declare function get_VALUE_TYPE_POINTER();
-declare function get_VALUE_TYPE_FLOAT();
-declare function get_VALUE_TYPE_FLOAT32();
-declare function get_VALUE_TYPE_DOUBLE();
-declare function get_VALUE_TYPE_STRING();
-declare function get_VALUE_TYPE_WSTRING();
-declare function get_VALUE_TYPE_OBJECT();
-declare function value_set_bool(v, value);
-declare function value_bool(v);
-declare function value_set_int8(v, value);
-declare function value_int8(v);
-declare function value_set_uint8(v, value);
-declare function value_uint8(v);
-declare function value_set_int16(v, value);
-declare function value_int16(v);
-declare function value_set_uint16(v, value);
-declare function value_uint16(v);
-declare function value_set_int32(v, value);
-declare function value_int32(v);
-declare function value_set_uint32(v, value);
-declare function value_set_int64(v, value);
-declare function value_int64(v);
-declare function value_set_uint64(v, value);
-declare function value_uint64(v);
-declare function value_set_float(v, value);
-declare function value_float(v);
-declare function value_set_float32(v, value);
-declare function value_float32(v);
-declare function value_set_double(v, value);
-declare function value_double(v);
-declare function value_dup_str(v, value);
-declare function value_str(v);
-declare function value_wstr(v);
-declare function value_is_null(value);
-declare function value_int(v);
-declare function value_set_int(v, value);
-declare function value_set_object(v, value);
-declare function value_object(v);
-declare function value_create();
-declare function value_destroy(v);
-declare function value_reset(v);
-declare function value_cast(value);
-declare function progress_circle_create(parent, x, y, w, h);
-declare function progress_circle_cast(widget);
-declare function progress_circle_set_value(widget, value);
-declare function progress_circle_set_max(widget, max);
-declare function progress_circle_set_line_width(widget, line_width);
-declare function progress_circle_set_start_angle(widget, start_angle);
-declare function progress_circle_set_unit(widget, unit);
-declare function progress_circle_set_show_text(widget, show_text);
-declare function progress_circle_set_counter_clock_wise(widget, counter_clock_wise);
-declare function progress_circle_t_get_prop_value(nativeObj);
-declare function progress_circle_t_get_prop_max(nativeObj);
-declare function progress_circle_t_get_prop_start_angle(nativeObj);
-declare function progress_circle_t_get_prop_line_width(nativeObj);
-declare function progress_circle_t_get_prop_unit(nativeObj);
-declare function progress_circle_t_get_prop_counter_clock_wise(nativeObj);
-declare function progress_circle_t_get_prop_show_text(nativeObj);
-declare function rich_text_create(parent, x, y, w, h);
-declare function rich_text_set_text(widget, text);
-declare function rich_text_cast(widget);
-declare function rich_text_t_get_prop_line_gap(nativeObj);
-declare function list_item_create(parent, x, y, w, h);
-declare function list_item_cast(widget);
-declare function list_view_h_create(parent, x, y, w, h);
-declare function list_view_h_set_item_width(widget, item_width);
-declare function list_view_h_set_spacing(widget, spacing);
-declare function list_view_h_cast(widget);
-declare function list_view_h_t_get_prop_item_width(nativeObj);
-declare function list_view_h_t_get_prop_spacing(nativeObj);
-declare function list_view_create(parent, x, y, w, h);
-declare function list_view_set_item_height(widget, item_height);
-declare function list_view_set_default_item_height(widget, default_item_height);
-declare function list_view_set_auto_hide_scroll_bar(widget, auto_hide_scroll_bar);
-declare function list_view_cast(widget);
-declare function list_view_t_get_prop_item_height(nativeObj);
-declare function list_view_t_get_prop_default_item_height(nativeObj);
-declare function list_view_t_get_prop_auto_hide_scroll_bar(nativeObj);
-declare function scroll_bar_create(parent, x, y, w, h);
-declare function scroll_bar_cast(widget);
-declare function scroll_bar_create_mobile(parent, x, y, w, h);
-declare function scroll_bar_create_desktop(parent, x, y, w, h);
-declare function scroll_bar_set_params(widget, virtual_size, row);
-declare function scroll_bar_scroll_to(widget, value, duration);
-declare function scroll_bar_set_value(widget, value);
-declare function scroll_bar_add_delta(widget, delta);
-declare function scroll_bar_scroll_delta(widget, delta);
-declare function scroll_bar_set_value_only(widget, value);
-declare function scroll_bar_is_mobile(widget);
-declare function scroll_bar_t_get_prop_virtual_size(nativeObj);
-declare function scroll_bar_t_get_prop_value(nativeObj);
-declare function scroll_bar_t_get_prop_row(nativeObj);
-declare function scroll_bar_t_get_prop_animatable(nativeObj);
-declare function scroll_view_create(parent, x, y, w, h);
-declare function scroll_view_cast(widget);
-declare function scroll_view_set_virtual_w(widget, w);
-declare function scroll_view_set_virtual_h(widget, h);
-declare function scroll_view_set_xslidable(widget, xslidable);
-declare function scroll_view_set_yslidable(widget, yslidable);
-declare function scroll_view_set_offset(widget, xoffset, yoffset);
-declare function scroll_view_scroll_to(widget, xoffset_end, yoffset_end, duration);
-declare function scroll_view_t_get_prop_virtual_w(nativeObj);
-declare function scroll_view_t_get_prop_virtual_h(nativeObj);
-declare function scroll_view_t_get_prop_xoffset(nativeObj);
-declare function scroll_view_t_get_prop_yoffset(nativeObj);
-declare function scroll_view_t_get_prop_xslidable(nativeObj);
-declare function scroll_view_t_get_prop_yslidable(nativeObj);
-declare function slide_menu_create(parent, x, y, w, h);
-declare function slide_menu_cast(widget);
-declare function slide_menu_set_value(widget, value);
-declare function slide_menu_set_align_v(widget, align_v);
-declare function slide_menu_set_min_scale(widget, min_scale);
-declare function slide_menu_t_get_prop_value(nativeObj);
-declare function slide_menu_t_get_prop_align_v(nativeObj);
-declare function slide_menu_t_get_prop_min_scale(nativeObj);
-declare function slide_view_create(parent, x, y, w, h);
-declare function slide_view_cast(widget);
-declare function slide_view_set_auto_play(widget, auto_play);
-declare function slide_view_set_active(widget, index);
-declare function slide_view_set_vertical(widget, vertical);
-declare function slide_view_set_anim_hint(widget, anim_hint);
-declare function slide_view_set_loop(widget, loop);
-declare function slide_view_t_get_prop_vertical(nativeObj);
-declare function slide_view_t_get_prop_auto_play(nativeObj);
-declare function slide_view_t_get_prop_loop(nativeObj);
-declare function slide_view_t_get_prop_anim_hint(nativeObj);
-declare function row_create(parent, x, y, w, h);
-declare function row_cast(widget);
-declare function switch_create(parent, x, y, w, h);
-declare function switch_set_value(widget, value);
-declare function switch_cast(widget);
-declare function switch_t_get_prop_value(nativeObj);
-declare function switch_t_get_prop_max_xoffset_ratio(nativeObj);
-declare function switch_t_get_prop_round_radius(nativeObj);
-declare function text_selector_create(parent, x, y, w, h);
-declare function text_selector_cast(widget);
-declare function text_selector_reset_options(widget);
-declare function text_selector_count_options(widget);
-declare function text_selector_append_option(widget, value, text);
-declare function text_selector_set_options(widget, options);
-declare function text_selector_set_range_options(widget, start, nr, step);
-declare function text_selector_get_value(widget);
-declare function text_selector_set_value(widget, value);
-declare function text_selector_get_text(widget);
-declare function text_selector_set_text(widget, text);
-declare function text_selector_set_selected_index(widget, index);
-declare function text_selector_set_visible_nr(widget, visible_nr);
-declare function text_selector_t_get_prop_visible_nr(nativeObj);
-declare function text_selector_t_get_prop_selected_index(nativeObj);
-declare function text_selector_t_get_prop_options(nativeObj);
-declare function digit_clock_create(parent, x, y, w, h);
-declare function digit_clock_cast(widget);
-declare function digit_clock_set_format(widget, format);
-declare function digit_clock_t_get_prop_format(nativeObj);
-declare function time_clock_create(parent, x, y, w, h);
-declare function time_clock_cast(widget);
-declare function time_clock_set_hour(widget, hour);
-declare function time_clock_set_minute(widget, minute);
-declare function time_clock_set_second(widget, second);
-declare function time_clock_set_hour_image(widget, hour);
-declare function time_clock_set_minute_image(widget, minute_image);
-declare function time_clock_set_second_image(widget, second_image);
-declare function time_clock_set_bg_image(widget, bg_image);
-declare function time_clock_set_image(widget, image);
-declare function time_clock_t_get_prop_hour(nativeObj);
-declare function time_clock_t_get_prop_minute(nativeObj);
-declare function time_clock_t_get_prop_second(nativeObj);
-declare function time_clock_t_get_prop_image(nativeObj);
-declare function time_clock_t_get_prop_bg_image(nativeObj);
-declare function time_clock_t_get_prop_hour_image(nativeObj);
-declare function time_clock_t_get_prop_minute_image(nativeObj);
-declare function time_clock_t_get_prop_second_image(nativeObj);
-declare function window_event_cast(event);
-declare function window_event_t_get_prop_window(nativeObj);
-declare function tab_button_create(parent, x, y, w, h);
-declare function tab_button_cast(widget);
-declare function tab_button_set_value(widget, value);
-declare function tab_button_set_icon(widget, name);
-declare function tab_button_set_active_icon(widget, name);
-declare function tab_button_t_get_prop_value(nativeObj);
-declare function tab_button_t_get_prop_active_icon(nativeObj);
-declare function tab_button_t_get_prop_icon(nativeObj);
-declare function image_set_image(widget, name);
-declare function image_set_rotation(widget, rotation);
-declare function image_set_scale(widget, scale_x, scale_y);
-declare function image_set_anchor(widget, anchor_x, anchor_y);
-declare function image_set_selected(widget, selected);
-declare function image_set_selectable(widget, selectable);
-declare function image_set_clickable(widget, clickable);
-declare function image_base_cast(widget);
-declare function image_base_t_get_prop_image(nativeObj);
-declare function image_base_t_get_prop_anchor_x(nativeObj);
-declare function image_base_t_get_prop_anchor_y(nativeObj);
-declare function image_base_t_get_prop_scale_x(nativeObj);
-declare function image_base_t_get_prop_scale_y(nativeObj);
-declare function image_base_t_get_prop_rotation(nativeObj);
-declare function image_base_t_get_prop_clickable(nativeObj);
-declare function image_base_t_get_prop_selectable(nativeObj);
-declare function image_base_t_get_prop_selected(nativeObj);
-declare function window_create(parent, x, y, w, h);
-declare function window_set_fullscreen(widget, fullscreen);
-declare function window_open(name);
-declare function window_open_and_close(name, to_close);
-declare function window_close(widget);
-declare function window_close_force(widget);
-declare function window_cast(widget);
-declare function window_t_get_prop_fullscreen(nativeObj);
-declare function wheel_event_cast(event);
-declare function wheel_event_t_get_prop_dy(nativeObj);
-declare function wheel_event_t_get_prop_alt(nativeObj);
-declare function wheel_event_t_get_prop_ctrl(nativeObj);
-declare function wheel_event_t_get_prop_shift(nativeObj);
-declare function pointer_event_cast(event);
-declare function pointer_event_t_get_prop_x(nativeObj);
-declare function pointer_event_t_get_prop_y(nativeObj);
-declare function pointer_event_t_get_prop_button(nativeObj);
-declare function pointer_event_t_get_prop_pressed(nativeObj);
-declare function pointer_event_t_get_prop_alt(nativeObj);
-declare function pointer_event_t_get_prop_ctrl(nativeObj);
-declare function pointer_event_t_get_prop_shift(nativeObj);
-declare function key_event_cast(event);
-declare function key_event_t_get_prop_key(nativeObj);
-declare function key_event_t_get_prop_alt(nativeObj);
-declare function key_event_t_get_prop_ctrl(nativeObj);
-declare function key_event_t_get_prop_shift(nativeObj);
-declare function key_event_t_get_prop_capslock(nativeObj);
-declare function paint_event_cast(event);
-declare function paint_event_t_get_prop_c(nativeObj);
-declare function prop_change_event_cast(event);
-declare function prop_change_event_t_get_prop_name(nativeObj);
-declare function prop_change_event_t_get_prop_value(nativeObj);
-declare function window_base_cast(widget);
-declare function window_base_t_get_prop_theme(nativeObj);
-declare function window_base_t_get_prop_closable(nativeObj);
-declare function window_manager();
-declare function window_manager_cast(widget);
-declare function window_manager_get_top_main_window(widget);
-declare function window_manager_set_show_fps(widget, show_fps);
-declare function window_manager_set_screen_saver_time(widget, screen_saver_time);
-declare function window_manager_set_cursor(widget, cursor);
-declare function window_manager_back(widget);
-declare function window_manager_back_to_home(widget);
-declare function window_manager_t_get_prop_show_fps(nativeObj);
-declare function progress_bar_create(parent, x, y, w, h);
-declare function progress_bar_cast(widget);
-declare function progress_bar_set_value(widget, value);
-declare function progress_bar_set_vertical(widget, vertical);
-declare function progress_bar_set_show_text(widget, show_text);
-declare function progress_bar_t_get_prop_value(nativeObj);
-declare function progress_bar_t_get_prop_vertical(nativeObj);
-declare function progress_bar_t_get_prop_show_text(nativeObj);
-declare function object_unref(obj);
-declare function object_ref(obj);
-declare function object_get_type(obj);
-declare function object_get_desc(obj);
-declare function object_get_size(obj);
-declare function object_is_collection(obj);
-declare function object_set_name(obj, name);
-declare function object_compare(obj, other);
-declare function object_get_prop(obj, name, v);
-declare function object_get_prop_str(obj, name);
-declare function object_get_prop_pointer(obj, name);
-declare function object_get_prop_object(obj, name);
-declare function object_get_prop_int(obj, name, defval);
-declare function object_get_prop_float(obj, name, defval);
-declare function object_remove_prop(obj, name);
-declare function object_set_prop(obj, name, value);
-declare function object_set_prop_str(obj, name, value);
-declare function object_set_prop_pointer(obj, name, value);
-declare function object_set_prop_object(obj, name, value);
-declare function object_set_prop_int(obj, name, value);
-declare function object_set_prop_float(obj, name, value);
-declare function object_copy_prop(obj, src, name);
-declare function object_foreach_prop(obj, on_prop, ctx);
-declare function object_has_prop(obj, name);
-declare function object_eval(obj, expr, v);
-declare function object_can_exec(obj, name, args);
-declare function object_exec(obj, name, args);
-declare function object_notify_changed(obj);
-declare function object_t_get_prop_ref_count(nativeObj);
-declare function object_t_get_prop_name(nativeObj);
-declare function style_mutable_get_name(s);
-declare function style_mutable_set_name(s, name);
-declare function style_mutable_set_int(s, state, name, val);
-declare function style_mutable_cast(s);
-declare function style_mutable_create(widget);
-declare function style_mutable_t_get_prop_name(nativeObj);
-declare function canvas_widget_create(parent, x, y, w, h);
-declare function canvas_widget_cast(widget);
-declare function color_picker_create(parent, x, y, w, h);
-declare function color_picker_set_color(widget, color);
-declare function color_picker_cast(widget);
-declare function color_picker_t_get_prop_value(nativeObj);
-declare function view_create(parent, x, y, w, h);
-declare function view_cast(widget);
-declare function tab_button_group_create(parent, x, y, w, h);
-declare function tab_button_group_cast(widget);
-declare function tab_button_group_t_get_prop_compact(nativeObj);
-declare function guage_pointer_create(parent, x, y, w, h);
-declare function guage_pointer_cast(widget);
-declare function guage_pointer_set_angle(widget, angle);
-declare function guage_pointer_set_image(widget, image);
-declare function guage_pointer_t_get_prop_angle(nativeObj);
-declare function guage_pointer_t_get_prop_image(nativeObj);
-declare function guage_create(parent, x, y, w, h);
-declare function guage_cast(widget);
-declare function guage_set_image(widget, name);
-declare function guage_set_draw_type(widget, draw_type);
-declare function guage_t_get_prop_image(nativeObj);
-declare function guage_t_get_prop_draw_type(nativeObj);
-declare function tab_control_create(parent, x, y, w, h);
-declare function tab_control_cast(widget);
-declare function image_value_create(parent, x, y, w, h);
-declare function image_value_set_image(widget, image);
-declare function image_value_set_format(widget, format);
-declare function image_value_set_value(widget, value);
-declare function image_value_cast(widget);
-declare function image_value_t_get_prop_image(nativeObj);
-declare function image_value_t_get_prop_format(nativeObj);
-declare function image_value_t_get_prop_value(nativeObj);
-declare function slider_create(parent, x, y, w, h);
-declare function slider_cast(widget);
-declare function slider_set_value(widget, value);
-declare function slider_set_min(widget, min);
-declare function slider_set_max(widget, max);
-declare function slider_set_step(widget, step);
-declare function slider_set_bar_size(widget, bar_size);
-declare function slider_set_vertical(widget, vertical);
-declare function slider_t_get_prop_value(nativeObj);
-declare function slider_t_get_prop_min(nativeObj);
-declare function slider_t_get_prop_max(nativeObj);
-declare function slider_t_get_prop_step(nativeObj);
-declare function slider_t_get_prop_vertical(nativeObj);
-declare function slider_t_get_prop_bar_size(nativeObj);
-declare function app_bar_create(parent, x, y, w, h);
-declare function app_bar_cast(widget);
-declare function button_group_create(parent, x, y, w, h);
-declare function button_group_cast(widget);
-declare function button_create(parent, x, y, w, h);
-declare function button_cast(widget);
-declare function button_set_repeat(widget, repeat);
-declare function button_set_enable_long_press(widget, enable_long_press);
-declare function button_t_get_prop_repeat(nativeObj);
-declare function button_t_get_prop_enable_long_press(nativeObj);
-declare function check_button_create(parent, x, y, w, h);
-declare function check_button_create_radio(parent, x, y, w, h);
-declare function check_button_set_value(widget, value);
-declare function check_button_cast(widget);
-declare function check_button_t_get_prop_value(nativeObj);
-declare function color_tile_create(parent, x, y, w, h);
-declare function color_tile_cast(widget);
-declare function color_tile_set_bg_color(widget, color);
-declare function color_tile_t_get_prop_bg_color(nativeObj);
-declare function color_tile_t_get_prop_border_color(nativeObj);
-declare function column_create(parent, x, y, w, h);
-declare function column_cast(widget);
-declare function combo_box_item_create(parent, x, y, w, h);
-declare function combo_box_item_cast(widget);
-declare function combo_box_item_set_checked(widget, checked);
-declare function combo_box_item_set_value(widget, value);
-declare function combo_box_item_t_get_prop_value(nativeObj);
-declare function combo_box_item_t_get_prop_checked(nativeObj);
-declare function combo_box_create(parent, x, y, w, h);
-declare function combo_box_cast(widget);
-declare function combo_box_set_open_window(widget, open_window);
-declare function combo_box_reset_options(widget);
-declare function combo_box_count_options(widget);
-declare function combo_box_set_selected_index(widget, index);
-declare function combo_box_set_value(widget, value);
-declare function combo_box_append_option(widget, value, text);
-declare function combo_box_set_options(widget, options);
-declare function combo_box_get_value(widget);
-declare function combo_box_get_text(widget);
-declare function combo_box_t_get_prop_open_window(nativeObj);
-declare function combo_box_t_get_prop_selected_index(nativeObj);
-declare function combo_box_t_get_prop_value(nativeObj);
-declare function combo_box_t_get_prop_options(nativeObj);
-declare function dialog_client_create(parent, x, y, w, h);
-declare function dialog_client_cast(widget);
-declare function dialog_title_create(parent, x, y, w, h);
-declare function dialog_title_cast(widget);
-declare function dialog_create(parent, x, y, w, h);
-declare function dialog_create_simple(parent, x, y, w, h);
-declare function dialog_cast(widget);
-declare function dialog_get_title(widget);
-declare function dialog_get_client(widget);
-declare function dialog_open(name);
-declare function dialog_set_title(widget, title);
-declare function dialog_modal(widget);
-declare function dialog_quit(widget, code);
-declare function dialog_is_quited(widget);
-declare function dialog_is_modal(widget);
-declare function dialog_toast(text, duration);
-declare function dialog_info(text);
-declare function dialog_warn(text);
-declare function dialog_confirm(text);
-declare function dialog_t_get_prop_highlight(nativeObj);
-declare function dragger_create(parent, x, y, w, h);
-declare function dragger_cast(widget);
-declare function dragger_set_range(widget, x_min, y_min, x_max, y_max);
-declare function dragger_t_get_prop_x_min(nativeObj);
-declare function dragger_t_get_prop_y_min(nativeObj);
-declare function dragger_t_get_prop_x_max(nativeObj);
-declare function dragger_t_get_prop_y_max(nativeObj);
-declare function edit_create(parent, x, y, w, h);
-declare function edit_cast(widget);
-declare function edit_get_int(widget);
-declare function edit_get_double(widget);
-declare function edit_set_int(widget, value);
-declare function edit_set_double(widget, value);
-declare function edit_set_text_limit(widget, min, max);
-declare function edit_set_int_limit(widget, min, max, step);
-declare function edit_set_float_limit(widget, min, max, step);
-declare function edit_set_readonly(widget, readonly);
-declare function edit_set_auto_fix(widget, auto_fix);
-declare function edit_set_input_type(widget, type);
-declare function edit_set_input_tips(widget, tips);
-declare function edit_set_password_visible(widget, password_visible);
-declare function edit_set_focus(widget, focus);
-declare function edit_t_get_prop_readonly(nativeObj);
-declare function edit_t_get_prop_password_visible(nativeObj);
-declare function edit_t_get_prop_auto_fix(nativeObj);
-declare function edit_t_get_prop_top_margin(nativeObj);
-declare function edit_t_get_prop_bottom_margin(nativeObj);
-declare function edit_t_get_prop_left_margin(nativeObj);
-declare function edit_t_get_prop_right_margin(nativeObj);
-declare function edit_t_get_prop_tips(nativeObj);
-declare function edit_t_get_prop_focus(nativeObj);
-declare function grid_item_create(parent, x, y, w, h);
-declare function grid_item_cast(widget);
-declare function grid_create(parent, x, y, w, h);
-declare function grid_cast(widget);
-declare function group_box_create(parent, x, y, w, h);
-declare function group_box_cast(widget);
-declare function popup_create(parent, x, y, w, h);
-declare function popup_cast(widget);
-declare function popup_set_close_when_click(widget, close_when_click);
-declare function popup_set_close_when_click_outside(widget, close_when_click_outside);
-declare function popup_t_get_prop_close_when_click(nativeObj);
-declare function popup_t_get_prop_close_when_click_outside(nativeObj);
-declare function label_create(parent, x, y, w, h);
-declare function label_set_length(widget, length);
-declare function label_resize_to_content(widget, min_w, max_w, min_h, max_h);
-declare function label_cast(widget);
-declare function label_t_get_prop_length(nativeObj);
-declare function pages_create(parent, x, y, w, h);
-declare function pages_cast(widget);
-declare function pages_set_active(widget, index);
-declare function pages_set_active_by_name(widget, name);
-declare function pages_t_get_prop_active(nativeObj);
-declare function image_animation_create(parent, x, y, w, h);
-declare function image_animation_set_loop(widget, loop);
-declare function image_animation_set_image(widget, image);
-declare function image_animation_set_interval(widget, interval);
-declare function image_animation_set_delay(widget, delay);
-declare function image_animation_set_auto_play(widget, auto_play);
-declare function image_animation_set_sequence(widget, sequence);
-declare function image_animation_set_range_sequence(widget, start_index, end_index);
-declare function image_animation_play(widget);
-declare function image_animation_stop(widget);
-declare function image_animation_pause(widget);
-declare function image_animation_set_format(widget, format);
-declare function image_animation_set_unload_after_paint(widget, unload_after_paint);
-declare function image_animation_cast(widget);
-declare function image_animation_t_get_prop_image(nativeObj);
-declare function image_animation_t_get_prop_sequence(nativeObj);
-declare function image_animation_t_get_prop_start_index(nativeObj);
-declare function image_animation_t_get_prop_end_index(nativeObj);
-declare function image_animation_t_get_prop_loop(nativeObj);
-declare function image_animation_t_get_prop_auto_play(nativeObj);
-declare function image_animation_t_get_prop_unload_after_paint(nativeObj);
-declare function image_animation_t_get_prop_format(nativeObj);
-declare function image_animation_t_get_prop_interval(nativeObj);
-declare function image_animation_t_get_prop_delay(nativeObj);
-declare function image_create(parent, x, y, w, h);
-declare function image_set_draw_type(widget, draw_type);
-declare function image_cast(widget);
-declare function image_t_get_prop_draw_type(nativeObj);
-declare function svg_image_create(parent, x, y, w, h);
-declare function svg_image_cast(widget);
-declare function spin_box_create(parent, x, y, w, h);
-declare function spin_box_cast(widget);
-declare function object_default_create();
-declare function object_default_unref(obj);
-declare function object_default_t_get_prop_props_size(nativeObj);
-declare function gif_image_create(parent, x, y, w, h);
-declare function gif_image_cast(widget);
-declare function timer_info_cast(timer);
-declare function timer_info_t_get_prop_ctx(nativeObj);
-declare function timer_info_t_get_prop_id(nativeObj);
-declare function timer_info_t_get_prop_now(nativeObj);
-declare function timer_info_t_get_prop_user_changed_time(nativeObj);
-declare function idle_info_cast(idle);
-declare function idle_info_t_get_prop_ctx(nativeObj);
-declare function idle_info_t_get_prop_id(nativeObj);
-declare function system_bar_create(parent, x, y, w, h);
-declare function system_bar_cast(widget);
+var Module : any = Module || {}
+
+const tk_quit = Module.cwrap("tk_quit", 
+    "number", []);
+const asset_info_t_get_prop_type = Module.cwrap("asset_info_t_get_prop_type", 
+    "number", ["number"]);
+const asset_info_t_get_prop_subtype = Module.cwrap("asset_info_t_get_prop_subtype", 
+    "number", ["number"]);
+const asset_info_t_get_prop_is_in_rom = Module.cwrap("asset_info_t_get_prop_is_in_rom", 
+    "number", ["number"]);
+const asset_info_t_get_prop_size = Module.cwrap("asset_info_t_get_prop_size", 
+    "number", ["number"]);
+const asset_info_t_get_prop_refcount = Module.cwrap("asset_info_t_get_prop_refcount", 
+    "number", ["number"]);
+const asset_info_t_get_prop_name = Module.cwrap("asset_info_t_get_prop_name", 
+    "string", ["number"]);
+const assets_manager = Module.cwrap("assets_manager", 
+    "number", []);
+const assets_manager_ref = Module.cwrap("assets_manager_ref", 
+    "number", ["number","number","string"]);
+const assets_manager_unref = Module.cwrap("assets_manager_unref", 
+    "number", ["number","number"]);
+const get_BITMAP_FMT_NONE = Module.cwrap("get_BITMAP_FMT_NONE", 
+    "number", []);
+const get_BITMAP_FMT_RGBA8888 = Module.cwrap("get_BITMAP_FMT_RGBA8888", 
+    "number", []);
+const get_BITMAP_FMT_ABGR8888 = Module.cwrap("get_BITMAP_FMT_ABGR8888", 
+    "number", []);
+const get_BITMAP_FMT_BGRA8888 = Module.cwrap("get_BITMAP_FMT_BGRA8888", 
+    "number", []);
+const get_BITMAP_FMT_ARGB8888 = Module.cwrap("get_BITMAP_FMT_ARGB8888", 
+    "number", []);
+const get_BITMAP_FMT_RGB565 = Module.cwrap("get_BITMAP_FMT_RGB565", 
+    "number", []);
+const get_BITMAP_FMT_BGR565 = Module.cwrap("get_BITMAP_FMT_BGR565", 
+    "number", []);
+const get_BITMAP_FMT_RGB888 = Module.cwrap("get_BITMAP_FMT_RGB888", 
+    "number", []);
+const get_BITMAP_FMT_BGR888 = Module.cwrap("get_BITMAP_FMT_BGR888", 
+    "number", []);
+const get_BITMAP_FLAG_NONE = Module.cwrap("get_BITMAP_FLAG_NONE", 
+    "number", []);
+const get_BITMAP_FLAG_OPAQUE = Module.cwrap("get_BITMAP_FLAG_OPAQUE", 
+    "number", []);
+const get_BITMAP_FLAG_IMMUTABLE = Module.cwrap("get_BITMAP_FLAG_IMMUTABLE", 
+    "number", []);
+const get_BITMAP_FLAG_TEXTURE = Module.cwrap("get_BITMAP_FLAG_TEXTURE", 
+    "number", []);
+const get_BITMAP_FLAG_CHANGED = Module.cwrap("get_BITMAP_FLAG_CHANGED", 
+    "number", []);
+const bitmap_create = Module.cwrap("bitmap_create", 
+    "number", []);
+const bitmap_create_ex = Module.cwrap("bitmap_create_ex", 
+    "number", ["number","number","number","number"]);
+const bitmap_get_bpp = Module.cwrap("bitmap_get_bpp", 
+    "number", ["number"]);
+const bitmap_destroy = Module.cwrap("bitmap_destroy", 
+    "number", ["number"]);
+const bitmap_t_get_prop_w = Module.cwrap("bitmap_t_get_prop_w", 
+    "number", ["number"]);
+const bitmap_t_get_prop_h = Module.cwrap("bitmap_t_get_prop_h", 
+    "number", ["number"]);
+const bitmap_t_get_prop_line_length = Module.cwrap("bitmap_t_get_prop_line_length", 
+    "number", ["number"]);
+const bitmap_t_get_prop_flags = Module.cwrap("bitmap_t_get_prop_flags", 
+    "number", ["number"]);
+const bitmap_t_get_prop_format = Module.cwrap("bitmap_t_get_prop_format", 
+    "number", ["number"]);
+const bitmap_t_get_prop_name = Module.cwrap("bitmap_t_get_prop_name", 
+    "string", ["number"]);
+const get_IMAGE_DRAW_DEFAULT = Module.cwrap("get_IMAGE_DRAW_DEFAULT", 
+    "number", []);
+const get_IMAGE_DRAW_CENTER = Module.cwrap("get_IMAGE_DRAW_CENTER", 
+    "number", []);
+const get_IMAGE_DRAW_ICON = Module.cwrap("get_IMAGE_DRAW_ICON", 
+    "number", []);
+const get_IMAGE_DRAW_SCALE = Module.cwrap("get_IMAGE_DRAW_SCALE", 
+    "number", []);
+const get_IMAGE_DRAW_SCALE_AUTO = Module.cwrap("get_IMAGE_DRAW_SCALE_AUTO", 
+    "number", []);
+const get_IMAGE_DRAW_SCALE_DOWN = Module.cwrap("get_IMAGE_DRAW_SCALE_DOWN", 
+    "number", []);
+const get_IMAGE_DRAW_SCALE_W = Module.cwrap("get_IMAGE_DRAW_SCALE_W", 
+    "number", []);
+const get_IMAGE_DRAW_SCALE_H = Module.cwrap("get_IMAGE_DRAW_SCALE_H", 
+    "number", []);
+const get_IMAGE_DRAW_REPEAT = Module.cwrap("get_IMAGE_DRAW_REPEAT", 
+    "number", []);
+const get_IMAGE_DRAW_REPEAT_X = Module.cwrap("get_IMAGE_DRAW_REPEAT_X", 
+    "number", []);
+const get_IMAGE_DRAW_REPEAT_Y = Module.cwrap("get_IMAGE_DRAW_REPEAT_Y", 
+    "number", []);
+const get_IMAGE_DRAW_PATCH9 = Module.cwrap("get_IMAGE_DRAW_PATCH9", 
+    "number", []);
+const get_IMAGE_DRAW_PATCH3_X = Module.cwrap("get_IMAGE_DRAW_PATCH3_X", 
+    "number", []);
+const get_IMAGE_DRAW_PATCH3_Y = Module.cwrap("get_IMAGE_DRAW_PATCH3_Y", 
+    "number", []);
+const get_IMAGE_DRAW_PATCH3_X_SCALE_Y = Module.cwrap("get_IMAGE_DRAW_PATCH3_X_SCALE_Y", 
+    "number", []);
+const get_IMAGE_DRAW_PATCH3_Y_SCALE_X = Module.cwrap("get_IMAGE_DRAW_PATCH3_Y_SCALE_X", 
+    "number", []);
+const canvas_get_width = Module.cwrap("canvas_get_width", 
+    "number", ["number"]);
+const canvas_get_height = Module.cwrap("canvas_get_height", 
+    "number", ["number"]);
+const canvas_get_clip_rect = Module.cwrap("canvas_get_clip_rect", 
+    "number", ["number","number"]);
+const canvas_set_clip_rect = Module.cwrap("canvas_set_clip_rect", 
+    "number", ["number","number"]);
+const canvas_set_clip_rect_ex = Module.cwrap("canvas_set_clip_rect_ex", 
+    "number", ["number","number","number"]);
+const canvas_set_fill_color_str = Module.cwrap("canvas_set_fill_color_str", 
+    "number", ["number","string"]);
+const canvas_set_text_color_str = Module.cwrap("canvas_set_text_color_str", 
+    "number", ["number","string"]);
+const canvas_set_stroke_color_str = Module.cwrap("canvas_set_stroke_color_str", 
+    "number", ["number","string"]);
+const canvas_set_global_alpha = Module.cwrap("canvas_set_global_alpha", 
+    "number", ["number","number"]);
+const canvas_translate = Module.cwrap("canvas_translate", 
+    "number", ["number","number","number"]);
+const canvas_untranslate = Module.cwrap("canvas_untranslate", 
+    "number", ["number","number","number"]);
+const canvas_draw_vline = Module.cwrap("canvas_draw_vline", 
+    "number", ["number","number","number","number"]);
+const canvas_draw_hline = Module.cwrap("canvas_draw_hline", 
+    "number", ["number","number","number","number"]);
+const canvas_fill_rect = Module.cwrap("canvas_fill_rect", 
+    "number", ["number","number","number","number","number"]);
+const canvas_stroke_rect = Module.cwrap("canvas_stroke_rect", 
+    "number", ["number","number","number","number","number"]);
+const canvas_set_font = Module.cwrap("canvas_set_font", 
+    "number", ["number","string","number"]);
+const canvas_measure_utf8 = Module.cwrap("canvas_measure_utf8", 
+    "number", ["number","string"]);
+const canvas_draw_utf8 = Module.cwrap("canvas_draw_utf8", 
+    "number", ["number","string","number","number"]);
+const canvas_draw_utf8_in_rect = Module.cwrap("canvas_draw_utf8_in_rect", 
+    "number", ["number","string","number"]);
+const canvas_draw_icon = Module.cwrap("canvas_draw_icon", 
+    "number", ["number","number","number","number"]);
+const canvas_draw_image = Module.cwrap("canvas_draw_image", 
+    "number", ["number","number","number","number"]);
+const canvas_get_vgcanvas = Module.cwrap("canvas_get_vgcanvas", 
+    "number", ["number"]);
+const canvas_cast = Module.cwrap("canvas_cast", 
+    "number", ["number"]);
+const canvas_t_get_prop_ox = Module.cwrap("canvas_t_get_prop_ox", 
+    "number", ["number"]);
+const canvas_t_get_prop_oy = Module.cwrap("canvas_t_get_prop_oy", 
+    "number", ["number"]);
+const get_CLIP_BOARD_DATA_TYPE_NONE = Module.cwrap("get_CLIP_BOARD_DATA_TYPE_NONE", 
+    "number", []);
+const get_CLIP_BOARD_DATA_TYPE_TEXT = Module.cwrap("get_CLIP_BOARD_DATA_TYPE_TEXT", 
+    "number", []);
+const clip_board_set_text = Module.cwrap("clip_board_set_text", 
+    "number", ["string"]);
+const clip_board_get_text = Module.cwrap("clip_board_get_text", 
+    "string", []);
+const get_EVT_POINTER_DOWN = Module.cwrap("get_EVT_POINTER_DOWN", 
+    "number", []);
+const get_EVT_POINTER_DOWN_ABORT = Module.cwrap("get_EVT_POINTER_DOWN_ABORT", 
+    "number", []);
+const get_EVT_POINTER_MOVE = Module.cwrap("get_EVT_POINTER_MOVE", 
+    "number", []);
+const get_EVT_POINTER_UP = Module.cwrap("get_EVT_POINTER_UP", 
+    "number", []);
+const get_EVT_WHEEL = Module.cwrap("get_EVT_WHEEL", 
+    "number", []);
+const get_EVT_CONTEXT_MENU = Module.cwrap("get_EVT_CONTEXT_MENU", 
+    "number", []);
+const get_EVT_POINTER_ENTER = Module.cwrap("get_EVT_POINTER_ENTER", 
+    "number", []);
+const get_EVT_POINTER_LEAVE = Module.cwrap("get_EVT_POINTER_LEAVE", 
+    "number", []);
+const get_EVT_LONG_PRESS = Module.cwrap("get_EVT_LONG_PRESS", 
+    "number", []);
+const get_EVT_CLICK = Module.cwrap("get_EVT_CLICK", 
+    "number", []);
+const get_EVT_FOCUS = Module.cwrap("get_EVT_FOCUS", 
+    "number", []);
+const get_EVT_BLUR = Module.cwrap("get_EVT_BLUR", 
+    "number", []);
+const get_EVT_KEY_DOWN = Module.cwrap("get_EVT_KEY_DOWN", 
+    "number", []);
+const get_EVT_KEY_REPEAT = Module.cwrap("get_EVT_KEY_REPEAT", 
+    "number", []);
+const get_EVT_KEY_UP = Module.cwrap("get_EVT_KEY_UP", 
+    "number", []);
+const get_EVT_WILL_MOVE = Module.cwrap("get_EVT_WILL_MOVE", 
+    "number", []);
+const get_EVT_MOVE = Module.cwrap("get_EVT_MOVE", 
+    "number", []);
+const get_EVT_WILL_RESIZE = Module.cwrap("get_EVT_WILL_RESIZE", 
+    "number", []);
+const get_EVT_RESIZE = Module.cwrap("get_EVT_RESIZE", 
+    "number", []);
+const get_EVT_WILL_MOVE_RESIZE = Module.cwrap("get_EVT_WILL_MOVE_RESIZE", 
+    "number", []);
+const get_EVT_MOVE_RESIZE = Module.cwrap("get_EVT_MOVE_RESIZE", 
+    "number", []);
+const get_EVT_VALUE_WILL_CHANGE = Module.cwrap("get_EVT_VALUE_WILL_CHANGE", 
+    "number", []);
+const get_EVT_VALUE_CHANGED = Module.cwrap("get_EVT_VALUE_CHANGED", 
+    "number", []);
+const get_EVT_VALUE_CHANGING = Module.cwrap("get_EVT_VALUE_CHANGING", 
+    "number", []);
+const get_EVT_PAINT = Module.cwrap("get_EVT_PAINT", 
+    "number", []);
+const get_EVT_BEFORE_PAINT = Module.cwrap("get_EVT_BEFORE_PAINT", 
+    "number", []);
+const get_EVT_AFTER_PAINT = Module.cwrap("get_EVT_AFTER_PAINT", 
+    "number", []);
+const get_EVT_PAINT_DONE = Module.cwrap("get_EVT_PAINT_DONE", 
+    "number", []);
+const get_EVT_LOCALE_CHANGED = Module.cwrap("get_EVT_LOCALE_CHANGED", 
+    "number", []);
+const get_EVT_ANIM_START = Module.cwrap("get_EVT_ANIM_START", 
+    "number", []);
+const get_EVT_ANIM_STOP = Module.cwrap("get_EVT_ANIM_STOP", 
+    "number", []);
+const get_EVT_ANIM_PAUSE = Module.cwrap("get_EVT_ANIM_PAUSE", 
+    "number", []);
+const get_EVT_ANIM_ONCE = Module.cwrap("get_EVT_ANIM_ONCE", 
+    "number", []);
+const get_EVT_ANIM_END = Module.cwrap("get_EVT_ANIM_END", 
+    "number", []);
+const get_EVT_WINDOW_LOAD = Module.cwrap("get_EVT_WINDOW_LOAD", 
+    "number", []);
+const get_EVT_WINDOW_WILL_OPEN = Module.cwrap("get_EVT_WINDOW_WILL_OPEN", 
+    "number", []);
+const get_EVT_WINDOW_OPEN = Module.cwrap("get_EVT_WINDOW_OPEN", 
+    "number", []);
+const get_EVT_WINDOW_CLOSE = Module.cwrap("get_EVT_WINDOW_CLOSE", 
+    "number", []);
+const get_EVT_REQUEST_CLOSE_WINDOW = Module.cwrap("get_EVT_REQUEST_CLOSE_WINDOW", 
+    "number", []);
+const get_EVT_TOP_WINDOW_CHANGED = Module.cwrap("get_EVT_TOP_WINDOW_CHANGED", 
+    "number", []);
+const get_EVT_IM_COMMIT = Module.cwrap("get_EVT_IM_COMMIT", 
+    "number", []);
+const get_EVT_IM_SHOW_CANDIDATES = Module.cwrap("get_EVT_IM_SHOW_CANDIDATES", 
+    "number", []);
+const get_EVT_IM_ACTION = Module.cwrap("get_EVT_IM_ACTION", 
+    "number", []);
+const get_EVT_IM_ACTION_INFO = Module.cwrap("get_EVT_IM_ACTION_INFO", 
+    "number", []);
+const get_EVT_DRAG_START = Module.cwrap("get_EVT_DRAG_START", 
+    "number", []);
+const get_EVT_DRAG = Module.cwrap("get_EVT_DRAG", 
+    "number", []);
+const get_EVT_DRAG_END = Module.cwrap("get_EVT_DRAG_END", 
+    "number", []);
+const get_EVT_SCREEN_SAVER = Module.cwrap("get_EVT_SCREEN_SAVER", 
+    "number", []);
+const get_EVT_REQ_START = Module.cwrap("get_EVT_REQ_START", 
+    "number", []);
+const get_EVT_USER_START = Module.cwrap("get_EVT_USER_START", 
+    "number", []);
+const font_manager_unload_font = Module.cwrap("font_manager_unload_font", 
+    "number", ["number","string","number"]);
+const idle_add = Module.cwrap("idle_add", 
+    "number", ["number","number"]);
+const idle_remove = Module.cwrap("idle_remove", 
+    "number", ["number"]);
+const image_manager = Module.cwrap("image_manager", 
+    "number", []);
+const image_manager_get_bitmap = Module.cwrap("image_manager_get_bitmap", 
+    "number", ["number","string","number"]);
+const get_INPUT_TEXT = Module.cwrap("get_INPUT_TEXT", 
+    "number", []);
+const get_INPUT_INT = Module.cwrap("get_INPUT_INT", 
+    "number", []);
+const get_INPUT_UINT = Module.cwrap("get_INPUT_UINT", 
+    "number", []);
+const get_INPUT_HEX = Module.cwrap("get_INPUT_HEX", 
+    "number", []);
+const get_INPUT_FLOAT = Module.cwrap("get_INPUT_FLOAT", 
+    "number", []);
+const get_INPUT_UFLOAT = Module.cwrap("get_INPUT_UFLOAT", 
+    "number", []);
+const get_INPUT_EMAIL = Module.cwrap("get_INPUT_EMAIL", 
+    "number", []);
+const get_INPUT_PASSWORD = Module.cwrap("get_INPUT_PASSWORD", 
+    "number", []);
+const get_INPUT_PHONE = Module.cwrap("get_INPUT_PHONE", 
+    "number", []);
+const get_INPUT_CUSTOM = Module.cwrap("get_INPUT_CUSTOM", 
+    "number", []);
+const input_method_commit_text = Module.cwrap("input_method_commit_text", 
+    "number", ["number","string"]);
+const input_method_dispatch_key = Module.cwrap("input_method_dispatch_key", 
+    "number", ["number","number"]);
+const input_method = Module.cwrap("input_method", 
+    "number", []);
+const get_TK_KEY_RETURN = Module.cwrap("get_TK_KEY_RETURN", 
+    "number", []);
+const get_TK_KEY_ESCAPE = Module.cwrap("get_TK_KEY_ESCAPE", 
+    "number", []);
+const get_TK_KEY_BACKSPACE = Module.cwrap("get_TK_KEY_BACKSPACE", 
+    "number", []);
+const get_TK_KEY_TAB = Module.cwrap("get_TK_KEY_TAB", 
+    "number", []);
+const get_TK_KEY_SPACE = Module.cwrap("get_TK_KEY_SPACE", 
+    "number", []);
+const get_TK_KEY_EXCLAIM = Module.cwrap("get_TK_KEY_EXCLAIM", 
+    "number", []);
+const get_TK_KEY_QUOTEDBL = Module.cwrap("get_TK_KEY_QUOTEDBL", 
+    "number", []);
+const get_TK_KEY_HASH = Module.cwrap("get_TK_KEY_HASH", 
+    "number", []);
+const get_TK_KEY_PERCENT = Module.cwrap("get_TK_KEY_PERCENT", 
+    "number", []);
+const get_TK_KEY_DOLLAR = Module.cwrap("get_TK_KEY_DOLLAR", 
+    "number", []);
+const get_TK_KEY_AMPERSAND = Module.cwrap("get_TK_KEY_AMPERSAND", 
+    "number", []);
+const get_TK_KEY_QUOTE = Module.cwrap("get_TK_KEY_QUOTE", 
+    "number", []);
+const get_TK_KEY_LEFTPAREN = Module.cwrap("get_TK_KEY_LEFTPAREN", 
+    "number", []);
+const get_TK_KEY_RIGHTPAREN = Module.cwrap("get_TK_KEY_RIGHTPAREN", 
+    "number", []);
+const get_TK_KEY_ASTERISK = Module.cwrap("get_TK_KEY_ASTERISK", 
+    "number", []);
+const get_TK_KEY_PLUS = Module.cwrap("get_TK_KEY_PLUS", 
+    "number", []);
+const get_TK_KEY_COMMA = Module.cwrap("get_TK_KEY_COMMA", 
+    "number", []);
+const get_TK_KEY_MINUS = Module.cwrap("get_TK_KEY_MINUS", 
+    "number", []);
+const get_TK_KEY_PERIOD = Module.cwrap("get_TK_KEY_PERIOD", 
+    "number", []);
+const get_TK_KEY_SLASH = Module.cwrap("get_TK_KEY_SLASH", 
+    "number", []);
+const get_TK_KEY_0 = Module.cwrap("get_TK_KEY_0", 
+    "number", []);
+const get_TK_KEY_1 = Module.cwrap("get_TK_KEY_1", 
+    "number", []);
+const get_TK_KEY_2 = Module.cwrap("get_TK_KEY_2", 
+    "number", []);
+const get_TK_KEY_3 = Module.cwrap("get_TK_KEY_3", 
+    "number", []);
+const get_TK_KEY_4 = Module.cwrap("get_TK_KEY_4", 
+    "number", []);
+const get_TK_KEY_5 = Module.cwrap("get_TK_KEY_5", 
+    "number", []);
+const get_TK_KEY_6 = Module.cwrap("get_TK_KEY_6", 
+    "number", []);
+const get_TK_KEY_7 = Module.cwrap("get_TK_KEY_7", 
+    "number", []);
+const get_TK_KEY_8 = Module.cwrap("get_TK_KEY_8", 
+    "number", []);
+const get_TK_KEY_9 = Module.cwrap("get_TK_KEY_9", 
+    "number", []);
+const get_TK_KEY_COLON = Module.cwrap("get_TK_KEY_COLON", 
+    "number", []);
+const get_TK_KEY_SEMICOLON = Module.cwrap("get_TK_KEY_SEMICOLON", 
+    "number", []);
+const get_TK_KEY_LESS = Module.cwrap("get_TK_KEY_LESS", 
+    "number", []);
+const get_TK_KEY_EQUAL = Module.cwrap("get_TK_KEY_EQUAL", 
+    "number", []);
+const get_TK_KEY_GREATER = Module.cwrap("get_TK_KEY_GREATER", 
+    "number", []);
+const get_TK_KEY_QUESTION = Module.cwrap("get_TK_KEY_QUESTION", 
+    "number", []);
+const get_TK_KEY_AT = Module.cwrap("get_TK_KEY_AT", 
+    "number", []);
+const get_TK_KEY_LEFTBRACKET = Module.cwrap("get_TK_KEY_LEFTBRACKET", 
+    "number", []);
+const get_TK_KEY_BACKSLASH = Module.cwrap("get_TK_KEY_BACKSLASH", 
+    "number", []);
+const get_TK_KEY_RIGHTBRACKET = Module.cwrap("get_TK_KEY_RIGHTBRACKET", 
+    "number", []);
+const get_TK_KEY_CARET = Module.cwrap("get_TK_KEY_CARET", 
+    "number", []);
+const get_TK_KEY_UNDERSCORE = Module.cwrap("get_TK_KEY_UNDERSCORE", 
+    "number", []);
+const get_TK_KEY_BACKQUOTE = Module.cwrap("get_TK_KEY_BACKQUOTE", 
+    "number", []);
+const get_TK_KEY_a = Module.cwrap("get_TK_KEY_a", 
+    "number", []);
+const get_TK_KEY_b = Module.cwrap("get_TK_KEY_b", 
+    "number", []);
+const get_TK_KEY_c = Module.cwrap("get_TK_KEY_c", 
+    "number", []);
+const get_TK_KEY_d = Module.cwrap("get_TK_KEY_d", 
+    "number", []);
+const get_TK_KEY_e = Module.cwrap("get_TK_KEY_e", 
+    "number", []);
+const get_TK_KEY_f = Module.cwrap("get_TK_KEY_f", 
+    "number", []);
+const get_TK_KEY_g = Module.cwrap("get_TK_KEY_g", 
+    "number", []);
+const get_TK_KEY_h = Module.cwrap("get_TK_KEY_h", 
+    "number", []);
+const get_TK_KEY_i = Module.cwrap("get_TK_KEY_i", 
+    "number", []);
+const get_TK_KEY_j = Module.cwrap("get_TK_KEY_j", 
+    "number", []);
+const get_TK_KEY_k = Module.cwrap("get_TK_KEY_k", 
+    "number", []);
+const get_TK_KEY_l = Module.cwrap("get_TK_KEY_l", 
+    "number", []);
+const get_TK_KEY_m = Module.cwrap("get_TK_KEY_m", 
+    "number", []);
+const get_TK_KEY_n = Module.cwrap("get_TK_KEY_n", 
+    "number", []);
+const get_TK_KEY_o = Module.cwrap("get_TK_KEY_o", 
+    "number", []);
+const get_TK_KEY_p = Module.cwrap("get_TK_KEY_p", 
+    "number", []);
+const get_TK_KEY_q = Module.cwrap("get_TK_KEY_q", 
+    "number", []);
+const get_TK_KEY_r = Module.cwrap("get_TK_KEY_r", 
+    "number", []);
+const get_TK_KEY_s = Module.cwrap("get_TK_KEY_s", 
+    "number", []);
+const get_TK_KEY_t = Module.cwrap("get_TK_KEY_t", 
+    "number", []);
+const get_TK_KEY_u = Module.cwrap("get_TK_KEY_u", 
+    "number", []);
+const get_TK_KEY_v = Module.cwrap("get_TK_KEY_v", 
+    "number", []);
+const get_TK_KEY_w = Module.cwrap("get_TK_KEY_w", 
+    "number", []);
+const get_TK_KEY_x = Module.cwrap("get_TK_KEY_x", 
+    "number", []);
+const get_TK_KEY_y = Module.cwrap("get_TK_KEY_y", 
+    "number", []);
+const get_TK_KEY_z = Module.cwrap("get_TK_KEY_z", 
+    "number", []);
+const get_TK_KEY_A = Module.cwrap("get_TK_KEY_A", 
+    "number", []);
+const get_TK_KEY_B = Module.cwrap("get_TK_KEY_B", 
+    "number", []);
+const get_TK_KEY_C = Module.cwrap("get_TK_KEY_C", 
+    "number", []);
+const get_TK_KEY_D = Module.cwrap("get_TK_KEY_D", 
+    "number", []);
+const get_TK_KEY_E = Module.cwrap("get_TK_KEY_E", 
+    "number", []);
+const get_TK_KEY_F = Module.cwrap("get_TK_KEY_F", 
+    "number", []);
+const get_TK_KEY_G = Module.cwrap("get_TK_KEY_G", 
+    "number", []);
+const get_TK_KEY_H = Module.cwrap("get_TK_KEY_H", 
+    "number", []);
+const get_TK_KEY_I = Module.cwrap("get_TK_KEY_I", 
+    "number", []);
+const get_TK_KEY_J = Module.cwrap("get_TK_KEY_J", 
+    "number", []);
+const get_TK_KEY_K = Module.cwrap("get_TK_KEY_K", 
+    "number", []);
+const get_TK_KEY_L = Module.cwrap("get_TK_KEY_L", 
+    "number", []);
+const get_TK_KEY_M = Module.cwrap("get_TK_KEY_M", 
+    "number", []);
+const get_TK_KEY_N = Module.cwrap("get_TK_KEY_N", 
+    "number", []);
+const get_TK_KEY_O = Module.cwrap("get_TK_KEY_O", 
+    "number", []);
+const get_TK_KEY_P = Module.cwrap("get_TK_KEY_P", 
+    "number", []);
+const get_TK_KEY_Q = Module.cwrap("get_TK_KEY_Q", 
+    "number", []);
+const get_TK_KEY_R = Module.cwrap("get_TK_KEY_R", 
+    "number", []);
+const get_TK_KEY_S = Module.cwrap("get_TK_KEY_S", 
+    "number", []);
+const get_TK_KEY_T = Module.cwrap("get_TK_KEY_T", 
+    "number", []);
+const get_TK_KEY_U = Module.cwrap("get_TK_KEY_U", 
+    "number", []);
+const get_TK_KEY_V = Module.cwrap("get_TK_KEY_V", 
+    "number", []);
+const get_TK_KEY_W = Module.cwrap("get_TK_KEY_W", 
+    "number", []);
+const get_TK_KEY_X = Module.cwrap("get_TK_KEY_X", 
+    "number", []);
+const get_TK_KEY_Y = Module.cwrap("get_TK_KEY_Y", 
+    "number", []);
+const get_TK_KEY_Z = Module.cwrap("get_TK_KEY_Z", 
+    "number", []);
+const get_TK_KEY_DOT = Module.cwrap("get_TK_KEY_DOT", 
+    "number", []);
+const get_TK_KEY_DELETE = Module.cwrap("get_TK_KEY_DELETE", 
+    "number", []);
+const get_TK_KEY_LEFTBRACE = Module.cwrap("get_TK_KEY_LEFTBRACE", 
+    "number", []);
+const get_TK_KEY_RIGHTBRACE = Module.cwrap("get_TK_KEY_RIGHTBRACE", 
+    "number", []);
+const locale_info = Module.cwrap("locale_info", 
+    "number", []);
+const locale_info_tr = Module.cwrap("locale_info_tr", 
+    "string", ["number","string"]);
+const locale_info_change = Module.cwrap("locale_info_change", 
+    "number", ["number","string","string"]);
+const locale_info_on = Module.cwrap("locale_info_on", 
+    "number", ["number","number","number","number"]);
+const locale_info_off = Module.cwrap("locale_info_off", 
+    "number", ["number","number"]);
+const get_STYLE_ID_BG_COLOR = Module.cwrap("get_STYLE_ID_BG_COLOR", 
+    "string", []);
+const get_STYLE_ID_FG_COLOR = Module.cwrap("get_STYLE_ID_FG_COLOR", 
+    "string", []);
+const get_STYLE_ID_MASK_COLOR = Module.cwrap("get_STYLE_ID_MASK_COLOR", 
+    "string", []);
+const get_STYLE_ID_FONT_NAME = Module.cwrap("get_STYLE_ID_FONT_NAME", 
+    "string", []);
+const get_STYLE_ID_FONT_SIZE = Module.cwrap("get_STYLE_ID_FONT_SIZE", 
+    "string", []);
+const get_STYLE_ID_FONT_STYLE = Module.cwrap("get_STYLE_ID_FONT_STYLE", 
+    "string", []);
+const get_STYLE_ID_TEXT_COLOR = Module.cwrap("get_STYLE_ID_TEXT_COLOR", 
+    "string", []);
+const get_STYLE_ID_TIPS_TEXT_COLOR = Module.cwrap("get_STYLE_ID_TIPS_TEXT_COLOR", 
+    "string", []);
+const get_STYLE_ID_TEXT_ALIGN_H = Module.cwrap("get_STYLE_ID_TEXT_ALIGN_H", 
+    "string", []);
+const get_STYLE_ID_TEXT_ALIGN_V = Module.cwrap("get_STYLE_ID_TEXT_ALIGN_V", 
+    "string", []);
+const get_STYLE_ID_BORDER_COLOR = Module.cwrap("get_STYLE_ID_BORDER_COLOR", 
+    "string", []);
+const get_STYLE_ID_BORDER = Module.cwrap("get_STYLE_ID_BORDER", 
+    "string", []);
+const get_STYLE_ID_BG_IMAGE = Module.cwrap("get_STYLE_ID_BG_IMAGE", 
+    "string", []);
+const get_STYLE_ID_BG_IMAGE_DRAW_TYPE = Module.cwrap("get_STYLE_ID_BG_IMAGE_DRAW_TYPE", 
+    "string", []);
+const get_STYLE_ID_ICON = Module.cwrap("get_STYLE_ID_ICON", 
+    "string", []);
+const get_STYLE_ID_FG_IMAGE = Module.cwrap("get_STYLE_ID_FG_IMAGE", 
+    "string", []);
+const get_STYLE_ID_FG_IMAGE_DRAW_TYPE = Module.cwrap("get_STYLE_ID_FG_IMAGE_DRAW_TYPE", 
+    "string", []);
+const get_STYLE_ID_MARGIN = Module.cwrap("get_STYLE_ID_MARGIN", 
+    "string", []);
+const get_STYLE_ID_ICON_AT = Module.cwrap("get_STYLE_ID_ICON_AT", 
+    "string", []);
+const get_STYLE_ID_ACTIVE_ICON = Module.cwrap("get_STYLE_ID_ACTIVE_ICON", 
+    "string", []);
+const get_STYLE_ID_X_OFFSET = Module.cwrap("get_STYLE_ID_X_OFFSET", 
+    "string", []);
+const get_STYLE_ID_Y_OFFSET = Module.cwrap("get_STYLE_ID_Y_OFFSET", 
+    "string", []);
+const get_STYLE_ID_SELECTED_BG_COLOR = Module.cwrap("get_STYLE_ID_SELECTED_BG_COLOR", 
+    "string", []);
+const get_STYLE_ID_SELECTED_FG_COLOR = Module.cwrap("get_STYLE_ID_SELECTED_FG_COLOR", 
+    "string", []);
+const get_STYLE_ID_SELECTED_TEXT_COLOR = Module.cwrap("get_STYLE_ID_SELECTED_TEXT_COLOR", 
+    "string", []);
+const get_STYLE_ID_ROUND_RADIUS = Module.cwrap("get_STYLE_ID_ROUND_RADIUS", 
+    "string", []);
+const style_notify_widget_state_changed = Module.cwrap("style_notify_widget_state_changed", 
+    "number", ["number","number"]);
+const style_is_valid = Module.cwrap("style_is_valid", 
+    "number", ["number"]);
+const style_get_int = Module.cwrap("style_get_int", 
+    "number", ["number","string","number"]);
+const style_get_str = Module.cwrap("style_get_str", 
+    "string", ["number","string","string"]);
+const theme = Module.cwrap("theme", 
+    "number", []);
+const timer_add = Module.cwrap("timer_add", 
+    "number", ["number","number","number"]);
+const timer_remove = Module.cwrap("timer_remove", 
+    "number", ["number"]);
+const timer_reset = Module.cwrap("timer_reset", 
+    "number", ["number"]);
+const get_ALIGN_V_NONE = Module.cwrap("get_ALIGN_V_NONE", 
+    "number", []);
+const get_ALIGN_V_MIDDLE = Module.cwrap("get_ALIGN_V_MIDDLE", 
+    "number", []);
+const get_ALIGN_V_TOP = Module.cwrap("get_ALIGN_V_TOP", 
+    "number", []);
+const get_ALIGN_V_BOTTOM = Module.cwrap("get_ALIGN_V_BOTTOM", 
+    "number", []);
+const get_ALIGN_H_NONE = Module.cwrap("get_ALIGN_H_NONE", 
+    "number", []);
+const get_ALIGN_H_CENTER = Module.cwrap("get_ALIGN_H_CENTER", 
+    "number", []);
+const get_ALIGN_H_LEFT = Module.cwrap("get_ALIGN_H_LEFT", 
+    "number", []);
+const get_ALIGN_H_RIGHT = Module.cwrap("get_ALIGN_H_RIGHT", 
+    "number", []);
+const vgcanvas_cast = Module.cwrap("vgcanvas_cast", 
+    "number", ["number"]);
+const vgcanvas_flush = Module.cwrap("vgcanvas_flush", 
+    "number", ["number"]);
+const vgcanvas_begin_path = Module.cwrap("vgcanvas_begin_path", 
+    "number", ["number"]);
+const vgcanvas_move_to = Module.cwrap("vgcanvas_move_to", 
+    "number", ["number","number","number"]);
+const vgcanvas_line_to = Module.cwrap("vgcanvas_line_to", 
+    "number", ["number","number","number"]);
+const vgcanvas_quad_to = Module.cwrap("vgcanvas_quad_to", 
+    "number", ["number","number","number","number","number"]);
+const vgcanvas_bezier_to = Module.cwrap("vgcanvas_bezier_to", 
+    "number", ["number","number","number","number","number","number","number"]);
+const vgcanvas_arc_to = Module.cwrap("vgcanvas_arc_to", 
+    "number", ["number","number","number","number","number","number"]);
+const vgcanvas_arc = Module.cwrap("vgcanvas_arc", 
+    "number", ["number","number","number","number","number","number","number"]);
+const vgcanvas_is_point_in_path = Module.cwrap("vgcanvas_is_point_in_path", 
+    "number", ["number","number","number"]);
+const vgcanvas_rect = Module.cwrap("vgcanvas_rect", 
+    "number", ["number","number","number","number","number"]);
+const vgcanvas_rounded_rect = Module.cwrap("vgcanvas_rounded_rect", 
+    "number", ["number","number","number","number","number","number"]);
+const vgcanvas_ellipse = Module.cwrap("vgcanvas_ellipse", 
+    "number", ["number","number","number","number","number"]);
+const vgcanvas_close_path = Module.cwrap("vgcanvas_close_path", 
+    "number", ["number"]);
+const vgcanvas_rotate = Module.cwrap("vgcanvas_rotate", 
+    "number", ["number","number"]);
+const vgcanvas_scale = Module.cwrap("vgcanvas_scale", 
+    "number", ["number","number","number"]);
+const vgcanvas_translate = Module.cwrap("vgcanvas_translate", 
+    "number", ["number","number","number"]);
+const vgcanvas_transform = Module.cwrap("vgcanvas_transform", 
+    "number", ["number","number","number","number","number","number","number"]);
+const vgcanvas_set_transform = Module.cwrap("vgcanvas_set_transform", 
+    "number", ["number","number","number","number","number","number","number"]);
+const vgcanvas_clip_rect = Module.cwrap("vgcanvas_clip_rect", 
+    "number", ["number","number","number","number","number"]);
+const vgcanvas_fill = Module.cwrap("vgcanvas_fill", 
+    "number", ["number"]);
+const vgcanvas_stroke = Module.cwrap("vgcanvas_stroke", 
+    "number", ["number"]);
+const vgcanvas_paint = Module.cwrap("vgcanvas_paint", 
+    "number", ["number","number","number"]);
+const vgcanvas_set_font = Module.cwrap("vgcanvas_set_font", 
+    "number", ["number","string"]);
+const vgcanvas_set_font_size = Module.cwrap("vgcanvas_set_font_size", 
+    "number", ["number","number"]);
+const vgcanvas_set_text_align = Module.cwrap("vgcanvas_set_text_align", 
+    "number", ["number","string"]);
+const vgcanvas_set_text_baseline = Module.cwrap("vgcanvas_set_text_baseline", 
+    "number", ["number","string"]);
+const vgcanvas_fill_text = Module.cwrap("vgcanvas_fill_text", 
+    "number", ["number","string","number","number","number"]);
+const vgcanvas_measure_text = Module.cwrap("vgcanvas_measure_text", 
+    "number", ["number","string"]);
+const vgcanvas_draw_image = Module.cwrap("vgcanvas_draw_image", 
+    "number", ["number","number","number","number","number","number","number","number","number","number"]);
+const vgcanvas_draw_icon = Module.cwrap("vgcanvas_draw_icon", 
+    "number", ["number","number","number","number","number","number","number","number","number","number"]);
+const vgcanvas_set_antialias = Module.cwrap("vgcanvas_set_antialias", 
+    "number", ["number","number"]);
+const vgcanvas_set_global_alpha = Module.cwrap("vgcanvas_set_global_alpha", 
+    "number", ["number","number"]);
+const vgcanvas_set_line_width = Module.cwrap("vgcanvas_set_line_width", 
+    "number", ["number","number"]);
+const vgcanvas_set_fill_color_str = Module.cwrap("vgcanvas_set_fill_color_str", 
+    "number", ["number","string"]);
+const vgcanvas_set_stroke_color_str = Module.cwrap("vgcanvas_set_stroke_color_str", 
+    "number", ["number","string"]);
+const vgcanvas_set_line_cap = Module.cwrap("vgcanvas_set_line_cap", 
+    "number", ["number","string"]);
+const vgcanvas_set_line_join = Module.cwrap("vgcanvas_set_line_join", 
+    "number", ["number","string"]);
+const vgcanvas_set_miter_limit = Module.cwrap("vgcanvas_set_miter_limit", 
+    "number", ["number","number"]);
+const vgcanvas_save = Module.cwrap("vgcanvas_save", 
+    "number", ["number"]);
+const vgcanvas_restore = Module.cwrap("vgcanvas_restore", 
+    "number", ["number"]);
+const vgcanvas_t_get_prop_w = Module.cwrap("vgcanvas_t_get_prop_w", 
+    "number", ["number"]);
+const vgcanvas_t_get_prop_h = Module.cwrap("vgcanvas_t_get_prop_h", 
+    "number", ["number"]);
+const vgcanvas_t_get_prop_ratio = Module.cwrap("vgcanvas_t_get_prop_ratio", 
+    "number", ["number"]);
+const vgcanvas_t_get_prop_anti_alias = Module.cwrap("vgcanvas_t_get_prop_anti_alias", 
+    "number", ["number"]);
+const vgcanvas_t_get_prop_line_width = Module.cwrap("vgcanvas_t_get_prop_line_width", 
+    "number", ["number"]);
+const vgcanvas_t_get_prop_global_alpha = Module.cwrap("vgcanvas_t_get_prop_global_alpha", 
+    "number", ["number"]);
+const vgcanvas_t_get_prop_miter_limit = Module.cwrap("vgcanvas_t_get_prop_miter_limit", 
+    "number", ["number"]);
+const vgcanvas_t_get_prop_line_cap = Module.cwrap("vgcanvas_t_get_prop_line_cap", 
+    "string", ["number"]);
+const vgcanvas_t_get_prop_line_join = Module.cwrap("vgcanvas_t_get_prop_line_join", 
+    "string", ["number"]);
+const vgcanvas_t_get_prop_font = Module.cwrap("vgcanvas_t_get_prop_font", 
+    "string", ["number"]);
+const vgcanvas_t_get_prop_font_size = Module.cwrap("vgcanvas_t_get_prop_font_size", 
+    "number", ["number"]);
+const vgcanvas_t_get_prop_text_align = Module.cwrap("vgcanvas_t_get_prop_text_align", 
+    "string", ["number"]);
+const vgcanvas_t_get_prop_text_baseline = Module.cwrap("vgcanvas_t_get_prop_text_baseline", 
+    "string", ["number"]);
+const get_WIDGET_PROP_X = Module.cwrap("get_WIDGET_PROP_X", 
+    "string", []);
+const get_WIDGET_PROP_Y = Module.cwrap("get_WIDGET_PROP_Y", 
+    "string", []);
+const get_WIDGET_PROP_W = Module.cwrap("get_WIDGET_PROP_W", 
+    "string", []);
+const get_WIDGET_PROP_H = Module.cwrap("get_WIDGET_PROP_H", 
+    "string", []);
+const get_WIDGET_PROP_HIGHLIGHT = Module.cwrap("get_WIDGET_PROP_HIGHLIGHT", 
+    "string", []);
+const get_WIDGET_PROP_BAR_SIZE = Module.cwrap("get_WIDGET_PROP_BAR_SIZE", 
+    "string", []);
+const get_WIDGET_PROP_OPACITY = Module.cwrap("get_WIDGET_PROP_OPACITY", 
+    "string", []);
+const get_WIDGET_PROP_MIN_W = Module.cwrap("get_WIDGET_PROP_MIN_W", 
+    "string", []);
+const get_WIDGET_PROP_MAX_W = Module.cwrap("get_WIDGET_PROP_MAX_W", 
+    "string", []);
+const get_WIDGET_PROP_CHILDREN_LAYOUT = Module.cwrap("get_WIDGET_PROP_CHILDREN_LAYOUT", 
+    "string", []);
+const get_WIDGET_PROP_LAYOUT = Module.cwrap("get_WIDGET_PROP_LAYOUT", 
+    "string", []);
+const get_WIDGET_PROP_SELF_LAYOUT = Module.cwrap("get_WIDGET_PROP_SELF_LAYOUT", 
+    "string", []);
+const get_WIDGET_PROP_LAYOUT_W = Module.cwrap("get_WIDGET_PROP_LAYOUT_W", 
+    "string", []);
+const get_WIDGET_PROP_LAYOUT_H = Module.cwrap("get_WIDGET_PROP_LAYOUT_H", 
+    "string", []);
+const get_WIDGET_PROP_VIRTUAL_W = Module.cwrap("get_WIDGET_PROP_VIRTUAL_W", 
+    "string", []);
+const get_WIDGET_PROP_VIRTUAL_H = Module.cwrap("get_WIDGET_PROP_VIRTUAL_H", 
+    "string", []);
+const get_WIDGET_PROP_NAME = Module.cwrap("get_WIDGET_PROP_NAME", 
+    "string", []);
+const get_WIDGET_PROP_CLOSABLE = Module.cwrap("get_WIDGET_PROP_CLOSABLE", 
+    "string", []);
+const get_WIDGET_PROP_CURSOR = Module.cwrap("get_WIDGET_PROP_CURSOR", 
+    "string", []);
+const get_WIDGET_PROP_VALUE = Module.cwrap("get_WIDGET_PROP_VALUE", 
+    "string", []);
+const get_WIDGET_PROP_LENGTH = Module.cwrap("get_WIDGET_PROP_LENGTH", 
+    "string", []);
+const get_WIDGET_PROP_TEXT = Module.cwrap("get_WIDGET_PROP_TEXT", 
+    "string", []);
+const get_WIDGET_PROP_TR_TEXT = Module.cwrap("get_WIDGET_PROP_TR_TEXT", 
+    "string", []);
+const get_WIDGET_PROP_STYLE = Module.cwrap("get_WIDGET_PROP_STYLE", 
+    "string", []);
+const get_WIDGET_PROP_ENABLE = Module.cwrap("get_WIDGET_PROP_ENABLE", 
+    "string", []);
+const get_WIDGET_PROP_FLOATING = Module.cwrap("get_WIDGET_PROP_FLOATING", 
+    "string", []);
+const get_WIDGET_PROP_MARGIN = Module.cwrap("get_WIDGET_PROP_MARGIN", 
+    "string", []);
+const get_WIDGET_PROP_SPACING = Module.cwrap("get_WIDGET_PROP_SPACING", 
+    "string", []);
+const get_WIDGET_PROP_LEFT_MARGIN = Module.cwrap("get_WIDGET_PROP_LEFT_MARGIN", 
+    "string", []);
+const get_WIDGET_PROP_RIGHT_MARGIN = Module.cwrap("get_WIDGET_PROP_RIGHT_MARGIN", 
+    "string", []);
+const get_WIDGET_PROP_TOP_MARGIN = Module.cwrap("get_WIDGET_PROP_TOP_MARGIN", 
+    "string", []);
+const get_WIDGET_PROP_BOTTOM_MARGIN = Module.cwrap("get_WIDGET_PROP_BOTTOM_MARGIN", 
+    "string", []);
+const get_WIDGET_PROP_STEP = Module.cwrap("get_WIDGET_PROP_STEP", 
+    "string", []);
+const get_WIDGET_PROP_VISIBLE = Module.cwrap("get_WIDGET_PROP_VISIBLE", 
+    "string", []);
+const get_WIDGET_PROP_SENSITIVE = Module.cwrap("get_WIDGET_PROP_SENSITIVE", 
+    "string", []);
+const get_WIDGET_PROP_ANIMATION = Module.cwrap("get_WIDGET_PROP_ANIMATION", 
+    "string", []);
+const get_WIDGET_PROP_ANIM_HINT = Module.cwrap("get_WIDGET_PROP_ANIM_HINT", 
+    "string", []);
+const get_WIDGET_PROP_FULLSCREEN = Module.cwrap("get_WIDGET_PROP_FULLSCREEN", 
+    "string", []);
+const get_WIDGET_PROP_OPEN_ANIM_HINT = Module.cwrap("get_WIDGET_PROP_OPEN_ANIM_HINT", 
+    "string", []);
+const get_WIDGET_PROP_CLOSE_ANIM_HINT = Module.cwrap("get_WIDGET_PROP_CLOSE_ANIM_HINT", 
+    "string", []);
+const get_WIDGET_PROP_MIN = Module.cwrap("get_WIDGET_PROP_MIN", 
+    "string", []);
+const get_WIDGET_PROP_TIPS = Module.cwrap("get_WIDGET_PROP_TIPS", 
+    "string", []);
+const get_WIDGET_PROP_INPUT_TYPE = Module.cwrap("get_WIDGET_PROP_INPUT_TYPE", 
+    "string", []);
+const get_WIDGET_PROP_READONLY = Module.cwrap("get_WIDGET_PROP_READONLY", 
+    "string", []);
+const get_WIDGET_PROP_PASSWORD_VISIBLE = Module.cwrap("get_WIDGET_PROP_PASSWORD_VISIBLE", 
+    "string", []);
+const get_WIDGET_PROP_ACTIVE = Module.cwrap("get_WIDGET_PROP_ACTIVE", 
+    "string", []);
+const get_WIDGET_PROP_VERTICAL = Module.cwrap("get_WIDGET_PROP_VERTICAL", 
+    "string", []);
+const get_WIDGET_PROP_SHOW_TEXT = Module.cwrap("get_WIDGET_PROP_SHOW_TEXT", 
+    "string", []);
+const get_WIDGET_PROP_XOFFSET = Module.cwrap("get_WIDGET_PROP_XOFFSET", 
+    "string", []);
+const get_WIDGET_PROP_YOFFSET = Module.cwrap("get_WIDGET_PROP_YOFFSET", 
+    "string", []);
+const get_WIDGET_PROP_ALIGN_V = Module.cwrap("get_WIDGET_PROP_ALIGN_V", 
+    "string", []);
+const get_WIDGET_PROP_ALIGN_H = Module.cwrap("get_WIDGET_PROP_ALIGN_H", 
+    "string", []);
+const get_WIDGET_PROP_AUTO_PLAY = Module.cwrap("get_WIDGET_PROP_AUTO_PLAY", 
+    "string", []);
+const get_WIDGET_PROP_LOOP = Module.cwrap("get_WIDGET_PROP_LOOP", 
+    "string", []);
+const get_WIDGET_PROP_AUTO_FIX = Module.cwrap("get_WIDGET_PROP_AUTO_FIX", 
+    "string", []);
+const get_WIDGET_PROP_X_MIN = Module.cwrap("get_WIDGET_PROP_X_MIN", 
+    "string", []);
+const get_WIDGET_PROP_X_MAX = Module.cwrap("get_WIDGET_PROP_X_MAX", 
+    "string", []);
+const get_WIDGET_PROP_Y_MIN = Module.cwrap("get_WIDGET_PROP_Y_MIN", 
+    "string", []);
+const get_WIDGET_PROP_Y_MAX = Module.cwrap("get_WIDGET_PROP_Y_MAX", 
+    "string", []);
+const get_WIDGET_PROP_MAX = Module.cwrap("get_WIDGET_PROP_MAX", 
+    "string", []);
+const get_WIDGET_PROP_ROW = Module.cwrap("get_WIDGET_PROP_ROW", 
+    "string", []);
+const get_WIDGET_PROP_STATE_FOR_STYLE = Module.cwrap("get_WIDGET_PROP_STATE_FOR_STYLE", 
+    "string", []);
+const get_WIDGET_PROP_THEME = Module.cwrap("get_WIDGET_PROP_THEME", 
+    "string", []);
+const get_WIDGET_PROP_STAGE = Module.cwrap("get_WIDGET_PROP_STAGE", 
+    "string", []);
+const get_WIDGET_PROP_IMAGE_MANAGER = Module.cwrap("get_WIDGET_PROP_IMAGE_MANAGER", 
+    "string", []);
+const get_WIDGET_PROP_ASSETS_MANAGER = Module.cwrap("get_WIDGET_PROP_ASSETS_MANAGER", 
+    "string", []);
+const get_WIDGET_PROP_LOCALE_INFO = Module.cwrap("get_WIDGET_PROP_LOCALE_INFO", 
+    "string", []);
+const get_WIDGET_PROP_FONT_MANAGER = Module.cwrap("get_WIDGET_PROP_FONT_MANAGER", 
+    "string", []);
+const get_WIDGET_PROP_THEME_OBJ = Module.cwrap("get_WIDGET_PROP_THEME_OBJ", 
+    "string", []);
+const get_WIDGET_PROP_DEFAULT_THEME_OBJ = Module.cwrap("get_WIDGET_PROP_DEFAULT_THEME_OBJ", 
+    "string", []);
+const get_WIDGET_PROP_ITEM_WIDTH = Module.cwrap("get_WIDGET_PROP_ITEM_WIDTH", 
+    "string", []);
+const get_WIDGET_PROP_ITEM_HEIGHT = Module.cwrap("get_WIDGET_PROP_ITEM_HEIGHT", 
+    "string", []);
+const get_WIDGET_PROP_DEFAULT_ITEM_HEIGHT = Module.cwrap("get_WIDGET_PROP_DEFAULT_ITEM_HEIGHT", 
+    "string", []);
+const get_WIDGET_PROP_XSLIDABLE = Module.cwrap("get_WIDGET_PROP_XSLIDABLE", 
+    "string", []);
+const get_WIDGET_PROP_YSLIDABLE = Module.cwrap("get_WIDGET_PROP_YSLIDABLE", 
+    "string", []);
+const get_WIDGET_PROP_REPEAT = Module.cwrap("get_WIDGET_PROP_REPEAT", 
+    "string", []);
+const get_WIDGET_PROP_ENABLE_LONG_PRESS = Module.cwrap("get_WIDGET_PROP_ENABLE_LONG_PRESS", 
+    "string", []);
+const get_WIDGET_PROP_ANIMATABLE = Module.cwrap("get_WIDGET_PROP_ANIMATABLE", 
+    "string", []);
+const get_WIDGET_PROP_AUTO_HIDE_SCROLL_BAR = Module.cwrap("get_WIDGET_PROP_AUTO_HIDE_SCROLL_BAR", 
+    "string", []);
+const get_WIDGET_PROP_IMAGE = Module.cwrap("get_WIDGET_PROP_IMAGE", 
+    "string", []);
+const get_WIDGET_PROP_FORMAT = Module.cwrap("get_WIDGET_PROP_FORMAT", 
+    "string", []);
+const get_WIDGET_PROP_DRAW_TYPE = Module.cwrap("get_WIDGET_PROP_DRAW_TYPE", 
+    "string", []);
+const get_WIDGET_PROP_SELECTABLE = Module.cwrap("get_WIDGET_PROP_SELECTABLE", 
+    "string", []);
+const get_WIDGET_PROP_CLICKABLE = Module.cwrap("get_WIDGET_PROP_CLICKABLE", 
+    "string", []);
+const get_WIDGET_PROP_SCALE_X = Module.cwrap("get_WIDGET_PROP_SCALE_X", 
+    "string", []);
+const get_WIDGET_PROP_SCALE_Y = Module.cwrap("get_WIDGET_PROP_SCALE_Y", 
+    "string", []);
+const get_WIDGET_PROP_ANCHOR_X = Module.cwrap("get_WIDGET_PROP_ANCHOR_X", 
+    "string", []);
+const get_WIDGET_PROP_ANCHOR_Y = Module.cwrap("get_WIDGET_PROP_ANCHOR_Y", 
+    "string", []);
+const get_WIDGET_PROP_ROTATION = Module.cwrap("get_WIDGET_PROP_ROTATION", 
+    "string", []);
+const get_WIDGET_PROP_COMPACT = Module.cwrap("get_WIDGET_PROP_COMPACT", 
+    "string", []);
+const get_WIDGET_PROP_ICON = Module.cwrap("get_WIDGET_PROP_ICON", 
+    "string", []);
+const get_WIDGET_PROP_OPTIONS = Module.cwrap("get_WIDGET_PROP_OPTIONS", 
+    "string", []);
+const get_WIDGET_PROP_SELECTED = Module.cwrap("get_WIDGET_PROP_SELECTED", 
+    "string", []);
+const get_WIDGET_PROP_CHECKED = Module.cwrap("get_WIDGET_PROP_CHECKED", 
+    "string", []);
+const get_WIDGET_PROP_ACTIVE_ICON = Module.cwrap("get_WIDGET_PROP_ACTIVE_ICON", 
+    "string", []);
+const get_WIDGET_PROP_OPEN_WINDOW = Module.cwrap("get_WIDGET_PROP_OPEN_WINDOW", 
+    "string", []);
+const get_WIDGET_PROP_SELECTED_INDEX = Module.cwrap("get_WIDGET_PROP_SELECTED_INDEX", 
+    "string", []);
+const get_WIDGET_PROP_CLOSE_WHEN_CLICK = Module.cwrap("get_WIDGET_PROP_CLOSE_WHEN_CLICK", 
+    "string", []);
+const get_WIDGET_PROP_CLOSE_WHEN_CLICK_OUTSIDE = Module.cwrap("get_WIDGET_PROP_CLOSE_WHEN_CLICK_OUTSIDE", 
+    "string", []);
+const get_WIDGET_PROP_LINE_GAP = Module.cwrap("get_WIDGET_PROP_LINE_GAP", 
+    "string", []);
+const get_WIDGET_PROP_BG_COLOR = Module.cwrap("get_WIDGET_PROP_BG_COLOR", 
+    "string", []);
+const get_WIDGET_PROP_BORDER_COLOR = Module.cwrap("get_WIDGET_PROP_BORDER_COLOR", 
+    "string", []);
+const get_WIDGET_PROP_DELAY = Module.cwrap("get_WIDGET_PROP_DELAY", 
+    "string", []);
+const get_WIDGET_PROP_IS_KEYBOARD = Module.cwrap("get_WIDGET_PROP_IS_KEYBOARD", 
+    "string", []);
+const get_WIDGET_PROP_FOCUS = Module.cwrap("get_WIDGET_PROP_FOCUS", 
+    "string", []);
+const get_WIDGET_PROP_FOCUSABLE = Module.cwrap("get_WIDGET_PROP_FOCUSABLE", 
+    "string", []);
+const get_WIDGET_TYPE_NONE = Module.cwrap("get_WIDGET_TYPE_NONE", 
+    "string", []);
+const get_WIDGET_TYPE_WINDOW_MANAGER = Module.cwrap("get_WIDGET_TYPE_WINDOW_MANAGER", 
+    "string", []);
+const get_WIDGET_TYPE_NORMAL_WINDOW = Module.cwrap("get_WIDGET_TYPE_NORMAL_WINDOW", 
+    "string", []);
+const get_WIDGET_TYPE_TOOL_BAR = Module.cwrap("get_WIDGET_TYPE_TOOL_BAR", 
+    "string", []);
+const get_WIDGET_TYPE_DIALOG = Module.cwrap("get_WIDGET_TYPE_DIALOG", 
+    "string", []);
+const get_WIDGET_TYPE_POPUP = Module.cwrap("get_WIDGET_TYPE_POPUP", 
+    "string", []);
+const get_WIDGET_TYPE_SYSTEM_BAR = Module.cwrap("get_WIDGET_TYPE_SYSTEM_BAR", 
+    "string", []);
+const get_WIDGET_TYPE_SPRITE = Module.cwrap("get_WIDGET_TYPE_SPRITE", 
+    "string", []);
+const get_WIDGET_TYPE_KEYBOARD = Module.cwrap("get_WIDGET_TYPE_KEYBOARD", 
+    "string", []);
+const get_WIDGET_TYPE_DND = Module.cwrap("get_WIDGET_TYPE_DND", 
+    "string", []);
+const get_WIDGET_TYPE_LABEL = Module.cwrap("get_WIDGET_TYPE_LABEL", 
+    "string", []);
+const get_WIDGET_TYPE_BUTTON = Module.cwrap("get_WIDGET_TYPE_BUTTON", 
+    "string", []);
+const get_WIDGET_TYPE_IMAGE = Module.cwrap("get_WIDGET_TYPE_IMAGE", 
+    "string", []);
+const get_WIDGET_TYPE_EDIT = Module.cwrap("get_WIDGET_TYPE_EDIT", 
+    "string", []);
+const get_WIDGET_TYPE_PROGRESS_BAR = Module.cwrap("get_WIDGET_TYPE_PROGRESS_BAR", 
+    "string", []);
+const get_WIDGET_TYPE_GROUP_BOX = Module.cwrap("get_WIDGET_TYPE_GROUP_BOX", 
+    "string", []);
+const get_WIDGET_TYPE_CHECK_BUTTON = Module.cwrap("get_WIDGET_TYPE_CHECK_BUTTON", 
+    "string", []);
+const get_WIDGET_TYPE_RADIO_BUTTON = Module.cwrap("get_WIDGET_TYPE_RADIO_BUTTON", 
+    "string", []);
+const get_WIDGET_TYPE_DIALOG_TITLE = Module.cwrap("get_WIDGET_TYPE_DIALOG_TITLE", 
+    "string", []);
+const get_WIDGET_TYPE_DIALOG_CLIENT = Module.cwrap("get_WIDGET_TYPE_DIALOG_CLIENT", 
+    "string", []);
+const get_WIDGET_TYPE_SLIDER = Module.cwrap("get_WIDGET_TYPE_SLIDER", 
+    "string", []);
+const get_WIDGET_TYPE_VIEW = Module.cwrap("get_WIDGET_TYPE_VIEW", 
+    "string", []);
+const get_WIDGET_TYPE_COMBO_BOX = Module.cwrap("get_WIDGET_TYPE_COMBO_BOX", 
+    "string", []);
+const get_WIDGET_TYPE_COMBO_BOX_ITEM = Module.cwrap("get_WIDGET_TYPE_COMBO_BOX_ITEM", 
+    "string", []);
+const get_WIDGET_TYPE_SLIDE_VIEW = Module.cwrap("get_WIDGET_TYPE_SLIDE_VIEW", 
+    "string", []);
+const get_WIDGET_TYPE_PAGES = Module.cwrap("get_WIDGET_TYPE_PAGES", 
+    "string", []);
+const get_WIDGET_TYPE_TAB_BUTTON = Module.cwrap("get_WIDGET_TYPE_TAB_BUTTON", 
+    "string", []);
+const get_WIDGET_TYPE_TAB_CONTROL = Module.cwrap("get_WIDGET_TYPE_TAB_CONTROL", 
+    "string", []);
+const get_WIDGET_TYPE_TAB_BUTTON_GROUP = Module.cwrap("get_WIDGET_TYPE_TAB_BUTTON_GROUP", 
+    "string", []);
+const get_WIDGET_TYPE_BUTTON_GROUP = Module.cwrap("get_WIDGET_TYPE_BUTTON_GROUP", 
+    "string", []);
+const get_WIDGET_TYPE_CANDIDATES = Module.cwrap("get_WIDGET_TYPE_CANDIDATES", 
+    "string", []);
+const get_WIDGET_TYPE_SPIN_BOX = Module.cwrap("get_WIDGET_TYPE_SPIN_BOX", 
+    "string", []);
+const get_WIDGET_TYPE_DRAGGER = Module.cwrap("get_WIDGET_TYPE_DRAGGER", 
+    "string", []);
+const get_WIDGET_TYPE_SCROLL_BAR = Module.cwrap("get_WIDGET_TYPE_SCROLL_BAR", 
+    "string", []);
+const get_WIDGET_TYPE_SCROLL_BAR_DESKTOP = Module.cwrap("get_WIDGET_TYPE_SCROLL_BAR_DESKTOP", 
+    "string", []);
+const get_WIDGET_TYPE_SCROLL_BAR_MOBILE = Module.cwrap("get_WIDGET_TYPE_SCROLL_BAR_MOBILE", 
+    "string", []);
+const get_WIDGET_TYPE_SCROLL_VIEW = Module.cwrap("get_WIDGET_TYPE_SCROLL_VIEW", 
+    "string", []);
+const get_WIDGET_TYPE_LIST_VIEW = Module.cwrap("get_WIDGET_TYPE_LIST_VIEW", 
+    "string", []);
+const get_WIDGET_TYPE_LIST_VIEW_H = Module.cwrap("get_WIDGET_TYPE_LIST_VIEW_H", 
+    "string", []);
+const get_WIDGET_TYPE_LIST_ITEM = Module.cwrap("get_WIDGET_TYPE_LIST_ITEM", 
+    "string", []);
+const get_WIDGET_TYPE_COLOR_PICKER = Module.cwrap("get_WIDGET_TYPE_COLOR_PICKER", 
+    "string", []);
+const get_WIDGET_TYPE_COLOR_COMPONENT = Module.cwrap("get_WIDGET_TYPE_COLOR_COMPONENT", 
+    "string", []);
+const get_WIDGET_TYPE_COLOR_TILE = Module.cwrap("get_WIDGET_TYPE_COLOR_TILE", 
+    "string", []);
+const get_WIDGET_TYPE_RICH_TEXT = Module.cwrap("get_WIDGET_TYPE_RICH_TEXT", 
+    "string", []);
+const get_WIDGET_TYPE_APP_BAR = Module.cwrap("get_WIDGET_TYPE_APP_BAR", 
+    "string", []);
+const get_WIDGET_TYPE_GRID = Module.cwrap("get_WIDGET_TYPE_GRID", 
+    "string", []);
+const get_WIDGET_TYPE_GRID_ITEM = Module.cwrap("get_WIDGET_TYPE_GRID_ITEM", 
+    "string", []);
+const get_WIDGET_TYPE_ROW = Module.cwrap("get_WIDGET_TYPE_ROW", 
+    "string", []);
+const get_WIDGET_TYPE_COLUMN = Module.cwrap("get_WIDGET_TYPE_COLUMN", 
+    "string", []);
+const get_WIDGET_TYPE_CALIBRATION_WIN = Module.cwrap("get_WIDGET_TYPE_CALIBRATION_WIN", 
+    "string", []);
+const get_WINDOW_STAGE_NONE = Module.cwrap("get_WINDOW_STAGE_NONE", 
+    "number", []);
+const get_WINDOW_STAGE_CREATED = Module.cwrap("get_WINDOW_STAGE_CREATED", 
+    "number", []);
+const get_WINDOW_STAGE_OPENED = Module.cwrap("get_WINDOW_STAGE_OPENED", 
+    "number", []);
+const get_WINDOW_STAGE_CLOSED = Module.cwrap("get_WINDOW_STAGE_CLOSED", 
+    "number", []);
+const get_WINDOW_CLOSABLE_YES = Module.cwrap("get_WINDOW_CLOSABLE_YES", 
+    "number", []);
+const get_WINDOW_CLOSABLE_NO = Module.cwrap("get_WINDOW_CLOSABLE_NO", 
+    "number", []);
+const get_WINDOW_CLOSABLE_CONFIRM = Module.cwrap("get_WINDOW_CLOSABLE_CONFIRM", 
+    "number", []);
+const get_WIDGET_STATE_NONE = Module.cwrap("get_WIDGET_STATE_NONE", 
+    "string", []);
+const get_WIDGET_STATE_NORMAL = Module.cwrap("get_WIDGET_STATE_NORMAL", 
+    "string", []);
+const get_WIDGET_STATE_PRESSED = Module.cwrap("get_WIDGET_STATE_PRESSED", 
+    "string", []);
+const get_WIDGET_STATE_OVER = Module.cwrap("get_WIDGET_STATE_OVER", 
+    "string", []);
+const get_WIDGET_STATE_DISABLE = Module.cwrap("get_WIDGET_STATE_DISABLE", 
+    "string", []);
+const get_WIDGET_STATE_FOCUSED = Module.cwrap("get_WIDGET_STATE_FOCUSED", 
+    "string", []);
+const get_WIDGET_STATE_CHECKED = Module.cwrap("get_WIDGET_STATE_CHECKED", 
+    "string", []);
+const get_WIDGET_STATE_UNCHECKED = Module.cwrap("get_WIDGET_STATE_UNCHECKED", 
+    "string", []);
+const get_WIDGET_STATE_EMPTY = Module.cwrap("get_WIDGET_STATE_EMPTY", 
+    "string", []);
+const get_WIDGET_STATE_ERROR = Module.cwrap("get_WIDGET_STATE_ERROR", 
+    "string", []);
+const get_WIDGET_STATE_SELECTED = Module.cwrap("get_WIDGET_STATE_SELECTED", 
+    "string", []);
+const get_WIDGET_STATE_NORMAL_OF_CHECKED = Module.cwrap("get_WIDGET_STATE_NORMAL_OF_CHECKED", 
+    "string", []);
+const get_WIDGET_STATE_PRESSED_OF_CHECKED = Module.cwrap("get_WIDGET_STATE_PRESSED_OF_CHECKED", 
+    "string", []);
+const get_WIDGET_STATE_OVER_OF_CHECKED = Module.cwrap("get_WIDGET_STATE_OVER_OF_CHECKED", 
+    "string", []);
+const get_WIDGET_STATE_NORMAL_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_NORMAL_OF_ACTIVE", 
+    "string", []);
+const get_WIDGET_STATE_PRESSED_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_PRESSED_OF_ACTIVE", 
+    "string", []);
+const get_WIDGET_STATE_OVER_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_OVER_OF_ACTIVE", 
+    "string", []);
+const widget_count_children = Module.cwrap("widget_count_children", 
+    "number", ["number"]);
+const widget_get_child = Module.cwrap("widget_get_child", 
+    "number", ["number","number"]);
+const widget_index_of = Module.cwrap("widget_index_of", 
+    "number", ["number"]);
+const widget_move = Module.cwrap("widget_move", 
+    "number", ["number","number","number"]);
+const widget_resize = Module.cwrap("widget_resize", 
+    "number", ["number","number","number"]);
+const widget_move_resize = Module.cwrap("widget_move_resize", 
+    "number", ["number","number","number","number","number"]);
+const widget_set_value = Module.cwrap("widget_set_value", 
+    "number", ["number","number"]);
+const widget_animate_value_to = Module.cwrap("widget_animate_value_to", 
+    "number", ["number","number","number"]);
+const widget_add_value = Module.cwrap("widget_add_value", 
+    "number", ["number","number"]);
+const widget_use_style = Module.cwrap("widget_use_style", 
+    "number", ["number","string"]);
+const widget_set_text_utf8 = Module.cwrap("widget_set_text_utf8", 
+    "number", ["number","string"]);
+const widget_set_tr_text = Module.cwrap("widget_set_tr_text", 
+    "number", ["number","string"]);
+const widget_get_value = Module.cwrap("widget_get_value", 
+    "number", ["number"]);
+const widget_get_text = Module.cwrap("widget_get_text", 
+    "number", ["number"]);
+const widget_set_name = Module.cwrap("widget_set_name", 
+    "number", ["number","string"]);
+const widget_set_cursor = Module.cwrap("widget_set_cursor", 
+    "number", ["number","string"]);
+const widget_set_animation = Module.cwrap("widget_set_animation", 
+    "number", ["number","string"]);
+const widget_create_animator = Module.cwrap("widget_create_animator", 
+    "number", ["number","string"]);
+const widget_start_animator = Module.cwrap("widget_start_animator", 
+    "number", ["number","string"]);
+const widget_set_animator_time_scale = Module.cwrap("widget_set_animator_time_scale", 
+    "number", ["number","string","number"]);
+const widget_pause_animator = Module.cwrap("widget_pause_animator", 
+    "number", ["number","string"]);
+const widget_stop_animator = Module.cwrap("widget_stop_animator", 
+    "number", ["number","string"]);
+const widget_destroy_animator = Module.cwrap("widget_destroy_animator", 
+    "number", ["number","string"]);
+const widget_set_enable = Module.cwrap("widget_set_enable", 
+    "number", ["number","number"]);
+const widget_set_floating = Module.cwrap("widget_set_floating", 
+    "number", ["number","number"]);
+const widget_set_focused = Module.cwrap("widget_set_focused", 
+    "number", ["number","number"]);
+const widget_child = Module.cwrap("widget_child", 
+    "number", ["number","string"]);
+const widget_lookup = Module.cwrap("widget_lookup", 
+    "number", ["number","string","number"]);
+const widget_lookup_by_type = Module.cwrap("widget_lookup_by_type", 
+    "number", ["number","string","number"]);
+const widget_set_visible = Module.cwrap("widget_set_visible", 
+    "number", ["number","number","number"]);
+const widget_set_sensitive = Module.cwrap("widget_set_sensitive", 
+    "number", ["number","number"]);
+const widget_on = Module.cwrap("widget_on", 
+    "number", ["number","number","number","number"]);
+const widget_off = Module.cwrap("widget_off", 
+    "number", ["number","number"]);
+const widget_invalidate_force = Module.cwrap("widget_invalidate_force", 
+    "number", ["number","number"]);
+const widget_set_prop_str = Module.cwrap("widget_set_prop_str", 
+    "number", ["number","string","string"]);
+const widget_get_prop_str = Module.cwrap("widget_get_prop_str", 
+    "string", ["number","string","string"]);
+const widget_set_prop_int = Module.cwrap("widget_set_prop_int", 
+    "number", ["number","string","number"]);
+const widget_get_prop_int = Module.cwrap("widget_get_prop_int", 
+    "number", ["number","string","number"]);
+const widget_set_prop_bool = Module.cwrap("widget_set_prop_bool", 
+    "number", ["number","string","number"]);
+const widget_get_prop_bool = Module.cwrap("widget_get_prop_bool", 
+    "number", ["number","string","number"]);
+const widget_is_window_opened = Module.cwrap("widget_is_window_opened", 
+    "number", ["number"]);
+const widget_is_window = Module.cwrap("widget_is_window", 
+    "number", ["number"]);
+const widget_is_designing_window = Module.cwrap("widget_is_designing_window", 
+    "number", ["number"]);
+const widget_is_window_manager = Module.cwrap("widget_is_window_manager", 
+    "number", ["number"]);
+const widget_foreach = Module.cwrap("widget_foreach", 
+    "number", ["number","number","number"]);
+const widget_get_window = Module.cwrap("widget_get_window", 
+    "number", ["number"]);
+const widget_get_window_manager = Module.cwrap("widget_get_window_manager", 
+    "number", ["number"]);
+const widget_get_type = Module.cwrap("widget_get_type", 
+    "string", ["number"]);
+const widget_clone = Module.cwrap("widget_clone", 
+    "number", ["number","number"]);
+const widget_equal = Module.cwrap("widget_equal", 
+    "number", ["number","number"]);
+const widget_cast = Module.cwrap("widget_cast", 
+    "number", ["number"]);
+const widget_destroy = Module.cwrap("widget_destroy", 
+    "number", ["number"]);
+const widget_layout = Module.cwrap("widget_layout", 
+    "number", ["number"]);
+const widget_set_self_layout = Module.cwrap("widget_set_self_layout", 
+    "number", ["number","string"]);
+const widget_set_children_layout = Module.cwrap("widget_set_children_layout", 
+    "number", ["number","string"]);
+const widget_set_self_layout_params = Module.cwrap("widget_set_self_layout_params", 
+    "number", ["number","string","string","string","string"]);
+const widget_t_get_prop_x = Module.cwrap("widget_t_get_prop_x", 
+    "number", ["number"]);
+const widget_t_get_prop_y = Module.cwrap("widget_t_get_prop_y", 
+    "number", ["number"]);
+const widget_t_get_prop_w = Module.cwrap("widget_t_get_prop_w", 
+    "number", ["number"]);
+const widget_t_get_prop_h = Module.cwrap("widget_t_get_prop_h", 
+    "number", ["number"]);
+const widget_t_get_prop_name = Module.cwrap("widget_t_get_prop_name", 
+    "string", ["number"]);
+const widget_t_get_prop_tr_text = Module.cwrap("widget_t_get_prop_tr_text", 
+    "string", ["number"]);
+const widget_t_get_prop_style = Module.cwrap("widget_t_get_prop_style", 
+    "string", ["number"]);
+const widget_t_get_prop_animation = Module.cwrap("widget_t_get_prop_animation", 
+    "string", ["number"]);
+const widget_t_get_prop_enable = Module.cwrap("widget_t_get_prop_enable", 
+    "number", ["number"]);
+const widget_t_get_prop_visible = Module.cwrap("widget_t_get_prop_visible", 
+    "number", ["number"]);
+const widget_t_set_prop_visible = Module.cwrap("widget_t_set_prop_visible", 
+    "number", ["number", "number"]);
+const widget_t_get_prop_sensitive = Module.cwrap("widget_t_get_prop_sensitive", 
+    "number", ["number"]);
+const widget_t_set_prop_sensitive = Module.cwrap("widget_t_set_prop_sensitive", 
+    "number", ["number", "number"]);
+const widget_t_get_prop_floating = Module.cwrap("widget_t_get_prop_floating", 
+    "number", ["number"]);
+const get_ASSET_TYPE_NONE = Module.cwrap("get_ASSET_TYPE_NONE", 
+    "number", []);
+const get_ASSET_TYPE_FONT = Module.cwrap("get_ASSET_TYPE_FONT", 
+    "number", []);
+const get_ASSET_TYPE_IMAGE = Module.cwrap("get_ASSET_TYPE_IMAGE", 
+    "number", []);
+const get_ASSET_TYPE_STYLE = Module.cwrap("get_ASSET_TYPE_STYLE", 
+    "number", []);
+const get_ASSET_TYPE_UI = Module.cwrap("get_ASSET_TYPE_UI", 
+    "number", []);
+const get_ASSET_TYPE_XML = Module.cwrap("get_ASSET_TYPE_XML", 
+    "number", []);
+const get_ASSET_TYPE_STRINGS = Module.cwrap("get_ASSET_TYPE_STRINGS", 
+    "number", []);
+const get_ASSET_TYPE_SCRIPT = Module.cwrap("get_ASSET_TYPE_SCRIPT", 
+    "number", []);
+const get_ASSET_TYPE_DATA = Module.cwrap("get_ASSET_TYPE_DATA", 
+    "number", []);
+const color_create = Module.cwrap("color_create", 
+    "number", ["number","number","number","number"]);
+const color_from_str = Module.cwrap("color_from_str", 
+    "number", ["number","string"]);
+const color_r = Module.cwrap("color_r", 
+    "number", ["number"]);
+const color_g = Module.cwrap("color_g", 
+    "number", ["number"]);
+const color_b = Module.cwrap("color_b", 
+    "number", ["number"]);
+const color_a = Module.cwrap("color_a", 
+    "number", ["number"]);
+const color_cast = Module.cwrap("color_cast", 
+    "number", ["number"]);
+const color_destroy = Module.cwrap("color_destroy", 
+    "number", ["number"]);
+const color_t_get_prop_color = Module.cwrap("color_t_get_prop_color", 
+    "number", ["number"]);
+const color_t_set_prop_color = Module.cwrap("color_t_set_prop_color", 
+    "number", ["number", "number"]);
+const date_time_create = Module.cwrap("date_time_create", 
+    "number", []);
+const date_time_destroy = Module.cwrap("date_time_destroy", 
+    "number", ["number"]);
+const date_time_t_get_prop_second = Module.cwrap("date_time_t_get_prop_second", 
+    "number", ["number"]);
+const date_time_t_get_prop_minute = Module.cwrap("date_time_t_get_prop_minute", 
+    "number", ["number"]);
+const date_time_t_get_prop_hour = Module.cwrap("date_time_t_get_prop_hour", 
+    "number", ["number"]);
+const date_time_t_get_prop_day = Module.cwrap("date_time_t_get_prop_day", 
+    "number", ["number"]);
+const date_time_t_get_prop_wday = Module.cwrap("date_time_t_get_prop_wday", 
+    "number", ["number"]);
+const date_time_t_get_prop_month = Module.cwrap("date_time_t_get_prop_month", 
+    "number", ["number"]);
+const date_time_t_get_prop_year = Module.cwrap("date_time_t_get_prop_year", 
+    "number", ["number"]);
+const emitter_create = Module.cwrap("emitter_create", 
+    "number", []);
+const emitter_dispatch = Module.cwrap("emitter_dispatch", 
+    "number", ["number","number"]);
+const emitter_dispatch_simple_event = Module.cwrap("emitter_dispatch_simple_event", 
+    "number", ["number","number"]);
+const emitter_on = Module.cwrap("emitter_on", 
+    "number", ["number","number","number","number"]);
+const emitter_off = Module.cwrap("emitter_off", 
+    "number", ["number","number"]);
+const emitter_enable = Module.cwrap("emitter_enable", 
+    "number", ["number"]);
+const emitter_disable = Module.cwrap("emitter_disable", 
+    "number", ["number"]);
+const emitter_size = Module.cwrap("emitter_size", 
+    "number", ["number"]);
+const emitter_destroy = Module.cwrap("emitter_destroy", 
+    "number", ["number"]);
+const emitter_cast = Module.cwrap("emitter_cast", 
+    "number", ["number"]);
+const get_EVT_NONE = Module.cwrap("get_EVT_NONE", 
+    "number", []);
+const get_EVT_PROP_WILL_CHANGE = Module.cwrap("get_EVT_PROP_WILL_CHANGE", 
+    "number", []);
+const get_EVT_PROP_CHANGED = Module.cwrap("get_EVT_PROP_CHANGED", 
+    "number", []);
+const get_EVT_ITEMS_WILL_CHANGE = Module.cwrap("get_EVT_ITEMS_WILL_CHANGE", 
+    "number", []);
+const get_EVT_ITEMS_CHANGED = Module.cwrap("get_EVT_ITEMS_CHANGED", 
+    "number", []);
+const get_EVT_PROPS_CHANGED = Module.cwrap("get_EVT_PROPS_CHANGED", 
+    "number", []);
+const get_EVT_DESTROY = Module.cwrap("get_EVT_DESTROY", 
+    "number", []);
+const event_cast = Module.cwrap("event_cast", 
+    "number", ["number"]);
+const event_create = Module.cwrap("event_create", 
+    "number", ["number","number"]);
+const event_destroy = Module.cwrap("event_destroy", 
+    "number", ["number"]);
+const event_t_get_prop_type = Module.cwrap("event_t_get_prop_type", 
+    "number", ["number"]);
+const event_t_get_prop_time = Module.cwrap("event_t_get_prop_time", 
+    "number", ["number"]);
+const event_t_get_prop_target = Module.cwrap("event_t_get_prop_target", 
+    "number", ["number"]);
+const named_value_create = Module.cwrap("named_value_create", 
+    "number", []);
+const named_value_cast = Module.cwrap("named_value_cast", 
+    "number", ["number"]);
+const named_value_set_name = Module.cwrap("named_value_set_name", 
+    "number", ["number","string"]);
+const named_value_set_value = Module.cwrap("named_value_set_value", 
+    "number", ["number","number"]);
+const named_value_get_value = Module.cwrap("named_value_get_value", 
+    "number", ["number"]);
+const named_value_destroy = Module.cwrap("named_value_destroy", 
+    "number", ["number"]);
+const named_value_t_get_prop_name = Module.cwrap("named_value_t_get_prop_name", 
+    "string", ["number"]);
+const rect_create = Module.cwrap("rect_create", 
+    "number", ["number","number","number","number"]);
+const rect_set = Module.cwrap("rect_set", 
+    "number", ["number","number","number","number","number"]);
+const rect_cast = Module.cwrap("rect_cast", 
+    "number", ["number"]);
+const rect_destroy = Module.cwrap("rect_destroy", 
+    "number", ["number"]);
+const rect_t_get_prop_x = Module.cwrap("rect_t_get_prop_x", 
+    "number", ["number"]);
+const rect_t_get_prop_y = Module.cwrap("rect_t_get_prop_y", 
+    "number", ["number"]);
+const rect_t_get_prop_w = Module.cwrap("rect_t_get_prop_w", 
+    "number", ["number"]);
+const rect_t_get_prop_h = Module.cwrap("rect_t_get_prop_h", 
+    "number", ["number"]);
+const time_now_s = Module.cwrap("time_now_s", 
+    "number", []);
+const time_now_ms = Module.cwrap("time_now_ms", 
+    "number", []);
+const get_RET_OK = Module.cwrap("get_RET_OK", 
+    "number", []);
+const get_RET_OOM = Module.cwrap("get_RET_OOM", 
+    "number", []);
+const get_RET_FAIL = Module.cwrap("get_RET_FAIL", 
+    "number", []);
+const get_RET_NOT_IMPL = Module.cwrap("get_RET_NOT_IMPL", 
+    "number", []);
+const get_RET_QUIT = Module.cwrap("get_RET_QUIT", 
+    "number", []);
+const get_RET_FOUND = Module.cwrap("get_RET_FOUND", 
+    "number", []);
+const get_RET_BUSY = Module.cwrap("get_RET_BUSY", 
+    "number", []);
+const get_RET_REMOVE = Module.cwrap("get_RET_REMOVE", 
+    "number", []);
+const get_RET_REPEAT = Module.cwrap("get_RET_REPEAT", 
+    "number", []);
+const get_RET_NOT_FOUND = Module.cwrap("get_RET_NOT_FOUND", 
+    "number", []);
+const get_RET_DONE = Module.cwrap("get_RET_DONE", 
+    "number", []);
+const get_RET_STOP = Module.cwrap("get_RET_STOP", 
+    "number", []);
+const get_RET_CONTINUE = Module.cwrap("get_RET_CONTINUE", 
+    "number", []);
+const get_RET_OBJECT_CHANGED = Module.cwrap("get_RET_OBJECT_CHANGED", 
+    "number", []);
+const get_RET_ITEMS_CHANGED = Module.cwrap("get_RET_ITEMS_CHANGED", 
+    "number", []);
+const get_RET_BAD_PARAMS = Module.cwrap("get_RET_BAD_PARAMS", 
+    "number", []);
+const get_VALUE_TYPE_INVALID = Module.cwrap("get_VALUE_TYPE_INVALID", 
+    "number", []);
+const get_VALUE_TYPE_BOOL = Module.cwrap("get_VALUE_TYPE_BOOL", 
+    "number", []);
+const get_VALUE_TYPE_INT8 = Module.cwrap("get_VALUE_TYPE_INT8", 
+    "number", []);
+const get_VALUE_TYPE_UINT8 = Module.cwrap("get_VALUE_TYPE_UINT8", 
+    "number", []);
+const get_VALUE_TYPE_INT16 = Module.cwrap("get_VALUE_TYPE_INT16", 
+    "number", []);
+const get_VALUE_TYPE_UINT16 = Module.cwrap("get_VALUE_TYPE_UINT16", 
+    "number", []);
+const get_VALUE_TYPE_INT32 = Module.cwrap("get_VALUE_TYPE_INT32", 
+    "number", []);
+const get_VALUE_TYPE_UINT32 = Module.cwrap("get_VALUE_TYPE_UINT32", 
+    "number", []);
+const get_VALUE_TYPE_INT64 = Module.cwrap("get_VALUE_TYPE_INT64", 
+    "number", []);
+const get_VALUE_TYPE_UINT64 = Module.cwrap("get_VALUE_TYPE_UINT64", 
+    "number", []);
+const get_VALUE_TYPE_POINTER = Module.cwrap("get_VALUE_TYPE_POINTER", 
+    "number", []);
+const get_VALUE_TYPE_FLOAT = Module.cwrap("get_VALUE_TYPE_FLOAT", 
+    "number", []);
+const get_VALUE_TYPE_FLOAT32 = Module.cwrap("get_VALUE_TYPE_FLOAT32", 
+    "number", []);
+const get_VALUE_TYPE_DOUBLE = Module.cwrap("get_VALUE_TYPE_DOUBLE", 
+    "number", []);
+const get_VALUE_TYPE_STRING = Module.cwrap("get_VALUE_TYPE_STRING", 
+    "number", []);
+const get_VALUE_TYPE_WSTRING = Module.cwrap("get_VALUE_TYPE_WSTRING", 
+    "number", []);
+const get_VALUE_TYPE_OBJECT = Module.cwrap("get_VALUE_TYPE_OBJECT", 
+    "number", []);
+const value_set_bool = Module.cwrap("value_set_bool", 
+    "number", ["number","number"]);
+const value_bool = Module.cwrap("value_bool", 
+    "number", ["number"]);
+const value_set_int8 = Module.cwrap("value_set_int8", 
+    "number", ["number","number"]);
+const value_int8 = Module.cwrap("value_int8", 
+    "number", ["number"]);
+const value_set_uint8 = Module.cwrap("value_set_uint8", 
+    "number", ["number","number"]);
+const value_uint8 = Module.cwrap("value_uint8", 
+    "number", ["number"]);
+const value_set_int16 = Module.cwrap("value_set_int16", 
+    "number", ["number","number"]);
+const value_int16 = Module.cwrap("value_int16", 
+    "number", ["number"]);
+const value_set_uint16 = Module.cwrap("value_set_uint16", 
+    "number", ["number","number"]);
+const value_uint16 = Module.cwrap("value_uint16", 
+    "number", ["number"]);
+const value_set_int32 = Module.cwrap("value_set_int32", 
+    "number", ["number","number"]);
+const value_int32 = Module.cwrap("value_int32", 
+    "number", ["number"]);
+const value_set_uint32 = Module.cwrap("value_set_uint32", 
+    "number", ["number","number"]);
+const value_set_int64 = Module.cwrap("value_set_int64", 
+    "number", ["number","number"]);
+const value_int64 = Module.cwrap("value_int64", 
+    "number", ["number"]);
+const value_set_uint64 = Module.cwrap("value_set_uint64", 
+    "number", ["number","number"]);
+const value_uint64 = Module.cwrap("value_uint64", 
+    "number", ["number"]);
+const value_set_float = Module.cwrap("value_set_float", 
+    "number", ["number","number"]);
+const value_float = Module.cwrap("value_float", 
+    "number", ["number"]);
+const value_set_float32 = Module.cwrap("value_set_float32", 
+    "number", ["number","number"]);
+const value_float32 = Module.cwrap("value_float32", 
+    "number", ["number"]);
+const value_set_double = Module.cwrap("value_set_double", 
+    "number", ["number","number"]);
+const value_double = Module.cwrap("value_double", 
+    "number", ["number"]);
+const value_dup_str = Module.cwrap("value_dup_str", 
+    "number", ["number","string"]);
+const value_str = Module.cwrap("value_str", 
+    "string", ["number"]);
+const value_wstr = Module.cwrap("value_wstr", 
+    "number", ["number"]);
+const value_is_null = Module.cwrap("value_is_null", 
+    "number", ["number"]);
+const value_int = Module.cwrap("value_int", 
+    "number", ["number"]);
+const value_set_int = Module.cwrap("value_set_int", 
+    "number", ["number","number"]);
+const value_set_object = Module.cwrap("value_set_object", 
+    "number", ["number","number"]);
+const value_object = Module.cwrap("value_object", 
+    "number", ["number"]);
+const value_create = Module.cwrap("value_create", 
+    "number", []);
+const value_destroy = Module.cwrap("value_destroy", 
+    "number", ["number"]);
+const value_reset = Module.cwrap("value_reset", 
+    "number", ["number"]);
+const value_cast = Module.cwrap("value_cast", 
+    "number", ["number"]);
+const progress_circle_create = Module.cwrap("progress_circle_create", 
+    "number", ["number","number","number","number","number"]);
+const progress_circle_cast = Module.cwrap("progress_circle_cast", 
+    "number", ["number"]);
+const progress_circle_set_value = Module.cwrap("progress_circle_set_value", 
+    "number", ["number","number"]);
+const progress_circle_set_max = Module.cwrap("progress_circle_set_max", 
+    "number", ["number","number"]);
+const progress_circle_set_line_width = Module.cwrap("progress_circle_set_line_width", 
+    "number", ["number","number"]);
+const progress_circle_set_start_angle = Module.cwrap("progress_circle_set_start_angle", 
+    "number", ["number","number"]);
+const progress_circle_set_unit = Module.cwrap("progress_circle_set_unit", 
+    "number", ["number","string"]);
+const progress_circle_set_show_text = Module.cwrap("progress_circle_set_show_text", 
+    "number", ["number","number"]);
+const progress_circle_set_counter_clock_wise = Module.cwrap("progress_circle_set_counter_clock_wise", 
+    "number", ["number","number"]);
+const progress_circle_t_get_prop_value = Module.cwrap("progress_circle_t_get_prop_value", 
+    "number", ["number"]);
+const progress_circle_t_get_prop_max = Module.cwrap("progress_circle_t_get_prop_max", 
+    "number", ["number"]);
+const progress_circle_t_get_prop_start_angle = Module.cwrap("progress_circle_t_get_prop_start_angle", 
+    "number", ["number"]);
+const progress_circle_t_get_prop_line_width = Module.cwrap("progress_circle_t_get_prop_line_width", 
+    "number", ["number"]);
+const progress_circle_t_get_prop_unit = Module.cwrap("progress_circle_t_get_prop_unit", 
+    "string", ["number"]);
+const progress_circle_t_get_prop_counter_clock_wise = Module.cwrap("progress_circle_t_get_prop_counter_clock_wise", 
+    "number", ["number"]);
+const progress_circle_t_get_prop_show_text = Module.cwrap("progress_circle_t_get_prop_show_text", 
+    "number", ["number"]);
+const rich_text_create = Module.cwrap("rich_text_create", 
+    "number", ["number","number","number","number","number"]);
+const rich_text_set_text = Module.cwrap("rich_text_set_text", 
+    "number", ["number","string"]);
+const rich_text_cast = Module.cwrap("rich_text_cast", 
+    "number", ["number"]);
+const rich_text_t_get_prop_line_gap = Module.cwrap("rich_text_t_get_prop_line_gap", 
+    "number", ["number"]);
+const list_item_create = Module.cwrap("list_item_create", 
+    "number", ["number","number","number","number","number"]);
+const list_item_cast = Module.cwrap("list_item_cast", 
+    "number", ["number"]);
+const list_view_h_create = Module.cwrap("list_view_h_create", 
+    "number", ["number","number","number","number","number"]);
+const list_view_h_set_item_width = Module.cwrap("list_view_h_set_item_width", 
+    "number", ["number","number"]);
+const list_view_h_set_spacing = Module.cwrap("list_view_h_set_spacing", 
+    "number", ["number","number"]);
+const list_view_h_cast = Module.cwrap("list_view_h_cast", 
+    "number", ["number"]);
+const list_view_h_t_get_prop_item_width = Module.cwrap("list_view_h_t_get_prop_item_width", 
+    "number", ["number"]);
+const list_view_h_t_get_prop_spacing = Module.cwrap("list_view_h_t_get_prop_spacing", 
+    "number", ["number"]);
+const list_view_create = Module.cwrap("list_view_create", 
+    "number", ["number","number","number","number","number"]);
+const list_view_set_item_height = Module.cwrap("list_view_set_item_height", 
+    "number", ["number","number"]);
+const list_view_set_default_item_height = Module.cwrap("list_view_set_default_item_height", 
+    "number", ["number","number"]);
+const list_view_set_auto_hide_scroll_bar = Module.cwrap("list_view_set_auto_hide_scroll_bar", 
+    "number", ["number","number"]);
+const list_view_cast = Module.cwrap("list_view_cast", 
+    "number", ["number"]);
+const list_view_t_get_prop_item_height = Module.cwrap("list_view_t_get_prop_item_height", 
+    "number", ["number"]);
+const list_view_t_get_prop_default_item_height = Module.cwrap("list_view_t_get_prop_default_item_height", 
+    "number", ["number"]);
+const list_view_t_get_prop_auto_hide_scroll_bar = Module.cwrap("list_view_t_get_prop_auto_hide_scroll_bar", 
+    "number", ["number"]);
+const scroll_bar_create = Module.cwrap("scroll_bar_create", 
+    "number", ["number","number","number","number","number"]);
+const scroll_bar_cast = Module.cwrap("scroll_bar_cast", 
+    "number", ["number"]);
+const scroll_bar_create_mobile = Module.cwrap("scroll_bar_create_mobile", 
+    "number", ["number","number","number","number","number"]);
+const scroll_bar_create_desktop = Module.cwrap("scroll_bar_create_desktop", 
+    "number", ["number","number","number","number","number"]);
+const scroll_bar_set_params = Module.cwrap("scroll_bar_set_params", 
+    "number", ["number","number","number"]);
+const scroll_bar_scroll_to = Module.cwrap("scroll_bar_scroll_to", 
+    "number", ["number","number","number"]);
+const scroll_bar_set_value = Module.cwrap("scroll_bar_set_value", 
+    "number", ["number","number"]);
+const scroll_bar_add_delta = Module.cwrap("scroll_bar_add_delta", 
+    "number", ["number","number"]);
+const scroll_bar_scroll_delta = Module.cwrap("scroll_bar_scroll_delta", 
+    "number", ["number","number"]);
+const scroll_bar_set_value_only = Module.cwrap("scroll_bar_set_value_only", 
+    "number", ["number","number"]);
+const scroll_bar_is_mobile = Module.cwrap("scroll_bar_is_mobile", 
+    "number", ["number"]);
+const scroll_bar_t_get_prop_virtual_size = Module.cwrap("scroll_bar_t_get_prop_virtual_size", 
+    "number", ["number"]);
+const scroll_bar_t_get_prop_value = Module.cwrap("scroll_bar_t_get_prop_value", 
+    "number", ["number"]);
+const scroll_bar_t_get_prop_row = Module.cwrap("scroll_bar_t_get_prop_row", 
+    "number", ["number"]);
+const scroll_bar_t_get_prop_animatable = Module.cwrap("scroll_bar_t_get_prop_animatable", 
+    "number", ["number"]);
+const scroll_view_create = Module.cwrap("scroll_view_create", 
+    "number", ["number","number","number","number","number"]);
+const scroll_view_cast = Module.cwrap("scroll_view_cast", 
+    "number", ["number"]);
+const scroll_view_set_virtual_w = Module.cwrap("scroll_view_set_virtual_w", 
+    "number", ["number","number"]);
+const scroll_view_set_virtual_h = Module.cwrap("scroll_view_set_virtual_h", 
+    "number", ["number","number"]);
+const scroll_view_set_xslidable = Module.cwrap("scroll_view_set_xslidable", 
+    "number", ["number","number"]);
+const scroll_view_set_yslidable = Module.cwrap("scroll_view_set_yslidable", 
+    "number", ["number","number"]);
+const scroll_view_set_offset = Module.cwrap("scroll_view_set_offset", 
+    "number", ["number","number","number"]);
+const scroll_view_scroll_to = Module.cwrap("scroll_view_scroll_to", 
+    "number", ["number","number","number","number"]);
+const scroll_view_t_get_prop_virtual_w = Module.cwrap("scroll_view_t_get_prop_virtual_w", 
+    "number", ["number"]);
+const scroll_view_t_get_prop_virtual_h = Module.cwrap("scroll_view_t_get_prop_virtual_h", 
+    "number", ["number"]);
+const scroll_view_t_get_prop_xoffset = Module.cwrap("scroll_view_t_get_prop_xoffset", 
+    "number", ["number"]);
+const scroll_view_t_get_prop_yoffset = Module.cwrap("scroll_view_t_get_prop_yoffset", 
+    "number", ["number"]);
+const scroll_view_t_get_prop_xslidable = Module.cwrap("scroll_view_t_get_prop_xslidable", 
+    "number", ["number"]);
+const scroll_view_t_get_prop_yslidable = Module.cwrap("scroll_view_t_get_prop_yslidable", 
+    "number", ["number"]);
+const slide_menu_create = Module.cwrap("slide_menu_create", 
+    "number", ["number","number","number","number","number"]);
+const slide_menu_cast = Module.cwrap("slide_menu_cast", 
+    "number", ["number"]);
+const slide_menu_set_value = Module.cwrap("slide_menu_set_value", 
+    "number", ["number","number"]);
+const slide_menu_set_align_v = Module.cwrap("slide_menu_set_align_v", 
+    "number", ["number","number"]);
+const slide_menu_set_min_scale = Module.cwrap("slide_menu_set_min_scale", 
+    "number", ["number","number"]);
+const slide_menu_t_get_prop_value = Module.cwrap("slide_menu_t_get_prop_value", 
+    "number", ["number"]);
+const slide_menu_t_get_prop_align_v = Module.cwrap("slide_menu_t_get_prop_align_v", 
+    "number", ["number"]);
+const slide_menu_t_get_prop_min_scale = Module.cwrap("slide_menu_t_get_prop_min_scale", 
+    "number", ["number"]);
+const slide_view_create = Module.cwrap("slide_view_create", 
+    "number", ["number","number","number","number","number"]);
+const slide_view_cast = Module.cwrap("slide_view_cast", 
+    "number", ["number"]);
+const slide_view_set_auto_play = Module.cwrap("slide_view_set_auto_play", 
+    "number", ["number","number"]);
+const slide_view_set_active = Module.cwrap("slide_view_set_active", 
+    "number", ["number","number"]);
+const slide_view_set_vertical = Module.cwrap("slide_view_set_vertical", 
+    "number", ["number","number"]);
+const slide_view_set_anim_hint = Module.cwrap("slide_view_set_anim_hint", 
+    "number", ["number","string"]);
+const slide_view_set_loop = Module.cwrap("slide_view_set_loop", 
+    "number", ["number","number"]);
+const slide_view_t_get_prop_vertical = Module.cwrap("slide_view_t_get_prop_vertical", 
+    "number", ["number"]);
+const slide_view_t_get_prop_auto_play = Module.cwrap("slide_view_t_get_prop_auto_play", 
+    "number", ["number"]);
+const slide_view_t_get_prop_loop = Module.cwrap("slide_view_t_get_prop_loop", 
+    "number", ["number"]);
+const slide_view_t_get_prop_anim_hint = Module.cwrap("slide_view_t_get_prop_anim_hint", 
+    "string", ["number"]);
+const row_create = Module.cwrap("row_create", 
+    "number", ["number","number","number","number","number"]);
+const row_cast = Module.cwrap("row_cast", 
+    "number", ["number"]);
+const switch_create = Module.cwrap("switch_create", 
+    "number", ["number","number","number","number","number"]);
+const switch_set_value = Module.cwrap("switch_set_value", 
+    "number", ["number","number"]);
+const switch_cast = Module.cwrap("switch_cast", 
+    "number", ["number"]);
+const switch_t_get_prop_value = Module.cwrap("switch_t_get_prop_value", 
+    "number", ["number"]);
+const switch_t_get_prop_max_xoffset_ratio = Module.cwrap("switch_t_get_prop_max_xoffset_ratio", 
+    "number", ["number"]);
+const switch_t_get_prop_round_radius = Module.cwrap("switch_t_get_prop_round_radius", 
+    "number", ["number"]);
+const text_selector_create = Module.cwrap("text_selector_create", 
+    "number", ["number","number","number","number","number"]);
+const text_selector_cast = Module.cwrap("text_selector_cast", 
+    "number", ["number"]);
+const text_selector_reset_options = Module.cwrap("text_selector_reset_options", 
+    "number", ["number"]);
+const text_selector_count_options = Module.cwrap("text_selector_count_options", 
+    "number", ["number"]);
+const text_selector_append_option = Module.cwrap("text_selector_append_option", 
+    "number", ["number","number","string"]);
+const text_selector_set_options = Module.cwrap("text_selector_set_options", 
+    "number", ["number","string"]);
+const text_selector_set_range_options = Module.cwrap("text_selector_set_range_options", 
+    "number", ["number","number","number","number"]);
+const text_selector_get_value = Module.cwrap("text_selector_get_value", 
+    "number", ["number"]);
+const text_selector_set_value = Module.cwrap("text_selector_set_value", 
+    "number", ["number","number"]);
+const text_selector_get_text = Module.cwrap("text_selector_get_text", 
+    "string", ["number"]);
+const text_selector_set_text = Module.cwrap("text_selector_set_text", 
+    "number", ["number","string"]);
+const text_selector_set_selected_index = Module.cwrap("text_selector_set_selected_index", 
+    "number", ["number","number"]);
+const text_selector_set_visible_nr = Module.cwrap("text_selector_set_visible_nr", 
+    "number", ["number","number"]);
+const text_selector_t_get_prop_visible_nr = Module.cwrap("text_selector_t_get_prop_visible_nr", 
+    "number", ["number"]);
+const text_selector_t_get_prop_selected_index = Module.cwrap("text_selector_t_get_prop_selected_index", 
+    "number", ["number"]);
+const text_selector_t_get_prop_options = Module.cwrap("text_selector_t_get_prop_options", 
+    "string", ["number"]);
+const digit_clock_create = Module.cwrap("digit_clock_create", 
+    "number", ["number","number","number","number","number"]);
+const digit_clock_cast = Module.cwrap("digit_clock_cast", 
+    "number", ["number"]);
+const digit_clock_set_format = Module.cwrap("digit_clock_set_format", 
+    "number", ["number","string"]);
+const digit_clock_t_get_prop_format = Module.cwrap("digit_clock_t_get_prop_format", 
+    "string", ["number"]);
+const time_clock_create = Module.cwrap("time_clock_create", 
+    "number", ["number","number","number","number","number"]);
+const time_clock_cast = Module.cwrap("time_clock_cast", 
+    "number", ["number"]);
+const time_clock_set_hour = Module.cwrap("time_clock_set_hour", 
+    "number", ["number","number"]);
+const time_clock_set_minute = Module.cwrap("time_clock_set_minute", 
+    "number", ["number","number"]);
+const time_clock_set_second = Module.cwrap("time_clock_set_second", 
+    "number", ["number","number"]);
+const time_clock_set_hour_image = Module.cwrap("time_clock_set_hour_image", 
+    "number", ["number","string"]);
+const time_clock_set_minute_image = Module.cwrap("time_clock_set_minute_image", 
+    "number", ["number","string"]);
+const time_clock_set_second_image = Module.cwrap("time_clock_set_second_image", 
+    "number", ["number","string"]);
+const time_clock_set_bg_image = Module.cwrap("time_clock_set_bg_image", 
+    "number", ["number","string"]);
+const time_clock_set_image = Module.cwrap("time_clock_set_image", 
+    "number", ["number","string"]);
+const time_clock_t_get_prop_hour = Module.cwrap("time_clock_t_get_prop_hour", 
+    "number", ["number"]);
+const time_clock_t_get_prop_minute = Module.cwrap("time_clock_t_get_prop_minute", 
+    "number", ["number"]);
+const time_clock_t_get_prop_second = Module.cwrap("time_clock_t_get_prop_second", 
+    "number", ["number"]);
+const time_clock_t_get_prop_image = Module.cwrap("time_clock_t_get_prop_image", 
+    "string", ["number"]);
+const time_clock_t_get_prop_bg_image = Module.cwrap("time_clock_t_get_prop_bg_image", 
+    "string", ["number"]);
+const time_clock_t_get_prop_hour_image = Module.cwrap("time_clock_t_get_prop_hour_image", 
+    "string", ["number"]);
+const time_clock_t_get_prop_minute_image = Module.cwrap("time_clock_t_get_prop_minute_image", 
+    "string", ["number"]);
+const time_clock_t_get_prop_second_image = Module.cwrap("time_clock_t_get_prop_second_image", 
+    "string", ["number"]);
+const window_event_cast = Module.cwrap("window_event_cast", 
+    "number", ["number"]);
+const window_event_t_get_prop_window = Module.cwrap("window_event_t_get_prop_window", 
+    "number", ["number"]);
+const tab_button_create = Module.cwrap("tab_button_create", 
+    "number", ["number","number","number","number","number"]);
+const tab_button_cast = Module.cwrap("tab_button_cast", 
+    "number", ["number"]);
+const tab_button_set_value = Module.cwrap("tab_button_set_value", 
+    "number", ["number","number"]);
+const tab_button_set_icon = Module.cwrap("tab_button_set_icon", 
+    "number", ["number","string"]);
+const tab_button_set_active_icon = Module.cwrap("tab_button_set_active_icon", 
+    "number", ["number","string"]);
+const tab_button_t_get_prop_value = Module.cwrap("tab_button_t_get_prop_value", 
+    "number", ["number"]);
+const tab_button_t_get_prop_active_icon = Module.cwrap("tab_button_t_get_prop_active_icon", 
+    "string", ["number"]);
+const tab_button_t_get_prop_icon = Module.cwrap("tab_button_t_get_prop_icon", 
+    "string", ["number"]);
+const image_base_set_image = Module.cwrap("image_base_set_image", 
+    "number", ["number","string"]);
+const image_base_set_rotation = Module.cwrap("image_base_set_rotation", 
+    "number", ["number","number"]);
+const image_base_set_scale = Module.cwrap("image_base_set_scale", 
+    "number", ["number","number","number"]);
+const image_base_set_anchor = Module.cwrap("image_base_set_anchor", 
+    "number", ["number","number","number"]);
+const image_base_set_selected = Module.cwrap("image_base_set_selected", 
+    "number", ["number","number"]);
+const image_base_set_selectable = Module.cwrap("image_base_set_selectable", 
+    "number", ["number","number"]);
+const image_base_set_clickable = Module.cwrap("image_base_set_clickable", 
+    "number", ["number","number"]);
+const image_base_cast = Module.cwrap("image_base_cast", 
+    "number", ["number"]);
+const image_base_t_get_prop_image = Module.cwrap("image_base_t_get_prop_image", 
+    "string", ["number"]);
+const image_base_t_get_prop_anchor_x = Module.cwrap("image_base_t_get_prop_anchor_x", 
+    "number", ["number"]);
+const image_base_t_get_prop_anchor_y = Module.cwrap("image_base_t_get_prop_anchor_y", 
+    "number", ["number"]);
+const image_base_t_get_prop_scale_x = Module.cwrap("image_base_t_get_prop_scale_x", 
+    "number", ["number"]);
+const image_base_t_get_prop_scale_y = Module.cwrap("image_base_t_get_prop_scale_y", 
+    "number", ["number"]);
+const image_base_t_get_prop_rotation = Module.cwrap("image_base_t_get_prop_rotation", 
+    "number", ["number"]);
+const image_base_t_get_prop_clickable = Module.cwrap("image_base_t_get_prop_clickable", 
+    "number", ["number"]);
+const image_base_t_get_prop_selectable = Module.cwrap("image_base_t_get_prop_selectable", 
+    "number", ["number"]);
+const image_base_t_get_prop_selected = Module.cwrap("image_base_t_get_prop_selected", 
+    "number", ["number"]);
+const window_create = Module.cwrap("window_create", 
+    "number", ["number","number","number","number","number"]);
+const window_set_fullscreen = Module.cwrap("window_set_fullscreen", 
+    "number", ["number","number"]);
+const window_open = Module.cwrap("window_open", 
+    "number", ["string"]);
+const window_open_and_close = Module.cwrap("window_open_and_close", 
+    "number", ["string","number"]);
+const window_close = Module.cwrap("window_close", 
+    "number", ["number"]);
+const window_close_force = Module.cwrap("window_close_force", 
+    "number", ["number"]);
+const window_cast = Module.cwrap("window_cast", 
+    "number", ["number"]);
+const window_t_get_prop_fullscreen = Module.cwrap("window_t_get_prop_fullscreen", 
+    "number", ["number"]);
+const wheel_event_cast = Module.cwrap("wheel_event_cast", 
+    "number", ["number"]);
+const wheel_event_t_get_prop_dy = Module.cwrap("wheel_event_t_get_prop_dy", 
+    "number", ["number"]);
+const wheel_event_t_get_prop_alt = Module.cwrap("wheel_event_t_get_prop_alt", 
+    "number", ["number"]);
+const wheel_event_t_get_prop_ctrl = Module.cwrap("wheel_event_t_get_prop_ctrl", 
+    "number", ["number"]);
+const wheel_event_t_get_prop_shift = Module.cwrap("wheel_event_t_get_prop_shift", 
+    "number", ["number"]);
+const pointer_event_cast = Module.cwrap("pointer_event_cast", 
+    "number", ["number"]);
+const pointer_event_t_get_prop_x = Module.cwrap("pointer_event_t_get_prop_x", 
+    "number", ["number"]);
+const pointer_event_t_get_prop_y = Module.cwrap("pointer_event_t_get_prop_y", 
+    "number", ["number"]);
+const pointer_event_t_get_prop_button = Module.cwrap("pointer_event_t_get_prop_button", 
+    "number", ["number"]);
+const pointer_event_t_get_prop_pressed = Module.cwrap("pointer_event_t_get_prop_pressed", 
+    "number", ["number"]);
+const pointer_event_t_get_prop_alt = Module.cwrap("pointer_event_t_get_prop_alt", 
+    "number", ["number"]);
+const pointer_event_t_get_prop_ctrl = Module.cwrap("pointer_event_t_get_prop_ctrl", 
+    "number", ["number"]);
+const pointer_event_t_get_prop_shift = Module.cwrap("pointer_event_t_get_prop_shift", 
+    "number", ["number"]);
+const key_event_cast = Module.cwrap("key_event_cast", 
+    "number", ["number"]);
+const key_event_t_get_prop_key = Module.cwrap("key_event_t_get_prop_key", 
+    "number", ["number"]);
+const key_event_t_get_prop_alt = Module.cwrap("key_event_t_get_prop_alt", 
+    "number", ["number"]);
+const key_event_t_get_prop_ctrl = Module.cwrap("key_event_t_get_prop_ctrl", 
+    "number", ["number"]);
+const key_event_t_get_prop_shift = Module.cwrap("key_event_t_get_prop_shift", 
+    "number", ["number"]);
+const key_event_t_get_prop_capslock = Module.cwrap("key_event_t_get_prop_capslock", 
+    "number", ["number"]);
+const paint_event_cast = Module.cwrap("paint_event_cast", 
+    "number", ["number"]);
+const paint_event_t_get_prop_c = Module.cwrap("paint_event_t_get_prop_c", 
+    "number", ["number"]);
+const prop_change_event_cast = Module.cwrap("prop_change_event_cast", 
+    "number", ["number"]);
+const prop_change_event_t_get_prop_name = Module.cwrap("prop_change_event_t_get_prop_name", 
+    "string", ["number"]);
+const prop_change_event_t_get_prop_value = Module.cwrap("prop_change_event_t_get_prop_value", 
+    "number", ["number"]);
+const window_base_cast = Module.cwrap("window_base_cast", 
+    "number", ["number"]);
+const window_base_t_get_prop_theme = Module.cwrap("window_base_t_get_prop_theme", 
+    "string", ["number"]);
+const window_base_t_get_prop_closable = Module.cwrap("window_base_t_get_prop_closable", 
+    "number", ["number"]);
+const window_manager = Module.cwrap("window_manager", 
+    "number", []);
+const window_manager_cast = Module.cwrap("window_manager_cast", 
+    "number", ["number"]);
+const window_manager_get_top_main_window = Module.cwrap("window_manager_get_top_main_window", 
+    "number", ["number"]);
+const window_manager_set_show_fps = Module.cwrap("window_manager_set_show_fps", 
+    "number", ["number","number"]);
+const window_manager_set_screen_saver_time = Module.cwrap("window_manager_set_screen_saver_time", 
+    "number", ["number","number"]);
+const window_manager_set_cursor = Module.cwrap("window_manager_set_cursor", 
+    "number", ["number","string"]);
+const window_manager_back = Module.cwrap("window_manager_back", 
+    "number", ["number"]);
+const window_manager_back_to_home = Module.cwrap("window_manager_back_to_home", 
+    "number", ["number"]);
+const window_manager_t_get_prop_show_fps = Module.cwrap("window_manager_t_get_prop_show_fps", 
+    "number", ["number"]);
+const progress_bar_create = Module.cwrap("progress_bar_create", 
+    "number", ["number","number","number","number","number"]);
+const progress_bar_cast = Module.cwrap("progress_bar_cast", 
+    "number", ["number"]);
+const progress_bar_set_value = Module.cwrap("progress_bar_set_value", 
+    "number", ["number","number"]);
+const progress_bar_set_vertical = Module.cwrap("progress_bar_set_vertical", 
+    "number", ["number","number"]);
+const progress_bar_set_show_text = Module.cwrap("progress_bar_set_show_text", 
+    "number", ["number","number"]);
+const progress_bar_t_get_prop_value = Module.cwrap("progress_bar_t_get_prop_value", 
+    "number", ["number"]);
+const progress_bar_t_get_prop_vertical = Module.cwrap("progress_bar_t_get_prop_vertical", 
+    "number", ["number"]);
+const progress_bar_t_get_prop_show_text = Module.cwrap("progress_bar_t_get_prop_show_text", 
+    "number", ["number"]);
+const object_unref = Module.cwrap("object_unref", 
+    "number", ["number"]);
+const object_ref = Module.cwrap("object_ref", 
+    "number", ["number"]);
+const object_get_type = Module.cwrap("object_get_type", 
+    "string", ["number"]);
+const object_get_desc = Module.cwrap("object_get_desc", 
+    "string", ["number"]);
+const object_get_size = Module.cwrap("object_get_size", 
+    "number", ["number"]);
+const object_is_collection = Module.cwrap("object_is_collection", 
+    "number", ["number"]);
+const object_set_name = Module.cwrap("object_set_name", 
+    "number", ["number","string"]);
+const object_compare = Module.cwrap("object_compare", 
+    "number", ["number","number"]);
+const object_get_prop = Module.cwrap("object_get_prop", 
+    "number", ["number","string","number"]);
+const object_get_prop_str = Module.cwrap("object_get_prop_str", 
+    "string", ["number","string"]);
+const object_get_prop_pointer = Module.cwrap("object_get_prop_pointer", 
+    "number", ["number","string"]);
+const object_get_prop_object = Module.cwrap("object_get_prop_object", 
+    "number", ["number","string"]);
+const object_get_prop_int = Module.cwrap("object_get_prop_int", 
+    "number", ["number","string","number"]);
+const object_get_prop_float = Module.cwrap("object_get_prop_float", 
+    "number", ["number","string","number"]);
+const object_remove_prop = Module.cwrap("object_remove_prop", 
+    "number", ["number","string"]);
+const object_set_prop = Module.cwrap("object_set_prop", 
+    "number", ["number","string","number"]);
+const object_set_prop_str = Module.cwrap("object_set_prop_str", 
+    "number", ["number","string","string"]);
+const object_set_prop_pointer = Module.cwrap("object_set_prop_pointer", 
+    "number", ["number","string","number"]);
+const object_set_prop_object = Module.cwrap("object_set_prop_object", 
+    "number", ["number","string","number"]);
+const object_set_prop_int = Module.cwrap("object_set_prop_int", 
+    "number", ["number","string","number"]);
+const object_set_prop_float = Module.cwrap("object_set_prop_float", 
+    "number", ["number","string","number"]);
+const object_copy_prop = Module.cwrap("object_copy_prop", 
+    "number", ["number","number","string"]);
+const object_foreach_prop = Module.cwrap("object_foreach_prop", 
+    "number", ["number","number","number"]);
+const object_has_prop = Module.cwrap("object_has_prop", 
+    "number", ["number","string"]);
+const object_eval = Module.cwrap("object_eval", 
+    "number", ["number","string","number"]);
+const object_can_exec = Module.cwrap("object_can_exec", 
+    "number", ["number","string","string"]);
+const object_exec = Module.cwrap("object_exec", 
+    "number", ["number","string","string"]);
+const object_notify_changed = Module.cwrap("object_notify_changed", 
+    "number", ["number"]);
+const object_t_get_prop_ref_count = Module.cwrap("object_t_get_prop_ref_count", 
+    "number", ["number"]);
+const object_t_get_prop_name = Module.cwrap("object_t_get_prop_name", 
+    "string", ["number"]);
+const style_mutable_get_name = Module.cwrap("style_mutable_get_name", 
+    "string", ["number"]);
+const style_mutable_set_name = Module.cwrap("style_mutable_set_name", 
+    "number", ["number","string"]);
+const style_mutable_set_int = Module.cwrap("style_mutable_set_int", 
+    "number", ["number","string","string","number"]);
+const style_mutable_cast = Module.cwrap("style_mutable_cast", 
+    "number", ["number"]);
+const style_mutable_create = Module.cwrap("style_mutable_create", 
+    "number", ["number"]);
+const style_mutable_t_get_prop_name = Module.cwrap("style_mutable_t_get_prop_name", 
+    "string", ["number"]);
+const canvas_widget_create = Module.cwrap("canvas_widget_create", 
+    "number", ["number","number","number","number","number"]);
+const canvas_widget_cast = Module.cwrap("canvas_widget_cast", 
+    "number", ["number"]);
+const color_picker_create = Module.cwrap("color_picker_create", 
+    "number", ["number","number","number","number","number"]);
+const color_picker_set_color = Module.cwrap("color_picker_set_color", 
+    "number", ["number","string"]);
+const color_picker_cast = Module.cwrap("color_picker_cast", 
+    "number", ["number"]);
+const color_picker_t_get_prop_value = Module.cwrap("color_picker_t_get_prop_value", 
+    "string", ["number"]);
+const view_create = Module.cwrap("view_create", 
+    "number", ["number","number","number","number","number"]);
+const view_cast = Module.cwrap("view_cast", 
+    "number", ["number"]);
+const tab_button_group_create = Module.cwrap("tab_button_group_create", 
+    "number", ["number","number","number","number","number"]);
+const tab_button_group_cast = Module.cwrap("tab_button_group_cast", 
+    "number", ["number"]);
+const tab_button_group_t_get_prop_compact = Module.cwrap("tab_button_group_t_get_prop_compact", 
+    "number", ["number"]);
+const guage_pointer_create = Module.cwrap("guage_pointer_create", 
+    "number", ["number","number","number","number","number"]);
+const guage_pointer_cast = Module.cwrap("guage_pointer_cast", 
+    "number", ["number"]);
+const guage_pointer_set_angle = Module.cwrap("guage_pointer_set_angle", 
+    "number", ["number","number"]);
+const guage_pointer_set_image = Module.cwrap("guage_pointer_set_image", 
+    "number", ["number","string"]);
+const guage_pointer_t_get_prop_angle = Module.cwrap("guage_pointer_t_get_prop_angle", 
+    "number", ["number"]);
+const guage_pointer_t_get_prop_image = Module.cwrap("guage_pointer_t_get_prop_image", 
+    "string", ["number"]);
+const guage_create = Module.cwrap("guage_create", 
+    "number", ["number","number","number","number","number"]);
+const guage_cast = Module.cwrap("guage_cast", 
+    "number", ["number"]);
+const guage_set_image = Module.cwrap("guage_set_image", 
+    "number", ["number","string"]);
+const guage_set_draw_type = Module.cwrap("guage_set_draw_type", 
+    "number", ["number","number"]);
+const guage_t_get_prop_image = Module.cwrap("guage_t_get_prop_image", 
+    "string", ["number"]);
+const guage_t_get_prop_draw_type = Module.cwrap("guage_t_get_prop_draw_type", 
+    "number", ["number"]);
+const tab_control_create = Module.cwrap("tab_control_create", 
+    "number", ["number","number","number","number","number"]);
+const tab_control_cast = Module.cwrap("tab_control_cast", 
+    "number", ["number"]);
+const image_value_create = Module.cwrap("image_value_create", 
+    "number", ["number","number","number","number","number"]);
+const image_value_set_image = Module.cwrap("image_value_set_image", 
+    "number", ["number","string"]);
+const image_value_set_format = Module.cwrap("image_value_set_format", 
+    "number", ["number","string"]);
+const image_value_set_value = Module.cwrap("image_value_set_value", 
+    "number", ["number","number"]);
+const image_value_cast = Module.cwrap("image_value_cast", 
+    "number", ["number"]);
+const image_value_t_get_prop_image = Module.cwrap("image_value_t_get_prop_image", 
+    "string", ["number"]);
+const image_value_t_get_prop_format = Module.cwrap("image_value_t_get_prop_format", 
+    "string", ["number"]);
+const image_value_t_get_prop_value = Module.cwrap("image_value_t_get_prop_value", 
+    "number", ["number"]);
+const slider_create = Module.cwrap("slider_create", 
+    "number", ["number","number","number","number","number"]);
+const slider_cast = Module.cwrap("slider_cast", 
+    "number", ["number"]);
+const slider_set_value = Module.cwrap("slider_set_value", 
+    "number", ["number","number"]);
+const slider_set_min = Module.cwrap("slider_set_min", 
+    "number", ["number","number"]);
+const slider_set_max = Module.cwrap("slider_set_max", 
+    "number", ["number","number"]);
+const slider_set_step = Module.cwrap("slider_set_step", 
+    "number", ["number","number"]);
+const slider_set_bar_size = Module.cwrap("slider_set_bar_size", 
+    "number", ["number","number"]);
+const slider_set_vertical = Module.cwrap("slider_set_vertical", 
+    "number", ["number","number"]);
+const slider_t_get_prop_value = Module.cwrap("slider_t_get_prop_value", 
+    "number", ["number"]);
+const slider_t_get_prop_min = Module.cwrap("slider_t_get_prop_min", 
+    "number", ["number"]);
+const slider_t_get_prop_max = Module.cwrap("slider_t_get_prop_max", 
+    "number", ["number"]);
+const slider_t_get_prop_step = Module.cwrap("slider_t_get_prop_step", 
+    "number", ["number"]);
+const slider_t_get_prop_vertical = Module.cwrap("slider_t_get_prop_vertical", 
+    "number", ["number"]);
+const slider_t_get_prop_bar_size = Module.cwrap("slider_t_get_prop_bar_size", 
+    "number", ["number"]);
+const app_bar_create = Module.cwrap("app_bar_create", 
+    "number", ["number","number","number","number","number"]);
+const app_bar_cast = Module.cwrap("app_bar_cast", 
+    "number", ["number"]);
+const button_group_create = Module.cwrap("button_group_create", 
+    "number", ["number","number","number","number","number"]);
+const button_group_cast = Module.cwrap("button_group_cast", 
+    "number", ["number"]);
+const button_create = Module.cwrap("button_create", 
+    "number", ["number","number","number","number","number"]);
+const button_cast = Module.cwrap("button_cast", 
+    "number", ["number"]);
+const button_set_repeat = Module.cwrap("button_set_repeat", 
+    "number", ["number","number"]);
+const button_set_enable_long_press = Module.cwrap("button_set_enable_long_press", 
+    "number", ["number","number"]);
+const button_t_get_prop_repeat = Module.cwrap("button_t_get_prop_repeat", 
+    "number", ["number"]);
+const button_t_get_prop_enable_long_press = Module.cwrap("button_t_get_prop_enable_long_press", 
+    "number", ["number"]);
+const check_button_create = Module.cwrap("check_button_create", 
+    "number", ["number","number","number","number","number"]);
+const check_button_create_radio = Module.cwrap("check_button_create_radio", 
+    "number", ["number","number","number","number","number"]);
+const check_button_set_value = Module.cwrap("check_button_set_value", 
+    "number", ["number","number"]);
+const check_button_cast = Module.cwrap("check_button_cast", 
+    "number", ["number"]);
+const check_button_t_get_prop_value = Module.cwrap("check_button_t_get_prop_value", 
+    "number", ["number"]);
+const color_tile_create = Module.cwrap("color_tile_create", 
+    "number", ["number","number","number","number","number"]);
+const color_tile_cast = Module.cwrap("color_tile_cast", 
+    "number", ["number"]);
+const color_tile_set_bg_color = Module.cwrap("color_tile_set_bg_color", 
+    "number", ["number","string"]);
+const color_tile_t_get_prop_bg_color = Module.cwrap("color_tile_t_get_prop_bg_color", 
+    "string", ["number"]);
+const color_tile_t_get_prop_border_color = Module.cwrap("color_tile_t_get_prop_border_color", 
+    "string", ["number"]);
+const column_create = Module.cwrap("column_create", 
+    "number", ["number","number","number","number","number"]);
+const column_cast = Module.cwrap("column_cast", 
+    "number", ["number"]);
+const combo_box_item_create = Module.cwrap("combo_box_item_create", 
+    "number", ["number","number","number","number","number"]);
+const combo_box_item_cast = Module.cwrap("combo_box_item_cast", 
+    "number", ["number"]);
+const combo_box_item_set_checked = Module.cwrap("combo_box_item_set_checked", 
+    "number", ["number","number"]);
+const combo_box_item_set_value = Module.cwrap("combo_box_item_set_value", 
+    "number", ["number","number"]);
+const combo_box_item_t_get_prop_value = Module.cwrap("combo_box_item_t_get_prop_value", 
+    "number", ["number"]);
+const combo_box_item_t_get_prop_checked = Module.cwrap("combo_box_item_t_get_prop_checked", 
+    "number", ["number"]);
+const combo_box_create = Module.cwrap("combo_box_create", 
+    "number", ["number","number","number","number","number"]);
+const combo_box_cast = Module.cwrap("combo_box_cast", 
+    "number", ["number"]);
+const combo_box_set_open_window = Module.cwrap("combo_box_set_open_window", 
+    "number", ["number","string"]);
+const combo_box_reset_options = Module.cwrap("combo_box_reset_options", 
+    "number", ["number"]);
+const combo_box_count_options = Module.cwrap("combo_box_count_options", 
+    "number", ["number"]);
+const combo_box_set_selected_index = Module.cwrap("combo_box_set_selected_index", 
+    "number", ["number","number"]);
+const combo_box_set_value = Module.cwrap("combo_box_set_value", 
+    "number", ["number","number"]);
+const combo_box_append_option = Module.cwrap("combo_box_append_option", 
+    "number", ["number","number","string"]);
+const combo_box_set_options = Module.cwrap("combo_box_set_options", 
+    "number", ["number","string"]);
+const combo_box_get_value = Module.cwrap("combo_box_get_value", 
+    "number", ["number"]);
+const combo_box_get_text = Module.cwrap("combo_box_get_text", 
+    "string", ["number"]);
+const combo_box_t_get_prop_open_window = Module.cwrap("combo_box_t_get_prop_open_window", 
+    "string", ["number"]);
+const combo_box_t_get_prop_selected_index = Module.cwrap("combo_box_t_get_prop_selected_index", 
+    "number", ["number"]);
+const combo_box_t_get_prop_value = Module.cwrap("combo_box_t_get_prop_value", 
+    "number", ["number"]);
+const combo_box_t_get_prop_options = Module.cwrap("combo_box_t_get_prop_options", 
+    "string", ["number"]);
+const dialog_client_create = Module.cwrap("dialog_client_create", 
+    "number", ["number","number","number","number","number"]);
+const dialog_client_cast = Module.cwrap("dialog_client_cast", 
+    "number", ["number"]);
+const dialog_title_create = Module.cwrap("dialog_title_create", 
+    "number", ["number","number","number","number","number"]);
+const dialog_title_cast = Module.cwrap("dialog_title_cast", 
+    "number", ["number"]);
+const dialog_create = Module.cwrap("dialog_create", 
+    "number", ["number","number","number","number","number"]);
+const dialog_create_simple = Module.cwrap("dialog_create_simple", 
+    "number", ["number","number","number","number","number"]);
+const dialog_cast = Module.cwrap("dialog_cast", 
+    "number", ["number"]);
+const dialog_get_title = Module.cwrap("dialog_get_title", 
+    "number", ["number"]);
+const dialog_get_client = Module.cwrap("dialog_get_client", 
+    "number", ["number"]);
+const dialog_open = Module.cwrap("dialog_open", 
+    "number", ["string"]);
+const dialog_set_title = Module.cwrap("dialog_set_title", 
+    "number", ["number","string"]);
+const dialog_modal = Module.cwrap("dialog_modal", 
+    "number", ["number"]);
+const dialog_quit = Module.cwrap("dialog_quit", 
+    "number", ["number","number"]);
+const dialog_is_quited = Module.cwrap("dialog_is_quited", 
+    "number", ["number"]);
+const dialog_is_modal = Module.cwrap("dialog_is_modal", 
+    "number", ["number"]);
+const dialog_toast = Module.cwrap("dialog_toast", 
+    "number", ["string","number"]);
+const dialog_info = Module.cwrap("dialog_info", 
+    "number", ["string"]);
+const dialog_warn = Module.cwrap("dialog_warn", 
+    "number", ["string"]);
+const dialog_confirm = Module.cwrap("dialog_confirm", 
+    "number", ["string"]);
+const dialog_t_get_prop_highlight = Module.cwrap("dialog_t_get_prop_highlight", 
+    "string", ["number"]);
+const dragger_create = Module.cwrap("dragger_create", 
+    "number", ["number","number","number","number","number"]);
+const dragger_cast = Module.cwrap("dragger_cast", 
+    "number", ["number"]);
+const dragger_set_range = Module.cwrap("dragger_set_range", 
+    "number", ["number","number","number","number","number"]);
+const dragger_t_get_prop_x_min = Module.cwrap("dragger_t_get_prop_x_min", 
+    "number", ["number"]);
+const dragger_t_get_prop_y_min = Module.cwrap("dragger_t_get_prop_y_min", 
+    "number", ["number"]);
+const dragger_t_get_prop_x_max = Module.cwrap("dragger_t_get_prop_x_max", 
+    "number", ["number"]);
+const dragger_t_get_prop_y_max = Module.cwrap("dragger_t_get_prop_y_max", 
+    "number", ["number"]);
+const edit_create = Module.cwrap("edit_create", 
+    "number", ["number","number","number","number","number"]);
+const edit_cast = Module.cwrap("edit_cast", 
+    "number", ["number"]);
+const edit_get_int = Module.cwrap("edit_get_int", 
+    "number", ["number"]);
+const edit_get_double = Module.cwrap("edit_get_double", 
+    "number", ["number"]);
+const edit_set_int = Module.cwrap("edit_set_int", 
+    "number", ["number","number"]);
+const edit_set_double = Module.cwrap("edit_set_double", 
+    "number", ["number","number"]);
+const edit_set_text_limit = Module.cwrap("edit_set_text_limit", 
+    "number", ["number","number","number"]);
+const edit_set_int_limit = Module.cwrap("edit_set_int_limit", 
+    "number", ["number","number","number","number"]);
+const edit_set_float_limit = Module.cwrap("edit_set_float_limit", 
+    "number", ["number","number","number","number"]);
+const edit_set_readonly = Module.cwrap("edit_set_readonly", 
+    "number", ["number","number"]);
+const edit_set_auto_fix = Module.cwrap("edit_set_auto_fix", 
+    "number", ["number","number"]);
+const edit_set_input_type = Module.cwrap("edit_set_input_type", 
+    "number", ["number","number"]);
+const edit_set_input_tips = Module.cwrap("edit_set_input_tips", 
+    "number", ["number","string"]);
+const edit_set_password_visible = Module.cwrap("edit_set_password_visible", 
+    "number", ["number","number"]);
+const edit_set_focus = Module.cwrap("edit_set_focus", 
+    "number", ["number","number"]);
+const edit_t_get_prop_readonly = Module.cwrap("edit_t_get_prop_readonly", 
+    "number", ["number"]);
+const edit_t_get_prop_password_visible = Module.cwrap("edit_t_get_prop_password_visible", 
+    "number", ["number"]);
+const edit_t_get_prop_auto_fix = Module.cwrap("edit_t_get_prop_auto_fix", 
+    "number", ["number"]);
+const edit_t_get_prop_top_margin = Module.cwrap("edit_t_get_prop_top_margin", 
+    "number", ["number"]);
+const edit_t_get_prop_bottom_margin = Module.cwrap("edit_t_get_prop_bottom_margin", 
+    "number", ["number"]);
+const edit_t_get_prop_left_margin = Module.cwrap("edit_t_get_prop_left_margin", 
+    "number", ["number"]);
+const edit_t_get_prop_right_margin = Module.cwrap("edit_t_get_prop_right_margin", 
+    "number", ["number"]);
+const edit_t_get_prop_tips = Module.cwrap("edit_t_get_prop_tips", 
+    "string", ["number"]);
+const edit_t_get_prop_focus = Module.cwrap("edit_t_get_prop_focus", 
+    "number", ["number"]);
+const grid_item_create = Module.cwrap("grid_item_create", 
+    "number", ["number","number","number","number","number"]);
+const grid_item_cast = Module.cwrap("grid_item_cast", 
+    "number", ["number"]);
+const grid_create = Module.cwrap("grid_create", 
+    "number", ["number","number","number","number","number"]);
+const grid_cast = Module.cwrap("grid_cast", 
+    "number", ["number"]);
+const group_box_create = Module.cwrap("group_box_create", 
+    "number", ["number","number","number","number","number"]);
+const group_box_cast = Module.cwrap("group_box_cast", 
+    "number", ["number"]);
+const popup_create = Module.cwrap("popup_create", 
+    "number", ["number","number","number","number","number"]);
+const popup_cast = Module.cwrap("popup_cast", 
+    "number", ["number"]);
+const popup_set_close_when_click = Module.cwrap("popup_set_close_when_click", 
+    "number", ["number","number"]);
+const popup_set_close_when_click_outside = Module.cwrap("popup_set_close_when_click_outside", 
+    "number", ["number","number"]);
+const popup_t_get_prop_close_when_click = Module.cwrap("popup_t_get_prop_close_when_click", 
+    "number", ["number"]);
+const popup_t_get_prop_close_when_click_outside = Module.cwrap("popup_t_get_prop_close_when_click_outside", 
+    "number", ["number"]);
+const label_create = Module.cwrap("label_create", 
+    "number", ["number","number","number","number","number"]);
+const label_set_length = Module.cwrap("label_set_length", 
+    "number", ["number","number"]);
+const label_resize_to_content = Module.cwrap("label_resize_to_content", 
+    "number", ["number","number","number","number","number"]);
+const label_cast = Module.cwrap("label_cast", 
+    "number", ["number"]);
+const label_t_get_prop_length = Module.cwrap("label_t_get_prop_length", 
+    "number", ["number"]);
+const pages_create = Module.cwrap("pages_create", 
+    "number", ["number","number","number","number","number"]);
+const pages_cast = Module.cwrap("pages_cast", 
+    "number", ["number"]);
+const pages_set_active = Module.cwrap("pages_set_active", 
+    "number", ["number","number"]);
+const pages_set_active_by_name = Module.cwrap("pages_set_active_by_name", 
+    "number", ["number","string"]);
+const pages_t_get_prop_active = Module.cwrap("pages_t_get_prop_active", 
+    "number", ["number"]);
+const image_animation_create = Module.cwrap("image_animation_create", 
+    "number", ["number","number","number","number","number"]);
+const image_animation_set_loop = Module.cwrap("image_animation_set_loop", 
+    "number", ["number","number"]);
+const image_animation_set_image = Module.cwrap("image_animation_set_image", 
+    "number", ["number","string"]);
+const image_animation_set_interval = Module.cwrap("image_animation_set_interval", 
+    "number", ["number","number"]);
+const image_animation_set_delay = Module.cwrap("image_animation_set_delay", 
+    "number", ["number","number"]);
+const image_animation_set_auto_play = Module.cwrap("image_animation_set_auto_play", 
+    "number", ["number","number"]);
+const image_animation_set_sequence = Module.cwrap("image_animation_set_sequence", 
+    "number", ["number","string"]);
+const image_animation_set_range_sequence = Module.cwrap("image_animation_set_range_sequence", 
+    "number", ["number","number","number"]);
+const image_animation_play = Module.cwrap("image_animation_play", 
+    "number", ["number"]);
+const image_animation_stop = Module.cwrap("image_animation_stop", 
+    "number", ["number"]);
+const image_animation_pause = Module.cwrap("image_animation_pause", 
+    "number", ["number"]);
+const image_animation_set_format = Module.cwrap("image_animation_set_format", 
+    "number", ["number","string"]);
+const image_animation_set_unload_after_paint = Module.cwrap("image_animation_set_unload_after_paint", 
+    "number", ["number","number"]);
+const image_animation_cast = Module.cwrap("image_animation_cast", 
+    "number", ["number"]);
+const image_animation_t_get_prop_image = Module.cwrap("image_animation_t_get_prop_image", 
+    "string", ["number"]);
+const image_animation_t_get_prop_sequence = Module.cwrap("image_animation_t_get_prop_sequence", 
+    "string", ["number"]);
+const image_animation_t_get_prop_start_index = Module.cwrap("image_animation_t_get_prop_start_index", 
+    "number", ["number"]);
+const image_animation_t_get_prop_end_index = Module.cwrap("image_animation_t_get_prop_end_index", 
+    "number", ["number"]);
+const image_animation_t_get_prop_loop = Module.cwrap("image_animation_t_get_prop_loop", 
+    "number", ["number"]);
+const image_animation_t_get_prop_auto_play = Module.cwrap("image_animation_t_get_prop_auto_play", 
+    "number", ["number"]);
+const image_animation_t_get_prop_unload_after_paint = Module.cwrap("image_animation_t_get_prop_unload_after_paint", 
+    "number", ["number"]);
+const image_animation_t_get_prop_format = Module.cwrap("image_animation_t_get_prop_format", 
+    "string", ["number"]);
+const image_animation_t_get_prop_interval = Module.cwrap("image_animation_t_get_prop_interval", 
+    "number", ["number"]);
+const image_animation_t_get_prop_delay = Module.cwrap("image_animation_t_get_prop_delay", 
+    "number", ["number"]);
+const image_create = Module.cwrap("image_create", 
+    "number", ["number","number","number","number","number"]);
+const image_set_draw_type = Module.cwrap("image_set_draw_type", 
+    "number", ["number","number"]);
+const image_cast = Module.cwrap("image_cast", 
+    "number", ["number"]);
+const image_t_get_prop_draw_type = Module.cwrap("image_t_get_prop_draw_type", 
+    "number", ["number"]);
+const svg_image_create = Module.cwrap("svg_image_create", 
+    "number", ["number","number","number","number","number"]);
+const svg_image_cast = Module.cwrap("svg_image_cast", 
+    "number", ["number"]);
+const spin_box_create = Module.cwrap("spin_box_create", 
+    "number", ["number","number","number","number","number"]);
+const spin_box_cast = Module.cwrap("spin_box_cast", 
+    "number", ["number"]);
+const object_default_create = Module.cwrap("object_default_create", 
+    "number", []);
+const object_default_unref = Module.cwrap("object_default_unref", 
+    "number", ["number"]);
+const object_default_t_get_prop_props_size = Module.cwrap("object_default_t_get_prop_props_size", 
+    "number", ["number"]);
+const gif_image_create = Module.cwrap("gif_image_create", 
+    "number", ["number","number","number","number","number"]);
+const gif_image_cast = Module.cwrap("gif_image_cast", 
+    "number", ["number"]);
+const timer_info_cast = Module.cwrap("timer_info_cast", 
+    "number", ["number"]);
+const timer_info_t_get_prop_ctx = Module.cwrap("timer_info_t_get_prop_ctx", 
+    "number", ["number"]);
+const timer_info_t_get_prop_id = Module.cwrap("timer_info_t_get_prop_id", 
+    "number", ["number"]);
+const timer_info_t_get_prop_now = Module.cwrap("timer_info_t_get_prop_now", 
+    "number", ["number"]);
+const timer_info_t_get_prop_user_changed_time = Module.cwrap("timer_info_t_get_prop_user_changed_time", 
+    "number", ["number"]);
+const idle_info_cast = Module.cwrap("idle_info_cast", 
+    "number", ["number"]);
+const idle_info_t_get_prop_ctx = Module.cwrap("idle_info_t_get_prop_ctx", 
+    "number", ["number"]);
+const idle_info_t_get_prop_id = Module.cwrap("idle_info_t_get_prop_id", 
+    "number", ["number"]);
+const system_bar_create = Module.cwrap("system_bar_create", 
+    "number", ["number","number","number","number","number"]);
+const system_bar_cast = Module.cwrap("system_bar_cast", 
+    "number", ["number"]);
 
 namespace AWTK {
-class Tk {
+export class Tk {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1200,7 +2390,7 @@ class Tk {
 
 }
 
-class AssetInfo {
+export class AssetInfo {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1232,7 +2422,7 @@ class AssetInfo {
 
 }
 
-class AssetsManager {
+export class AssetsManager {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1252,7 +2442,7 @@ class AssetsManager {
 
 }
 
-enum BitmapFormat {
+export enum BitmapFormat {
  NONE = get_BITMAP_FMT_NONE(),
  RGBA8888 = get_BITMAP_FMT_RGBA8888(),
  ABGR8888 = get_BITMAP_FMT_ABGR8888(),
@@ -1264,7 +2454,7 @@ enum BitmapFormat {
  BGR888 = get_BITMAP_FMT_BGR888(),
 };
 
-enum BitmapFlag {
+export enum BitmapFlag {
  NONE = get_BITMAP_FLAG_NONE(),
  OPAQUE = get_BITMAP_FLAG_OPAQUE(),
  IMMUTABLE = get_BITMAP_FLAG_IMMUTABLE(),
@@ -1272,7 +2462,7 @@ enum BitmapFlag {
  CHANGED = get_BITMAP_FLAG_CHANGED(),
 };
 
-class Bitmap {
+export class Bitmap {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1320,7 +2510,7 @@ class Bitmap {
 
 }
 
-enum ImageDrawType {
+export enum ImageDrawType {
  DEFAULT = get_IMAGE_DRAW_DEFAULT(),
  CENTER = get_IMAGE_DRAW_CENTER(),
  ICON = get_IMAGE_DRAW_ICON(),
@@ -1339,7 +2529,7 @@ enum ImageDrawType {
  PATCH3_Y_SCALE_X = get_IMAGE_DRAW_PATCH3_Y_SCALE_X(),
 };
 
-class Canvas {
+export class Canvas {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1447,12 +2637,12 @@ class Canvas {
 
 }
 
-enum ClipBoardDataType {
+export enum ClipBoardDataType {
  NONE = get_CLIP_BOARD_DATA_TYPE_NONE(),
  TEXT = get_CLIP_BOARD_DATA_TYPE_TEXT(),
 };
 
-class ClipBoard {
+export class ClipBoard {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1468,7 +2658,7 @@ class ClipBoard {
 
 }
 
-enum EventType {
+export enum EventType {
  POINTER_DOWN = get_EVT_POINTER_DOWN(),
  POINTER_DOWN_ABORT = get_EVT_POINTER_DOWN_ABORT(),
  POINTER_MOVE = get_EVT_POINTER_MOVE(),
@@ -1521,7 +2711,7 @@ enum EventType {
  USER_START = get_EVT_USER_START(),
 };
 
-class FontManager {
+export class FontManager {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1533,14 +2723,14 @@ class FontManager {
 
 }
 
-class Idle {
+export class Idle {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static add(on_idle, ctx) {
-   return idle_add(on_idle, ctx);
+   return idle_add(Module.addFunction(on_idle), ctx);
  }
 
  static remove(idle_id) {
@@ -1549,7 +2739,7 @@ class Idle {
 
 }
 
-class ImageManager {
+export class ImageManager {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1565,7 +2755,7 @@ class ImageManager {
 
 }
 
-enum InputType {
+export enum InputType {
  TEXT = get_INPUT_TEXT(),
  INT = get_INPUT_INT(),
  UINT = get_INPUT_UINT(),
@@ -1578,7 +2768,7 @@ enum InputType {
  CUSTOM = get_INPUT_CUSTOM(),
 };
 
-class InputMethod {
+export class InputMethod {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1598,7 +2788,7 @@ class InputMethod {
 
 }
 
-enum KeyCode {
+export enum KeyCode {
  KEY_RETURN = get_TK_KEY_RETURN(),
  KEY_ESCAPE = get_TK_KEY_ESCAPE(),
  KEY_BACKSPACE = get_TK_KEY_BACKSPACE(),
@@ -1700,7 +2890,7 @@ enum KeyCode {
  KEY_RIGHTBRACE = get_TK_KEY_RIGHTBRACE(),
 };
 
-class LocaleInfo {
+export class LocaleInfo {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1719,7 +2909,7 @@ class LocaleInfo {
  }
 
  on(type, on_event, ctx) {
-   return locale_info_on(this.nativeObj, type, on_event, ctx);
+   return locale_info_on(this.nativeObj, type, Module.addFunction(on_event), ctx);
  }
 
  off(id) {
@@ -1728,7 +2918,7 @@ class LocaleInfo {
 
 }
 
-enum StyleId {
+export enum StyleId {
  _ID_BG_COLOR = get_STYLE_ID_BG_COLOR(),
  _ID_FG_COLOR = get_STYLE_ID_FG_COLOR(),
  _ID_MASK_COLOR = get_STYLE_ID_MASK_COLOR(),
@@ -1757,7 +2947,7 @@ enum StyleId {
  _ID_ROUND_RADIUS = get_STYLE_ID_ROUND_RADIUS(),
 };
 
-class Style {
+export class Style {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1781,7 +2971,7 @@ class Style {
 
 }
 
-class Theme {
+export class Theme {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -1793,14 +2983,14 @@ class Theme {
 
 }
 
-class Timer {
+export class Timer {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static add(on_timer, ctx, duration) {
-   return timer_add(on_timer, ctx, duration);
+   return timer_add(Module.addFunction(on_timer), ctx, duration);
  }
 
  static remove(timer_id) {
@@ -1813,21 +3003,21 @@ class Timer {
 
 }
 
-enum AlignV {
+export enum AlignV {
  NONE = get_ALIGN_V_NONE(),
  MIDDLE = get_ALIGN_V_MIDDLE(),
  TOP = get_ALIGN_V_TOP(),
  BOTTOM = get_ALIGN_V_BOTTOM(),
 };
 
-enum AlignH {
+export enum AlignH {
  NONE = get_ALIGN_H_NONE(),
  CENTER = get_ALIGN_H_CENTER(),
  LEFT = get_ALIGN_H_LEFT(),
  RIGHT = get_ALIGN_H_RIGHT(),
 };
 
-class Vgcanvas {
+export class Vgcanvas {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2051,7 +3241,7 @@ class Vgcanvas {
 
 }
 
-enum WidgetProp {
+export enum WidgetProp {
  X = get_WIDGET_PROP_X(),
  Y = get_WIDGET_PROP_Y(),
  W = get_WIDGET_PROP_W(),
@@ -2160,7 +3350,7 @@ enum WidgetProp {
  FOCUSABLE = get_WIDGET_PROP_FOCUSABLE(),
 };
 
-enum WidgetType {
+export enum WidgetType {
  NONE = get_WIDGET_TYPE_NONE(),
  WINDOW_MANAGER = get_WIDGET_TYPE_WINDOW_MANAGER(),
  NORMAL_WINDOW = get_WIDGET_TYPE_NORMAL_WINDOW(),
@@ -2213,20 +3403,20 @@ enum WidgetType {
  CALIBRATION_WIN = get_WIDGET_TYPE_CALIBRATION_WIN(),
 };
 
-enum WindowStage {
+export enum WindowStage {
  NONE = get_WINDOW_STAGE_NONE(),
  CREATED = get_WINDOW_STAGE_CREATED(),
  OPENED = get_WINDOW_STAGE_OPENED(),
  CLOSED = get_WINDOW_STAGE_CLOSED(),
 };
 
-enum WindowClosable {
+export enum WindowClosable {
  YES = get_WINDOW_CLOSABLE_YES(),
  NO = get_WINDOW_CLOSABLE_NO(),
  CONFIRM = get_WINDOW_CLOSABLE_CONFIRM(),
 };
 
-enum WidgetState {
+export enum WidgetState {
  STATE_NONE = get_WIDGET_STATE_NONE(),
  STATE_NORMAL = get_WIDGET_STATE_NORMAL(),
  STATE_PRESSED = get_WIDGET_STATE_PRESSED(),
@@ -2246,7 +3436,7 @@ enum WidgetState {
  STATE_OVER_OF_ACTIVE = get_WIDGET_STATE_OVER_OF_ACTIVE(),
 };
 
-class Widget {
+export class Widget {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2377,7 +3567,7 @@ class Widget {
  }
 
  on(type, on_event, ctx) {
-   return widget_on(this.nativeObj, type, on_event, ctx);
+   return widget_on(this.nativeObj, type, Module.addFunction(on_event), ctx);
  }
 
  off(id) {
@@ -2534,7 +3724,7 @@ class Widget {
 
 }
 
-enum AssetType {
+export enum AssetType {
  NONE = get_ASSET_TYPE_NONE(),
  FONT = get_ASSET_TYPE_FONT(),
  IMAGE = get_ASSET_TYPE_IMAGE(),
@@ -2546,7 +3736,7 @@ enum AssetType {
  DATA = get_ASSET_TYPE_DATA(),
 };
 
-class Color {
+export class Color {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2594,7 +3784,7 @@ class Color {
 
 }
 
-class DateTime {
+export class DateTime {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2638,7 +3828,7 @@ class DateTime {
 
 }
 
-class Emitter {
+export class Emitter {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2657,7 +3847,7 @@ class Emitter {
  }
 
  on(type, on_event, ctx) {
-   return emitter_on(this.nativeObj, type, on_event, ctx);
+   return emitter_on(this.nativeObj, type, Module.addFunction(on_event), ctx);
  }
 
  off(id) {
@@ -2686,7 +3876,7 @@ class Emitter {
 
 }
 
-enum EventBaseType {
+export enum EventBaseType {
  NONE = get_EVT_NONE(),
  PROP_WILL_CHANGE = get_EVT_PROP_WILL_CHANGE(),
  PROP_CHANGED = get_EVT_PROP_CHANGED(),
@@ -2696,7 +3886,7 @@ enum EventBaseType {
  DESTROY = get_EVT_DESTROY(),
 };
 
-class Event {
+export class Event {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2728,7 +3918,7 @@ class Event {
 
 }
 
-class NamedValue {
+export class NamedValue {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2764,7 +3954,7 @@ class NamedValue {
 
 }
 
-class Point {
+export class Point {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2772,7 +3962,7 @@ class Point {
 
 }
 
-class Rect {
+export class Rect {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2812,7 +4002,7 @@ class Rect {
 
 }
 
-class TimeNow {
+export class TimeNow {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2828,7 +4018,7 @@ class TimeNow {
 
 }
 
-enum Ret {
+export enum Ret {
  OK = get_RET_OK(),
  OOM = get_RET_OOM(),
  FAIL = get_RET_FAIL(),
@@ -2847,7 +4037,7 @@ enum Ret {
  BAD_PARAMS = get_RET_BAD_PARAMS(),
 };
 
-enum ValueType {
+export enum ValueType {
  INVALID = get_VALUE_TYPE_INVALID(),
  BOOL = get_VALUE_TYPE_BOOL(),
  INT8 = get_VALUE_TYPE_INT8(),
@@ -2867,7 +4057,7 @@ enum ValueType {
  OBJECT = get_VALUE_TYPE_OBJECT(),
 };
 
-class Value {
+export class Value {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -3015,7 +4205,7 @@ class Value {
 
 }
 
-class ProgressCircle extends Widget {
+export class ProgressCircle extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3087,7 +4277,7 @@ class ProgressCircle extends Widget {
 
 }
 
-class RichText extends Widget {
+export class RichText extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3111,7 +4301,7 @@ class RichText extends Widget {
 
 }
 
-class ListItem extends Widget {
+export class ListItem extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3127,7 +4317,7 @@ class ListItem extends Widget {
 
 }
 
-class ListViewH extends Widget {
+export class ListViewH extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3159,7 +4349,7 @@ class ListViewH extends Widget {
 
 }
 
-class ListView extends Widget {
+export class ListView extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3199,7 +4389,7 @@ class ListView extends Widget {
 
 }
 
-class ScrollBar extends Widget {
+export class ScrollBar extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3267,7 +4457,7 @@ class ScrollBar extends Widget {
 
 }
 
-class ScrollView extends Widget {
+export class ScrollView extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3331,7 +4521,7 @@ class ScrollView extends Widget {
 
 }
 
-class SlideMenu extends Widget {
+export class SlideMenu extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3371,7 +4561,7 @@ class SlideMenu extends Widget {
 
 }
 
-class SlideView extends Widget {
+export class SlideView extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3423,7 +4613,7 @@ class SlideView extends Widget {
 
 }
 
-class Row extends Widget {
+export class Row extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3439,7 +4629,7 @@ class Row extends Widget {
 
 }
 
-class Switch extends Widget {
+export class Switch extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3471,7 +4661,7 @@ class Switch extends Widget {
 
 }
 
-class TextSelector extends Widget {
+export class TextSelector extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3543,7 +4733,7 @@ class TextSelector extends Widget {
 
 }
 
-class DigitClock extends Widget {
+export class DigitClock extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3567,7 +4757,7 @@ class DigitClock extends Widget {
 
 }
 
-class TimeClock extends Widget {
+export class TimeClock extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3647,7 +4837,7 @@ class TimeClock extends Widget {
 
 }
 
-class WindowEvent extends Event {
+export class WindowEvent extends Event {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3663,7 +4853,7 @@ class WindowEvent extends Event {
 
 }
 
-class TabButton extends Widget {
+export class TabButton extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3703,38 +4893,38 @@ class TabButton extends Widget {
 
 }
 
-class ImageBase extends Widget {
+export class ImageBase extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
- imageSetImage(name) {
-   return image_set_image(this.nativeObj, name);
+ setImage(name) {
+   return image_base_set_image(this.nativeObj, name);
  }
 
- imageSetRotation(rotation) {
-   return image_set_rotation(this.nativeObj, rotation);
+ setRotation(rotation) {
+   return image_base_set_rotation(this.nativeObj, rotation);
  }
 
- imageSetScale(scale_x, scale_y) {
-   return image_set_scale(this.nativeObj, scale_x, scale_y);
+ setScale(scale_x, scale_y) {
+   return image_base_set_scale(this.nativeObj, scale_x, scale_y);
  }
 
- imageSetAnchor(anchor_x, anchor_y) {
-   return image_set_anchor(this.nativeObj, anchor_x, anchor_y);
+ setAnchor(anchor_x, anchor_y) {
+   return image_base_set_anchor(this.nativeObj, anchor_x, anchor_y);
  }
 
- imageSetSelected(selected) {
-   return image_set_selected(this.nativeObj, selected);
+ setSelected(selected) {
+   return image_base_set_selected(this.nativeObj, selected);
  }
 
- imageSetSelectable(selectable) {
-   return image_set_selectable(this.nativeObj, selectable);
+ setSelectable(selectable) {
+   return image_base_set_selectable(this.nativeObj, selectable);
  }
 
- imageSetClickable(clickable) {
-   return image_set_clickable(this.nativeObj, clickable);
+ setClickable(clickable) {
+   return image_base_set_clickable(this.nativeObj, clickable);
  }
 
  static cast(widget) {
@@ -3779,7 +4969,7 @@ class ImageBase extends Widget {
 
 }
 
-class Window extends Widget {
+export class Window extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3819,7 +5009,7 @@ class Window extends Widget {
 
 }
 
-class WheelEvent extends Event {
+export class WheelEvent extends Event {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3847,7 +5037,7 @@ class WheelEvent extends Event {
 
 }
 
-class PointerEvent extends Event {
+export class PointerEvent extends Event {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3887,7 +5077,7 @@ class PointerEvent extends Event {
 
 }
 
-class KeyEvent extends Event {
+export class KeyEvent extends Event {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3919,7 +5109,7 @@ class KeyEvent extends Event {
 
 }
 
-class PaintEvent extends Event {
+export class PaintEvent extends Event {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3935,7 +5125,7 @@ class PaintEvent extends Event {
 
 }
 
-class PropChangeEvent extends Event {
+export class PropChangeEvent extends Event {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3955,7 +5145,7 @@ class PropChangeEvent extends Event {
 
 }
 
-class WindowBase extends Widget {
+export class WindowBase extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -3975,7 +5165,7 @@ class WindowBase extends Widget {
 
 }
 
-class WindowManager extends Widget {
+export class WindowManager extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4019,7 +5209,7 @@ class WindowManager extends Widget {
 
 }
 
-class ProgressBar extends Widget {
+export class ProgressBar extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4059,7 +5249,7 @@ class ProgressBar extends Widget {
 
 }
 
-class ObjectBase extends Emitter {
+export class ObjectBase extends Emitter {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4187,7 +5377,7 @@ class ObjectBase extends Emitter {
 
 }
 
-class StyleMutable extends Style {
+export class StyleMutable extends Style {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4219,7 +5409,7 @@ class StyleMutable extends Style {
 
 }
 
-class CanvasWidget extends Widget {
+export class CanvasWidget extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4235,7 +5425,7 @@ class CanvasWidget extends Widget {
 
 }
 
-class ColorPicker extends Widget {
+export class ColorPicker extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4259,7 +5449,7 @@ class ColorPicker extends Widget {
 
 }
 
-class View extends Widget {
+export class View extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4275,7 +5465,7 @@ class View extends Widget {
 
 }
 
-class TabButtonGroup extends Widget {
+export class TabButtonGroup extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4295,7 +5485,7 @@ class TabButtonGroup extends Widget {
 
 }
 
-class GuagePointer extends Widget {
+export class GuagePointer extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4327,7 +5517,7 @@ class GuagePointer extends Widget {
 
 }
 
-class Guage extends Widget {
+export class Guage extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4359,7 +5549,7 @@ class Guage extends Widget {
 
 }
 
-class TabControl extends Widget {
+export class TabControl extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4375,7 +5565,7 @@ class TabControl extends Widget {
 
 }
 
-class ImageValue extends Widget {
+export class ImageValue extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4415,7 +5605,7 @@ class ImageValue extends Widget {
 
 }
 
-class Slider extends Widget {
+export class Slider extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4479,7 +5669,7 @@ class Slider extends Widget {
 
 }
 
-class AppBar extends Widget {
+export class AppBar extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4495,7 +5685,7 @@ class AppBar extends Widget {
 
 }
 
-class ButtonGroup extends Widget {
+export class ButtonGroup extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4511,7 +5701,7 @@ class ButtonGroup extends Widget {
 
 }
 
-class Button extends Widget {
+export class Button extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4543,7 +5733,7 @@ class Button extends Widget {
 
 }
 
-class CheckButton extends Widget {
+export class CheckButton extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4571,7 +5761,7 @@ class CheckButton extends Widget {
 
 }
 
-class ColorTile extends Widget {
+export class ColorTile extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4599,7 +5789,7 @@ class ColorTile extends Widget {
 
 }
 
-class Column extends Widget {
+export class Column extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4615,7 +5805,7 @@ class Column extends Widget {
 
 }
 
-class ComboBoxItem extends Widget {
+export class ComboBoxItem extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4647,7 +5837,7 @@ class ComboBoxItem extends Widget {
 
 }
 
-class ComboBox extends Widget {
+export class ComboBox extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4715,7 +5905,7 @@ class ComboBox extends Widget {
 
 }
 
-class DialogClient extends Widget {
+export class DialogClient extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4731,7 +5921,7 @@ class DialogClient extends Widget {
 
 }
 
-class DialogTitle extends Widget {
+export class DialogTitle extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4747,7 +5937,7 @@ class DialogTitle extends Widget {
 
 }
 
-class Dialog extends Widget {
+export class Dialog extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4819,7 +6009,7 @@ class Dialog extends Widget {
 
 }
 
-class Dragger extends Widget {
+export class Dragger extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4855,7 +6045,7 @@ class Dragger extends Widget {
 
 }
 
-class Edit extends Widget {
+export class Edit extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4959,7 +6149,7 @@ class Edit extends Widget {
 
 }
 
-class GridItem extends Widget {
+export class GridItem extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4975,7 +6165,7 @@ class GridItem extends Widget {
 
 }
 
-class Grid extends Widget {
+export class Grid extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4991,7 +6181,7 @@ class Grid extends Widget {
 
 }
 
-class GroupBox extends Widget {
+export class GroupBox extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5007,7 +6197,7 @@ class GroupBox extends Widget {
 
 }
 
-class Popup extends Widget {
+export class Popup extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5039,7 +6229,7 @@ class Popup extends Widget {
 
 }
 
-class Label extends Widget {
+export class Label extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5067,7 +6257,7 @@ class Label extends Widget {
 
 }
 
-class Pages extends Widget {
+export class Pages extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5095,7 +6285,7 @@ class Pages extends Widget {
 
 }
 
-class ImageAnimation extends Widget {
+export class ImageAnimation extends Widget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5199,7 +6389,7 @@ class ImageAnimation extends Widget {
 
 }
 
-class Image extends ImageBase {
+export class Image extends ImageBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5223,7 +6413,7 @@ class Image extends ImageBase {
 
 }
 
-class SvgImage extends ImageBase {
+export class SvgImage extends ImageBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5239,7 +6429,7 @@ class SvgImage extends ImageBase {
 
 }
 
-class SpinBox extends Edit {
+export class SpinBox extends Edit {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5255,7 +6445,7 @@ class SpinBox extends Edit {
 
 }
 
-class ObjectDefault extends ObjectBase {
+export class ObjectDefault extends ObjectBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5275,7 +6465,7 @@ class ObjectDefault extends ObjectBase {
 
 }
 
-class GifImage extends ImageBase {
+export class GifImage extends ImageBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5291,7 +6481,7 @@ class GifImage extends ImageBase {
 
 }
 
-class TimerInfo extends ObjectBase {
+export class TimerInfo extends ObjectBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5319,7 +6509,7 @@ class TimerInfo extends ObjectBase {
 
 }
 
-class IdleInfo extends ObjectBase {
+export class IdleInfo extends ObjectBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5339,7 +6529,7 @@ class IdleInfo extends ObjectBase {
 
 }
 
-class SystemBar extends WindowBase {
+export class SystemBar extends WindowBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);

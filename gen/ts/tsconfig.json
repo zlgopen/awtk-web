@@ -6,6 +6,6 @@
         "sourceMap": true
     },
     "files": [
-        "awtk.ts"
+        "awtk_api.ts"
     ]
 }

@@ -82,6 +82,18 @@ def merge_js_files(filenames, ouputjs):
                 outfile.write(infile.read())
                 outfile.write("\n");
 
+def append_js_file(filename, ouputjs):
+    with open(ouputjs, 'a') as outfile:
+        with open(filename) as infile:
+            outfile.write(infile.read())
+            outfile.write("\n");
+
+def copy_js_file(filename, ouputjs):
+    with open(ouputjs, 'a') as outfile:
+        with open(filename) as infile:
+            outfile.write(infile.read())
+            outfile.write("\n");
+
 
 def build_awtk_web_js(config):
     app_target_dir = get_app_target_dir(config)
@@ -103,6 +115,9 @@ def build_awtk_web_js(config):
                          'src/js/main_loop_web.js']
     merge_js_files(awtk_web_js_files, outfile)
 
+
+def is_js_app(config):
+    return config['app_type'] == 'js'
 
 def prepare_app_target_dir(config):
     js_dir = get_js_dir(config)
@@ -127,9 +142,14 @@ def build_awtk_js(src_app_root, config, flags):
     assert_c = join_path(app_target_dir, 'assets_web.c')
 
     app_files = [assert_c]
+
+    if(is_js_app(config)):
+        app_files.append(join_path('./', 'gen/c/awtk_wrap.c'))
+
     sources = config['sources']
     for f in sources:
-        app_files.append(os.path.normpath(os.path.join(src_app_root, f)))
+        if f.endswith('.c'):
+            app_files.append(join_path(src_app_root, f))
 
     web_files = glob.glob('src/c/*.c')
     files = awtk.getWebFiles() + web_files + app_files
@@ -139,19 +159,33 @@ def build_awtk_js(src_app_root, config, flags):
     
     COMMON_FLAGS = ' ' + flags + ' -Werror ';
     COMMON_FLAGS = COMMON_FLAGS + ' -DSAFE_HEAP=1 -DASSERTIONS=1 -DSTACK_OVERFLOW_CHECK=1 '
-    COMMON_FLAGS = COMMON_FLAGS + ' -s EXPORTED_FUNCTIONS=@configs/export_app_funcs.json '
     COMMON_FLAGS = COMMON_FLAGS + ' -s EXTRA_EXPORTED_RUNTIME_METHODS=@configs/export_runtime_funcs.json '
-    COMMON_FLAGS = COMMON_FLAGS + ' -s RESERVED_FUNCTION_POINTERS=1000 '
+    if(is_js_app(config)):
+        COMMON_FLAGS = COMMON_FLAGS + ' -s EXPORTED_FUNCTIONS=@configs/export_awtk_funcs.json '
+        COMMON_FLAGS = COMMON_FLAGS + ' -DWITH_JS_APPLICATION_INIT=1 -DAWTK_WEB_JS '
+        COMMON_FLAGS = COMMON_FLAGS + ' -s RESERVED_FUNCTION_POINTERS=1000 '
+    else:
+        COMMON_FLAGS = COMMON_FLAGS + ' -s EXPORTED_FUNCTIONS=@configs/export_app_funcs.json '
+
     COMMON_FLAGS = COMMON_FLAGS + ' -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB -Isrc/c '
     COMMON_FLAGS = COMMON_FLAGS + ' -DWITH_WINDOW_ANIMATORS -DWITH_NANOVG_GPU '
 	
     output = join_path(get_js_dir(config), "awtk.js")
     CPPFLAGS_JS = ' -o ' + output + ' -s WASM=0 ' + COMMON_FLAGS;
     awtk.runArgsInFile('emcc -v ', CPPFLAGS_JS, all_files)
-	
+    
     output = join_path(get_js_dir(config), "awtk_asm.js")
     CPPFLAGS_ASM = ' -o ' + output + COMMON_FLAGS;
     awtk.runArgsInFile('emcc -v ', CPPFLAGS_ASM, all_files)
+   
+    app_files=[];
+    output = join_path(get_js_dir(config), "app.js")
+    if(is_js_app(config)):
+        app_files.append('gen/ts/awtk_api.js');
+    for f in sources:
+        if f.endswith('.js'):
+            app_files.append(join_path(src_app_root, f))
+    merge_js_files(app_files, output);
 
 action = 'all'
 filename = os.path.abspath('./demo.json')

@@ -254,7 +254,7 @@ TBrowser.init = function () {
   if (TBrowser.supportWebAssembly()) {
     TBrowser.loadScript('js/awtk_asm.js');
   } else {
-    TBrowser.loadScript('js/awtk_js.js');
+    TBrowser.loadScript('js/awtk.js');
   }
 
   return true;
@@ -294,5 +294,19 @@ TBrowser.loadFont = function (name, url) {
 
   return TBrowser.injectCSS(css);
 }
+
+TBrowser.releaseFunction = function(funcID) {
+  const RESERVED_FUNCTION_POINTERS = 1000;
+
+  if(funcID > 0 && funcID < RESERVED_FUNCTION_POINTERS) {
+    console.log('removeFunction:' + funcID);
+    Module.removeFunction(funcID);
+  } else {
+    console.log('not js function:' + funcID);
+  }
+
+  return true;
+}
+
 
 TBrowser.init();

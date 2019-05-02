@@ -193,7 +193,11 @@ class CodeGenerator {
       if (this.isClassName(iter.type)) {
         result += `${name} ? ${name}.nativeObj : null`;
       } else {
-        result += name;
+        if(iter.type.indexOf('func_t') > 0) {
+          result += `Module.addFunction(${name})`;
+        } else {
+          result += name;
+        }
       }
     });
 
@@ -227,7 +231,7 @@ class CodeGenerator {
     let result = '';
     let clsName = this.toClassName(this.getClassName(cls));
 
-    result = `class ${clsName}`;
+    result = `export class ${clsName}`;
     if (cls.parent) {
       result += ` extends ${this.toClassName(this.getParentClassName(cls))} {\n`
     } else {
@@ -309,7 +313,7 @@ class CodeGenerator {
 
   genOneEnum(cls) {
     let clsName = this.toClassName(cls.name);
-    let result = `enum ${clsName} {\n`;
+    let result = `export enum ${clsName} {\n`;
 
     if (cls.consts) {
       cls.consts.forEach(iter => {
@@ -352,13 +356,62 @@ class CodeGenerator {
     return json;
   }
 
+  ctypeToJsType(returnType) {
+    if(returnType && returnType.indexOf("char*") >= 0) {
+      return "string";
+    } else {
+      return "number";
+    }
+  }
+
+  genMethodDeclare(m) {
+    const name = m.name;
+    const returnType = m.return.type;
+
+    let result = `const ${name} = Module.cwrap("${name}", \n`;
+    result += `    "${this.ctypeToJsType(returnType)}", `;
+    let args = m.params.map((iter, index) => {
+       return this.ctypeToJsType(iter.type);
+    });
+    result += JSON.stringify(args, null, "");
+    result += `);\n`;
+
+    return result;
+  }
+  
+  genGetDeclare(name, p) {
+    const returnType = p.type;
+
+    let result = `const ${name} = Module.cwrap("${name}", \n`;
+    result += `    "${this.ctypeToJsType(returnType)}", ["number"]);\n`;
+
+    return result;
+  }
+  
+  genSetDeclare(name, p) {
+    const returnType = p.type;
+
+    let result = `const ${name} = Module.cwrap("${name}", \n`;
+    result += `    "number", ["number", "${this.ctypeToJsType(returnType)}"]);\n`;
+
+    return result;
+  }
+  
+  genConstDeclare(name, returnType) {
+
+    let result = `const ${name} = Module.cwrap("${name}", \n`;
+    result += `    "${this.ctypeToJsType(returnType)}", []);\n`;
+
+    return result;
+  }
+
   genFuncsDecl(json) {
-    let result = '';
+    let result = 'var Module : any = Module || {}\n\n';
 
     json.forEach(cls => {
       if (cls.methods) {
         cls.methods.forEach(m => {
-          result += `declare function ${m.name}${this.genParamListOrg(m)};\n`
+          result += this.genMethodDeclare(m);
           this.symbols.push(m.name);
         });
       }
@@ -367,13 +420,13 @@ class CodeGenerator {
         cls.properties.forEach(p => {
           if (isReadable(p)) {
             const funcName = this.getGetPropertyFuncName(cls, p);
-            result += `declare function ${funcName}(nativeObj);\n`;
+            result += this.genGetDeclare(funcName, p);
             this.symbols.push(funcName);
           }
 
           if (isWritable(p)) {
             const funcName = this.getSetPropertyFuncName(cls, p);
-            result += `declare function ${funcName}(nativeObj, value);\n`;
+            result += this.genSetDeclare(funcName, p);
             this.symbols.push(funcName);
           }
         });
@@ -382,8 +435,9 @@ class CodeGenerator {
       if (cls.consts) {
         cls.consts.forEach(c => {
           const name = c.name;
-          result += `declare function ${toConstGet(name)}();\n`
-            this.symbols.push(toConstGet(name));
+          const type = isEnumString(cls) ? "char*" : "int";
+          result += this.genConstDeclare(toConstGet(name), type);
+          this.symbols.push(toConstGet(name));
         });
       }
     });
