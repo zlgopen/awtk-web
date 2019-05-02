@@ -1,3 +1,9 @@
+
+function wrap_on_event(func) {
+  return function(ctx, evt) {
+    return func(evt, ctx);
+  }
+}
 var Module : any = Module || {}
 
 const tk_quit = Module.cwrap("tk_quit", 
@@ -2377,20 +2383,19 @@ const system_bar_create = Module.cwrap("system_bar_create",
 const system_bar_cast = Module.cwrap("system_bar_cast", 
     "number", ["number"]);
 
-namespace AWTK {
-export class Tk {
+class TGlobal {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
- static quit() {
+ static tkQuit() {
    return tk_quit();
  }
 
 }
 
-export class AssetInfo {
+class TAssetInfo {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2422,18 +2427,18 @@ export class AssetInfo {
 
 }
 
-export class AssetsManager {
+class TAssetsManager {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static instance() {
-   return new AssetsManager(assets_manager());
+   return new TAssetsManager(assets_manager());
  }
 
  ref(type, name) {
-   return new AssetInfo(assets_manager_ref(this.nativeObj, type, name));
+   return new TAssetInfo(assets_manager_ref(this.nativeObj, type, name));
  }
 
  unref(info) {
@@ -2442,7 +2447,7 @@ export class AssetsManager {
 
 }
 
-export enum BitmapFormat {
+enum TBitmapFormat {
  NONE = get_BITMAP_FMT_NONE(),
  RGBA8888 = get_BITMAP_FMT_RGBA8888(),
  ABGR8888 = get_BITMAP_FMT_ABGR8888(),
@@ -2454,7 +2459,7 @@ export enum BitmapFormat {
  BGR888 = get_BITMAP_FMT_BGR888(),
 };
 
-export enum BitmapFlag {
+enum TBitmapFlag {
  NONE = get_BITMAP_FLAG_NONE(),
  OPAQUE = get_BITMAP_FLAG_OPAQUE(),
  IMMUTABLE = get_BITMAP_FLAG_IMMUTABLE(),
@@ -2462,18 +2467,18 @@ export enum BitmapFlag {
  CHANGED = get_BITMAP_FLAG_CHANGED(),
 };
 
-export class Bitmap {
+class TBitmap {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static create() {
-   return new Bitmap(bitmap_create());
+   return new TBitmap(bitmap_create());
  }
 
  static createEx(w, h, line_length, format) {
-   return new Bitmap(bitmap_create_ex(w, h, line_length, format));
+   return new TBitmap(bitmap_create_ex(w, h, line_length, format));
  }
 
  getBpp() {
@@ -2510,7 +2515,7 @@ export class Bitmap {
 
 }
 
-export enum ImageDrawType {
+enum TImageDrawType {
  DEFAULT = get_IMAGE_DRAW_DEFAULT(),
  CENTER = get_IMAGE_DRAW_CENTER(),
  ICON = get_IMAGE_DRAW_ICON(),
@@ -2529,7 +2534,7 @@ export enum ImageDrawType {
  PATCH3_Y_SCALE_X = get_IMAGE_DRAW_PATCH3_Y_SCALE_X(),
 };
 
-export class Canvas {
+class TCanvas {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2620,11 +2625,11 @@ export class Canvas {
  }
 
  getVgcanvas() {
-   return new Vgcanvas(canvas_get_vgcanvas(this.nativeObj));
+   return new TVgcanvas(canvas_get_vgcanvas(this.nativeObj));
  }
 
  static cast(c) {
-   return new Canvas(canvas_cast(c ? (c.nativeObj || c) : null));
+   return new TCanvas(canvas_cast(c ? (c.nativeObj || c) : null));
  }
 
  get ox() {
@@ -2637,12 +2642,12 @@ export class Canvas {
 
 }
 
-export enum ClipBoardDataType {
+enum TClipBoardDataType {
  NONE = get_CLIP_BOARD_DATA_TYPE_NONE(),
  TEXT = get_CLIP_BOARD_DATA_TYPE_TEXT(),
 };
 
-export class ClipBoard {
+class TClipBoard {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2658,7 +2663,7 @@ export class ClipBoard {
 
 }
 
-export enum EventType {
+enum TEventType {
  POINTER_DOWN = get_EVT_POINTER_DOWN(),
  POINTER_DOWN_ABORT = get_EVT_POINTER_DOWN_ABORT(),
  POINTER_MOVE = get_EVT_POINTER_MOVE(),
@@ -2711,7 +2716,7 @@ export enum EventType {
  USER_START = get_EVT_USER_START(),
 };
 
-export class FontManager {
+class TFontManager {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2723,7 +2728,7 @@ export class FontManager {
 
 }
 
-export class Idle {
+class TIdle {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2739,14 +2744,14 @@ export class Idle {
 
 }
 
-export class ImageManager {
+class TImageManager {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static instance() {
-   return new ImageManager(image_manager());
+   return new TImageManager(image_manager());
  }
 
  getBitmap(name, image) {
@@ -2755,7 +2760,7 @@ export class ImageManager {
 
 }
 
-export enum InputType {
+enum TInputType {
  TEXT = get_INPUT_TEXT(),
  INT = get_INPUT_INT(),
  UINT = get_INPUT_UINT(),
@@ -2768,7 +2773,7 @@ export enum InputType {
  CUSTOM = get_INPUT_CUSTOM(),
 };
 
-export class InputMethod {
+class TInputMethod {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2783,12 +2788,12 @@ export class InputMethod {
  }
 
  static instance() {
-   return new InputMethod(input_method());
+   return new TInputMethod(input_method());
  }
 
 }
 
-export enum KeyCode {
+enum TKeyCode {
  KEY_RETURN = get_TK_KEY_RETURN(),
  KEY_ESCAPE = get_TK_KEY_ESCAPE(),
  KEY_BACKSPACE = get_TK_KEY_BACKSPACE(),
@@ -2890,14 +2895,14 @@ export enum KeyCode {
  KEY_RIGHTBRACE = get_TK_KEY_RIGHTBRACE(),
 };
 
-export class LocaleInfo {
+class TLocaleInfo {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static instance() {
-   return new LocaleInfo(locale_info());
+   return new TLocaleInfo(locale_info());
  }
 
  tr(text) {
@@ -2909,7 +2914,7 @@ export class LocaleInfo {
  }
 
  on(type, on_event, ctx) {
-   return locale_info_on(this.nativeObj, type, Module.addFunction(on_event), ctx);
+   return locale_info_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event)), ctx);
  }
 
  off(id) {
@@ -2918,7 +2923,7 @@ export class LocaleInfo {
 
 }
 
-export enum StyleId {
+enum TStyleId {
  _ID_BG_COLOR = get_STYLE_ID_BG_COLOR(),
  _ID_FG_COLOR = get_STYLE_ID_FG_COLOR(),
  _ID_MASK_COLOR = get_STYLE_ID_MASK_COLOR(),
@@ -2947,7 +2952,7 @@ export enum StyleId {
  _ID_ROUND_RADIUS = get_STYLE_ID_ROUND_RADIUS(),
 };
 
-export class Style {
+class TStyle {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -2971,19 +2976,19 @@ export class Style {
 
 }
 
-export class Theme {
+class TTheme {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static instance() {
-   return new Theme(theme());
+   return new TTheme(theme());
  }
 
 }
 
-export class Timer {
+class TTimer {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -3003,28 +3008,28 @@ export class Timer {
 
 }
 
-export enum AlignV {
+enum TAlignV {
  NONE = get_ALIGN_V_NONE(),
  MIDDLE = get_ALIGN_V_MIDDLE(),
  TOP = get_ALIGN_V_TOP(),
  BOTTOM = get_ALIGN_V_BOTTOM(),
 };
 
-export enum AlignH {
+enum TAlignH {
  NONE = get_ALIGN_H_NONE(),
  CENTER = get_ALIGN_H_CENTER(),
  LEFT = get_ALIGN_H_LEFT(),
  RIGHT = get_ALIGN_H_RIGHT(),
 };
 
-export class Vgcanvas {
+class TVgcanvas {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static cast(vg) {
-   return new Vgcanvas(vgcanvas_cast(vg ? (vg.nativeObj || vg) : null));
+   return new TVgcanvas(vgcanvas_cast(vg ? (vg.nativeObj || vg) : null));
  }
 
  flush() {
@@ -3241,7 +3246,7 @@ export class Vgcanvas {
 
 }
 
-export enum WidgetProp {
+enum TWidgetProp {
  X = get_WIDGET_PROP_X(),
  Y = get_WIDGET_PROP_Y(),
  W = get_WIDGET_PROP_W(),
@@ -3350,7 +3355,7 @@ export enum WidgetProp {
  FOCUSABLE = get_WIDGET_PROP_FOCUSABLE(),
 };
 
-export enum WidgetType {
+enum TWidgetType {
  NONE = get_WIDGET_TYPE_NONE(),
  WINDOW_MANAGER = get_WIDGET_TYPE_WINDOW_MANAGER(),
  NORMAL_WINDOW = get_WIDGET_TYPE_NORMAL_WINDOW(),
@@ -3403,20 +3408,20 @@ export enum WidgetType {
  CALIBRATION_WIN = get_WIDGET_TYPE_CALIBRATION_WIN(),
 };
 
-export enum WindowStage {
+enum TWindowStage {
  NONE = get_WINDOW_STAGE_NONE(),
  CREATED = get_WINDOW_STAGE_CREATED(),
  OPENED = get_WINDOW_STAGE_OPENED(),
  CLOSED = get_WINDOW_STAGE_CLOSED(),
 };
 
-export enum WindowClosable {
+enum TWindowClosable {
  YES = get_WINDOW_CLOSABLE_YES(),
  NO = get_WINDOW_CLOSABLE_NO(),
  CONFIRM = get_WINDOW_CLOSABLE_CONFIRM(),
 };
 
-export enum WidgetState {
+enum TWidgetState {
  STATE_NONE = get_WIDGET_STATE_NONE(),
  STATE_NORMAL = get_WIDGET_STATE_NORMAL(),
  STATE_PRESSED = get_WIDGET_STATE_PRESSED(),
@@ -3436,7 +3441,7 @@ export enum WidgetState {
  STATE_OVER_OF_ACTIVE = get_WIDGET_STATE_OVER_OF_ACTIVE(),
 };
 
-export class Widget {
+class TWidget {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -3447,7 +3452,7 @@ export class Widget {
  }
 
  getChild(index) {
-   return new Widget(widget_get_child(this.nativeObj, index));
+   return new TWidget(widget_get_child(this.nativeObj, index));
  }
 
  indexOf() {
@@ -3547,15 +3552,15 @@ export class Widget {
  }
 
  child(name) {
-   return new Widget(widget_child(this.nativeObj, name));
+   return new TWidget(widget_child(this.nativeObj, name));
  }
 
  lookup(name, recursive) {
-   return new Widget(widget_lookup(this.nativeObj, name, recursive));
+   return new TWidget(widget_lookup(this.nativeObj, name, recursive));
  }
 
  lookupByType(type, recursive) {
-   return new Widget(widget_lookup_by_type(this.nativeObj, type, recursive));
+   return new TWidget(widget_lookup_by_type(this.nativeObj, type, recursive));
  }
 
  setVisible(visible, recursive) {
@@ -3567,7 +3572,7 @@ export class Widget {
  }
 
  on(type, on_event, ctx) {
-   return widget_on(this.nativeObj, type, Module.addFunction(on_event), ctx);
+   return widget_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event)), ctx);
  }
 
  off(id) {
@@ -3623,11 +3628,11 @@ export class Widget {
  }
 
  getWindow() {
-   return new Widget(widget_get_window(this.nativeObj));
+   return new TWidget(widget_get_window(this.nativeObj));
  }
 
  getWindowManager() {
-   return new Widget(widget_get_window_manager(this.nativeObj));
+   return new TWidget(widget_get_window_manager(this.nativeObj));
  }
 
  getType() {
@@ -3635,7 +3640,7 @@ export class Widget {
  }
 
  clone(parent) {
-   return new Widget(widget_clone(this.nativeObj, parent ? parent.nativeObj : null));
+   return new TWidget(widget_clone(this.nativeObj, parent ? parent.nativeObj : null));
  }
 
  equal(other) {
@@ -3643,7 +3648,7 @@ export class Widget {
  }
 
  static cast(widget) {
-   return new Widget(widget_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TWidget(widget_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  destroy() {
@@ -3724,7 +3729,7 @@ export class Widget {
 
 }
 
-export enum AssetType {
+enum TAssetType {
  NONE = get_ASSET_TYPE_NONE(),
  FONT = get_ASSET_TYPE_FONT(),
  IMAGE = get_ASSET_TYPE_IMAGE(),
@@ -3736,18 +3741,18 @@ export enum AssetType {
  DATA = get_ASSET_TYPE_DATA(),
 };
 
-export class Color {
+class TColor {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static create(r, b, g, a) {
-   return new Color(color_create(r, b, g, a));
+   return new TColor(color_create(r, b, g, a));
  }
 
  fromStr(str) {
-   return new Color(color_from_str(this.nativeObj, str));
+   return new TColor(color_from_str(this.nativeObj, str));
  }
 
  r() {
@@ -3767,7 +3772,7 @@ export class Color {
  }
 
  static cast(color) {
-   return new Color(color_cast(color ? (color.nativeObj || color) : null));
+   return new TColor(color_cast(color ? (color.nativeObj || color) : null));
  }
 
  destroy() {
@@ -3784,14 +3789,14 @@ export class Color {
 
 }
 
-export class DateTime {
+class TDateTime {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static create() {
-   return new DateTime(date_time_create());
+   return new TDateTime(date_time_create());
  }
 
  destroy() {
@@ -3828,14 +3833,14 @@ export class DateTime {
 
 }
 
-export class Emitter {
+class TEmitter {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static create() {
-   return new Emitter(emitter_create());
+   return new TEmitter(emitter_create());
  }
 
  dispatch(e) {
@@ -3847,7 +3852,7 @@ export class Emitter {
  }
 
  on(type, on_event, ctx) {
-   return emitter_on(this.nativeObj, type, Module.addFunction(on_event), ctx);
+   return emitter_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event)), ctx);
  }
 
  off(id) {
@@ -3871,12 +3876,12 @@ export class Emitter {
  }
 
  static cast(emitter) {
-   return new Emitter(emitter_cast(emitter ? (emitter.nativeObj || emitter) : null));
+   return new TEmitter(emitter_cast(emitter ? (emitter.nativeObj || emitter) : null));
  }
 
 }
 
-export enum EventBaseType {
+enum TEventBaseType {
  NONE = get_EVT_NONE(),
  PROP_WILL_CHANGE = get_EVT_PROP_WILL_CHANGE(),
  PROP_CHANGED = get_EVT_PROP_CHANGED(),
@@ -3886,18 +3891,18 @@ export enum EventBaseType {
  DESTROY = get_EVT_DESTROY(),
 };
 
-export class Event {
+class TEvent {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static cast(event) {
-   return new Event(event_cast(event ? (event.nativeObj || event) : null));
+   return new TEvent(event_cast(event ? (event.nativeObj || event) : null));
  }
 
  static create(type, target) {
-   return new Event(event_create(type, target));
+   return new TEvent(event_create(type, target));
  }
 
  destroy() {
@@ -3918,18 +3923,18 @@ export class Event {
 
 }
 
-export class NamedValue {
+class TNamedValue {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static create() {
-   return new NamedValue(named_value_create());
+   return new TNamedValue(named_value_create());
  }
 
  static cast(nv) {
-   return new NamedValue(named_value_cast(nv ? (nv.nativeObj || nv) : null));
+   return new TNamedValue(named_value_cast(nv ? (nv.nativeObj || nv) : null));
  }
 
  setName(name) {
@@ -3941,7 +3946,7 @@ export class NamedValue {
  }
 
  getValue() {
-   return new Value(named_value_get_value(this.nativeObj));
+   return new TValue(named_value_get_value(this.nativeObj));
  }
 
  destroy() {
@@ -3954,7 +3959,7 @@ export class NamedValue {
 
 }
 
-export class Point {
+class TPoint {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -3962,22 +3967,22 @@ export class Point {
 
 }
 
-export class Rect {
+class TRect {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  static create(x, y, w, h) {
-   return new Rect(rect_create(x, y, w, h));
+   return new TRect(rect_create(x, y, w, h));
  }
 
  set(x, y, w, h) {
-   return new Rect(rect_set(this.nativeObj, x, y, w, h));
+   return new TRect(rect_set(this.nativeObj, x, y, w, h));
  }
 
  static cast(rect) {
-   return new Rect(rect_cast(rect ? (rect.nativeObj || rect) : null));
+   return new TRect(rect_cast(rect ? (rect.nativeObj || rect) : null));
  }
 
  destroy() {
@@ -4002,7 +4007,7 @@ export class Rect {
 
 }
 
-export class TimeNow {
+class TTimeNow {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4018,7 +4023,7 @@ export class TimeNow {
 
 }
 
-export enum Ret {
+enum TRet {
  OK = get_RET_OK(),
  OOM = get_RET_OOM(),
  FAIL = get_RET_FAIL(),
@@ -4037,7 +4042,7 @@ export enum Ret {
  BAD_PARAMS = get_RET_BAD_PARAMS(),
 };
 
-export enum ValueType {
+enum TValueType {
  INVALID = get_VALUE_TYPE_INVALID(),
  BOOL = get_VALUE_TYPE_BOOL(),
  INT8 = get_VALUE_TYPE_INT8(),
@@ -4057,14 +4062,14 @@ export enum ValueType {
  OBJECT = get_VALUE_TYPE_OBJECT(),
 };
 
-export class Value {
+class TValue {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
  }
 
  setBool(value) {
-   return new Value(value_set_bool(this.nativeObj, value));
+   return new TValue(value_set_bool(this.nativeObj, value));
  }
 
  bool() {
@@ -4072,7 +4077,7 @@ export class Value {
  }
 
  setInt8(value) {
-   return new Value(value_set_int8(this.nativeObj, value));
+   return new TValue(value_set_int8(this.nativeObj, value));
  }
 
  int8() {
@@ -4080,7 +4085,7 @@ export class Value {
  }
 
  setUint8(value) {
-   return new Value(value_set_uint8(this.nativeObj, value));
+   return new TValue(value_set_uint8(this.nativeObj, value));
  }
 
  uint8() {
@@ -4088,7 +4093,7 @@ export class Value {
  }
 
  setInt16(value) {
-   return new Value(value_set_int16(this.nativeObj, value));
+   return new TValue(value_set_int16(this.nativeObj, value));
  }
 
  int16() {
@@ -4096,7 +4101,7 @@ export class Value {
  }
 
  setUint16(value) {
-   return new Value(value_set_uint16(this.nativeObj, value));
+   return new TValue(value_set_uint16(this.nativeObj, value));
  }
 
  uint16() {
@@ -4104,7 +4109,7 @@ export class Value {
  }
 
  setInt32(value) {
-   return new Value(value_set_int32(this.nativeObj, value));
+   return new TValue(value_set_int32(this.nativeObj, value));
  }
 
  int32() {
@@ -4112,11 +4117,11 @@ export class Value {
  }
 
  setUint32(value) {
-   return new Value(value_set_uint32(this.nativeObj, value));
+   return new TValue(value_set_uint32(this.nativeObj, value));
  }
 
  setInt64(value) {
-   return new Value(value_set_int64(this.nativeObj, value));
+   return new TValue(value_set_int64(this.nativeObj, value));
  }
 
  int64() {
@@ -4124,7 +4129,7 @@ export class Value {
  }
 
  setUint64(value) {
-   return new Value(value_set_uint64(this.nativeObj, value));
+   return new TValue(value_set_uint64(this.nativeObj, value));
  }
 
  uint64() {
@@ -4132,7 +4137,7 @@ export class Value {
  }
 
  setFloat(value) {
-   return new Value(value_set_float(this.nativeObj, value));
+   return new TValue(value_set_float(this.nativeObj, value));
  }
 
  float() {
@@ -4140,7 +4145,7 @@ export class Value {
  }
 
  setFloat32(value) {
-   return new Value(value_set_float32(this.nativeObj, value));
+   return new TValue(value_set_float32(this.nativeObj, value));
  }
 
  float32() {
@@ -4148,7 +4153,7 @@ export class Value {
  }
 
  setDouble(value) {
-   return new Value(value_set_double(this.nativeObj, value));
+   return new TValue(value_set_double(this.nativeObj, value));
  }
 
  double() {
@@ -4156,7 +4161,7 @@ export class Value {
  }
 
  setStr(value) {
-   return new Value(value_dup_str(this.nativeObj, value));
+   return new TValue(value_dup_str(this.nativeObj, value));
  }
 
  str() {
@@ -4176,19 +4181,19 @@ export class Value {
  }
 
  setInt(value) {
-   return new Value(value_set_int(this.nativeObj, value));
+   return new TValue(value_set_int(this.nativeObj, value));
  }
 
  setObject(value) {
-   return new Value(value_set_object(this.nativeObj, value ? value.nativeObj : null));
+   return new TValue(value_set_object(this.nativeObj, value ? value.nativeObj : null));
  }
 
  object() {
-   return new ObjectBase(value_object(this.nativeObj));
+   return new TObject(value_object(this.nativeObj));
  }
 
  static create() {
-   return new Value(value_create());
+   return new TValue(value_create());
  }
 
  destroy() {
@@ -4200,23 +4205,23 @@ export class Value {
  }
 
  static cast(value) {
-   return new Value(value_cast(value ? (value.nativeObj || value) : null));
+   return new TValue(value_cast(value ? (value.nativeObj || value) : null));
  }
 
 }
 
-export class ProgressCircle extends Widget {
+class TProgressCircle extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ProgressCircle(progress_circle_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TProgressCircle(progress_circle_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new ProgressCircle(progress_circle_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TProgressCircle(progress_circle_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setValue(value) {
@@ -4277,14 +4282,14 @@ export class ProgressCircle extends Widget {
 
 }
 
-export class RichText extends Widget {
+class TRichText extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new RichText(rich_text_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TRichText(rich_text_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setText(text) {
@@ -4292,7 +4297,7 @@ export class RichText extends Widget {
  }
 
  static cast(widget) {
-   return new RichText(rich_text_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TRichText(rich_text_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get lineGap() {
@@ -4301,30 +4306,30 @@ export class RichText extends Widget {
 
 }
 
-export class ListItem extends Widget {
+class TListItem extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ListItem(list_item_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TListItem(list_item_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new ListItem(list_item_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TListItem(list_item_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class ListViewH extends Widget {
+class TListViewH extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ListViewH(list_view_h_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TListViewH(list_view_h_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setItemWidth(item_width) {
@@ -4336,7 +4341,7 @@ export class ListViewH extends Widget {
  }
 
  static cast(widget) {
-   return new ListViewH(list_view_h_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TListViewH(list_view_h_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get itemWidth() {
@@ -4349,14 +4354,14 @@ export class ListViewH extends Widget {
 
 }
 
-export class ListView extends Widget {
+class TListView extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ListView(list_view_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TListView(list_view_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setItemHeight(item_height) {
@@ -4372,7 +4377,7 @@ export class ListView extends Widget {
  }
 
  static cast(widget) {
-   return new ListView(list_view_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TListView(list_view_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get itemHeight() {
@@ -4389,26 +4394,26 @@ export class ListView extends Widget {
 
 }
 
-export class ScrollBar extends Widget {
+class TScrollBar extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ScrollBar(scroll_bar_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TScrollBar(scroll_bar_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new ScrollBar(scroll_bar_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TScrollBar(scroll_bar_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  static createMobile(parent, x, y, w, h) {
-   return new ScrollBar(scroll_bar_create_mobile(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TScrollBar(scroll_bar_create_mobile(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static createDesktop(parent, x, y, w, h) {
-   return new ScrollBar(scroll_bar_create_desktop(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TScrollBar(scroll_bar_create_desktop(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setParams(virtual_size, row) {
@@ -4457,18 +4462,18 @@ export class ScrollBar extends Widget {
 
 }
 
-export class ScrollView extends Widget {
+class TScrollView extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ScrollView(scroll_view_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TScrollView(scroll_view_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new ScrollView(scroll_view_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TScrollView(scroll_view_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setVirtualW(w) {
@@ -4521,18 +4526,18 @@ export class ScrollView extends Widget {
 
 }
 
-export class SlideMenu extends Widget {
+class TSlideMenu extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new SlideMenu(slide_menu_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TSlideMenu(slide_menu_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new SlideMenu(slide_menu_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TSlideMenu(slide_menu_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setValue(value) {
@@ -4561,18 +4566,18 @@ export class SlideMenu extends Widget {
 
 }
 
-export class SlideView extends Widget {
+class TSlideView extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new SlideView(slide_view_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TSlideView(slide_view_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new SlideView(slide_view_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TSlideView(slide_view_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setAutoPlay(auto_play) {
@@ -4613,30 +4618,30 @@ export class SlideView extends Widget {
 
 }
 
-export class Row extends Widget {
+class TRow extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Row(row_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TRow(row_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new Row(row_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TRow(row_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class Switch extends Widget {
+class TSwitch extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Switch(switch_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TSwitch(switch_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setValue(value) {
@@ -4644,7 +4649,7 @@ export class Switch extends Widget {
  }
 
  static cast(widget) {
-   return new Switch(switch_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TSwitch(switch_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get value() {
@@ -4661,18 +4666,18 @@ export class Switch extends Widget {
 
 }
 
-export class TextSelector extends Widget {
+class TTextSelector extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new TextSelector(text_selector_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TTextSelector(text_selector_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new TextSelector(text_selector_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TTextSelector(text_selector_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  resetOptions() {
@@ -4733,18 +4738,18 @@ export class TextSelector extends Widget {
 
 }
 
-export class DigitClock extends Widget {
+class TDigitClock extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new DigitClock(digit_clock_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TDigitClock(digit_clock_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new DigitClock(digit_clock_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TDigitClock(digit_clock_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setFormat(format) {
@@ -4757,18 +4762,18 @@ export class DigitClock extends Widget {
 
 }
 
-export class TimeClock extends Widget {
+class TTimeClock extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new TimeClock(time_clock_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TTimeClock(time_clock_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new TimeClock(time_clock_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TTimeClock(time_clock_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setHour(hour) {
@@ -4837,14 +4842,14 @@ export class TimeClock extends Widget {
 
 }
 
-export class WindowEvent extends Event {
+class TWindowEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static cast(event) {
-   return new WindowEvent(window_event_cast(event ? (event.nativeObj || event) : null));
+   return new TWindowEvent(window_event_cast(event ? (event.nativeObj || event) : null));
  }
 
  get window() {
@@ -4853,18 +4858,18 @@ export class WindowEvent extends Event {
 
 }
 
-export class TabButton extends Widget {
+class TTabButton extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new TabButton(tab_button_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TTabButton(tab_button_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new TabButton(tab_button_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TTabButton(tab_button_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setValue(value) {
@@ -4893,7 +4898,7 @@ export class TabButton extends Widget {
 
 }
 
-export class ImageBase extends Widget {
+class TImageBase extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4928,7 +4933,7 @@ export class ImageBase extends Widget {
  }
 
  static cast(widget) {
-   return new ImageBase(image_base_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TImageBase(image_base_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get image() {
@@ -4969,14 +4974,14 @@ export class ImageBase extends Widget {
 
 }
 
-export class Window extends Widget {
+class TWindow extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Window(window_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TWindow(window_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setFullscreen(fullscreen) {
@@ -4984,11 +4989,11 @@ export class Window extends Widget {
  }
 
  static open(name) {
-   return new Window(window_open(name));
+   return new TWindow(window_open(name));
  }
 
  static openAndClose(name, to_close) {
-   return new Window(window_open_and_close(name, to_close ? to_close.nativeObj : null));
+   return new TWindow(window_open_and_close(name, to_close ? to_close.nativeObj : null));
  }
 
  close() {
@@ -5000,7 +5005,7 @@ export class Window extends Widget {
  }
 
  static cast(widget) {
-   return new Window(window_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TWindow(window_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get fullscreen() {
@@ -5009,14 +5014,14 @@ export class Window extends Widget {
 
 }
 
-export class WheelEvent extends Event {
+class TWheelEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static cast(event) {
-   return new WheelEvent(wheel_event_cast(event ? (event.nativeObj || event) : null));
+   return new TWheelEvent(wheel_event_cast(event ? (event.nativeObj || event) : null));
  }
 
  get dy() {
@@ -5037,14 +5042,14 @@ export class WheelEvent extends Event {
 
 }
 
-export class PointerEvent extends Event {
+class TPointerEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static cast(event) {
-   return new PointerEvent(pointer_event_cast(event ? (event.nativeObj || event) : null));
+   return new TPointerEvent(pointer_event_cast(event ? (event.nativeObj || event) : null));
  }
 
  get x() {
@@ -5077,14 +5082,14 @@ export class PointerEvent extends Event {
 
 }
 
-export class KeyEvent extends Event {
+class TKeyEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static cast(event) {
-   return new KeyEvent(key_event_cast(event ? (event.nativeObj || event) : null));
+   return new TKeyEvent(key_event_cast(event ? (event.nativeObj || event) : null));
  }
 
  get key() {
@@ -5109,14 +5114,14 @@ export class KeyEvent extends Event {
 
 }
 
-export class PaintEvent extends Event {
+class TPaintEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static cast(event) {
-   return new PaintEvent(paint_event_cast(event ? (event.nativeObj || event) : null));
+   return new TPaintEvent(paint_event_cast(event ? (event.nativeObj || event) : null));
  }
 
  get c() {
@@ -5125,14 +5130,14 @@ export class PaintEvent extends Event {
 
 }
 
-export class PropChangeEvent extends Event {
+class TPropChangeEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static cast(event) {
-   return new PropChangeEvent(prop_change_event_cast(event ? (event.nativeObj || event) : null));
+   return new TPropChangeEvent(prop_change_event_cast(event ? (event.nativeObj || event) : null));
  }
 
  get name() {
@@ -5145,14 +5150,14 @@ export class PropChangeEvent extends Event {
 
 }
 
-export class WindowBase extends Widget {
+class TWindowBase extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static cast(widget) {
-   return new WindowBase(window_base_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TWindowBase(window_base_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get theme() {
@@ -5165,22 +5170,22 @@ export class WindowBase extends Widget {
 
 }
 
-export class WindowManager extends Widget {
+class TWindowManager extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static instance() {
-   return new WindowManager(window_manager());
+   return new TWindowManager(window_manager());
  }
 
  static cast(widget) {
-   return new WindowManager(window_manager_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TWindowManager(window_manager_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  getTopMainWindow() {
-   return new Widget(window_manager_get_top_main_window(this.nativeObj));
+   return new TWidget(window_manager_get_top_main_window(this.nativeObj));
  }
 
  setShowFps(show_fps) {
@@ -5209,18 +5214,18 @@ export class WindowManager extends Widget {
 
 }
 
-export class ProgressBar extends Widget {
+class TProgressBar extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ProgressBar(progress_bar_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TProgressBar(progress_bar_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new ProgressBar(progress_bar_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TProgressBar(progress_bar_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setValue(value) {
@@ -5249,7 +5254,7 @@ export class ProgressBar extends Widget {
 
 }
 
-export class ObjectBase extends Emitter {
+class TObject extends TEmitter {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5260,7 +5265,7 @@ export class ObjectBase extends Emitter {
  }
 
  static ref(obj) {
-   return new ObjectBase(object_ref(obj ? obj.nativeObj : null));
+   return new TObject(object_ref(obj ? obj.nativeObj : null));
  }
 
  getType() {
@@ -5300,7 +5305,7 @@ export class ObjectBase extends Emitter {
  }
 
  getPropObject(name) {
-   return new ObjectBase(object_get_prop_object(this.nativeObj, name));
+   return new TObject(object_get_prop_object(this.nativeObj, name));
  }
 
  getPropInt(name, defval) {
@@ -5377,7 +5382,7 @@ export class ObjectBase extends Emitter {
 
 }
 
-export class StyleMutable extends Style {
+class TStyleMutable extends TStyle {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -5396,11 +5401,11 @@ export class StyleMutable extends Style {
  }
 
  static cast(s) {
-   return new StyleMutable(style_mutable_cast(s ? (s.nativeObj || s) : null));
+   return new TStyleMutable(style_mutable_cast(s ? (s.nativeObj || s) : null));
  }
 
  static create(widget) {
-   return new StyleMutable(style_mutable_create(widget ? widget.nativeObj : null));
+   return new TStyleMutable(style_mutable_create(widget ? widget.nativeObj : null));
  }
 
  get name() {
@@ -5409,30 +5414,30 @@ export class StyleMutable extends Style {
 
 }
 
-export class CanvasWidget extends Widget {
+class TCanvasWidget extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new CanvasWidget(canvas_widget_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TCanvasWidget(canvas_widget_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new CanvasWidget(canvas_widget_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TCanvasWidget(canvas_widget_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class ColorPicker extends Widget {
+class TColorPicker extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ColorPicker(color_picker_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TColorPicker(color_picker_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setColor(color) {
@@ -5440,7 +5445,7 @@ export class ColorPicker extends Widget {
  }
 
  static cast(widget) {
-   return new ColorPicker(color_picker_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TColorPicker(color_picker_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get value() {
@@ -5449,34 +5454,34 @@ export class ColorPicker extends Widget {
 
 }
 
-export class View extends Widget {
+class TView extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new View(view_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TView(view_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new View(view_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TView(view_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class TabButtonGroup extends Widget {
+class TTabButtonGroup extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new TabButtonGroup(tab_button_group_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TTabButtonGroup(tab_button_group_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new TabButtonGroup(tab_button_group_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TTabButtonGroup(tab_button_group_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get compact() {
@@ -5485,18 +5490,18 @@ export class TabButtonGroup extends Widget {
 
 }
 
-export class GuagePointer extends Widget {
+class TGuagePointer extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new GuagePointer(guage_pointer_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TGuagePointer(guage_pointer_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new GuagePointer(guage_pointer_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TGuagePointer(guage_pointer_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setAngle(angle) {
@@ -5517,18 +5522,18 @@ export class GuagePointer extends Widget {
 
 }
 
-export class Guage extends Widget {
+class TGuage extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Guage(guage_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TGuage(guage_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new Guage(guage_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TGuage(guage_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setImage(name) {
@@ -5549,30 +5554,30 @@ export class Guage extends Widget {
 
 }
 
-export class TabControl extends Widget {
+class TTabControl extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new TabControl(tab_control_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TTabControl(tab_control_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new TabControl(tab_control_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TTabControl(tab_control_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class ImageValue extends Widget {
+class TImageValue extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ImageValue(image_value_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TImageValue(image_value_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setImage(image) {
@@ -5588,7 +5593,7 @@ export class ImageValue extends Widget {
  }
 
  static cast(widget) {
-   return new ImageValue(image_value_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TImageValue(image_value_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get image() {
@@ -5605,18 +5610,18 @@ export class ImageValue extends Widget {
 
 }
 
-export class Slider extends Widget {
+class TSlider extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Slider(slider_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TSlider(slider_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new Slider(slider_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TSlider(slider_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setValue(value) {
@@ -5669,50 +5674,50 @@ export class Slider extends Widget {
 
 }
 
-export class AppBar extends Widget {
+class TAppBar extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new AppBar(app_bar_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TAppBar(app_bar_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new AppBar(app_bar_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TAppBar(app_bar_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class ButtonGroup extends Widget {
+class TButtonGroup extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ButtonGroup(button_group_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TButtonGroup(button_group_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new ButtonGroup(button_group_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TButtonGroup(button_group_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class Button extends Widget {
+class TButton extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Button(button_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TButton(button_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new Button(button_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TButton(button_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setRepeat(repeat) {
@@ -5733,18 +5738,18 @@ export class Button extends Widget {
 
 }
 
-export class CheckButton extends Widget {
+class TCheckButton extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new CheckButton(check_button_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TCheckButton(check_button_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static createRadio(parent, x, y, w, h) {
-   return new CheckButton(check_button_create_radio(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TCheckButton(check_button_create_radio(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setValue(value) {
@@ -5752,7 +5757,7 @@ export class CheckButton extends Widget {
  }
 
  static cast(widget) {
-   return new CheckButton(check_button_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TCheckButton(check_button_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get value() {
@@ -5761,18 +5766,18 @@ export class CheckButton extends Widget {
 
 }
 
-export class ColorTile extends Widget {
+class TColorTile extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ColorTile(color_tile_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TColorTile(color_tile_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new ColorTile(color_tile_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TColorTile(color_tile_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setBgColor(color) {
@@ -5789,34 +5794,34 @@ export class ColorTile extends Widget {
 
 }
 
-export class Column extends Widget {
+class TColumn extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Column(column_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TColumn(column_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new Column(column_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TColumn(column_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class ComboBoxItem extends Widget {
+class TComboBoxItem extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ComboBoxItem(combo_box_item_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TComboBoxItem(combo_box_item_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new ComboBoxItem(combo_box_item_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TComboBoxItem(combo_box_item_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setChecked(checked) {
@@ -5837,18 +5842,18 @@ export class ComboBoxItem extends Widget {
 
 }
 
-export class ComboBox extends Widget {
+class TComboBox extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ComboBox(combo_box_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TComboBox(combo_box_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new ComboBox(combo_box_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TComboBox(combo_box_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setOpenWindow(open_window) {
@@ -5905,66 +5910,66 @@ export class ComboBox extends Widget {
 
 }
 
-export class DialogClient extends Widget {
+class TDialogClient extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new DialogClient(dialog_client_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TDialogClient(dialog_client_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new DialogClient(dialog_client_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TDialogClient(dialog_client_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class DialogTitle extends Widget {
+class TDialogTitle extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new DialogTitle(dialog_title_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TDialogTitle(dialog_title_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new DialogTitle(dialog_title_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TDialogTitle(dialog_title_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class Dialog extends Widget {
+class TDialog extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Dialog(dialog_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TDialog(dialog_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static createSimple(parent, x, y, w, h) {
-   return new Dialog(dialog_create_simple(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TDialog(dialog_create_simple(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new Dialog(dialog_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TDialog(dialog_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  getTitle() {
-   return new Widget(dialog_get_title(this.nativeObj));
+   return new TWidget(dialog_get_title(this.nativeObj));
  }
 
  getClient() {
-   return new Widget(dialog_get_client(this.nativeObj));
+   return new TWidget(dialog_get_client(this.nativeObj));
  }
 
  static open(name) {
-   return new Dialog(dialog_open(name));
+   return new TDialog(dialog_open(name));
  }
 
  setTitle(title) {
@@ -6009,22 +6014,22 @@ export class Dialog extends Widget {
 
 }
 
-export class Dragger extends Widget {
+class TDragger extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Dragger(dragger_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TDragger(dragger_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new Dragger(dragger_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TDragger(dragger_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setRange(x_min, y_min, x_max, y_max) {
-   return new Widget(dragger_set_range(this.nativeObj, x_min, y_min, x_max, y_max));
+   return new TWidget(dragger_set_range(this.nativeObj, x_min, y_min, x_max, y_max));
  }
 
  get xMin() {
@@ -6045,18 +6050,18 @@ export class Dragger extends Widget {
 
 }
 
-export class Edit extends Widget {
+class TEdit extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Edit(edit_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TEdit(edit_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new Edit(edit_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TEdit(edit_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  getInt() {
@@ -6149,66 +6154,66 @@ export class Edit extends Widget {
 
 }
 
-export class GridItem extends Widget {
+class TGridItem extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new GridItem(grid_item_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TGridItem(grid_item_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new GridItem(grid_item_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TGridItem(grid_item_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class Grid extends Widget {
+class TGrid extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Grid(grid_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TGrid(grid_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new Grid(grid_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TGrid(grid_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class GroupBox extends Widget {
+class TGroupBox extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new GroupBox(group_box_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TGroupBox(group_box_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new GroupBox(group_box_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TGroupBox(group_box_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class Popup extends Widget {
+class TPopup extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Popup(popup_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TPopup(popup_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new Popup(popup_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TPopup(popup_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setCloseWhenClick(close_when_click) {
@@ -6229,14 +6234,14 @@ export class Popup extends Widget {
 
 }
 
-export class Label extends Widget {
+class TLabel extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Label(label_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TLabel(label_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setLength(length) {
@@ -6248,7 +6253,7 @@ export class Label extends Widget {
  }
 
  static cast(widget) {
-   return new Label(label_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TLabel(label_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get length() {
@@ -6257,18 +6262,18 @@ export class Label extends Widget {
 
 }
 
-export class Pages extends Widget {
+class TPages extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Pages(pages_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TPages(pages_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new Pages(pages_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TPages(pages_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  setActive(index) {
@@ -6285,14 +6290,14 @@ export class Pages extends Widget {
 
 }
 
-export class ImageAnimation extends Widget {
+class TImageAnimation extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new ImageAnimation(image_animation_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TImageAnimation(image_animation_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setLoop(loop) {
@@ -6344,7 +6349,7 @@ export class ImageAnimation extends Widget {
  }
 
  static cast(widget) {
-   return new ImageAnimation(image_animation_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TImageAnimation(image_animation_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get image() {
@@ -6389,14 +6394,14 @@ export class ImageAnimation extends Widget {
 
 }
 
-export class Image extends ImageBase {
+class TImage extends TImageBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new Image(image_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TImage(image_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  setDrawType(draw_type) {
@@ -6404,7 +6409,7 @@ export class Image extends ImageBase {
  }
 
  static cast(widget) {
-   return new Image(image_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TImage(image_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
  get drawType() {
@@ -6413,46 +6418,46 @@ export class Image extends ImageBase {
 
 }
 
-export class SvgImage extends ImageBase {
+class TSvgImage extends TImageBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new SvgImage(svg_image_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TSvgImage(svg_image_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new SvgImage(svg_image_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TSvgImage(svg_image_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class SpinBox extends Edit {
+class TSpinBox extends TEdit {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new SpinBox(spin_box_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TSpinBox(spin_box_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new SpinBox(spin_box_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TSpinBox(spin_box_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class ObjectDefault extends ObjectBase {
+class TObjectDefault extends TObject {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create() {
-   return new ObjectDefault(object_default_create());
+   return new TObjectDefault(object_default_create());
  }
 
  unref() {
@@ -6465,30 +6470,30 @@ export class ObjectDefault extends ObjectBase {
 
 }
 
-export class GifImage extends ImageBase {
+class TGifImage extends TImageBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new GifImage(gif_image_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TGifImage(gif_image_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new GifImage(gif_image_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TGifImage(gif_image_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-export class TimerInfo extends ObjectBase {
+class TTimerInfo extends TObject {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static cast(timer) {
-   return new TimerInfo(timer_info_cast(timer ? (timer.nativeObj || timer) : null));
+   return new TTimerInfo(timer_info_cast(timer ? (timer.nativeObj || timer) : null));
  }
 
  get ctx() {
@@ -6509,14 +6514,14 @@ export class TimerInfo extends ObjectBase {
 
 }
 
-export class IdleInfo extends ObjectBase {
+class TIdleInfo extends TObject {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static cast(idle) {
-   return new IdleInfo(idle_info_cast(idle ? (idle.nativeObj || idle) : null));
+   return new TIdleInfo(idle_info_cast(idle ? (idle.nativeObj || idle) : null));
  }
 
  get ctx() {
@@ -6529,20 +6534,19 @@ export class IdleInfo extends ObjectBase {
 
 }
 
-export class SystemBar extends WindowBase {
+class TSystemBar extends TWindowBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
  }
 
  static create(parent, x, y, w, h) {
-   return new SystemBar(system_bar_create(parent ? parent.nativeObj : null, x, y, w, h));
+   return new TSystemBar(system_bar_create(parent ? parent.nativeObj : null, x, y, w, h));
  }
 
  static cast(widget) {
-   return new SystemBar(system_bar_cast(widget ? (widget.nativeObj || widget) : null));
+   return new TSystemBar(system_bar_cast(widget ? (widget.nativeObj || widget) : null));
  }
 
 }
 
-}

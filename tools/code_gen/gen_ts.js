@@ -71,7 +71,7 @@ class CodeGenerator {
       return r.toUpperCase();
     });
 
-    return name;
+    return 'T' + name;
   }
 
   getClassInfo(name) {
@@ -193,7 +193,9 @@ class CodeGenerator {
       if (this.isClassName(iter.type)) {
         result += `${name} ? ${name}.nativeObj : null`;
       } else {
-        if(iter.type.indexOf('func_t') > 0) {
+        if(iter.type === 'event_func_t') {
+          result += `Module.addFunction(wrap_on_event(${name}))`;
+        } else if(iter.type.indexOf('func_t') > 0) {
           result += `Module.addFunction(${name})`;
         } else {
           result += name;
@@ -231,7 +233,7 @@ class CodeGenerator {
     let result = '';
     let clsName = this.toClassName(this.getClassName(cls));
 
-    result = `export class ${clsName}`;
+    result = `class ${clsName}`;
     if (cls.parent) {
       result += ` extends ${this.toClassName(this.getParentClassName(cls))} {\n`
     } else {
@@ -313,7 +315,7 @@ class CodeGenerator {
 
   genOneEnum(cls) {
     let clsName = this.toClassName(cls.name);
-    let result = `export enum ${clsName} {\n`;
+    let result = `enum ${clsName} {\n`;
 
     if (cls.consts) {
       cls.consts.forEach(iter => {
@@ -446,18 +448,23 @@ class CodeGenerator {
   }
 
   genJsonAll(ojson) {
-    let result = '';
+    let result = `
+function wrap_on_event(func) {
+  return function(ctx, evt) {
+    return func(evt, ctx);
+  }
+}
+`;
+
     let json = this.filterScriptableJson(ojson);
     this.json = json;
 
     result += this.genFuncsDecl(json);
     result += '\n';
 
-    result += 'namespace AWTK {\n';
     json.forEach(iter => {
       result += this.genOne(iter);
     });
-    result += '}\n';
 
     this.result = result;
   }
