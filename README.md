@@ -1,9 +1,8 @@
-# AWTK-WEB
-
+﻿# AWTK-WEB
 
 ## 一、介绍
 
-AWTK-WEB让AWTK能够在浏览器中运行，其包括两个方面的意思：
+AWTK-WEB让AWTK能够在浏览器中运行，其包括几个方面的意思：
 
 * 1.让用C语言开发的AWTK应用程序，在不需要修改源码的情况下，能在浏览器中运行。
 
@@ -13,15 +12,21 @@ AWTK-WEB让AWTK能够在浏览器中运行，其包括两个方面的意思：
 
 > AWTK-JS让AWTK支持用JS来开发AWTK应用程序，并在嵌入式系统中运行，但不能在浏览器中运行。而AWTK-WEB则是让AWTK支持用JS来开发AWTK应用程序，并且能够在浏览器中运行(我们尽量保证AWTK-JS和AWTK-WEB对外提供的API保持兼容)。
 
+* 3.AWTK在浏览器中运行是在各种小程序中运行的基础。
 
 在线演示: [http://zlgopen.bceapp.com](http://zlgopen.bceapp.com/)
 
 ## 二、目标
 
-AWTK-WEB不是简单的把AWTK编译成JS，让它在浏览器中运行，那样就无法满足一些非功能性的需求。我们把AWTK-WEB当作一个全新平台去移植，并充分考虑WEB平台的特点，有针对性的去达到以下的目标。
+AWTK-WEB不是简单的把AWTK编译成JS，让它在浏览器中运行，那样就无法满足一些非功能性的需求。我们把AWTK-WEB当作一个全新平台去移植，并充分考虑WEB平台的特点，有针对性的去实现以下的目标。
 
-* 小。在web上运行的应用程序，体积小是非常重要的，打开界面的时间直接影响用户体验。
+* 小。在web上运行的应用程序，体积小是非常重要的，体积越小打开越快，这直接影响用户体验。
 
+> 为了减小代码的体积，AWTK去掉了SDL和stb等库的依赖，尽量使用浏览器本身的功能，这极大程度减小了代码的体积。
+>
+> 为了减小资源的体积，AWTK的缺省字体使用了浏览器的字体，输入法使用浏览器的输入法。
+
+我们可以对比一下各个GUI的wasm文件的大小。
 
   | GUI          | wasm大小   |  网址  |
   | --------     | -----:     | :---- |
@@ -30,21 +35,26 @@ AWTK-WEB不是简单的把AWTK编译成JS，让它在浏览器中运行，那样
   | LittleVG     | 1.3M      |   https://littlevgl.com/demo-basic    |
   | AWTK         | 150K      |   http://zlgopen.bceapp.com/awtk/demos/demoui/index.html    |
 
-https://littlevgl.com/demo-basic
+
+* 快。Android手机浏览器性能普遍不高，要到达实用价值，性能优化至关重要。
+
+> AWTK-WEB的窗口动画采用了webGL直接贴图进行优化，在支持WEBGL的浏览器中，窗口动画性能接近原生效果。
+
+* 省电。在手机等电池供电的系统上，省电是必须要考虑的。
+
+> AWTK-WEB启用脏矩形算法，界面不变就不绘制，有变化只绘制变化的区域，这极大的降低了电能的消耗。
+
+* 跨平台。除了在PC的各种浏览器(除老的IE浏览器)上运行，还需要在Android和iOS上运行。AWTK-WEB的基本要求只是浏览器支持HTML5的canvas，所在Chorom、Firefox和IE等主流浏览器，以及目前流行的Android和iOS设备上都能正常运行。
+
+> 在最新的红米4的浏览器中，QT和LittleVG纷纷表示无法运行。
 
 
-* 快。
-
-* 省电。
-* 跨平台。
-
-## 二、编译demoui
+## 三、编译
 
 1.先安装必要的软件包
 
 * [scons](https://scons.org/)
 * [python](https://www.python.org/)。
-* [nodejs](https://nodejs.org/en/)
 * [emscripten](https://emscripten.org/docs/getting_started/downloads.html#sdk-download-and-install)
 
 > 设置emscripten的环境变量。
@@ -65,66 +75,23 @@ cd awtk-web
 python build.py ../awtk/demos/demo_ui_web.json all
 ```
 
-## 三、运行
+## 四、运行
 
 1.启动web服务器
 
 ```
-python -m http.server 8000 --directory webroot
+python -m http.server 8080 --directory webroot
 ```
 
 > 使用其它web服务器均可。
 
 2.用浏览器打开[http://localhost:8080/demoui/index.html](http://localhost:8080/demoui/index.html)
 
-## 四、让自己的app在web中运行
-
-让自己的app在web中运行非常简单，只需编写一个JSON格式的描述文件即可。里面指明项目名、版本号、资源位置和.c文件列表。
-
-> 不需要main函数，应用程序以application_init为入口。 
-
-如：
-
-* awtk-hello的描述文件：
-
-```
-{
-  "name":"hello",
-  "version":"1.0",
-  "assets" : "assets",
-  "sources":["src/main.c", "src/window1.c"]
-}
-```
-
-* demoui的描述文件：
-
-```
-{
-  "name":"demoui",
-  "version":"1.0",
-  "assets" : "assets",
-  "sources":["demo_ui_app.c"]
-}
-```
-
-然后使用buid.py编译：
-
-```
-python build.py your_app_path_your_app.json all
-```
-
-生成的文件在webroot目录下，以项目名为名的子目录中，部署的时候直接把该目录拷贝到web服务器上即可。
-
-
 ## 五、已知问题
 
+* GIF文件仅在saferi和iOS上工作。
 * 只能调用awtk、标准C库，和其它有源代码的库。
 * 不支持模态对话框。dialog\_modal不会生效，而dialog\_quit会直接关闭对话框。
-* 不支持GIF文件(正在研究)。
-* 不支持颜色选择器(正在研究)。
-* 不支持mutable image(正在研究)。
-* 加载特殊字体(正在研究)。
-
 
 ## 六、注意事项
 
@@ -133,6 +100,13 @@ python build.py your_app_path_your_app.json all
 ```
 C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk\demos\demo_ui_web.json all
 ```
+
+或
+
+```
+.\build.py ..\awtk\demos\demo_ui_web.json all
+```
+
 
 
 
