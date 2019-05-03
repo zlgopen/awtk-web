@@ -145,11 +145,8 @@ def build_app_assets(src_app_root, config):
 
 
 def build_awtk_js(src_app_root, config, flags):
-    cwd = os.path.abspath(os.getcwd())
     app_target_dir = config_get_app_target_dir(config)
-    assert_c = join_path(app_target_dir, 'assets_web.c')
-
-    app_files = [assert_c]
+    app_files = [join_path(app_target_dir, 'assets_web.c')]
 
     if(is_js_app(config)):
         app_files.append(join_path('./', 'gen/c/awtk_wrap.c'))
@@ -161,6 +158,7 @@ def build_awtk_js(src_app_root, config, flags):
 
     web_files = glob.glob('src/c/*.c')
     files = awtk.getWebFiles() + web_files + app_files
+
     all_files = []
     for f in files:
         all_files.append(os.path.normpath(os.path.abspath(f)))
@@ -171,7 +169,7 @@ def build_awtk_js(src_app_root, config, flags):
         ' -s EXTRA_EXPORTED_RUNTIME_METHODS=@configs/export_runtime_funcs.json '
     if(is_js_app(config)):
         COMMON_FLAGS = COMMON_FLAGS + ' -s EXPORTED_FUNCTIONS=@configs/export_awtk_funcs.json '
-        COMMON_FLAGS = COMMON_FLAGS + ' -DWITH_JS_APPLICATION_INIT=1 -DAWTK_WEB_JS '
+        COMMON_FLAGS = COMMON_FLAGS + ' -DAWTK_WEB_JS '
         COMMON_FLAGS = COMMON_FLAGS + ' -s RESERVED_FUNCTION_POINTERS=1000 '
     else:
         COMMON_FLAGS = COMMON_FLAGS + ' -s EXPORTED_FUNCTIONS=@configs/export_app_funcs.json '
