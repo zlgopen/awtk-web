@@ -16,6 +16,28 @@ AWTK-WEB让AWTK能够在浏览器中运行，其包括两个方面的意思：
 
 在线演示: [http://zlgopen.bceapp.com](http://zlgopen.bceapp.com/)
 
+## 二、目标
+
+AWTK-WEB不是简单的把AWTK编译成JS，让它在浏览器中运行，那样就无法满足一些非功能性的需求。我们把AWTK-WEB当作一个全新平台去移植，并充分考虑WEB平台的特点，有针对性的去达到以下的目标。
+
+* 小。在web上运行的应用程序，体积小是非常重要的，打开界面的时间直接影响用户体验。
+
+
+  | GUI          | wasm大小   |  网址  |
+  | --------     | -----:     | :---- |
+  | QT           | 9M        |   http://example.qt.io/qt-webassembly/SensorTagDemo/SensorTagDemo.html    |
+  | QT           | 3M        |   http://example.qt.io/qt-webassembly/opengl/hellowindow/hellowindow.html    |
+  | LittleVG     | 1.3M      |   https://littlevgl.com/demo-basic    |
+  | AWTK         | 150K      |   http://zlgopen.bceapp.com/awtk/demos/demoui/index.html    |
+
+https://littlevgl.com/demo-basic
+
+
+* 快。
+
+* 省电。
+* 跨平台。
+
 ## 二、编译demoui
 
 1.先安装必要的软件包
