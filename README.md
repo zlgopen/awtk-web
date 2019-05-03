@@ -107,6 +107,13 @@ C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk
 .\build.py ..\awtk\demos\demo_ui_web.json all
 ```
 
+## 七、文档
+
+1.[快速入门](docs/get_started.md)
+
+2.[移植笔记-序](docs/porting_notes_0.md)
+
+3.[移植笔记-基础知识](docs/porting_notes_1.md)
 
 
 
