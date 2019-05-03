@@ -195,6 +195,8 @@ class CodeGenerator {
       } else {
         if(iter.type === 'event_func_t') {
           result += `Module.addFunction(wrap_on_event(${name}))`;
+	}else if(iter.type === 'tk_visit_t') {
+          result += `Module.addFunction(wrap_on_visit(${name}))`;
         } else if(iter.type.indexOf('func_t') > 0) {
           result += `Module.addFunction(${name})`;
         } else {
@@ -452,6 +454,11 @@ class CodeGenerator {
 function wrap_on_event(func) {
   return function(ctx, evt) {
     return func(evt, ctx);
+  }
+}
+function wrap_on_visit(func) {
+  return function(ctx, data) {
+    return func(data, ctx);
   }
 }
 `;

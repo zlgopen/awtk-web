@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || (function () {
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
-    }
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -14,6 +14,11 @@ var __extends = (this && this.__extends) || (function () {
 function wrap_on_event(func) {
     return function (ctx, evt) {
         return func(evt, ctx);
+    };
+}
+function wrap_on_visit(func) {
+    return function (ctx, data) {
+        return func(data, ctx);
     };
 }
 var Module = Module || {};
@@ -2371,7 +2376,7 @@ var TWidget = /** @class */ (function () {
         return widget_is_window_manager(this.nativeObj);
     };
     TWidget.prototype.foreach = function (visit, ctx) {
-        return widget_foreach(this.nativeObj, visit, ctx);
+        return widget_foreach(this.nativeObj, Module.addFunction(wrap_on_visit(visit)), ctx);
     };
     TWidget.prototype.getWindow = function () {
         return new TWidget(widget_get_window(this.nativeObj));
@@ -4159,7 +4164,7 @@ var TObject = /** @class */ (function (_super) {
         return object_copy_prop(this.nativeObj, src ? src.nativeObj : null, name);
     };
     TObject.prototype.foreachProp = function (on_prop, ctx) {
-        return object_foreach_prop(this.nativeObj, on_prop, ctx);
+        return object_foreach_prop(this.nativeObj, Module.addFunction(wrap_on_visit(on_prop)), ctx);
     };
     TObject.prototype.hasProp = function (name) {
         return object_has_prop(this.nativeObj, name);

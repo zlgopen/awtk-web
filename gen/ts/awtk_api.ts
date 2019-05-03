@@ -4,6 +4,11 @@ function wrap_on_event(func) {
     return func(evt, ctx);
   }
 }
+function wrap_on_visit(func) {
+  return function(ctx, data) {
+    return func(data, ctx);
+  }
+}
 var Module : any = Module || {}
 
 const tk_quit = Module.cwrap("tk_quit", 
@@ -3624,7 +3629,7 @@ class TWidget {
  }
 
  foreach(visit, ctx) {
-   return widget_foreach(this.nativeObj, visit, ctx);
+   return widget_foreach(this.nativeObj, Module.addFunction(wrap_on_visit(visit)), ctx);
  }
 
  getWindow() {
@@ -5349,7 +5354,7 @@ class TObject extends TEmitter {
  }
 
  foreachProp(on_prop, ctx) {
-   return object_foreach_prop(this.nativeObj, on_prop, ctx);
+   return object_foreach_prop(this.nativeObj, Module.addFunction(wrap_on_visit(on_prop)), ctx);
  }
 
  hasProp(name) {
