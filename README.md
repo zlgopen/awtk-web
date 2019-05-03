@@ -45,11 +45,10 @@ python build.py ../awtk/demos/demo_ui_web.json all
 
 ## 三、运行
 
-1.启动web服务器(需安装nodejs)
+1.启动web服务器
 
 ```
-npm install http-server -g
-http-server webroot
+python -m http.server 8000 --directory webroot
 ```
 
 > 使用其它web服务器均可。
