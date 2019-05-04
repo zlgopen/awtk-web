@@ -28,12 +28,12 @@
 
 我们可以对比一下各个 GUI 的 wasm 文件的大小。
 
-  | GUI          | wasm大小   |  网址  |
-  | --------     | -----:     | :---- |
-  | QT           | 9M        |   http://example.qt.io/qt-webassembly/SensorTagDemo/SensorTagDemo.html    |
-  | QT           | 3M        |   http://example.qt.io/qt-webassembly/opengl/hellowindow/hellowindow.html    |
-  | LittleVG     | 1.3M      |   https://littlevgl.com/demo-basic    |
-  | AWTK         | 150K      |   http://zlgopen.bceapp.com/awtk/demos/demoui/index.html    |
+| GUI          | wasm大小   |  网址  |
+| --------     | -----:     | :---- |
+| QT           | 9M        |   http://example.qt.io/qt-webassembly/SensorTagDemo/SensorTagDemo.html    |
+| QT           | 3M        |   http://example.qt.io/qt-webassembly/opengl/hellowindow/hellowindow.html    |
+| LittleVG     | 1.3M      |   https://littlevgl.com/demo-basic    |
+| AWTK         | 150K      |   http://zlgopen.bceapp.com/awtk/demos/demoui/index.html    |
 
 
 * 快。Android 手机浏览器性能普遍不高，要到达实用价值，性能优化至关重要。
@@ -72,7 +72,7 @@ scons -j 8
 ```
 git clone https://github.com/zlgopen/awtk-web.git
 cd awtk-web
-python build.py ../awtk/demos/demo_ui_web.json all
+python build.py ../awtk/demos/demoui_web.json all
 ```
 
 ## 四、运行
@@ -89,9 +89,9 @@ python -m http.server 8080 --directory webroot
 
 ## 五、已知问题
 
-* GIF 文件仅在saferi和iOS上工作。
-* 只能调用awtk、标准C库，和其它有源代码的库。
-* 不支持模态对话框。dialog\_modal不会生效，而dialog\_quit会直接关闭对话框。
+* GIF 文件仅在 saferi 和 iOS 上工作。
+* 只能调用 awtk、标准 C 库，和其它有源代码的库。
+* 不支持模态对话框。dialog\_modal 不会生效，而 dialog\_quit 会直接关闭对话框。
 
 ## 六、注意事项
 
@@ -117,9 +117,9 @@ C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk
 
 ## 八、示例
 
-* 1.[JS 示例 ](https://github.com/zlgopen/awtk-js/blob/master/demos/demoui_web.json)
+* [JS 示例 ](https://github.com/zlgopen/awtk-js/blob/master/demos/demoui_web.json)
 
-* 2.[C 示例 ](https://github.com/zlgopen/awtk/blob/master/demos/demoui_web.json)
+* [C 示例 ](https://github.com/zlgopen/awtk/blob/master/demos/demoui_web.json)
 
 
 
