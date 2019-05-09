@@ -53,6 +53,8 @@ configs/export\_runtime\_funcs.json的内容：
 [
     "ccall",
     "cwrap",
+    "addFunction",
+    "removeFunction",
     "addOnPostRun",
     "addOnInit",
     "addOnExit",
@@ -278,4 +280,68 @@ mutableImage.addr是rgba数据的地址，它是用malloc分配出来的，我�
 
 ## 三、JS调用C的函数
 
+要在JS里调用C的函数，一般用Module.cwrap包装一下，它需要提供以下参数：
 
+* 函数名
+* 返回值
+* 参数列表
+
+参数和返回值的类型有：
+
+* number 
+* string
+* array
+
+如：
+
+```
+Awtk._onImCommit = Module.cwrap('awtk_web_on_im_commit', 'number', ['string', 'number']);
+
+Awtk.onImCommit = function (text, timestamp) {
+  return Awtk._onImCommit(text, timestamp);
+}
+```
+
+常见的用法的在文档中都有清楚的说明，这里不再赘述。如果参数是一个回调函数，就稍微麻烦一点。
+
+* 1.要导出addFunction/removeFunction(参考前面)
+
+* 2.要指定参数RESERVED\_FUNCTION\_POINTERS。
+
+如：
+
+```
+-s RESERVED_FUNCTION_POINTERS=1000
+```
+
+* 3.调用addFunction把函数转成一个number，再作为参数传入。
+
+如：
+
+```
+widget_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event)), ctx);
+
+```
+
+最麻烦的是函数用完之后，要调用removeFunction把函数从表里移出，对于同步调用的回调函数这没有什么问题，但是对异步调用函数，特别是多次调用的异步函数，什么时候可以移出只有C代码里才知道，所以需要在C代码里添加处理。如：
+
+```
+#ifdef AWTK_WEB_JS
+#include <emscripten.h>
+#endif /*AWTK_WEB_JS*/
+
+static ret_t emitter_item_destroy(emitter_item_t* iter) {
+  if (iter->on_destroy) {
+    iter->on_destroy(iter);
+  }
+
+#ifdef AWTK_WEB_JS
+  EM_ASM_INT({ return TBrowser.releaseFunction($0); }, iter->handler);
+#endif /*AWTK_WEB_JS*/
+
+  memset(iter, 0x00, sizeof(emitter_item_t));
+  TKMEM_FREE(iter);
+
+  return RET_OK;
+}
+```
