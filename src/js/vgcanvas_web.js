@@ -320,8 +320,6 @@ VGCanvas.setFont = function (name, size) {
 
   VGCanvas.ctx.font = fontSize + fontName; 
 
-  console.log(VGCanvas.ctx.font);
-
   return true;
 }
 

@@ -2,6 +2,7 @@
     "_awtk_web_init",
     "_awtk_web_deinit",
     "_awtk_web_main_loop_step",
+    "_awtk_web_request_repaint",
     "_awtk_web_on_key_down",
     "_awtk_web_on_key_up",
     "_awtk_web_on_wheel",

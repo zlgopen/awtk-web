@@ -36,3 +36,12 @@ int32_t awtk_web_main_loop_step(double timestamp) {
 
   return 0;
 }
+
+int32_t awtk_web_request_repaint(double reason) {
+  main_loop_t* loop = main_loop();
+
+  log_debug("awtk_web_request_repaint: %lf\n", reason);
+  widget_invalidate(loop->wm, NULL);
+
+  return 0;
+}

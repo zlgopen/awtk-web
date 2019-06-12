@@ -283,6 +283,7 @@ TBrowser.injectCSS = function (str) {
   node.innerHTML = str;
   node.onload = function() {
     console.log('load:' + str);
+    Awtk.requestRepaint(2);
   }
   document.head.appendChild(node);
 

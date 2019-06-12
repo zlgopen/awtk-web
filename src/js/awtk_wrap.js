@@ -6,6 +6,7 @@ Awtk.init = function () {
   Awtk._init = Module.cwrap('awtk_web_init', 'number', []);
   Awtk._deinit = Module.cwrap('awtk_web_deinit', 'number', []);
   Awtk._mainLoopStep = Module.cwrap('awtk_web_main_loop_step', 'number', ['number']);
+  Awtk._requestRepaint = Module.cwrap('awtk_web_request_repaint', 'number', ['number']);
 
   Awtk._onImCommit = Module.cwrap('awtk_web_on_im_commit', 'number', ['string', 'number']);
   Awtk._onKeyDown = Module.cwrap('awtk_web_on_key_down', 'number', ['number', 'number']);
@@ -41,6 +42,10 @@ Awtk.run = function () {
 
 Awtk.mainLoopStep = function (timestamp) {
   return Awtk._mainLoopStep(timestamp);
+}
+
+Awtk.requestRepaint = function (reason) {
+  return Awtk._requestRepaint(reason);
 }
 
 Awtk.mainLoopStep = function (timestamp) {

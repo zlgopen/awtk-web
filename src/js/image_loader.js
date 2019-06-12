@@ -22,7 +22,10 @@ ImageLoader.load = function (name) {
       let image = new Image();
       image.src = uri;
       image.name = name;
-
+      image.onload = function() {
+        console.log('image loaded: ' + name + ' ' + uri);
+        Awtk.requestRepaint(1);
+      }
       return ImageCache.add(image);
     }
   }
