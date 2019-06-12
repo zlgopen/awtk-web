@@ -44,7 +44,7 @@ static ret_t image_loader_web_load(image_loader_t *l, const asset_info_t *asset,
   image->h = h;
   image->specific = tk_pointer_from_int(id);
 
-  return RET_OK;
+  return (w > 0 && h > 0) ? RET_OK : RET_NOT_FOUND;
 }
 
 static const image_loader_t s_web_loader = {.load = image_loader_web_load};
