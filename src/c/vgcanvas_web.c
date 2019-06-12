@@ -246,8 +246,7 @@ static ret_t vgcanvas_web_paint(vgcanvas_t *vgcanvas, bool_t stroke,
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_set_font_size(vgcanvas_t *vgcanvas, float_t size) {
-  float_t font_size = vgcanvas->font_size;
+static ret_t vgcanvas_web_set_font_size(vgcanvas_t *vgcanvas, float_t font_size) {
   const char *font = vgcanvas->font != NULL ? vgcanvas->font : "Sans";
   EM_ASM_INT({ return VGCanvas.setFont($0, $1); }, font, font_size);
 

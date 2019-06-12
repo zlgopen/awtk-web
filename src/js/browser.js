@@ -281,6 +281,9 @@ TBrowser.injectCSS = function (str) {
   var node = document.createElement('style');
 
   node.innerHTML = str;
+  node.onload = function() {
+    console.log('load:' + str);
+  }
   document.head.appendChild(node);
 
   return true;

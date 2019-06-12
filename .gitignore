@@ -57,3 +57,4 @@ webroot
 *.swp
 log
 args.txt
+gen/app_config.js
