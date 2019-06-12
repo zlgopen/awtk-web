@@ -164,8 +164,8 @@ def build_awtk_js(src_app_root, config, flags):
 
     sources = config['sources']
     for f in sources:
-        if f.endswith('.c'):
-            app_files.append(join_path(src_app_root, f))
+        if f.endswith('.c') or f.endswith('.cpp'):
+            app_files = app_files + glob.glob(join_path(src_app_root, f))
 
     web_files = glob.glob('src/c/*.c')
     files = awtk.getWebFiles() + web_files + app_files
@@ -202,7 +202,7 @@ def build_awtk_js(src_app_root, config, flags):
         app_files.append('gen/ts/awtk_api.js')
     for f in sources:
         if f.endswith('.js'):
-            app_files.append(join_path(src_app_root, f))
+            app_files = app_files + glob.glob(join_path(src_app_root, f))
     merge_files(app_files, output)
 
 
