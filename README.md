@@ -14,7 +14,7 @@
 
 * 3.[AWTK](https://github.com/zlgopen/awtk) 在浏览器中运行是在各种小程序中运行的基础。
 
-在线演示: [http://zlgopen.bceapp.com](http://zlgopen.bceapp.com/)
+在线演示: [http://zlgawtk.bceapp.com](http://zlgawtk.bceapp.com/)
 
 ## 二、目标
 
@@ -98,13 +98,13 @@ python -m http.server 8080 --directory webroot
 * 1. 在 Windows 下 emscripten 自带的 python 环境与系统的 python 环境有冲突，需要指定 python 的完整路径。如:
 
 ```
-C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk\demos\demo_ui_web.json all
+C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk\demos\demoui_web.json all
 ```
 
 或
 
 ```
-.\build.py ..\awtk\demos\demo_ui_web.json all
+.\build.py ..\awtk\demos\demoui_web.json all
 ```
 
 ## 七、文档
