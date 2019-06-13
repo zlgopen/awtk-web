@@ -312,5 +312,3 @@ TBrowser.releaseFunction = function(funcID) {
   return true;
 }
 
-
-TBrowser.init();
