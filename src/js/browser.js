@@ -251,6 +251,10 @@ TBrowser.init = function () {
     console.log('TBrowser.init: webgl supported.');
   }
 
+  return true;
+}
+
+TBrowser.loadAWTK = function () {
   if (TBrowser.supportWebAssembly()) {
     TBrowser.loadScript('js/awtk_asm.js');
   } else {
@@ -311,4 +315,6 @@ TBrowser.releaseFunction = function(funcID) {
 
   return true;
 }
+
+TBrowser.init();
 
