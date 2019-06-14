@@ -315,7 +315,7 @@ VGCanvas.setFont = function (name, size) {
   let fontSize = Math.round(size || 18) + "px ";
 
   if (!(fontName) || fontName.indexOf('default') == 0) {
-    fontName = TBrowser.config.defaultFont || 'serif';
+    fontName = TBrowser.config.defaultFont || 'sans';
   }
 
   VGCanvas.ctx.font = fontSize + fontName; 

@@ -115,6 +115,8 @@ C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk
 
 3.[移植笔记-基础知识](docs/porting_notes_1.md)
 
+4.[移植笔记-字体](docs/porting_notes_2.md)
+
 ## 八、示例
 
 * [JS 示例 ](https://github.com/zlgopen/awtk-js/blob/master/demos/demoui_web.json)
