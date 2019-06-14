@@ -18,7 +18,7 @@
 
 ## 二、目标
 
-[AWTK-WEB](https://github.com/zlgopen/awtk-web) 不是简单的把 [AWTK](https://github.com/zlgopen/awtk) 编译成 JS，让它在浏览器中运行，那样就无法满足一些非功能性的需求。我们把 [AWTK-WEB](https://github.com/zlgopen/awtk-web) 当作一个全新平台去移植，并充分考虑 WEB 平台的特点，有针对性的去实现以下的目标。
+[AWTK-WEB](https://github.com/zlgopen/awtk-web) 不是简单的把 [AWTK](https://github.com/zlgopen/awtk) 编译成 JS，让它在浏览器中运行，那样是无法满足一些非功能性的需求的。我们把 [AWTK-WEB](https://github.com/zlgopen/awtk-web) 当作一个全新平台去移植，并充分考虑 WEB 平台的特点，有针对性的去实现以下的目标。
 
 * 小。在 web 上运行的应用程序，体积小是非常重要的，体积越小打开越快，这直接影响用户体验。
 
