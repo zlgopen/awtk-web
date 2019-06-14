@@ -294,6 +294,10 @@ EventsSource.prototype.getTouchPoints = function (e) {
 EventsSource.prototype.onTouchStartGlobal = function (event) {
 	var e = window.event || event;
 	var points = this.getTouchPoints(e);
+	
+	if (this.targetIsEditor(e)) {
+		return true;
+	}
 
 	if (points.length === 1) {
 		this.point.x = points[0].x;
@@ -310,6 +314,10 @@ EventsSource.prototype.onTouchMoveGlobal = function (event) {
 	var e = window.event || event;
 	var points = this.getTouchPoints(e);
 
+	if (this.targetIsEditor(e)) {
+		return true;
+	}
+
 	if (points.length === 1) {
 		this.point.x = points[0].x;
 		this.point.y = points[0].y;
@@ -324,6 +332,10 @@ EventsSource.prototype.onTouchMoveGlobal = function (event) {
 EventsSource.prototype.onTouchEndGlobal = function (event) {
 	var e = window.event || event;
 	var points = this.getTouchPoints(e);
+	
+	if (this.targetIsEditor(e)) {
+		return true;
+	}
 
 	if (!points.length) {
 		var last = this.lastPointerTime;
