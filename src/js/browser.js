@@ -30,15 +30,19 @@ TBrowser.getDevicePixelRatio = function () {
 TBrowser.adjustCanvasToViewPort = function (canvas) {
   let view = TBrowser.getViewPort();
   let dpr = TBrowser.getDevicePixelRatio();
+  
+  let size = {};
+  size.width = TBrowser.config.width || view.width;
+  size.height = TBrowser.config.height || view.height;
 
-  canvas.width = view.width * dpr;
-  canvas.height = view.height * dpr;
+  canvas.width = size.width * dpr;
+  canvas.height = size.height * dpr;
 
   canvas.style.position = 'absolute';
   canvas.style.left = "0px";
   canvas.style.top = "0px";
-  canvas.style.width = view.width + "px";
-  canvas.style.height = view.height + "px";
+  canvas.style.width = size.width + "px";
+  canvas.style.height = size.height + "px";
 
   return true;
 }
@@ -233,6 +237,11 @@ TBrowser.init = function () {
   TBrowser.windows = u.indexOf("Windows") >= 0;
   TBrowser.macosx = u.indexOf("Mac OS X") >= 0;
 
+  TBrowser.config.width = TBrowser.getParam('width', TBrowser.config.width);
+  TBrowser.config.height = TBrowser.getParam('height', TBrowser.config.height);
+  TBrowser.config.fontScale = TBrowser.getParam('fontScale', TBrowser.config.fontScale || 1);
+  TBrowser.config.defaultFont = TBrowser.getParam('defaultFont', TBrowser.config.defaultFont || "sans");
+
   if (!TBrowser.supportWebGL()) {
     TBrowser.getActiveContext = function () {
       return TBrowser.mainCanvas.getContext('2d');
@@ -315,6 +324,4 @@ TBrowser.releaseFunction = function(funcID) {
 
   return true;
 }
-
-TBrowser.init();
 

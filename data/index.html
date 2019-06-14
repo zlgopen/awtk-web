@@ -7,9 +7,10 @@
   <title>ZLG AWTK 演示</title>
   <script type="text/javascript" src="js/awtk_web.js"></script>
   <script>
+    TBrowser.init();
 
     window.onload = function () {
-      const target = 'app.html';
+      const target = 'app.html' + window.location.search;
 
       if (TBrowser.isMobile()) {
         window.location.href = target
