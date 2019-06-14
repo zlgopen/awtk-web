@@ -13,10 +13,8 @@ AssetsManager.exist = function (type, name) {
   return false;
 }
 
-AssetsManager.getImage = function (name) {
+AssetsManager.getImageByDPI = function (name, dpi) {
   let anydpi = '/xx/';
-  let dpi = '/x' + TBrowser.getDevicePixelRatio() + '/';
-
   const assets = g_awtk_assets['image'];
   if (assets) {
     const asset = assets.find(iter => {
@@ -27,6 +25,21 @@ AssetsManager.getImage = function (name) {
   }
 
   return null;
+}
+
+AssetsManager.getImage = function (name) {
+  let dpi = '/x' + TBrowser.getDevicePixelRatio() + '/';
+  let asset = AssetsManager.getImageByDPI(name, dpi);
+
+  if(!asset) {
+    asset = AssetsManager.getImageByDPI(name, '/x1/');
+  }
+
+  if(!asset) {
+    console.log('Not found ' + name);
+  }
+
+  return asset;
 }
 
 AssetsManager.getImageURI = function (name) {
