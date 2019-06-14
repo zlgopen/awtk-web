@@ -31,7 +31,11 @@ http://192.168.1.117:8080/demoui/index.html?width=480&height=800&fontScale=0.8&d
   "app_type":"c",
   "version":"1.0",
   "assets" : "assets",
-  "sources":["demo_ui_app.c"]
+  "sources":["demo_ui_app.c"],
+  "config" : {
+    "fontScale":"0.8",
+    "defaultFont":"sans"
+  }
 }
 ```
 
