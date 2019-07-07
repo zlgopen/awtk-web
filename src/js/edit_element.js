@@ -36,6 +36,12 @@ EditElement.prototype.setFontSize = function (fontSize) {
   return true;
 }
 
+EditElement.prototype.setInputType = function (inputType) {
+  this.edit.type = inputType;
+
+  return true;
+}
+
 EditElement.prototype.setZIndex = function (zIndex) {
   this.edit.style['z-index'] = zIndex;
 

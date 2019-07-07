@@ -6,10 +6,13 @@ InputMethodWeb.init = function () {
   }
 }
 
-InputMethodWeb.start = function (x, y, w, h) {
+InputMethodWeb.start = function (x, y, w, h, _inputType, isMLEdit) {
+  let inputType = pointerToString(_inputType);
+
   InputMethodWeb.init();
-  InputMethodWeb.edit.moveResize(x, y, w, h);
   InputMethodWeb.edit.setFontSize(18);
+  InputMethodWeb.edit.moveResize(x, y, w, h);
+  InputMethodWeb.edit.setInputType(inputType);
   InputMethodWeb.edit.show();
 
   EventsSource.fixPointerUp();
