@@ -2,7 +2,9 @@ function EditElement() {}
 
 EditElement.create = function (type) {
   let el = new EditElement();
+
   el.init(type);
+  el.tag = type;
 
   return el
 }

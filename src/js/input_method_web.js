@@ -1,8 +1,12 @@
 function InputMethodWeb() {}
 
 InputMethodWeb.init = function () {
-  if (!InputMethodWeb.edit) {
-    InputMethodWeb.edit = EditElement.create('input');
+  if (!InputMethodWeb.mledit) {
+    InputMethodWeb.mledit = EditElement.create('textarea');
+  }
+  
+  if (!InputMethodWeb.sledit) {
+    InputMethodWeb.sledit = EditElement.create('input');
   }
 }
 
@@ -10,6 +14,13 @@ InputMethodWeb.start = function (x, y, w, h, _inputType, isMLEdit) {
   let inputType = pointerToString(_inputType);
 
   InputMethodWeb.init();
+
+  if(isMLEdit) {
+    InputMethodWeb.edit = InputMethodWeb.mledit;
+  } else {
+    InputMethodWeb.edit = InputMethodWeb.sledit;
+  }
+
   InputMethodWeb.edit.setFontSize(18);
   InputMethodWeb.edit.moveResize(x, y, w, h);
   InputMethodWeb.edit.setInputType(inputType);
