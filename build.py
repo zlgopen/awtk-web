@@ -174,6 +174,13 @@ def build_awtk_js(src_app_root, config, flags):
     for f in files:
         all_files.append(os.path.normpath(os.path.abspath(f)))
 
+    includes_path = ' '
+
+    if config.has_key('includes'):
+        includes_files = config['includes']
+        for f in includes_files:
+            includes_path += ('-I ' + join_path(src_app_root, f) + " ")
+
     COMMON_FLAGS = ' ' + flags + ' -Werror '
     COMMON_FLAGS = COMMON_FLAGS + ' -DSAFE_HEAP=1 -DASSERTIONS=1 -DSTACK_OVERFLOW_CHECK=1 '
     COMMON_FLAGS = COMMON_FLAGS + \
@@ -189,11 +196,11 @@ def build_awtk_js(src_app_root, config, flags):
     COMMON_FLAGS = COMMON_FLAGS + ' -DWITH_WINDOW_ANIMATORS -DWITH_NANOVG_GPU '
 
     output = join_path(config_get_js_dir(config), "awtk.js")
-    CPPFLAGS_JS = ' -o ' + output + ' -s WASM=0 ' + COMMON_FLAGS
+    CPPFLAGS_JS = ' -o ' + output + ' -s WASM=0 ' + COMMON_FLAGS + includes_path
     awtk.runArgsInFile('emcc -v ', CPPFLAGS_JS, all_files)
 
     output = join_path(config_get_js_dir(config), "awtk_asm.js")
-    CPPFLAGS_ASM = ' -o ' + output + COMMON_FLAGS
+    CPPFLAGS_ASM = ' -o ' + output + COMMON_FLAGS + includes_path
     awtk.runArgsInFile('emcc -v ', CPPFLAGS_ASM, all_files)
 
     app_files = []
@@ -256,7 +263,7 @@ with open(filename, 'r') as load_f:
         build_awtk_web_js(config)
     elif action == 'release':
         build_app_assets(src_app_root, config)
-        build_awtk_js(src_app_root, config, '-Os')
+        build_awtk_js(src_app_root, config, '-Os --memory-init-file 0')
         build_awtk_web_js(config)
         clean_temp_files(config)
     elif action == 'assets':
