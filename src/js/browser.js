@@ -1,6 +1,15 @@
 function TBrowser() {}
 
+TBrowser.supportDirtyRect = function() {
+  return true;
+}
+
 TBrowser.supportWebGL = function () {
+  if(TBrowser.config.nowebgl) {
+    console.log("WebGL is disabled.");
+    return false;
+  }
+
   var canvas = document.createElement("canvas");
   var gl = canvas.getContext("webgl") ||
     canvas.getContext("experimental-webgl");
@@ -239,6 +248,7 @@ TBrowser.init = function () {
 
   TBrowser.config.width = TBrowser.getParam('width', TBrowser.config.width);
   TBrowser.config.height = TBrowser.getParam('height', TBrowser.config.height);
+  TBrowser.config.nowebgl = TBrowser.getParam('nowebgl', TBrowser.config.nowebgl);
   TBrowser.config.fontScale = TBrowser.getParam('fontScale', TBrowser.config.fontScale || 1);
   TBrowser.config.defaultFont = TBrowser.getParam('defaultFont', TBrowser.config.defaultFont || "sans");
 

@@ -414,7 +414,7 @@ static ret_t vgcanvas_web_set_line_cap(vgcanvas_t *vgcanvas,
 
 static ret_t vgcanvas_web_set_line_join(vgcanvas_t *vgcanvas,
                                         const char *value) {
-  int32_t ret = EM_ASM_INT({ return VGCanvas.setLineJoint($0); }, value);
+  int32_t ret = EM_ASM_INT({ return VGCanvas.setLineJoin($0); }, value);
   return RET_OK;
 }
 

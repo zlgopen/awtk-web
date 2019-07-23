@@ -176,7 +176,7 @@ def build_awtk_js(src_app_root, config, flags):
 
     includes_path = ' '
 
-    if config.has_key('includes'):
+    if 'includes' in config:
         includes_files = config['includes']
         for f in includes_files:
             includes_path += ('-I ' + join_path(src_app_root, f) + " ")

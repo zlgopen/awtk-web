@@ -128,14 +128,14 @@ VGCanvas.setMitterLimit = function (value) {
   return true;
 }
 
-VGCanvas.setLineJoint = function (value) {
-  VGCanvas.ctx.lineJoin = value;
+VGCanvas.setLineJoin = function (value) {
+  VGCanvas.ctx.lineJoin = pointerToString(value);
 
   return true;
 }
 
 VGCanvas.setLineCap = function (value) {
-  VGCanvas.ctx.lineCap = value;
+  VGCanvas.ctx.lineCap = pointerToString(value);
 
   return true;
 }

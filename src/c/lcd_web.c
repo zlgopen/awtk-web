@@ -19,6 +19,8 @@
  *
  */
 
+#include <emscripten.h>
+
 #include "lcd_web.h"
 #include "base/lcd.h"
 #include "base/vgcanvas.h"
@@ -32,7 +34,7 @@ lcd_t *lcd_web_init(void) {
   lcd = lcd_vgcanvas_init(vg->w, vg->h, vg);
   return_value_if_fail(lcd != NULL, NULL);
 
-  lcd->support_dirty_rect = TRUE;
+  lcd->support_dirty_rect = EM_ASM_INT({ return TBrowser.supportDirtyRect() }, 0);
 
   return lcd;
 }
