@@ -32,10 +32,6 @@ AssetsManager.getImage = function (name) {
   let asset = AssetsManager.getImageByDPI(name, dpi);
 
   if(!asset) {
-    asset = AssetsManager.getImageByDPI(name, '/x1/');
-  }
-
-  if(!asset) {
     console.log('Not found ' + name);
   }
 
