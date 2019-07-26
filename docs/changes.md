@@ -1,5 +1,6 @@
 * 2019/7/26
   * 完善assets manager(感谢智明提供补丁)
+  * 完善VGCanvas.clipRect(感谢智明提供补丁)
 
 * 2019/5/2
   * 代码产生器。

@@ -303,6 +303,7 @@ VGCanvas.roundRect = function (x, y, w, h, radius) {
 }
 
 VGCanvas.clipRect = function (x, y, w, h) {
+  VGCanvas.ctx.beginPath();
   VGCanvas.ctx.rect(x, y, w, h);
   VGCanvas.ctx.clip();
   VGCanvas.ctx.beginPath();
