@@ -17,10 +17,14 @@ AssetsManager.getImageByDPI = function (name, dpi) {
   let anydpi = '/xx/';
   const assets = g_awtk_assets['image'];
   if (assets) {
-    const asset = assets.find(iter => {
-      return name == iter.name && (iter.uri.indexOf(anydpi) >= 0 || iter.uri.indexOf(dpi) >= 0);;
+    let asset = assets.find(iter => {
+      return name == iter.name && iter.uri.indexOf(dpi) >= 0;
     });
-
+    if(asset == null) {
+      asset = assets.find(iter => {
+        return name == iter.name && iter.uri.indexOf(anydpi) >= 0;
+      });
+    }
     return asset;
   }
 
