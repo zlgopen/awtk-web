@@ -247,12 +247,18 @@ def clean_temp_files(config):
     os.remove(join_path(app_target_dir, 'assets_web.c'))
     os.remove(join_path(app_target_dir, 'assets_web.js'))
 
+def merge_and_check_config(config):
+    if 'web' in config:
+        for key in config['web']:
+            config[key] = config['web'][key]
+    
+    return config
 
 with open(filename, 'r') as load_f:
-    config = json.load(load_f)
+    config = merge_and_check_config(json.load(load_f))
     src_app_root = os.path.dirname(filename)
     prepare_app_target_dir(config)
-
+    
     if action == 'all':
         build_app_assets(src_app_root, config)
         build_awtk_js(src_app_root, config, '')
