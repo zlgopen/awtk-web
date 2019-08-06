@@ -26,6 +26,7 @@
 #include "tkc/time_now.h"
 #include "main_loop_web.h"
 #include "base/input_method.h"
+#include "native_window/native_window_raw.h"
 
 static ret_t main_loop_web_queue_event(main_loop_t *l,
                                        const event_queue_req_t *r) {
@@ -37,13 +38,14 @@ ret_t main_loop_web_step(main_loop_t *l) {
 
   timer_dispatch();
   idle_dispatch();
-  window_manager_paint(loop->base.wm, &(loop->base.canvas));
+  window_manager_paint(loop->base.wm);
 
   return RET_OK;
 }
 
 static ret_t main_loop_web_quit(main_loop_t *l) {
   /*do nothing: as it can not be blocked in browser.*/
+  native_window_raw_deinit();
 
   return RET_OK;
 }
@@ -55,7 +57,6 @@ static ret_t main_loop_web_run(main_loop_t *l) {
 }
 
 main_loop_t *main_loop_init(int w, int h) {
-  canvas_t *canvas = NULL;
   window_manager_t *wm = NULL;
   lcd_t *lcd = lcd_web_init();
   static main_loop_web_t s_main_loop_web;
@@ -70,14 +71,12 @@ main_loop_t *main_loop_init(int w, int h) {
   loop->base.quit = main_loop_web_quit;
   loop->base.queue_event = main_loop_web_queue_event;
 
+  native_window_raw_init(lcd);
+  
   main_loop_set((main_loop_t *)loop);
-
-  wm = WINDOW_MANAGER(loop->base.wm);
-  canvas = canvas_init(&(loop->base.canvas), lcd, font_manager());
-  window_manager_resize(loop->base.wm, lcd->w, lcd->h);
-  wm->canvas = canvas;
-
   EM_ASM_INT({ return mainLoopInit(); }, 0);
+  
+  window_manager_post_init(loop->base.wm, lcd_get_width(lcd), lcd_get_height(lcd));
 
   return &(loop->base);
 }
