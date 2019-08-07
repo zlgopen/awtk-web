@@ -1,4 +1,4 @@
-﻿# AWTK-WEB
+# AWTK-WEB
 
 ## 一、介绍
 
@@ -72,7 +72,7 @@ scons -j 8
 ```
 git clone https://github.com/zlgopen/awtk-web.git
 cd awtk-web
-python build.py ../awtk/demos/demoui_web.json all
+python build.py ../awtk/demos/demoui_build.json all
 ```
 
 ## 四、运行
@@ -98,13 +98,13 @@ python -m http.server 8080 --directory webroot
 * 1. 在 Windows 下 emscripten 自带的 python 环境与系统的 python 环境有冲突，需要指定 python 的完整路径。如:
 
 ```
-C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk\demos\demoui_web.json all
+C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk\demos\demoui_build.json all
 ```
 
 或
 
 ```
-.\build.py ..\awtk\demos\demoui_web.json all
+.\build.py ..\awtk\demos\demoui_build.json all
 ```
 
 ## 七、文档
@@ -122,6 +122,8 @@ C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk
 6.[移植笔记-输入法](docs/porting_notes_4.md)
 
 7.[移植笔记-画布](docs/porting_notes_5.md)
+
+8.[emscripten api参考](https://emscripten.org/docs/api_reference/index.html)
 
 ## 八、示例
 

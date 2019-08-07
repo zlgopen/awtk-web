@@ -1,55 +1,8 @@
-﻿# AWTK-WEB 快速入门
+# AWTK-WEB 快速入门
 
 ## 一、配置文件格式
 
-使用 build.py 脚本构建 [AWTK-WEB](https://github.com/zlgopen/awtk-web) 应用程序，需要提供一个 JSON 格式的配置文件。这个配置文件非常简单，目前有以下几个配置：
-
-* name 应用程序名称（不支持中文和特殊符号）。
-* app_type 目前可选择的值有。"c"表示用 C 语言开发的应用程序，"js"表示用 Javascript 开发的应用程序。
-* version 版本号。
-* assets 资源所在的目录（相对于配置文件所在的目录）。
-* sources 源文件列表（相对于配置文件所在的目录）。文件名支持通配符如*.c。
-* config 用于指定一些运行参数。
-  * width 如果应用开发时没有做自适应性布局，可以用 width 参数指定画布的宽度。
-  * height 如果应用开发时没有做自适应性布局，可以用 height 参数指定画布的高度。
-  * defaultFont 缺省字体。缺省为"sans"。
-  * fontScale 字体的缩放比例。缺省为 1。
-
-> config 中的参数也可以直接在URL中指定。如：
-
-```
-http://192.168.1.117:8080/demoui/index.html?width=480&height=800&fontScale=0.8&defaultFont=serif
-```
-
-如：
-
-用 C 语言写的 demoui 的配置文件：
-
-```
-{
-  "name":"demoui",
-  "app_type":"c",
-  "version":"1.0",
-  "assets" : "assets",
-  "sources":["demo_ui_app.c"],
-  "config" : {
-    "fontScale":"0.8",
-    "defaultFont":"sans"
-  }
-}
-```
-
-用 Javascript 写的 demoui 的配置文件：
-
-```
-{
-  "name":"demouijs",
-  "version":"1.0",
-  "app_type":"js",
-  "assets" : "../../awtk/demos/assets",
-  "sources":["demoui.js"]
-}
-```
+目前已经Web和Android等平台的编译配置统一起来，具体格式请参考[特殊平台编译配置](https://github.com/zlgopen/awtk/blob/master/docs/build_config.md)
 
 ## 二、构建脚本 build.py 的用法
 
