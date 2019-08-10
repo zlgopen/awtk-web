@@ -54,8 +54,13 @@
 1.先安装必要的软件包
 
 * [scons](https://scons.org/)
-* [python](https://www.python.org/)。
+* [python](https://www.python.org/)
 * [emscripten](https://emscripten.org/docs/getting_started/downloads.html#sdk-download-and-install)
+* python PIL 模块
+
+```
+pip install Pillow
+```
 
 > 设置 emscripten 的环境变量。
 
