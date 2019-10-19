@@ -39,7 +39,7 @@ static ret_t date_time_get_now_impl(date_time_t *dt) {
   return RET_OK;
 }
 
-uint64_t get_time_ms() {
+uint64_t get_time_ms64() {
   return EM_ASM_INT({ return Date.now(); }, 0);
 }
 
