@@ -83,8 +83,9 @@ VGCanvas.destroyFBO = function (id) {
 
 VGCanvas.bindFBO = function (id) {
   let fbo = ImageCache.get(id);
-
+  
   VGCanvas.ctx = fbo.getContext('2d');
+  VGCanvas.beginFrame(); 
   VGCanvas.ctx.clearRect(0, 0, fbo.width, fbo.height);
 
   return true;
@@ -92,6 +93,7 @@ VGCanvas.bindFBO = function (id) {
 
 VGCanvas.unbindFBO = function (id) {
   let fbo = ImageCache.get(id);
+  VGCanvas.endFrame();
   fbo.dirty = true;
   VGCanvas.ctx = TBrowser.getActiveContext();
 

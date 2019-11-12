@@ -2,12 +2,12 @@
 #include "tkc/utf8.h"
 #include "tkc/mem.h"
 #include "src/awtk_global.h"
-#include "base/assets_manager.h"
 #include "base/bitmap.h"
 #include "base/canvas.h"
 #include "base/clip_board.h"
 #include "base/events.h"
 #include "base/font_manager.h"
+#include "base/font.h"
 #include "base/idle.h"
 #include "base/image_manager.h"
 #include "base/input_method.h"
@@ -21,6 +21,8 @@
 #include "base/widget_consts.h"
 #include "base/widget.h"
 #include "ext_widgets/ext_widgets.h"
+#include "base/assets_manager.h"
+#include "tkc/asset_info.h"
 #include "tkc/color.h"
 #include "tkc/date_time.h"
 #include "tkc/emitter.h"
@@ -30,37 +32,54 @@
 #include "tkc/time_now.h"
 #include "tkc/types_def.h"
 #include "tkc/value.h"
+#include "slide_view/slide_indicator.h"
+#include "slide_view/slide_view.h"
+#include "widgets/slider.h"
+#include "switch/switch.h"
+#include "text_selector/text_selector.h"
+#include "time_clock/digit_clock.h"
+#include "time_clock/time_clock.h"
+#include "widgets/row.h"
+#include "widgets/progress_bar.h"
+#include "widgets/popup.h"
+#include "widgets/pages.h"
+#include "widgets/overlay.h"
+#include "widgets/label.h"
+#include "widgets/group_box.h"
+#include "widgets/view.h"
+#include "base/image_base.h"
+#include "base/dialog.h"
+#include "base/window_base.h"
+#include "base/window_manager.h"
+#include "base/window.h"
+#include "canvas_widget/canvas_widget.h"
+#include "color_picker/color_picker.h"
+#include "widgets/grid.h"
+#include "widgets/grid_item.h"
+#include "widgets/edit.h"
+#include "widgets/tab_control.h"
+#include "base/style_mutable.h"
+#include "widgets/tab_button.h"
+#include "widgets/dragger.h"
+#include "tkc/object.h"
+#include "widgets/dialog_title.h"
+#include "guage/guage_pointer.h"
+#include "guage/guage.h"
+#include "image_animation/image_animation.h"
+#include "image_value/image_value.h"
+#include "widgets/dialog_client.h"
+#include "mledit/line_number.h"
+#include "mledit/mledit.h"
+#include "widgets/tab_button_group.h"
 #include "progress_circle/progress_circle.h"
 #include "rich_text/rich_text.h"
+#include "scroll_label/hscroll_label.h"
 #include "scroll_view/list_item.h"
 #include "scroll_view/list_view_h.h"
 #include "scroll_view/list_view.h"
 #include "scroll_view/scroll_bar.h"
 #include "scroll_view/scroll_view.h"
 #include "slide_menu/slide_menu.h"
-#include "slide_view/slide_view.h"
-#include "widgets/row.h"
-#include "switch/switch.h"
-#include "text_selector/text_selector.h"
-#include "time_clock/digit_clock.h"
-#include "time_clock/time_clock.h"
-#include "widgets/tab_button.h"
-#include "base/image_base.h"
-#include "widgets/window.h"
-#include "base/window_base.h"
-#include "base/window_manager.h"
-#include "widgets/progress_bar.h"
-#include "tkc/object.h"
-#include "designer_support/style_mutable.h"
-#include "canvas_widget/canvas_widget.h"
-#include "color_picker/color_picker.h"
-#include "widgets/view.h"
-#include "widgets/tab_button_group.h"
-#include "guage/guage_pointer.h"
-#include "guage/guage.h"
-#include "widgets/tab_control.h"
-#include "image_value/image_value.h"
-#include "widgets/slider.h"
 #include "widgets/app_bar.h"
 #include "widgets/button_group.h"
 #include "widgets/button.h"
@@ -69,86 +88,17 @@
 #include "widgets/column.h"
 #include "widgets/combo_box_item.h"
 #include "widgets/combo_box.h"
-#include "widgets/dialog_client.h"
-#include "widgets/dialog_title.h"
-#include "widgets/dialog.h"
-#include "widgets/dragger.h"
-#include "widgets/edit.h"
-#include "widgets/grid_item.h"
-#include "widgets/grid.h"
-#include "widgets/group_box.h"
-#include "widgets/popup.h"
-#include "widgets/label.h"
-#include "widgets/pages.h"
-#include "image_animation/image_animation.h"
+#include "tkc/timer_info.h"
+#include "window_manager/window_manager_simple.h"
+#include "tkc/object_default.h"
+#include "tkc/idle_info.h"
+#include "window_manager/window_manager_default.h"
 #include "widgets/image.h"
+#include "combo_box_ex/combo_box_ex.h"
+#include "gif_image/gif_image.h"
 #include "svg_image/svg_image.h"
 #include "widgets/spin_box.h"
-#include "tkc/object_default.h"
-#include "gif_image/gif_image.h"
-#include "base/timer_info.h"
-#include "base/idle_info.h"
 #include "widgets/system_bar.h"
-uint16_t asset_info_t_get_prop_type (asset_info_t* obj) {
-  return obj->type;
-}
-
-uint8_t asset_info_t_get_prop_subtype (asset_info_t* obj) {
-  return obj->subtype;
-}
-
-uint8_t asset_info_t_get_prop_is_in_rom (asset_info_t* obj) {
-  return obj->is_in_rom;
-}
-
-uint32_t asset_info_t_get_prop_size (asset_info_t* obj) {
-  return obj->size;
-}
-
-uint32_t asset_info_t_get_prop_refcount (asset_info_t* obj) {
-  return obj->refcount;
-}
-
-char* asset_info_t_get_prop_name (asset_info_t* obj) {
-  return obj->name;
-}
-
-int32_t get_BITMAP_FMT_NONE (void) {
-  return BITMAP_FMT_NONE;
-}
-
-int32_t get_BITMAP_FMT_RGBA8888 (void) {
-  return BITMAP_FMT_RGBA8888;
-}
-
-int32_t get_BITMAP_FMT_ABGR8888 (void) {
-  return BITMAP_FMT_ABGR8888;
-}
-
-int32_t get_BITMAP_FMT_BGRA8888 (void) {
-  return BITMAP_FMT_BGRA8888;
-}
-
-int32_t get_BITMAP_FMT_ARGB8888 (void) {
-  return BITMAP_FMT_ARGB8888;
-}
-
-int32_t get_BITMAP_FMT_RGB565 (void) {
-  return BITMAP_FMT_RGB565;
-}
-
-int32_t get_BITMAP_FMT_BGR565 (void) {
-  return BITMAP_FMT_BGR565;
-}
-
-int32_t get_BITMAP_FMT_RGB888 (void) {
-  return BITMAP_FMT_RGB888;
-}
-
-int32_t get_BITMAP_FMT_BGR888 (void) {
-  return BITMAP_FMT_BGR888;
-}
-
 int32_t get_BITMAP_FLAG_NONE (void) {
   return BITMAP_FLAG_NONE;
 }
@@ -167,6 +117,10 @@ int32_t get_BITMAP_FLAG_TEXTURE (void) {
 
 int32_t get_BITMAP_FLAG_CHANGED (void) {
   return BITMAP_FLAG_CHANGED;
+}
+
+int32_t get_BITMAP_FLAG_PREMULTI_ALPHA (void) {
+  return BITMAP_FLAG_PREMULTI_ALPHA;
 }
 
 wh_t bitmap_t_get_prop_w (bitmap_t* obj) {
@@ -277,20 +231,32 @@ int32_t get_EVT_POINTER_DOWN (void) {
   return EVT_POINTER_DOWN;
 }
 
-int32_t get_EVT_POINTER_DOWN_ABORT (void) {
-  return EVT_POINTER_DOWN_ABORT;
+int32_t get_EVT_POINTER_DOWN_BEFORE_CHILDREN (void) {
+  return EVT_POINTER_DOWN_BEFORE_CHILDREN;
 }
 
 int32_t get_EVT_POINTER_MOVE (void) {
   return EVT_POINTER_MOVE;
 }
 
+int32_t get_EVT_POINTER_MOVE_BEFORE_CHILDREN (void) {
+  return EVT_POINTER_MOVE_BEFORE_CHILDREN;
+}
+
 int32_t get_EVT_POINTER_UP (void) {
   return EVT_POINTER_UP;
 }
 
+int32_t get_EVT_POINTER_UP_BEFORE_CHILDREN (void) {
+  return EVT_POINTER_UP_BEFORE_CHILDREN;
+}
+
 int32_t get_EVT_WHEEL (void) {
   return EVT_WHEEL;
+}
+
+int32_t get_EVT_POINTER_DOWN_ABORT (void) {
+  return EVT_POINTER_DOWN_ABORT;
 }
 
 int32_t get_EVT_CONTEXT_MENU (void) {
@@ -325,12 +291,20 @@ int32_t get_EVT_KEY_DOWN (void) {
   return EVT_KEY_DOWN;
 }
 
+int32_t get_EVT_KEY_DOWN_BEFORE_CHILDREN (void) {
+  return EVT_KEY_DOWN_BEFORE_CHILDREN;
+}
+
 int32_t get_EVT_KEY_REPEAT (void) {
   return EVT_KEY_REPEAT;
 }
 
 int32_t get_EVT_KEY_UP (void) {
   return EVT_KEY_UP;
+}
+
+int32_t get_EVT_KEY_UP_BEFORE_CHILDREN (void) {
+  return EVT_KEY_UP_BEFORE_CHILDREN;
 }
 
 int32_t get_EVT_WILL_MOVE (void) {
@@ -421,6 +395,14 @@ int32_t get_EVT_WINDOW_OPEN (void) {
   return EVT_WINDOW_OPEN;
 }
 
+int32_t get_EVT_WINDOW_TO_BACKGROUND (void) {
+  return EVT_WINDOW_TO_BACKGROUND;
+}
+
+int32_t get_EVT_WINDOW_TO_FOREGROUND (void) {
+  return EVT_WINDOW_TO_FOREGROUND;
+}
+
 int32_t get_EVT_WINDOW_CLOSE (void) {
   return EVT_WINDOW_CLOSE;
 }
@@ -465,12 +447,44 @@ int32_t get_EVT_SCREEN_SAVER (void) {
   return EVT_SCREEN_SAVER;
 }
 
+int32_t get_EVT_LOW_MEMORY (void) {
+  return EVT_LOW_MEMORY;
+}
+
+int32_t get_EVT_OUT_OF_MEMORY (void) {
+  return EVT_OUT_OF_MEMORY;
+}
+
+int32_t get_EVT_ORIENTATION_WILL_CHANGED (void) {
+  return EVT_ORIENTATION_WILL_CHANGED;
+}
+
+int32_t get_EVT_ORIENTATION_CHANGED (void) {
+  return EVT_ORIENTATION_CHANGED;
+}
+
+int32_t get_EVT_WIDGET_CREATED (void) {
+  return EVT_WIDGET_CREATED;
+}
+
 int32_t get_EVT_REQ_START (void) {
   return EVT_REQ_START;
 }
 
 int32_t get_EVT_USER_START (void) {
   return EVT_USER_START;
+}
+
+int32_t get_GLYPH_FMT_ALPHA (void) {
+  return GLYPH_FMT_ALPHA;
+}
+
+int32_t get_GLYPH_FMT_MONO (void) {
+  return GLYPH_FMT_MONO;
+}
+
+int32_t get_GLYPH_FMT_RGBA (void) {
+  return GLYPH_FMT_RGBA;
 }
 
 int32_t get_INPUT_TEXT (void) {
@@ -953,6 +967,10 @@ const char* get_STYLE_ID_BORDER_COLOR (void) {
   return STYLE_ID_BORDER_COLOR;
 }
 
+const char* get_STYLE_ID_BORDER_WIDTH (void) {
+  return STYLE_ID_BORDER_WIDTH;
+}
+
 const char* get_STYLE_ID_BORDER (void) {
   return STYLE_ID_BORDER;
 }
@@ -977,8 +995,28 @@ const char* get_STYLE_ID_FG_IMAGE_DRAW_TYPE (void) {
   return STYLE_ID_FG_IMAGE_DRAW_TYPE;
 }
 
+const char* get_STYLE_ID_SPACER (void) {
+  return STYLE_ID_SPACER;
+}
+
 const char* get_STYLE_ID_MARGIN (void) {
   return STYLE_ID_MARGIN;
+}
+
+const char* get_STYLE_ID_MARGIN_LEFT (void) {
+  return STYLE_ID_MARGIN_LEFT;
+}
+
+const char* get_STYLE_ID_MARGIN_RIGHT (void) {
+  return STYLE_ID_MARGIN_RIGHT;
+}
+
+const char* get_STYLE_ID_MARGIN_TOP (void) {
+  return STYLE_ID_MARGIN_TOP;
+}
+
+const char* get_STYLE_ID_MARGIN_BOTTOM (void) {
+  return STYLE_ID_MARGIN_BOTTOM;
 }
 
 const char* get_STYLE_ID_ICON_AT (void) {
@@ -1081,7 +1119,7 @@ const char* vgcanvas_t_get_prop_line_join (vgcanvas_t* obj) {
   return obj->line_join;
 }
 
-const char* vgcanvas_t_get_prop_font (vgcanvas_t* obj) {
+char* vgcanvas_t_get_prop_font (vgcanvas_t* obj) {
   return obj->font;
 }
 
@@ -1095,6 +1133,50 @@ const char* vgcanvas_t_get_prop_text_align (vgcanvas_t* obj) {
 
 const char* vgcanvas_t_get_prop_text_baseline (vgcanvas_t* obj) {
   return obj->text_baseline;
+}
+
+int32_t get_BITMAP_FMT_NONE (void) {
+  return BITMAP_FMT_NONE;
+}
+
+int32_t get_BITMAP_FMT_RGBA8888 (void) {
+  return BITMAP_FMT_RGBA8888;
+}
+
+int32_t get_BITMAP_FMT_ABGR8888 (void) {
+  return BITMAP_FMT_ABGR8888;
+}
+
+int32_t get_BITMAP_FMT_BGRA8888 (void) {
+  return BITMAP_FMT_BGRA8888;
+}
+
+int32_t get_BITMAP_FMT_ARGB8888 (void) {
+  return BITMAP_FMT_ARGB8888;
+}
+
+int32_t get_BITMAP_FMT_RGB565 (void) {
+  return BITMAP_FMT_RGB565;
+}
+
+int32_t get_BITMAP_FMT_BGR565 (void) {
+  return BITMAP_FMT_BGR565;
+}
+
+int32_t get_BITMAP_FMT_RGB888 (void) {
+  return BITMAP_FMT_RGB888;
+}
+
+int32_t get_BITMAP_FMT_BGR888 (void) {
+  return BITMAP_FMT_BGR888;
+}
+
+int32_t get_BITMAP_FMT_GRAY (void) {
+  return BITMAP_FMT_GRAY;
+}
+
+int32_t get_BITMAP_FMT_MONO (void) {
+  return BITMAP_FMT_MONO;
 }
 
 const char* get_WIDGET_PROP_X (void) {
@@ -1111,6 +1193,14 @@ const char* get_WIDGET_PROP_W (void) {
 
 const char* get_WIDGET_PROP_H (void) {
   return WIDGET_PROP_H;
+}
+
+const char* get_WIDGET_PROP_CANVAS (void) {
+  return WIDGET_PROP_CANVAS;
+}
+
+const char* get_WIDGET_PROP_NATIVE_WINDOW (void) {
+  return WIDGET_PROP_NATIVE_WINDOW;
 }
 
 const char* get_WIDGET_PROP_HIGHLIGHT (void) {
@@ -1163,6 +1253,10 @@ const char* get_WIDGET_PROP_VIRTUAL_H (void) {
 
 const char* get_WIDGET_PROP_NAME (void) {
   return WIDGET_PROP_NAME;
+}
+
+const char* get_WIDGET_PROP_TYPE (void) {
+  return WIDGET_PROP_TYPE;
 }
 
 const char* get_WIDGET_PROP_CLOSABLE (void) {
@@ -1457,6 +1551,10 @@ const char* get_WIDGET_PROP_COMPACT (void) {
   return WIDGET_PROP_COMPACT;
 }
 
+const char* get_WIDGET_PROP_SCROLLABLE (void) {
+  return WIDGET_PROP_SCROLLABLE;
+}
+
 const char* get_WIDGET_PROP_ICON (void) {
   return WIDGET_PROP_ICON;
 }
@@ -1513,12 +1611,28 @@ const char* get_WIDGET_PROP_IS_KEYBOARD (void) {
   return WIDGET_PROP_IS_KEYBOARD;
 }
 
+const char* get_WIDGET_PROP_FOCUSED (void) {
+  return WIDGET_PROP_FOCUSED;
+}
+
 const char* get_WIDGET_PROP_FOCUS (void) {
   return WIDGET_PROP_FOCUS;
 }
 
 const char* get_WIDGET_PROP_FOCUSABLE (void) {
   return WIDGET_PROP_FOCUSABLE;
+}
+
+const char* get_WIDGET_PROP_WITH_FOCUS_STATE (void) {
+  return WIDGET_PROP_WITH_FOCUS_STATE;
+}
+
+const char* get_WIDGET_PROP_MOVE_FOCUS_NEXT_KEY (void) {
+  return WIDGET_PROP_MOVE_FOCUS_NEXT_KEY;
+}
+
+const char* get_WIDGET_PROP_MOVE_FOCUS_PREV_KEY (void) {
+  return WIDGET_PROP_MOVE_FOCUS_PREV_KEY;
 }
 
 const char* get_WIDGET_TYPE_NONE (void) {
@@ -1531,6 +1645,10 @@ const char* get_WIDGET_TYPE_WINDOW_MANAGER (void) {
 
 const char* get_WIDGET_TYPE_NORMAL_WINDOW (void) {
   return WIDGET_TYPE_NORMAL_WINDOW;
+}
+
+const char* get_WIDGET_TYPE_OVERLAY (void) {
+  return WIDGET_TYPE_OVERLAY;
 }
 
 const char* get_WIDGET_TYPE_TOOL_BAR (void) {
@@ -1619,6 +1737,14 @@ const char* get_WIDGET_TYPE_COMBO_BOX_ITEM (void) {
 
 const char* get_WIDGET_TYPE_SLIDE_VIEW (void) {
   return WIDGET_TYPE_SLIDE_VIEW;
+}
+
+const char* get_WIDGET_TYPE_SLIDE_INDICATOR (void) {
+  return WIDGET_TYPE_SLIDE_INDICATOR;
+}
+
+const char* get_WIDGET_TYPE_SLIDE_INDICATOR_ARC (void) {
+  return WIDGET_TYPE_SLIDE_INDICATOR_ARC;
 }
 
 const char* get_WIDGET_TYPE_PAGES (void) {
@@ -1785,6 +1911,10 @@ const char* get_WIDGET_STATE_EMPTY (void) {
   return WIDGET_STATE_EMPTY;
 }
 
+const char* get_WIDGET_STATE_EMPTY_FOCUS (void) {
+  return WIDGET_STATE_EMPTY_FOCUS;
+}
+
 const char* get_WIDGET_STATE_ERROR (void) {
   return WIDGET_STATE_ERROR;
 }
@@ -1805,6 +1935,10 @@ const char* get_WIDGET_STATE_OVER_OF_CHECKED (void) {
   return WIDGET_STATE_OVER_OF_CHECKED;
 }
 
+const char* get_WIDGET_STATE_FOCUSED_OF_CHECKED (void) {
+  return WIDGET_STATE_FOCUSED_OF_CHECKED;
+}
+
 const char* get_WIDGET_STATE_NORMAL_OF_ACTIVE (void) {
   return WIDGET_STATE_NORMAL_OF_ACTIVE;
 }
@@ -1815,6 +1949,10 @@ const char* get_WIDGET_STATE_PRESSED_OF_ACTIVE (void) {
 
 const char* get_WIDGET_STATE_OVER_OF_ACTIVE (void) {
   return WIDGET_STATE_OVER_OF_ACTIVE;
+}
+
+const char* get_WIDGET_STATE_FOCUSED_OF_ACTIVE (void) {
+  return WIDGET_STATE_FOCUSED_OF_ACTIVE;
 }
 
 xy_t widget_t_get_prop_x (widget_t* obj) {
@@ -1871,6 +2009,24 @@ bool_t widget_t_get_prop_sensitive (widget_t* obj) {
   return obj->sensitive;
 }
 
+ret_t widget_t_set_prop_focusable (widget_t* obj, bool_t value) {
+  obj->focusable = value;
+  return RET_OK;
+}
+
+bool_t widget_t_get_prop_focusable (widget_t* obj) {
+  return obj->focusable;
+}
+
+ret_t widget_t_set_prop_with_focus_state (widget_t* obj, bool_t value) {
+  obj->with_focus_state = value;
+  return RET_OK;
+}
+
+bool_t widget_t_get_prop_with_focus_state (widget_t* obj) {
+  return obj->with_focus_state;
+}
+
 bool_t widget_t_get_prop_floating (widget_t* obj) {
   return obj->floating;
 }
@@ -1909,6 +2065,30 @@ int32_t get_ASSET_TYPE_SCRIPT (void) {
 
 int32_t get_ASSET_TYPE_DATA (void) {
   return ASSET_TYPE_DATA;
+}
+
+uint16_t asset_info_t_get_prop_type (asset_info_t* obj) {
+  return obj->type;
+}
+
+uint8_t asset_info_t_get_prop_subtype (asset_info_t* obj) {
+  return obj->subtype;
+}
+
+uint8_t asset_info_t_get_prop_is_in_rom (asset_info_t* obj) {
+  return obj->is_in_rom;
+}
+
+uint32_t asset_info_t_get_prop_size (asset_info_t* obj) {
+  return obj->size;
+}
+
+uint32_t asset_info_t_get_prop_refcount (asset_info_t* obj) {
+  return obj->refcount;
+}
+
+char* asset_info_t_get_prop_name (asset_info_t* obj) {
+  return obj->name;
 }
 
 ret_t color_t_set_prop_color (color_t* obj, uint32_t value) {
@@ -2056,6 +2236,10 @@ int32_t get_RET_STOP (void) {
   return RET_STOP;
 }
 
+int32_t get_RET_SKIP (void) {
+  return RET_SKIP;
+}
+
 int32_t get_RET_CONTINUE (void) {
   return RET_CONTINUE;
 }
@@ -2140,6 +2324,538 @@ int32_t get_VALUE_TYPE_OBJECT (void) {
   return VALUE_TYPE_OBJECT;
 }
 
+uint32_t slide_indicator_t_get_prop_value (slide_indicator_t* obj) {
+  return obj->value;
+}
+
+uint32_t slide_indicator_t_get_prop_max (slide_indicator_t* obj) {
+  return obj->max;
+}
+
+indicator_default_paint_t slide_indicator_t_get_prop_default_paint (slide_indicator_t* obj) {
+  return obj->default_paint;
+}
+
+uint16_t slide_indicator_t_get_prop_auto_hide (slide_indicator_t* obj) {
+  return obj->auto_hide;
+}
+
+int32_t slide_indicator_t_get_prop_margin (slide_indicator_t* obj) {
+  return obj->margin;
+}
+
+float_t slide_indicator_t_get_prop_spacing (slide_indicator_t* obj) {
+  return obj->spacing;
+}
+
+uint32_t slide_indicator_t_get_prop_size (slide_indicator_t* obj) {
+  return obj->size;
+}
+
+float_t slide_indicator_t_get_prop_anchor_x (slide_indicator_t* obj) {
+  return obj->anchor_x;
+}
+
+float_t slide_indicator_t_get_prop_anchor_y (slide_indicator_t* obj) {
+  return obj->anchor_y;
+}
+
+char* slide_indicator_t_get_prop_indicated_target (slide_indicator_t* obj) {
+  return obj->indicated_target;
+}
+
+bool_t slide_view_t_get_prop_vertical (slide_view_t* obj) {
+  return obj->vertical;
+}
+
+uint16_t slide_view_t_get_prop_auto_play (slide_view_t* obj) {
+  return obj->auto_play;
+}
+
+bool_t slide_view_t_get_prop_loop (slide_view_t* obj) {
+  return obj->loop;
+}
+
+char* slide_view_t_get_prop_anim_hint (slide_view_t* obj) {
+  return obj->anim_hint;
+}
+
+uint16_t slider_t_get_prop_value (slider_t* obj) {
+  return obj->value;
+}
+
+uint16_t slider_t_get_prop_min (slider_t* obj) {
+  return obj->min;
+}
+
+uint16_t slider_t_get_prop_max (slider_t* obj) {
+  return obj->max;
+}
+
+uint16_t slider_t_get_prop_step (slider_t* obj) {
+  return obj->step;
+}
+
+bool_t slider_t_get_prop_vertical (slider_t* obj) {
+  return obj->vertical;
+}
+
+uint32_t slider_t_get_prop_bar_size (slider_t* obj) {
+  return obj->bar_size;
+}
+
+bool_t switch_t_get_prop_value (switch_t* obj) {
+  return obj->value;
+}
+
+float_t switch_t_get_prop_max_xoffset_ratio (switch_t* obj) {
+  return obj->max_xoffset_ratio;
+}
+
+uint32_t text_selector_t_get_prop_visible_nr (text_selector_t* obj) {
+  return obj->visible_nr;
+}
+
+int32_t text_selector_t_get_prop_selected_index (text_selector_t* obj) {
+  return obj->selected_index;
+}
+
+char* text_selector_t_get_prop_options (text_selector_t* obj) {
+  return obj->options;
+}
+
+char* digit_clock_t_get_prop_format (digit_clock_t* obj) {
+  return obj->format;
+}
+
+int32_t time_clock_t_get_prop_hour (time_clock_t* obj) {
+  return obj->hour;
+}
+
+int32_t time_clock_t_get_prop_minute (time_clock_t* obj) {
+  return obj->minute;
+}
+
+int32_t time_clock_t_get_prop_second (time_clock_t* obj) {
+  return obj->second;
+}
+
+char* time_clock_t_get_prop_image (time_clock_t* obj) {
+  return obj->image;
+}
+
+char* time_clock_t_get_prop_bg_image (time_clock_t* obj) {
+  return obj->bg_image;
+}
+
+char* time_clock_t_get_prop_hour_image (time_clock_t* obj) {
+  return obj->hour_image;
+}
+
+char* time_clock_t_get_prop_minute_image (time_clock_t* obj) {
+  return obj->minute_image;
+}
+
+char* time_clock_t_get_prop_second_image (time_clock_t* obj) {
+  return obj->second_image;
+}
+
+uint32_t key_event_t_get_prop_key (key_event_t* obj) {
+  return obj->key;
+}
+
+bool_t key_event_t_get_prop_alt (key_event_t* obj) {
+  return obj->alt;
+}
+
+bool_t key_event_t_get_prop_lalt (key_event_t* obj) {
+  return obj->lalt;
+}
+
+bool_t key_event_t_get_prop_ralt (key_event_t* obj) {
+  return obj->ralt;
+}
+
+bool_t key_event_t_get_prop_ctrl (key_event_t* obj) {
+  return obj->ctrl;
+}
+
+bool_t key_event_t_get_prop_lctrl (key_event_t* obj) {
+  return obj->lctrl;
+}
+
+bool_t key_event_t_get_prop_rctrl (key_event_t* obj) {
+  return obj->rctrl;
+}
+
+bool_t key_event_t_get_prop_shift (key_event_t* obj) {
+  return obj->shift;
+}
+
+bool_t key_event_t_get_prop_lshift (key_event_t* obj) {
+  return obj->lshift;
+}
+
+bool_t key_event_t_get_prop_rshift (key_event_t* obj) {
+  return obj->rshift;
+}
+
+bool_t key_event_t_get_prop_cmd (key_event_t* obj) {
+  return obj->cmd;
+}
+
+bool_t key_event_t_get_prop_menu (key_event_t* obj) {
+  return obj->menu;
+}
+
+bool_t key_event_t_get_prop_capslock (key_event_t* obj) {
+  return obj->capslock;
+}
+
+uint8_t progress_bar_t_get_prop_value (progress_bar_t* obj) {
+  return obj->value;
+}
+
+bool_t progress_bar_t_get_prop_vertical (progress_bar_t* obj) {
+  return obj->vertical;
+}
+
+bool_t progress_bar_t_get_prop_show_text (progress_bar_t* obj) {
+  return obj->show_text;
+}
+
+bool_t popup_t_get_prop_close_when_click (popup_t* obj) {
+  return obj->close_when_click;
+}
+
+bool_t popup_t_get_prop_close_when_click_outside (popup_t* obj) {
+  return obj->close_when_click_outside;
+}
+
+uint32_t pages_t_get_prop_active (pages_t* obj) {
+  return obj->active;
+}
+
+int32_t label_t_get_prop_length (label_t* obj) {
+  return obj->length;
+}
+
+canvas_t* paint_event_t_get_prop_c (paint_event_t* obj) {
+  return obj->c;
+}
+
+widget_t* window_event_t_get_prop_window (window_event_t* obj) {
+  return obj->window;
+}
+
+char* image_base_t_get_prop_image (image_base_t* obj) {
+  return obj->image;
+}
+
+float_t image_base_t_get_prop_anchor_x (image_base_t* obj) {
+  return obj->anchor_x;
+}
+
+float_t image_base_t_get_prop_anchor_y (image_base_t* obj) {
+  return obj->anchor_y;
+}
+
+float_t image_base_t_get_prop_scale_x (image_base_t* obj) {
+  return obj->scale_x;
+}
+
+float_t image_base_t_get_prop_scale_y (image_base_t* obj) {
+  return obj->scale_y;
+}
+
+float_t image_base_t_get_prop_rotation (image_base_t* obj) {
+  return obj->rotation;
+}
+
+bool_t image_base_t_get_prop_clickable (image_base_t* obj) {
+  return obj->clickable;
+}
+
+bool_t image_base_t_get_prop_selectable (image_base_t* obj) {
+  return obj->selectable;
+}
+
+bool_t image_base_t_get_prop_selected (image_base_t* obj) {
+  return obj->selected;
+}
+
+const char* dialog_t_get_prop_highlight (dialog_t* obj) {
+  return obj->highlight;
+}
+
+int32_t wheel_event_t_get_prop_dy (wheel_event_t* obj) {
+  return obj->dy;
+}
+
+bool_t wheel_event_t_get_prop_alt (wheel_event_t* obj) {
+  return obj->alt;
+}
+
+bool_t wheel_event_t_get_prop_ctrl (wheel_event_t* obj) {
+  return obj->ctrl;
+}
+
+bool_t wheel_event_t_get_prop_shift (wheel_event_t* obj) {
+  return obj->shift;
+}
+
+int32_t orientation_event_t_get_prop_orientation (orientation_event_t* obj) {
+  return obj->orientation;
+}
+
+xy_t pointer_event_t_get_prop_x (pointer_event_t* obj) {
+  return obj->x;
+}
+
+xy_t pointer_event_t_get_prop_y (pointer_event_t* obj) {
+  return obj->y;
+}
+
+uint8_t pointer_event_t_get_prop_button (pointer_event_t* obj) {
+  return obj->button;
+}
+
+bool_t pointer_event_t_get_prop_pressed (pointer_event_t* obj) {
+  return obj->pressed;
+}
+
+bool_t pointer_event_t_get_prop_alt (pointer_event_t* obj) {
+  return obj->alt;
+}
+
+bool_t pointer_event_t_get_prop_ctrl (pointer_event_t* obj) {
+  return obj->ctrl;
+}
+
+bool_t pointer_event_t_get_prop_cmd (pointer_event_t* obj) {
+  return obj->cmd;
+}
+
+bool_t pointer_event_t_get_prop_menu (pointer_event_t* obj) {
+  return obj->menu;
+}
+
+bool_t pointer_event_t_get_prop_shift (pointer_event_t* obj) {
+  return obj->shift;
+}
+
+char* window_base_t_get_prop_theme (window_base_t* obj) {
+  return obj->theme;
+}
+
+window_closable_t window_base_t_get_prop_closable (window_base_t* obj) {
+  return obj->closable;
+}
+
+bool_t window_t_get_prop_fullscreen (window_t* obj) {
+  return obj->fullscreen;
+}
+
+const char* prop_change_event_t_get_prop_name (prop_change_event_t* obj) {
+  return obj->name;
+}
+
+const value_t* prop_change_event_t_get_prop_value (prop_change_event_t* obj) {
+  return obj->value;
+}
+
+const char* color_picker_t_get_prop_value (color_picker_t* obj) {
+  return obj->value;
+}
+
+bool_t edit_t_get_prop_readonly (edit_t* obj) {
+  return obj->readonly;
+}
+
+bool_t edit_t_get_prop_password_visible (edit_t* obj) {
+  return obj->password_visible;
+}
+
+bool_t edit_t_get_prop_auto_fix (edit_t* obj) {
+  return obj->auto_fix;
+}
+
+uint8_t edit_t_get_prop_top_margin (edit_t* obj) {
+  return obj->top_margin;
+}
+
+uint8_t edit_t_get_prop_bottom_margin (edit_t* obj) {
+  return obj->bottom_margin;
+}
+
+uint8_t edit_t_get_prop_left_margin (edit_t* obj) {
+  return obj->left_margin;
+}
+
+uint8_t edit_t_get_prop_right_margin (edit_t* obj) {
+  return obj->right_margin;
+}
+
+char* edit_t_get_prop_tips (edit_t* obj) {
+  return obj->tips;
+}
+
+char* style_mutable_t_get_prop_name (style_mutable_t* obj) {
+  return obj->name;
+}
+
+bool_t tab_button_t_get_prop_value (tab_button_t* obj) {
+  return obj->value;
+}
+
+char* tab_button_t_get_prop_active_icon (tab_button_t* obj) {
+  return obj->active_icon;
+}
+
+char* tab_button_t_get_prop_icon (tab_button_t* obj) {
+  return obj->icon;
+}
+
+xy_t dragger_t_get_prop_x_min (dragger_t* obj) {
+  return obj->x_min;
+}
+
+xy_t dragger_t_get_prop_y_min (dragger_t* obj) {
+  return obj->y_min;
+}
+
+xy_t dragger_t_get_prop_x_max (dragger_t* obj) {
+  return obj->x_max;
+}
+
+xy_t dragger_t_get_prop_y_max (dragger_t* obj) {
+  return obj->y_max;
+}
+
+int32_t object_t_get_prop_ref_count (object_t* obj) {
+  return obj->ref_count;
+}
+
+char* object_t_get_prop_name (object_t* obj) {
+  return obj->name;
+}
+
+int32_t guage_pointer_t_get_prop_angle (guage_pointer_t* obj) {
+  return obj->angle;
+}
+
+char* guage_pointer_t_get_prop_image (guage_pointer_t* obj) {
+  return obj->image;
+}
+
+float_t guage_pointer_t_get_prop_anchor_x (guage_pointer_t* obj) {
+  return obj->anchor_x;
+}
+
+float_t guage_pointer_t_get_prop_anchor_y (guage_pointer_t* obj) {
+  return obj->anchor_y;
+}
+
+char* guage_t_get_prop_image (guage_t* obj) {
+  return obj->image;
+}
+
+image_draw_type_t guage_t_get_prop_draw_type (guage_t* obj) {
+  return obj->draw_type;
+}
+
+char* image_animation_t_get_prop_image (image_animation_t* obj) {
+  return obj->image;
+}
+
+char* image_animation_t_get_prop_sequence (image_animation_t* obj) {
+  return obj->sequence;
+}
+
+uint32_t image_animation_t_get_prop_start_index (image_animation_t* obj) {
+  return obj->start_index;
+}
+
+uint32_t image_animation_t_get_prop_end_index (image_animation_t* obj) {
+  return obj->end_index;
+}
+
+bool_t image_animation_t_get_prop_loop (image_animation_t* obj) {
+  return obj->loop;
+}
+
+bool_t image_animation_t_get_prop_auto_play (image_animation_t* obj) {
+  return obj->auto_play;
+}
+
+bool_t image_animation_t_get_prop_unload_after_paint (image_animation_t* obj) {
+  return obj->unload_after_paint;
+}
+
+char* image_animation_t_get_prop_format (image_animation_t* obj) {
+  return obj->format;
+}
+
+uint32_t image_animation_t_get_prop_interval (image_animation_t* obj) {
+  return obj->interval;
+}
+
+uint32_t image_animation_t_get_prop_delay (image_animation_t* obj) {
+  return obj->delay;
+}
+
+char* image_value_t_get_prop_image (image_value_t* obj) {
+  return obj->image;
+}
+
+char* image_value_t_get_prop_format (image_value_t* obj) {
+  return obj->format;
+}
+
+float_t image_value_t_get_prop_value (image_value_t* obj) {
+  return obj->value;
+}
+
+bool_t mledit_t_get_prop_readonly (mledit_t* obj) {
+  return obj->readonly;
+}
+
+uint8_t mledit_t_get_prop_top_margin (mledit_t* obj) {
+  return obj->top_margin;
+}
+
+uint8_t mledit_t_get_prop_bottom_margin (mledit_t* obj) {
+  return obj->bottom_margin;
+}
+
+uint8_t mledit_t_get_prop_left_margin (mledit_t* obj) {
+  return obj->left_margin;
+}
+
+uint8_t mledit_t_get_prop_right_margin (mledit_t* obj) {
+  return obj->right_margin;
+}
+
+char* mledit_t_get_prop_tips (mledit_t* obj) {
+  return obj->tips;
+}
+
+bool_t mledit_t_get_prop_wrap_word (mledit_t* obj) {
+  return obj->wrap_word;
+}
+
+uint32_t mledit_t_get_prop_max_lines (mledit_t* obj) {
+  return obj->max_lines;
+}
+
+bool_t tab_button_group_t_get_prop_compact (tab_button_group_t* obj) {
+  return obj->compact;
+}
+
+bool_t tab_button_group_t_get_prop_scrollable (tab_button_group_t* obj) {
+  return obj->scrollable;
+}
+
 float_t progress_circle_t_get_prop_value (progress_circle_t* obj) {
   return obj->value;
 }
@@ -2170,6 +2886,38 @@ bool_t progress_circle_t_get_prop_show_text (progress_circle_t* obj) {
 
 int32_t rich_text_t_get_prop_line_gap (rich_text_t* obj) {
   return obj->line_gap;
+}
+
+bool_t hscroll_label_t_get_prop_only_focus (hscroll_label_t* obj) {
+  return obj->only_focus;
+}
+
+bool_t hscroll_label_t_get_prop_loop (hscroll_label_t* obj) {
+  return obj->loop;
+}
+
+bool_t hscroll_label_t_get_prop_yoyo (hscroll_label_t* obj) {
+  return obj->yoyo;
+}
+
+bool_t hscroll_label_t_get_prop_ellipses (hscroll_label_t* obj) {
+  return obj->ellipses;
+}
+
+int32_t hscroll_label_t_get_prop_lull (hscroll_label_t* obj) {
+  return obj->lull;
+}
+
+int32_t hscroll_label_t_get_prop_duration (hscroll_label_t* obj) {
+  return obj->duration;
+}
+
+int32_t hscroll_label_t_get_prop_xoffset (hscroll_label_t* obj) {
+  return obj->xoffset;
+}
+
+int32_t hscroll_label_t_get_prop_text_w (hscroll_label_t* obj) {
+  return obj->text_w;
 }
 
 int32_t list_view_h_t_get_prop_item_width (list_view_h_t* obj) {
@@ -2244,310 +2992,6 @@ float_t slide_menu_t_get_prop_min_scale (slide_menu_t* obj) {
   return obj->min_scale;
 }
 
-bool_t slide_view_t_get_prop_vertical (slide_view_t* obj) {
-  return obj->vertical;
-}
-
-uint16_t slide_view_t_get_prop_auto_play (slide_view_t* obj) {
-  return obj->auto_play;
-}
-
-bool_t slide_view_t_get_prop_loop (slide_view_t* obj) {
-  return obj->loop;
-}
-
-char* slide_view_t_get_prop_anim_hint (slide_view_t* obj) {
-  return obj->anim_hint;
-}
-
-bool_t switch_t_get_prop_value (switch_t* obj) {
-  return obj->value;
-}
-
-float_t switch_t_get_prop_max_xoffset_ratio (switch_t* obj) {
-  return obj->max_xoffset_ratio;
-}
-
-int32_t switch_t_get_prop_round_radius (switch_t* obj) {
-  return obj->round_radius;
-}
-
-uint32_t text_selector_t_get_prop_visible_nr (text_selector_t* obj) {
-  return obj->visible_nr;
-}
-
-int32_t text_selector_t_get_prop_selected_index (text_selector_t* obj) {
-  return obj->selected_index;
-}
-
-char* text_selector_t_get_prop_options (text_selector_t* obj) {
-  return obj->options;
-}
-
-char* digit_clock_t_get_prop_format (digit_clock_t* obj) {
-  return obj->format;
-}
-
-int32_t time_clock_t_get_prop_hour (time_clock_t* obj) {
-  return obj->hour;
-}
-
-int32_t time_clock_t_get_prop_minute (time_clock_t* obj) {
-  return obj->minute;
-}
-
-int32_t time_clock_t_get_prop_second (time_clock_t* obj) {
-  return obj->second;
-}
-
-char* time_clock_t_get_prop_image (time_clock_t* obj) {
-  return obj->image;
-}
-
-char* time_clock_t_get_prop_bg_image (time_clock_t* obj) {
-  return obj->bg_image;
-}
-
-char* time_clock_t_get_prop_hour_image (time_clock_t* obj) {
-  return obj->hour_image;
-}
-
-char* time_clock_t_get_prop_minute_image (time_clock_t* obj) {
-  return obj->minute_image;
-}
-
-char* time_clock_t_get_prop_second_image (time_clock_t* obj) {
-  return obj->second_image;
-}
-
-widget_t* window_event_t_get_prop_window (window_event_t* obj) {
-  return obj->window;
-}
-
-bool_t tab_button_t_get_prop_value (tab_button_t* obj) {
-  return obj->value;
-}
-
-char* tab_button_t_get_prop_active_icon (tab_button_t* obj) {
-  return obj->active_icon;
-}
-
-char* tab_button_t_get_prop_icon (tab_button_t* obj) {
-  return obj->icon;
-}
-
-char* image_base_t_get_prop_image (image_base_t* obj) {
-  return obj->image;
-}
-
-float_t image_base_t_get_prop_anchor_x (image_base_t* obj) {
-  return obj->anchor_x;
-}
-
-float_t image_base_t_get_prop_anchor_y (image_base_t* obj) {
-  return obj->anchor_y;
-}
-
-float_t image_base_t_get_prop_scale_x (image_base_t* obj) {
-  return obj->scale_x;
-}
-
-float_t image_base_t_get_prop_scale_y (image_base_t* obj) {
-  return obj->scale_y;
-}
-
-float_t image_base_t_get_prop_rotation (image_base_t* obj) {
-  return obj->rotation;
-}
-
-bool_t image_base_t_get_prop_clickable (image_base_t* obj) {
-  return obj->clickable;
-}
-
-bool_t image_base_t_get_prop_selectable (image_base_t* obj) {
-  return obj->selectable;
-}
-
-bool_t image_base_t_get_prop_selected (image_base_t* obj) {
-  return obj->selected;
-}
-
-bool_t window_t_get_prop_fullscreen (window_t* obj) {
-  return obj->fullscreen;
-}
-
-int32_t wheel_event_t_get_prop_dy (wheel_event_t* obj) {
-  return obj->dy;
-}
-
-bool_t wheel_event_t_get_prop_alt (wheel_event_t* obj) {
-  return obj->alt;
-}
-
-bool_t wheel_event_t_get_prop_ctrl (wheel_event_t* obj) {
-  return obj->ctrl;
-}
-
-bool_t wheel_event_t_get_prop_shift (wheel_event_t* obj) {
-  return obj->shift;
-}
-
-xy_t pointer_event_t_get_prop_x (pointer_event_t* obj) {
-  return obj->x;
-}
-
-xy_t pointer_event_t_get_prop_y (pointer_event_t* obj) {
-  return obj->y;
-}
-
-uint8_t pointer_event_t_get_prop_button (pointer_event_t* obj) {
-  return obj->button;
-}
-
-bool_t pointer_event_t_get_prop_pressed (pointer_event_t* obj) {
-  return obj->pressed;
-}
-
-bool_t pointer_event_t_get_prop_alt (pointer_event_t* obj) {
-  return obj->alt;
-}
-
-bool_t pointer_event_t_get_prop_ctrl (pointer_event_t* obj) {
-  return obj->ctrl;
-}
-
-bool_t pointer_event_t_get_prop_shift (pointer_event_t* obj) {
-  return obj->shift;
-}
-
-uint32_t key_event_t_get_prop_key (key_event_t* obj) {
-  return obj->key;
-}
-
-bool_t key_event_t_get_prop_alt (key_event_t* obj) {
-  return obj->alt;
-}
-
-bool_t key_event_t_get_prop_ctrl (key_event_t* obj) {
-  return obj->ctrl;
-}
-
-bool_t key_event_t_get_prop_shift (key_event_t* obj) {
-  return obj->shift;
-}
-
-bool_t key_event_t_get_prop_capslock (key_event_t* obj) {
-  return obj->capslock;
-}
-
-canvas_t* paint_event_t_get_prop_c (paint_event_t* obj) {
-  return obj->c;
-}
-
-const char* prop_change_event_t_get_prop_name (prop_change_event_t* obj) {
-  return obj->name;
-}
-
-const value_t* prop_change_event_t_get_prop_value (prop_change_event_t* obj) {
-  return obj->value;
-}
-
-char* window_base_t_get_prop_theme (window_base_t* obj) {
-  return obj->theme;
-}
-
-window_closable_t window_base_t_get_prop_closable (window_base_t* obj) {
-  return obj->closable;
-}
-
-bool_t window_manager_t_get_prop_show_fps (window_manager_t* obj) {
-  return obj->show_fps;
-}
-
-uint8_t progress_bar_t_get_prop_value (progress_bar_t* obj) {
-  return obj->value;
-}
-
-bool_t progress_bar_t_get_prop_vertical (progress_bar_t* obj) {
-  return obj->vertical;
-}
-
-bool_t progress_bar_t_get_prop_show_text (progress_bar_t* obj) {
-  return obj->show_text;
-}
-
-int32_t object_t_get_prop_ref_count (object_t* obj) {
-  return obj->ref_count;
-}
-
-char* object_t_get_prop_name (object_t* obj) {
-  return obj->name;
-}
-
-char* style_mutable_t_get_prop_name (style_mutable_t* obj) {
-  return obj->name;
-}
-
-const char* color_picker_t_get_prop_value (color_picker_t* obj) {
-  return obj->value;
-}
-
-bool_t tab_button_group_t_get_prop_compact (tab_button_group_t* obj) {
-  return obj->compact;
-}
-
-int32_t guage_pointer_t_get_prop_angle (guage_pointer_t* obj) {
-  return obj->angle;
-}
-
-char* guage_pointer_t_get_prop_image (guage_pointer_t* obj) {
-  return obj->image;
-}
-
-char* guage_t_get_prop_image (guage_t* obj) {
-  return obj->image;
-}
-
-image_draw_type_t guage_t_get_prop_draw_type (guage_t* obj) {
-  return obj->draw_type;
-}
-
-char* image_value_t_get_prop_image (image_value_t* obj) {
-  return obj->image;
-}
-
-char* image_value_t_get_prop_format (image_value_t* obj) {
-  return obj->format;
-}
-
-float_t image_value_t_get_prop_value (image_value_t* obj) {
-  return obj->value;
-}
-
-uint16_t slider_t_get_prop_value (slider_t* obj) {
-  return obj->value;
-}
-
-uint16_t slider_t_get_prop_min (slider_t* obj) {
-  return obj->min;
-}
-
-uint16_t slider_t_get_prop_max (slider_t* obj) {
-  return obj->max;
-}
-
-uint16_t slider_t_get_prop_step (slider_t* obj) {
-  return obj->step;
-}
-
-bool_t slider_t_get_prop_vertical (slider_t* obj) {
-  return obj->vertical;
-}
-
-uint32_t slider_t_get_prop_bar_size (slider_t* obj) {
-  return obj->bar_size;
-}
-
 int32_t button_t_get_prop_repeat (button_t* obj) {
   return obj->repeat;
 }
@@ -2592,126 +3036,6 @@ char* combo_box_t_get_prop_options (combo_box_t* obj) {
   return obj->options;
 }
 
-const char* dialog_t_get_prop_highlight (dialog_t* obj) {
-  return obj->highlight;
-}
-
-xy_t dragger_t_get_prop_x_min (dragger_t* obj) {
-  return obj->x_min;
-}
-
-xy_t dragger_t_get_prop_y_min (dragger_t* obj) {
-  return obj->y_min;
-}
-
-xy_t dragger_t_get_prop_x_max (dragger_t* obj) {
-  return obj->x_max;
-}
-
-xy_t dragger_t_get_prop_y_max (dragger_t* obj) {
-  return obj->y_max;
-}
-
-bool_t edit_t_get_prop_readonly (edit_t* obj) {
-  return obj->readonly;
-}
-
-bool_t edit_t_get_prop_password_visible (edit_t* obj) {
-  return obj->password_visible;
-}
-
-bool_t edit_t_get_prop_auto_fix (edit_t* obj) {
-  return obj->auto_fix;
-}
-
-uint8_t edit_t_get_prop_top_margin (edit_t* obj) {
-  return obj->top_margin;
-}
-
-uint8_t edit_t_get_prop_bottom_margin (edit_t* obj) {
-  return obj->bottom_margin;
-}
-
-uint8_t edit_t_get_prop_left_margin (edit_t* obj) {
-  return obj->left_margin;
-}
-
-uint8_t edit_t_get_prop_right_margin (edit_t* obj) {
-  return obj->right_margin;
-}
-
-char* edit_t_get_prop_tips (edit_t* obj) {
-  return obj->tips;
-}
-
-bool_t edit_t_get_prop_focus (edit_t* obj) {
-  return obj->focus;
-}
-
-bool_t popup_t_get_prop_close_when_click (popup_t* obj) {
-  return obj->close_when_click;
-}
-
-bool_t popup_t_get_prop_close_when_click_outside (popup_t* obj) {
-  return obj->close_when_click_outside;
-}
-
-int32_t label_t_get_prop_length (label_t* obj) {
-  return obj->length;
-}
-
-uint32_t pages_t_get_prop_active (pages_t* obj) {
-  return obj->active;
-}
-
-char* image_animation_t_get_prop_image (image_animation_t* obj) {
-  return obj->image;
-}
-
-char* image_animation_t_get_prop_sequence (image_animation_t* obj) {
-  return obj->sequence;
-}
-
-uint32_t image_animation_t_get_prop_start_index (image_animation_t* obj) {
-  return obj->start_index;
-}
-
-uint32_t image_animation_t_get_prop_end_index (image_animation_t* obj) {
-  return obj->end_index;
-}
-
-bool_t image_animation_t_get_prop_loop (image_animation_t* obj) {
-  return obj->loop;
-}
-
-bool_t image_animation_t_get_prop_auto_play (image_animation_t* obj) {
-  return obj->auto_play;
-}
-
-bool_t image_animation_t_get_prop_unload_after_paint (image_animation_t* obj) {
-  return obj->unload_after_paint;
-}
-
-char* image_animation_t_get_prop_format (image_animation_t* obj) {
-  return obj->format;
-}
-
-uint32_t image_animation_t_get_prop_interval (image_animation_t* obj) {
-  return obj->interval;
-}
-
-uint32_t image_animation_t_get_prop_delay (image_animation_t* obj) {
-  return obj->delay;
-}
-
-image_draw_type_t image_t_get_prop_draw_type (image_t* obj) {
-  return obj->draw_type;
-}
-
-uint32_t object_default_t_get_prop_props_size (object_default_t* obj) {
-  return obj->props_size;
-}
-
 void* timer_info_t_get_prop_ctx (timer_info_t* obj) {
   return obj->ctx;
 }
@@ -2720,12 +3044,16 @@ uint32_t timer_info_t_get_prop_id (timer_info_t* obj) {
   return obj->id;
 }
 
-uint32_t timer_info_t_get_prop_now (timer_info_t* obj) {
+uint64_t timer_info_t_get_prop_now (timer_info_t* obj) {
   return obj->now;
 }
 
 bool_t timer_info_t_get_prop_user_changed_time (timer_info_t* obj) {
   return obj->user_changed_time;
+}
+
+uint32_t object_default_t_get_prop_props_size (object_default_t* obj) {
+  return obj->props_size;
 }
 
 void* idle_info_t_get_prop_ctx (idle_info_t* obj) {
@@ -2734,5 +3062,9 @@ void* idle_info_t_get_prop_ctx (idle_info_t* obj) {
 
 uint32_t idle_info_t_get_prop_id (idle_info_t* obj) {
   return obj->id;
+}
+
+image_draw_type_t image_t_get_prop_draw_type (image_t* obj) {
+  return obj->draw_type;
 }
 
