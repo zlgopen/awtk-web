@@ -347,8 +347,7 @@ VGCanvas.fillText = function (text, x, y, max_width) {
 
 VGCanvas.measureText = function (text) {
   let str = pointerToString(text);
-
-  let width = VGCanvas.ctx.measureText(str).width;
+  let width = str ? VGCanvas.ctx.measureText(str).width : 0;
 
   return Math.round(width);
 }
