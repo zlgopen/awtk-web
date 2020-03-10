@@ -1,4 +1,3 @@
-import awtk_files as awtk
 import os
 import sys
 import glob
@@ -15,6 +14,7 @@ AWTK_ROOT_DIR = os.path.abspath('../awtk')
 os.environ['AWTK_ROOT_DIR'] = AWTK_ROOT_DIR
 sys.path.append(join_path(AWTK_ROOT_DIR, 'staticcheck/common'))
 
+import awtk_files as awtk
 
 def mkdir_if_not_exist(fullpath):
     if os.path.exists(fullpath):
