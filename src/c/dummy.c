@@ -1,3 +1,4 @@
+#include "tkc/fs.h"
 #include "tkc/rect.h"
 #include "base/bitmap.h"
 #include "base/main_loop.h"
@@ -6,5 +7,9 @@
 ret_t image_copy(bitmap_t *dst, bitmap_t *src, rect_t *src_r, xy_t dx,
                  xy_t dy) {
   return RET_OK;
+}
+
+fs_t* os_fs(void) {
+  return NULL;
 }
 
