@@ -14,6 +14,7 @@ EditElement.prototype.init = function (type) {
   let element = document.createElement(type);
 
   element.id = id;
+  element.style['resize'] = 'none'
   document.body.appendChild(element);
 
   this.edit = element;
