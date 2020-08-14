@@ -56,10 +56,10 @@ static ret_t vgcanvas_web_end_frame(vgcanvas_t *vgcanvas) {
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_create_fbo(vgcanvas_t *vgcanvas,
+static ret_t vgcanvas_web_create_fbo(vgcanvas_t *vgcanvas, uint32_t w, uint32_t h,
                                      framebuffer_object_t *fbo) {
-  fbo->w = vgcanvas->w;
-  fbo->h = vgcanvas->h;
+  fbo->w = w;
+  fbo->h = h;
   fbo->ratio = vgcanvas->ratio;
   fbo->id = EM_ASM_INT({ return VGCanvas.createFBO(); }, 0);
 
