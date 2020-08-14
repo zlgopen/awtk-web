@@ -23,8 +23,12 @@
 #include <emscripten.h>
 #include "base/vgcanvas.h"
 
+#define MAX_STATES 32
+
 typedef struct _vgcanvas_web_t {
   vgcanvas_t base;
+  int nstates;
+  rect_t clip_rect[MAX_STATES + 1];
   char text_color[TK_COLOR_RGBA_LEN + 1];
   char fill_color[TK_COLOR_RGBA_LEN + 1];
   char stroke_color[TK_COLOR_RGBA_LEN + 1];
@@ -425,14 +429,25 @@ static ret_t vgcanvas_web_set_miter_limit(vgcanvas_t *vgcanvas, float_t value) {
 }
 
 static ret_t vgcanvas_web_save(vgcanvas_t *vgcanvas) {
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
   int32_t ret = EM_ASM_INT({ return VGCanvas.save(); }, 0);
-
+  web->clip_rect[web->nstates].x = vgcanvas->clip_rect.x;
+  web->clip_rect[web->nstates].y = vgcanvas->clip_rect.y;
+  web->clip_rect[web->nstates].w = vgcanvas->clip_rect.w;
+  web->clip_rect[web->nstates].h = vgcanvas->clip_rect.h;
+  web->nstates++;
   return ret ? RET_OK : RET_FAIL;
 }
 
 static ret_t vgcanvas_web_restore(vgcanvas_t *vgcanvas) {
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
   int32_t ret = EM_ASM_INT({ return VGCanvas.restore(); }, 0);
 
+  web->nstates--;
+  vgcanvas->clip_rect.x = web->clip_rect[web->nstates].x;
+  vgcanvas->clip_rect.y = web->clip_rect[web->nstates].y;
+  vgcanvas->clip_rect.w = web->clip_rect[web->nstates].w;
+  vgcanvas->clip_rect.h = web->clip_rect[web->nstates].h;
   return ret ? RET_OK : RET_FAIL;
 }
 
@@ -502,6 +517,12 @@ vgcanvas_t *vgcanvas_create(uint32_t w, uint32_t h, uint32_t stride,
   web->base.h = EM_ASM_INT({ return VGCanvas.getHeight(); }, 0);
   web->base.ratio =
       EM_ASM_DOUBLE({ return VGCanvas.getDevicePixelRatio(); }, 0);
+
+  web->nstates = 0;
+  web->clip_rect[web->nstates].x = 0;
+  web->clip_rect[web->nstates].y = 0;
+  web->clip_rect[web->nstates].w = w;
+  web->clip_rect[web->nstates].h = h;
 
   printf("w=%d h=%d r=%lf\n", web->base.w, web->base.h, web->base.ratio);
 

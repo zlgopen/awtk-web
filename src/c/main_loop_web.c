@@ -177,15 +177,16 @@ int32_t awtk_web_on_pointer_up(int32_t x, int32_t y, uint32_t timestamp) {
   main_loop_web_t *loop = (main_loop_web_t *)main_loop();
   widget_t *wm = (loop->base.wm);
 
-  loop->last_x = x;
-  loop->last_y = y;
-  loop->pressed = FALSE;
-
   memset(&e, 0x00, sizeof(e));
   e.e = event_init(EVT_POINTER_UP, wm);
   e.x = x;
   e.y = y;
   e.e.time = timestamp;
+  e.pressed = loop->pressed;
+
+  loop->last_x = x;
+  loop->last_y = y;
+  loop->pressed = FALSE;
 
   window_manager_dispatch_input_event(wm, (event_t *)(&e));
 
