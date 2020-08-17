@@ -278,7 +278,6 @@ else:
 
 def clean_temp_files(config):
     app_target_dir = config_get_app_target_dir(config)
-    os.remove(join_path(app_target_dir, 'update_res.py'))
     os.remove(join_path(app_target_dir, 'assets_web.js'))
 
 
