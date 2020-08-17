@@ -28,7 +28,7 @@ def copy_folder(src, dst):
     if os.path.exists(dst):
         shutil.rmtree(dst)
     shutil.copytree(src, dst)
-
+    print(src + "=>" + dst);
 
 def copy_file(src, dst):
     print(src + '=>' + dst)
@@ -64,27 +64,24 @@ def config_get_js_dir(config):
 
 
 def config_get_target_assets_dir(config):
-    return join_path(config_get_app_target_dir(config), "assets")
+    return join_path(config_get_app_target_dir(config), "design")
 
 
 def config_get_src_assets_dir(src_app_root, config):
-    return join_path(src_app_root, config['assets'])
+    return join_path(src_app_root, "design")
 
+def config_get_target_project_json(config):
+    return join_path(config_get_app_target_dir(config), "project.json")
+
+
+def config_get_src_project_json(src_app_root, config):
+    return join_path(src_app_root, 'project.json');
 
 def prepare_update_res(config):
-    infile = 'data/update_res.py'
-    outfile = join_path(config_get_app_target_dir(config), 'update_res.py')
+    src = 'scripts'
+    dst = join_path(config_get_app_target_dir(config), 'scripts')
 
-    fo = open(infile, "r+")
-    str = fo.read()
-    str = str.replace('$AWTK_ROOT', AWTK_ROOT_DIR).replace('\\', '\\\\')
-    fo.close()
-
-    fo = open(outfile, "w")
-    fo.write(str)
-    fo.close()
-
-    print(infile + '=>' + outfile)
+    copy_folder(src, dst);
 
 
 def update_assets(config):
@@ -94,9 +91,9 @@ def update_assets(config):
     cwd = os.getcwd()
     app_target_dir = config_get_app_target_dir(config)
     os.chdir(app_target_dir)
-    os.system('\"'+sys.executable+'\"' + ' update_res.py all')
-    os.system('\"'+sys.executable+'\"' + ' update_res.py json')
-    os.system('\"'+sys.executable+'\"' + ' update_res.py web')
+    os.system('\"'+sys.executable+'\"' + ' scripts/update_res.py all')
+    os.system('\"'+sys.executable+'\"' + ' scripts/update_res.py json')
+    os.system('\"'+sys.executable+'\"' + ' scripts/update_res.py web')
     os.chdir(cwd)
 
 
@@ -159,15 +156,24 @@ def prepare_app_target_dir(config):
 
 
 def copy_data_file(config, filename):
-    src_filename = 'data/' + filename
-    target_filename = join_path(config_get_app_target_dir(config), filename)
-    shutil.copyfile(src_filename, target_filename)
+    src = 'data/' + filename
+    dst = join_path(config_get_app_target_dir(config), filename)
+    shutil.copyfile(src, dst)
 
 
-def build_app_assets(src_app_root, config):
+def copy_assets(src_app_root, config):
     target_assets_dir = config_get_target_assets_dir(config)
     src_assets_dir = config_get_src_assets_dir(src_app_root, config)
     copy_folder(src_assets_dir, target_assets_dir)
+
+def copy_project_json(src_app_root, config):
+    dst = config_get_target_project_json(config)
+    src = config_get_src_project_json(src_app_root, config)
+    shutil.copyfile(src, dst)
+
+def build_app_assets(src_app_root, config):
+    copy_assets(src_app_root, config)
+    copy_project_json(src_app_root, config)
     copy_data_file(config, 'app.html')
     copy_data_file(config, 'index.html')
     update_assets(config)
@@ -198,7 +204,7 @@ def prepare_export_funcs(src_app_root, config):
 
 def build_awtk_js(src_app_root, config, flags):
     app_target_dir = config_get_app_target_dir(config)
-    app_files = [join_path(app_target_dir, 'assets_web.c')]
+    app_files = []
 
     if(is_js_app(config)):
         app_files.append(join_path('./', 'gen/c/awtk_wrap.c'))
@@ -215,7 +221,7 @@ def build_awtk_js(src_app_root, config, flags):
     for f in files:
         all_files.append(os.path.normpath(os.path.abspath(f)))
 
-    includes_path = ' '
+    includes_path = ' -I' + join_path(app_target_dir, 'res') + ' ';
 
     if 'includes' in config:
         includes_files = config['includes']
@@ -273,8 +279,6 @@ else:
 def clean_temp_files(config):
     app_target_dir = config_get_app_target_dir(config)
     os.remove(join_path(app_target_dir, 'update_res.py'))
-    os.remove(join_path(app_target_dir, 'assets.c'))
-    os.remove(join_path(app_target_dir, 'assets_web.c'))
     os.remove(join_path(app_target_dir, 'assets_web.js'))
 
 
