@@ -77,7 +77,7 @@ scons -j 8
 ```
 git clone https://github.com/zlgopen/awtk-web.git
 cd awtk-web
-python build.py ../awtk/demos/demoui_build.json all
+python build.py ../awtk/build.json all
 ```
 
 ## 四、运行
@@ -103,13 +103,13 @@ python -m http.server 8080 --directory webroot
 * 1. 在 Windows 下 emscripten 自带的 python 环境与系统的 python 环境有冲突，需要指定 python 的完整路径。如:
 
 ```
-C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk\demos\demoui_build.json all
+C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk\build.json all
 ```
 
 或
 
 ```
-.\build.py ..\awtk\demos\demoui_build.json all
+.\build.py ..\awtk\build.json all
 ```
 
 ## 七、文档
@@ -134,7 +134,7 @@ C:\Users\user\AppData\Local\Programs\Python\Python37\python.exe build.py ..\awtk
 
 * [JS 示例 ](https://github.com/zlgopen/awtk-js/blob/master/demos/demoui_web.json)
 
-* [C 示例 ](https://github.com/zlgopen/awtk/blob/master/demos/demoui_build.json)
+* [C 示例 ](https://github.com/zlgopen/awtk/blob/master/build.json)
 
 
 
