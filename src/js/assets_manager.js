@@ -32,7 +32,7 @@ AssetsManager.getImageByDPI = function (name, dpi) {
 }
 
 AssetsManager.getImage = function (name) {
-  let dpi = '/x' + TBrowser.getDevicePixelRatio() + '/';
+  let dpi = '/x' + Math.round(TBrowser.getDevicePixelRatio()) + '/';
   let asset = AssetsManager.getImageByDPI(name, dpi);
 
   if(!asset) {
