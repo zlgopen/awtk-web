@@ -79,33 +79,33 @@ TBrowser.createMainCanvas = function () {
   return TBrowser.mainCanvas;
 }
 
-TBrowser.createAnimCanvas = function () {
-  if (!TBrowser.animCanvas) {
-    const canvas = TBrowser.createCanvas("awtk-lcd-anim", 0, 0);
+TBrowser.createFboCanvas = function () {
+  if (!TBrowser.fboCanvas) {
+    const canvas = TBrowser.createCanvas("awtk-lcd-fbo", 0, 0);
 
     TBrowser.adjustCanvasToViewPort(canvas);
 
-    TBrowser.animCanvas = canvas;
+    TBrowser.fboCanvas = canvas;
     document.body.appendChild(canvas);
     canvas.hidden = true;
   }
 
-  return TBrowser.animCanvas;
+  return TBrowser.fboCanvas;
 }
 
-TBrowser.activateCanvas = function (anim) {
+TBrowser.activateCanvas = function (bind_fbo) {
   if (TBrowser.activeCanvas) {
     TBrowser.activeCanvas.hidden = true;
   }
 
-  if (anim) {
-    TBrowser.activeCanvas = TBrowser.animCanvas;
-    console.log(`start animate`);
+  if (bind_fbo) {
+    TBrowser.activeCanvas = TBrowser.fboCanvas;
+    console.log(`bind fbo`);
   } else {
     TBrowser.activeCanvas = TBrowser.mainCanvas;
     let ctx = TBrowser.getActiveContext();
-    ctx.drawImage(TBrowser.animCanvas, 0, 0);
-    console.log(`stop animate`);
+    ctx.drawImage(TBrowser.fboCanvas, 0, 0);
+    console.log(`unbind fbo`);
   }
 
   if (TBrowser.activeCanvas) {
@@ -261,7 +261,7 @@ TBrowser.init = function () {
       return true;
     }
 
-    TBrowser.createAnimCanvas = function () {
+    TBrowser.createFboCanvas = function () {
       return null;
     }
     

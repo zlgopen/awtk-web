@@ -20,7 +20,7 @@ VGCanvas.init = function () {
   const canvas = TBrowser.createMainCanvas();
   VGCanvas.fbos = [];
   VGCanvas.canvas = canvas;
-  TBrowser.createAnimCanvas();
+  TBrowser.createFboCanvas();
   TBrowser.activateCanvas(false);
   VGCanvas.ctx = TBrowser.getActiveContext();
   VGCanvas.width = parseInt(canvas.style.width);
@@ -28,20 +28,6 @@ VGCanvas.init = function () {
   VGCanvas.ratio = TBrowser.getDevicePixelRatio();
 
   console.log(`VGCanvas.init ${VGCanvas.width} x ${VGCanvas.height} `);
-
-  return true;
-}
-
-VGCanvas.animateBegin = function () {
-  TBrowser.activateCanvas(true);
-  VGCanvas.ctx = TBrowser.getActiveContext();
-
-  return true;
-}
-
-VGCanvas.animateEnd = function () {
-  TBrowser.activateCanvas(false);
-  VGCanvas.ctx = TBrowser.getActiveContext();
 
   return true;
 }
@@ -82,6 +68,9 @@ VGCanvas.destroyFBO = function (id) {
 }
 
 VGCanvas.bindFBO = function (id) {
+  TBrowser.activateCanvas(true);
+  VGCanvas.ctx = TBrowser.getActiveContext();
+
   let fbo = ImageCache.get(id);
   
   VGCanvas.ctx = fbo.getContext('2d');
@@ -97,6 +86,8 @@ VGCanvas.unbindFBO = function (id) {
   fbo.dirty = true;
   VGCanvas.ctx = TBrowser.getActiveContext();
 
+  TBrowser.activateCanvas(false);
+  VGCanvas.ctx = TBrowser.getActiveContext();
   return true;
 }
 

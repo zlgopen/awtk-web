@@ -79,13 +79,23 @@ static ret_t vgcanvas_web_destroy_fbo(vgcanvas_t *vgcanvas,
 
 static ret_t vgcanvas_web_bind_fbo(vgcanvas_t *vgcanvas,
                                    framebuffer_object_t *fbo) {
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
   EM_ASM_INT({ return VGCanvas.bindFBO($0); }, fbo->id);
+  vgcanvas_save(vgcanvas);
+
   return RET_OK;
 }
 
 static ret_t vgcanvas_web_unbind_fbo(vgcanvas_t *vgcanvas,
                                      framebuffer_object_t *fbo) {
+  vgcanvas_restore(vgcanvas);
   EM_ASM_INT({ return VGCanvas.unbindFBO($0); }, fbo->id);
+  return RET_OK;
+}
+
+static ret_t vgcanvas_web_fbo_to_bitmap(vgcanvas_t* vg, framebuffer_object_t* fbo, bitmap_t* img, rect_t* r) {
+  img->specific = tk_pointer_from_int(fbo->id);
+
   return RET_OK;
 }
 
@@ -503,6 +513,7 @@ static const vgcanvas_vtable_t vt = {
     .bind_fbo = vgcanvas_web_bind_fbo,
     .destroy_fbo = vgcanvas_web_destroy_fbo,
     .unbind_fbo = vgcanvas_web_unbind_fbo,
+    .fbo_to_bitmap = vgcanvas_web_fbo_to_bitmap,
     .destroy = vgcanvas_web_destroy};
 
 vgcanvas_t *vgcanvas_create(uint32_t w, uint32_t h, uint32_t stride,
