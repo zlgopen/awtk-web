@@ -48,7 +48,7 @@ static ret_t vgcanvas_web_reinit(vgcanvas_t *vg, uint32_t w, uint32_t h,
 }
 
 static ret_t vgcanvas_web_begin_frame(vgcanvas_t *vgcanvas,
-                                      rect_t *dirty_rect) {
+                                      const rect_t *dirty_rect) {
   EM_ASM_INT({ return VGCanvas.beginFrame(); }, 0);
 
   return RET_OK;
@@ -93,7 +93,7 @@ static ret_t vgcanvas_web_unbind_fbo(vgcanvas_t *vgcanvas,
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_fbo_to_bitmap(vgcanvas_t* vg, framebuffer_object_t* fbo, bitmap_t* img, rect_t* r) {
+static ret_t vgcanvas_web_fbo_to_bitmap(vgcanvas_t* vg, framebuffer_object_t* fbo, bitmap_t* img, const rect_t* r) {
   img->specific = tk_pointer_from_int(fbo->id);
 
   return RET_OK;
