@@ -68,7 +68,11 @@ def config_get_target_assets_dir(config):
 
 
 def config_get_src_assets_dir(src_app_root, config):
-    return join_path(src_app_root, "design")
+    if 'assets' in config:
+        assets_dir = config['assets']
+        return join_path(src_app_root, assets_dir)
+    else:
+        return join_path(src_app_root, "design")
 
 def config_get_target_project_json(config):
     return join_path(config_get_app_target_dir(config), "project.json")
@@ -153,6 +157,8 @@ def prepare_app_target_dir(config):
     js_dir = config_get_js_dir(config)
     mkdir_if_not_exist(js_dir)
     mkdir_if_not_exist("gen")
+    mkdir_if_not_exist("gen/c")
+    mkdir_if_not_exist("gen/ts")
 
 
 def copy_data_file(config, filename):

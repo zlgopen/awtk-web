@@ -57,6 +57,7 @@ webroot
 *.swp
 log
 args.txt
+gen/app.js
+gen/export_all_funcs.json
 gen/app_config.js
-
-gen
+filter.json
