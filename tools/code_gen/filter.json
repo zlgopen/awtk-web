@@ -10068,7 +10068,7 @@
       },
       {
         "name": "auto_adjust_size",
-        "desc": "是否根据子控件和文本自动调整控件自身大小。\n\n> 为true时，最好不要使用child_layout，否则可能有冲突。",
+        "desc": "是否根据子控件和文本自动调整控件自身大小。\n\n> 为true时，最好不要使用child_layout，否则可能有冲突。\n> 注意：只是调整控件的本身的宽高，不会修改控件本身的位置。",
         "type": "bool_t",
         "annotation": {
           "set_prop": true,
@@ -18174,6 +18174,29 @@
           {
             "type": "widget_t*",
             "name": "widget",
+            "desc": "text_selector对象。"
+          },
+          {
+            "type": "bool_t",
+            "name": "loop_options",
+            "desc": "是否循环选项。"
+          }
+        ],
+        "annotation": {
+          "scriptable": true
+        },
+        "desc": "设置是否循环选项。",
+        "name": "text_selector_set_loop_options",
+        "return": {
+          "type": "ret_t",
+          "desc": "返回RET_OK表示成功，否则表示失败。"
+        }
+      },
+      {
+        "params": [
+          {
+            "type": "widget_t*",
+            "name": "widget",
             "desc": "控件对象。"
           },
           {
@@ -18247,7 +18270,7 @@
       },
       {
         "name": "localize_options",
-        "desc": "是否本地化(翻译)选项(缺省为TRUE)。",
+        "desc": "是否本地化(翻译)选项(缺省为FALSE)。",
         "type": "bool_t",
         "annotation": {
           "set_prop": true,
@@ -18261,6 +18284,19 @@
       {
         "name": "yspeed_scale",
         "desc": "y偏移速度比例。",
+        "type": "float_t",
+        "annotation": {
+          "set_prop": true,
+          "get_prop": true,
+          "readable": true,
+          "persitent": true,
+          "design": true,
+          "scriptable": true
+        }
+      },
+      {
+        "name": "loop_options",
+        "desc": "是否循环选项(缺省为FALSE)。",
         "type": "bool_t",
         "annotation": {
           "set_prop": true,

@@ -115,7 +115,7 @@ def gen_app_config(config, filename):
 def build_app_js(config):
     app_files = []
     sources = config['sources']
-    output = 'gen/app.js'
+    output = join_path(config_get_js_dir(config), 'app.js')
     if(is_js_app(config)):
         app_files.append('gen/ts/awtk_api.js')
     for f in sources:
@@ -144,8 +144,7 @@ def build_awtk_web_js(config):
                          'src/js/awtk_wrap.js',
                          'src/js/key_event.js',
                          'src/js/events_source.js',
-                         'src/js/main_loop_web.js',
-                         'gen/app.js']
+                         'src/js/main_loop_web.js']
     merge_files(awtk_web_js_files, outfile)
 
 

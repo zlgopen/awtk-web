@@ -1,0 +1,11 @@
+﻿{
+    "compilerOptions": {
+        "types": [],
+        "target": "es5",
+        "lib": ["es5"],
+        "sourceMap": true
+    },
+    "files": [
+        "awtk_api.ts"
+    ]
+}

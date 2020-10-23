@@ -3901,8 +3901,12 @@ bool_t text_selector_t_get_prop_localize_options (text_selector_t* obj) {
   return obj->localize_options;
 }
 
-bool_t text_selector_t_get_prop_yspeed_scale (text_selector_t* obj) {
+float_t text_selector_t_get_prop_yspeed_scale (text_selector_t* obj) {
   return obj->yspeed_scale;
+}
+
+bool_t text_selector_t_get_prop_loop_options (text_selector_t* obj) {
+  return obj->loop_options;
 }
 
 bool_t switch_t_get_prop_value (switch_t* obj) {
