@@ -51,6 +51,7 @@ class CodeGenerator {
       "awtk_web_init",
       "awtk_web_deinit",
       "awtk_web_main_loop_step",
+      "awtk_web_request_repaint",
       "awtk_web_on_key_down",
       "awtk_web_on_key_up",
       "awtk_web_on_wheel",
@@ -194,11 +195,11 @@ class CodeGenerator {
         result += `${name} ? ${name}.nativeObj : null`;
       } else {
         if(iter.type === 'event_func_t') {
-          result += `Module.addFunction(wrap_on_event(${name}))`;
+          result += `Module.addFunction(wrap_on_event(${name}), "iii")`;
 	}else if(iter.type === 'tk_visit_t') {
-          result += `Module.addFunction(wrap_on_visit(${name}))`;
+          result += `Module.addFunction(wrap_on_visit(${name}), "iii")`;
         } else if(iter.type.indexOf('func_t') > 0) {
-          result += `Module.addFunction(${name})`;
+          result += `Module.addFunction(${name}, "ii")`;
         } else {
           result += name;
         }

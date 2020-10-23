@@ -2859,6 +2859,8 @@ const text_selector_set_visible_nr = Module.cwrap("text_selector_set_visible_nr"
     "number", ["number","number"]);
 const text_selector_set_localize_options = Module.cwrap("text_selector_set_localize_options", 
     "number", ["number","number"]);
+const text_selector_set_loop_options = Module.cwrap("text_selector_set_loop_options", 
+    "number", ["number","number"]);
 const text_selector_set_yspeed_scale = Module.cwrap("text_selector_set_yspeed_scale", 
     "number", ["number","number"]);
 const text_selector_t_get_prop_visible_nr = Module.cwrap("text_selector_t_get_prop_visible_nr", 
@@ -2870,6 +2872,8 @@ const text_selector_t_get_prop_options = Module.cwrap("text_selector_t_get_prop_
 const text_selector_t_get_prop_localize_options = Module.cwrap("text_selector_t_get_prop_localize_options", 
     "number", ["number"]);
 const text_selector_t_get_prop_yspeed_scale = Module.cwrap("text_selector_t_get_prop_yspeed_scale", 
+    "number", ["number"]);
+const text_selector_t_get_prop_loop_options = Module.cwrap("text_selector_t_get_prop_loop_options", 
     "number", ["number"]);
 const switch_create = Module.cwrap("switch_create", 
     "number", ["number","number","number","number","number"]);
@@ -3937,7 +3941,7 @@ class TEmitter {
  }
 
  on(type, on_event, ctx) {
-   return emitter_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event)), ctx);
+   return emitter_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event), "iii"), ctx);
  }
 
  off(id) {
@@ -4502,7 +4506,7 @@ class TIdle {
  }
 
  static add(on_idle, ctx) {
-   return idle_add(Module.addFunction(on_idle), ctx);
+   return idle_add(Module.addFunction(on_idle, "ii"), ctx);
  }
 
  static remove(idle_id) {
@@ -4894,7 +4898,7 @@ class TTimer {
  }
 
  static add(on_timer, ctx, duration) {
-   return timer_add(Module.addFunction(on_timer), ctx, duration);
+   return timer_add(Module.addFunction(on_timer, "ii"), ctx, duration);
  }
 
  static remove(timer_id) {
@@ -5661,7 +5665,7 @@ class TWidget {
  }
 
  on(type, on_event, ctx) {
-   return widget_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event)), ctx);
+   return widget_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event), "iii"), ctx);
  }
 
  off(id) {
@@ -5757,7 +5761,7 @@ class TWidget {
  }
 
  foreach(visit, ctx) {
-   return widget_foreach(this.nativeObj, Module.addFunction(wrap_on_visit(visit)), ctx);
+   return widget_foreach(this.nativeObj, Module.addFunction(wrap_on_visit(visit), "iii"), ctx);
  }
 
  getWindow() {
@@ -7759,6 +7763,10 @@ class TTextSelector extends TWidget {
    return text_selector_set_localize_options(this.nativeObj, localize_options);
  }
 
+ setLoopOptions(loop_options) {
+   return text_selector_set_loop_options(this.nativeObj, loop_options);
+ }
+
  setYspeedScale(yspeed_scale) {
    return text_selector_set_yspeed_scale(this.nativeObj, yspeed_scale);
  }
@@ -7781,6 +7789,10 @@ class TTextSelector extends TWidget {
 
  get yspeedScale() {
    return text_selector_t_get_prop_yspeed_scale(this.nativeObj);
+ }
+
+ get loopOptions() {
+   return text_selector_t_get_prop_loop_options(this.nativeObj);
  }
 
 }

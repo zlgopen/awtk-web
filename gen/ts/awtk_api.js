@@ -1446,12 +1446,14 @@ var text_selector_set_text = Module.cwrap("text_selector_set_text", "number", ["
 var text_selector_set_selected_index = Module.cwrap("text_selector_set_selected_index", "number", ["number", "number"]);
 var text_selector_set_visible_nr = Module.cwrap("text_selector_set_visible_nr", "number", ["number", "number"]);
 var text_selector_set_localize_options = Module.cwrap("text_selector_set_localize_options", "number", ["number", "number"]);
+var text_selector_set_loop_options = Module.cwrap("text_selector_set_loop_options", "number", ["number", "number"]);
 var text_selector_set_yspeed_scale = Module.cwrap("text_selector_set_yspeed_scale", "number", ["number", "number"]);
 var text_selector_t_get_prop_visible_nr = Module.cwrap("text_selector_t_get_prop_visible_nr", "number", ["number"]);
 var text_selector_t_get_prop_selected_index = Module.cwrap("text_selector_t_get_prop_selected_index", "number", ["number"]);
 var text_selector_t_get_prop_options = Module.cwrap("text_selector_t_get_prop_options", "string", ["number"]);
 var text_selector_t_get_prop_localize_options = Module.cwrap("text_selector_t_get_prop_localize_options", "number", ["number"]);
 var text_selector_t_get_prop_yspeed_scale = Module.cwrap("text_selector_t_get_prop_yspeed_scale", "number", ["number"]);
+var text_selector_t_get_prop_loop_options = Module.cwrap("text_selector_t_get_prop_loop_options", "number", ["number"]);
 var switch_create = Module.cwrap("switch_create", "number", ["number", "number", "number", "number", "number"]);
 var switch_set_value = Module.cwrap("switch_set_value", "number", ["number", "number"]);
 var switch_cast = Module.cwrap("switch_cast", "number", ["number"]);
@@ -2044,7 +2046,7 @@ var TEmitter = /** @class */ (function () {
         return emitter_dispatch_simple_event(this.nativeObj, type);
     };
     TEmitter.prototype.on = function (type, on_event, ctx) {
-        return emitter_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event)), ctx);
+        return emitter_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event), "iii"), ctx);
     };
     TEmitter.prototype.off = function (id) {
         return emitter_off(this.nativeObj, id);
@@ -2534,7 +2536,7 @@ var TIdle = /** @class */ (function () {
         this.nativeObj = nativeObj;
     }
     TIdle.add = function (on_idle, ctx) {
-        return idle_add(Module.addFunction(on_idle), ctx);
+        return idle_add(Module.addFunction(on_idle, "ii"), ctx);
     };
     TIdle.remove = function (idle_id) {
         return idle_remove(idle_id);
@@ -2887,7 +2889,7 @@ var TTimer = /** @class */ (function () {
         this.nativeObj = nativeObj;
     }
     TTimer.add = function (on_timer, ctx, duration) {
-        return timer_add(Module.addFunction(on_timer), ctx, duration);
+        return timer_add(Module.addFunction(on_timer, "ii"), ctx, duration);
     };
     TTimer.remove = function (timer_id) {
         return timer_remove(timer_id);
@@ -3609,7 +3611,7 @@ var TWidget = /** @class */ (function () {
         return widget_set_sensitive(this.nativeObj, sensitive);
     };
     TWidget.prototype.on = function (type, on_event, ctx) {
-        return widget_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event)), ctx);
+        return widget_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event), "iii"), ctx);
     };
     TWidget.prototype.off = function (id) {
         return widget_off(this.nativeObj, id);
@@ -3681,7 +3683,7 @@ var TWidget = /** @class */ (function () {
         return widget_is_window_manager(this.nativeObj);
     };
     TWidget.prototype.foreach = function (visit, ctx) {
-        return widget_foreach(this.nativeObj, Module.addFunction(wrap_on_visit(visit)), ctx);
+        return widget_foreach(this.nativeObj, Module.addFunction(wrap_on_visit(visit), "iii"), ctx);
     };
     TWidget.prototype.getWindow = function () {
         return new TWidget(widget_get_window(this.nativeObj));
@@ -5784,6 +5786,9 @@ var TTextSelector = /** @class */ (function (_super) {
     TTextSelector.prototype.setLocalizeOptions = function (localize_options) {
         return text_selector_set_localize_options(this.nativeObj, localize_options);
     };
+    TTextSelector.prototype.setLoopOptions = function (loop_options) {
+        return text_selector_set_loop_options(this.nativeObj, loop_options);
+    };
     TTextSelector.prototype.setYspeedScale = function (yspeed_scale) {
         return text_selector_set_yspeed_scale(this.nativeObj, yspeed_scale);
     };
@@ -5818,6 +5823,13 @@ var TTextSelector = /** @class */ (function (_super) {
     Object.defineProperty(TTextSelector.prototype, "yspeedScale", {
         get: function () {
             return text_selector_t_get_prop_yspeed_scale(this.nativeObj);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TTextSelector.prototype, "loopOptions", {
+        get: function () {
+            return text_selector_t_get_prop_loop_options(this.nativeObj);
         },
         enumerable: true,
         configurable: true
