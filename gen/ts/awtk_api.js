@@ -2046,7 +2046,8 @@ var TEmitter = /** @class */ (function () {
         return emitter_dispatch_simple_event(this.nativeObj, type);
     };
     TEmitter.prototype.on = function (type, on_event, ctx) {
-        return emitter_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event), "iii"), ctx);
+        var func_id = TBrowser.addFunction(wrap_on_event(on_event), "iii")
+        return emitter_on(this.nativeObj, type, func_id, ctx);
     };
     TEmitter.prototype.off = function (id) {
         return emitter_off(this.nativeObj, id);
@@ -2536,7 +2537,8 @@ var TIdle = /** @class */ (function () {
         this.nativeObj = nativeObj;
     }
     TIdle.add = function (on_idle, ctx) {
-        return idle_add(Module.addFunction(on_idle, "ii"), ctx);
+        var func_id = TBrowser.addFunction(on_idle, "ii");
+        return idle_add(func_id, ctx);
     };
     TIdle.remove = function (idle_id) {
         return idle_remove(idle_id);
@@ -2889,7 +2891,8 @@ var TTimer = /** @class */ (function () {
         this.nativeObj = nativeObj;
     }
     TTimer.add = function (on_timer, ctx, duration) {
-        return timer_add(Module.addFunction(on_timer, "ii"), ctx, duration);
+        var func_id = TBrowser.addFunction(on_timer, "ii");
+        return timer_add(func_id, ctx, duration);
     };
     TTimer.remove = function (timer_id) {
         return timer_remove(timer_id);
@@ -3611,7 +3614,8 @@ var TWidget = /** @class */ (function () {
         return widget_set_sensitive(this.nativeObj, sensitive);
     };
     TWidget.prototype.on = function (type, on_event, ctx) {
-        return widget_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event), "iii"), ctx);
+        var func_id = TBrowser.addFunction(wrap_on_event(on_event), "iii");
+        return widget_on(this.nativeObj, type, func_id, ctx);
     };
     TWidget.prototype.off = function (id) {
         return widget_off(this.nativeObj, id);
@@ -3683,7 +3687,8 @@ var TWidget = /** @class */ (function () {
         return widget_is_window_manager(this.nativeObj);
     };
     TWidget.prototype.foreach = function (visit, ctx) {
-        return widget_foreach(this.nativeObj, Module.addFunction(wrap_on_visit(visit), "iii"), ctx);
+        var func_id = TBrowser.addFunction(wrap_on_visit(visit), "iii");
+        return widget_foreach(this.nativeObj, func_id, ctx);
     };
     TWidget.prototype.getWindow = function () {
         return new TWidget(widget_get_window(this.nativeObj));

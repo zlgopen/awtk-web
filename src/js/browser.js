@@ -322,16 +322,40 @@ TBrowser.loadFont = function (name, url) {
   return TBrowser.injectCSS(css);
 }
 
+TBrowser.funcArrary = {};
+
+TBrowser.findArraryItem = function(dic, key) {
+  for (var k in dic) {
+    if (k == key) {
+      return true;
+    }
+  }
+  return false;
+}
+
+TBrowser.addFunction = function(func, p) {
+  var funcID = Module.addFunction(func, p);
+  console.log("addFunction:", funcID);
+  if (TBrowser.findArraryItem(TBrowser.funcArrary, funcID)) {
+    TBrowser.funcArrary[funcID]++;
+  } else {
+    TBrowser.funcArrary[funcID] = 1;
+  }
+
+  return funcID;
+}
+
 TBrowser.releaseFunction = function(funcID) {
   const RESERVED_FUNCTION_POINTERS = 1000;
-
   if(funcID > 0 && funcID < RESERVED_FUNCTION_POINTERS) {
-    console.log('removeFunction:' + funcID);
-    Module.removeFunction(funcID);
+    if (TBrowser.findArraryItem(TBrowser.funcArrary, funcID) && --TBrowser.funcArrary[funcID] <= 0) {
+      console.log('removeFunction:', funcID);
+      Module.removeFunction(funcID);
+      delete TBrowser.funcArrary[funcID];
+    } 
   } else {
     console.log('not js function:' + funcID);
   }
-
   return true;
 }
 
