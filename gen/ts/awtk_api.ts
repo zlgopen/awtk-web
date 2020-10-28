@@ -11,6 +11,8 @@ function wrap_on_visit(func) {
 }
 var Module : any = Module || {}
 
+var TBrowser: any = TBrowser || {}
+
 const event_cast = Module.cwrap("event_cast", 
     "number", ["number"]);
 const event_create = Module.cwrap("event_create", 
@@ -3941,7 +3943,7 @@ class TEmitter {
  }
 
  on(type, on_event, ctx) {
-   return emitter_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event), "iii"), ctx);
+   return emitter_on(this.nativeObj, type, TBrowser.addFunction(wrap_on_event(on_event), "iii"), ctx);
  }
 
  off(id) {
@@ -4506,7 +4508,7 @@ class TIdle {
  }
 
  static add(on_idle, ctx) {
-   return idle_add(Module.addFunction(on_idle, "ii"), ctx);
+   return idle_add(TBrowser.addFunction(on_idle, "ii"), ctx);
  }
 
  static remove(idle_id) {
@@ -4898,7 +4900,7 @@ class TTimer {
  }
 
  static add(on_timer, ctx, duration) {
-   return timer_add(Module.addFunction(on_timer, "ii"), ctx, duration);
+   return timer_add(TBrowser.addFunction(on_timer, "ii"), ctx, duration);
  }
 
  static remove(timer_id) {
@@ -5665,7 +5667,7 @@ class TWidget {
  }
 
  on(type, on_event, ctx) {
-   return widget_on(this.nativeObj, type, Module.addFunction(wrap_on_event(on_event), "iii"), ctx);
+   return widget_on(this.nativeObj, type, TBrowser.addFunction(wrap_on_event(on_event), "iii"), ctx);
  }
 
  off(id) {
@@ -5761,7 +5763,7 @@ class TWidget {
  }
 
  foreach(visit, ctx) {
-   return widget_foreach(this.nativeObj, Module.addFunction(wrap_on_visit(visit), "iii"), ctx);
+   return widget_foreach(this.nativeObj, TBrowser.addFunction(wrap_on_visit(visit), "iii"), ctx);
  }
 
  getWindow() {

@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || (function () {
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
-    };
+    }
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -22,6 +22,7 @@ function wrap_on_visit(func) {
     };
 }
 var Module = Module || {};
+var TBrowser = TBrowser || {};
 var event_cast = Module.cwrap("event_cast", "number", ["number"]);
 var event_create = Module.cwrap("event_create", "number", ["number"]);
 var event_destroy = Module.cwrap("event_destroy", "number", ["number"]);
@@ -2046,8 +2047,7 @@ var TEmitter = /** @class */ (function () {
         return emitter_dispatch_simple_event(this.nativeObj, type);
     };
     TEmitter.prototype.on = function (type, on_event, ctx) {
-        var func_id = TBrowser.addFunction(wrap_on_event(on_event), "iii")
-        return emitter_on(this.nativeObj, type, func_id, ctx);
+        return emitter_on(this.nativeObj, type, TBrowser.addFunction(wrap_on_event(on_event), "iii"), ctx);
     };
     TEmitter.prototype.off = function (id) {
         return emitter_off(this.nativeObj, id);
@@ -2537,8 +2537,7 @@ var TIdle = /** @class */ (function () {
         this.nativeObj = nativeObj;
     }
     TIdle.add = function (on_idle, ctx) {
-        var func_id = TBrowser.addFunction(on_idle, "ii");
-        return idle_add(func_id, ctx);
+        return idle_add(TBrowser.addFunction(on_idle, "ii"), ctx);
     };
     TIdle.remove = function (idle_id) {
         return idle_remove(idle_id);
@@ -2891,8 +2890,7 @@ var TTimer = /** @class */ (function () {
         this.nativeObj = nativeObj;
     }
     TTimer.add = function (on_timer, ctx, duration) {
-        var func_id = TBrowser.addFunction(on_timer, "ii");
-        return timer_add(func_id, ctx, duration);
+        return timer_add(TBrowser.addFunction(on_timer, "ii"), ctx, duration);
     };
     TTimer.remove = function (timer_id) {
         return timer_remove(timer_id);
@@ -3614,8 +3612,7 @@ var TWidget = /** @class */ (function () {
         return widget_set_sensitive(this.nativeObj, sensitive);
     };
     TWidget.prototype.on = function (type, on_event, ctx) {
-        var func_id = TBrowser.addFunction(wrap_on_event(on_event), "iii");
-        return widget_on(this.nativeObj, type, func_id, ctx);
+        return widget_on(this.nativeObj, type, TBrowser.addFunction(wrap_on_event(on_event), "iii"), ctx);
     };
     TWidget.prototype.off = function (id) {
         return widget_off(this.nativeObj, id);
@@ -3687,8 +3684,7 @@ var TWidget = /** @class */ (function () {
         return widget_is_window_manager(this.nativeObj);
     };
     TWidget.prototype.foreach = function (visit, ctx) {
-        var func_id = TBrowser.addFunction(wrap_on_visit(visit), "iii");
-        return widget_foreach(this.nativeObj, func_id, ctx);
+        return widget_foreach(this.nativeObj, TBrowser.addFunction(wrap_on_visit(visit), "iii"), ctx);
     };
     TWidget.prototype.getWindow = function () {
         return new TWidget(widget_get_window(this.nativeObj));

@@ -195,11 +195,11 @@ class CodeGenerator {
         result += `${name} ? ${name}.nativeObj : null`;
       } else {
         if(iter.type === 'event_func_t') {
-          result += `Module.addFunction(wrap_on_event(${name}), "iii")`;
+          result += `TBrowser.addFunction(wrap_on_event(${name}), "iii")`;
 	}else if(iter.type === 'tk_visit_t') {
-          result += `Module.addFunction(wrap_on_visit(${name}), "iii")`;
+          result += `TBrowser.addFunction(wrap_on_visit(${name}), "iii")`;
         } else if(iter.type.indexOf('func_t') > 0) {
-          result += `Module.addFunction(${name}, "ii")`;
+          result += `TBrowser.addFunction(${name}, "ii")`;
         } else {
           result += name;
         }
@@ -412,6 +412,7 @@ class CodeGenerator {
 
   genFuncsDecl(json) {
     let result = 'var Module : any = Module || {}\n\n';
+    result += 'var TBrowser: any = TBrowser || {}\n\n';
 
     json.forEach(cls => {
       if (cls.methods) {
