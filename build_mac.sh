@@ -12,9 +12,9 @@ if [ "$#" -ne 2 ]; then
   echo "  all:          same as debug. build debug version."
   echo "============================================================="
 else
-  source /Users/jim/Share/lab/emscripten/emsdk/emsdk_env.sh
+  source /Users/jim/work/tools/emsdk/emsdk_env.sh
   #use abs path of python, to avoid use python in emsdk 
-  /usr/local/opt/python/bin/python3.7 build.py $* 
+  /usr/local/opt/python/bin/python3 build.py $* 
 fi
 
 cd ${AWTK_WEB}
