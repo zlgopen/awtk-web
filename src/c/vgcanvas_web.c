@@ -61,7 +61,7 @@ static ret_t vgcanvas_web_end_frame(vgcanvas_t *vgcanvas) {
 }
 
 static ret_t vgcanvas_web_create_fbo(vgcanvas_t *vgcanvas, uint32_t w, uint32_t h,
-                                     framebuffer_object_t *fbo) {
+                                     bool_t custom_draw_model, framebuffer_object_t *fbo) {
   fbo->w = w;
   fbo->h = h;
   fbo->ratio = vgcanvas->ratio;
