@@ -127,10 +127,10 @@ def build_app_js(config):
 def build_awtk_web_js(config):
     build_app_js(config)
     app_target_dir = config_get_app_target_dir(config)
-    assert_js = join_path(app_target_dir, 'assets_web.js')
+    assets_js = join_path(app_target_dir, 'assets_web.js')
     outfile = join_path(config_get_js_dir(config), 'awtk_web.js')
     gen_app_config(config, 'gen/app_config.js')
-    awtk_web_js_files = [assert_js,
+    awtk_web_js_files = [assets_js,
                          'src/js/browser.js',
                          'gen/app_config.js',
                          'src/js/webgl2d.js',

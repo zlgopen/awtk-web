@@ -1,9 +1,9 @@
 ﻿/**
- * File:   mutex.c
+ * File:   mutex_null.c
  * Author: AWTK Develop Team
  * Brief:  mutex do nothing
  *
- * Copyright (c) 2018 - 2020  Guangzhou ZHIYUAN Electronics Co.,Ltd.
+ * Copyright (c) 2018 - 2021  Guangzhou ZHIYUAN Electronics Co.,Ltd.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -21,18 +21,24 @@
 
 #include "tkc/mem.h"
 #include "tkc/mutex.h"
+#include "tkc/thread.h"
 
 struct _tk_mutex_t {
   uint32_t none;
 };
 
-static tk_mutex_t s_tk_mutex_null;
+static const tk_mutex_t s_tk_mutex_null;
 
 tk_mutex_t* tk_mutex_create() {
-  return &s_tk_mutex_null;
+  return (tk_mutex_t*)&s_tk_mutex_null;
 }
 
 ret_t tk_mutex_lock(tk_mutex_t* mutex) {
+  (void)mutex;
+  return RET_OK;
+}
+
+ret_t tk_mutex_try_lock(tk_mutex_t* mutex) {
   (void)mutex;
   return RET_OK;
 }
@@ -45,4 +51,8 @@ ret_t tk_mutex_unlock(tk_mutex_t* mutex) {
 ret_t tk_mutex_destroy(tk_mutex_t* mutex) {
   (void)mutex;
   return RET_OK;
+}
+
+uint64_t tk_thread_self(void) {
+  return (uint64_t)0;
 }
