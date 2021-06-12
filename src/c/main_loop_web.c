@@ -135,7 +135,7 @@ int32_t awtk_web_on_pointer_down(int32_t x, int32_t y, uint32_t timestamp) {
   loop->last_y = y;
   loop->pressed = TRUE;
 
-  e.e = pointer_event_init(&e, EVT_POINTER_DOWN, wm, x, y); 
+  pointer_event_init(&e, EVT_POINTER_DOWN, wm, x, y); 
   e.e.time = timestamp;
 
   window_manager_dispatch_input_event(wm, (event_t *)(&e));
@@ -151,7 +151,7 @@ int32_t awtk_web_on_pointer_move(int32_t x, int32_t y, uint32_t timestamp) {
   loop->last_x = x;
   loop->last_y = y;
 
-  e.e = pointer_event_init(&e, EVT_POINTER_MOVE, wm, x, y); 
+  pointer_event_init(&e, EVT_POINTER_MOVE, wm, x, y); 
   e.e.time = timestamp;
   e.pressed = loop->pressed;
 
@@ -165,7 +165,7 @@ int32_t awtk_web_on_pointer_up(int32_t x, int32_t y, uint32_t timestamp) {
   main_loop_web_t *loop = (main_loop_web_t *)main_loop();
   widget_t *wm = (loop->base.wm);
 
-  e.e = pointer_event_init(&e, EVT_POINTER_UP, wm, x, y); 
+  pointer_event_init(&e, EVT_POINTER_UP, wm, x, y); 
   e.e.time = timestamp;
   e.pressed = loop->pressed;
 
