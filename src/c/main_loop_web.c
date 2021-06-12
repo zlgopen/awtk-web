@@ -89,9 +89,7 @@ int32_t awtk_web_on_key_down(int32_t key, uint32_t timestamp) {
   loop->last_key = key;
   loop->key_pressed = TRUE;
 
-  memset(&e, 0x00, sizeof(e));
-  e.e = event_init(EVT_KEY_DOWN, wm);
-  e.key = key;
+  key_event_init(&e, EVT_KEY_DOWN, wm, key);
   e.e.time = timestamp;
 
   window_manager_dispatch_input_event(wm, (event_t *)(&e));
@@ -107,9 +105,7 @@ int32_t awtk_web_on_key_up(int32_t key, uint32_t timestamp) {
   loop->last_key = key;
   loop->key_pressed = FALSE;
 
-  memset(&e, 0x00, sizeof(e));
-  e.e = event_init(EVT_KEY_UP, wm);
-  e.key = key;
+  key_event_init(&e, EVT_KEY_UP, wm, key);
   e.e.time = timestamp;
 
   window_manager_dispatch_input_event(wm, (event_t *)(&e));
@@ -122,9 +118,7 @@ int32_t awtk_web_on_wheel(int32_t delta, uint32_t timestamp) {
   main_loop_web_t *loop = (main_loop_web_t *)main_loop();
   widget_t *wm = (loop->base.wm);
 
-  memset(&e, 0x00, sizeof(e));
-  e.e = event_init(EVT_WHEEL, wm);
-  e.dy = delta;
+  wheel_event_init(&e, EVT_WHEEL, wm, delta); 
   e.e.time = timestamp;
 
   window_manager_dispatch_input_event(wm, (event_t *)(&e));
@@ -141,10 +135,7 @@ int32_t awtk_web_on_pointer_down(int32_t x, int32_t y, uint32_t timestamp) {
   loop->last_y = y;
   loop->pressed = TRUE;
 
-  memset(&e, 0x00, sizeof(e));
-  e.e = event_init(EVT_POINTER_DOWN, wm);
-  e.x = x;
-  e.y = y;
+  e.e = pointer_event_init(&e, EVT_POINTER_DOWN, wm, x, y); 
   e.e.time = timestamp;
 
   window_manager_dispatch_input_event(wm, (event_t *)(&e));
@@ -160,10 +151,7 @@ int32_t awtk_web_on_pointer_move(int32_t x, int32_t y, uint32_t timestamp) {
   loop->last_x = x;
   loop->last_y = y;
 
-  memset(&e, 0x00, sizeof(e));
-  e.e = event_init(EVT_POINTER_MOVE, wm);
-  e.x = x;
-  e.y = y;
+  e.e = pointer_event_init(&e, EVT_POINTER_MOVE, wm, x, y); 
   e.e.time = timestamp;
   e.pressed = loop->pressed;
 
@@ -177,10 +165,7 @@ int32_t awtk_web_on_pointer_up(int32_t x, int32_t y, uint32_t timestamp) {
   main_loop_web_t *loop = (main_loop_web_t *)main_loop();
   widget_t *wm = (loop->base.wm);
 
-  memset(&e, 0x00, sizeof(e));
-  e.e = event_init(EVT_POINTER_UP, wm);
-  e.x = x;
-  e.y = y;
+  e.e = pointer_event_init(&e, EVT_POINTER_UP, wm, x, y); 
   e.e.time = timestamp;
   e.pressed = loop->pressed;
 
