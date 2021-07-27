@@ -48,7 +48,7 @@ static ret_t vgcanvas_web_reinit(vgcanvas_t *vg, uint32_t w, uint32_t h,
 }
 
 static ret_t vgcanvas_web_begin_frame(vgcanvas_t *vgcanvas,
-                                      const rect_t *dirty_rect) {
+                                      const dirty_rects_t *dirty_rect) {
   EM_ASM_INT({ return VGCanvas.beginFrame(); }, 0);
 
   return RET_OK;
