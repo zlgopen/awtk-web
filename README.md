@@ -145,6 +145,6 @@ python -m http.server 8080 --directory webroot
 
 ## 八、示例
 
-* [JS 示例 ](https://github.com/zlgopen/awtk-js/blob/master/demos/demoui_web.json)
+* [JS 示例 ](https://github.com/zlgopen/awtk-web/blob/master/examples/button.json)
 
 * [C 示例 ](https://github.com/zlgopen/awtk/blob/master/build.json)
