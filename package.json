@@ -1,0 +1,15 @@
+{
+  "name": "awtk-js",
+  "version": "1.0.0",
+  "description": "awtk web api",
+  "main": "api/awtk_api.js",
+  "scripts": {
+    "build": "cp -fv ../awtk-binding/tools/code_gen/js/output/awtk_api.ts api && tsc -b"
+  },
+  "author": "Li XianJing<lixianjing@zlg.cn>",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
