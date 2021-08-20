@@ -236,7 +236,7 @@ class CodeGenerator {
     let result = '';
     let clsName = this.toClassName(this.getClassName(cls));
 
-    result = `class ${clsName}`;
+    result = `export class ${clsName}`;
     if (cls.parent) {
       result += ` extends ${this.toClassName(this.getParentClassName(cls))} {\n`
     } else {
@@ -318,7 +318,7 @@ class CodeGenerator {
 
   genOneEnum(cls) {
     let clsName = this.toClassName(cls.name);
-    let result = `enum ${clsName} {\n`;
+    let result = `export enum ${clsName} {\n`;
 
     if (cls.consts) {
       cls.consts.forEach(iter => {
@@ -411,8 +411,8 @@ class CodeGenerator {
   }
 
   genFuncsDecl(json) {
-    let result = 'var Module : any = Module || {}\n\n';
-    result += 'var TBrowser: any = TBrowser || {}\n\n';
+    let result = 'var Module : any = window.Module || {}\n\n';
+    result += 'var TBrowser: any = window.TBrowser || {}\n\n';
 
     json.forEach(cls => {
       if (cls.methods) {
@@ -453,15 +453,24 @@ class CodeGenerator {
 
   genJsonAll(ojson) {
     let result = `
-function wrap_on_event(func) {
-  return function(ctx, evt) {
+
+declare global {
+    interface Window { Module: any; TBrowser:any}
+}
+
+function wrap_on_event(func:any) {
+  return function(ctx:any, evt:any) {
     return func(evt, ctx);
   }
 }
-function wrap_on_visit(func) {
-  return function(ctx, data) {
+function wrap_on_visit(func:any) {
+  return function(ctx:any, data:any) {
     return func(data, ctx);
   }
+}
+
+export function init(w:number, h:number, title:string, isDesktop:boolean) {
+  console.log('init(for compatible)')
 }
 `;
 

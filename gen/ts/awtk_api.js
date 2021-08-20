@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -13,6 +14,11 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TVpageEvent = exports.TIndicatorDefaultPaint = exports.TExtWidgets = exports.TAppConf = exports.TWidget = exports.TWidgetCursor = exports.TWidgetState = exports.TWindowClosable = exports.TWindowStage = exports.TWidgetType = exports.TWidgetProp = exports.TVgcanvasLineJoin = exports.TVgcanvasLineCap = exports.TVgcanvas = exports.TBitmapFlag = exports.TBitmapFormat = exports.TAppType = exports.TAlignH = exports.TAlignV = exports.TTimer = exports.TTheme = exports.TStyle = exports.TStyleId = exports.TLocaleInfo = exports.TKeyCode = exports.TInputMethod = exports.TInputType = exports.TImageManager = exports.TIdle = exports.TGlyphFormat = exports.TFontManager = exports.TEvent = exports.TEventType = exports.TDialogQuitCode = exports.TClipBoard = exports.TClipBoardDataType = exports.TCanvas = exports.TCanvasOffline = exports.TImageDrawType = exports.TBidiType = exports.TGlobal = exports.TValue = exports.TObject = exports.TBitmap = exports.TRect = exports.TRectf = exports.TPointf = exports.TPoint = exports.TEmitter = exports.init = void 0;
+exports.TScrollBar = exports.TListView = exports.TListViewH = exports.TListItem = exports.THscrollLabel = exports.TRichText = exports.TRichTextView = exports.TProgressCircle = exports.TMledit = exports.TLineNumber = exports.TLangIndicator = exports.TCandidates = exports.TImageValue = exports.TImageAnimation = exports.TGauge = exports.TGaugePointer = exports.TFileChooser = exports.TFileBrowserView = exports.TDraggable = exports.TColorPicker = exports.TColorComponent = exports.TCanvasWidget = exports.TWindowManager = exports.TWindowBase = exports.TStyleMutable = exports.TImageBase = exports.TMultiGestureEvent = exports.TWindowEvent = exports.TPaintEvent = exports.TKeyEvent = exports.TPointerEvent = exports.TValueChangeEvent = exports.TOrientationEvent = exports.TWheelEvent = exports.TAssetsManager = exports.TValueType = exports.TRet = exports.TTimerManager = exports.TTimeNow = exports.TRlog = exports.TObjectProp = exports.TObjectCmd = exports.TNamedValue = exports.TMIME_TYPE = exports.TIdleManager = exports.TEasingType = exports.TDateTime = exports.TColor = exports.TAssetInfo = exports.TAssetType = void 0;
+exports.TCalibrationWin = exports.TTimerInfo = exports.TObjectDefault = exports.TObjectArray = exports.TIdleInfo = exports.TSvgImage = exports.TMutableImage = exports.TKeyboard = exports.TGifImage = exports.TWindow = exports.TNativeWindow = exports.TDialog = exports.TView = exports.TTabControl = exports.TTabButton = exports.TTabButtonGroup = exports.TSlider = exports.TRow = exports.TProgressBar = exports.TPages = exports.TLabel = exports.TGroupBox = exports.TGrid = exports.TGridItem = exports.TEdit = exports.TDragger = exports.TDigitClock = exports.TDialogTitle = exports.TDialogClient = exports.TComboBoxItem = exports.TColumn = exports.TColorTile = exports.TClipView = exports.TCheckButton = exports.TButton = exports.TButtonGroup = exports.TAppBar = exports.TCmdExecEvent = exports.TErrorEvent = exports.TDoneEvent = exports.TProgressEvent = exports.TPropChangeEvent = exports.TVpage = exports.TTimeClock = exports.TTextSelector = exports.TSwitch = exports.TSlideView = exports.TSlideIndicator = exports.TSlideMenu = exports.TScrollView = void 0;
+exports.TComboBoxEx = exports.TSystemBar = exports.TSpinBox = exports.TPopup = exports.TOverlay = exports.TImage = exports.TComboBox = void 0;
 function wrap_on_event(func) {
     return function (ctx, evt) {
         return func(evt, ctx);
@@ -23,8 +29,12 @@ function wrap_on_visit(func) {
         return func(data, ctx);
     };
 }
-var Module = Module || {};
-var TBrowser = TBrowser || {};
+function init(w, h, title, isDesktop) {
+    console.log('init(for compatible)');
+}
+exports.init = init;
+var Module = window.Module || {};
+var TBrowser = window.TBrowser || {};
 var emitter_create = Module.cwrap("emitter_create", "number", []);
 var emitter_dispatch = Module.cwrap("emitter_dispatch", "number", ["number", "number"]);
 var emitter_dispatch_simple_event = Module.cwrap("emitter_dispatch_simple_event", "number", ["number", "number"]);
@@ -2145,18 +2155,21 @@ var TEmitter = /** @class */ (function () {
     };
     return TEmitter;
 }());
+exports.TEmitter = TEmitter;
 var TPoint = /** @class */ (function () {
     function TPoint(nativeObj) {
         this.nativeObj = nativeObj;
     }
     return TPoint;
 }());
+exports.TPoint = TPoint;
 var TPointf = /** @class */ (function () {
     function TPointf(nativeObj) {
         this.nativeObj = nativeObj;
     }
     return TPointf;
 }());
+exports.TPointf = TPointf;
 var TRectf = /** @class */ (function () {
     function TRectf(nativeObj) {
         this.nativeObj = nativeObj;
@@ -2191,6 +2204,7 @@ var TRectf = /** @class */ (function () {
     });
     return TRectf;
 }());
+exports.TRectf = TRectf;
 var TRect = /** @class */ (function () {
     function TRect(nativeObj) {
         this.nativeObj = nativeObj;
@@ -2237,6 +2251,7 @@ var TRect = /** @class */ (function () {
     });
     return TRect;
 }());
+exports.TRect = TRect;
 var TBitmap = /** @class */ (function () {
     function TBitmap(nativeObj) {
         this.nativeObj = nativeObj;
@@ -2300,6 +2315,7 @@ var TBitmap = /** @class */ (function () {
     });
     return TBitmap;
 }());
+exports.TBitmap = TBitmap;
 var TObject = /** @class */ (function (_super) {
     __extends(TObject, _super);
     function TObject(nativeObj) {
@@ -2504,6 +2520,7 @@ var TObject = /** @class */ (function (_super) {
     });
     return TObject;
 }(TEmitter));
+exports.TObject = TObject;
 var TValue = /** @class */ (function () {
     function TValue(nativeObj) {
         this.nativeObj = nativeObj;
@@ -2612,6 +2629,7 @@ var TValue = /** @class */ (function () {
     };
     return TValue;
 }());
+exports.TValue = TValue;
 var TGlobal = /** @class */ (function () {
     function TGlobal(nativeObj) {
         this.nativeObj = nativeObj;
@@ -2636,6 +2654,7 @@ var TGlobal = /** @class */ (function () {
     };
     return TGlobal;
 }());
+exports.TGlobal = TGlobal;
 var TBidiType;
 (function (TBidiType) {
     TBidiType[TBidiType["AUTO"] = get_BIDI_TYPE_AUTO()] = "AUTO";
@@ -2645,7 +2664,7 @@ var TBidiType;
     TBidiType[TBidiType["RLO"] = get_BIDI_TYPE_RLO()] = "RLO";
     TBidiType[TBidiType["WLTR"] = get_BIDI_TYPE_WLTR()] = "WLTR";
     TBidiType[TBidiType["WRTL"] = get_BIDI_TYPE_WRTL()] = "WRTL";
-})(TBidiType || (TBidiType = {}));
+})(TBidiType = exports.TBidiType || (exports.TBidiType = {}));
 ;
 var TImageDrawType;
 (function (TImageDrawType) {
@@ -2669,7 +2688,7 @@ var TImageDrawType;
     TImageDrawType[TImageDrawType["REPEAT9"] = get_IMAGE_DRAW_REPEAT9()] = "REPEAT9";
     TImageDrawType[TImageDrawType["REPEAT3_X"] = get_IMAGE_DRAW_REPEAT3_X()] = "REPEAT3_X";
     TImageDrawType[TImageDrawType["REPEAT3_Y"] = get_IMAGE_DRAW_REPEAT3_Y()] = "REPEAT3_Y";
-})(TImageDrawType || (TImageDrawType = {}));
+})(TImageDrawType = exports.TImageDrawType || (exports.TImageDrawType = {}));
 ;
 var TCanvasOffline = /** @class */ (function () {
     function TCanvasOffline(nativeObj) {
@@ -2677,6 +2696,7 @@ var TCanvasOffline = /** @class */ (function () {
     }
     return TCanvasOffline;
 }());
+exports.TCanvasOffline = TCanvasOffline;
 var TCanvas = /** @class */ (function () {
     function TCanvas(nativeObj) {
         this.nativeObj = nativeObj;
@@ -2799,11 +2819,12 @@ var TCanvas = /** @class */ (function () {
     });
     return TCanvas;
 }());
+exports.TCanvas = TCanvas;
 var TClipBoardDataType;
 (function (TClipBoardDataType) {
     TClipBoardDataType[TClipBoardDataType["NONE"] = get_CLIP_BOARD_DATA_TYPE_NONE()] = "NONE";
     TClipBoardDataType[TClipBoardDataType["TEXT"] = get_CLIP_BOARD_DATA_TYPE_TEXT()] = "TEXT";
-})(TClipBoardDataType || (TClipBoardDataType = {}));
+})(TClipBoardDataType = exports.TClipBoardDataType || (exports.TClipBoardDataType = {}));
 ;
 var TClipBoard = /** @class */ (function () {
     function TClipBoard(nativeObj) {
@@ -2817,6 +2838,7 @@ var TClipBoard = /** @class */ (function () {
     };
     return TClipBoard;
 }());
+exports.TClipBoard = TClipBoard;
 var TDialogQuitCode;
 (function (TDialogQuitCode) {
     TDialogQuitCode[TDialogQuitCode["NONE"] = get_DIALOG_QUIT_NONE()] = "NONE";
@@ -2825,7 +2847,7 @@ var TDialogQuitCode;
     TDialogQuitCode[TDialogQuitCode["CANCEL"] = get_DIALOG_QUIT_CANCEL()] = "CANCEL";
     TDialogQuitCode[TDialogQuitCode["NO"] = get_DIALOG_QUIT_NO()] = "NO";
     TDialogQuitCode[TDialogQuitCode["OTHER"] = get_DIALOG_QUIT_OTHER()] = "OTHER";
-})(TDialogQuitCode || (TDialogQuitCode = {}));
+})(TDialogQuitCode = exports.TDialogQuitCode || (exports.TDialogQuitCode = {}));
 ;
 var TEventType;
 (function (TEventType) {
@@ -2930,7 +2952,7 @@ var TEventType;
     TEventType[TEventType["DONE"] = get_EVT_DONE()] = "DONE";
     TEventType[TEventType["ERROR"] = get_EVT_ERROR()] = "ERROR";
     TEventType[TEventType["DESTROY"] = get_EVT_DESTROY()] = "DESTROY";
-})(TEventType || (TEventType = {}));
+})(TEventType = exports.TEventType || (exports.TEventType = {}));
 ;
 var TEvent = /** @class */ (function () {
     function TEvent(nativeObj) {
@@ -2981,6 +3003,7 @@ var TEvent = /** @class */ (function () {
     });
     return TEvent;
 }());
+exports.TEvent = TEvent;
 var TFontManager = /** @class */ (function () {
     function TFontManager(nativeObj) {
         this.nativeObj = nativeObj;
@@ -2996,12 +3019,13 @@ var TFontManager = /** @class */ (function () {
     };
     return TFontManager;
 }());
+exports.TFontManager = TFontManager;
 var TGlyphFormat;
 (function (TGlyphFormat) {
     TGlyphFormat[TGlyphFormat["ALPHA"] = get_GLYPH_FMT_ALPHA()] = "ALPHA";
     TGlyphFormat[TGlyphFormat["MONO"] = get_GLYPH_FMT_MONO()] = "MONO";
     TGlyphFormat[TGlyphFormat["RGBA"] = get_GLYPH_FMT_RGBA()] = "RGBA";
-})(TGlyphFormat || (TGlyphFormat = {}));
+})(TGlyphFormat = exports.TGlyphFormat || (exports.TGlyphFormat = {}));
 ;
 var TIdle = /** @class */ (function () {
     function TIdle(nativeObj) {
@@ -3018,6 +3042,7 @@ var TIdle = /** @class */ (function () {
     };
     return TIdle;
 }());
+exports.TIdle = TIdle;
 var TImageManager = /** @class */ (function () {
     function TImageManager(nativeObj) {
         this.nativeObj = nativeObj;
@@ -3033,6 +3058,7 @@ var TImageManager = /** @class */ (function () {
     };
     return TImageManager;
 }());
+exports.TImageManager = TImageManager;
 var TInputType;
 (function (TInputType) {
     TInputType[TInputType["TEXT"] = get_INPUT_TEXT()] = "TEXT";
@@ -3051,7 +3077,7 @@ var TInputType;
     TInputType[TInputType["CUSTOM"] = get_INPUT_CUSTOM()] = "CUSTOM";
     TInputType[TInputType["CUSTOM_PASSWORD"] = get_INPUT_CUSTOM_PASSWORD()] = "CUSTOM_PASSWORD";
     TInputType[TInputType["ASCII"] = get_INPUT_ASCII()] = "ASCII";
-})(TInputType || (TInputType = {}));
+})(TInputType = exports.TInputType || (exports.TInputType = {}));
 ;
 var TInputMethod = /** @class */ (function () {
     function TInputMethod(nativeObj) {
@@ -3086,6 +3112,7 @@ var TInputMethod = /** @class */ (function () {
     };
     return TInputMethod;
 }());
+exports.TInputMethod = TInputMethod;
 var TKeyCode;
 (function (TKeyCode) {
     TKeyCode[TKeyCode["KEY_RETURN"] = get_TK_KEY_RETURN()] = "KEY_RETURN";
@@ -3220,7 +3247,7 @@ var TKeyCode;
     TKeyCode[TKeyCode["KEY_BACK"] = get_TK_KEY_BACK()] = "KEY_BACK";
     TKeyCode[TKeyCode["KEY_CANCEL"] = get_TK_KEY_CANCEL()] = "KEY_CANCEL";
     TKeyCode[TKeyCode["KEY_WHEEL"] = get_TK_KEY_WHEEL()] = "KEY_WHEEL";
-})(TKeyCode || (TKeyCode = {}));
+})(TKeyCode = exports.TKeyCode || (exports.TKeyCode = {}));
 ;
 var TLocaleInfo = /** @class */ (function () {
     function TLocaleInfo(nativeObj) {
@@ -3240,6 +3267,7 @@ var TLocaleInfo = /** @class */ (function () {
     };
     return TLocaleInfo;
 }());
+exports.TLocaleInfo = TLocaleInfo;
 var TStyleId;
 (function (TStyleId) {
     TStyleId[TStyleId["BG_COLOR"] = get_STYLE_ID_BG_COLOR()] = "BG_COLOR";
@@ -3285,7 +3313,7 @@ var TStyleId;
     TStyleId[TStyleId["SELF_LAYOUT"] = get_STYLE_ID_SELF_LAYOUT()] = "SELF_LAYOUT";
     TStyleId[TStyleId["FOCUSABLE"] = get_STYLE_ID_FOCUSABLE()] = "FOCUSABLE";
     TStyleId[TStyleId["FEEDBACK"] = get_STYLE_ID_FEEDBACK()] = "FEEDBACK";
-})(TStyleId || (TStyleId = {}));
+})(TStyleId = exports.TStyleId || (exports.TStyleId = {}));
 ;
 var TStyle = /** @class */ (function () {
     function TStyle(nativeObj) {
@@ -3323,6 +3351,7 @@ var TStyle = /** @class */ (function () {
     };
     return TStyle;
 }());
+exports.TStyle = TStyle;
 var TTheme = /** @class */ (function () {
     function TTheme(nativeObj) {
         this.nativeObj = nativeObj;
@@ -3332,6 +3361,7 @@ var TTheme = /** @class */ (function () {
     };
     return TTheme;
 }());
+exports.TTheme = TTheme;
 var TTimer = /** @class */ (function () {
     function TTimer(nativeObj) {
         this.nativeObj = nativeObj;
@@ -3359,13 +3389,14 @@ var TTimer = /** @class */ (function () {
     };
     return TTimer;
 }());
+exports.TTimer = TTimer;
 var TAlignV;
 (function (TAlignV) {
     TAlignV[TAlignV["NONE"] = get_ALIGN_V_NONE()] = "NONE";
     TAlignV[TAlignV["MIDDLE"] = get_ALIGN_V_MIDDLE()] = "MIDDLE";
     TAlignV[TAlignV["TOP"] = get_ALIGN_V_TOP()] = "TOP";
     TAlignV[TAlignV["BOTTOM"] = get_ALIGN_V_BOTTOM()] = "BOTTOM";
-})(TAlignV || (TAlignV = {}));
+})(TAlignV = exports.TAlignV || (exports.TAlignV = {}));
 ;
 var TAlignH;
 (function (TAlignH) {
@@ -3373,14 +3404,14 @@ var TAlignH;
     TAlignH[TAlignH["CENTER"] = get_ALIGN_H_CENTER()] = "CENTER";
     TAlignH[TAlignH["LEFT"] = get_ALIGN_H_LEFT()] = "LEFT";
     TAlignH[TAlignH["RIGHT"] = get_ALIGN_H_RIGHT()] = "RIGHT";
-})(TAlignH || (TAlignH = {}));
+})(TAlignH = exports.TAlignH || (exports.TAlignH = {}));
 ;
 var TAppType;
 (function (TAppType) {
     TAppType[TAppType["MOBILE"] = get_APP_MOBILE()] = "MOBILE";
     TAppType[TAppType["SIMULATOR"] = get_APP_SIMULATOR()] = "SIMULATOR";
     TAppType[TAppType["DESKTOP"] = get_APP_DESKTOP()] = "DESKTOP";
-})(TAppType || (TAppType = {}));
+})(TAppType = exports.TAppType || (exports.TAppType = {}));
 ;
 var TBitmapFormat;
 (function (TBitmapFormat) {
@@ -3395,7 +3426,7 @@ var TBitmapFormat;
     TBitmapFormat[TBitmapFormat["BGR888"] = get_BITMAP_FMT_BGR888()] = "BGR888";
     TBitmapFormat[TBitmapFormat["GRAY"] = get_BITMAP_FMT_GRAY()] = "GRAY";
     TBitmapFormat[TBitmapFormat["MONO"] = get_BITMAP_FMT_MONO()] = "MONO";
-})(TBitmapFormat || (TBitmapFormat = {}));
+})(TBitmapFormat = exports.TBitmapFormat || (exports.TBitmapFormat = {}));
 ;
 var TBitmapFlag;
 (function (TBitmapFlag) {
@@ -3405,7 +3436,7 @@ var TBitmapFlag;
     TBitmapFlag[TBitmapFlag["TEXTURE"] = get_BITMAP_FLAG_TEXTURE()] = "TEXTURE";
     TBitmapFlag[TBitmapFlag["CHANGED"] = get_BITMAP_FLAG_CHANGED()] = "CHANGED";
     TBitmapFlag[TBitmapFlag["PREMULTI_ALPHA"] = get_BITMAP_FLAG_PREMULTI_ALPHA()] = "PREMULTI_ALPHA";
-})(TBitmapFlag || (TBitmapFlag = {}));
+})(TBitmapFlag = exports.TBitmapFlag || (exports.TBitmapFlag = {}));
 ;
 var TVgcanvas = /** @class */ (function () {
     function TVgcanvas(nativeObj) {
@@ -3643,19 +3674,20 @@ var TVgcanvas = /** @class */ (function () {
     });
     return TVgcanvas;
 }());
+exports.TVgcanvas = TVgcanvas;
 var TVgcanvasLineCap;
 (function (TVgcanvasLineCap) {
     TVgcanvasLineCap[TVgcanvasLineCap["ROUND"] = get_VGCANVAS_LINE_CAP_ROUND()] = "ROUND";
     TVgcanvasLineCap[TVgcanvasLineCap["SQUARE"] = get_VGCANVAS_LINE_CAP_SQUARE()] = "SQUARE";
     TVgcanvasLineCap[TVgcanvasLineCap["BUTT"] = get_VGCANVAS_LINE_CAP_BUTT()] = "BUTT";
-})(TVgcanvasLineCap || (TVgcanvasLineCap = {}));
+})(TVgcanvasLineCap = exports.TVgcanvasLineCap || (exports.TVgcanvasLineCap = {}));
 ;
 var TVgcanvasLineJoin;
 (function (TVgcanvasLineJoin) {
     TVgcanvasLineJoin[TVgcanvasLineJoin["ROUND"] = get_VGCANVAS_LINE_JOIN_ROUND()] = "ROUND";
     TVgcanvasLineJoin[TVgcanvasLineJoin["BEVEL"] = get_VGCANVAS_LINE_JOIN_BEVEL()] = "BEVEL";
     TVgcanvasLineJoin[TVgcanvasLineJoin["MITTER"] = get_VGCANVAS_LINE_JOIN_MITTER()] = "MITTER";
-})(TVgcanvasLineJoin || (TVgcanvasLineJoin = {}));
+})(TVgcanvasLineJoin = exports.TVgcanvasLineJoin || (exports.TVgcanvasLineJoin = {}));
 ;
 var TWidgetProp;
 (function (TWidgetProp) {
@@ -3817,7 +3849,7 @@ var TWidgetProp;
     TWidgetProp[TWidgetProp["MOVE_FOCUS_DOWN_KEY"] = get_WIDGET_PROP_MOVE_FOCUS_DOWN_KEY()] = "MOVE_FOCUS_DOWN_KEY";
     TWidgetProp[TWidgetProp["MOVE_FOCUS_LEFT_KEY"] = get_WIDGET_PROP_MOVE_FOCUS_LEFT_KEY()] = "MOVE_FOCUS_LEFT_KEY";
     TWidgetProp[TWidgetProp["MOVE_FOCUS_RIGHT_KEY"] = get_WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY()] = "MOVE_FOCUS_RIGHT_KEY";
-})(TWidgetProp || (TWidgetProp = {}));
+})(TWidgetProp = exports.TWidgetProp || (exports.TWidgetProp = {}));
 ;
 var TWidgetType;
 (function (TWidgetType) {
@@ -3876,7 +3908,7 @@ var TWidgetType;
     TWidgetType[TWidgetType["ROW"] = get_WIDGET_TYPE_ROW()] = "ROW";
     TWidgetType[TWidgetType["COLUMN"] = get_WIDGET_TYPE_COLUMN()] = "COLUMN";
     TWidgetType[TWidgetType["CALIBRATION_WIN"] = get_WIDGET_TYPE_CALIBRATION_WIN()] = "CALIBRATION_WIN";
-})(TWidgetType || (TWidgetType = {}));
+})(TWidgetType = exports.TWidgetType || (exports.TWidgetType = {}));
 ;
 var TWindowStage;
 (function (TWindowStage) {
@@ -3886,14 +3918,14 @@ var TWindowStage;
     TWindowStage[TWindowStage["OPENED"] = get_WINDOW_STAGE_OPENED()] = "OPENED";
     TWindowStage[TWindowStage["CLOSED"] = get_WINDOW_STAGE_CLOSED()] = "CLOSED";
     TWindowStage[TWindowStage["SUSPEND"] = get_WINDOW_STAGE_SUSPEND()] = "SUSPEND";
-})(TWindowStage || (TWindowStage = {}));
+})(TWindowStage = exports.TWindowStage || (exports.TWindowStage = {}));
 ;
 var TWindowClosable;
 (function (TWindowClosable) {
     TWindowClosable[TWindowClosable["YES"] = get_WINDOW_CLOSABLE_YES()] = "YES";
     TWindowClosable[TWindowClosable["NO"] = get_WINDOW_CLOSABLE_NO()] = "NO";
     TWindowClosable[TWindowClosable["CONFIRM"] = get_WINDOW_CLOSABLE_CONFIRM()] = "CONFIRM";
-})(TWindowClosable || (TWindowClosable = {}));
+})(TWindowClosable = exports.TWindowClosable || (exports.TWindowClosable = {}));
 ;
 var TWidgetState;
 (function (TWidgetState) {
@@ -3920,7 +3952,7 @@ var TWidgetState;
     TWidgetState[TWidgetState["OVER_OF_ACTIVE"] = get_WIDGET_STATE_OVER_OF_ACTIVE()] = "OVER_OF_ACTIVE";
     TWidgetState[TWidgetState["DISABLE_OF_ACTIVE"] = get_WIDGET_STATE_DISABLE_OF_ACTIVE()] = "DISABLE_OF_ACTIVE";
     TWidgetState[TWidgetState["FOCUSED_OF_ACTIVE"] = get_WIDGET_STATE_FOCUSED_OF_ACTIVE()] = "FOCUSED_OF_ACTIVE";
-})(TWidgetState || (TWidgetState = {}));
+})(TWidgetState = exports.TWidgetState || (exports.TWidgetState = {}));
 ;
 var TWidgetCursor;
 (function (TWidgetCursor) {
@@ -3935,7 +3967,7 @@ var TWidgetCursor;
     TWidgetCursor[TWidgetCursor["CURSOR_SIZEWE"] = get_WIDGET_CURSOR_SIZEWE()] = "CURSOR_SIZEWE";
     TWidgetCursor[TWidgetCursor["CURSOR_SIZENS"] = get_WIDGET_CURSOR_SIZENS()] = "CURSOR_SIZENS";
     TWidgetCursor[TWidgetCursor["CURSOR_SIZEALL"] = get_WIDGET_CURSOR_SIZEALL()] = "CURSOR_SIZEALL";
-})(TWidgetCursor || (TWidgetCursor = {}));
+})(TWidgetCursor = exports.TWidgetCursor || (exports.TWidgetCursor = {}));
 ;
 var TWidget = /** @class */ (function () {
     function TWidget(nativeObj) {
@@ -4427,6 +4459,7 @@ var TWidget = /** @class */ (function () {
     });
     return TWidget;
 }());
+exports.TWidget = TWidget;
 var TAppConf = /** @class */ (function () {
     function TAppConf(nativeObj) {
         this.nativeObj = nativeObj;
@@ -4478,6 +4511,7 @@ var TAppConf = /** @class */ (function () {
     };
     return TAppConf;
 }());
+exports.TAppConf = TAppConf;
 var TExtWidgets = /** @class */ (function () {
     function TExtWidgets(nativeObj) {
         this.nativeObj = nativeObj;
@@ -4487,6 +4521,7 @@ var TExtWidgets = /** @class */ (function () {
     };
     return TExtWidgets;
 }());
+exports.TExtWidgets = TExtWidgets;
 var TIndicatorDefaultPaint;
 (function (TIndicatorDefaultPaint) {
     TIndicatorDefaultPaint[TIndicatorDefaultPaint["AUTO"] = get_INDICATOR_DEFAULT_PAINT_AUTO()] = "AUTO";
@@ -4494,14 +4529,14 @@ var TIndicatorDefaultPaint;
     TIndicatorDefaultPaint[TIndicatorDefaultPaint["STROKE_DOT"] = get_INDICATOR_DEFAULT_PAINT_STROKE_DOT()] = "STROKE_DOT";
     TIndicatorDefaultPaint[TIndicatorDefaultPaint["FILL_RECT"] = get_INDICATOR_DEFAULT_PAINT_FILL_RECT()] = "FILL_RECT";
     TIndicatorDefaultPaint[TIndicatorDefaultPaint["STROKE_RECT"] = get_INDICATOR_DEFAULT_PAINT_STROKE_RECT()] = "STROKE_RECT";
-})(TIndicatorDefaultPaint || (TIndicatorDefaultPaint = {}));
+})(TIndicatorDefaultPaint = exports.TIndicatorDefaultPaint || (exports.TIndicatorDefaultPaint = {}));
 ;
 var TVpageEvent;
 (function (TVpageEvent) {
     TVpageEvent[TVpageEvent["VPAGE_WILL_OPEN"] = get_EVT_VPAGE_WILL_OPEN()] = "VPAGE_WILL_OPEN";
     TVpageEvent[TVpageEvent["VPAGE_OPEN"] = get_EVT_VPAGE_OPEN()] = "VPAGE_OPEN";
     TVpageEvent[TVpageEvent["VPAGE_CLOSE"] = get_EVT_VPAGE_CLOSE()] = "VPAGE_CLOSE";
-})(TVpageEvent || (TVpageEvent = {}));
+})(TVpageEvent = exports.TVpageEvent || (exports.TVpageEvent = {}));
 ;
 var TAssetType;
 (function (TAssetType) {
@@ -4515,7 +4550,7 @@ var TAssetType;
     TAssetType[TAssetType["SCRIPT"] = get_ASSET_TYPE_SCRIPT()] = "SCRIPT";
     TAssetType[TAssetType["FLOW"] = get_ASSET_TYPE_FLOW()] = "FLOW";
     TAssetType[TAssetType["DATA"] = get_ASSET_TYPE_DATA()] = "DATA";
-})(TAssetType || (TAssetType = {}));
+})(TAssetType = exports.TAssetType || (exports.TAssetType = {}));
 ;
 var TAssetInfo = /** @class */ (function () {
     function TAssetInfo(nativeObj) {
@@ -4571,6 +4606,7 @@ var TAssetInfo = /** @class */ (function () {
     });
     return TAssetInfo;
 }());
+exports.TAssetInfo = TAssetInfo;
 var TColor = /** @class */ (function () {
     function TColor(nativeObj) {
         this.nativeObj = nativeObj;
@@ -4614,6 +4650,7 @@ var TColor = /** @class */ (function () {
     });
     return TColor;
 }());
+exports.TColor = TColor;
 var TDateTime = /** @class */ (function () {
     function TDateTime(nativeObj) {
         this.nativeObj = nativeObj;
@@ -4720,6 +4757,7 @@ var TDateTime = /** @class */ (function () {
     });
     return TDateTime;
 }());
+exports.TDateTime = TDateTime;
 var TEasingType;
 (function (TEasingType) {
     TEasingType[TEasingType["LINEAR"] = get_EASING_LINEAR()] = "LINEAR";
@@ -4746,7 +4784,7 @@ var TEasingType;
     TEasingType[TEasingType["BOUNCE_IN"] = get_EASING_BOUNCE_IN()] = "BOUNCE_IN";
     TEasingType[TEasingType["BOUNCE_OUT"] = get_EASING_BOUNCE_OUT()] = "BOUNCE_OUT";
     TEasingType[TEasingType["BOUNCE_INOUT"] = get_EASING_BOUNCE_INOUT()] = "BOUNCE_INOUT";
-})(TEasingType || (TEasingType = {}));
+})(TEasingType = exports.TEasingType || (exports.TEasingType = {}));
 ;
 var TIdleManager = /** @class */ (function () {
     function TIdleManager(nativeObj) {
@@ -4754,6 +4792,7 @@ var TIdleManager = /** @class */ (function () {
     }
     return TIdleManager;
 }());
+exports.TIdleManager = TIdleManager;
 var TMIME_TYPE;
 (function (TMIME_TYPE) {
     TMIME_TYPE[TMIME_TYPE["APPLICATION_ENVOY"] = get_MIME_TYPE_APPLICATION_ENVOY()] = "APPLICATION_ENVOY";
@@ -4858,7 +4897,7 @@ var TMIME_TYPE;
     TMIME_TYPE[TMIME_TYPE["VIDEO_MPEG"] = get_MIME_TYPE_VIDEO_MPEG()] = "VIDEO_MPEG";
     TMIME_TYPE[TMIME_TYPE["VIDEO_QUICKTIME"] = get_MIME_TYPE_VIDEO_QUICKTIME()] = "VIDEO_QUICKTIME";
     TMIME_TYPE[TMIME_TYPE["VIDEO_X_MSVIDEO"] = get_MIME_TYPE_VIDEO_X_MSVIDEO()] = "VIDEO_X_MSVIDEO";
-})(TMIME_TYPE || (TMIME_TYPE = {}));
+})(TMIME_TYPE = exports.TMIME_TYPE || (exports.TMIME_TYPE = {}));
 ;
 var TNamedValue = /** @class */ (function () {
     function TNamedValue(nativeObj) {
@@ -4891,6 +4930,7 @@ var TNamedValue = /** @class */ (function () {
     });
     return TNamedValue;
 }());
+exports.TNamedValue = TNamedValue;
 var TObjectCmd;
 (function (TObjectCmd) {
     TObjectCmd[TObjectCmd["SAVE"] = get_OBJECT_CMD_SAVE()] = "SAVE";
@@ -4903,13 +4943,13 @@ var TObjectCmd;
     TObjectCmd[TObjectCmd["ADD"] = get_OBJECT_CMD_ADD()] = "ADD";
     TObjectCmd[TObjectCmd["DETAIL"] = get_OBJECT_CMD_DETAIL()] = "DETAIL";
     TObjectCmd[TObjectCmd["EDIT"] = get_OBJECT_CMD_EDIT()] = "EDIT";
-})(TObjectCmd || (TObjectCmd = {}));
+})(TObjectCmd = exports.TObjectCmd || (exports.TObjectCmd = {}));
 ;
 var TObjectProp;
 (function (TObjectProp) {
     TObjectProp[TObjectProp["SIZE"] = get_OBJECT_PROP_SIZE()] = "SIZE";
     TObjectProp[TObjectProp["CHECKED"] = get_OBJECT_PROP_CHECKED()] = "CHECKED";
-})(TObjectProp || (TObjectProp = {}));
+})(TObjectProp = exports.TObjectProp || (exports.TObjectProp = {}));
 ;
 var TRlog = /** @class */ (function () {
     function TRlog(nativeObj) {
@@ -4923,6 +4963,7 @@ var TRlog = /** @class */ (function () {
     };
     return TRlog;
 }());
+exports.TRlog = TRlog;
 var TTimeNow = /** @class */ (function () {
     function TTimeNow(nativeObj) {
         this.nativeObj = nativeObj;
@@ -4938,12 +4979,14 @@ var TTimeNow = /** @class */ (function () {
     };
     return TTimeNow;
 }());
+exports.TTimeNow = TTimeNow;
 var TTimerManager = /** @class */ (function () {
     function TTimerManager(nativeObj) {
         this.nativeObj = nativeObj;
     }
     return TTimerManager;
 }());
+exports.TTimerManager = TTimerManager;
 var TRet;
 (function (TRet) {
     TRet[TRet["OK"] = get_RET_OK()] = "OK";
@@ -4968,7 +5011,7 @@ var TRet;
     TRet[TRet["IO"] = get_RET_IO()] = "IO";
     TRet[TRet["EOS"] = get_RET_EOS()] = "EOS";
     TRet[TRet["NOT_MODIFIED"] = get_RET_NOT_MODIFIED()] = "NOT_MODIFIED";
-})(TRet || (TRet = {}));
+})(TRet = exports.TRet || (exports.TRet = {}));
 ;
 var TValueType;
 (function (TValueType) {
@@ -4993,7 +5036,7 @@ var TValueType;
     TValueType[TValueType["BINARY"] = get_VALUE_TYPE_BINARY()] = "BINARY";
     TValueType[TValueType["UBJSON"] = get_VALUE_TYPE_UBJSON()] = "UBJSON";
     TValueType[TValueType["TOKEN"] = get_VALUE_TYPE_TOKEN()] = "TOKEN";
-})(TValueType || (TValueType = {}));
+})(TValueType = exports.TValueType || (exports.TValueType = {}));
 ;
 var TAssetsManager = /** @class */ (function (_super) {
     __extends(TAssetsManager, _super);
@@ -5017,6 +5060,7 @@ var TAssetsManager = /** @class */ (function (_super) {
     };
     return TAssetsManager;
 }(TEmitter));
+exports.TAssetsManager = TAssetsManager;
 var TWheelEvent = /** @class */ (function (_super) {
     __extends(TWheelEvent, _super);
     function TWheelEvent(nativeObj) {
@@ -5055,6 +5099,7 @@ var TWheelEvent = /** @class */ (function (_super) {
     });
     return TWheelEvent;
 }(TEvent));
+exports.TWheelEvent = TWheelEvent;
 var TOrientationEvent = /** @class */ (function (_super) {
     __extends(TOrientationEvent, _super);
     function TOrientationEvent(nativeObj) {
@@ -5072,6 +5117,7 @@ var TOrientationEvent = /** @class */ (function (_super) {
     });
     return TOrientationEvent;
 }(TEvent));
+exports.TOrientationEvent = TOrientationEvent;
 var TValueChangeEvent = /** @class */ (function (_super) {
     __extends(TValueChangeEvent, _super);
     function TValueChangeEvent(nativeObj) {
@@ -5082,6 +5128,7 @@ var TValueChangeEvent = /** @class */ (function (_super) {
     };
     return TValueChangeEvent;
 }(TEvent));
+exports.TValueChangeEvent = TValueChangeEvent;
 var TPointerEvent = /** @class */ (function (_super) {
     __extends(TPointerEvent, _super);
     function TPointerEvent(nativeObj) {
@@ -5155,6 +5202,7 @@ var TPointerEvent = /** @class */ (function (_super) {
     });
     return TPointerEvent;
 }(TEvent));
+exports.TPointerEvent = TPointerEvent;
 var TKeyEvent = /** @class */ (function (_super) {
     __extends(TKeyEvent, _super);
     function TKeyEvent(nativeObj) {
@@ -5256,6 +5304,7 @@ var TKeyEvent = /** @class */ (function (_super) {
     });
     return TKeyEvent;
 }(TEvent));
+exports.TKeyEvent = TKeyEvent;
 var TPaintEvent = /** @class */ (function (_super) {
     __extends(TPaintEvent, _super);
     function TPaintEvent(nativeObj) {
@@ -5273,6 +5322,7 @@ var TPaintEvent = /** @class */ (function (_super) {
     });
     return TPaintEvent;
 }(TEvent));
+exports.TPaintEvent = TPaintEvent;
 var TWindowEvent = /** @class */ (function (_super) {
     __extends(TWindowEvent, _super);
     function TWindowEvent(nativeObj) {
@@ -5290,6 +5340,7 @@ var TWindowEvent = /** @class */ (function (_super) {
     });
     return TWindowEvent;
 }(TEvent));
+exports.TWindowEvent = TWindowEvent;
 var TMultiGestureEvent = /** @class */ (function (_super) {
     __extends(TMultiGestureEvent, _super);
     function TMultiGestureEvent(nativeObj) {
@@ -5328,6 +5379,7 @@ var TMultiGestureEvent = /** @class */ (function (_super) {
     });
     return TMultiGestureEvent;
 }(TEvent));
+exports.TMultiGestureEvent = TMultiGestureEvent;
 var TImageBase = /** @class */ (function (_super) {
     __extends(TImageBase, _super);
     function TImageBase(nativeObj) {
@@ -5422,6 +5474,7 @@ var TImageBase = /** @class */ (function (_super) {
     });
     return TImageBase;
 }(TWidget));
+exports.TImageBase = TImageBase;
 var TStyleMutable = /** @class */ (function (_super) {
     __extends(TStyleMutable, _super);
     function TStyleMutable(nativeObj) {
@@ -5448,6 +5501,7 @@ var TStyleMutable = /** @class */ (function (_super) {
     });
     return TStyleMutable;
 }(TStyle));
+exports.TStyleMutable = TStyleMutable;
 var TWindowBase = /** @class */ (function (_super) {
     __extends(TWindowBase, _super);
     function TWindowBase(nativeObj) {
@@ -5591,6 +5645,7 @@ var TWindowBase = /** @class */ (function (_super) {
     });
     return TWindowBase;
 }(TWidget));
+exports.TWindowBase = TWindowBase;
 var TWindowManager = /** @class */ (function (_super) {
     __extends(TWindowManager, _super);
     function TWindowManager(nativeObj) {
@@ -5655,6 +5710,7 @@ var TWindowManager = /** @class */ (function (_super) {
     };
     return TWindowManager;
 }(TWidget));
+exports.TWindowManager = TWindowManager;
 var TCanvasWidget = /** @class */ (function (_super) {
     __extends(TCanvasWidget, _super);
     function TCanvasWidget(nativeObj) {
@@ -5668,6 +5724,7 @@ var TCanvasWidget = /** @class */ (function (_super) {
     };
     return TCanvasWidget;
 }(TWidget));
+exports.TCanvasWidget = TCanvasWidget;
 var TColorComponent = /** @class */ (function (_super) {
     __extends(TColorComponent, _super);
     function TColorComponent(nativeObj) {
@@ -5681,6 +5738,7 @@ var TColorComponent = /** @class */ (function (_super) {
     };
     return TColorComponent;
 }(TWidget));
+exports.TColorComponent = TColorComponent;
 var TColorPicker = /** @class */ (function (_super) {
     __extends(TColorPicker, _super);
     function TColorPicker(nativeObj) {
@@ -5704,6 +5762,7 @@ var TColorPicker = /** @class */ (function (_super) {
     });
     return TColorPicker;
 }(TWidget));
+exports.TColorPicker = TColorPicker;
 var TDraggable = /** @class */ (function (_super) {
     __extends(TDraggable, _super);
     function TDraggable(nativeObj) {
@@ -5787,6 +5846,7 @@ var TDraggable = /** @class */ (function (_super) {
     });
     return TDraggable;
 }(TWidget));
+exports.TDraggable = TDraggable;
 var TFileBrowserView = /** @class */ (function (_super) {
     __extends(TFileBrowserView, _super);
     function TFileBrowserView(nativeObj) {
@@ -5882,6 +5942,7 @@ var TFileBrowserView = /** @class */ (function (_super) {
     });
     return TFileBrowserView;
 }(TWidget));
+exports.TFileBrowserView = TFileBrowserView;
 var TFileChooser = /** @class */ (function (_super) {
     __extends(TFileChooser, _super);
     function TFileChooser(nativeObj) {
@@ -5922,6 +5983,7 @@ var TFileChooser = /** @class */ (function (_super) {
     };
     return TFileChooser;
 }(TEmitter));
+exports.TFileChooser = TFileChooser;
 var TGaugePointer = /** @class */ (function (_super) {
     __extends(TGaugePointer, _super);
     function TGaugePointer(nativeObj) {
@@ -5972,6 +6034,7 @@ var TGaugePointer = /** @class */ (function (_super) {
     });
     return TGaugePointer;
 }(TWidget));
+exports.TGaugePointer = TGaugePointer;
 var TGauge = /** @class */ (function (_super) {
     __extends(TGauge, _super);
     function TGauge(nativeObj) {
@@ -6005,6 +6068,7 @@ var TGauge = /** @class */ (function (_super) {
     });
     return TGauge;
 }(TWidget));
+exports.TGauge = TGauge;
 var TImageAnimation = /** @class */ (function (_super) {
     __extends(TImageAnimation, _super);
     function TImageAnimation(nativeObj) {
@@ -6150,6 +6214,7 @@ var TImageAnimation = /** @class */ (function (_super) {
     });
     return TImageAnimation;
 }(TWidget));
+exports.TImageAnimation = TImageAnimation;
 var TImageValue = /** @class */ (function (_super) {
     __extends(TImageValue, _super);
     function TImageValue(nativeObj) {
@@ -6223,6 +6288,7 @@ var TImageValue = /** @class */ (function (_super) {
     });
     return TImageValue;
 }(TWidget));
+exports.TImageValue = TImageValue;
 var TCandidates = /** @class */ (function (_super) {
     __extends(TCandidates, _super);
     function TCandidates(nativeObj) {
@@ -6276,6 +6342,7 @@ var TCandidates = /** @class */ (function (_super) {
     });
     return TCandidates;
 }(TWidget));
+exports.TCandidates = TCandidates;
 var TLangIndicator = /** @class */ (function (_super) {
     __extends(TLangIndicator, _super);
     function TLangIndicator(nativeObj) {
@@ -6299,6 +6366,7 @@ var TLangIndicator = /** @class */ (function (_super) {
     });
     return TLangIndicator;
 }(TWidget));
+exports.TLangIndicator = TLangIndicator;
 var TLineNumber = /** @class */ (function (_super) {
     __extends(TLineNumber, _super);
     function TLineNumber(nativeObj) {
@@ -6324,6 +6392,7 @@ var TLineNumber = /** @class */ (function (_super) {
     };
     return TLineNumber;
 }(TWidget));
+exports.TLineNumber = TLineNumber;
 var TMledit = /** @class */ (function (_super) {
     __extends(TMledit, _super);
     function TMledit(nativeObj) {
@@ -6465,6 +6534,7 @@ var TMledit = /** @class */ (function (_super) {
     });
     return TMledit;
 }(TWidget));
+exports.TMledit = TMledit;
 var TProgressCircle = /** @class */ (function (_super) {
     __extends(TProgressCircle, _super);
     function TProgressCircle(nativeObj) {
@@ -6558,6 +6628,7 @@ var TProgressCircle = /** @class */ (function (_super) {
     });
     return TProgressCircle;
 }(TWidget));
+exports.TProgressCircle = TProgressCircle;
 var TRichTextView = /** @class */ (function (_super) {
     __extends(TRichTextView, _super);
     function TRichTextView(nativeObj) {
@@ -6571,6 +6642,7 @@ var TRichTextView = /** @class */ (function (_super) {
     };
     return TRichTextView;
 }(TWidget));
+exports.TRichTextView = TRichTextView;
 var TRichText = /** @class */ (function (_super) {
     __extends(TRichText, _super);
     function TRichText(nativeObj) {
@@ -6604,6 +6676,7 @@ var TRichText = /** @class */ (function (_super) {
     });
     return TRichText;
 }(TWidget));
+exports.TRichText = TRichText;
 var THscrollLabel = /** @class */ (function (_super) {
     __extends(THscrollLabel, _super);
     function THscrollLabel(nativeObj) {
@@ -6710,6 +6783,7 @@ var THscrollLabel = /** @class */ (function (_super) {
     });
     return THscrollLabel;
 }(TWidget));
+exports.THscrollLabel = THscrollLabel;
 var TListItem = /** @class */ (function (_super) {
     __extends(TListItem, _super);
     function TListItem(nativeObj) {
@@ -6723,6 +6797,7 @@ var TListItem = /** @class */ (function (_super) {
     };
     return TListItem;
 }(TWidget));
+exports.TListItem = TListItem;
 var TListViewH = /** @class */ (function (_super) {
     __extends(TListViewH, _super);
     function TListViewH(nativeObj) {
@@ -6756,6 +6831,7 @@ var TListViewH = /** @class */ (function (_super) {
     });
     return TListViewH;
 }(TWidget));
+exports.TListViewH = TListViewH;
 var TListView = /** @class */ (function (_super) {
     __extends(TListView, _super);
     function TListView(nativeObj) {
@@ -6812,6 +6888,7 @@ var TListView = /** @class */ (function (_super) {
     });
     return TListView;
 }(TWidget));
+exports.TListView = TListView;
 var TScrollBar = /** @class */ (function (_super) {
     __extends(TScrollBar, _super);
     function TScrollBar(nativeObj) {
@@ -6890,6 +6967,7 @@ var TScrollBar = /** @class */ (function (_super) {
     });
     return TScrollBar;
 }(TWidget));
+exports.TScrollBar = TScrollBar;
 var TScrollView = /** @class */ (function (_super) {
     __extends(TScrollView, _super);
     function TScrollView(nativeObj) {
@@ -7016,6 +7094,7 @@ var TScrollView = /** @class */ (function (_super) {
     });
     return TScrollView;
 }(TWidget));
+exports.TScrollView = TScrollView;
 var TSlideMenu = /** @class */ (function (_super) {
     __extends(TSlideMenu, _super);
     function TSlideMenu(nativeObj) {
@@ -7059,6 +7138,7 @@ var TSlideMenu = /** @class */ (function (_super) {
     });
     return TSlideMenu;
 }(TWidget));
+exports.TSlideMenu = TSlideMenu;
 var TSlideIndicator = /** @class */ (function (_super) {
     __extends(TSlideIndicator, _super);
     function TSlideIndicator(nativeObj) {
@@ -7175,6 +7255,7 @@ var TSlideIndicator = /** @class */ (function (_super) {
     });
     return TSlideIndicator;
 }(TWidget));
+exports.TSlideIndicator = TSlideIndicator;
 var TSlideView = /** @class */ (function (_super) {
     __extends(TSlideView, _super);
     function TSlideView(nativeObj) {
@@ -7237,6 +7318,7 @@ var TSlideView = /** @class */ (function (_super) {
     });
     return TSlideView;
 }(TWidget));
+exports.TSlideView = TSlideView;
 var TSwitch = /** @class */ (function (_super) {
     __extends(TSwitch, _super);
     function TSwitch(nativeObj) {
@@ -7267,6 +7349,7 @@ var TSwitch = /** @class */ (function (_super) {
     });
     return TSwitch;
 }(TWidget));
+exports.TSwitch = TSwitch;
 var TTextSelector = /** @class */ (function (_super) {
     __extends(TTextSelector, _super);
     function TTextSelector(nativeObj) {
@@ -7387,6 +7470,7 @@ var TTextSelector = /** @class */ (function (_super) {
     });
     return TTextSelector;
 }(TWidget));
+exports.TTextSelector = TTextSelector;
 var TTimeClock = /** @class */ (function (_super) {
     __extends(TTimeClock, _super);
     function TTimeClock(nativeObj) {
@@ -7531,6 +7615,7 @@ var TTimeClock = /** @class */ (function (_super) {
     });
     return TTimeClock;
 }(TWidget));
+exports.TTimeClock = TTimeClock;
 var TVpage = /** @class */ (function (_super) {
     __extends(TVpage, _super);
     function TVpage(nativeObj) {
@@ -7564,6 +7649,7 @@ var TVpage = /** @class */ (function (_super) {
     });
     return TVpage;
 }(TWidget));
+exports.TVpage = TVpage;
 var TPropChangeEvent = /** @class */ (function (_super) {
     __extends(TPropChangeEvent, _super);
     function TPropChangeEvent(nativeObj) {
@@ -7588,6 +7674,7 @@ var TPropChangeEvent = /** @class */ (function (_super) {
     });
     return TPropChangeEvent;
 }(TEvent));
+exports.TPropChangeEvent = TPropChangeEvent;
 var TProgressEvent = /** @class */ (function (_super) {
     __extends(TProgressEvent, _super);
     function TProgressEvent(nativeObj) {
@@ -7605,6 +7692,7 @@ var TProgressEvent = /** @class */ (function (_super) {
     });
     return TProgressEvent;
 }(TEvent));
+exports.TProgressEvent = TProgressEvent;
 var TDoneEvent = /** @class */ (function (_super) {
     __extends(TDoneEvent, _super);
     function TDoneEvent(nativeObj) {
@@ -7622,6 +7710,7 @@ var TDoneEvent = /** @class */ (function (_super) {
     });
     return TDoneEvent;
 }(TEvent));
+exports.TDoneEvent = TDoneEvent;
 var TErrorEvent = /** @class */ (function (_super) {
     __extends(TErrorEvent, _super);
     function TErrorEvent(nativeObj) {
@@ -7646,6 +7735,7 @@ var TErrorEvent = /** @class */ (function (_super) {
     });
     return TErrorEvent;
 }(TEvent));
+exports.TErrorEvent = TErrorEvent;
 var TCmdExecEvent = /** @class */ (function (_super) {
     __extends(TCmdExecEvent, _super);
     function TCmdExecEvent(nativeObj) {
@@ -7684,6 +7774,7 @@ var TCmdExecEvent = /** @class */ (function (_super) {
     });
     return TCmdExecEvent;
 }(TEvent));
+exports.TCmdExecEvent = TCmdExecEvent;
 var TAppBar = /** @class */ (function (_super) {
     __extends(TAppBar, _super);
     function TAppBar(nativeObj) {
@@ -7697,6 +7788,7 @@ var TAppBar = /** @class */ (function (_super) {
     };
     return TAppBar;
 }(TWidget));
+exports.TAppBar = TAppBar;
 var TButtonGroup = /** @class */ (function (_super) {
     __extends(TButtonGroup, _super);
     function TButtonGroup(nativeObj) {
@@ -7710,6 +7802,7 @@ var TButtonGroup = /** @class */ (function (_super) {
     };
     return TButtonGroup;
 }(TWidget));
+exports.TButtonGroup = TButtonGroup;
 var TButton = /** @class */ (function (_super) {
     __extends(TButton, _super);
     function TButton(nativeObj) {
@@ -7753,6 +7846,7 @@ var TButton = /** @class */ (function (_super) {
     });
     return TButton;
 }(TWidget));
+exports.TButton = TButton;
 var TCheckButton = /** @class */ (function (_super) {
     __extends(TCheckButton, _super);
     function TCheckButton(nativeObj) {
@@ -7779,6 +7873,7 @@ var TCheckButton = /** @class */ (function (_super) {
     });
     return TCheckButton;
 }(TWidget));
+exports.TCheckButton = TCheckButton;
 var TClipView = /** @class */ (function (_super) {
     __extends(TClipView, _super);
     function TClipView(nativeObj) {
@@ -7792,6 +7887,7 @@ var TClipView = /** @class */ (function (_super) {
     };
     return TClipView;
 }(TWidget));
+exports.TClipView = TClipView;
 var TColorTile = /** @class */ (function (_super) {
     __extends(TColorTile, _super);
     function TColorTile(nativeObj) {
@@ -7828,6 +7924,7 @@ var TColorTile = /** @class */ (function (_super) {
     });
     return TColorTile;
 }(TWidget));
+exports.TColorTile = TColorTile;
 var TColumn = /** @class */ (function (_super) {
     __extends(TColumn, _super);
     function TColumn(nativeObj) {
@@ -7841,6 +7938,7 @@ var TColumn = /** @class */ (function (_super) {
     };
     return TColumn;
 }(TWidget));
+exports.TColumn = TColumn;
 var TComboBoxItem = /** @class */ (function (_super) {
     __extends(TComboBoxItem, _super);
     function TComboBoxItem(nativeObj) {
@@ -7874,6 +7972,7 @@ var TComboBoxItem = /** @class */ (function (_super) {
     });
     return TComboBoxItem;
 }(TWidget));
+exports.TComboBoxItem = TComboBoxItem;
 var TDialogClient = /** @class */ (function (_super) {
     __extends(TDialogClient, _super);
     function TDialogClient(nativeObj) {
@@ -7887,6 +7986,7 @@ var TDialogClient = /** @class */ (function (_super) {
     };
     return TDialogClient;
 }(TWidget));
+exports.TDialogClient = TDialogClient;
 var TDialogTitle = /** @class */ (function (_super) {
     __extends(TDialogTitle, _super);
     function TDialogTitle(nativeObj) {
@@ -7900,6 +8000,7 @@ var TDialogTitle = /** @class */ (function (_super) {
     };
     return TDialogTitle;
 }(TWidget));
+exports.TDialogTitle = TDialogTitle;
 var TDigitClock = /** @class */ (function (_super) {
     __extends(TDigitClock, _super);
     function TDigitClock(nativeObj) {
@@ -7923,6 +8024,7 @@ var TDigitClock = /** @class */ (function (_super) {
     });
     return TDigitClock;
 }(TWidget));
+exports.TDigitClock = TDigitClock;
 var TDragger = /** @class */ (function (_super) {
     __extends(TDragger, _super);
     function TDragger(nativeObj) {
@@ -7967,6 +8069,7 @@ var TDragger = /** @class */ (function (_super) {
     });
     return TDragger;
 }(TWidget));
+exports.TDragger = TDragger;
 var TEdit = /** @class */ (function (_super) {
     __extends(TEdit, _super);
     function TEdit(nativeObj) {
@@ -8157,6 +8260,7 @@ var TEdit = /** @class */ (function (_super) {
     });
     return TEdit;
 }(TWidget));
+exports.TEdit = TEdit;
 var TGridItem = /** @class */ (function (_super) {
     __extends(TGridItem, _super);
     function TGridItem(nativeObj) {
@@ -8170,6 +8274,7 @@ var TGridItem = /** @class */ (function (_super) {
     };
     return TGridItem;
 }(TWidget));
+exports.TGridItem = TGridItem;
 var TGrid = /** @class */ (function (_super) {
     __extends(TGrid, _super);
     function TGrid(nativeObj) {
@@ -8183,6 +8288,7 @@ var TGrid = /** @class */ (function (_super) {
     };
     return TGrid;
 }(TWidget));
+exports.TGrid = TGrid;
 var TGroupBox = /** @class */ (function (_super) {
     __extends(TGroupBox, _super);
     function TGroupBox(nativeObj) {
@@ -8196,6 +8302,7 @@ var TGroupBox = /** @class */ (function (_super) {
     };
     return TGroupBox;
 }(TWidget));
+exports.TGroupBox = TGroupBox;
 var TLabel = /** @class */ (function (_super) {
     __extends(TLabel, _super);
     function TLabel(nativeObj) {
@@ -8252,6 +8359,7 @@ var TLabel = /** @class */ (function (_super) {
     });
     return TLabel;
 }(TWidget));
+exports.TLabel = TLabel;
 var TPages = /** @class */ (function (_super) {
     __extends(TPages, _super);
     function TPages(nativeObj) {
@@ -8278,6 +8386,7 @@ var TPages = /** @class */ (function (_super) {
     });
     return TPages;
 }(TWidget));
+exports.TPages = TPages;
 var TProgressBar = /** @class */ (function (_super) {
     __extends(TProgressBar, _super);
     function TProgressBar(nativeObj) {
@@ -8354,6 +8463,7 @@ var TProgressBar = /** @class */ (function (_super) {
     });
     return TProgressBar;
 }(TWidget));
+exports.TProgressBar = TProgressBar;
 var TRow = /** @class */ (function (_super) {
     __extends(TRow, _super);
     function TRow(nativeObj) {
@@ -8367,6 +8477,7 @@ var TRow = /** @class */ (function (_super) {
     };
     return TRow;
 }(TWidget));
+exports.TRow = TRow;
 var TSlider = /** @class */ (function (_super) {
     __extends(TSlider, _super);
     function TSlider(nativeObj) {
@@ -8461,6 +8572,7 @@ var TSlider = /** @class */ (function (_super) {
     });
     return TSlider;
 }(TWidget));
+exports.TSlider = TSlider;
 var TTabButtonGroup = /** @class */ (function (_super) {
     __extends(TTabButtonGroup, _super);
     function TTabButtonGroup(nativeObj) {
@@ -8494,6 +8606,7 @@ var TTabButtonGroup = /** @class */ (function (_super) {
     });
     return TTabButtonGroup;
 }(TWidget));
+exports.TTabButtonGroup = TTabButtonGroup;
 var TTabButton = /** @class */ (function (_super) {
     __extends(TTabButton, _super);
     function TTabButton(nativeObj) {
@@ -8547,6 +8660,7 @@ var TTabButton = /** @class */ (function (_super) {
     });
     return TTabButton;
 }(TWidget));
+exports.TTabButton = TTabButton;
 var TTabControl = /** @class */ (function (_super) {
     __extends(TTabControl, _super);
     function TTabControl(nativeObj) {
@@ -8560,6 +8674,7 @@ var TTabControl = /** @class */ (function (_super) {
     };
     return TTabControl;
 }(TWidget));
+exports.TTabControl = TTabControl;
 var TView = /** @class */ (function (_super) {
     __extends(TView, _super);
     function TView(nativeObj) {
@@ -8583,6 +8698,7 @@ var TView = /** @class */ (function (_super) {
     });
     return TView;
 }(TWidget));
+exports.TView = TView;
 var TDialog = /** @class */ (function (_super) {
     __extends(TDialog, _super);
     function TDialog(nativeObj) {
@@ -8642,6 +8758,7 @@ var TDialog = /** @class */ (function (_super) {
     });
     return TDialog;
 }(TWindowBase));
+exports.TDialog = TDialog;
 var TNativeWindow = /** @class */ (function (_super) {
     __extends(TNativeWindow, _super);
     function TNativeWindow(nativeObj) {
@@ -8676,6 +8793,7 @@ var TNativeWindow = /** @class */ (function (_super) {
     };
     return TNativeWindow;
 }(TObject));
+exports.TNativeWindow = TNativeWindow;
 var TWindow = /** @class */ (function (_super) {
     __extends(TWindow, _super);
     function TWindow(nativeObj) {
@@ -8717,6 +8835,7 @@ var TWindow = /** @class */ (function (_super) {
     });
     return TWindow;
 }(TWindowBase));
+exports.TWindow = TWindow;
 var TGifImage = /** @class */ (function (_super) {
     __extends(TGifImage, _super);
     function TGifImage(nativeObj) {
@@ -8739,6 +8858,7 @@ var TGifImage = /** @class */ (function (_super) {
     };
     return TGifImage;
 }(TImageBase));
+exports.TGifImage = TGifImage;
 var TKeyboard = /** @class */ (function (_super) {
     __extends(TKeyboard, _super);
     function TKeyboard(nativeObj) {
@@ -8752,6 +8872,7 @@ var TKeyboard = /** @class */ (function (_super) {
     };
     return TKeyboard;
 }(TWindowBase));
+exports.TKeyboard = TKeyboard;
 var TMutableImage = /** @class */ (function (_super) {
     __extends(TMutableImage, _super);
     function TMutableImage(nativeObj) {
@@ -8762,6 +8883,7 @@ var TMutableImage = /** @class */ (function (_super) {
     };
     return TMutableImage;
 }(TImageBase));
+exports.TMutableImage = TMutableImage;
 var TSvgImage = /** @class */ (function (_super) {
     __extends(TSvgImage, _super);
     function TSvgImage(nativeObj) {
@@ -8778,6 +8900,7 @@ var TSvgImage = /** @class */ (function (_super) {
     };
     return TSvgImage;
 }(TImageBase));
+exports.TSvgImage = TSvgImage;
 var TIdleInfo = /** @class */ (function (_super) {
     __extends(TIdleInfo, _super);
     function TIdleInfo(nativeObj) {
@@ -8809,6 +8932,7 @@ var TIdleInfo = /** @class */ (function (_super) {
     });
     return TIdleInfo;
 }(TObject));
+exports.TIdleInfo = TIdleInfo;
 var TObjectArray = /** @class */ (function (_super) {
     __extends(TObjectArray, _super);
     function TObjectArray(nativeObj) {
@@ -8850,6 +8974,7 @@ var TObjectArray = /** @class */ (function (_super) {
     });
     return TObjectArray;
 }(TObject));
+exports.TObjectArray = TObjectArray;
 var TObjectDefault = /** @class */ (function (_super) {
     __extends(TObjectDefault, _super);
     function TObjectDefault(nativeObj) {
@@ -8873,6 +8998,7 @@ var TObjectDefault = /** @class */ (function (_super) {
     });
     return TObjectDefault;
 }(TObject));
+exports.TObjectDefault = TObjectDefault;
 var TTimerInfo = /** @class */ (function (_super) {
     __extends(TTimerInfo, _super);
     function TTimerInfo(nativeObj) {
@@ -8911,6 +9037,7 @@ var TTimerInfo = /** @class */ (function (_super) {
     });
     return TTimerInfo;
 }(TObject));
+exports.TTimerInfo = TTimerInfo;
 var TCalibrationWin = /** @class */ (function (_super) {
     __extends(TCalibrationWin, _super);
     function TCalibrationWin(nativeObj) {
@@ -8924,6 +9051,7 @@ var TCalibrationWin = /** @class */ (function (_super) {
     };
     return TCalibrationWin;
 }(TWindowBase));
+exports.TCalibrationWin = TCalibrationWin;
 var TComboBox = /** @class */ (function (_super) {
     __extends(TComboBox, _super);
     function TComboBox(nativeObj) {
@@ -9015,6 +9143,7 @@ var TComboBox = /** @class */ (function (_super) {
     });
     return TComboBox;
 }(TEdit));
+exports.TComboBox = TComboBox;
 var TImage = /** @class */ (function (_super) {
     __extends(TImage, _super);
     function TImage(nativeObj) {
@@ -9038,6 +9167,7 @@ var TImage = /** @class */ (function (_super) {
     });
     return TImage;
 }(TImageBase));
+exports.TImage = TImage;
 var TOverlay = /** @class */ (function (_super) {
     __extends(TOverlay, _super);
     function TOverlay(nativeObj) {
@@ -9071,6 +9201,7 @@ var TOverlay = /** @class */ (function (_super) {
     });
     return TOverlay;
 }(TWindowBase));
+exports.TOverlay = TOverlay;
 var TPopup = /** @class */ (function (_super) {
     __extends(TPopup, _super);
     function TPopup(nativeObj) {
@@ -9114,6 +9245,7 @@ var TPopup = /** @class */ (function (_super) {
     });
     return TPopup;
 }(TWindowBase));
+exports.TPopup = TPopup;
 var TSpinBox = /** @class */ (function (_super) {
     __extends(TSpinBox, _super);
     function TSpinBox(nativeObj) {
@@ -9127,6 +9259,7 @@ var TSpinBox = /** @class */ (function (_super) {
     };
     return TSpinBox;
 }(TEdit));
+exports.TSpinBox = TSpinBox;
 var TSystemBar = /** @class */ (function (_super) {
     __extends(TSystemBar, _super);
     function TSystemBar(nativeObj) {
@@ -9140,6 +9273,7 @@ var TSystemBar = /** @class */ (function (_super) {
     };
     return TSystemBar;
 }(TWindowBase));
+exports.TSystemBar = TSystemBar;
 var TComboBoxEx = /** @class */ (function (_super) {
     __extends(TComboBoxEx, _super);
     function TComboBoxEx(nativeObj) {
@@ -9150,4 +9284,5 @@ var TComboBoxEx = /** @class */ (function (_super) {
     };
     return TComboBoxEx;
 }(TComboBox));
+exports.TComboBoxEx = TComboBoxEx;
 //# sourceMappingURL=awtk_api.js.map

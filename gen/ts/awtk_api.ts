@@ -1,17 +1,26 @@
 
-function wrap_on_event(func) {
-  return function(ctx, evt) {
+
+declare global {
+    interface Window { Module: any; TBrowser:any}
+}
+
+function wrap_on_event(func:any) {
+  return function(ctx:any, evt:any) {
     return func(evt, ctx);
   }
 }
-function wrap_on_visit(func) {
-  return function(ctx, data) {
+function wrap_on_visit(func:any) {
+  return function(ctx:any, data:any) {
     return func(data, ctx);
   }
 }
-var Module : any = Module || {}
 
-var TBrowser: any = TBrowser || {}
+export function init(w:number, h:number, title:string, isDesktop:boolean) {
+  console.log('init(for compatible)')
+}
+var Module : any = window.Module || {}
+
+var TBrowser: any = window.TBrowser || {}
 
 const emitter_create = Module.cwrap("emitter_create", 
     "number", []);
@@ -4188,7 +4197,7 @@ const system_bar_cast = Module.cwrap("system_bar_cast",
 const combo_box_ex_create = Module.cwrap("combo_box_ex_create", 
     "number", ["number","number","number","number","number"]);
 
-class TEmitter {
+export class TEmitter {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4232,7 +4241,7 @@ class TEmitter {
 
 }
 
-class TPoint {
+export class TPoint {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4240,7 +4249,7 @@ class TPoint {
 
 }
 
-class TPointf {
+export class TPointf {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4248,7 +4257,7 @@ class TPointf {
 
 }
 
-class TRectf {
+export class TRectf {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4272,7 +4281,7 @@ class TRectf {
 
 }
 
-class TRect {
+export class TRect {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4312,7 +4321,7 @@ class TRect {
 
 }
 
-class TBitmap {
+export class TBitmap {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4364,7 +4373,7 @@ class TBitmap {
 
 }
 
-class TObject extends TEmitter {
+export class TObject extends TEmitter {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -4624,7 +4633,7 @@ class TObject extends TEmitter {
 
 }
 
-class TValue {
+export class TValue {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4768,7 +4777,7 @@ class TValue {
 
 }
 
-class TGlobal {
+export class TGlobal {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4800,7 +4809,7 @@ class TGlobal {
 
 }
 
-enum TBidiType {
+export enum TBidiType {
  AUTO = get_BIDI_TYPE_AUTO(),
  LTR = get_BIDI_TYPE_LTR(),
  RTL = get_BIDI_TYPE_RTL(),
@@ -4810,7 +4819,7 @@ enum TBidiType {
  WRTL = get_BIDI_TYPE_WRTL(),
 };
 
-enum TImageDrawType {
+export enum TImageDrawType {
  DEFAULT = get_IMAGE_DRAW_DEFAULT(),
  CENTER = get_IMAGE_DRAW_CENTER(),
  ICON = get_IMAGE_DRAW_ICON(),
@@ -4833,7 +4842,7 @@ enum TImageDrawType {
  REPEAT3_Y = get_IMAGE_DRAW_REPEAT3_Y(),
 };
 
-class TCanvasOffline {
+export class TCanvasOffline {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4841,7 +4850,7 @@ class TCanvasOffline {
 
 }
 
-class TCanvas {
+export class TCanvas {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4977,12 +4986,12 @@ class TCanvas {
 
 }
 
-enum TClipBoardDataType {
+export enum TClipBoardDataType {
  NONE = get_CLIP_BOARD_DATA_TYPE_NONE(),
  TEXT = get_CLIP_BOARD_DATA_TYPE_TEXT(),
 };
 
-class TClipBoard {
+export class TClipBoard {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -4998,7 +5007,7 @@ class TClipBoard {
 
 }
 
-enum TDialogQuitCode {
+export enum TDialogQuitCode {
  NONE = get_DIALOG_QUIT_NONE(),
  OK = get_DIALOG_QUIT_OK(),
  YES = get_DIALOG_QUIT_YES(),
@@ -5007,7 +5016,7 @@ enum TDialogQuitCode {
  OTHER = get_DIALOG_QUIT_OTHER(),
 };
 
-enum TEventType {
+export enum TEventType {
  POINTER_DOWN = get_EVT_POINTER_DOWN(),
  POINTER_DOWN_BEFORE_CHILDREN = get_EVT_POINTER_DOWN_BEFORE_CHILDREN(),
  POINTER_MOVE = get_EVT_POINTER_MOVE(),
@@ -5111,7 +5120,7 @@ enum TEventType {
  DESTROY = get_EVT_DESTROY(),
 };
 
-class TEvent {
+export class TEvent {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -5155,7 +5164,7 @@ class TEvent {
 
 }
 
-class TFontManager {
+export class TFontManager {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -5175,13 +5184,13 @@ class TFontManager {
 
 }
 
-enum TGlyphFormat {
+export enum TGlyphFormat {
  ALPHA = get_GLYPH_FMT_ALPHA(),
  MONO = get_GLYPH_FMT_MONO(),
  RGBA = get_GLYPH_FMT_RGBA(),
 };
 
-class TIdle {
+export class TIdle {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -5201,7 +5210,7 @@ class TIdle {
 
 }
 
-class TImageManager {
+export class TImageManager {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -5221,7 +5230,7 @@ class TImageManager {
 
 }
 
-enum TInputType {
+export enum TInputType {
  TEXT = get_INPUT_TEXT(),
  INT = get_INPUT_INT(),
  UINT = get_INPUT_UINT(),
@@ -5240,7 +5249,7 @@ enum TInputType {
  ASCII = get_INPUT_ASCII(),
 };
 
-class TInputMethod {
+export class TInputMethod {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -5284,7 +5293,7 @@ class TInputMethod {
 
 }
 
-enum TKeyCode {
+export enum TKeyCode {
  KEY_RETURN = get_TK_KEY_RETURN(),
  KEY_ESCAPE = get_TK_KEY_ESCAPE(),
  KEY_BACKSPACE = get_TK_KEY_BACKSPACE(),
@@ -5419,7 +5428,7 @@ enum TKeyCode {
  KEY_WHEEL = get_TK_KEY_WHEEL(),
 };
 
-class TLocaleInfo {
+export class TLocaleInfo {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -5443,7 +5452,7 @@ class TLocaleInfo {
 
 }
 
-enum TStyleId {
+export enum TStyleId {
  BG_COLOR = get_STYLE_ID_BG_COLOR(),
  FG_COLOR = get_STYLE_ID_FG_COLOR(),
  MASK_COLOR = get_STYLE_ID_MASK_COLOR(),
@@ -5489,7 +5498,7 @@ enum TStyleId {
  FEEDBACK = get_STYLE_ID_FEEDBACK(),
 };
 
-class TStyle {
+export class TStyle {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -5537,7 +5546,7 @@ class TStyle {
 
 }
 
-class TTheme {
+export class TTheme {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -5549,7 +5558,7 @@ class TTheme {
 
 }
 
-class TTimer {
+export class TTimer {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -5585,27 +5594,27 @@ class TTimer {
 
 }
 
-enum TAlignV {
+export enum TAlignV {
  NONE = get_ALIGN_V_NONE(),
  MIDDLE = get_ALIGN_V_MIDDLE(),
  TOP = get_ALIGN_V_TOP(),
  BOTTOM = get_ALIGN_V_BOTTOM(),
 };
 
-enum TAlignH {
+export enum TAlignH {
  NONE = get_ALIGN_H_NONE(),
  CENTER = get_ALIGN_H_CENTER(),
  LEFT = get_ALIGN_H_LEFT(),
  RIGHT = get_ALIGN_H_RIGHT(),
 };
 
-enum TAppType {
+export enum TAppType {
  MOBILE = get_APP_MOBILE(),
  SIMULATOR = get_APP_SIMULATOR(),
  DESKTOP = get_APP_DESKTOP(),
 };
 
-enum TBitmapFormat {
+export enum TBitmapFormat {
  NONE = get_BITMAP_FMT_NONE(),
  RGBA8888 = get_BITMAP_FMT_RGBA8888(),
  ABGR8888 = get_BITMAP_FMT_ABGR8888(),
@@ -5619,7 +5628,7 @@ enum TBitmapFormat {
  MONO = get_BITMAP_FMT_MONO(),
 };
 
-enum TBitmapFlag {
+export enum TBitmapFlag {
  NONE = get_BITMAP_FLAG_NONE(),
  OPAQUE = get_BITMAP_FLAG_OPAQUE(),
  IMMUTABLE = get_BITMAP_FLAG_IMMUTABLE(),
@@ -5628,7 +5637,7 @@ enum TBitmapFlag {
  PREMULTI_ALPHA = get_BITMAP_FLAG_PREMULTI_ALPHA(),
 };
 
-class TVgcanvas {
+export class TVgcanvas {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -5868,19 +5877,19 @@ class TVgcanvas {
 
 }
 
-enum TVgcanvasLineCap {
+export enum TVgcanvasLineCap {
  ROUND = get_VGCANVAS_LINE_CAP_ROUND(),
  SQUARE = get_VGCANVAS_LINE_CAP_SQUARE(),
  BUTT = get_VGCANVAS_LINE_CAP_BUTT(),
 };
 
-enum TVgcanvasLineJoin {
+export enum TVgcanvasLineJoin {
  ROUND = get_VGCANVAS_LINE_JOIN_ROUND(),
  BEVEL = get_VGCANVAS_LINE_JOIN_BEVEL(),
  MITTER = get_VGCANVAS_LINE_JOIN_MITTER(),
 };
 
-enum TWidgetProp {
+export enum TWidgetProp {
  EXEC = get_WIDGET_PROP_EXEC(),
  X = get_WIDGET_PROP_X(),
  Y = get_WIDGET_PROP_Y(),
@@ -6041,7 +6050,7 @@ enum TWidgetProp {
  MOVE_FOCUS_RIGHT_KEY = get_WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY(),
 };
 
-enum TWidgetType {
+export enum TWidgetType {
  NONE = get_WIDGET_TYPE_NONE(),
  WINDOW_MANAGER = get_WIDGET_TYPE_WINDOW_MANAGER(),
  NORMAL_WINDOW = get_WIDGET_TYPE_NORMAL_WINDOW(),
@@ -6099,7 +6108,7 @@ enum TWidgetType {
  CALIBRATION_WIN = get_WIDGET_TYPE_CALIBRATION_WIN(),
 };
 
-enum TWindowStage {
+export enum TWindowStage {
  NONE = get_WINDOW_STAGE_NONE(),
  LOADED = get_WINDOW_STAGE_LOADED(),
  CREATED = get_WINDOW_STAGE_CREATED(),
@@ -6108,13 +6117,13 @@ enum TWindowStage {
  SUSPEND = get_WINDOW_STAGE_SUSPEND(),
 };
 
-enum TWindowClosable {
+export enum TWindowClosable {
  YES = get_WINDOW_CLOSABLE_YES(),
  NO = get_WINDOW_CLOSABLE_NO(),
  CONFIRM = get_WINDOW_CLOSABLE_CONFIRM(),
 };
 
-enum TWidgetState {
+export enum TWidgetState {
  NONE = get_WIDGET_STATE_NONE(),
  NORMAL = get_WIDGET_STATE_NORMAL(),
  CHANGED = get_WIDGET_STATE_CHANGED(),
@@ -6140,7 +6149,7 @@ enum TWidgetState {
  FOCUSED_OF_ACTIVE = get_WIDGET_STATE_FOCUSED_OF_ACTIVE(),
 };
 
-enum TWidgetCursor {
+export enum TWidgetCursor {
  CURSOR_DEFAULT = get_WIDGET_CURSOR_DEFAULT(),
  CURSOR_EDIT = get_WIDGET_CURSOR_EDIT(),
  CURSOR_HAND = get_WIDGET_CURSOR_HAND(),
@@ -6154,7 +6163,7 @@ enum TWidgetCursor {
  CURSOR_SIZEALL = get_WIDGET_CURSOR_SIZEALL(),
 };
 
-class TWidget {
+export class TWidget {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -6706,7 +6715,7 @@ class TWidget {
 
 }
 
-class TAppConf {
+export class TAppConf {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -6774,7 +6783,7 @@ class TAppConf {
 
 }
 
-class TExtWidgets {
+export class TExtWidgets {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -6786,7 +6795,7 @@ class TExtWidgets {
 
 }
 
-enum TIndicatorDefaultPaint {
+export enum TIndicatorDefaultPaint {
  AUTO = get_INDICATOR_DEFAULT_PAINT_AUTO(),
  FILL_DOT = get_INDICATOR_DEFAULT_PAINT_FILL_DOT(),
  STROKE_DOT = get_INDICATOR_DEFAULT_PAINT_STROKE_DOT(),
@@ -6794,13 +6803,13 @@ enum TIndicatorDefaultPaint {
  STROKE_RECT = get_INDICATOR_DEFAULT_PAINT_STROKE_RECT(),
 };
 
-enum TVpageEvent {
+export enum TVpageEvent {
  VPAGE_WILL_OPEN = get_EVT_VPAGE_WILL_OPEN(),
  VPAGE_OPEN = get_EVT_VPAGE_OPEN(),
  VPAGE_CLOSE = get_EVT_VPAGE_CLOSE(),
 };
 
-enum TAssetType {
+export enum TAssetType {
  NONE = get_ASSET_TYPE_NONE(),
  FONT = get_ASSET_TYPE_FONT(),
  IMAGE = get_ASSET_TYPE_IMAGE(),
@@ -6813,7 +6822,7 @@ enum TAssetType {
  DATA = get_ASSET_TYPE_DATA(),
 };
 
-class TAssetInfo {
+export class TAssetInfo {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -6853,7 +6862,7 @@ class TAssetInfo {
 
 }
 
-class TColor {
+export class TColor {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -6905,7 +6914,7 @@ class TColor {
 
 }
 
-class TDateTime {
+export class TDateTime {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -7009,7 +7018,7 @@ class TDateTime {
 
 }
 
-enum TEasingType {
+export enum TEasingType {
  LINEAR = get_EASING_LINEAR(),
  QUADRATIC_IN = get_EASING_QUADRATIC_IN(),
  QUADRATIC_OUT = get_EASING_QUADRATIC_OUT(),
@@ -7036,7 +7045,7 @@ enum TEasingType {
  BOUNCE_INOUT = get_EASING_BOUNCE_INOUT(),
 };
 
-class TIdleManager {
+export class TIdleManager {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -7044,7 +7053,7 @@ class TIdleManager {
 
 }
 
-enum TMIME_TYPE {
+export enum TMIME_TYPE {
  APPLICATION_ENVOY = get_MIME_TYPE_APPLICATION_ENVOY(),
  APPLICATION_FRACTALS = get_MIME_TYPE_APPLICATION_FRACTALS(),
  APPLICATION_FUTURESPLASH = get_MIME_TYPE_APPLICATION_FUTURESPLASH(),
@@ -7149,7 +7158,7 @@ enum TMIME_TYPE {
  VIDEO_X_MSVIDEO = get_MIME_TYPE_VIDEO_X_MSVIDEO(),
 };
 
-class TNamedValue {
+export class TNamedValue {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -7185,7 +7194,7 @@ class TNamedValue {
 
 }
 
-enum TObjectCmd {
+export enum TObjectCmd {
  SAVE = get_OBJECT_CMD_SAVE(),
  RELOAD = get_OBJECT_CMD_RELOAD(),
  MOVE_UP = get_OBJECT_CMD_MOVE_UP(),
@@ -7198,12 +7207,12 @@ enum TObjectCmd {
  EDIT = get_OBJECT_CMD_EDIT(),
 };
 
-enum TObjectProp {
+export enum TObjectProp {
  SIZE = get_OBJECT_PROP_SIZE(),
  CHECKED = get_OBJECT_PROP_CHECKED(),
 };
 
-class TRlog {
+export class TRlog {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -7219,7 +7228,7 @@ class TRlog {
 
 }
 
-class TTimeNow {
+export class TTimeNow {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -7239,7 +7248,7 @@ class TTimeNow {
 
 }
 
-class TTimerManager {
+export class TTimerManager {
  public nativeObj;
  constructor(nativeObj) {
    this.nativeObj = nativeObj;
@@ -7247,7 +7256,7 @@ class TTimerManager {
 
 }
 
-enum TRet {
+export enum TRet {
  OK = get_RET_OK(),
  OOM = get_RET_OOM(),
  FAIL = get_RET_FAIL(),
@@ -7272,7 +7281,7 @@ enum TRet {
  NOT_MODIFIED = get_RET_NOT_MODIFIED(),
 };
 
-enum TValueType {
+export enum TValueType {
  INVALID = get_VALUE_TYPE_INVALID(),
  BOOL = get_VALUE_TYPE_BOOL(),
  INT8 = get_VALUE_TYPE_INT8(),
@@ -7296,7 +7305,7 @@ enum TValueType {
  TOKEN = get_VALUE_TYPE_TOKEN(),
 };
 
-class TAssetsManager extends TEmitter {
+export class TAssetsManager extends TEmitter {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7324,7 +7333,7 @@ class TAssetsManager extends TEmitter {
 
 }
 
-class TWheelEvent extends TEvent {
+export class TWheelEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7352,7 +7361,7 @@ class TWheelEvent extends TEvent {
 
 }
 
-class TOrientationEvent extends TEvent {
+export class TOrientationEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7368,7 +7377,7 @@ class TOrientationEvent extends TEvent {
 
 }
 
-class TValueChangeEvent extends TEvent {
+export class TValueChangeEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7380,7 +7389,7 @@ class TValueChangeEvent extends TEvent {
 
 }
 
-class TPointerEvent extends TEvent {
+export class TPointerEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7428,7 +7437,7 @@ class TPointerEvent extends TEvent {
 
 }
 
-class TKeyEvent extends TEvent {
+export class TKeyEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7492,7 +7501,7 @@ class TKeyEvent extends TEvent {
 
 }
 
-class TPaintEvent extends TEvent {
+export class TPaintEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7508,7 +7517,7 @@ class TPaintEvent extends TEvent {
 
 }
 
-class TWindowEvent extends TEvent {
+export class TWindowEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7524,7 +7533,7 @@ class TWindowEvent extends TEvent {
 
 }
 
-class TMultiGestureEvent extends TEvent {
+export class TMultiGestureEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7552,7 +7561,7 @@ class TMultiGestureEvent extends TEvent {
 
 }
 
-class TImageBase extends TWidget {
+export class TImageBase extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7628,7 +7637,7 @@ class TImageBase extends TWidget {
 
 }
 
-class TStyleMutable extends TStyle {
+export class TStyleMutable extends TStyle {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7656,7 +7665,7 @@ class TStyleMutable extends TStyle {
 
 }
 
-class TWindowBase extends TWidget {
+export class TWindowBase extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7744,7 +7753,7 @@ class TWindowBase extends TWidget {
 
 }
 
-class TWindowManager extends TWidget {
+export class TWindowManager extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7828,7 +7837,7 @@ class TWindowManager extends TWidget {
 
 }
 
-class TCanvasWidget extends TWidget {
+export class TCanvasWidget extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7844,7 +7853,7 @@ class TCanvasWidget extends TWidget {
 
 }
 
-class TColorComponent extends TWidget {
+export class TColorComponent extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7860,7 +7869,7 @@ class TColorComponent extends TWidget {
 
 }
 
-class TColorPicker extends TWidget {
+export class TColorPicker extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7884,7 +7893,7 @@ class TColorPicker extends TWidget {
 
 }
 
-class TDraggable extends TWidget {
+export class TDraggable extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -7956,7 +7965,7 @@ class TDraggable extends TWidget {
 
 }
 
-class TFileBrowserView extends TWidget {
+export class TFileBrowserView extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8044,7 +8053,7 @@ class TFileBrowserView extends TWidget {
 
 }
 
-class TFileChooser extends TEmitter {
+export class TFileChooser extends TEmitter {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8096,7 +8105,7 @@ class TFileChooser extends TEmitter {
 
 }
 
-class TGaugePointer extends TWidget {
+export class TGaugePointer extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8140,7 +8149,7 @@ class TGaugePointer extends TWidget {
 
 }
 
-class TGauge extends TWidget {
+export class TGauge extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8172,7 +8181,7 @@ class TGauge extends TWidget {
 
 }
 
-class TImageAnimation extends TWidget {
+export class TImageAnimation extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8300,7 +8309,7 @@ class TImageAnimation extends TWidget {
 
 }
 
-class TImageValue extends TWidget {
+export class TImageValue extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8364,7 +8373,7 @@ class TImageValue extends TWidget {
 
 }
 
-class TCandidates extends TWidget {
+export class TCandidates extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8412,7 +8421,7 @@ class TCandidates extends TWidget {
 
 }
 
-class TLangIndicator extends TWidget {
+export class TLangIndicator extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8436,7 +8445,7 @@ class TLangIndicator extends TWidget {
 
 }
 
-class TLineNumber extends TWidget {
+export class TLineNumber extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8468,7 +8477,7 @@ class TLineNumber extends TWidget {
 
 }
 
-class TMledit extends TWidget {
+export class TMledit extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8596,7 +8605,7 @@ class TMledit extends TWidget {
 
 }
 
-class TProgressCircle extends TWidget {
+export class TProgressCircle extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8676,7 +8685,7 @@ class TProgressCircle extends TWidget {
 
 }
 
-class TRichTextView extends TWidget {
+export class TRichTextView extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8692,7 +8701,7 @@ class TRichTextView extends TWidget {
 
 }
 
-class TRichText extends TWidget {
+export class TRichText extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8724,7 +8733,7 @@ class TRichText extends TWidget {
 
 }
 
-class THscrollLabel extends TWidget {
+export class THscrollLabel extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8816,7 +8825,7 @@ class THscrollLabel extends TWidget {
 
 }
 
-class TListItem extends TWidget {
+export class TListItem extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8832,7 +8841,7 @@ class TListItem extends TWidget {
 
 }
 
-class TListViewH extends TWidget {
+export class TListViewH extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8864,7 +8873,7 @@ class TListViewH extends TWidget {
 
 }
 
-class TListView extends TWidget {
+export class TListView extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8916,7 +8925,7 @@ class TListView extends TWidget {
 
 }
 
-class TScrollBar extends TWidget {
+export class TScrollBar extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -8992,7 +9001,7 @@ class TScrollBar extends TWidget {
 
 }
 
-class TScrollView extends TWidget {
+export class TScrollView extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9100,7 +9109,7 @@ class TScrollView extends TWidget {
 
 }
 
-class TSlideMenu extends TWidget {
+export class TSlideMenu extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9140,7 +9149,7 @@ class TSlideMenu extends TWidget {
 
 }
 
-class TSlideIndicator extends TWidget {
+export class TSlideIndicator extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9240,7 +9249,7 @@ class TSlideIndicator extends TWidget {
 
 }
 
-class TSlideView extends TWidget {
+export class TSlideView extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9300,7 +9309,7 @@ class TSlideView extends TWidget {
 
 }
 
-class TSwitch extends TWidget {
+export class TSwitch extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9328,7 +9337,7 @@ class TSwitch extends TWidget {
 
 }
 
-class TTextSelector extends TWidget {
+export class TTextSelector extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9444,7 +9453,7 @@ class TTextSelector extends TWidget {
 
 }
 
-class TTimeClock extends TWidget {
+export class TTimeClock extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9560,7 +9569,7 @@ class TTimeClock extends TWidget {
 
 }
 
-class TVpage extends TWidget {
+export class TVpage extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9592,7 +9601,7 @@ class TVpage extends TWidget {
 
 }
 
-class TPropChangeEvent extends TEvent {
+export class TPropChangeEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9612,7 +9621,7 @@ class TPropChangeEvent extends TEvent {
 
 }
 
-class TProgressEvent extends TEvent {
+export class TProgressEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9628,7 +9637,7 @@ class TProgressEvent extends TEvent {
 
 }
 
-class TDoneEvent extends TEvent {
+export class TDoneEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9644,7 +9653,7 @@ class TDoneEvent extends TEvent {
 
 }
 
-class TErrorEvent extends TEvent {
+export class TErrorEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9664,7 +9673,7 @@ class TErrorEvent extends TEvent {
 
 }
 
-class TCmdExecEvent extends TEvent {
+export class TCmdExecEvent extends TEvent {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9692,7 +9701,7 @@ class TCmdExecEvent extends TEvent {
 
 }
 
-class TAppBar extends TWidget {
+export class TAppBar extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9708,7 +9717,7 @@ class TAppBar extends TWidget {
 
 }
 
-class TButtonGroup extends TWidget {
+export class TButtonGroup extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9724,7 +9733,7 @@ class TButtonGroup extends TWidget {
 
 }
 
-class TButton extends TWidget {
+export class TButton extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9764,7 +9773,7 @@ class TButton extends TWidget {
 
 }
 
-class TCheckButton extends TWidget {
+export class TCheckButton extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9792,7 +9801,7 @@ class TCheckButton extends TWidget {
 
 }
 
-class TClipView extends TWidget {
+export class TClipView extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9808,7 +9817,7 @@ class TClipView extends TWidget {
 
 }
 
-class TColorTile extends TWidget {
+export class TColorTile extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9844,7 +9853,7 @@ class TColorTile extends TWidget {
 
 }
 
-class TColumn extends TWidget {
+export class TColumn extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9860,7 +9869,7 @@ class TColumn extends TWidget {
 
 }
 
-class TComboBoxItem extends TWidget {
+export class TComboBoxItem extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9892,7 +9901,7 @@ class TComboBoxItem extends TWidget {
 
 }
 
-class TDialogClient extends TWidget {
+export class TDialogClient extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9908,7 +9917,7 @@ class TDialogClient extends TWidget {
 
 }
 
-class TDialogTitle extends TWidget {
+export class TDialogTitle extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9924,7 +9933,7 @@ class TDialogTitle extends TWidget {
 
 }
 
-class TDigitClock extends TWidget {
+export class TDigitClock extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9948,7 +9957,7 @@ class TDigitClock extends TWidget {
 
 }
 
-class TDragger extends TWidget {
+export class TDragger extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -9984,7 +9993,7 @@ class TDragger extends TWidget {
 
 }
 
-class TEdit extends TWidget {
+export class TEdit extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10156,7 +10165,7 @@ class TEdit extends TWidget {
 
 }
 
-class TGridItem extends TWidget {
+export class TGridItem extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10172,7 +10181,7 @@ class TGridItem extends TWidget {
 
 }
 
-class TGrid extends TWidget {
+export class TGrid extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10188,7 +10197,7 @@ class TGrid extends TWidget {
 
 }
 
-class TGroupBox extends TWidget {
+export class TGroupBox extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10204,7 +10213,7 @@ class TGroupBox extends TWidget {
 
 }
 
-class TLabel extends TWidget {
+export class TLabel extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10256,7 +10265,7 @@ class TLabel extends TWidget {
 
 }
 
-class TPages extends TWidget {
+export class TPages extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10284,7 +10293,7 @@ class TPages extends TWidget {
 
 }
 
-class TProgressBar extends TWidget {
+export class TProgressBar extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10352,7 +10361,7 @@ class TProgressBar extends TWidget {
 
 }
 
-class TRow extends TWidget {
+export class TRow extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10368,7 +10377,7 @@ class TRow extends TWidget {
 
 }
 
-class TSlider extends TWidget {
+export class TSlider extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10444,7 +10453,7 @@ class TSlider extends TWidget {
 
 }
 
-class TTabButtonGroup extends TWidget {
+export class TTabButtonGroup extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10476,7 +10485,7 @@ class TTabButtonGroup extends TWidget {
 
 }
 
-class TTabButton extends TWidget {
+export class TTabButton extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10524,7 +10533,7 @@ class TTabButton extends TWidget {
 
 }
 
-class TTabControl extends TWidget {
+export class TTabControl extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10540,7 +10549,7 @@ class TTabControl extends TWidget {
 
 }
 
-class TView extends TWidget {
+export class TView extends TWidget {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10564,7 +10573,7 @@ class TView extends TWidget {
 
 }
 
-class TDialog extends TWindowBase {
+export class TDialog extends TWindowBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10636,7 +10645,7 @@ class TDialog extends TWindowBase {
 
 }
 
-class TNativeWindow extends TObject {
+export class TNativeWindow extends TObject {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10680,7 +10689,7 @@ class TNativeWindow extends TObject {
 
 }
 
-class TWindow extends TWindowBase {
+export class TWindow extends TWindowBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10728,7 +10737,7 @@ class TWindow extends TWindowBase {
 
 }
 
-class TGifImage extends TImageBase {
+export class TGifImage extends TImageBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10756,7 +10765,7 @@ class TGifImage extends TImageBase {
 
 }
 
-class TKeyboard extends TWindowBase {
+export class TKeyboard extends TWindowBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10772,7 +10781,7 @@ class TKeyboard extends TWindowBase {
 
 }
 
-class TMutableImage extends TImageBase {
+export class TMutableImage extends TImageBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10784,7 +10793,7 @@ class TMutableImage extends TImageBase {
 
 }
 
-class TSvgImage extends TImageBase {
+export class TSvgImage extends TImageBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10804,7 +10813,7 @@ class TSvgImage extends TImageBase {
 
 }
 
-class TIdleInfo extends TObject {
+export class TIdleInfo extends TObject {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10828,7 +10837,7 @@ class TIdleInfo extends TObject {
 
 }
 
-class TObjectArray extends TObject {
+export class TObjectArray extends TObject {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10876,7 +10885,7 @@ class TObjectArray extends TObject {
 
 }
 
-class TObjectDefault extends TObject {
+export class TObjectDefault extends TObject {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10900,7 +10909,7 @@ class TObjectDefault extends TObject {
 
 }
 
-class TTimerInfo extends TObject {
+export class TTimerInfo extends TObject {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10928,7 +10937,7 @@ class TTimerInfo extends TObject {
 
 }
 
-class TCalibrationWin extends TWindowBase {
+export class TCalibrationWin extends TWindowBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -10944,7 +10953,7 @@ class TCalibrationWin extends TWindowBase {
 
 }
 
-class TComboBox extends TEdit {
+export class TComboBox extends TEdit {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -11032,7 +11041,7 @@ class TComboBox extends TEdit {
 
 }
 
-class TImage extends TImageBase {
+export class TImage extends TImageBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -11056,7 +11065,7 @@ class TImage extends TImageBase {
 
 }
 
-class TOverlay extends TWindowBase {
+export class TOverlay extends TWindowBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -11088,7 +11097,7 @@ class TOverlay extends TWindowBase {
 
 }
 
-class TPopup extends TWindowBase {
+export class TPopup extends TWindowBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -11128,7 +11137,7 @@ class TPopup extends TWindowBase {
 
 }
 
-class TSpinBox extends TEdit {
+export class TSpinBox extends TEdit {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -11144,7 +11153,7 @@ class TSpinBox extends TEdit {
 
 }
 
-class TSystemBar extends TWindowBase {
+export class TSystemBar extends TWindowBase {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
@@ -11160,7 +11169,7 @@ class TSystemBar extends TWindowBase {
 
 }
 
-class TComboBoxEx extends TComboBox {
+export class TComboBoxEx extends TComboBox {
  public nativeObj;
  constructor(nativeObj) {
    super(nativeObj);
