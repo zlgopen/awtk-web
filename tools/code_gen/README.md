@@ -6,10 +6,18 @@
 node gen_c.js
 ```
 
-## gen\_ts
+## gen\_export
 
-生成typescript接口
+生成export接口
 
 ```
-node gen_ts.js
+node gen_export.js
+```
+
+## gen\_ts
+
+生成typescript接口的代码生成器放到了awtk-binding中，运行下面的脚本拷贝即可：
+
+```
+cp ../../../awtk-binding/tools/code_gen/js/output/awtk_api.ts ../../gen/ts
 ```
