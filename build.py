@@ -4,17 +4,15 @@ import glob
 import json
 import shutil
 
-
 def join_path(root, subdir):
     return os.path.normpath(os.path.join(root, subdir))
-
-
+  
 WEB_ROOT = os.path.abspath('webroot')
 AWTK_ROOT_DIR = os.path.abspath('../awtk')
 os.environ['AWTK_ROOT_DIR'] = AWTK_ROOT_DIR
 sys.path.append(join_path(AWTK_ROOT_DIR, 'staticcheck/common'))
-
 import awtk_files as awtk
+
 
 def mkdir_if_not_exist(fullpath):
     if os.path.exists(fullpath):
@@ -28,7 +26,8 @@ def copy_folder(src, dst):
     if os.path.exists(dst):
         shutil.rmtree(dst)
     shutil.copytree(src, dst)
-    print(src + "=>" + dst);
+    print(src + "=>" + dst)
+
 
 def copy_file(src, dst):
     print(src + '=>' + dst)
@@ -74,18 +73,20 @@ def config_get_src_assets_dir(src_app_root, config):
     else:
         return join_path(src_app_root, "design")
 
+
 def config_get_target_project_json(config):
     return join_path(config_get_app_target_dir(config), "project.json")
 
 
 def config_get_src_project_json(src_app_root, config):
-    return join_path(src_app_root, 'project.json');
+    return join_path(src_app_root, 'project.json')
+
 
 def prepare_update_res(config):
     src = 'scripts'
     dst = join_path(config_get_app_target_dir(config), 'scripts')
 
-    copy_folder(src, dst);
+    copy_folder(src, dst)
 
 
 def update_assets(config):
@@ -116,12 +117,13 @@ def build_app_js(config):
     app_files = []
     sources = config['sources']
     output = join_path(config_get_js_dir(config), 'app.js')
-    if(is_js_app(config)):
+    if(need_awtk_api_js(config)):
         app_files.append('gen/ts/awtk_api.js')
     for f in sources:
         if f.endswith('.js'):
             app_files = app_files + glob.glob(join_path(src_app_root, f))
     merge_files(app_files, output)
+    print(app_files, output)
 
 
 def build_awtk_web_js(config):
@@ -152,6 +154,16 @@ def is_js_app(config):
     return config['app_type'] == 'js'
 
 
+def is_reactjs(config):
+    if 'react' in config:
+        return config['react']
+    return False
+
+
+def need_awtk_api_js(config):
+    return is_js_app(config) and not is_reactjs(config)
+
+
 def prepare_app_target_dir(config):
     js_dir = config_get_js_dir(config)
     mkdir_if_not_exist(js_dir)
@@ -171,10 +183,12 @@ def copy_assets(src_app_root, config):
     src_assets_dir = config_get_src_assets_dir(src_app_root, config)
     copy_folder(src_assets_dir, target_assets_dir)
 
+
 def copy_project_json(src_app_root, config):
     dst = config_get_target_project_json(config)
     src = config_get_src_project_json(src_app_root, config)
     shutil.copyfile(src, dst)
+
 
 def build_app_assets(src_app_root, config):
     copy_assets(src_app_root, config)
@@ -226,7 +240,7 @@ def build_awtk_js(src_app_root, config, flags):
     for f in files:
         all_files.append(os.path.normpath(os.path.abspath(f)))
 
-    includes_path = ' -I' + join_path(app_target_dir, 'res') + ' ';
+    includes_path = ' -I' + join_path(app_target_dir, 'res') + ' '
 
     if 'includes' in config:
         includes_files = config['includes']
@@ -267,6 +281,7 @@ def show_usage():
     print('  awtk_js:      build awtk_js only.')
     print('  awtk_web_js:  build awtk_web_js only.')
     print('  js:           build awtk_js and awtk_web_js only.')
+    print('  app:          build app.js only(js app).')
     print('  all:          same as debug. build debug version.')
     print('=============================================================')
 
@@ -319,6 +334,8 @@ with open(filename, 'r') as load_f:
         build_awtk_js(src_app_root, config, '')
     elif action == 'awtk_web_js':
         build_awtk_web_js(config)
+    elif action == 'app':
+        build_app_js(config)
     elif action == 'js':
         build_awtk_web_js(config)
         build_awtk_js(src_app_root, config, '')
