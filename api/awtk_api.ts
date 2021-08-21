@@ -21,23 +21,23 @@ export function init(w:number, h:number, title:string, isDesktop:boolean) {
   console.log('init(for compatible)')
 }
 const emitter_create = Module.cwrap("emitter_create", 
-    "TEmitter", []);
+    "number", []);
 const emitter_dispatch = Module.cwrap("emitter_dispatch", 
-    "TRet", ["TEmitter","TEvent"]);
+    "number", ["number","number"]);
 const emitter_dispatch_simple_event = Module.cwrap("emitter_dispatch_simple_event", 
-    "TRet", ["TEmitter","number"]);
+    "number", ["number","number"]);
 const emitter_on = Module.cwrap("emitter_on", 
-    "number", ["TEmitter","TEventType","Function","any"]);
+    "number", ["number","number","number","number"]);
 const emitter_off = Module.cwrap("emitter_off", 
-    "TRet", ["TEmitter","number"]);
+    "number", ["number","number"]);
 const emitter_enable = Module.cwrap("emitter_enable", 
-    "TRet", ["TEmitter"]);
+    "number", ["number"]);
 const emitter_disable = Module.cwrap("emitter_disable", 
-    "TRet", ["TEmitter"]);
+    "number", ["number"]);
 const emitter_destroy = Module.cwrap("emitter_destroy", 
-    "TRet", ["TEmitter"]);
+    "number", ["number"]);
 const emitter_cast = Module.cwrap("emitter_cast", 
-    "TEmitter", ["TEmitter"]);
+    "number", ["number"]);
 const rectf_t_get_prop_x = Module.cwrap("rectf_t_get_prop_x", 
     "number", ["number"]);
 const rectf_t_get_prop_y = Module.cwrap("rectf_t_get_prop_y", 
@@ -47,13 +47,13 @@ const rectf_t_get_prop_w = Module.cwrap("rectf_t_get_prop_w",
 const rectf_t_get_prop_h = Module.cwrap("rectf_t_get_prop_h", 
     "number", ["number"]);
 const rect_create = Module.cwrap("rect_create", 
-    "TRect", ["number","number","number","number"]);
+    "number", ["number","number","number","number"]);
 const rect_set = Module.cwrap("rect_set", 
-    "TRect", ["TRect","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const rect_cast = Module.cwrap("rect_cast", 
-    "TRect", ["TRect"]);
+    "number", ["number"]);
 const rect_destroy = Module.cwrap("rect_destroy", 
-    "TRet", ["TRect"]);
+    "number", ["number"]);
 const rect_t_get_prop_x = Module.cwrap("rect_t_get_prop_x", 
     "number", ["number"]);
 const rect_t_get_prop_y = Module.cwrap("rect_t_get_prop_y", 
@@ -63,15 +63,15 @@ const rect_t_get_prop_w = Module.cwrap("rect_t_get_prop_w",
 const rect_t_get_prop_h = Module.cwrap("rect_t_get_prop_h", 
     "number", ["number"]);
 const bitmap_create = Module.cwrap("bitmap_create", 
-    "TBitmap", []);
+    "number", []);
 const bitmap_create_ex = Module.cwrap("bitmap_create_ex", 
-    "TBitmap", ["number","number","number","TBitmapFormat"]);
+    "number", ["number","number","number","number"]);
 const bitmap_get_bpp = Module.cwrap("bitmap_get_bpp", 
-    "number", ["TBitmap"]);
+    "number", ["number"]);
 const bitmap_destroy_with_self = Module.cwrap("bitmap_destroy_with_self", 
-    "TRet", ["TBitmap"]);
+    "number", ["number"]);
 const bitmap_get_bpp_of_format = Module.cwrap("bitmap_get_bpp_of_format", 
-    "number", ["TBitmapFormat"]);
+    "number", ["number"]);
 const bitmap_t_get_prop_w = Module.cwrap("bitmap_t_get_prop_w", 
     "number", ["number"]);
 const bitmap_t_get_prop_h = Module.cwrap("bitmap_t_get_prop_h", 
@@ -85,319 +85,319 @@ const bitmap_t_get_prop_format = Module.cwrap("bitmap_t_get_prop_format",
 const bitmap_t_get_prop_name = Module.cwrap("bitmap_t_get_prop_name", 
     "string", ["number"]);
 const object_unref = Module.cwrap("object_unref", 
-    "TRet", ["TObject"]);
+    "number", ["number"]);
 const object_ref = Module.cwrap("object_ref", 
-    "TObject", ["TObject"]);
+    "number", ["number"]);
 const object_get_type = Module.cwrap("object_get_type", 
-    "string", ["TObject"]);
+    "string", ["number"]);
 const object_get_desc = Module.cwrap("object_get_desc", 
-    "string", ["TObject"]);
+    "string", ["number"]);
 const object_get_size = Module.cwrap("object_get_size", 
-    "number", ["TObject"]);
+    "number", ["number"]);
 const object_is_collection = Module.cwrap("object_is_collection", 
-    "boolean", ["TObject"]);
+    "number", ["number"]);
 const object_set_name = Module.cwrap("object_set_name", 
-    "TRet", ["TObject","string"]);
+    "number", ["number","string"]);
 const object_compare = Module.cwrap("object_compare", 
-    "number", ["TObject","TObject"]);
+    "number", ["number","number"]);
 const object_get_prop = Module.cwrap("object_get_prop", 
-    "TRet", ["TObject","string","TValue"]);
+    "number", ["number","string","number"]);
 const object_get_prop_str = Module.cwrap("object_get_prop_str", 
-    "string", ["TObject","string"]);
+    "string", ["number","string"]);
 const object_get_prop_pointer = Module.cwrap("object_get_prop_pointer", 
-    "any", ["TObject","string"]);
+    "number", ["number","string"]);
 const object_get_prop_object = Module.cwrap("object_get_prop_object", 
-    "TObject", ["TObject","string"]);
+    "number", ["number","string"]);
 const object_get_prop_int = Module.cwrap("object_get_prop_int", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_get_prop_bool = Module.cwrap("object_get_prop_bool", 
-    "boolean", ["TObject","string","boolean"]);
+    "number", ["number","string","number"]);
 const object_get_prop_float = Module.cwrap("object_get_prop_float", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_get_prop_double = Module.cwrap("object_get_prop_double", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_remove_prop = Module.cwrap("object_remove_prop", 
-    "TRet", ["TObject","string"]);
+    "number", ["number","string"]);
 const object_set_prop = Module.cwrap("object_set_prop", 
-    "TRet", ["TObject","string","TValue"]);
+    "number", ["number","string","number"]);
 const object_set_prop_str = Module.cwrap("object_set_prop_str", 
-    "TRet", ["TObject","string","string"]);
+    "number", ["number","string","string"]);
 const object_set_prop_object = Module.cwrap("object_set_prop_object", 
-    "TRet", ["TObject","string","TObject"]);
+    "number", ["number","string","number"]);
 const object_set_prop_int = Module.cwrap("object_set_prop_int", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_bool = Module.cwrap("object_set_prop_bool", 
-    "TRet", ["TObject","string","boolean"]);
+    "number", ["number","string","number"]);
 const object_set_prop_float = Module.cwrap("object_set_prop_float", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_double = Module.cwrap("object_set_prop_double", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_copy_prop = Module.cwrap("object_copy_prop", 
-    "TRet", ["TObject","TObject","string"]);
+    "number", ["number","number","string"]);
 const object_has_prop = Module.cwrap("object_has_prop", 
-    "boolean", ["TObject","string"]);
+    "number", ["number","string"]);
 const object_eval = Module.cwrap("object_eval", 
-    "TRet", ["TObject","string","TValue"]);
+    "number", ["number","string","number"]);
 const object_can_exec = Module.cwrap("object_can_exec", 
-    "boolean", ["TObject","string","string"]);
+    "number", ["number","string","string"]);
 const object_exec = Module.cwrap("object_exec", 
-    "TRet", ["TObject","string","string"]);
+    "number", ["number","string","string"]);
 const object_notify_changed = Module.cwrap("object_notify_changed", 
-    "TRet", ["TObject"]);
+    "number", ["number"]);
 const object_has_prop_by_path = Module.cwrap("object_has_prop_by_path", 
-    "boolean", ["TObject","string"]);
+    "number", ["number","string"]);
 const object_get_prop_str_by_path = Module.cwrap("object_get_prop_str_by_path", 
-    "string", ["TObject","string"]);
+    "string", ["number","string"]);
 const object_get_prop_pointer_by_path = Module.cwrap("object_get_prop_pointer_by_path", 
-    "any", ["TObject","string"]);
+    "number", ["number","string"]);
 const object_get_prop_object_by_path = Module.cwrap("object_get_prop_object_by_path", 
-    "TObject", ["TObject","string"]);
+    "number", ["number","string"]);
 const object_get_prop_int_by_path = Module.cwrap("object_get_prop_int_by_path", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_get_prop_bool_by_path = Module.cwrap("object_get_prop_bool_by_path", 
-    "boolean", ["TObject","string","boolean"]);
+    "number", ["number","string","number"]);
 const object_get_prop_float_by_path = Module.cwrap("object_get_prop_float_by_path", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_by_path = Module.cwrap("object_set_prop_by_path", 
-    "TRet", ["TObject","string","TValue"]);
+    "number", ["number","string","number"]);
 const object_set_prop_str_by_path = Module.cwrap("object_set_prop_str_by_path", 
-    "TRet", ["TObject","string","string"]);
+    "number", ["number","string","string"]);
 const object_set_prop_object_by_path = Module.cwrap("object_set_prop_object_by_path", 
-    "TRet", ["TObject","string","TObject"]);
+    "number", ["number","string","number"]);
 const object_set_prop_int_by_path = Module.cwrap("object_set_prop_int_by_path", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_bool_by_path = Module.cwrap("object_set_prop_bool_by_path", 
-    "TRet", ["TObject","string","boolean"]);
+    "number", ["number","string","number"]);
 const object_set_prop_float_by_path = Module.cwrap("object_set_prop_float_by_path", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_can_exec_by_path = Module.cwrap("object_can_exec_by_path", 
-    "boolean", ["TObject","string","string"]);
+    "number", ["number","string","string"]);
 const object_exec_by_path = Module.cwrap("object_exec_by_path", 
-    "TRet", ["TObject","string","string"]);
+    "number", ["number","string","string"]);
 const object_get_prop_int8 = Module.cwrap("object_get_prop_int8", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_int8 = Module.cwrap("object_set_prop_int8", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_get_prop_uint8 = Module.cwrap("object_get_prop_uint8", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_uint8 = Module.cwrap("object_set_prop_uint8", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_get_prop_int16 = Module.cwrap("object_get_prop_int16", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_int16 = Module.cwrap("object_set_prop_int16", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_get_prop_uint16 = Module.cwrap("object_get_prop_uint16", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_uint16 = Module.cwrap("object_set_prop_uint16", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_get_prop_int32 = Module.cwrap("object_get_prop_int32", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_int32 = Module.cwrap("object_set_prop_int32", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_get_prop_uint32 = Module.cwrap("object_get_prop_uint32", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_uint32 = Module.cwrap("object_set_prop_uint32", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_get_prop_int64 = Module.cwrap("object_get_prop_int64", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_int64 = Module.cwrap("object_set_prop_int64", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_get_prop_uint64 = Module.cwrap("object_get_prop_uint64", 
-    "number", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_set_prop_uint64 = Module.cwrap("object_set_prop_uint64", 
-    "TRet", ["TObject","string","number"]);
+    "number", ["number","string","number"]);
 const object_t_get_prop_ref_count = Module.cwrap("object_t_get_prop_ref_count", 
     "number", ["number"]);
 const object_t_get_prop_name = Module.cwrap("object_t_get_prop_name", 
     "string", ["number"]);
 const value_set_bool = Module.cwrap("value_set_bool", 
-    "TValue", ["TValue","boolean"]);
+    "number", ["number","number"]);
 const value_bool = Module.cwrap("value_bool", 
-    "boolean", ["TValue"]);
+    "number", ["number"]);
 const value_set_int8 = Module.cwrap("value_set_int8", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_int8 = Module.cwrap("value_int8", 
-    "number", ["TValue"]);
+    "number", ["number"]);
 const value_set_uint8 = Module.cwrap("value_set_uint8", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_uint8 = Module.cwrap("value_uint8", 
-    "number", ["TValue"]);
+    "number", ["number"]);
 const value_set_int16 = Module.cwrap("value_set_int16", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_int16 = Module.cwrap("value_int16", 
-    "number", ["TValue"]);
+    "number", ["number"]);
 const value_set_uint16 = Module.cwrap("value_set_uint16", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_uint16 = Module.cwrap("value_uint16", 
-    "number", ["TValue"]);
+    "number", ["number"]);
 const value_set_int32 = Module.cwrap("value_set_int32", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_int32 = Module.cwrap("value_int32", 
-    "number", ["TValue"]);
+    "number", ["number"]);
 const value_set_uint32 = Module.cwrap("value_set_uint32", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_set_int64 = Module.cwrap("value_set_int64", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_int64 = Module.cwrap("value_int64", 
-    "number", ["TValue"]);
+    "number", ["number"]);
 const value_set_uint64 = Module.cwrap("value_set_uint64", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_uint64 = Module.cwrap("value_uint64", 
-    "number", ["TValue"]);
+    "number", ["number"]);
 const value_set_float = Module.cwrap("value_set_float", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_float32 = Module.cwrap("value_float32", 
-    "number", ["TValue"]);
+    "number", ["number"]);
 const value_set_double = Module.cwrap("value_set_double", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_double = Module.cwrap("value_double", 
-    "number", ["TValue"]);
+    "number", ["number"]);
 const value_dup_str = Module.cwrap("value_dup_str", 
-    "TValue", ["TValue","string"]);
+    "number", ["number","string"]);
 const value_str = Module.cwrap("value_str", 
-    "string", ["TValue"]);
+    "string", ["number"]);
 const value_str_ex = Module.cwrap("value_str_ex", 
-    "string", ["TValue","string","number"]);
+    "string", ["number","string","number"]);
 const value_is_null = Module.cwrap("value_is_null", 
-    "boolean", ["TValue"]);
+    "number", ["number"]);
 const value_set_int = Module.cwrap("value_set_int", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_set_object = Module.cwrap("value_set_object", 
-    "TValue", ["TValue","TObject"]);
+    "number", ["number","number"]);
 const value_object = Module.cwrap("value_object", 
-    "TObject", ["TValue"]);
+    "number", ["number"]);
 const value_set_token = Module.cwrap("value_set_token", 
-    "TValue", ["TValue","number"]);
+    "number", ["number","number"]);
 const value_token = Module.cwrap("value_token", 
-    "number", ["TValue"]);
+    "number", ["number"]);
 const value_create = Module.cwrap("value_create", 
-    "TValue", []);
+    "number", []);
 const value_destroy = Module.cwrap("value_destroy", 
-    "TRet", ["TValue"]);
+    "number", ["number"]);
 const value_reset = Module.cwrap("value_reset", 
-    "TRet", ["TValue"]);
+    "number", ["number"]);
 const value_cast = Module.cwrap("value_cast", 
-    "TValue", ["TValue"]);
+    "number", ["number"]);
 const tk_init = Module.cwrap("tk_init", 
-    "TRet", ["number","number","TAppType","string","string"]);
+    "number", ["number","number","number","string","string"]);
 const tk_run = Module.cwrap("tk_run", 
-    "TRet", []);
+    "number", []);
 const tk_quit = Module.cwrap("tk_quit", 
-    "TRet", []);
+    "number", []);
 const tk_get_pointer_x = Module.cwrap("tk_get_pointer_x", 
     "number", []);
 const tk_get_pointer_y = Module.cwrap("tk_get_pointer_y", 
     "number", []);
 const tk_is_pointer_pressed = Module.cwrap("tk_is_pointer_pressed", 
-    "boolean", []);
-const BIDI_TYPE_AUTO = Module.cwrap("BIDI_TYPE_AUTO", 
     "number", []);
-const BIDI_TYPE_LTR = Module.cwrap("BIDI_TYPE_LTR", 
+const BIDI_TYPE_AUTO = Module.cwrap("get_BIDI_TYPE_AUTO", 
     "number", []);
-const BIDI_TYPE_RTL = Module.cwrap("BIDI_TYPE_RTL", 
+const BIDI_TYPE_LTR = Module.cwrap("get_BIDI_TYPE_LTR", 
     "number", []);
-const BIDI_TYPE_LRO = Module.cwrap("BIDI_TYPE_LRO", 
+const BIDI_TYPE_RTL = Module.cwrap("get_BIDI_TYPE_RTL", 
     "number", []);
-const BIDI_TYPE_RLO = Module.cwrap("BIDI_TYPE_RLO", 
+const BIDI_TYPE_LRO = Module.cwrap("get_BIDI_TYPE_LRO", 
     "number", []);
-const BIDI_TYPE_WLTR = Module.cwrap("BIDI_TYPE_WLTR", 
+const BIDI_TYPE_RLO = Module.cwrap("get_BIDI_TYPE_RLO", 
     "number", []);
-const BIDI_TYPE_WRTL = Module.cwrap("BIDI_TYPE_WRTL", 
+const BIDI_TYPE_WLTR = Module.cwrap("get_BIDI_TYPE_WLTR", 
     "number", []);
-const IMAGE_DRAW_DEFAULT = Module.cwrap("IMAGE_DRAW_DEFAULT", 
+const BIDI_TYPE_WRTL = Module.cwrap("get_BIDI_TYPE_WRTL", 
     "number", []);
-const IMAGE_DRAW_CENTER = Module.cwrap("IMAGE_DRAW_CENTER", 
+const IMAGE_DRAW_DEFAULT = Module.cwrap("get_IMAGE_DRAW_DEFAULT", 
     "number", []);
-const IMAGE_DRAW_ICON = Module.cwrap("IMAGE_DRAW_ICON", 
+const IMAGE_DRAW_CENTER = Module.cwrap("get_IMAGE_DRAW_CENTER", 
     "number", []);
-const IMAGE_DRAW_SCALE = Module.cwrap("IMAGE_DRAW_SCALE", 
+const IMAGE_DRAW_ICON = Module.cwrap("get_IMAGE_DRAW_ICON", 
     "number", []);
-const IMAGE_DRAW_SCALE_AUTO = Module.cwrap("IMAGE_DRAW_SCALE_AUTO", 
+const IMAGE_DRAW_SCALE = Module.cwrap("get_IMAGE_DRAW_SCALE", 
     "number", []);
-const IMAGE_DRAW_SCALE_DOWN = Module.cwrap("IMAGE_DRAW_SCALE_DOWN", 
+const IMAGE_DRAW_SCALE_AUTO = Module.cwrap("get_IMAGE_DRAW_SCALE_AUTO", 
     "number", []);
-const IMAGE_DRAW_SCALE_W = Module.cwrap("IMAGE_DRAW_SCALE_W", 
+const IMAGE_DRAW_SCALE_DOWN = Module.cwrap("get_IMAGE_DRAW_SCALE_DOWN", 
     "number", []);
-const IMAGE_DRAW_SCALE_H = Module.cwrap("IMAGE_DRAW_SCALE_H", 
+const IMAGE_DRAW_SCALE_W = Module.cwrap("get_IMAGE_DRAW_SCALE_W", 
     "number", []);
-const IMAGE_DRAW_REPEAT = Module.cwrap("IMAGE_DRAW_REPEAT", 
+const IMAGE_DRAW_SCALE_H = Module.cwrap("get_IMAGE_DRAW_SCALE_H", 
     "number", []);
-const IMAGE_DRAW_REPEAT_X = Module.cwrap("IMAGE_DRAW_REPEAT_X", 
+const IMAGE_DRAW_REPEAT = Module.cwrap("get_IMAGE_DRAW_REPEAT", 
     "number", []);
-const IMAGE_DRAW_REPEAT_Y = Module.cwrap("IMAGE_DRAW_REPEAT_Y", 
+const IMAGE_DRAW_REPEAT_X = Module.cwrap("get_IMAGE_DRAW_REPEAT_X", 
     "number", []);
-const IMAGE_DRAW_REPEAT_Y_INVERSE = Module.cwrap("IMAGE_DRAW_REPEAT_Y_INVERSE", 
+const IMAGE_DRAW_REPEAT_Y = Module.cwrap("get_IMAGE_DRAW_REPEAT_Y", 
     "number", []);
-const IMAGE_DRAW_PATCH9 = Module.cwrap("IMAGE_DRAW_PATCH9", 
+const IMAGE_DRAW_REPEAT_Y_INVERSE = Module.cwrap("get_IMAGE_DRAW_REPEAT_Y_INVERSE", 
     "number", []);
-const IMAGE_DRAW_PATCH3_X = Module.cwrap("IMAGE_DRAW_PATCH3_X", 
+const IMAGE_DRAW_PATCH9 = Module.cwrap("get_IMAGE_DRAW_PATCH9", 
     "number", []);
-const IMAGE_DRAW_PATCH3_Y = Module.cwrap("IMAGE_DRAW_PATCH3_Y", 
+const IMAGE_DRAW_PATCH3_X = Module.cwrap("get_IMAGE_DRAW_PATCH3_X", 
     "number", []);
-const IMAGE_DRAW_PATCH3_X_SCALE_Y = Module.cwrap("IMAGE_DRAW_PATCH3_X_SCALE_Y", 
+const IMAGE_DRAW_PATCH3_Y = Module.cwrap("get_IMAGE_DRAW_PATCH3_Y", 
     "number", []);
-const IMAGE_DRAW_PATCH3_Y_SCALE_X = Module.cwrap("IMAGE_DRAW_PATCH3_Y_SCALE_X", 
+const IMAGE_DRAW_PATCH3_X_SCALE_Y = Module.cwrap("get_IMAGE_DRAW_PATCH3_X_SCALE_Y", 
     "number", []);
-const IMAGE_DRAW_REPEAT9 = Module.cwrap("IMAGE_DRAW_REPEAT9", 
+const IMAGE_DRAW_PATCH3_Y_SCALE_X = Module.cwrap("get_IMAGE_DRAW_PATCH3_Y_SCALE_X", 
     "number", []);
-const IMAGE_DRAW_REPEAT3_X = Module.cwrap("IMAGE_DRAW_REPEAT3_X", 
+const IMAGE_DRAW_REPEAT9 = Module.cwrap("get_IMAGE_DRAW_REPEAT9", 
     "number", []);
-const IMAGE_DRAW_REPEAT3_Y = Module.cwrap("IMAGE_DRAW_REPEAT3_Y", 
+const IMAGE_DRAW_REPEAT3_X = Module.cwrap("get_IMAGE_DRAW_REPEAT3_X", 
+    "number", []);
+const IMAGE_DRAW_REPEAT3_Y = Module.cwrap("get_IMAGE_DRAW_REPEAT3_Y", 
     "number", []);
 const canvas_get_width = Module.cwrap("canvas_get_width", 
-    "number", ["TCanvas"]);
+    "number", ["number"]);
 const canvas_get_height = Module.cwrap("canvas_get_height", 
-    "number", ["TCanvas"]);
+    "number", ["number"]);
 const canvas_get_clip_rect = Module.cwrap("canvas_get_clip_rect", 
-    "TRet", ["TCanvas","TRect"]);
+    "number", ["number","number"]);
 const canvas_set_clip_rect = Module.cwrap("canvas_set_clip_rect", 
-    "TRet", ["TCanvas","TRect"]);
+    "number", ["number","number"]);
 const canvas_set_clip_rect_ex = Module.cwrap("canvas_set_clip_rect_ex", 
-    "TRet", ["TCanvas","TRect","boolean"]);
+    "number", ["number","number","number"]);
 const canvas_set_fill_color_str = Module.cwrap("canvas_set_fill_color_str", 
-    "TRet", ["TCanvas","string"]);
+    "number", ["number","string"]);
 const canvas_set_text_color_str = Module.cwrap("canvas_set_text_color_str", 
-    "TRet", ["TCanvas","string"]);
+    "number", ["number","string"]);
 const canvas_set_stroke_color_str = Module.cwrap("canvas_set_stroke_color_str", 
-    "TRet", ["TCanvas","string"]);
+    "number", ["number","string"]);
 const canvas_set_global_alpha = Module.cwrap("canvas_set_global_alpha", 
-    "TRet", ["TCanvas","number"]);
+    "number", ["number","number"]);
 const canvas_translate = Module.cwrap("canvas_translate", 
-    "TRet", ["TCanvas","number","number"]);
+    "number", ["number","number","number"]);
 const canvas_untranslate = Module.cwrap("canvas_untranslate", 
-    "TRet", ["TCanvas","number","number"]);
+    "number", ["number","number","number"]);
 const canvas_draw_vline = Module.cwrap("canvas_draw_vline", 
-    "TRet", ["TCanvas","number","number","number"]);
+    "number", ["number","number","number","number"]);
 const canvas_draw_hline = Module.cwrap("canvas_draw_hline", 
-    "TRet", ["TCanvas","number","number","number"]);
+    "number", ["number","number","number","number"]);
 const canvas_fill_rect = Module.cwrap("canvas_fill_rect", 
-    "TRet", ["TCanvas","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const canvas_clear_rect = Module.cwrap("canvas_clear_rect", 
-    "TRet", ["TCanvas","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const canvas_stroke_rect = Module.cwrap("canvas_stroke_rect", 
-    "TRet", ["TCanvas","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const canvas_set_font = Module.cwrap("canvas_set_font", 
-    "TRet", ["TCanvas","string","number"]);
+    "number", ["number","string","number"]);
 const canvas_measure_utf8 = Module.cwrap("canvas_measure_utf8", 
-    "number", ["TCanvas","string"]);
+    "number", ["number","string"]);
 const canvas_draw_utf8 = Module.cwrap("canvas_draw_utf8", 
-    "TRet", ["TCanvas","string","number","number"]);
+    "number", ["number","string","number","number"]);
 const canvas_draw_utf8_in_rect = Module.cwrap("canvas_draw_utf8_in_rect", 
-    "TRet", ["TCanvas","string","TRect"]);
+    "number", ["number","string","number"]);
 const canvas_draw_icon = Module.cwrap("canvas_draw_icon", 
-    "TRet", ["TCanvas","TBitmap","number","number"]);
+    "number", ["number","number","number","number"]);
 const canvas_draw_image = Module.cwrap("canvas_draw_image", 
-    "TRet", ["TCanvas","TBitmap","TRect","TRect"]);
+    "number", ["number","number","number","number"]);
 const canvas_draw_image_ex = Module.cwrap("canvas_draw_image_ex", 
-    "TRet", ["TCanvas","TBitmap","TImageDrawType","TRect"]);
+    "number", ["number","number","number","number"]);
 const canvas_draw_image_ex2 = Module.cwrap("canvas_draw_image_ex2", 
-    "TRet", ["TCanvas","TBitmap","TImageDrawType","TRect","TRect"]);
+    "number", ["number","number","number","number","number"]);
 const canvas_get_vgcanvas = Module.cwrap("canvas_get_vgcanvas", 
-    "TVgcanvas", ["TCanvas"]);
+    "number", ["number"]);
 const canvas_cast = Module.cwrap("canvas_cast", 
-    "TCanvas", ["TCanvas"]);
+    "number", ["number"]);
 const canvas_reset = Module.cwrap("canvas_reset", 
-    "TRet", ["TCanvas"]);
+    "number", ["number"]);
 const canvas_t_get_prop_ox = Module.cwrap("canvas_t_get_prop_ox", 
     "number", ["number"]);
 const canvas_t_get_prop_oy = Module.cwrap("canvas_t_get_prop_oy", 
@@ -408,238 +408,238 @@ const canvas_t_get_prop_font_size = Module.cwrap("canvas_t_get_prop_font_size",
     "number", ["number"]);
 const canvas_t_get_prop_global_alpha = Module.cwrap("canvas_t_get_prop_global_alpha", 
     "number", ["number"]);
-const CLIP_BOARD_DATA_TYPE_NONE = Module.cwrap("CLIP_BOARD_DATA_TYPE_NONE", 
+const CLIP_BOARD_DATA_TYPE_NONE = Module.cwrap("get_CLIP_BOARD_DATA_TYPE_NONE", 
     "number", []);
-const CLIP_BOARD_DATA_TYPE_TEXT = Module.cwrap("CLIP_BOARD_DATA_TYPE_TEXT", 
+const CLIP_BOARD_DATA_TYPE_TEXT = Module.cwrap("get_CLIP_BOARD_DATA_TYPE_TEXT", 
     "number", []);
 const clip_board_set_text = Module.cwrap("clip_board_set_text", 
-    "TRet", ["string"]);
+    "number", ["string"]);
 const clip_board_get_text = Module.cwrap("clip_board_get_text", 
     "string", []);
-const DIALOG_QUIT_NONE = Module.cwrap("DIALOG_QUIT_NONE", 
+const DIALOG_QUIT_NONE = Module.cwrap("get_DIALOG_QUIT_NONE", 
     "number", []);
-const DIALOG_QUIT_OK = Module.cwrap("DIALOG_QUIT_OK", 
+const DIALOG_QUIT_OK = Module.cwrap("get_DIALOG_QUIT_OK", 
     "number", []);
-const DIALOG_QUIT_YES = Module.cwrap("DIALOG_QUIT_YES", 
+const DIALOG_QUIT_YES = Module.cwrap("get_DIALOG_QUIT_YES", 
     "number", []);
-const DIALOG_QUIT_CANCEL = Module.cwrap("DIALOG_QUIT_CANCEL", 
+const DIALOG_QUIT_CANCEL = Module.cwrap("get_DIALOG_QUIT_CANCEL", 
     "number", []);
-const DIALOG_QUIT_NO = Module.cwrap("DIALOG_QUIT_NO", 
+const DIALOG_QUIT_NO = Module.cwrap("get_DIALOG_QUIT_NO", 
     "number", []);
-const DIALOG_QUIT_OTHER = Module.cwrap("DIALOG_QUIT_OTHER", 
+const DIALOG_QUIT_OTHER = Module.cwrap("get_DIALOG_QUIT_OTHER", 
     "number", []);
-const EVT_POINTER_DOWN = Module.cwrap("EVT_POINTER_DOWN", 
+const EVT_POINTER_DOWN = Module.cwrap("get_EVT_POINTER_DOWN", 
     "number", []);
-const EVT_POINTER_DOWN_BEFORE_CHILDREN = Module.cwrap("EVT_POINTER_DOWN_BEFORE_CHILDREN", 
+const EVT_POINTER_DOWN_BEFORE_CHILDREN = Module.cwrap("get_EVT_POINTER_DOWN_BEFORE_CHILDREN", 
     "number", []);
-const EVT_POINTER_MOVE = Module.cwrap("EVT_POINTER_MOVE", 
+const EVT_POINTER_MOVE = Module.cwrap("get_EVT_POINTER_MOVE", 
     "number", []);
-const EVT_POINTER_MOVE_BEFORE_CHILDREN = Module.cwrap("EVT_POINTER_MOVE_BEFORE_CHILDREN", 
+const EVT_POINTER_MOVE_BEFORE_CHILDREN = Module.cwrap("get_EVT_POINTER_MOVE_BEFORE_CHILDREN", 
     "number", []);
-const EVT_POINTER_UP = Module.cwrap("EVT_POINTER_UP", 
+const EVT_POINTER_UP = Module.cwrap("get_EVT_POINTER_UP", 
     "number", []);
-const EVT_POINTER_UP_BEFORE_CHILDREN = Module.cwrap("EVT_POINTER_UP_BEFORE_CHILDREN", 
+const EVT_POINTER_UP_BEFORE_CHILDREN = Module.cwrap("get_EVT_POINTER_UP_BEFORE_CHILDREN", 
     "number", []);
-const EVT_WHEEL = Module.cwrap("EVT_WHEEL", 
+const EVT_WHEEL = Module.cwrap("get_EVT_WHEEL", 
     "number", []);
-const EVT_WHEEL_BEFORE_CHILDREN = Module.cwrap("EVT_WHEEL_BEFORE_CHILDREN", 
+const EVT_WHEEL_BEFORE_CHILDREN = Module.cwrap("get_EVT_WHEEL_BEFORE_CHILDREN", 
     "number", []);
-const EVT_POINTER_DOWN_ABORT = Module.cwrap("EVT_POINTER_DOWN_ABORT", 
+const EVT_POINTER_DOWN_ABORT = Module.cwrap("get_EVT_POINTER_DOWN_ABORT", 
     "number", []);
-const EVT_CONTEXT_MENU = Module.cwrap("EVT_CONTEXT_MENU", 
+const EVT_CONTEXT_MENU = Module.cwrap("get_EVT_CONTEXT_MENU", 
     "number", []);
-const EVT_POINTER_ENTER = Module.cwrap("EVT_POINTER_ENTER", 
+const EVT_POINTER_ENTER = Module.cwrap("get_EVT_POINTER_ENTER", 
     "number", []);
-const EVT_POINTER_LEAVE = Module.cwrap("EVT_POINTER_LEAVE", 
+const EVT_POINTER_LEAVE = Module.cwrap("get_EVT_POINTER_LEAVE", 
     "number", []);
-const EVT_LONG_PRESS = Module.cwrap("EVT_LONG_PRESS", 
+const EVT_LONG_PRESS = Module.cwrap("get_EVT_LONG_PRESS", 
     "number", []);
-const EVT_CLICK = Module.cwrap("EVT_CLICK", 
+const EVT_CLICK = Module.cwrap("get_EVT_CLICK", 
     "number", []);
-const EVT_FOCUS = Module.cwrap("EVT_FOCUS", 
+const EVT_FOCUS = Module.cwrap("get_EVT_FOCUS", 
     "number", []);
-const EVT_BLUR = Module.cwrap("EVT_BLUR", 
+const EVT_BLUR = Module.cwrap("get_EVT_BLUR", 
     "number", []);
-const EVT_KEY_DOWN = Module.cwrap("EVT_KEY_DOWN", 
+const EVT_KEY_DOWN = Module.cwrap("get_EVT_KEY_DOWN", 
     "number", []);
-const EVT_KEY_LONG_PRESS = Module.cwrap("EVT_KEY_LONG_PRESS", 
+const EVT_KEY_LONG_PRESS = Module.cwrap("get_EVT_KEY_LONG_PRESS", 
     "number", []);
-const EVT_KEY_DOWN_BEFORE_CHILDREN = Module.cwrap("EVT_KEY_DOWN_BEFORE_CHILDREN", 
+const EVT_KEY_DOWN_BEFORE_CHILDREN = Module.cwrap("get_EVT_KEY_DOWN_BEFORE_CHILDREN", 
     "number", []);
-const EVT_KEY_REPEAT = Module.cwrap("EVT_KEY_REPEAT", 
+const EVT_KEY_REPEAT = Module.cwrap("get_EVT_KEY_REPEAT", 
     "number", []);
-const EVT_KEY_UP = Module.cwrap("EVT_KEY_UP", 
+const EVT_KEY_UP = Module.cwrap("get_EVT_KEY_UP", 
     "number", []);
-const EVT_KEY_UP_BEFORE_CHILDREN = Module.cwrap("EVT_KEY_UP_BEFORE_CHILDREN", 
+const EVT_KEY_UP_BEFORE_CHILDREN = Module.cwrap("get_EVT_KEY_UP_BEFORE_CHILDREN", 
     "number", []);
-const EVT_WILL_MOVE = Module.cwrap("EVT_WILL_MOVE", 
+const EVT_WILL_MOVE = Module.cwrap("get_EVT_WILL_MOVE", 
     "number", []);
-const EVT_MOVE = Module.cwrap("EVT_MOVE", 
+const EVT_MOVE = Module.cwrap("get_EVT_MOVE", 
     "number", []);
-const EVT_WILL_RESIZE = Module.cwrap("EVT_WILL_RESIZE", 
+const EVT_WILL_RESIZE = Module.cwrap("get_EVT_WILL_RESIZE", 
     "number", []);
-const EVT_RESIZE = Module.cwrap("EVT_RESIZE", 
+const EVT_RESIZE = Module.cwrap("get_EVT_RESIZE", 
     "number", []);
-const EVT_WILL_MOVE_RESIZE = Module.cwrap("EVT_WILL_MOVE_RESIZE", 
+const EVT_WILL_MOVE_RESIZE = Module.cwrap("get_EVT_WILL_MOVE_RESIZE", 
     "number", []);
-const EVT_MOVE_RESIZE = Module.cwrap("EVT_MOVE_RESIZE", 
+const EVT_MOVE_RESIZE = Module.cwrap("get_EVT_MOVE_RESIZE", 
     "number", []);
-const EVT_VALUE_WILL_CHANGE = Module.cwrap("EVT_VALUE_WILL_CHANGE", 
+const EVT_VALUE_WILL_CHANGE = Module.cwrap("get_EVT_VALUE_WILL_CHANGE", 
     "number", []);
-const EVT_VALUE_CHANGED = Module.cwrap("EVT_VALUE_CHANGED", 
+const EVT_VALUE_CHANGED = Module.cwrap("get_EVT_VALUE_CHANGED", 
     "number", []);
-const EVT_VALUE_CHANGING = Module.cwrap("EVT_VALUE_CHANGING", 
+const EVT_VALUE_CHANGING = Module.cwrap("get_EVT_VALUE_CHANGING", 
     "number", []);
-const EVT_PAINT = Module.cwrap("EVT_PAINT", 
+const EVT_PAINT = Module.cwrap("get_EVT_PAINT", 
     "number", []);
-const EVT_BEFORE_PAINT = Module.cwrap("EVT_BEFORE_PAINT", 
+const EVT_BEFORE_PAINT = Module.cwrap("get_EVT_BEFORE_PAINT", 
     "number", []);
-const EVT_AFTER_PAINT = Module.cwrap("EVT_AFTER_PAINT", 
+const EVT_AFTER_PAINT = Module.cwrap("get_EVT_AFTER_PAINT", 
     "number", []);
-const EVT_PAINT_DONE = Module.cwrap("EVT_PAINT_DONE", 
+const EVT_PAINT_DONE = Module.cwrap("get_EVT_PAINT_DONE", 
     "number", []);
-const EVT_LOCALE_CHANGED = Module.cwrap("EVT_LOCALE_CHANGED", 
+const EVT_LOCALE_CHANGED = Module.cwrap("get_EVT_LOCALE_CHANGED", 
     "number", []);
-const EVT_ANIM_START = Module.cwrap("EVT_ANIM_START", 
+const EVT_ANIM_START = Module.cwrap("get_EVT_ANIM_START", 
     "number", []);
-const EVT_ANIM_STOP = Module.cwrap("EVT_ANIM_STOP", 
+const EVT_ANIM_STOP = Module.cwrap("get_EVT_ANIM_STOP", 
     "number", []);
-const EVT_ANIM_PAUSE = Module.cwrap("EVT_ANIM_PAUSE", 
+const EVT_ANIM_PAUSE = Module.cwrap("get_EVT_ANIM_PAUSE", 
     "number", []);
-const EVT_ANIM_ONCE = Module.cwrap("EVT_ANIM_ONCE", 
+const EVT_ANIM_ONCE = Module.cwrap("get_EVT_ANIM_ONCE", 
     "number", []);
-const EVT_ANIM_END = Module.cwrap("EVT_ANIM_END", 
+const EVT_ANIM_END = Module.cwrap("get_EVT_ANIM_END", 
     "number", []);
-const EVT_WINDOW_LOAD = Module.cwrap("EVT_WINDOW_LOAD", 
+const EVT_WINDOW_LOAD = Module.cwrap("get_EVT_WINDOW_LOAD", 
     "number", []);
-const EVT_WIDGET_LOAD = Module.cwrap("EVT_WIDGET_LOAD", 
+const EVT_WIDGET_LOAD = Module.cwrap("get_EVT_WIDGET_LOAD", 
     "number", []);
-const EVT_WINDOW_WILL_OPEN = Module.cwrap("EVT_WINDOW_WILL_OPEN", 
+const EVT_WINDOW_WILL_OPEN = Module.cwrap("get_EVT_WINDOW_WILL_OPEN", 
     "number", []);
-const EVT_WINDOW_OPEN = Module.cwrap("EVT_WINDOW_OPEN", 
+const EVT_WINDOW_OPEN = Module.cwrap("get_EVT_WINDOW_OPEN", 
     "number", []);
-const EVT_WINDOW_TO_BACKGROUND = Module.cwrap("EVT_WINDOW_TO_BACKGROUND", 
+const EVT_WINDOW_TO_BACKGROUND = Module.cwrap("get_EVT_WINDOW_TO_BACKGROUND", 
     "number", []);
-const EVT_WINDOW_TO_FOREGROUND = Module.cwrap("EVT_WINDOW_TO_FOREGROUND", 
+const EVT_WINDOW_TO_FOREGROUND = Module.cwrap("get_EVT_WINDOW_TO_FOREGROUND", 
     "number", []);
-const EVT_WINDOW_CLOSE = Module.cwrap("EVT_WINDOW_CLOSE", 
+const EVT_WINDOW_CLOSE = Module.cwrap("get_EVT_WINDOW_CLOSE", 
     "number", []);
-const EVT_REQUEST_CLOSE_WINDOW = Module.cwrap("EVT_REQUEST_CLOSE_WINDOW", 
+const EVT_REQUEST_CLOSE_WINDOW = Module.cwrap("get_EVT_REQUEST_CLOSE_WINDOW", 
     "number", []);
-const EVT_TOP_WINDOW_CHANGED = Module.cwrap("EVT_TOP_WINDOW_CHANGED", 
+const EVT_TOP_WINDOW_CHANGED = Module.cwrap("get_EVT_TOP_WINDOW_CHANGED", 
     "number", []);
-const EVT_IM_START = Module.cwrap("EVT_IM_START", 
+const EVT_IM_START = Module.cwrap("get_EVT_IM_START", 
     "number", []);
-const EVT_IM_STOP = Module.cwrap("EVT_IM_STOP", 
+const EVT_IM_STOP = Module.cwrap("get_EVT_IM_STOP", 
     "number", []);
-const EVT_IM_COMMIT = Module.cwrap("EVT_IM_COMMIT", 
+const EVT_IM_COMMIT = Module.cwrap("get_EVT_IM_COMMIT", 
     "number", []);
-const EVT_IM_CLEAR = Module.cwrap("EVT_IM_CLEAR", 
+const EVT_IM_CLEAR = Module.cwrap("get_EVT_IM_CLEAR", 
     "number", []);
-const EVT_IM_CANCEL = Module.cwrap("EVT_IM_CANCEL", 
+const EVT_IM_CANCEL = Module.cwrap("get_EVT_IM_CANCEL", 
     "number", []);
-const EVT_IM_PREEDIT = Module.cwrap("EVT_IM_PREEDIT", 
+const EVT_IM_PREEDIT = Module.cwrap("get_EVT_IM_PREEDIT", 
     "number", []);
-const EVT_IM_PREEDIT_CONFIRM = Module.cwrap("EVT_IM_PREEDIT_CONFIRM", 
+const EVT_IM_PREEDIT_CONFIRM = Module.cwrap("get_EVT_IM_PREEDIT_CONFIRM", 
     "number", []);
-const EVT_IM_PREEDIT_ABORT = Module.cwrap("EVT_IM_PREEDIT_ABORT", 
+const EVT_IM_PREEDIT_ABORT = Module.cwrap("get_EVT_IM_PREEDIT_ABORT", 
     "number", []);
-const EVT_IM_SHOW_CANDIDATES = Module.cwrap("EVT_IM_SHOW_CANDIDATES", 
+const EVT_IM_SHOW_CANDIDATES = Module.cwrap("get_EVT_IM_SHOW_CANDIDATES", 
     "number", []);
-const EVT_IM_SHOW_PRE_CANDIDATES = Module.cwrap("EVT_IM_SHOW_PRE_CANDIDATES", 
+const EVT_IM_SHOW_PRE_CANDIDATES = Module.cwrap("get_EVT_IM_SHOW_PRE_CANDIDATES", 
     "number", []);
-const EVT_IM_LANG_CHANGED = Module.cwrap("EVT_IM_LANG_CHANGED", 
+const EVT_IM_LANG_CHANGED = Module.cwrap("get_EVT_IM_LANG_CHANGED", 
     "number", []);
-const EVT_IM_ACTION = Module.cwrap("EVT_IM_ACTION", 
+const EVT_IM_ACTION = Module.cwrap("get_EVT_IM_ACTION", 
     "number", []);
-const EVT_IM_ACTION_INFO = Module.cwrap("EVT_IM_ACTION_INFO", 
+const EVT_IM_ACTION_INFO = Module.cwrap("get_EVT_IM_ACTION_INFO", 
     "number", []);
-const EVT_DRAG_START = Module.cwrap("EVT_DRAG_START", 
+const EVT_DRAG_START = Module.cwrap("get_EVT_DRAG_START", 
     "number", []);
-const EVT_DRAG = Module.cwrap("EVT_DRAG", 
+const EVT_DRAG = Module.cwrap("get_EVT_DRAG", 
     "number", []);
-const EVT_DRAG_END = Module.cwrap("EVT_DRAG_END", 
+const EVT_DRAG_END = Module.cwrap("get_EVT_DRAG_END", 
     "number", []);
-const EVT_RESET = Module.cwrap("EVT_RESET", 
+const EVT_RESET = Module.cwrap("get_EVT_RESET", 
     "number", []);
-const EVT_SCREEN_SAVER = Module.cwrap("EVT_SCREEN_SAVER", 
+const EVT_SCREEN_SAVER = Module.cwrap("get_EVT_SCREEN_SAVER", 
     "number", []);
-const EVT_LOW_MEMORY = Module.cwrap("EVT_LOW_MEMORY", 
+const EVT_LOW_MEMORY = Module.cwrap("get_EVT_LOW_MEMORY", 
     "number", []);
-const EVT_OUT_OF_MEMORY = Module.cwrap("EVT_OUT_OF_MEMORY", 
+const EVT_OUT_OF_MEMORY = Module.cwrap("get_EVT_OUT_OF_MEMORY", 
     "number", []);
-const EVT_ORIENTATION_WILL_CHANGED = Module.cwrap("EVT_ORIENTATION_WILL_CHANGED", 
+const EVT_ORIENTATION_WILL_CHANGED = Module.cwrap("get_EVT_ORIENTATION_WILL_CHANGED", 
     "number", []);
-const EVT_ORIENTATION_CHANGED = Module.cwrap("EVT_ORIENTATION_CHANGED", 
+const EVT_ORIENTATION_CHANGED = Module.cwrap("get_EVT_ORIENTATION_CHANGED", 
     "number", []);
-const EVT_WIDGET_CREATED = Module.cwrap("EVT_WIDGET_CREATED", 
+const EVT_WIDGET_CREATED = Module.cwrap("get_EVT_WIDGET_CREATED", 
     "number", []);
-const EVT_REQUEST_QUIT_APP = Module.cwrap("EVT_REQUEST_QUIT_APP", 
+const EVT_REQUEST_QUIT_APP = Module.cwrap("get_EVT_REQUEST_QUIT_APP", 
     "number", []);
-const EVT_THEME_CHANGED = Module.cwrap("EVT_THEME_CHANGED", 
+const EVT_THEME_CHANGED = Module.cwrap("get_EVT_THEME_CHANGED", 
     "number", []);
-const EVT_WIDGET_ADD_CHILD = Module.cwrap("EVT_WIDGET_ADD_CHILD", 
+const EVT_WIDGET_ADD_CHILD = Module.cwrap("get_EVT_WIDGET_ADD_CHILD", 
     "number", []);
-const EVT_WIDGET_REMOVE_CHILD = Module.cwrap("EVT_WIDGET_REMOVE_CHILD", 
+const EVT_WIDGET_REMOVE_CHILD = Module.cwrap("get_EVT_WIDGET_REMOVE_CHILD", 
     "number", []);
-const EVT_SCROLL_START = Module.cwrap("EVT_SCROLL_START", 
+const EVT_SCROLL_START = Module.cwrap("get_EVT_SCROLL_START", 
     "number", []);
-const EVT_SCROLL = Module.cwrap("EVT_SCROLL", 
+const EVT_SCROLL = Module.cwrap("get_EVT_SCROLL", 
     "number", []);
-const EVT_SCROLL_END = Module.cwrap("EVT_SCROLL_END", 
+const EVT_SCROLL_END = Module.cwrap("get_EVT_SCROLL_END", 
     "number", []);
-const EVT_MULTI_GESTURE = Module.cwrap("EVT_MULTI_GESTURE", 
+const EVT_MULTI_GESTURE = Module.cwrap("get_EVT_MULTI_GESTURE", 
     "number", []);
-const EVT_PAGE_CHANGED = Module.cwrap("EVT_PAGE_CHANGED", 
+const EVT_PAGE_CHANGED = Module.cwrap("get_EVT_PAGE_CHANGED", 
     "number", []);
-const EVT_ASSET_MANAGER_LOAD_ASSET = Module.cwrap("EVT_ASSET_MANAGER_LOAD_ASSET", 
+const EVT_ASSET_MANAGER_LOAD_ASSET = Module.cwrap("get_EVT_ASSET_MANAGER_LOAD_ASSET", 
     "number", []);
-const EVT_ASSET_MANAGER_UNLOAD_ASSET = Module.cwrap("EVT_ASSET_MANAGER_UNLOAD_ASSET", 
+const EVT_ASSET_MANAGER_UNLOAD_ASSET = Module.cwrap("get_EVT_ASSET_MANAGER_UNLOAD_ASSET", 
     "number", []);
-const EVT_ASSET_MANAGER_CLEAR_CACHE = Module.cwrap("EVT_ASSET_MANAGER_CLEAR_CACHE", 
+const EVT_ASSET_MANAGER_CLEAR_CACHE = Module.cwrap("get_EVT_ASSET_MANAGER_CLEAR_CACHE", 
     "number", []);
-const EVT_TIMER = Module.cwrap("EVT_TIMER", 
+const EVT_TIMER = Module.cwrap("get_EVT_TIMER", 
     "number", []);
-const EVT_REQ_START = Module.cwrap("EVT_REQ_START", 
+const EVT_REQ_START = Module.cwrap("get_EVT_REQ_START", 
     "number", []);
-const EVT_USER_START = Module.cwrap("EVT_USER_START", 
+const EVT_USER_START = Module.cwrap("get_EVT_USER_START", 
     "number", []);
-const EVT_NONE = Module.cwrap("EVT_NONE", 
+const EVT_NONE = Module.cwrap("get_EVT_NONE", 
     "number", []);
-const EVT_PROP_WILL_CHANGE = Module.cwrap("EVT_PROP_WILL_CHANGE", 
+const EVT_PROP_WILL_CHANGE = Module.cwrap("get_EVT_PROP_WILL_CHANGE", 
     "number", []);
-const EVT_PROP_CHANGED = Module.cwrap("EVT_PROP_CHANGED", 
+const EVT_PROP_CHANGED = Module.cwrap("get_EVT_PROP_CHANGED", 
     "number", []);
-const EVT_CMD_WILL_EXEC = Module.cwrap("EVT_CMD_WILL_EXEC", 
+const EVT_CMD_WILL_EXEC = Module.cwrap("get_EVT_CMD_WILL_EXEC", 
     "number", []);
-const EVT_CMD_EXECED = Module.cwrap("EVT_CMD_EXECED", 
+const EVT_CMD_EXECED = Module.cwrap("get_EVT_CMD_EXECED", 
     "number", []);
-const EVT_CMD_CAN_EXEC = Module.cwrap("EVT_CMD_CAN_EXEC", 
+const EVT_CMD_CAN_EXEC = Module.cwrap("get_EVT_CMD_CAN_EXEC", 
     "number", []);
-const EVT_ITEMS_WILL_CHANGE = Module.cwrap("EVT_ITEMS_WILL_CHANGE", 
+const EVT_ITEMS_WILL_CHANGE = Module.cwrap("get_EVT_ITEMS_WILL_CHANGE", 
     "number", []);
-const EVT_ITEMS_CHANGED = Module.cwrap("EVT_ITEMS_CHANGED", 
+const EVT_ITEMS_CHANGED = Module.cwrap("get_EVT_ITEMS_CHANGED", 
     "number", []);
-const EVT_PROPS_CHANGED = Module.cwrap("EVT_PROPS_CHANGED", 
+const EVT_PROPS_CHANGED = Module.cwrap("get_EVT_PROPS_CHANGED", 
     "number", []);
-const EVT_PROGRESS = Module.cwrap("EVT_PROGRESS", 
+const EVT_PROGRESS = Module.cwrap("get_EVT_PROGRESS", 
     "number", []);
-const EVT_DONE = Module.cwrap("EVT_DONE", 
+const EVT_DONE = Module.cwrap("get_EVT_DONE", 
     "number", []);
-const EVT_ERROR = Module.cwrap("EVT_ERROR", 
+const EVT_ERROR = Module.cwrap("get_EVT_ERROR", 
     "number", []);
-const EVT_DESTROY = Module.cwrap("EVT_DESTROY", 
+const EVT_DESTROY = Module.cwrap("get_EVT_DESTROY", 
     "number", []);
 const event_from_name = Module.cwrap("event_from_name", 
     "number", ["string"]);
 const event_cast = Module.cwrap("event_cast", 
-    "TEvent", ["TEvent"]);
+    "number", ["number"]);
 const event_get_type = Module.cwrap("event_get_type", 
-    "number", ["TEvent"]);
+    "number", ["number"]);
 const event_create = Module.cwrap("event_create", 
-    "TEvent", ["number"]);
+    "number", ["number"]);
 const event_destroy = Module.cwrap("event_destroy", 
-    "TRet", ["TEvent"]);
+    "number", ["number"]);
 const event_t_get_prop_type = Module.cwrap("event_t_get_prop_type", 
     "number", ["number"]);
 const event_t_get_prop_size = Module.cwrap("event_t_get_prop_size", 
@@ -647,619 +647,619 @@ const event_t_get_prop_size = Module.cwrap("event_t_get_prop_size",
 const event_t_get_prop_time = Module.cwrap("event_t_get_prop_time", 
     "number", ["number"]);
 const event_t_get_prop_target = Module.cwrap("event_t_get_prop_target", 
-    "any", ["number"]);
+    "number", ["number"]);
 const font_manager_unload_font = Module.cwrap("font_manager_unload_font", 
-    "TRet", ["TFontManager","string","number"]);
+    "number", ["number","string","number"]);
 const font_manager_shrink_cache = Module.cwrap("font_manager_shrink_cache", 
-    "TRet", ["TFontManager","number"]);
+    "number", ["number","number"]);
 const font_manager_unload_all = Module.cwrap("font_manager_unload_all", 
-    "TRet", ["TFontManager"]);
-const GLYPH_FMT_ALPHA = Module.cwrap("GLYPH_FMT_ALPHA", 
+    "number", ["number"]);
+const GLYPH_FMT_ALPHA = Module.cwrap("get_GLYPH_FMT_ALPHA", 
     "number", []);
-const GLYPH_FMT_MONO = Module.cwrap("GLYPH_FMT_MONO", 
+const GLYPH_FMT_MONO = Module.cwrap("get_GLYPH_FMT_MONO", 
     "number", []);
-const GLYPH_FMT_RGBA = Module.cwrap("GLYPH_FMT_RGBA", 
+const GLYPH_FMT_RGBA = Module.cwrap("get_GLYPH_FMT_RGBA", 
     "number", []);
 const idle_add = Module.cwrap("idle_add", 
-    "number", ["Function","any"]);
+    "number", ["number","number"]);
 const idle_remove = Module.cwrap("idle_remove", 
-    "TRet", ["number"]);
+    "number", ["number"]);
 const idle_remove_all_by_ctx = Module.cwrap("idle_remove_all_by_ctx", 
-    "TRet", ["any"]);
+    "number", ["number"]);
 const image_manager = Module.cwrap("image_manager", 
-    "TImageManager", []);
+    "number", []);
 const image_manager_get_bitmap = Module.cwrap("image_manager_get_bitmap", 
-    "TRet", ["TImageManager","string","TBitmap"]);
+    "number", ["number","string","number"]);
 const image_manager_preload = Module.cwrap("image_manager_preload", 
-    "TRet", ["TImageManager","string"]);
-const INPUT_TEXT = Module.cwrap("INPUT_TEXT", 
+    "number", ["number","string"]);
+const INPUT_TEXT = Module.cwrap("get_INPUT_TEXT", 
     "number", []);
-const INPUT_INT = Module.cwrap("INPUT_INT", 
+const INPUT_INT = Module.cwrap("get_INPUT_INT", 
     "number", []);
-const INPUT_UINT = Module.cwrap("INPUT_UINT", 
+const INPUT_UINT = Module.cwrap("get_INPUT_UINT", 
     "number", []);
-const INPUT_HEX = Module.cwrap("INPUT_HEX", 
+const INPUT_HEX = Module.cwrap("get_INPUT_HEX", 
     "number", []);
-const INPUT_FLOAT = Module.cwrap("INPUT_FLOAT", 
+const INPUT_FLOAT = Module.cwrap("get_INPUT_FLOAT", 
     "number", []);
-const INPUT_UFLOAT = Module.cwrap("INPUT_UFLOAT", 
+const INPUT_UFLOAT = Module.cwrap("get_INPUT_UFLOAT", 
     "number", []);
-const INPUT_EMAIL = Module.cwrap("INPUT_EMAIL", 
+const INPUT_EMAIL = Module.cwrap("get_INPUT_EMAIL", 
     "number", []);
-const INPUT_PASSWORD = Module.cwrap("INPUT_PASSWORD", 
+const INPUT_PASSWORD = Module.cwrap("get_INPUT_PASSWORD", 
     "number", []);
-const INPUT_PHONE = Module.cwrap("INPUT_PHONE", 
+const INPUT_PHONE = Module.cwrap("get_INPUT_PHONE", 
     "number", []);
-const INPUT_IPV4 = Module.cwrap("INPUT_IPV4", 
+const INPUT_IPV4 = Module.cwrap("get_INPUT_IPV4", 
     "number", []);
-const INPUT_DATE = Module.cwrap("INPUT_DATE", 
+const INPUT_DATE = Module.cwrap("get_INPUT_DATE", 
     "number", []);
-const INPUT_TIME = Module.cwrap("INPUT_TIME", 
+const INPUT_TIME = Module.cwrap("get_INPUT_TIME", 
     "number", []);
-const INPUT_TIME_FULL = Module.cwrap("INPUT_TIME_FULL", 
+const INPUT_TIME_FULL = Module.cwrap("get_INPUT_TIME_FULL", 
     "number", []);
-const INPUT_CUSTOM = Module.cwrap("INPUT_CUSTOM", 
+const INPUT_CUSTOM = Module.cwrap("get_INPUT_CUSTOM", 
     "number", []);
-const INPUT_CUSTOM_PASSWORD = Module.cwrap("INPUT_CUSTOM_PASSWORD", 
+const INPUT_CUSTOM_PASSWORD = Module.cwrap("get_INPUT_CUSTOM_PASSWORD", 
     "number", []);
-const INPUT_ASCII = Module.cwrap("INPUT_ASCII", 
+const INPUT_ASCII = Module.cwrap("get_INPUT_ASCII", 
     "number", []);
 const input_method_commit_text = Module.cwrap("input_method_commit_text", 
-    "TRet", ["TInputMethod","string"]);
+    "number", ["number","string"]);
 const input_method_set_lang = Module.cwrap("input_method_set_lang", 
-    "TRet", ["TInputMethod","string"]);
+    "number", ["number","string"]);
 const input_method_get_lang = Module.cwrap("input_method_get_lang", 
-    "string", ["TInputMethod"]);
+    "string", ["number"]);
 const input_method_dispatch_key = Module.cwrap("input_method_dispatch_key", 
-    "TRet", ["TInputMethod","number"]);
+    "number", ["number","number"]);
 const input_method_dispatch_keys = Module.cwrap("input_method_dispatch_keys", 
-    "TRet", ["TInputMethod","string"]);
+    "number", ["number","string"]);
 const input_method_dispatch_preedit = Module.cwrap("input_method_dispatch_preedit", 
-    "TRet", ["TInputMethod"]);
+    "number", ["number"]);
 const input_method_dispatch_preedit_confirm = Module.cwrap("input_method_dispatch_preedit_confirm", 
-    "TRet", ["TInputMethod"]);
+    "number", ["number"]);
 const input_method_dispatch_preedit_abort = Module.cwrap("input_method_dispatch_preedit_abort", 
-    "TRet", ["TInputMethod"]);
+    "number", ["number"]);
 const input_method = Module.cwrap("input_method", 
-    "TInputMethod", []);
-const TK_KEY_RETURN = Module.cwrap("TK_KEY_RETURN", 
     "number", []);
-const TK_KEY_ESCAPE = Module.cwrap("TK_KEY_ESCAPE", 
+const TK_KEY_RETURN = Module.cwrap("get_TK_KEY_RETURN", 
     "number", []);
-const TK_KEY_BACKSPACE = Module.cwrap("TK_KEY_BACKSPACE", 
+const TK_KEY_ESCAPE = Module.cwrap("get_TK_KEY_ESCAPE", 
     "number", []);
-const TK_KEY_TAB = Module.cwrap("TK_KEY_TAB", 
+const TK_KEY_BACKSPACE = Module.cwrap("get_TK_KEY_BACKSPACE", 
     "number", []);
-const TK_KEY_SPACE = Module.cwrap("TK_KEY_SPACE", 
+const TK_KEY_TAB = Module.cwrap("get_TK_KEY_TAB", 
     "number", []);
-const TK_KEY_EXCLAIM = Module.cwrap("TK_KEY_EXCLAIM", 
+const TK_KEY_SPACE = Module.cwrap("get_TK_KEY_SPACE", 
     "number", []);
-const TK_KEY_QUOTEDBL = Module.cwrap("TK_KEY_QUOTEDBL", 
+const TK_KEY_EXCLAIM = Module.cwrap("get_TK_KEY_EXCLAIM", 
     "number", []);
-const TK_KEY_HASH = Module.cwrap("TK_KEY_HASH", 
+const TK_KEY_QUOTEDBL = Module.cwrap("get_TK_KEY_QUOTEDBL", 
     "number", []);
-const TK_KEY_PERCENT = Module.cwrap("TK_KEY_PERCENT", 
+const TK_KEY_HASH = Module.cwrap("get_TK_KEY_HASH", 
     "number", []);
-const TK_KEY_DOLLAR = Module.cwrap("TK_KEY_DOLLAR", 
+const TK_KEY_PERCENT = Module.cwrap("get_TK_KEY_PERCENT", 
     "number", []);
-const TK_KEY_AMPERSAND = Module.cwrap("TK_KEY_AMPERSAND", 
+const TK_KEY_DOLLAR = Module.cwrap("get_TK_KEY_DOLLAR", 
     "number", []);
-const TK_KEY_QUOTE = Module.cwrap("TK_KEY_QUOTE", 
+const TK_KEY_AMPERSAND = Module.cwrap("get_TK_KEY_AMPERSAND", 
     "number", []);
-const TK_KEY_LEFTPAREN = Module.cwrap("TK_KEY_LEFTPAREN", 
+const TK_KEY_QUOTE = Module.cwrap("get_TK_KEY_QUOTE", 
     "number", []);
-const TK_KEY_RIGHTPAREN = Module.cwrap("TK_KEY_RIGHTPAREN", 
+const TK_KEY_LEFTPAREN = Module.cwrap("get_TK_KEY_LEFTPAREN", 
     "number", []);
-const TK_KEY_ASTERISK = Module.cwrap("TK_KEY_ASTERISK", 
+const TK_KEY_RIGHTPAREN = Module.cwrap("get_TK_KEY_RIGHTPAREN", 
     "number", []);
-const TK_KEY_PLUS = Module.cwrap("TK_KEY_PLUS", 
+const TK_KEY_ASTERISK = Module.cwrap("get_TK_KEY_ASTERISK", 
     "number", []);
-const TK_KEY_COMMA = Module.cwrap("TK_KEY_COMMA", 
+const TK_KEY_PLUS = Module.cwrap("get_TK_KEY_PLUS", 
     "number", []);
-const TK_KEY_MINUS = Module.cwrap("TK_KEY_MINUS", 
+const TK_KEY_COMMA = Module.cwrap("get_TK_KEY_COMMA", 
     "number", []);
-const TK_KEY_PERIOD = Module.cwrap("TK_KEY_PERIOD", 
+const TK_KEY_MINUS = Module.cwrap("get_TK_KEY_MINUS", 
     "number", []);
-const TK_KEY_SLASH = Module.cwrap("TK_KEY_SLASH", 
+const TK_KEY_PERIOD = Module.cwrap("get_TK_KEY_PERIOD", 
     "number", []);
-const TK_KEY_0 = Module.cwrap("TK_KEY_0", 
+const TK_KEY_SLASH = Module.cwrap("get_TK_KEY_SLASH", 
     "number", []);
-const TK_KEY_1 = Module.cwrap("TK_KEY_1", 
+const TK_KEY_0 = Module.cwrap("get_TK_KEY_0", 
     "number", []);
-const TK_KEY_2 = Module.cwrap("TK_KEY_2", 
+const TK_KEY_1 = Module.cwrap("get_TK_KEY_1", 
     "number", []);
-const TK_KEY_3 = Module.cwrap("TK_KEY_3", 
+const TK_KEY_2 = Module.cwrap("get_TK_KEY_2", 
     "number", []);
-const TK_KEY_4 = Module.cwrap("TK_KEY_4", 
+const TK_KEY_3 = Module.cwrap("get_TK_KEY_3", 
     "number", []);
-const TK_KEY_5 = Module.cwrap("TK_KEY_5", 
+const TK_KEY_4 = Module.cwrap("get_TK_KEY_4", 
     "number", []);
-const TK_KEY_6 = Module.cwrap("TK_KEY_6", 
+const TK_KEY_5 = Module.cwrap("get_TK_KEY_5", 
     "number", []);
-const TK_KEY_7 = Module.cwrap("TK_KEY_7", 
+const TK_KEY_6 = Module.cwrap("get_TK_KEY_6", 
     "number", []);
-const TK_KEY_8 = Module.cwrap("TK_KEY_8", 
+const TK_KEY_7 = Module.cwrap("get_TK_KEY_7", 
     "number", []);
-const TK_KEY_9 = Module.cwrap("TK_KEY_9", 
+const TK_KEY_8 = Module.cwrap("get_TK_KEY_8", 
     "number", []);
-const TK_KEY_COLON = Module.cwrap("TK_KEY_COLON", 
+const TK_KEY_9 = Module.cwrap("get_TK_KEY_9", 
     "number", []);
-const TK_KEY_SEMICOLON = Module.cwrap("TK_KEY_SEMICOLON", 
+const TK_KEY_COLON = Module.cwrap("get_TK_KEY_COLON", 
     "number", []);
-const TK_KEY_LESS = Module.cwrap("TK_KEY_LESS", 
+const TK_KEY_SEMICOLON = Module.cwrap("get_TK_KEY_SEMICOLON", 
     "number", []);
-const TK_KEY_EQUAL = Module.cwrap("TK_KEY_EQUAL", 
+const TK_KEY_LESS = Module.cwrap("get_TK_KEY_LESS", 
     "number", []);
-const TK_KEY_GREATER = Module.cwrap("TK_KEY_GREATER", 
+const TK_KEY_EQUAL = Module.cwrap("get_TK_KEY_EQUAL", 
     "number", []);
-const TK_KEY_QUESTION = Module.cwrap("TK_KEY_QUESTION", 
+const TK_KEY_GREATER = Module.cwrap("get_TK_KEY_GREATER", 
     "number", []);
-const TK_KEY_AT = Module.cwrap("TK_KEY_AT", 
+const TK_KEY_QUESTION = Module.cwrap("get_TK_KEY_QUESTION", 
     "number", []);
-const TK_KEY_LEFTBRACKET = Module.cwrap("TK_KEY_LEFTBRACKET", 
+const TK_KEY_AT = Module.cwrap("get_TK_KEY_AT", 
     "number", []);
-const TK_KEY_BACKSLASH = Module.cwrap("TK_KEY_BACKSLASH", 
+const TK_KEY_LEFTBRACKET = Module.cwrap("get_TK_KEY_LEFTBRACKET", 
     "number", []);
-const TK_KEY_RIGHTBRACKET = Module.cwrap("TK_KEY_RIGHTBRACKET", 
+const TK_KEY_BACKSLASH = Module.cwrap("get_TK_KEY_BACKSLASH", 
     "number", []);
-const TK_KEY_CARET = Module.cwrap("TK_KEY_CARET", 
+const TK_KEY_RIGHTBRACKET = Module.cwrap("get_TK_KEY_RIGHTBRACKET", 
     "number", []);
-const TK_KEY_UNDERSCORE = Module.cwrap("TK_KEY_UNDERSCORE", 
+const TK_KEY_CARET = Module.cwrap("get_TK_KEY_CARET", 
     "number", []);
-const TK_KEY_BACKQUOTE = Module.cwrap("TK_KEY_BACKQUOTE", 
+const TK_KEY_UNDERSCORE = Module.cwrap("get_TK_KEY_UNDERSCORE", 
     "number", []);
-const TK_KEY_a = Module.cwrap("TK_KEY_a", 
+const TK_KEY_BACKQUOTE = Module.cwrap("get_TK_KEY_BACKQUOTE", 
     "number", []);
-const TK_KEY_b = Module.cwrap("TK_KEY_b", 
+const TK_KEY_a = Module.cwrap("get_TK_KEY_a", 
     "number", []);
-const TK_KEY_c = Module.cwrap("TK_KEY_c", 
+const TK_KEY_b = Module.cwrap("get_TK_KEY_b", 
     "number", []);
-const TK_KEY_d = Module.cwrap("TK_KEY_d", 
+const TK_KEY_c = Module.cwrap("get_TK_KEY_c", 
     "number", []);
-const TK_KEY_e = Module.cwrap("TK_KEY_e", 
+const TK_KEY_d = Module.cwrap("get_TK_KEY_d", 
     "number", []);
-const TK_KEY_f = Module.cwrap("TK_KEY_f", 
+const TK_KEY_e = Module.cwrap("get_TK_KEY_e", 
     "number", []);
-const TK_KEY_g = Module.cwrap("TK_KEY_g", 
+const TK_KEY_f = Module.cwrap("get_TK_KEY_f", 
     "number", []);
-const TK_KEY_h = Module.cwrap("TK_KEY_h", 
+const TK_KEY_g = Module.cwrap("get_TK_KEY_g", 
     "number", []);
-const TK_KEY_i = Module.cwrap("TK_KEY_i", 
+const TK_KEY_h = Module.cwrap("get_TK_KEY_h", 
     "number", []);
-const TK_KEY_j = Module.cwrap("TK_KEY_j", 
+const TK_KEY_i = Module.cwrap("get_TK_KEY_i", 
     "number", []);
-const TK_KEY_k = Module.cwrap("TK_KEY_k", 
+const TK_KEY_j = Module.cwrap("get_TK_KEY_j", 
     "number", []);
-const TK_KEY_l = Module.cwrap("TK_KEY_l", 
+const TK_KEY_k = Module.cwrap("get_TK_KEY_k", 
     "number", []);
-const TK_KEY_m = Module.cwrap("TK_KEY_m", 
+const TK_KEY_l = Module.cwrap("get_TK_KEY_l", 
     "number", []);
-const TK_KEY_n = Module.cwrap("TK_KEY_n", 
+const TK_KEY_m = Module.cwrap("get_TK_KEY_m", 
     "number", []);
-const TK_KEY_o = Module.cwrap("TK_KEY_o", 
+const TK_KEY_n = Module.cwrap("get_TK_KEY_n", 
     "number", []);
-const TK_KEY_p = Module.cwrap("TK_KEY_p", 
+const TK_KEY_o = Module.cwrap("get_TK_KEY_o", 
     "number", []);
-const TK_KEY_q = Module.cwrap("TK_KEY_q", 
+const TK_KEY_p = Module.cwrap("get_TK_KEY_p", 
     "number", []);
-const TK_KEY_r = Module.cwrap("TK_KEY_r", 
+const TK_KEY_q = Module.cwrap("get_TK_KEY_q", 
     "number", []);
-const TK_KEY_s = Module.cwrap("TK_KEY_s", 
+const TK_KEY_r = Module.cwrap("get_TK_KEY_r", 
     "number", []);
-const TK_KEY_t = Module.cwrap("TK_KEY_t", 
+const TK_KEY_s = Module.cwrap("get_TK_KEY_s", 
     "number", []);
-const TK_KEY_u = Module.cwrap("TK_KEY_u", 
+const TK_KEY_t = Module.cwrap("get_TK_KEY_t", 
     "number", []);
-const TK_KEY_v = Module.cwrap("TK_KEY_v", 
+const TK_KEY_u = Module.cwrap("get_TK_KEY_u", 
     "number", []);
-const TK_KEY_w = Module.cwrap("TK_KEY_w", 
+const TK_KEY_v = Module.cwrap("get_TK_KEY_v", 
     "number", []);
-const TK_KEY_x = Module.cwrap("TK_KEY_x", 
+const TK_KEY_w = Module.cwrap("get_TK_KEY_w", 
     "number", []);
-const TK_KEY_y = Module.cwrap("TK_KEY_y", 
+const TK_KEY_x = Module.cwrap("get_TK_KEY_x", 
     "number", []);
-const TK_KEY_z = Module.cwrap("TK_KEY_z", 
+const TK_KEY_y = Module.cwrap("get_TK_KEY_y", 
     "number", []);
-const TK_KEY_A = Module.cwrap("TK_KEY_A", 
+const TK_KEY_z = Module.cwrap("get_TK_KEY_z", 
     "number", []);
-const TK_KEY_B = Module.cwrap("TK_KEY_B", 
+const TK_KEY_A = Module.cwrap("get_TK_KEY_A", 
     "number", []);
-const TK_KEY_C = Module.cwrap("TK_KEY_C", 
+const TK_KEY_B = Module.cwrap("get_TK_KEY_B", 
     "number", []);
-const TK_KEY_D = Module.cwrap("TK_KEY_D", 
+const TK_KEY_C = Module.cwrap("get_TK_KEY_C", 
     "number", []);
-const TK_KEY_E = Module.cwrap("TK_KEY_E", 
+const TK_KEY_D = Module.cwrap("get_TK_KEY_D", 
     "number", []);
-const TK_KEY_F = Module.cwrap("TK_KEY_F", 
+const TK_KEY_E = Module.cwrap("get_TK_KEY_E", 
     "number", []);
-const TK_KEY_G = Module.cwrap("TK_KEY_G", 
+const TK_KEY_F = Module.cwrap("get_TK_KEY_F", 
     "number", []);
-const TK_KEY_H = Module.cwrap("TK_KEY_H", 
+const TK_KEY_G = Module.cwrap("get_TK_KEY_G", 
     "number", []);
-const TK_KEY_I = Module.cwrap("TK_KEY_I", 
+const TK_KEY_H = Module.cwrap("get_TK_KEY_H", 
     "number", []);
-const TK_KEY_J = Module.cwrap("TK_KEY_J", 
+const TK_KEY_I = Module.cwrap("get_TK_KEY_I", 
     "number", []);
-const TK_KEY_K = Module.cwrap("TK_KEY_K", 
+const TK_KEY_J = Module.cwrap("get_TK_KEY_J", 
     "number", []);
-const TK_KEY_L = Module.cwrap("TK_KEY_L", 
+const TK_KEY_K = Module.cwrap("get_TK_KEY_K", 
     "number", []);
-const TK_KEY_M = Module.cwrap("TK_KEY_M", 
+const TK_KEY_L = Module.cwrap("get_TK_KEY_L", 
     "number", []);
-const TK_KEY_N = Module.cwrap("TK_KEY_N", 
+const TK_KEY_M = Module.cwrap("get_TK_KEY_M", 
     "number", []);
-const TK_KEY_O = Module.cwrap("TK_KEY_O", 
+const TK_KEY_N = Module.cwrap("get_TK_KEY_N", 
     "number", []);
-const TK_KEY_P = Module.cwrap("TK_KEY_P", 
+const TK_KEY_O = Module.cwrap("get_TK_KEY_O", 
     "number", []);
-const TK_KEY_Q = Module.cwrap("TK_KEY_Q", 
+const TK_KEY_P = Module.cwrap("get_TK_KEY_P", 
     "number", []);
-const TK_KEY_R = Module.cwrap("TK_KEY_R", 
+const TK_KEY_Q = Module.cwrap("get_TK_KEY_Q", 
     "number", []);
-const TK_KEY_S = Module.cwrap("TK_KEY_S", 
+const TK_KEY_R = Module.cwrap("get_TK_KEY_R", 
     "number", []);
-const TK_KEY_T = Module.cwrap("TK_KEY_T", 
+const TK_KEY_S = Module.cwrap("get_TK_KEY_S", 
     "number", []);
-const TK_KEY_U = Module.cwrap("TK_KEY_U", 
+const TK_KEY_T = Module.cwrap("get_TK_KEY_T", 
     "number", []);
-const TK_KEY_V = Module.cwrap("TK_KEY_V", 
+const TK_KEY_U = Module.cwrap("get_TK_KEY_U", 
     "number", []);
-const TK_KEY_W = Module.cwrap("TK_KEY_W", 
+const TK_KEY_V = Module.cwrap("get_TK_KEY_V", 
     "number", []);
-const TK_KEY_X = Module.cwrap("TK_KEY_X", 
+const TK_KEY_W = Module.cwrap("get_TK_KEY_W", 
     "number", []);
-const TK_KEY_Y = Module.cwrap("TK_KEY_Y", 
+const TK_KEY_X = Module.cwrap("get_TK_KEY_X", 
     "number", []);
-const TK_KEY_Z = Module.cwrap("TK_KEY_Z", 
+const TK_KEY_Y = Module.cwrap("get_TK_KEY_Y", 
     "number", []);
-const TK_KEY_DOT = Module.cwrap("TK_KEY_DOT", 
+const TK_KEY_Z = Module.cwrap("get_TK_KEY_Z", 
     "number", []);
-const TK_KEY_DELETE = Module.cwrap("TK_KEY_DELETE", 
+const TK_KEY_DOT = Module.cwrap("get_TK_KEY_DOT", 
     "number", []);
-const TK_KEY_LEFTBRACE = Module.cwrap("TK_KEY_LEFTBRACE", 
+const TK_KEY_DELETE = Module.cwrap("get_TK_KEY_DELETE", 
     "number", []);
-const TK_KEY_RIGHTBRACE = Module.cwrap("TK_KEY_RIGHTBRACE", 
+const TK_KEY_LEFTBRACE = Module.cwrap("get_TK_KEY_LEFTBRACE", 
     "number", []);
-const TK_KEY_LSHIFT = Module.cwrap("TK_KEY_LSHIFT", 
+const TK_KEY_RIGHTBRACE = Module.cwrap("get_TK_KEY_RIGHTBRACE", 
     "number", []);
-const TK_KEY_RSHIFT = Module.cwrap("TK_KEY_RSHIFT", 
+const TK_KEY_LSHIFT = Module.cwrap("get_TK_KEY_LSHIFT", 
     "number", []);
-const TK_KEY_LCTRL = Module.cwrap("TK_KEY_LCTRL", 
+const TK_KEY_RSHIFT = Module.cwrap("get_TK_KEY_RSHIFT", 
     "number", []);
-const TK_KEY_RCTRL = Module.cwrap("TK_KEY_RCTRL", 
+const TK_KEY_LCTRL = Module.cwrap("get_TK_KEY_LCTRL", 
     "number", []);
-const TK_KEY_LALT = Module.cwrap("TK_KEY_LALT", 
+const TK_KEY_RCTRL = Module.cwrap("get_TK_KEY_RCTRL", 
     "number", []);
-const TK_KEY_RALT = Module.cwrap("TK_KEY_RALT", 
+const TK_KEY_LALT = Module.cwrap("get_TK_KEY_LALT", 
     "number", []);
-const TK_KEY_CAPSLOCK = Module.cwrap("TK_KEY_CAPSLOCK", 
+const TK_KEY_RALT = Module.cwrap("get_TK_KEY_RALT", 
     "number", []);
-const TK_KEY_HOME = Module.cwrap("TK_KEY_HOME", 
+const TK_KEY_CAPSLOCK = Module.cwrap("get_TK_KEY_CAPSLOCK", 
     "number", []);
-const TK_KEY_END = Module.cwrap("TK_KEY_END", 
+const TK_KEY_HOME = Module.cwrap("get_TK_KEY_HOME", 
     "number", []);
-const TK_KEY_INSERT = Module.cwrap("TK_KEY_INSERT", 
+const TK_KEY_END = Module.cwrap("get_TK_KEY_END", 
     "number", []);
-const TK_KEY_UP = Module.cwrap("TK_KEY_UP", 
+const TK_KEY_INSERT = Module.cwrap("get_TK_KEY_INSERT", 
     "number", []);
-const TK_KEY_DOWN = Module.cwrap("TK_KEY_DOWN", 
+const TK_KEY_UP = Module.cwrap("get_TK_KEY_UP", 
     "number", []);
-const TK_KEY_LEFT = Module.cwrap("TK_KEY_LEFT", 
+const TK_KEY_DOWN = Module.cwrap("get_TK_KEY_DOWN", 
     "number", []);
-const TK_KEY_RIGHT = Module.cwrap("TK_KEY_RIGHT", 
+const TK_KEY_LEFT = Module.cwrap("get_TK_KEY_LEFT", 
     "number", []);
-const TK_KEY_PAGEUP = Module.cwrap("TK_KEY_PAGEUP", 
+const TK_KEY_RIGHT = Module.cwrap("get_TK_KEY_RIGHT", 
     "number", []);
-const TK_KEY_PAGEDOWN = Module.cwrap("TK_KEY_PAGEDOWN", 
+const TK_KEY_PAGEUP = Module.cwrap("get_TK_KEY_PAGEUP", 
     "number", []);
-const TK_KEY_F1 = Module.cwrap("TK_KEY_F1", 
+const TK_KEY_PAGEDOWN = Module.cwrap("get_TK_KEY_PAGEDOWN", 
     "number", []);
-const TK_KEY_F2 = Module.cwrap("TK_KEY_F2", 
+const TK_KEY_F1 = Module.cwrap("get_TK_KEY_F1", 
     "number", []);
-const TK_KEY_F3 = Module.cwrap("TK_KEY_F3", 
+const TK_KEY_F2 = Module.cwrap("get_TK_KEY_F2", 
     "number", []);
-const TK_KEY_F4 = Module.cwrap("TK_KEY_F4", 
+const TK_KEY_F3 = Module.cwrap("get_TK_KEY_F3", 
     "number", []);
-const TK_KEY_F5 = Module.cwrap("TK_KEY_F5", 
+const TK_KEY_F4 = Module.cwrap("get_TK_KEY_F4", 
     "number", []);
-const TK_KEY_F6 = Module.cwrap("TK_KEY_F6", 
+const TK_KEY_F5 = Module.cwrap("get_TK_KEY_F5", 
     "number", []);
-const TK_KEY_F7 = Module.cwrap("TK_KEY_F7", 
+const TK_KEY_F6 = Module.cwrap("get_TK_KEY_F6", 
     "number", []);
-const TK_KEY_F8 = Module.cwrap("TK_KEY_F8", 
+const TK_KEY_F7 = Module.cwrap("get_TK_KEY_F7", 
     "number", []);
-const TK_KEY_F9 = Module.cwrap("TK_KEY_F9", 
+const TK_KEY_F8 = Module.cwrap("get_TK_KEY_F8", 
     "number", []);
-const TK_KEY_F10 = Module.cwrap("TK_KEY_F10", 
+const TK_KEY_F9 = Module.cwrap("get_TK_KEY_F9", 
     "number", []);
-const TK_KEY_F11 = Module.cwrap("TK_KEY_F11", 
+const TK_KEY_F10 = Module.cwrap("get_TK_KEY_F10", 
     "number", []);
-const TK_KEY_F12 = Module.cwrap("TK_KEY_F12", 
+const TK_KEY_F11 = Module.cwrap("get_TK_KEY_F11", 
     "number", []);
-const TK_KEY_MENU = Module.cwrap("TK_KEY_MENU", 
+const TK_KEY_F12 = Module.cwrap("get_TK_KEY_F12", 
     "number", []);
-const TK_KEY_COMMAND = Module.cwrap("TK_KEY_COMMAND", 
+const TK_KEY_MENU = Module.cwrap("get_TK_KEY_MENU", 
     "number", []);
-const TK_KEY_BACK = Module.cwrap("TK_KEY_BACK", 
+const TK_KEY_COMMAND = Module.cwrap("get_TK_KEY_COMMAND", 
     "number", []);
-const TK_KEY_CANCEL = Module.cwrap("TK_KEY_CANCEL", 
+const TK_KEY_BACK = Module.cwrap("get_TK_KEY_BACK", 
     "number", []);
-const TK_KEY_WHEEL = Module.cwrap("TK_KEY_WHEEL", 
+const TK_KEY_CANCEL = Module.cwrap("get_TK_KEY_CANCEL", 
+    "number", []);
+const TK_KEY_WHEEL = Module.cwrap("get_TK_KEY_WHEEL", 
     "number", []);
 const locale_info = Module.cwrap("locale_info", 
-    "TLocaleInfo", []);
+    "number", []);
 const locale_info_tr = Module.cwrap("locale_info_tr", 
-    "string", ["TLocaleInfo","string"]);
+    "string", ["number","string"]);
 const locale_info_change = Module.cwrap("locale_info_change", 
-    "TRet", ["TLocaleInfo","string","string"]);
+    "number", ["number","string","string"]);
 const locale_info_off = Module.cwrap("locale_info_off", 
-    "TRet", ["TLocaleInfo","number"]);
-const STYLE_ID_BG_COLOR = Module.cwrap("STYLE_ID_BG_COLOR", 
+    "number", ["number","number"]);
+const STYLE_ID_BG_COLOR = Module.cwrap("get_STYLE_ID_BG_COLOR", 
     "string", []);
-const STYLE_ID_FG_COLOR = Module.cwrap("STYLE_ID_FG_COLOR", 
+const STYLE_ID_FG_COLOR = Module.cwrap("get_STYLE_ID_FG_COLOR", 
     "string", []);
-const STYLE_ID_MASK_COLOR = Module.cwrap("STYLE_ID_MASK_COLOR", 
+const STYLE_ID_MASK_COLOR = Module.cwrap("get_STYLE_ID_MASK_COLOR", 
     "string", []);
-const STYLE_ID_FONT_NAME = Module.cwrap("STYLE_ID_FONT_NAME", 
+const STYLE_ID_FONT_NAME = Module.cwrap("get_STYLE_ID_FONT_NAME", 
     "string", []);
-const STYLE_ID_FONT_SIZE = Module.cwrap("STYLE_ID_FONT_SIZE", 
+const STYLE_ID_FONT_SIZE = Module.cwrap("get_STYLE_ID_FONT_SIZE", 
     "string", []);
-const STYLE_ID_FONT_STYLE = Module.cwrap("STYLE_ID_FONT_STYLE", 
+const STYLE_ID_FONT_STYLE = Module.cwrap("get_STYLE_ID_FONT_STYLE", 
     "string", []);
-const STYLE_ID_TEXT_COLOR = Module.cwrap("STYLE_ID_TEXT_COLOR", 
+const STYLE_ID_TEXT_COLOR = Module.cwrap("get_STYLE_ID_TEXT_COLOR", 
     "string", []);
-const STYLE_ID_HIGHLIGHT_FONT_NAME = Module.cwrap("STYLE_ID_HIGHLIGHT_FONT_NAME", 
+const STYLE_ID_HIGHLIGHT_FONT_NAME = Module.cwrap("get_STYLE_ID_HIGHLIGHT_FONT_NAME", 
     "string", []);
-const STYLE_ID_HIGHLIGHT_FONT_SIZE = Module.cwrap("STYLE_ID_HIGHLIGHT_FONT_SIZE", 
+const STYLE_ID_HIGHLIGHT_FONT_SIZE = Module.cwrap("get_STYLE_ID_HIGHLIGHT_FONT_SIZE", 
     "string", []);
-const STYLE_ID_HIGHLIGHT_TEXT_COLOR = Module.cwrap("STYLE_ID_HIGHLIGHT_TEXT_COLOR", 
+const STYLE_ID_HIGHLIGHT_TEXT_COLOR = Module.cwrap("get_STYLE_ID_HIGHLIGHT_TEXT_COLOR", 
     "string", []);
-const STYLE_ID_TIPS_TEXT_COLOR = Module.cwrap("STYLE_ID_TIPS_TEXT_COLOR", 
+const STYLE_ID_TIPS_TEXT_COLOR = Module.cwrap("get_STYLE_ID_TIPS_TEXT_COLOR", 
     "string", []);
-const STYLE_ID_TEXT_ALIGN_H = Module.cwrap("STYLE_ID_TEXT_ALIGN_H", 
+const STYLE_ID_TEXT_ALIGN_H = Module.cwrap("get_STYLE_ID_TEXT_ALIGN_H", 
     "string", []);
-const STYLE_ID_TEXT_ALIGN_V = Module.cwrap("STYLE_ID_TEXT_ALIGN_V", 
+const STYLE_ID_TEXT_ALIGN_V = Module.cwrap("get_STYLE_ID_TEXT_ALIGN_V", 
     "string", []);
-const STYLE_ID_BORDER_COLOR = Module.cwrap("STYLE_ID_BORDER_COLOR", 
+const STYLE_ID_BORDER_COLOR = Module.cwrap("get_STYLE_ID_BORDER_COLOR", 
     "string", []);
-const STYLE_ID_BORDER_WIDTH = Module.cwrap("STYLE_ID_BORDER_WIDTH", 
+const STYLE_ID_BORDER_WIDTH = Module.cwrap("get_STYLE_ID_BORDER_WIDTH", 
     "string", []);
-const STYLE_ID_BORDER = Module.cwrap("STYLE_ID_BORDER", 
+const STYLE_ID_BORDER = Module.cwrap("get_STYLE_ID_BORDER", 
     "string", []);
-const STYLE_ID_BG_IMAGE = Module.cwrap("STYLE_ID_BG_IMAGE", 
+const STYLE_ID_BG_IMAGE = Module.cwrap("get_STYLE_ID_BG_IMAGE", 
     "string", []);
-const STYLE_ID_BG_IMAGE_DRAW_TYPE = Module.cwrap("STYLE_ID_BG_IMAGE_DRAW_TYPE", 
+const STYLE_ID_BG_IMAGE_DRAW_TYPE = Module.cwrap("get_STYLE_ID_BG_IMAGE_DRAW_TYPE", 
     "string", []);
-const STYLE_ID_ICON = Module.cwrap("STYLE_ID_ICON", 
+const STYLE_ID_ICON = Module.cwrap("get_STYLE_ID_ICON", 
     "string", []);
-const STYLE_ID_FG_IMAGE = Module.cwrap("STYLE_ID_FG_IMAGE", 
+const STYLE_ID_FG_IMAGE = Module.cwrap("get_STYLE_ID_FG_IMAGE", 
     "string", []);
-const STYLE_ID_FG_IMAGE_DRAW_TYPE = Module.cwrap("STYLE_ID_FG_IMAGE_DRAW_TYPE", 
+const STYLE_ID_FG_IMAGE_DRAW_TYPE = Module.cwrap("get_STYLE_ID_FG_IMAGE_DRAW_TYPE", 
     "string", []);
-const STYLE_ID_SPACER = Module.cwrap("STYLE_ID_SPACER", 
+const STYLE_ID_SPACER = Module.cwrap("get_STYLE_ID_SPACER", 
     "string", []);
-const STYLE_ID_MARGIN = Module.cwrap("STYLE_ID_MARGIN", 
+const STYLE_ID_MARGIN = Module.cwrap("get_STYLE_ID_MARGIN", 
     "string", []);
-const STYLE_ID_MARGIN_LEFT = Module.cwrap("STYLE_ID_MARGIN_LEFT", 
+const STYLE_ID_MARGIN_LEFT = Module.cwrap("get_STYLE_ID_MARGIN_LEFT", 
     "string", []);
-const STYLE_ID_MARGIN_RIGHT = Module.cwrap("STYLE_ID_MARGIN_RIGHT", 
+const STYLE_ID_MARGIN_RIGHT = Module.cwrap("get_STYLE_ID_MARGIN_RIGHT", 
     "string", []);
-const STYLE_ID_MARGIN_TOP = Module.cwrap("STYLE_ID_MARGIN_TOP", 
+const STYLE_ID_MARGIN_TOP = Module.cwrap("get_STYLE_ID_MARGIN_TOP", 
     "string", []);
-const STYLE_ID_MARGIN_BOTTOM = Module.cwrap("STYLE_ID_MARGIN_BOTTOM", 
+const STYLE_ID_MARGIN_BOTTOM = Module.cwrap("get_STYLE_ID_MARGIN_BOTTOM", 
     "string", []);
-const STYLE_ID_ICON_AT = Module.cwrap("STYLE_ID_ICON_AT", 
+const STYLE_ID_ICON_AT = Module.cwrap("get_STYLE_ID_ICON_AT", 
     "string", []);
-const STYLE_ID_ACTIVE_ICON = Module.cwrap("STYLE_ID_ACTIVE_ICON", 
+const STYLE_ID_ACTIVE_ICON = Module.cwrap("get_STYLE_ID_ACTIVE_ICON", 
     "string", []);
-const STYLE_ID_X_OFFSET = Module.cwrap("STYLE_ID_X_OFFSET", 
+const STYLE_ID_X_OFFSET = Module.cwrap("get_STYLE_ID_X_OFFSET", 
     "string", []);
-const STYLE_ID_Y_OFFSET = Module.cwrap("STYLE_ID_Y_OFFSET", 
+const STYLE_ID_Y_OFFSET = Module.cwrap("get_STYLE_ID_Y_OFFSET", 
     "string", []);
-const STYLE_ID_SELECTED_BG_COLOR = Module.cwrap("STYLE_ID_SELECTED_BG_COLOR", 
+const STYLE_ID_SELECTED_BG_COLOR = Module.cwrap("get_STYLE_ID_SELECTED_BG_COLOR", 
     "string", []);
-const STYLE_ID_SELECTED_FG_COLOR = Module.cwrap("STYLE_ID_SELECTED_FG_COLOR", 
+const STYLE_ID_SELECTED_FG_COLOR = Module.cwrap("get_STYLE_ID_SELECTED_FG_COLOR", 
     "string", []);
-const STYLE_ID_SELECTED_TEXT_COLOR = Module.cwrap("STYLE_ID_SELECTED_TEXT_COLOR", 
+const STYLE_ID_SELECTED_TEXT_COLOR = Module.cwrap("get_STYLE_ID_SELECTED_TEXT_COLOR", 
     "string", []);
-const STYLE_ID_ROUND_RADIUS = Module.cwrap("STYLE_ID_ROUND_RADIUS", 
+const STYLE_ID_ROUND_RADIUS = Module.cwrap("get_STYLE_ID_ROUND_RADIUS", 
     "string", []);
-const STYLE_ID_ROUND_RADIUS_TOP_LETF = Module.cwrap("STYLE_ID_ROUND_RADIUS_TOP_LETF", 
+const STYLE_ID_ROUND_RADIUS_TOP_LETF = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_TOP_LETF", 
     "string", []);
-const STYLE_ID_ROUND_RADIUS_TOP_RIGHT = Module.cwrap("STYLE_ID_ROUND_RADIUS_TOP_RIGHT", 
+const STYLE_ID_ROUND_RADIUS_TOP_RIGHT = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_TOP_RIGHT", 
     "string", []);
-const STYLE_ID_ROUND_RADIUS_BOTTOM_LETF = Module.cwrap("STYLE_ID_ROUND_RADIUS_BOTTOM_LETF", 
+const STYLE_ID_ROUND_RADIUS_BOTTOM_LETF = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_BOTTOM_LETF", 
     "string", []);
-const STYLE_ID_ROUND_RADIUS_BOTTOM_RIGHT = Module.cwrap("STYLE_ID_ROUND_RADIUS_BOTTOM_RIGHT", 
+const STYLE_ID_ROUND_RADIUS_BOTTOM_RIGHT = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_BOTTOM_RIGHT", 
     "string", []);
-const STYLE_ID_CHILDREN_LAYOUT = Module.cwrap("STYLE_ID_CHILDREN_LAYOUT", 
+const STYLE_ID_CHILDREN_LAYOUT = Module.cwrap("get_STYLE_ID_CHILDREN_LAYOUT", 
     "string", []);
-const STYLE_ID_SELF_LAYOUT = Module.cwrap("STYLE_ID_SELF_LAYOUT", 
+const STYLE_ID_SELF_LAYOUT = Module.cwrap("get_STYLE_ID_SELF_LAYOUT", 
     "string", []);
-const STYLE_ID_FOCUSABLE = Module.cwrap("STYLE_ID_FOCUSABLE", 
+const STYLE_ID_FOCUSABLE = Module.cwrap("get_STYLE_ID_FOCUSABLE", 
     "string", []);
-const STYLE_ID_FEEDBACK = Module.cwrap("STYLE_ID_FEEDBACK", 
+const STYLE_ID_FEEDBACK = Module.cwrap("get_STYLE_ID_FEEDBACK", 
     "string", []);
 const style_notify_widget_state_changed = Module.cwrap("style_notify_widget_state_changed", 
-    "TRet", ["TStyle","TWidget"]);
+    "number", ["number","number"]);
 const style_is_valid = Module.cwrap("style_is_valid", 
-    "boolean", ["TStyle"]);
+    "number", ["number"]);
 const style_get_int = Module.cwrap("style_get_int", 
-    "number", ["TStyle","string","number"]);
+    "number", ["number","string","number"]);
 const style_get_uint = Module.cwrap("style_get_uint", 
-    "number", ["TStyle","string","number"]);
+    "number", ["number","string","number"]);
 const style_get_str = Module.cwrap("style_get_str", 
-    "string", ["TStyle","string","string"]);
+    "string", ["number","string","string"]);
 const style_set = Module.cwrap("style_set", 
-    "TRet", ["TStyle","string","string","TValue"]);
+    "number", ["number","string","string","number"]);
 const style_update_state = Module.cwrap("style_update_state", 
-    "TRet", ["TStyle","TTheme","string","string","string"]);
+    "number", ["number","number","string","string","string"]);
 const style_get_style_state = Module.cwrap("style_get_style_state", 
-    "string", ["TStyle"]);
+    "string", ["number"]);
 const style_is_mutable = Module.cwrap("style_is_mutable", 
-    "boolean", ["TStyle"]);
+    "number", ["number"]);
 const style_get_style_type = Module.cwrap("style_get_style_type", 
-    "string", ["TStyle"]);
+    "string", ["number"]);
 const theme = Module.cwrap("theme", 
-    "TTheme", []);
+    "number", []);
 const timer_add = Module.cwrap("timer_add", 
-    "number", ["Function","any","number"]);
+    "number", ["number","number","number"]);
 const timer_remove = Module.cwrap("timer_remove", 
-    "TRet", ["number"]);
+    "number", ["number"]);
 const timer_remove_all_by_ctx = Module.cwrap("timer_remove_all_by_ctx", 
-    "TRet", ["any"]);
+    "number", ["number"]);
 const timer_reset = Module.cwrap("timer_reset", 
-    "TRet", ["number"]);
+    "number", ["number"]);
 const timer_suspend = Module.cwrap("timer_suspend", 
-    "TRet", ["number"]);
+    "number", ["number"]);
 const timer_resume = Module.cwrap("timer_resume", 
-    "TRet", ["number"]);
+    "number", ["number"]);
 const timer_modify = Module.cwrap("timer_modify", 
-    "TRet", ["number","number"]);
-const ALIGN_V_NONE = Module.cwrap("ALIGN_V_NONE", 
+    "number", ["number","number"]);
+const ALIGN_V_NONE = Module.cwrap("get_ALIGN_V_NONE", 
     "number", []);
-const ALIGN_V_MIDDLE = Module.cwrap("ALIGN_V_MIDDLE", 
+const ALIGN_V_MIDDLE = Module.cwrap("get_ALIGN_V_MIDDLE", 
     "number", []);
-const ALIGN_V_TOP = Module.cwrap("ALIGN_V_TOP", 
+const ALIGN_V_TOP = Module.cwrap("get_ALIGN_V_TOP", 
     "number", []);
-const ALIGN_V_BOTTOM = Module.cwrap("ALIGN_V_BOTTOM", 
+const ALIGN_V_BOTTOM = Module.cwrap("get_ALIGN_V_BOTTOM", 
     "number", []);
-const ALIGN_H_NONE = Module.cwrap("ALIGN_H_NONE", 
+const ALIGN_H_NONE = Module.cwrap("get_ALIGN_H_NONE", 
     "number", []);
-const ALIGN_H_CENTER = Module.cwrap("ALIGN_H_CENTER", 
+const ALIGN_H_CENTER = Module.cwrap("get_ALIGN_H_CENTER", 
     "number", []);
-const ALIGN_H_LEFT = Module.cwrap("ALIGN_H_LEFT", 
+const ALIGN_H_LEFT = Module.cwrap("get_ALIGN_H_LEFT", 
     "number", []);
-const ALIGN_H_RIGHT = Module.cwrap("ALIGN_H_RIGHT", 
+const ALIGN_H_RIGHT = Module.cwrap("get_ALIGN_H_RIGHT", 
     "number", []);
-const APP_MOBILE = Module.cwrap("APP_MOBILE", 
+const APP_MOBILE = Module.cwrap("get_APP_MOBILE", 
     "number", []);
-const APP_SIMULATOR = Module.cwrap("APP_SIMULATOR", 
+const APP_SIMULATOR = Module.cwrap("get_APP_SIMULATOR", 
     "number", []);
-const APP_DESKTOP = Module.cwrap("APP_DESKTOP", 
+const APP_DESKTOP = Module.cwrap("get_APP_DESKTOP", 
     "number", []);
-const BITMAP_FMT_NONE = Module.cwrap("BITMAP_FMT_NONE", 
+const BITMAP_FMT_NONE = Module.cwrap("get_BITMAP_FMT_NONE", 
     "number", []);
-const BITMAP_FMT_RGBA8888 = Module.cwrap("BITMAP_FMT_RGBA8888", 
+const BITMAP_FMT_RGBA8888 = Module.cwrap("get_BITMAP_FMT_RGBA8888", 
     "number", []);
-const BITMAP_FMT_ABGR8888 = Module.cwrap("BITMAP_FMT_ABGR8888", 
+const BITMAP_FMT_ABGR8888 = Module.cwrap("get_BITMAP_FMT_ABGR8888", 
     "number", []);
-const BITMAP_FMT_BGRA8888 = Module.cwrap("BITMAP_FMT_BGRA8888", 
+const BITMAP_FMT_BGRA8888 = Module.cwrap("get_BITMAP_FMT_BGRA8888", 
     "number", []);
-const BITMAP_FMT_ARGB8888 = Module.cwrap("BITMAP_FMT_ARGB8888", 
+const BITMAP_FMT_ARGB8888 = Module.cwrap("get_BITMAP_FMT_ARGB8888", 
     "number", []);
-const BITMAP_FMT_RGB565 = Module.cwrap("BITMAP_FMT_RGB565", 
+const BITMAP_FMT_RGB565 = Module.cwrap("get_BITMAP_FMT_RGB565", 
     "number", []);
-const BITMAP_FMT_BGR565 = Module.cwrap("BITMAP_FMT_BGR565", 
+const BITMAP_FMT_BGR565 = Module.cwrap("get_BITMAP_FMT_BGR565", 
     "number", []);
-const BITMAP_FMT_RGB888 = Module.cwrap("BITMAP_FMT_RGB888", 
+const BITMAP_FMT_RGB888 = Module.cwrap("get_BITMAP_FMT_RGB888", 
     "number", []);
-const BITMAP_FMT_BGR888 = Module.cwrap("BITMAP_FMT_BGR888", 
+const BITMAP_FMT_BGR888 = Module.cwrap("get_BITMAP_FMT_BGR888", 
     "number", []);
-const BITMAP_FMT_GRAY = Module.cwrap("BITMAP_FMT_GRAY", 
+const BITMAP_FMT_GRAY = Module.cwrap("get_BITMAP_FMT_GRAY", 
     "number", []);
-const BITMAP_FMT_MONO = Module.cwrap("BITMAP_FMT_MONO", 
+const BITMAP_FMT_MONO = Module.cwrap("get_BITMAP_FMT_MONO", 
     "number", []);
-const BITMAP_FLAG_NONE = Module.cwrap("BITMAP_FLAG_NONE", 
+const BITMAP_FLAG_NONE = Module.cwrap("get_BITMAP_FLAG_NONE", 
     "number", []);
-const BITMAP_FLAG_OPAQUE = Module.cwrap("BITMAP_FLAG_OPAQUE", 
+const BITMAP_FLAG_OPAQUE = Module.cwrap("get_BITMAP_FLAG_OPAQUE", 
     "number", []);
-const BITMAP_FLAG_IMMUTABLE = Module.cwrap("BITMAP_FLAG_IMMUTABLE", 
+const BITMAP_FLAG_IMMUTABLE = Module.cwrap("get_BITMAP_FLAG_IMMUTABLE", 
     "number", []);
-const BITMAP_FLAG_TEXTURE = Module.cwrap("BITMAP_FLAG_TEXTURE", 
+const BITMAP_FLAG_TEXTURE = Module.cwrap("get_BITMAP_FLAG_TEXTURE", 
     "number", []);
-const BITMAP_FLAG_CHANGED = Module.cwrap("BITMAP_FLAG_CHANGED", 
+const BITMAP_FLAG_CHANGED = Module.cwrap("get_BITMAP_FLAG_CHANGED", 
     "number", []);
-const BITMAP_FLAG_PREMULTI_ALPHA = Module.cwrap("BITMAP_FLAG_PREMULTI_ALPHA", 
+const BITMAP_FLAG_PREMULTI_ALPHA = Module.cwrap("get_BITMAP_FLAG_PREMULTI_ALPHA", 
     "number", []);
 const vgcanvas_cast = Module.cwrap("vgcanvas_cast", 
-    "TVgcanvas", ["TVgcanvas"]);
+    "number", ["number"]);
 const vgcanvas_flush = Module.cwrap("vgcanvas_flush", 
-    "TRet", ["TVgcanvas"]);
+    "number", ["number"]);
 const vgcanvas_begin_path = Module.cwrap("vgcanvas_begin_path", 
-    "TRet", ["TVgcanvas"]);
+    "number", ["number"]);
 const vgcanvas_move_to = Module.cwrap("vgcanvas_move_to", 
-    "TRet", ["TVgcanvas","number","number"]);
+    "number", ["number","number","number"]);
 const vgcanvas_line_to = Module.cwrap("vgcanvas_line_to", 
-    "TRet", ["TVgcanvas","number","number"]);
+    "number", ["number","number","number"]);
 const vgcanvas_quad_to = Module.cwrap("vgcanvas_quad_to", 
-    "TRet", ["TVgcanvas","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const vgcanvas_bezier_to = Module.cwrap("vgcanvas_bezier_to", 
-    "TRet", ["TVgcanvas","number","number","number","number","number","number"]);
+    "number", ["number","number","number","number","number","number","number"]);
 const vgcanvas_arc_to = Module.cwrap("vgcanvas_arc_to", 
-    "TRet", ["TVgcanvas","number","number","number","number","number"]);
+    "number", ["number","number","number","number","number","number"]);
 const vgcanvas_arc = Module.cwrap("vgcanvas_arc", 
-    "TRet", ["TVgcanvas","number","number","number","number","number","boolean"]);
+    "number", ["number","number","number","number","number","number","number"]);
 const vgcanvas_is_point_in_path = Module.cwrap("vgcanvas_is_point_in_path", 
-    "boolean", ["TVgcanvas","number","number"]);
+    "number", ["number","number","number"]);
 const vgcanvas_rect = Module.cwrap("vgcanvas_rect", 
-    "TRet", ["TVgcanvas","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const vgcanvas_rounded_rect = Module.cwrap("vgcanvas_rounded_rect", 
-    "TRet", ["TVgcanvas","number","number","number","number","number"]);
+    "number", ["number","number","number","number","number","number"]);
 const vgcanvas_ellipse = Module.cwrap("vgcanvas_ellipse", 
-    "TRet", ["TVgcanvas","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const vgcanvas_close_path = Module.cwrap("vgcanvas_close_path", 
-    "TRet", ["TVgcanvas"]);
+    "number", ["number"]);
 const vgcanvas_path_winding = Module.cwrap("vgcanvas_path_winding", 
-    "TRet", ["TVgcanvas","boolean"]);
+    "number", ["number","number"]);
 const vgcanvas_rotate = Module.cwrap("vgcanvas_rotate", 
-    "TRet", ["TVgcanvas","number"]);
+    "number", ["number","number"]);
 const vgcanvas_scale = Module.cwrap("vgcanvas_scale", 
-    "TRet", ["TVgcanvas","number","number"]);
+    "number", ["number","number","number"]);
 const vgcanvas_translate = Module.cwrap("vgcanvas_translate", 
-    "TRet", ["TVgcanvas","number","number"]);
+    "number", ["number","number","number"]);
 const vgcanvas_transform = Module.cwrap("vgcanvas_transform", 
-    "TRet", ["TVgcanvas","number","number","number","number","number","number"]);
+    "number", ["number","number","number","number","number","number","number"]);
 const vgcanvas_set_transform = Module.cwrap("vgcanvas_set_transform", 
-    "TRet", ["TVgcanvas","number","number","number","number","number","number"]);
+    "number", ["number","number","number","number","number","number","number"]);
 const vgcanvas_clip_path = Module.cwrap("vgcanvas_clip_path", 
-    "TRet", ["TVgcanvas"]);
+    "number", ["number"]);
 const vgcanvas_clip_rect = Module.cwrap("vgcanvas_clip_rect", 
-    "TRet", ["TVgcanvas","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const vgcanvas_intersect_clip_rect = Module.cwrap("vgcanvas_intersect_clip_rect", 
-    "TRet", ["TVgcanvas","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const vgcanvas_fill = Module.cwrap("vgcanvas_fill", 
-    "TRet", ["TVgcanvas"]);
+    "number", ["number"]);
 const vgcanvas_stroke = Module.cwrap("vgcanvas_stroke", 
-    "TRet", ["TVgcanvas"]);
+    "number", ["number"]);
 const vgcanvas_paint = Module.cwrap("vgcanvas_paint", 
-    "TRet", ["TVgcanvas","boolean","TBitmap"]);
+    "number", ["number","number","number"]);
 const vgcanvas_set_font = Module.cwrap("vgcanvas_set_font", 
-    "TRet", ["TVgcanvas","string"]);
+    "number", ["number","string"]);
 const vgcanvas_set_font_size = Module.cwrap("vgcanvas_set_font_size", 
-    "TRet", ["TVgcanvas","number"]);
+    "number", ["number","number"]);
 const vgcanvas_set_text_align = Module.cwrap("vgcanvas_set_text_align", 
-    "TRet", ["TVgcanvas","string"]);
+    "number", ["number","string"]);
 const vgcanvas_set_text_baseline = Module.cwrap("vgcanvas_set_text_baseline", 
-    "TRet", ["TVgcanvas","string"]);
+    "number", ["number","string"]);
 const vgcanvas_fill_text = Module.cwrap("vgcanvas_fill_text", 
-    "TRet", ["TVgcanvas","string","number","number","number"]);
+    "number", ["number","string","number","number","number"]);
 const vgcanvas_measure_text = Module.cwrap("vgcanvas_measure_text", 
-    "number", ["TVgcanvas","string"]);
+    "number", ["number","string"]);
 const vgcanvas_draw_image = Module.cwrap("vgcanvas_draw_image", 
-    "TRet", ["TVgcanvas","TBitmap","number","number","number","number","number","number","number","number"]);
+    "number", ["number","number","number","number","number","number","number","number","number","number"]);
 const vgcanvas_draw_icon = Module.cwrap("vgcanvas_draw_icon", 
-    "TRet", ["TVgcanvas","TBitmap","number","number","number","number","number","number","number","number"]);
+    "number", ["number","number","number","number","number","number","number","number","number","number"]);
 const vgcanvas_set_antialias = Module.cwrap("vgcanvas_set_antialias", 
-    "TRet", ["TVgcanvas","boolean"]);
+    "number", ["number","number"]);
 const vgcanvas_set_global_alpha = Module.cwrap("vgcanvas_set_global_alpha", 
-    "TRet", ["TVgcanvas","number"]);
+    "number", ["number","number"]);
 const vgcanvas_set_line_width = Module.cwrap("vgcanvas_set_line_width", 
-    "TRet", ["TVgcanvas","number"]);
+    "number", ["number","number"]);
 const vgcanvas_set_fill_color_str = Module.cwrap("vgcanvas_set_fill_color_str", 
-    "TRet", ["TVgcanvas","string"]);
+    "number", ["number","string"]);
 const vgcanvas_set_stroke_color_str = Module.cwrap("vgcanvas_set_stroke_color_str", 
-    "TRet", ["TVgcanvas","string"]);
+    "number", ["number","string"]);
 const vgcanvas_set_line_cap = Module.cwrap("vgcanvas_set_line_cap", 
-    "TRet", ["TVgcanvas","string"]);
+    "number", ["number","string"]);
 const vgcanvas_set_line_join = Module.cwrap("vgcanvas_set_line_join", 
-    "TRet", ["TVgcanvas","string"]);
+    "number", ["number","string"]);
 const vgcanvas_set_miter_limit = Module.cwrap("vgcanvas_set_miter_limit", 
-    "TRet", ["TVgcanvas","number"]);
+    "number", ["number","number"]);
 const vgcanvas_save = Module.cwrap("vgcanvas_save", 
-    "TRet", ["TVgcanvas"]);
+    "number", ["number"]);
 const vgcanvas_restore = Module.cwrap("vgcanvas_restore", 
-    "TRet", ["TVgcanvas"]);
+    "number", ["number"]);
 const vgcanvas_t_get_prop_w = Module.cwrap("vgcanvas_t_get_prop_w", 
     "number", ["number"]);
 const vgcanvas_t_get_prop_h = Module.cwrap("vgcanvas_t_get_prop_h", 
@@ -1269,7 +1269,7 @@ const vgcanvas_t_get_prop_stride = Module.cwrap("vgcanvas_t_get_prop_stride",
 const vgcanvas_t_get_prop_ratio = Module.cwrap("vgcanvas_t_get_prop_ratio", 
     "number", ["number"]);
 const vgcanvas_t_get_prop_anti_alias = Module.cwrap("vgcanvas_t_get_prop_anti_alias", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const vgcanvas_t_get_prop_line_width = Module.cwrap("vgcanvas_t_get_prop_line_width", 
     "number", ["number"]);
 const vgcanvas_t_get_prop_global_alpha = Module.cwrap("vgcanvas_t_get_prop_global_alpha", 
@@ -1288,764 +1288,764 @@ const vgcanvas_t_get_prop_text_align = Module.cwrap("vgcanvas_t_get_prop_text_al
     "string", ["number"]);
 const vgcanvas_t_get_prop_text_baseline = Module.cwrap("vgcanvas_t_get_prop_text_baseline", 
     "string", ["number"]);
-const VGCANVAS_LINE_CAP_ROUND = Module.cwrap("VGCANVAS_LINE_CAP_ROUND", 
+const VGCANVAS_LINE_CAP_ROUND = Module.cwrap("get_VGCANVAS_LINE_CAP_ROUND", 
     "string", []);
-const VGCANVAS_LINE_CAP_SQUARE = Module.cwrap("VGCANVAS_LINE_CAP_SQUARE", 
+const VGCANVAS_LINE_CAP_SQUARE = Module.cwrap("get_VGCANVAS_LINE_CAP_SQUARE", 
     "string", []);
-const VGCANVAS_LINE_CAP_BUTT = Module.cwrap("VGCANVAS_LINE_CAP_BUTT", 
+const VGCANVAS_LINE_CAP_BUTT = Module.cwrap("get_VGCANVAS_LINE_CAP_BUTT", 
     "string", []);
-const VGCANVAS_LINE_JOIN_ROUND = Module.cwrap("VGCANVAS_LINE_JOIN_ROUND", 
+const VGCANVAS_LINE_JOIN_ROUND = Module.cwrap("get_VGCANVAS_LINE_JOIN_ROUND", 
     "string", []);
-const VGCANVAS_LINE_JOIN_BEVEL = Module.cwrap("VGCANVAS_LINE_JOIN_BEVEL", 
+const VGCANVAS_LINE_JOIN_BEVEL = Module.cwrap("get_VGCANVAS_LINE_JOIN_BEVEL", 
     "string", []);
-const VGCANVAS_LINE_JOIN_MITTER = Module.cwrap("VGCANVAS_LINE_JOIN_MITTER", 
+const VGCANVAS_LINE_JOIN_MITTER = Module.cwrap("get_VGCANVAS_LINE_JOIN_MITTER", 
     "string", []);
-const WIDGET_PROP_EXEC = Module.cwrap("WIDGET_PROP_EXEC", 
+const WIDGET_PROP_EXEC = Module.cwrap("get_WIDGET_PROP_EXEC", 
     "string", []);
-const WIDGET_PROP_X = Module.cwrap("WIDGET_PROP_X", 
+const WIDGET_PROP_X = Module.cwrap("get_WIDGET_PROP_X", 
     "string", []);
-const WIDGET_PROP_Y = Module.cwrap("WIDGET_PROP_Y", 
+const WIDGET_PROP_Y = Module.cwrap("get_WIDGET_PROP_Y", 
     "string", []);
-const WIDGET_PROP_W = Module.cwrap("WIDGET_PROP_W", 
+const WIDGET_PROP_W = Module.cwrap("get_WIDGET_PROP_W", 
     "string", []);
-const WIDGET_PROP_H = Module.cwrap("WIDGET_PROP_H", 
+const WIDGET_PROP_H = Module.cwrap("get_WIDGET_PROP_H", 
     "string", []);
-const WIDGET_PROP_MAX_H = Module.cwrap("WIDGET_PROP_MAX_H", 
+const WIDGET_PROP_MAX_H = Module.cwrap("get_WIDGET_PROP_MAX_H", 
     "string", []);
-const WIDGET_PROP_DESIGN_W = Module.cwrap("WIDGET_PROP_DESIGN_W", 
+const WIDGET_PROP_DESIGN_W = Module.cwrap("get_WIDGET_PROP_DESIGN_W", 
     "string", []);
-const WIDGET_PROP_DESIGN_H = Module.cwrap("WIDGET_PROP_DESIGN_H", 
+const WIDGET_PROP_DESIGN_H = Module.cwrap("get_WIDGET_PROP_DESIGN_H", 
     "string", []);
-const WIDGET_PROP_AUTO_SCALE_CHILDREN_X = Module.cwrap("WIDGET_PROP_AUTO_SCALE_CHILDREN_X", 
+const WIDGET_PROP_AUTO_SCALE_CHILDREN_X = Module.cwrap("get_WIDGET_PROP_AUTO_SCALE_CHILDREN_X", 
     "string", []);
-const WIDGET_PROP_AUTO_SCALE_CHILDREN_Y = Module.cwrap("WIDGET_PROP_AUTO_SCALE_CHILDREN_Y", 
+const WIDGET_PROP_AUTO_SCALE_CHILDREN_Y = Module.cwrap("get_WIDGET_PROP_AUTO_SCALE_CHILDREN_Y", 
     "string", []);
-const WIDGET_PROP_AUTO_SCALE_CHILDREN_W = Module.cwrap("WIDGET_PROP_AUTO_SCALE_CHILDREN_W", 
+const WIDGET_PROP_AUTO_SCALE_CHILDREN_W = Module.cwrap("get_WIDGET_PROP_AUTO_SCALE_CHILDREN_W", 
     "string", []);
-const WIDGET_PROP_AUTO_SCALE_CHILDREN_H = Module.cwrap("WIDGET_PROP_AUTO_SCALE_CHILDREN_H", 
+const WIDGET_PROP_AUTO_SCALE_CHILDREN_H = Module.cwrap("get_WIDGET_PROP_AUTO_SCALE_CHILDREN_H", 
     "string", []);
-const WIDGET_PROP_INPUTING = Module.cwrap("WIDGET_PROP_INPUTING", 
+const WIDGET_PROP_INPUTING = Module.cwrap("get_WIDGET_PROP_INPUTING", 
     "string", []);
-const WIDGET_PROP_ALWAYS_ON_TOP = Module.cwrap("WIDGET_PROP_ALWAYS_ON_TOP", 
+const WIDGET_PROP_ALWAYS_ON_TOP = Module.cwrap("get_WIDGET_PROP_ALWAYS_ON_TOP", 
     "string", []);
-const WIDGET_PROP_CARET_X = Module.cwrap("WIDGET_PROP_CARET_X", 
+const WIDGET_PROP_CARET_X = Module.cwrap("get_WIDGET_PROP_CARET_X", 
     "string", []);
-const WIDGET_PROP_CARET_Y = Module.cwrap("WIDGET_PROP_CARET_Y", 
+const WIDGET_PROP_CARET_Y = Module.cwrap("get_WIDGET_PROP_CARET_Y", 
     "string", []);
-const WIDGET_PROP_DIRTY_RECT_TOLERANCE = Module.cwrap("WIDGET_PROP_DIRTY_RECT_TOLERANCE", 
+const WIDGET_PROP_DIRTY_RECT_TOLERANCE = Module.cwrap("get_WIDGET_PROP_DIRTY_RECT_TOLERANCE", 
     "string", []);
-const WIDGET_PROP_BIDI = Module.cwrap("WIDGET_PROP_BIDI", 
+const WIDGET_PROP_BIDI = Module.cwrap("get_WIDGET_PROP_BIDI", 
     "string", []);
-const WIDGET_PROP_CANVAS = Module.cwrap("WIDGET_PROP_CANVAS", 
+const WIDGET_PROP_CANVAS = Module.cwrap("get_WIDGET_PROP_CANVAS", 
     "string", []);
-const WIDGET_PROP_LOCALIZE_OPTIONS = Module.cwrap("WIDGET_PROP_LOCALIZE_OPTIONS", 
+const WIDGET_PROP_LOCALIZE_OPTIONS = Module.cwrap("get_WIDGET_PROP_LOCALIZE_OPTIONS", 
     "string", []);
-const WIDGET_PROP_NATIVE_WINDOW = Module.cwrap("WIDGET_PROP_NATIVE_WINDOW", 
+const WIDGET_PROP_NATIVE_WINDOW = Module.cwrap("get_WIDGET_PROP_NATIVE_WINDOW", 
     "string", []);
-const WIDGET_PROP_HIGHLIGHT = Module.cwrap("WIDGET_PROP_HIGHLIGHT", 
+const WIDGET_PROP_HIGHLIGHT = Module.cwrap("get_WIDGET_PROP_HIGHLIGHT", 
     "string", []);
-const WIDGET_PROP_BAR_SIZE = Module.cwrap("WIDGET_PROP_BAR_SIZE", 
+const WIDGET_PROP_BAR_SIZE = Module.cwrap("get_WIDGET_PROP_BAR_SIZE", 
     "string", []);
-const WIDGET_PROP_OPACITY = Module.cwrap("WIDGET_PROP_OPACITY", 
+const WIDGET_PROP_OPACITY = Module.cwrap("get_WIDGET_PROP_OPACITY", 
     "string", []);
-const WIDGET_PROP_MIN_W = Module.cwrap("WIDGET_PROP_MIN_W", 
+const WIDGET_PROP_MIN_W = Module.cwrap("get_WIDGET_PROP_MIN_W", 
     "string", []);
-const WIDGET_PROP_MAX_W = Module.cwrap("WIDGET_PROP_MAX_W", 
+const WIDGET_PROP_MAX_W = Module.cwrap("get_WIDGET_PROP_MAX_W", 
     "string", []);
-const WIDGET_PROP_AUTO_ADJUST_SIZE = Module.cwrap("WIDGET_PROP_AUTO_ADJUST_SIZE", 
+const WIDGET_PROP_AUTO_ADJUST_SIZE = Module.cwrap("get_WIDGET_PROP_AUTO_ADJUST_SIZE", 
     "string", []);
-const WIDGET_PROP_SINGLE_INSTANCE = Module.cwrap("WIDGET_PROP_SINGLE_INSTANCE", 
+const WIDGET_PROP_SINGLE_INSTANCE = Module.cwrap("get_WIDGET_PROP_SINGLE_INSTANCE", 
     "string", []);
-const WIDGET_PROP_STRONGLY_FOCUS = Module.cwrap("WIDGET_PROP_STRONGLY_FOCUS", 
+const WIDGET_PROP_STRONGLY_FOCUS = Module.cwrap("get_WIDGET_PROP_STRONGLY_FOCUS", 
     "string", []);
-const WIDGET_PROP_CHILDREN_LAYOUT = Module.cwrap("WIDGET_PROP_CHILDREN_LAYOUT", 
+const WIDGET_PROP_CHILDREN_LAYOUT = Module.cwrap("get_WIDGET_PROP_CHILDREN_LAYOUT", 
     "string", []);
-const WIDGET_PROP_LAYOUT = Module.cwrap("WIDGET_PROP_LAYOUT", 
+const WIDGET_PROP_LAYOUT = Module.cwrap("get_WIDGET_PROP_LAYOUT", 
     "string", []);
-const WIDGET_PROP_SELF_LAYOUT = Module.cwrap("WIDGET_PROP_SELF_LAYOUT", 
+const WIDGET_PROP_SELF_LAYOUT = Module.cwrap("get_WIDGET_PROP_SELF_LAYOUT", 
     "string", []);
-const WIDGET_PROP_LAYOUT_W = Module.cwrap("WIDGET_PROP_LAYOUT_W", 
+const WIDGET_PROP_LAYOUT_W = Module.cwrap("get_WIDGET_PROP_LAYOUT_W", 
     "string", []);
-const WIDGET_PROP_LAYOUT_H = Module.cwrap("WIDGET_PROP_LAYOUT_H", 
+const WIDGET_PROP_LAYOUT_H = Module.cwrap("get_WIDGET_PROP_LAYOUT_H", 
     "string", []);
-const WIDGET_PROP_VIRTUAL_W = Module.cwrap("WIDGET_PROP_VIRTUAL_W", 
+const WIDGET_PROP_VIRTUAL_W = Module.cwrap("get_WIDGET_PROP_VIRTUAL_W", 
     "string", []);
-const WIDGET_PROP_VIRTUAL_H = Module.cwrap("WIDGET_PROP_VIRTUAL_H", 
+const WIDGET_PROP_VIRTUAL_H = Module.cwrap("get_WIDGET_PROP_VIRTUAL_H", 
     "string", []);
-const WIDGET_PROP_NAME = Module.cwrap("WIDGET_PROP_NAME", 
+const WIDGET_PROP_NAME = Module.cwrap("get_WIDGET_PROP_NAME", 
     "string", []);
-const WIDGET_PROP_TYPE = Module.cwrap("WIDGET_PROP_TYPE", 
+const WIDGET_PROP_TYPE = Module.cwrap("get_WIDGET_PROP_TYPE", 
     "string", []);
-const WIDGET_PROP_CLOSABLE = Module.cwrap("WIDGET_PROP_CLOSABLE", 
+const WIDGET_PROP_CLOSABLE = Module.cwrap("get_WIDGET_PROP_CLOSABLE", 
     "string", []);
-const WIDGET_PROP_POINTER_CURSOR = Module.cwrap("WIDGET_PROP_POINTER_CURSOR", 
+const WIDGET_PROP_POINTER_CURSOR = Module.cwrap("get_WIDGET_PROP_POINTER_CURSOR", 
     "string", []);
-const WIDGET_PROP_VALUE = Module.cwrap("WIDGET_PROP_VALUE", 
+const WIDGET_PROP_VALUE = Module.cwrap("get_WIDGET_PROP_VALUE", 
     "string", []);
-const WIDGET_PROP_RADIO = Module.cwrap("WIDGET_PROP_RADIO", 
+const WIDGET_PROP_RADIO = Module.cwrap("get_WIDGET_PROP_RADIO", 
     "string", []);
-const WIDGET_PROP_REVERSE = Module.cwrap("WIDGET_PROP_REVERSE", 
+const WIDGET_PROP_REVERSE = Module.cwrap("get_WIDGET_PROP_REVERSE", 
     "string", []);
-const WIDGET_PROP_LENGTH = Module.cwrap("WIDGET_PROP_LENGTH", 
+const WIDGET_PROP_LENGTH = Module.cwrap("get_WIDGET_PROP_LENGTH", 
     "string", []);
-const WIDGET_PROP_LINE_WRAP = Module.cwrap("WIDGET_PROP_LINE_WRAP", 
+const WIDGET_PROP_LINE_WRAP = Module.cwrap("get_WIDGET_PROP_LINE_WRAP", 
     "string", []);
-const WIDGET_PROP_WORD_WRAP = Module.cwrap("WIDGET_PROP_WORD_WRAP", 
+const WIDGET_PROP_WORD_WRAP = Module.cwrap("get_WIDGET_PROP_WORD_WRAP", 
     "string", []);
-const WIDGET_PROP_TEXT = Module.cwrap("WIDGET_PROP_TEXT", 
+const WIDGET_PROP_TEXT = Module.cwrap("get_WIDGET_PROP_TEXT", 
     "string", []);
-const WIDGET_PROP_TR_TEXT = Module.cwrap("WIDGET_PROP_TR_TEXT", 
+const WIDGET_PROP_TR_TEXT = Module.cwrap("get_WIDGET_PROP_TR_TEXT", 
     "string", []);
-const WIDGET_PROP_STYLE = Module.cwrap("WIDGET_PROP_STYLE", 
+const WIDGET_PROP_STYLE = Module.cwrap("get_WIDGET_PROP_STYLE", 
     "string", []);
-const WIDGET_PROP_ENABLE = Module.cwrap("WIDGET_PROP_ENABLE", 
+const WIDGET_PROP_ENABLE = Module.cwrap("get_WIDGET_PROP_ENABLE", 
     "string", []);
-const WIDGET_PROP_FEEDBACK = Module.cwrap("WIDGET_PROP_FEEDBACK", 
+const WIDGET_PROP_FEEDBACK = Module.cwrap("get_WIDGET_PROP_FEEDBACK", 
     "string", []);
-const WIDGET_PROP_FLOATING = Module.cwrap("WIDGET_PROP_FLOATING", 
+const WIDGET_PROP_FLOATING = Module.cwrap("get_WIDGET_PROP_FLOATING", 
     "string", []);
-const WIDGET_PROP_MARGIN = Module.cwrap("WIDGET_PROP_MARGIN", 
+const WIDGET_PROP_MARGIN = Module.cwrap("get_WIDGET_PROP_MARGIN", 
     "string", []);
-const WIDGET_PROP_SPACING = Module.cwrap("WIDGET_PROP_SPACING", 
+const WIDGET_PROP_SPACING = Module.cwrap("get_WIDGET_PROP_SPACING", 
     "string", []);
-const WIDGET_PROP_LEFT_MARGIN = Module.cwrap("WIDGET_PROP_LEFT_MARGIN", 
+const WIDGET_PROP_LEFT_MARGIN = Module.cwrap("get_WIDGET_PROP_LEFT_MARGIN", 
     "string", []);
-const WIDGET_PROP_RIGHT_MARGIN = Module.cwrap("WIDGET_PROP_RIGHT_MARGIN", 
+const WIDGET_PROP_RIGHT_MARGIN = Module.cwrap("get_WIDGET_PROP_RIGHT_MARGIN", 
     "string", []);
-const WIDGET_PROP_TOP_MARGIN = Module.cwrap("WIDGET_PROP_TOP_MARGIN", 
+const WIDGET_PROP_TOP_MARGIN = Module.cwrap("get_WIDGET_PROP_TOP_MARGIN", 
     "string", []);
-const WIDGET_PROP_BOTTOM_MARGIN = Module.cwrap("WIDGET_PROP_BOTTOM_MARGIN", 
+const WIDGET_PROP_BOTTOM_MARGIN = Module.cwrap("get_WIDGET_PROP_BOTTOM_MARGIN", 
     "string", []);
-const WIDGET_PROP_STEP = Module.cwrap("WIDGET_PROP_STEP", 
+const WIDGET_PROP_STEP = Module.cwrap("get_WIDGET_PROP_STEP", 
     "string", []);
-const WIDGET_PROP_VISIBLE = Module.cwrap("WIDGET_PROP_VISIBLE", 
+const WIDGET_PROP_VISIBLE = Module.cwrap("get_WIDGET_PROP_VISIBLE", 
     "string", []);
-const WIDGET_PROP_SENSITIVE = Module.cwrap("WIDGET_PROP_SENSITIVE", 
+const WIDGET_PROP_SENSITIVE = Module.cwrap("get_WIDGET_PROP_SENSITIVE", 
     "string", []);
-const WIDGET_PROP_ANIMATION = Module.cwrap("WIDGET_PROP_ANIMATION", 
+const WIDGET_PROP_ANIMATION = Module.cwrap("get_WIDGET_PROP_ANIMATION", 
     "string", []);
-const WIDGET_PROP_ANIM_HINT = Module.cwrap("WIDGET_PROP_ANIM_HINT", 
+const WIDGET_PROP_ANIM_HINT = Module.cwrap("get_WIDGET_PROP_ANIM_HINT", 
     "string", []);
-const WIDGET_PROP_FULLSCREEN = Module.cwrap("WIDGET_PROP_FULLSCREEN", 
+const WIDGET_PROP_FULLSCREEN = Module.cwrap("get_WIDGET_PROP_FULLSCREEN", 
     "string", []);
-const WIDGET_PROP_DISABLE_ANIM = Module.cwrap("WIDGET_PROP_DISABLE_ANIM", 
+const WIDGET_PROP_DISABLE_ANIM = Module.cwrap("get_WIDGET_PROP_DISABLE_ANIM", 
     "string", []);
-const WIDGET_PROP_OPEN_ANIM_HINT = Module.cwrap("WIDGET_PROP_OPEN_ANIM_HINT", 
+const WIDGET_PROP_OPEN_ANIM_HINT = Module.cwrap("get_WIDGET_PROP_OPEN_ANIM_HINT", 
     "string", []);
-const WIDGET_PROP_CLOSE_ANIM_HINT = Module.cwrap("WIDGET_PROP_CLOSE_ANIM_HINT", 
+const WIDGET_PROP_CLOSE_ANIM_HINT = Module.cwrap("get_WIDGET_PROP_CLOSE_ANIM_HINT", 
     "string", []);
-const WIDGET_PROP_MIN = Module.cwrap("WIDGET_PROP_MIN", 
+const WIDGET_PROP_MIN = Module.cwrap("get_WIDGET_PROP_MIN", 
     "string", []);
-const WIDGET_PROP_ACTION_TEXT = Module.cwrap("WIDGET_PROP_ACTION_TEXT", 
+const WIDGET_PROP_ACTION_TEXT = Module.cwrap("get_WIDGET_PROP_ACTION_TEXT", 
     "string", []);
-const WIDGET_PROP_TIPS = Module.cwrap("WIDGET_PROP_TIPS", 
+const WIDGET_PROP_TIPS = Module.cwrap("get_WIDGET_PROP_TIPS", 
     "string", []);
-const WIDGET_PROP_TR_TIPS = Module.cwrap("WIDGET_PROP_TR_TIPS", 
+const WIDGET_PROP_TR_TIPS = Module.cwrap("get_WIDGET_PROP_TR_TIPS", 
     "string", []);
-const WIDGET_PROP_INPUT_TYPE = Module.cwrap("WIDGET_PROP_INPUT_TYPE", 
+const WIDGET_PROP_INPUT_TYPE = Module.cwrap("get_WIDGET_PROP_INPUT_TYPE", 
     "string", []);
-const WIDGET_PROP_KEYBOARD = Module.cwrap("WIDGET_PROP_KEYBOARD", 
+const WIDGET_PROP_KEYBOARD = Module.cwrap("get_WIDGET_PROP_KEYBOARD", 
     "string", []);
-const WIDGET_PROP_DEFAULT_FOCUSED_CHILD = Module.cwrap("WIDGET_PROP_DEFAULT_FOCUSED_CHILD", 
+const WIDGET_PROP_DEFAULT_FOCUSED_CHILD = Module.cwrap("get_WIDGET_PROP_DEFAULT_FOCUSED_CHILD", 
     "string", []);
-const WIDGET_PROP_READONLY = Module.cwrap("WIDGET_PROP_READONLY", 
+const WIDGET_PROP_READONLY = Module.cwrap("get_WIDGET_PROP_READONLY", 
     "string", []);
-const WIDGET_PROP_CANCELABLE = Module.cwrap("WIDGET_PROP_CANCELABLE", 
+const WIDGET_PROP_CANCELABLE = Module.cwrap("get_WIDGET_PROP_CANCELABLE", 
     "string", []);
-const WIDGET_PROP_PASSWORD_VISIBLE = Module.cwrap("WIDGET_PROP_PASSWORD_VISIBLE", 
+const WIDGET_PROP_PASSWORD_VISIBLE = Module.cwrap("get_WIDGET_PROP_PASSWORD_VISIBLE", 
     "string", []);
-const WIDGET_PROP_ACTIVE = Module.cwrap("WIDGET_PROP_ACTIVE", 
+const WIDGET_PROP_ACTIVE = Module.cwrap("get_WIDGET_PROP_ACTIVE", 
     "string", []);
-const WIDGET_PROP_CURR_PAGE = Module.cwrap("WIDGET_PROP_CURR_PAGE", 
+const WIDGET_PROP_CURR_PAGE = Module.cwrap("get_WIDGET_PROP_CURR_PAGE", 
     "string", []);
-const WIDGET_PROP_PAGE_MAX_NUMBER = Module.cwrap("WIDGET_PROP_PAGE_MAX_NUMBER", 
+const WIDGET_PROP_PAGE_MAX_NUMBER = Module.cwrap("get_WIDGET_PROP_PAGE_MAX_NUMBER", 
     "string", []);
-const WIDGET_PROP_VERTICAL = Module.cwrap("WIDGET_PROP_VERTICAL", 
+const WIDGET_PROP_VERTICAL = Module.cwrap("get_WIDGET_PROP_VERTICAL", 
     "string", []);
-const WIDGET_PROP_SHOW_TEXT = Module.cwrap("WIDGET_PROP_SHOW_TEXT", 
+const WIDGET_PROP_SHOW_TEXT = Module.cwrap("get_WIDGET_PROP_SHOW_TEXT", 
     "string", []);
-const WIDGET_PROP_XOFFSET = Module.cwrap("WIDGET_PROP_XOFFSET", 
+const WIDGET_PROP_XOFFSET = Module.cwrap("get_WIDGET_PROP_XOFFSET", 
     "string", []);
-const WIDGET_PROP_YOFFSET = Module.cwrap("WIDGET_PROP_YOFFSET", 
+const WIDGET_PROP_YOFFSET = Module.cwrap("get_WIDGET_PROP_YOFFSET", 
     "string", []);
-const WIDGET_PROP_ALIGN_V = Module.cwrap("WIDGET_PROP_ALIGN_V", 
+const WIDGET_PROP_ALIGN_V = Module.cwrap("get_WIDGET_PROP_ALIGN_V", 
     "string", []);
-const WIDGET_PROP_ALIGN_H = Module.cwrap("WIDGET_PROP_ALIGN_H", 
+const WIDGET_PROP_ALIGN_H = Module.cwrap("get_WIDGET_PROP_ALIGN_H", 
     "string", []);
-const WIDGET_PROP_AUTO_PLAY = Module.cwrap("WIDGET_PROP_AUTO_PLAY", 
+const WIDGET_PROP_AUTO_PLAY = Module.cwrap("get_WIDGET_PROP_AUTO_PLAY", 
     "string", []);
-const WIDGET_PROP_LOOP = Module.cwrap("WIDGET_PROP_LOOP", 
+const WIDGET_PROP_LOOP = Module.cwrap("get_WIDGET_PROP_LOOP", 
     "string", []);
-const WIDGET_PROP_AUTO_FIX = Module.cwrap("WIDGET_PROP_AUTO_FIX", 
+const WIDGET_PROP_AUTO_FIX = Module.cwrap("get_WIDGET_PROP_AUTO_FIX", 
     "string", []);
-const WIDGET_PROP_SELECT_NONE_WHEN_FOCUSED = Module.cwrap("WIDGET_PROP_SELECT_NONE_WHEN_FOCUSED", 
+const WIDGET_PROP_SELECT_NONE_WHEN_FOCUSED = Module.cwrap("get_WIDGET_PROP_SELECT_NONE_WHEN_FOCUSED", 
     "string", []);
-const WIDGET_PROP_OPEN_IM_WHEN_FOCUSED = Module.cwrap("WIDGET_PROP_OPEN_IM_WHEN_FOCUSED", 
+const WIDGET_PROP_OPEN_IM_WHEN_FOCUSED = Module.cwrap("get_WIDGET_PROP_OPEN_IM_WHEN_FOCUSED", 
     "string", []);
-const WIDGET_PROP_CLOSE_IM_WHEN_BLURED = Module.cwrap("WIDGET_PROP_CLOSE_IM_WHEN_BLURED", 
+const WIDGET_PROP_CLOSE_IM_WHEN_BLURED = Module.cwrap("get_WIDGET_PROP_CLOSE_IM_WHEN_BLURED", 
     "string", []);
-const WIDGET_PROP_X_MIN = Module.cwrap("WIDGET_PROP_X_MIN", 
+const WIDGET_PROP_X_MIN = Module.cwrap("get_WIDGET_PROP_X_MIN", 
     "string", []);
-const WIDGET_PROP_X_MAX = Module.cwrap("WIDGET_PROP_X_MAX", 
+const WIDGET_PROP_X_MAX = Module.cwrap("get_WIDGET_PROP_X_MAX", 
     "string", []);
-const WIDGET_PROP_Y_MIN = Module.cwrap("WIDGET_PROP_Y_MIN", 
+const WIDGET_PROP_Y_MIN = Module.cwrap("get_WIDGET_PROP_Y_MIN", 
     "string", []);
-const WIDGET_PROP_Y_MAX = Module.cwrap("WIDGET_PROP_Y_MAX", 
+const WIDGET_PROP_Y_MAX = Module.cwrap("get_WIDGET_PROP_Y_MAX", 
     "string", []);
-const WIDGET_PROP_MAX = Module.cwrap("WIDGET_PROP_MAX", 
+const WIDGET_PROP_MAX = Module.cwrap("get_WIDGET_PROP_MAX", 
     "string", []);
-const WIDGET_PROP_GRAB_KEYS = Module.cwrap("WIDGET_PROP_GRAB_KEYS", 
+const WIDGET_PROP_GRAB_KEYS = Module.cwrap("get_WIDGET_PROP_GRAB_KEYS", 
     "string", []);
-const WIDGET_PROP_ROW = Module.cwrap("WIDGET_PROP_ROW", 
+const WIDGET_PROP_ROW = Module.cwrap("get_WIDGET_PROP_ROW", 
     "string", []);
-const WIDGET_PROP_STATE_FOR_STYLE = Module.cwrap("WIDGET_PROP_STATE_FOR_STYLE", 
+const WIDGET_PROP_STATE_FOR_STYLE = Module.cwrap("get_WIDGET_PROP_STATE_FOR_STYLE", 
     "string", []);
-const WIDGET_PROP_THEME = Module.cwrap("WIDGET_PROP_THEME", 
+const WIDGET_PROP_THEME = Module.cwrap("get_WIDGET_PROP_THEME", 
     "string", []);
-const WIDGET_PROP_STAGE = Module.cwrap("WIDGET_PROP_STAGE", 
+const WIDGET_PROP_STAGE = Module.cwrap("get_WIDGET_PROP_STAGE", 
     "string", []);
-const WIDGET_PROP_IMAGE_MANAGER = Module.cwrap("WIDGET_PROP_IMAGE_MANAGER", 
+const WIDGET_PROP_IMAGE_MANAGER = Module.cwrap("get_WIDGET_PROP_IMAGE_MANAGER", 
     "string", []);
-const WIDGET_PROP_ASSETS_MANAGER = Module.cwrap("WIDGET_PROP_ASSETS_MANAGER", 
+const WIDGET_PROP_ASSETS_MANAGER = Module.cwrap("get_WIDGET_PROP_ASSETS_MANAGER", 
     "string", []);
-const WIDGET_PROP_LOCALE_INFO = Module.cwrap("WIDGET_PROP_LOCALE_INFO", 
+const WIDGET_PROP_LOCALE_INFO = Module.cwrap("get_WIDGET_PROP_LOCALE_INFO", 
     "string", []);
-const WIDGET_PROP_FONT_MANAGER = Module.cwrap("WIDGET_PROP_FONT_MANAGER", 
+const WIDGET_PROP_FONT_MANAGER = Module.cwrap("get_WIDGET_PROP_FONT_MANAGER", 
     "string", []);
-const WIDGET_PROP_THEME_OBJ = Module.cwrap("WIDGET_PROP_THEME_OBJ", 
+const WIDGET_PROP_THEME_OBJ = Module.cwrap("get_WIDGET_PROP_THEME_OBJ", 
     "string", []);
-const WIDGET_PROP_DEFAULT_THEME_OBJ = Module.cwrap("WIDGET_PROP_DEFAULT_THEME_OBJ", 
+const WIDGET_PROP_DEFAULT_THEME_OBJ = Module.cwrap("get_WIDGET_PROP_DEFAULT_THEME_OBJ", 
     "string", []);
-const WIDGET_PROP_ITEM_WIDTH = Module.cwrap("WIDGET_PROP_ITEM_WIDTH", 
+const WIDGET_PROP_ITEM_WIDTH = Module.cwrap("get_WIDGET_PROP_ITEM_WIDTH", 
     "string", []);
-const WIDGET_PROP_ITEM_HEIGHT = Module.cwrap("WIDGET_PROP_ITEM_HEIGHT", 
+const WIDGET_PROP_ITEM_HEIGHT = Module.cwrap("get_WIDGET_PROP_ITEM_HEIGHT", 
     "string", []);
-const WIDGET_PROP_DEFAULT_ITEM_HEIGHT = Module.cwrap("WIDGET_PROP_DEFAULT_ITEM_HEIGHT", 
+const WIDGET_PROP_DEFAULT_ITEM_HEIGHT = Module.cwrap("get_WIDGET_PROP_DEFAULT_ITEM_HEIGHT", 
     "string", []);
-const WIDGET_PROP_XSLIDABLE = Module.cwrap("WIDGET_PROP_XSLIDABLE", 
+const WIDGET_PROP_XSLIDABLE = Module.cwrap("get_WIDGET_PROP_XSLIDABLE", 
     "string", []);
-const WIDGET_PROP_YSLIDABLE = Module.cwrap("WIDGET_PROP_YSLIDABLE", 
+const WIDGET_PROP_YSLIDABLE = Module.cwrap("get_WIDGET_PROP_YSLIDABLE", 
     "string", []);
-const WIDGET_PROP_REPEAT = Module.cwrap("WIDGET_PROP_REPEAT", 
+const WIDGET_PROP_REPEAT = Module.cwrap("get_WIDGET_PROP_REPEAT", 
     "string", []);
-const WIDGET_PROP_LONG_PRESS_TIME = Module.cwrap("WIDGET_PROP_LONG_PRESS_TIME", 
+const WIDGET_PROP_LONG_PRESS_TIME = Module.cwrap("get_WIDGET_PROP_LONG_PRESS_TIME", 
     "string", []);
-const WIDGET_PROP_ENABLE_LONG_PRESS = Module.cwrap("WIDGET_PROP_ENABLE_LONG_PRESS", 
+const WIDGET_PROP_ENABLE_LONG_PRESS = Module.cwrap("get_WIDGET_PROP_ENABLE_LONG_PRESS", 
     "string", []);
-const WIDGET_PROP_CLICK_THROUGH = Module.cwrap("WIDGET_PROP_CLICK_THROUGH", 
+const WIDGET_PROP_CLICK_THROUGH = Module.cwrap("get_WIDGET_PROP_CLICK_THROUGH", 
     "string", []);
-const WIDGET_PROP_ANIMATABLE = Module.cwrap("WIDGET_PROP_ANIMATABLE", 
+const WIDGET_PROP_ANIMATABLE = Module.cwrap("get_WIDGET_PROP_ANIMATABLE", 
     "string", []);
-const WIDGET_PROP_AUTO_HIDE = Module.cwrap("WIDGET_PROP_AUTO_HIDE", 
+const WIDGET_PROP_AUTO_HIDE = Module.cwrap("get_WIDGET_PROP_AUTO_HIDE", 
     "string", []);
-const WIDGET_PROP_AUTO_HIDE_SCROLL_BAR = Module.cwrap("WIDGET_PROP_AUTO_HIDE_SCROLL_BAR", 
+const WIDGET_PROP_AUTO_HIDE_SCROLL_BAR = Module.cwrap("get_WIDGET_PROP_AUTO_HIDE_SCROLL_BAR", 
     "string", []);
-const WIDGET_PROP_IMAGE = Module.cwrap("WIDGET_PROP_IMAGE", 
+const WIDGET_PROP_IMAGE = Module.cwrap("get_WIDGET_PROP_IMAGE", 
     "string", []);
-const WIDGET_PROP_FORMAT = Module.cwrap("WIDGET_PROP_FORMAT", 
+const WIDGET_PROP_FORMAT = Module.cwrap("get_WIDGET_PROP_FORMAT", 
     "string", []);
-const WIDGET_PROP_DRAW_TYPE = Module.cwrap("WIDGET_PROP_DRAW_TYPE", 
+const WIDGET_PROP_DRAW_TYPE = Module.cwrap("get_WIDGET_PROP_DRAW_TYPE", 
     "string", []);
-const WIDGET_PROP_SELECTABLE = Module.cwrap("WIDGET_PROP_SELECTABLE", 
+const WIDGET_PROP_SELECTABLE = Module.cwrap("get_WIDGET_PROP_SELECTABLE", 
     "string", []);
-const WIDGET_PROP_CLICKABLE = Module.cwrap("WIDGET_PROP_CLICKABLE", 
+const WIDGET_PROP_CLICKABLE = Module.cwrap("get_WIDGET_PROP_CLICKABLE", 
     "string", []);
-const WIDGET_PROP_SCALE_X = Module.cwrap("WIDGET_PROP_SCALE_X", 
+const WIDGET_PROP_SCALE_X = Module.cwrap("get_WIDGET_PROP_SCALE_X", 
     "string", []);
-const WIDGET_PROP_SCALE_Y = Module.cwrap("WIDGET_PROP_SCALE_Y", 
+const WIDGET_PROP_SCALE_Y = Module.cwrap("get_WIDGET_PROP_SCALE_Y", 
     "string", []);
-const WIDGET_PROP_ANCHOR_X = Module.cwrap("WIDGET_PROP_ANCHOR_X", 
+const WIDGET_PROP_ANCHOR_X = Module.cwrap("get_WIDGET_PROP_ANCHOR_X", 
     "string", []);
-const WIDGET_PROP_ANCHOR_Y = Module.cwrap("WIDGET_PROP_ANCHOR_Y", 
+const WIDGET_PROP_ANCHOR_Y = Module.cwrap("get_WIDGET_PROP_ANCHOR_Y", 
     "string", []);
-const WIDGET_PROP_ROTATION = Module.cwrap("WIDGET_PROP_ROTATION", 
+const WIDGET_PROP_ROTATION = Module.cwrap("get_WIDGET_PROP_ROTATION", 
     "string", []);
-const WIDGET_PROP_COMPACT = Module.cwrap("WIDGET_PROP_COMPACT", 
+const WIDGET_PROP_COMPACT = Module.cwrap("get_WIDGET_PROP_COMPACT", 
     "string", []);
-const WIDGET_PROP_SCROLLABLE = Module.cwrap("WIDGET_PROP_SCROLLABLE", 
+const WIDGET_PROP_SCROLLABLE = Module.cwrap("get_WIDGET_PROP_SCROLLABLE", 
     "string", []);
-const WIDGET_PROP_ICON = Module.cwrap("WIDGET_PROP_ICON", 
+const WIDGET_PROP_ICON = Module.cwrap("get_WIDGET_PROP_ICON", 
     "string", []);
-const WIDGET_PROP_OPTIONS = Module.cwrap("WIDGET_PROP_OPTIONS", 
+const WIDGET_PROP_OPTIONS = Module.cwrap("get_WIDGET_PROP_OPTIONS", 
     "string", []);
-const WIDGET_PROP_SELECTED = Module.cwrap("WIDGET_PROP_SELECTED", 
+const WIDGET_PROP_SELECTED = Module.cwrap("get_WIDGET_PROP_SELECTED", 
     "string", []);
-const WIDGET_PROP_CHECKED = Module.cwrap("WIDGET_PROP_CHECKED", 
+const WIDGET_PROP_CHECKED = Module.cwrap("get_WIDGET_PROP_CHECKED", 
     "string", []);
-const WIDGET_PROP_ACTIVE_ICON = Module.cwrap("WIDGET_PROP_ACTIVE_ICON", 
+const WIDGET_PROP_ACTIVE_ICON = Module.cwrap("get_WIDGET_PROP_ACTIVE_ICON", 
     "string", []);
-const WIDGET_PROP_LOAD_UI = Module.cwrap("WIDGET_PROP_LOAD_UI", 
+const WIDGET_PROP_LOAD_UI = Module.cwrap("get_WIDGET_PROP_LOAD_UI", 
     "string", []);
-const WIDGET_PROP_OPEN_WINDOW = Module.cwrap("WIDGET_PROP_OPEN_WINDOW", 
+const WIDGET_PROP_OPEN_WINDOW = Module.cwrap("get_WIDGET_PROP_OPEN_WINDOW", 
     "string", []);
-const WIDGET_PROP_SELECTED_INDEX = Module.cwrap("WIDGET_PROP_SELECTED_INDEX", 
+const WIDGET_PROP_SELECTED_INDEX = Module.cwrap("get_WIDGET_PROP_SELECTED_INDEX", 
     "string", []);
-const WIDGET_PROP_CLOSE_WHEN_CLICK = Module.cwrap("WIDGET_PROP_CLOSE_WHEN_CLICK", 
+const WIDGET_PROP_CLOSE_WHEN_CLICK = Module.cwrap("get_WIDGET_PROP_CLOSE_WHEN_CLICK", 
     "string", []);
-const WIDGET_PROP_CLOSE_WHEN_CLICK_OUTSIDE = Module.cwrap("WIDGET_PROP_CLOSE_WHEN_CLICK_OUTSIDE", 
+const WIDGET_PROP_CLOSE_WHEN_CLICK_OUTSIDE = Module.cwrap("get_WIDGET_PROP_CLOSE_WHEN_CLICK_OUTSIDE", 
     "string", []);
-const WIDGET_PROP_CLOSE_WHEN_TIMEOUT = Module.cwrap("WIDGET_PROP_CLOSE_WHEN_TIMEOUT", 
+const WIDGET_PROP_CLOSE_WHEN_TIMEOUT = Module.cwrap("get_WIDGET_PROP_CLOSE_WHEN_TIMEOUT", 
     "string", []);
-const WIDGET_PROP_LINE_GAP = Module.cwrap("WIDGET_PROP_LINE_GAP", 
+const WIDGET_PROP_LINE_GAP = Module.cwrap("get_WIDGET_PROP_LINE_GAP", 
     "string", []);
-const WIDGET_PROP_BG_COLOR = Module.cwrap("WIDGET_PROP_BG_COLOR", 
+const WIDGET_PROP_BG_COLOR = Module.cwrap("get_WIDGET_PROP_BG_COLOR", 
     "string", []);
-const WIDGET_PROP_BORDER_COLOR = Module.cwrap("WIDGET_PROP_BORDER_COLOR", 
+const WIDGET_PROP_BORDER_COLOR = Module.cwrap("get_WIDGET_PROP_BORDER_COLOR", 
     "string", []);
-const WIDGET_PROP_DELAY = Module.cwrap("WIDGET_PROP_DELAY", 
+const WIDGET_PROP_DELAY = Module.cwrap("get_WIDGET_PROP_DELAY", 
     "string", []);
-const WIDGET_PROP_IS_KEYBOARD = Module.cwrap("WIDGET_PROP_IS_KEYBOARD", 
+const WIDGET_PROP_IS_KEYBOARD = Module.cwrap("get_WIDGET_PROP_IS_KEYBOARD", 
     "string", []);
-const WIDGET_PROP_FOCUSED = Module.cwrap("WIDGET_PROP_FOCUSED", 
+const WIDGET_PROP_FOCUSED = Module.cwrap("get_WIDGET_PROP_FOCUSED", 
     "string", []);
-const WIDGET_PROP_FOCUS = Module.cwrap("WIDGET_PROP_FOCUS", 
+const WIDGET_PROP_FOCUS = Module.cwrap("get_WIDGET_PROP_FOCUS", 
     "string", []);
-const WIDGET_PROP_FOCUSABLE = Module.cwrap("WIDGET_PROP_FOCUSABLE", 
+const WIDGET_PROP_FOCUSABLE = Module.cwrap("get_WIDGET_PROP_FOCUSABLE", 
     "string", []);
-const WIDGET_PROP_WITH_FOCUS_STATE = Module.cwrap("WIDGET_PROP_WITH_FOCUS_STATE", 
+const WIDGET_PROP_WITH_FOCUS_STATE = Module.cwrap("get_WIDGET_PROP_WITH_FOCUS_STATE", 
     "string", []);
-const WIDGET_PROP_MOVE_FOCUS_PREV_KEY = Module.cwrap("WIDGET_PROP_MOVE_FOCUS_PREV_KEY", 
+const WIDGET_PROP_MOVE_FOCUS_PREV_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS_PREV_KEY", 
     "string", []);
-const WIDGET_PROP_MOVE_FOCUS_NEXT_KEY = Module.cwrap("WIDGET_PROP_MOVE_FOCUS_NEXT_KEY", 
+const WIDGET_PROP_MOVE_FOCUS_NEXT_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS_NEXT_KEY", 
     "string", []);
-const WIDGET_PROP_MOVE_FOCUS_UP_KEY = Module.cwrap("WIDGET_PROP_MOVE_FOCUS_UP_KEY", 
+const WIDGET_PROP_MOVE_FOCUS_UP_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS_UP_KEY", 
     "string", []);
-const WIDGET_PROP_MOVE_FOCUS_DOWN_KEY = Module.cwrap("WIDGET_PROP_MOVE_FOCUS_DOWN_KEY", 
+const WIDGET_PROP_MOVE_FOCUS_DOWN_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS_DOWN_KEY", 
     "string", []);
-const WIDGET_PROP_MOVE_FOCUS_LEFT_KEY = Module.cwrap("WIDGET_PROP_MOVE_FOCUS_LEFT_KEY", 
+const WIDGET_PROP_MOVE_FOCUS_LEFT_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS_LEFT_KEY", 
     "string", []);
-const WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY = Module.cwrap("WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY", 
+const WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY", 
     "string", []);
-const WIDGET_TYPE_NONE = Module.cwrap("WIDGET_TYPE_NONE", 
+const WIDGET_TYPE_NONE = Module.cwrap("get_WIDGET_TYPE_NONE", 
     "string", []);
-const WIDGET_TYPE_WINDOW_MANAGER = Module.cwrap("WIDGET_TYPE_WINDOW_MANAGER", 
+const WIDGET_TYPE_WINDOW_MANAGER = Module.cwrap("get_WIDGET_TYPE_WINDOW_MANAGER", 
     "string", []);
-const WIDGET_TYPE_NORMAL_WINDOW = Module.cwrap("WIDGET_TYPE_NORMAL_WINDOW", 
+const WIDGET_TYPE_NORMAL_WINDOW = Module.cwrap("get_WIDGET_TYPE_NORMAL_WINDOW", 
     "string", []);
-const WIDGET_TYPE_OVERLAY = Module.cwrap("WIDGET_TYPE_OVERLAY", 
+const WIDGET_TYPE_OVERLAY = Module.cwrap("get_WIDGET_TYPE_OVERLAY", 
     "string", []);
-const WIDGET_TYPE_TOOL_BAR = Module.cwrap("WIDGET_TYPE_TOOL_BAR", 
+const WIDGET_TYPE_TOOL_BAR = Module.cwrap("get_WIDGET_TYPE_TOOL_BAR", 
     "string", []);
-const WIDGET_TYPE_DIALOG = Module.cwrap("WIDGET_TYPE_DIALOG", 
+const WIDGET_TYPE_DIALOG = Module.cwrap("get_WIDGET_TYPE_DIALOG", 
     "string", []);
-const WIDGET_TYPE_POPUP = Module.cwrap("WIDGET_TYPE_POPUP", 
+const WIDGET_TYPE_POPUP = Module.cwrap("get_WIDGET_TYPE_POPUP", 
     "string", []);
-const WIDGET_TYPE_SYSTEM_BAR = Module.cwrap("WIDGET_TYPE_SYSTEM_BAR", 
+const WIDGET_TYPE_SYSTEM_BAR = Module.cwrap("get_WIDGET_TYPE_SYSTEM_BAR", 
     "string", []);
-const WIDGET_TYPE_SYSTEM_BAR_BOTTOM = Module.cwrap("WIDGET_TYPE_SYSTEM_BAR_BOTTOM", 
+const WIDGET_TYPE_SYSTEM_BAR_BOTTOM = Module.cwrap("get_WIDGET_TYPE_SYSTEM_BAR_BOTTOM", 
     "string", []);
-const WIDGET_TYPE_SPRITE = Module.cwrap("WIDGET_TYPE_SPRITE", 
+const WIDGET_TYPE_SPRITE = Module.cwrap("get_WIDGET_TYPE_SPRITE", 
     "string", []);
-const WIDGET_TYPE_KEYBOARD = Module.cwrap("WIDGET_TYPE_KEYBOARD", 
+const WIDGET_TYPE_KEYBOARD = Module.cwrap("get_WIDGET_TYPE_KEYBOARD", 
     "string", []);
-const WIDGET_TYPE_DND = Module.cwrap("WIDGET_TYPE_DND", 
+const WIDGET_TYPE_DND = Module.cwrap("get_WIDGET_TYPE_DND", 
     "string", []);
-const WIDGET_TYPE_LABEL = Module.cwrap("WIDGET_TYPE_LABEL", 
+const WIDGET_TYPE_LABEL = Module.cwrap("get_WIDGET_TYPE_LABEL", 
     "string", []);
-const WIDGET_TYPE_BUTTON = Module.cwrap("WIDGET_TYPE_BUTTON", 
+const WIDGET_TYPE_BUTTON = Module.cwrap("get_WIDGET_TYPE_BUTTON", 
     "string", []);
-const WIDGET_TYPE_IMAGE = Module.cwrap("WIDGET_TYPE_IMAGE", 
+const WIDGET_TYPE_IMAGE = Module.cwrap("get_WIDGET_TYPE_IMAGE", 
     "string", []);
-const WIDGET_TYPE_EDIT = Module.cwrap("WIDGET_TYPE_EDIT", 
+const WIDGET_TYPE_EDIT = Module.cwrap("get_WIDGET_TYPE_EDIT", 
     "string", []);
-const WIDGET_TYPE_PROGRESS_BAR = Module.cwrap("WIDGET_TYPE_PROGRESS_BAR", 
+const WIDGET_TYPE_PROGRESS_BAR = Module.cwrap("get_WIDGET_TYPE_PROGRESS_BAR", 
     "string", []);
-const WIDGET_TYPE_GROUP_BOX = Module.cwrap("WIDGET_TYPE_GROUP_BOX", 
+const WIDGET_TYPE_GROUP_BOX = Module.cwrap("get_WIDGET_TYPE_GROUP_BOX", 
     "string", []);
-const WIDGET_TYPE_CHECK_BUTTON = Module.cwrap("WIDGET_TYPE_CHECK_BUTTON", 
+const WIDGET_TYPE_CHECK_BUTTON = Module.cwrap("get_WIDGET_TYPE_CHECK_BUTTON", 
     "string", []);
-const WIDGET_TYPE_RADIO_BUTTON = Module.cwrap("WIDGET_TYPE_RADIO_BUTTON", 
+const WIDGET_TYPE_RADIO_BUTTON = Module.cwrap("get_WIDGET_TYPE_RADIO_BUTTON", 
     "string", []);
-const WIDGET_TYPE_DIALOG_TITLE = Module.cwrap("WIDGET_TYPE_DIALOG_TITLE", 
+const WIDGET_TYPE_DIALOG_TITLE = Module.cwrap("get_WIDGET_TYPE_DIALOG_TITLE", 
     "string", []);
-const WIDGET_TYPE_DIALOG_CLIENT = Module.cwrap("WIDGET_TYPE_DIALOG_CLIENT", 
+const WIDGET_TYPE_DIALOG_CLIENT = Module.cwrap("get_WIDGET_TYPE_DIALOG_CLIENT", 
     "string", []);
-const WIDGET_TYPE_SLIDER = Module.cwrap("WIDGET_TYPE_SLIDER", 
+const WIDGET_TYPE_SLIDER = Module.cwrap("get_WIDGET_TYPE_SLIDER", 
     "string", []);
-const WIDGET_TYPE_VIEW = Module.cwrap("WIDGET_TYPE_VIEW", 
+const WIDGET_TYPE_VIEW = Module.cwrap("get_WIDGET_TYPE_VIEW", 
     "string", []);
-const WIDGET_TYPE_COMBO_BOX = Module.cwrap("WIDGET_TYPE_COMBO_BOX", 
+const WIDGET_TYPE_COMBO_BOX = Module.cwrap("get_WIDGET_TYPE_COMBO_BOX", 
     "string", []);
-const WIDGET_TYPE_COMBO_BOX_ITEM = Module.cwrap("WIDGET_TYPE_COMBO_BOX_ITEM", 
+const WIDGET_TYPE_COMBO_BOX_ITEM = Module.cwrap("get_WIDGET_TYPE_COMBO_BOX_ITEM", 
     "string", []);
-const WIDGET_TYPE_SLIDE_VIEW = Module.cwrap("WIDGET_TYPE_SLIDE_VIEW", 
+const WIDGET_TYPE_SLIDE_VIEW = Module.cwrap("get_WIDGET_TYPE_SLIDE_VIEW", 
     "string", []);
-const WIDGET_TYPE_SLIDE_INDICATOR = Module.cwrap("WIDGET_TYPE_SLIDE_INDICATOR", 
+const WIDGET_TYPE_SLIDE_INDICATOR = Module.cwrap("get_WIDGET_TYPE_SLIDE_INDICATOR", 
     "string", []);
-const WIDGET_TYPE_SLIDE_INDICATOR_ARC = Module.cwrap("WIDGET_TYPE_SLIDE_INDICATOR_ARC", 
+const WIDGET_TYPE_SLIDE_INDICATOR_ARC = Module.cwrap("get_WIDGET_TYPE_SLIDE_INDICATOR_ARC", 
     "string", []);
-const WIDGET_TYPE_PAGES = Module.cwrap("WIDGET_TYPE_PAGES", 
+const WIDGET_TYPE_PAGES = Module.cwrap("get_WIDGET_TYPE_PAGES", 
     "string", []);
-const WIDGET_TYPE_TAB_BUTTON = Module.cwrap("WIDGET_TYPE_TAB_BUTTON", 
+const WIDGET_TYPE_TAB_BUTTON = Module.cwrap("get_WIDGET_TYPE_TAB_BUTTON", 
     "string", []);
-const WIDGET_TYPE_TAB_CONTROL = Module.cwrap("WIDGET_TYPE_TAB_CONTROL", 
+const WIDGET_TYPE_TAB_CONTROL = Module.cwrap("get_WIDGET_TYPE_TAB_CONTROL", 
     "string", []);
-const WIDGET_TYPE_TAB_BUTTON_GROUP = Module.cwrap("WIDGET_TYPE_TAB_BUTTON_GROUP", 
+const WIDGET_TYPE_TAB_BUTTON_GROUP = Module.cwrap("get_WIDGET_TYPE_TAB_BUTTON_GROUP", 
     "string", []);
-const WIDGET_TYPE_BUTTON_GROUP = Module.cwrap("WIDGET_TYPE_BUTTON_GROUP", 
+const WIDGET_TYPE_BUTTON_GROUP = Module.cwrap("get_WIDGET_TYPE_BUTTON_GROUP", 
     "string", []);
-const WIDGET_TYPE_CANDIDATES = Module.cwrap("WIDGET_TYPE_CANDIDATES", 
+const WIDGET_TYPE_CANDIDATES = Module.cwrap("get_WIDGET_TYPE_CANDIDATES", 
     "string", []);
-const WIDGET_TYPE_SPIN_BOX = Module.cwrap("WIDGET_TYPE_SPIN_BOX", 
+const WIDGET_TYPE_SPIN_BOX = Module.cwrap("get_WIDGET_TYPE_SPIN_BOX", 
     "string", []);
-const WIDGET_TYPE_DRAGGER = Module.cwrap("WIDGET_TYPE_DRAGGER", 
+const WIDGET_TYPE_DRAGGER = Module.cwrap("get_WIDGET_TYPE_DRAGGER", 
     "string", []);
-const WIDGET_TYPE_SCROLL_BAR = Module.cwrap("WIDGET_TYPE_SCROLL_BAR", 
+const WIDGET_TYPE_SCROLL_BAR = Module.cwrap("get_WIDGET_TYPE_SCROLL_BAR", 
     "string", []);
-const WIDGET_TYPE_SCROLL_BAR_DESKTOP = Module.cwrap("WIDGET_TYPE_SCROLL_BAR_DESKTOP", 
+const WIDGET_TYPE_SCROLL_BAR_DESKTOP = Module.cwrap("get_WIDGET_TYPE_SCROLL_BAR_DESKTOP", 
     "string", []);
-const WIDGET_TYPE_SCROLL_BAR_MOBILE = Module.cwrap("WIDGET_TYPE_SCROLL_BAR_MOBILE", 
+const WIDGET_TYPE_SCROLL_BAR_MOBILE = Module.cwrap("get_WIDGET_TYPE_SCROLL_BAR_MOBILE", 
     "string", []);
-const WIDGET_TYPE_SCROLL_VIEW = Module.cwrap("WIDGET_TYPE_SCROLL_VIEW", 
+const WIDGET_TYPE_SCROLL_VIEW = Module.cwrap("get_WIDGET_TYPE_SCROLL_VIEW", 
     "string", []);
-const WIDGET_TYPE_LIST_VIEW = Module.cwrap("WIDGET_TYPE_LIST_VIEW", 
+const WIDGET_TYPE_LIST_VIEW = Module.cwrap("get_WIDGET_TYPE_LIST_VIEW", 
     "string", []);
-const WIDGET_TYPE_LIST_VIEW_H = Module.cwrap("WIDGET_TYPE_LIST_VIEW_H", 
+const WIDGET_TYPE_LIST_VIEW_H = Module.cwrap("get_WIDGET_TYPE_LIST_VIEW_H", 
     "string", []);
-const WIDGET_TYPE_LIST_ITEM = Module.cwrap("WIDGET_TYPE_LIST_ITEM", 
+const WIDGET_TYPE_LIST_ITEM = Module.cwrap("get_WIDGET_TYPE_LIST_ITEM", 
     "string", []);
-const WIDGET_TYPE_COLOR_PICKER = Module.cwrap("WIDGET_TYPE_COLOR_PICKER", 
+const WIDGET_TYPE_COLOR_PICKER = Module.cwrap("get_WIDGET_TYPE_COLOR_PICKER", 
     "string", []);
-const WIDGET_TYPE_COLOR_COMPONENT = Module.cwrap("WIDGET_TYPE_COLOR_COMPONENT", 
+const WIDGET_TYPE_COLOR_COMPONENT = Module.cwrap("get_WIDGET_TYPE_COLOR_COMPONENT", 
     "string", []);
-const WIDGET_TYPE_COLOR_TILE = Module.cwrap("WIDGET_TYPE_COLOR_TILE", 
+const WIDGET_TYPE_COLOR_TILE = Module.cwrap("get_WIDGET_TYPE_COLOR_TILE", 
     "string", []);
-const WIDGET_TYPE_CLIP_VIEW = Module.cwrap("WIDGET_TYPE_CLIP_VIEW", 
+const WIDGET_TYPE_CLIP_VIEW = Module.cwrap("get_WIDGET_TYPE_CLIP_VIEW", 
     "string", []);
-const WIDGET_TYPE_RICH_TEXT = Module.cwrap("WIDGET_TYPE_RICH_TEXT", 
+const WIDGET_TYPE_RICH_TEXT = Module.cwrap("get_WIDGET_TYPE_RICH_TEXT", 
     "string", []);
-const WIDGET_TYPE_APP_BAR = Module.cwrap("WIDGET_TYPE_APP_BAR", 
+const WIDGET_TYPE_APP_BAR = Module.cwrap("get_WIDGET_TYPE_APP_BAR", 
     "string", []);
-const WIDGET_TYPE_GRID = Module.cwrap("WIDGET_TYPE_GRID", 
+const WIDGET_TYPE_GRID = Module.cwrap("get_WIDGET_TYPE_GRID", 
     "string", []);
-const WIDGET_TYPE_GRID_ITEM = Module.cwrap("WIDGET_TYPE_GRID_ITEM", 
+const WIDGET_TYPE_GRID_ITEM = Module.cwrap("get_WIDGET_TYPE_GRID_ITEM", 
     "string", []);
-const WIDGET_TYPE_ROW = Module.cwrap("WIDGET_TYPE_ROW", 
+const WIDGET_TYPE_ROW = Module.cwrap("get_WIDGET_TYPE_ROW", 
     "string", []);
-const WIDGET_TYPE_COLUMN = Module.cwrap("WIDGET_TYPE_COLUMN", 
+const WIDGET_TYPE_COLUMN = Module.cwrap("get_WIDGET_TYPE_COLUMN", 
     "string", []);
-const WIDGET_TYPE_CALIBRATION_WIN = Module.cwrap("WIDGET_TYPE_CALIBRATION_WIN", 
+const WIDGET_TYPE_CALIBRATION_WIN = Module.cwrap("get_WIDGET_TYPE_CALIBRATION_WIN", 
     "string", []);
-const WINDOW_STAGE_NONE = Module.cwrap("WINDOW_STAGE_NONE", 
+const WINDOW_STAGE_NONE = Module.cwrap("get_WINDOW_STAGE_NONE", 
     "number", []);
-const WINDOW_STAGE_LOADED = Module.cwrap("WINDOW_STAGE_LOADED", 
+const WINDOW_STAGE_LOADED = Module.cwrap("get_WINDOW_STAGE_LOADED", 
     "number", []);
-const WINDOW_STAGE_CREATED = Module.cwrap("WINDOW_STAGE_CREATED", 
+const WINDOW_STAGE_CREATED = Module.cwrap("get_WINDOW_STAGE_CREATED", 
     "number", []);
-const WINDOW_STAGE_OPENED = Module.cwrap("WINDOW_STAGE_OPENED", 
+const WINDOW_STAGE_OPENED = Module.cwrap("get_WINDOW_STAGE_OPENED", 
     "number", []);
-const WINDOW_STAGE_CLOSED = Module.cwrap("WINDOW_STAGE_CLOSED", 
+const WINDOW_STAGE_CLOSED = Module.cwrap("get_WINDOW_STAGE_CLOSED", 
     "number", []);
-const WINDOW_STAGE_SUSPEND = Module.cwrap("WINDOW_STAGE_SUSPEND", 
+const WINDOW_STAGE_SUSPEND = Module.cwrap("get_WINDOW_STAGE_SUSPEND", 
     "number", []);
-const WINDOW_CLOSABLE_YES = Module.cwrap("WINDOW_CLOSABLE_YES", 
+const WINDOW_CLOSABLE_YES = Module.cwrap("get_WINDOW_CLOSABLE_YES", 
     "number", []);
-const WINDOW_CLOSABLE_NO = Module.cwrap("WINDOW_CLOSABLE_NO", 
+const WINDOW_CLOSABLE_NO = Module.cwrap("get_WINDOW_CLOSABLE_NO", 
     "number", []);
-const WINDOW_CLOSABLE_CONFIRM = Module.cwrap("WINDOW_CLOSABLE_CONFIRM", 
+const WINDOW_CLOSABLE_CONFIRM = Module.cwrap("get_WINDOW_CLOSABLE_CONFIRM", 
     "number", []);
-const WIDGET_STATE_NONE = Module.cwrap("WIDGET_STATE_NONE", 
+const WIDGET_STATE_NONE = Module.cwrap("get_WIDGET_STATE_NONE", 
     "string", []);
-const WIDGET_STATE_NORMAL = Module.cwrap("WIDGET_STATE_NORMAL", 
+const WIDGET_STATE_NORMAL = Module.cwrap("get_WIDGET_STATE_NORMAL", 
     "string", []);
-const WIDGET_STATE_CHANGED = Module.cwrap("WIDGET_STATE_CHANGED", 
+const WIDGET_STATE_CHANGED = Module.cwrap("get_WIDGET_STATE_CHANGED", 
     "string", []);
-const WIDGET_STATE_PRESSED = Module.cwrap("WIDGET_STATE_PRESSED", 
+const WIDGET_STATE_PRESSED = Module.cwrap("get_WIDGET_STATE_PRESSED", 
     "string", []);
-const WIDGET_STATE_OVER = Module.cwrap("WIDGET_STATE_OVER", 
+const WIDGET_STATE_OVER = Module.cwrap("get_WIDGET_STATE_OVER", 
     "string", []);
-const WIDGET_STATE_DISABLE = Module.cwrap("WIDGET_STATE_DISABLE", 
+const WIDGET_STATE_DISABLE = Module.cwrap("get_WIDGET_STATE_DISABLE", 
     "string", []);
-const WIDGET_STATE_FOCUSED = Module.cwrap("WIDGET_STATE_FOCUSED", 
+const WIDGET_STATE_FOCUSED = Module.cwrap("get_WIDGET_STATE_FOCUSED", 
     "string", []);
-const WIDGET_STATE_CHECKED = Module.cwrap("WIDGET_STATE_CHECKED", 
+const WIDGET_STATE_CHECKED = Module.cwrap("get_WIDGET_STATE_CHECKED", 
     "string", []);
-const WIDGET_STATE_UNCHECKED = Module.cwrap("WIDGET_STATE_UNCHECKED", 
+const WIDGET_STATE_UNCHECKED = Module.cwrap("get_WIDGET_STATE_UNCHECKED", 
     "string", []);
-const WIDGET_STATE_EMPTY = Module.cwrap("WIDGET_STATE_EMPTY", 
+const WIDGET_STATE_EMPTY = Module.cwrap("get_WIDGET_STATE_EMPTY", 
     "string", []);
-const WIDGET_STATE_EMPTY_FOCUS = Module.cwrap("WIDGET_STATE_EMPTY_FOCUS", 
+const WIDGET_STATE_EMPTY_FOCUS = Module.cwrap("get_WIDGET_STATE_EMPTY_FOCUS", 
     "string", []);
-const WIDGET_STATE_ERROR = Module.cwrap("WIDGET_STATE_ERROR", 
+const WIDGET_STATE_ERROR = Module.cwrap("get_WIDGET_STATE_ERROR", 
     "string", []);
-const WIDGET_STATE_SELECTED = Module.cwrap("WIDGET_STATE_SELECTED", 
+const WIDGET_STATE_SELECTED = Module.cwrap("get_WIDGET_STATE_SELECTED", 
     "string", []);
-const WIDGET_STATE_NORMAL_OF_CHECKED = Module.cwrap("WIDGET_STATE_NORMAL_OF_CHECKED", 
+const WIDGET_STATE_NORMAL_OF_CHECKED = Module.cwrap("get_WIDGET_STATE_NORMAL_OF_CHECKED", 
     "string", []);
-const WIDGET_STATE_PRESSED_OF_CHECKED = Module.cwrap("WIDGET_STATE_PRESSED_OF_CHECKED", 
+const WIDGET_STATE_PRESSED_OF_CHECKED = Module.cwrap("get_WIDGET_STATE_PRESSED_OF_CHECKED", 
     "string", []);
-const WIDGET_STATE_OVER_OF_CHECKED = Module.cwrap("WIDGET_STATE_OVER_OF_CHECKED", 
+const WIDGET_STATE_OVER_OF_CHECKED = Module.cwrap("get_WIDGET_STATE_OVER_OF_CHECKED", 
     "string", []);
-const WIDGET_STATE_DISABLE_OF_CHECKED = Module.cwrap("WIDGET_STATE_DISABLE_OF_CHECKED", 
+const WIDGET_STATE_DISABLE_OF_CHECKED = Module.cwrap("get_WIDGET_STATE_DISABLE_OF_CHECKED", 
     "string", []);
-const WIDGET_STATE_FOCUSED_OF_CHECKED = Module.cwrap("WIDGET_STATE_FOCUSED_OF_CHECKED", 
+const WIDGET_STATE_FOCUSED_OF_CHECKED = Module.cwrap("get_WIDGET_STATE_FOCUSED_OF_CHECKED", 
     "string", []);
-const WIDGET_STATE_NORMAL_OF_ACTIVE = Module.cwrap("WIDGET_STATE_NORMAL_OF_ACTIVE", 
+const WIDGET_STATE_NORMAL_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_NORMAL_OF_ACTIVE", 
     "string", []);
-const WIDGET_STATE_PRESSED_OF_ACTIVE = Module.cwrap("WIDGET_STATE_PRESSED_OF_ACTIVE", 
+const WIDGET_STATE_PRESSED_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_PRESSED_OF_ACTIVE", 
     "string", []);
-const WIDGET_STATE_OVER_OF_ACTIVE = Module.cwrap("WIDGET_STATE_OVER_OF_ACTIVE", 
+const WIDGET_STATE_OVER_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_OVER_OF_ACTIVE", 
     "string", []);
-const WIDGET_STATE_DISABLE_OF_ACTIVE = Module.cwrap("WIDGET_STATE_DISABLE_OF_ACTIVE", 
+const WIDGET_STATE_DISABLE_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_DISABLE_OF_ACTIVE", 
     "string", []);
-const WIDGET_STATE_FOCUSED_OF_ACTIVE = Module.cwrap("WIDGET_STATE_FOCUSED_OF_ACTIVE", 
+const WIDGET_STATE_FOCUSED_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_FOCUSED_OF_ACTIVE", 
     "string", []);
-const WIDGET_CURSOR_DEFAULT = Module.cwrap("WIDGET_CURSOR_DEFAULT", 
+const WIDGET_CURSOR_DEFAULT = Module.cwrap("get_WIDGET_CURSOR_DEFAULT", 
     "string", []);
-const WIDGET_CURSOR_EDIT = Module.cwrap("WIDGET_CURSOR_EDIT", 
+const WIDGET_CURSOR_EDIT = Module.cwrap("get_WIDGET_CURSOR_EDIT", 
     "string", []);
-const WIDGET_CURSOR_HAND = Module.cwrap("WIDGET_CURSOR_HAND", 
+const WIDGET_CURSOR_HAND = Module.cwrap("get_WIDGET_CURSOR_HAND", 
     "string", []);
-const WIDGET_CURSOR_WAIT = Module.cwrap("WIDGET_CURSOR_WAIT", 
+const WIDGET_CURSOR_WAIT = Module.cwrap("get_WIDGET_CURSOR_WAIT", 
     "string", []);
-const WIDGET_CURSOR_CROSS = Module.cwrap("WIDGET_CURSOR_CROSS", 
+const WIDGET_CURSOR_CROSS = Module.cwrap("get_WIDGET_CURSOR_CROSS", 
     "string", []);
-const WIDGET_CURSOR_NO = Module.cwrap("WIDGET_CURSOR_NO", 
+const WIDGET_CURSOR_NO = Module.cwrap("get_WIDGET_CURSOR_NO", 
     "string", []);
-const WIDGET_CURSOR_SIZENWSE = Module.cwrap("WIDGET_CURSOR_SIZENWSE", 
+const WIDGET_CURSOR_SIZENWSE = Module.cwrap("get_WIDGET_CURSOR_SIZENWSE", 
     "string", []);
-const WIDGET_CURSOR_SIZENESW = Module.cwrap("WIDGET_CURSOR_SIZENESW", 
+const WIDGET_CURSOR_SIZENESW = Module.cwrap("get_WIDGET_CURSOR_SIZENESW", 
     "string", []);
-const WIDGET_CURSOR_SIZEWE = Module.cwrap("WIDGET_CURSOR_SIZEWE", 
+const WIDGET_CURSOR_SIZEWE = Module.cwrap("get_WIDGET_CURSOR_SIZEWE", 
     "string", []);
-const WIDGET_CURSOR_SIZENS = Module.cwrap("WIDGET_CURSOR_SIZENS", 
+const WIDGET_CURSOR_SIZENS = Module.cwrap("get_WIDGET_CURSOR_SIZENS", 
     "string", []);
-const WIDGET_CURSOR_SIZEALL = Module.cwrap("WIDGET_CURSOR_SIZEALL", 
+const WIDGET_CURSOR_SIZEALL = Module.cwrap("get_WIDGET_CURSOR_SIZEALL", 
     "string", []);
 const widget_count_children = Module.cwrap("widget_count_children", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_child = Module.cwrap("widget_get_child", 
-    "TWidget", ["TWidget","number"]);
+    "number", ["number","number"]);
 const widget_get_focused_widget = Module.cwrap("widget_get_focused_widget", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_native_window = Module.cwrap("widget_get_native_window", 
-    "TNativeWindow", ["TWidget"]);
+    "number", ["number"]);
 const widget_index_of = Module.cwrap("widget_index_of", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const widget_close_window = Module.cwrap("widget_close_window", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_close_window_force = Module.cwrap("widget_close_window_force", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_back = Module.cwrap("widget_back", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_back_to_home = Module.cwrap("widget_back_to_home", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_move = Module.cwrap("widget_move", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const widget_resize = Module.cwrap("widget_resize", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const widget_move_resize = Module.cwrap("widget_move_resize", 
-    "TRet", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const widget_set_value = Module.cwrap("widget_set_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const widget_animate_value_to = Module.cwrap("widget_animate_value_to", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const widget_add_value = Module.cwrap("widget_add_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const widget_is_style_exist = Module.cwrap("widget_is_style_exist", 
-    "boolean", ["TWidget","string","string"]);
+    "number", ["number","string","string"]);
 const widget_use_style = Module.cwrap("widget_use_style", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_set_text_utf8 = Module.cwrap("widget_set_text_utf8", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_set_child_text_utf8 = Module.cwrap("widget_set_child_text_utf8", 
-    "TRet", ["TWidget","string","string"]);
+    "number", ["number","string","string"]);
 const widget_set_child_text_with_double = Module.cwrap("widget_set_child_text_with_double", 
-    "TRet", ["TWidget","string","string","number"]);
+    "number", ["number","string","string","number"]);
 const widget_set_child_text_with_int = Module.cwrap("widget_set_child_text_with_int", 
-    "TRet", ["TWidget","string","string","number"]);
+    "number", ["number","string","string","number"]);
 const widget_set_tr_text = Module.cwrap("widget_set_tr_text", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_get_value = Module.cwrap("widget_get_value", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_enable = Module.cwrap("widget_get_enable", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_floating = Module.cwrap("widget_get_floating", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_auto_adjust_size = Module.cwrap("widget_get_auto_adjust_size", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_with_focus_state = Module.cwrap("widget_get_with_focus_state", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_focusable = Module.cwrap("widget_get_focusable", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_sensitive = Module.cwrap("widget_get_sensitive", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_visible = Module.cwrap("widget_get_visible", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_feedback = Module.cwrap("widget_get_feedback", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_text = Module.cwrap("widget_get_text", 
-    "any", ["TWidget"]);
+    "number", ["number"]);
 const widget_set_name = Module.cwrap("widget_set_name", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_set_theme = Module.cwrap("widget_set_theme", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_set_pointer_cursor = Module.cwrap("widget_set_pointer_cursor", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_set_animation = Module.cwrap("widget_set_animation", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_create_animator = Module.cwrap("widget_create_animator", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_start_animator = Module.cwrap("widget_start_animator", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_set_animator_time_scale = Module.cwrap("widget_set_animator_time_scale", 
-    "TRet", ["TWidget","string","number"]);
+    "number", ["number","string","number"]);
 const widget_pause_animator = Module.cwrap("widget_pause_animator", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_stop_animator = Module.cwrap("widget_stop_animator", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_destroy_animator = Module.cwrap("widget_destroy_animator", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_set_enable = Module.cwrap("widget_set_enable", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const widget_set_feedback = Module.cwrap("widget_set_feedback", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const widget_set_auto_adjust_size = Module.cwrap("widget_set_auto_adjust_size", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const widget_set_floating = Module.cwrap("widget_set_floating", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const widget_set_focused = Module.cwrap("widget_set_focused", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const widget_set_focusable = Module.cwrap("widget_set_focusable", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const widget_set_state = Module.cwrap("widget_set_state", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_set_opacity = Module.cwrap("widget_set_opacity", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const widget_set_dirty_rect_tolerance = Module.cwrap("widget_set_dirty_rect_tolerance", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const widget_destroy_children = Module.cwrap("widget_destroy_children", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_add_child = Module.cwrap("widget_add_child", 
-    "TRet", ["TWidget","TWidget"]);
+    "number", ["number","number"]);
 const widget_remove_child = Module.cwrap("widget_remove_child", 
-    "TRet", ["TWidget","TWidget"]);
+    "number", ["number","number"]);
 const widget_insert_child = Module.cwrap("widget_insert_child", 
-    "TRet", ["TWidget","number","TWidget"]);
+    "number", ["number","number","number"]);
 const widget_restack = Module.cwrap("widget_restack", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const widget_child = Module.cwrap("widget_child", 
-    "TWidget", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_lookup = Module.cwrap("widget_lookup", 
-    "TWidget", ["TWidget","string","boolean"]);
+    "number", ["number","string","number"]);
 const widget_lookup_by_type = Module.cwrap("widget_lookup_by_type", 
-    "TWidget", ["TWidget","string","boolean"]);
+    "number", ["number","string","number"]);
 const widget_set_visible = Module.cwrap("widget_set_visible", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const widget_set_visible_only = Module.cwrap("widget_set_visible_only", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const widget_set_sensitive = Module.cwrap("widget_set_sensitive", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const widget_on = Module.cwrap("widget_on", 
-    "number", ["TWidget","TEventType","Function","any"]);
+    "number", ["number","number","number","number"]);
 const widget_off = Module.cwrap("widget_off", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const widget_invalidate_force = Module.cwrap("widget_invalidate_force", 
-    "TRet", ["TWidget","TRect"]);
+    "number", ["number","number"]);
 const widget_set_prop_str = Module.cwrap("widget_set_prop_str", 
-    "TRet", ["TWidget","string","string"]);
+    "number", ["number","string","string"]);
 const widget_get_prop_str = Module.cwrap("widget_get_prop_str", 
-    "string", ["TWidget","string","string"]);
+    "string", ["number","string","string"]);
 const widget_set_prop_pointer = Module.cwrap("widget_set_prop_pointer", 
-    "TRet", ["TWidget","string","any"]);
+    "number", ["number","string","number"]);
 const widget_get_prop_pointer = Module.cwrap("widget_get_prop_pointer", 
-    "any", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_set_prop_int = Module.cwrap("widget_set_prop_int", 
-    "TRet", ["TWidget","string","number"]);
+    "number", ["number","string","number"]);
 const widget_get_prop_int = Module.cwrap("widget_get_prop_int", 
-    "number", ["TWidget","string","number"]);
+    "number", ["number","string","number"]);
 const widget_set_prop_bool = Module.cwrap("widget_set_prop_bool", 
-    "TRet", ["TWidget","string","boolean"]);
+    "number", ["number","string","number"]);
 const widget_get_prop_bool = Module.cwrap("widget_get_prop_bool", 
-    "boolean", ["TWidget","string","boolean"]);
+    "number", ["number","string","number"]);
 const widget_is_window_opened = Module.cwrap("widget_is_window_opened", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_window_created = Module.cwrap("widget_is_window_created", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_parent_of = Module.cwrap("widget_is_parent_of", 
-    "boolean", ["TWidget","TWidget"]);
+    "number", ["number","number"]);
 const widget_is_direct_parent_of = Module.cwrap("widget_is_direct_parent_of", 
-    "boolean", ["TWidget","TWidget"]);
+    "number", ["number","number"]);
 const widget_is_window = Module.cwrap("widget_is_window", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_system_bar = Module.cwrap("widget_is_system_bar", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_normal_window = Module.cwrap("widget_is_normal_window", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_dialog = Module.cwrap("widget_is_dialog", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_popup = Module.cwrap("widget_is_popup", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_overlay = Module.cwrap("widget_is_overlay", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_opened_dialog = Module.cwrap("widget_is_opened_dialog", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_opened_popup = Module.cwrap("widget_is_opened_popup", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_keyboard = Module.cwrap("widget_is_keyboard", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_designing_window = Module.cwrap("widget_is_designing_window", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_is_window_manager = Module.cwrap("widget_is_window_manager", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const widget_foreach = Module.cwrap("widget_foreach", 
-    "TRet", ["TWidget","Function","any"]);
+    "number", ["number","number","number"]);
 const widget_get_window = Module.cwrap("widget_get_window", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_window_manager = Module.cwrap("widget_get_window_manager", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_type = Module.cwrap("widget_get_type", 
-    "string", ["TWidget"]);
+    "string", ["number"]);
 const widget_clone = Module.cwrap("widget_clone", 
-    "TWidget", ["TWidget","TWidget"]);
+    "number", ["number","number"]);
 const widget_equal = Module.cwrap("widget_equal", 
-    "boolean", ["TWidget","TWidget"]);
+    "number", ["number","number"]);
 const widget_cast = Module.cwrap("widget_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const widget_destroy = Module.cwrap("widget_destroy", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_destroy_async = Module.cwrap("widget_destroy_async", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_unref = Module.cwrap("widget_unref", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_stroke_border_rect = Module.cwrap("widget_stroke_border_rect", 
-    "TRet", ["TWidget","TCanvas","TRect"]);
+    "number", ["number","number","number"]);
 const widget_fill_bg_rect = Module.cwrap("widget_fill_bg_rect", 
-    "TRet", ["TWidget","TCanvas","TRect","TImageDrawType"]);
+    "number", ["number","number","number","number"]);
 const widget_fill_fg_rect = Module.cwrap("widget_fill_fg_rect", 
-    "TRet", ["TWidget","TCanvas","TRect","TImageDrawType"]);
+    "number", ["number","number","number","number"]);
 const widget_dispatch_to_target = Module.cwrap("widget_dispatch_to_target", 
-    "TRet", ["TWidget","TEvent"]);
+    "number", ["number","number"]);
 const widget_dispatch_to_key_target = Module.cwrap("widget_dispatch_to_key_target", 
-    "TRet", ["TWidget","TEvent"]);
+    "number", ["number","number"]);
 const widget_get_style_type = Module.cwrap("widget_get_style_type", 
-    "string", ["TWidget"]);
+    "string", ["number"]);
 const widget_update_style = Module.cwrap("widget_update_style", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_update_style_recursive = Module.cwrap("widget_update_style_recursive", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_set_as_key_target = Module.cwrap("widget_set_as_key_target", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_focus_next = Module.cwrap("widget_focus_next", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_focus_prev = Module.cwrap("widget_focus_prev", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_get_state_for_style = Module.cwrap("widget_get_state_for_style", 
-    "string", ["TWidget","boolean","boolean"]);
+    "string", ["number","number","number"]);
 const widget_layout = Module.cwrap("widget_layout", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const widget_set_self_layout = Module.cwrap("widget_set_self_layout", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_set_children_layout = Module.cwrap("widget_set_children_layout", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const widget_set_self_layout_params = Module.cwrap("widget_set_self_layout_params", 
-    "TRet", ["TWidget","string","string","string","string"]);
+    "number", ["number","string","string","string","string"]);
 const widget_set_style_int = Module.cwrap("widget_set_style_int", 
-    "TRet", ["TWidget","string","number"]);
+    "number", ["number","string","number"]);
 const widget_set_style_str = Module.cwrap("widget_set_style_str", 
-    "TRet", ["TWidget","string","string"]);
+    "number", ["number","string","string"]);
 const widget_set_style_color = Module.cwrap("widget_set_style_color", 
-    "TRet", ["TWidget","string","number"]);
+    "number", ["number","string","number"]);
 const widget_t_get_prop_x = Module.cwrap("widget_t_get_prop_x", 
     "number", ["number"]);
 const widget_t_get_prop_y = Module.cwrap("widget_t_get_prop_y", 
@@ -2065,97 +2065,97 @@ const widget_t_get_prop_style = Module.cwrap("widget_t_get_prop_style",
 const widget_t_get_prop_animation = Module.cwrap("widget_t_get_prop_animation", 
     "string", ["number"]);
 const widget_t_get_prop_enable = Module.cwrap("widget_t_get_prop_enable", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const widget_t_get_prop_feedback = Module.cwrap("widget_t_get_prop_feedback", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const widget_t_get_prop_visible = Module.cwrap("widget_t_get_prop_visible", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const widget_t_get_prop_sensitive = Module.cwrap("widget_t_get_prop_sensitive", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const widget_t_get_prop_focusable = Module.cwrap("widget_t_get_prop_focusable", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const widget_t_get_prop_with_focus_state = Module.cwrap("widget_t_get_prop_with_focus_state", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const widget_t_get_prop_auto_adjust_size = Module.cwrap("widget_t_get_prop_auto_adjust_size", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const widget_t_get_prop_floating = Module.cwrap("widget_t_get_prop_floating", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const widget_t_get_prop_dirty_rect_tolerance = Module.cwrap("widget_t_get_prop_dirty_rect_tolerance", 
     "number", ["number"]);
 const widget_t_get_prop_parent = Module.cwrap("widget_t_get_prop_parent", 
-    "TWidget", ["number"]);
+    "number", ["number"]);
 const app_conf_save = Module.cwrap("app_conf_save", 
-    "TRet", []);
+    "number", []);
 const app_conf_reload = Module.cwrap("app_conf_reload", 
-    "TRet", []);
+    "number", []);
 const app_conf_deinit = Module.cwrap("app_conf_deinit", 
-    "TRet", []);
+    "number", []);
 const app_conf_exist = Module.cwrap("app_conf_exist", 
-    "boolean", ["string"]);
+    "number", ["string"]);
 const app_conf_set_int = Module.cwrap("app_conf_set_int", 
-    "TRet", ["string","number"]);
+    "number", ["string","number"]);
 const app_conf_set_int64 = Module.cwrap("app_conf_set_int64", 
-    "TRet", ["string","number"]);
+    "number", ["string","number"]);
 const app_conf_set_bool = Module.cwrap("app_conf_set_bool", 
-    "TRet", ["string","boolean"]);
+    "number", ["string","number"]);
 const app_conf_set_double = Module.cwrap("app_conf_set_double", 
-    "TRet", ["string","number"]);
+    "number", ["string","number"]);
 const app_conf_set_str = Module.cwrap("app_conf_set_str", 
-    "TRet", ["string","string"]);
+    "number", ["string","string"]);
 const app_conf_get_int = Module.cwrap("app_conf_get_int", 
     "number", ["string","number"]);
 const app_conf_get_int64 = Module.cwrap("app_conf_get_int64", 
     "number", ["string","number"]);
 const app_conf_get_bool = Module.cwrap("app_conf_get_bool", 
-    "boolean", ["string","boolean"]);
+    "number", ["string","number"]);
 const app_conf_get_double = Module.cwrap("app_conf_get_double", 
     "number", ["string","number"]);
 const app_conf_get_str = Module.cwrap("app_conf_get_str", 
     "string", ["string","string"]);
 const app_conf_remove = Module.cwrap("app_conf_remove", 
-    "TRet", ["string"]);
+    "number", ["string"]);
 const tk_ext_widgets_init = Module.cwrap("tk_ext_widgets_init", 
-    "TRet", []);
-const INDICATOR_DEFAULT_PAINT_AUTO = Module.cwrap("INDICATOR_DEFAULT_PAINT_AUTO", 
     "number", []);
-const INDICATOR_DEFAULT_PAINT_FILL_DOT = Module.cwrap("INDICATOR_DEFAULT_PAINT_FILL_DOT", 
+const INDICATOR_DEFAULT_PAINT_AUTO = Module.cwrap("get_INDICATOR_DEFAULT_PAINT_AUTO", 
     "number", []);
-const INDICATOR_DEFAULT_PAINT_STROKE_DOT = Module.cwrap("INDICATOR_DEFAULT_PAINT_STROKE_DOT", 
+const INDICATOR_DEFAULT_PAINT_FILL_DOT = Module.cwrap("get_INDICATOR_DEFAULT_PAINT_FILL_DOT", 
     "number", []);
-const INDICATOR_DEFAULT_PAINT_FILL_RECT = Module.cwrap("INDICATOR_DEFAULT_PAINT_FILL_RECT", 
+const INDICATOR_DEFAULT_PAINT_STROKE_DOT = Module.cwrap("get_INDICATOR_DEFAULT_PAINT_STROKE_DOT", 
     "number", []);
-const INDICATOR_DEFAULT_PAINT_STROKE_RECT = Module.cwrap("INDICATOR_DEFAULT_PAINT_STROKE_RECT", 
+const INDICATOR_DEFAULT_PAINT_FILL_RECT = Module.cwrap("get_INDICATOR_DEFAULT_PAINT_FILL_RECT", 
     "number", []);
-const EVT_VPAGE_WILL_OPEN = Module.cwrap("EVT_VPAGE_WILL_OPEN", 
+const INDICATOR_DEFAULT_PAINT_STROKE_RECT = Module.cwrap("get_INDICATOR_DEFAULT_PAINT_STROKE_RECT", 
     "number", []);
-const EVT_VPAGE_OPEN = Module.cwrap("EVT_VPAGE_OPEN", 
+const EVT_VPAGE_WILL_OPEN = Module.cwrap("get_EVT_VPAGE_WILL_OPEN", 
     "number", []);
-const EVT_VPAGE_CLOSE = Module.cwrap("EVT_VPAGE_CLOSE", 
+const EVT_VPAGE_OPEN = Module.cwrap("get_EVT_VPAGE_OPEN", 
     "number", []);
-const ASSET_TYPE_NONE = Module.cwrap("ASSET_TYPE_NONE", 
+const EVT_VPAGE_CLOSE = Module.cwrap("get_EVT_VPAGE_CLOSE", 
     "number", []);
-const ASSET_TYPE_FONT = Module.cwrap("ASSET_TYPE_FONT", 
+const ASSET_TYPE_NONE = Module.cwrap("get_ASSET_TYPE_NONE", 
     "number", []);
-const ASSET_TYPE_IMAGE = Module.cwrap("ASSET_TYPE_IMAGE", 
+const ASSET_TYPE_FONT = Module.cwrap("get_ASSET_TYPE_FONT", 
     "number", []);
-const ASSET_TYPE_STYLE = Module.cwrap("ASSET_TYPE_STYLE", 
+const ASSET_TYPE_IMAGE = Module.cwrap("get_ASSET_TYPE_IMAGE", 
     "number", []);
-const ASSET_TYPE_UI = Module.cwrap("ASSET_TYPE_UI", 
+const ASSET_TYPE_STYLE = Module.cwrap("get_ASSET_TYPE_STYLE", 
     "number", []);
-const ASSET_TYPE_XML = Module.cwrap("ASSET_TYPE_XML", 
+const ASSET_TYPE_UI = Module.cwrap("get_ASSET_TYPE_UI", 
     "number", []);
-const ASSET_TYPE_STRINGS = Module.cwrap("ASSET_TYPE_STRINGS", 
+const ASSET_TYPE_XML = Module.cwrap("get_ASSET_TYPE_XML", 
     "number", []);
-const ASSET_TYPE_SCRIPT = Module.cwrap("ASSET_TYPE_SCRIPT", 
+const ASSET_TYPE_STRINGS = Module.cwrap("get_ASSET_TYPE_STRINGS", 
     "number", []);
-const ASSET_TYPE_FLOW = Module.cwrap("ASSET_TYPE_FLOW", 
+const ASSET_TYPE_SCRIPT = Module.cwrap("get_ASSET_TYPE_SCRIPT", 
     "number", []);
-const ASSET_TYPE_DATA = Module.cwrap("ASSET_TYPE_DATA", 
+const ASSET_TYPE_FLOW = Module.cwrap("get_ASSET_TYPE_FLOW", 
+    "number", []);
+const ASSET_TYPE_DATA = Module.cwrap("get_ASSET_TYPE_DATA", 
     "number", []);
 const asset_info_get_type = Module.cwrap("asset_info_get_type", 
-    "number", ["TAssetInfo"]);
+    "number", ["number"]);
 const asset_info_get_name = Module.cwrap("asset_info_get_name", 
-    "string", ["TAssetInfo"]);
+    "string", ["number"]);
 const asset_info_t_get_prop_type = Module.cwrap("asset_info_t_get_prop_type", 
     "number", ["number"]);
 const asset_info_t_get_prop_subtype = Module.cwrap("asset_info_t_get_prop_subtype", 
@@ -2169,51 +2169,51 @@ const asset_info_t_get_prop_refcount = Module.cwrap("asset_info_t_get_prop_refco
 const asset_info_t_get_prop_name = Module.cwrap("asset_info_t_get_prop_name", 
     "string", ["number"]);
 const color_create = Module.cwrap("color_create", 
-    "TColor", ["number","number","number","number"]);
+    "number", ["number","number","number","number"]);
 const color_from_str = Module.cwrap("color_from_str", 
-    "TColor", ["TColor","string"]);
+    "number", ["number","string"]);
 const color_r = Module.cwrap("color_r", 
-    "number", ["TColor"]);
+    "number", ["number"]);
 const color_g = Module.cwrap("color_g", 
-    "number", ["TColor"]);
+    "number", ["number"]);
 const color_b = Module.cwrap("color_b", 
-    "number", ["TColor"]);
+    "number", ["number"]);
 const color_a = Module.cwrap("color_a", 
-    "number", ["TColor"]);
+    "number", ["number"]);
 const color_get_color = Module.cwrap("color_get_color", 
-    "number", ["TColor"]);
+    "number", ["number"]);
 const color_cast = Module.cwrap("color_cast", 
-    "TColor", ["TColor"]);
+    "number", ["number"]);
 const color_destroy = Module.cwrap("color_destroy", 
-    "TRet", ["TColor"]);
+    "number", ["number"]);
 const color_t_get_prop_color = Module.cwrap("color_t_get_prop_color", 
     "number", ["number"]);
 const color_t_set_prop_color = Module.cwrap("color_t_set_prop_color", 
     "number", ["number", "number"]);
 const date_time_create = Module.cwrap("date_time_create", 
-    "TDateTime", []);
+    "number", []);
 const date_time_set_year = Module.cwrap("date_time_set_year", 
-    "TRet", ["TDateTime","number"]);
+    "number", ["number","number"]);
 const date_time_set_month = Module.cwrap("date_time_set_month", 
-    "TRet", ["TDateTime","number"]);
+    "number", ["number","number"]);
 const date_time_set_day = Module.cwrap("date_time_set_day", 
-    "TRet", ["TDateTime","number"]);
+    "number", ["number","number"]);
 const date_time_set_hour = Module.cwrap("date_time_set_hour", 
-    "TRet", ["TDateTime","number"]);
+    "number", ["number","number"]);
 const date_time_set_minute = Module.cwrap("date_time_set_minute", 
-    "TRet", ["TDateTime","number"]);
+    "number", ["number","number"]);
 const date_time_set_second = Module.cwrap("date_time_set_second", 
-    "TRet", ["TDateTime","number"]);
+    "number", ["number","number"]);
 const date_time_set = Module.cwrap("date_time_set", 
-    "TRet", ["TDateTime"]);
+    "number", ["number"]);
 const date_time_from_time = Module.cwrap("date_time_from_time", 
-    "TRet", ["TDateTime","number"]);
+    "number", ["number","number"]);
 const date_time_to_time = Module.cwrap("date_time_to_time", 
-    "number", ["TDateTime"]);
+    "number", ["number"]);
 const date_time_add_delta = Module.cwrap("date_time_add_delta", 
-    "TRet", ["TDateTime","number"]);
+    "number", ["number","number"]);
 const date_time_is_leap = Module.cwrap("date_time_is_leap", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const date_time_get_days = Module.cwrap("date_time_get_days", 
     "number", ["number","number"]);
 const date_time_get_wday = Module.cwrap("date_time_get_wday", 
@@ -2223,7 +2223,7 @@ const date_time_get_month_name = Module.cwrap("date_time_get_month_name",
 const date_time_get_wday_name = Module.cwrap("date_time_get_wday_name", 
     "string", ["number"]);
 const date_time_destroy = Module.cwrap("date_time_destroy", 
-    "TRet", ["TDateTime"]);
+    "number", ["number"]);
 const date_time_t_get_prop_second = Module.cwrap("date_time_t_get_prop_second", 
     "number", ["number"]);
 const date_time_t_get_prop_minute = Module.cwrap("date_time_t_get_prop_minute", 
@@ -2238,420 +2238,420 @@ const date_time_t_get_prop_month = Module.cwrap("date_time_t_get_prop_month",
     "number", ["number"]);
 const date_time_t_get_prop_year = Module.cwrap("date_time_t_get_prop_year", 
     "number", ["number"]);
-const EASING_LINEAR = Module.cwrap("EASING_LINEAR", 
+const EASING_LINEAR = Module.cwrap("get_EASING_LINEAR", 
     "number", []);
-const EASING_QUADRATIC_IN = Module.cwrap("EASING_QUADRATIC_IN", 
+const EASING_QUADRATIC_IN = Module.cwrap("get_EASING_QUADRATIC_IN", 
     "number", []);
-const EASING_QUADRATIC_OUT = Module.cwrap("EASING_QUADRATIC_OUT", 
+const EASING_QUADRATIC_OUT = Module.cwrap("get_EASING_QUADRATIC_OUT", 
     "number", []);
-const EASING_QUADRATIC_INOUT = Module.cwrap("EASING_QUADRATIC_INOUT", 
+const EASING_QUADRATIC_INOUT = Module.cwrap("get_EASING_QUADRATIC_INOUT", 
     "number", []);
-const EASING_CUBIC_IN = Module.cwrap("EASING_CUBIC_IN", 
+const EASING_CUBIC_IN = Module.cwrap("get_EASING_CUBIC_IN", 
     "number", []);
-const EASING_CUBIC_OUT = Module.cwrap("EASING_CUBIC_OUT", 
+const EASING_CUBIC_OUT = Module.cwrap("get_EASING_CUBIC_OUT", 
     "number", []);
-const EASING_SIN_IN = Module.cwrap("EASING_SIN_IN", 
+const EASING_SIN_IN = Module.cwrap("get_EASING_SIN_IN", 
     "number", []);
-const EASING_SIN_OUT = Module.cwrap("EASING_SIN_OUT", 
+const EASING_SIN_OUT = Module.cwrap("get_EASING_SIN_OUT", 
     "number", []);
-const EASING_SIN_INOUT = Module.cwrap("EASING_SIN_INOUT", 
+const EASING_SIN_INOUT = Module.cwrap("get_EASING_SIN_INOUT", 
     "number", []);
-const EASING_POW_IN = Module.cwrap("EASING_POW_IN", 
+const EASING_POW_IN = Module.cwrap("get_EASING_POW_IN", 
     "number", []);
-const EASING_POW_OUT = Module.cwrap("EASING_POW_OUT", 
+const EASING_POW_OUT = Module.cwrap("get_EASING_POW_OUT", 
     "number", []);
-const EASING_POW_INOUT = Module.cwrap("EASING_POW_INOUT", 
+const EASING_POW_INOUT = Module.cwrap("get_EASING_POW_INOUT", 
     "number", []);
-const EASING_CIRCULAR_IN = Module.cwrap("EASING_CIRCULAR_IN", 
+const EASING_CIRCULAR_IN = Module.cwrap("get_EASING_CIRCULAR_IN", 
     "number", []);
-const EASING_CIRCULAR_OUT = Module.cwrap("EASING_CIRCULAR_OUT", 
+const EASING_CIRCULAR_OUT = Module.cwrap("get_EASING_CIRCULAR_OUT", 
     "number", []);
-const EASING_CIRCULAR_INOUT = Module.cwrap("EASING_CIRCULAR_INOUT", 
+const EASING_CIRCULAR_INOUT = Module.cwrap("get_EASING_CIRCULAR_INOUT", 
     "number", []);
-const EASING_ELASTIC_IN = Module.cwrap("EASING_ELASTIC_IN", 
+const EASING_ELASTIC_IN = Module.cwrap("get_EASING_ELASTIC_IN", 
     "number", []);
-const EASING_ELASTIC_OUT = Module.cwrap("EASING_ELASTIC_OUT", 
+const EASING_ELASTIC_OUT = Module.cwrap("get_EASING_ELASTIC_OUT", 
     "number", []);
-const EASING_ELASTIC_INOUT = Module.cwrap("EASING_ELASTIC_INOUT", 
+const EASING_ELASTIC_INOUT = Module.cwrap("get_EASING_ELASTIC_INOUT", 
     "number", []);
-const EASING_BACK_IN = Module.cwrap("EASING_BACK_IN", 
+const EASING_BACK_IN = Module.cwrap("get_EASING_BACK_IN", 
     "number", []);
-const EASING_BACK_OUT = Module.cwrap("EASING_BACK_OUT", 
+const EASING_BACK_OUT = Module.cwrap("get_EASING_BACK_OUT", 
     "number", []);
-const EASING_BACK_INOUT = Module.cwrap("EASING_BACK_INOUT", 
+const EASING_BACK_INOUT = Module.cwrap("get_EASING_BACK_INOUT", 
     "number", []);
-const EASING_BOUNCE_IN = Module.cwrap("EASING_BOUNCE_IN", 
+const EASING_BOUNCE_IN = Module.cwrap("get_EASING_BOUNCE_IN", 
     "number", []);
-const EASING_BOUNCE_OUT = Module.cwrap("EASING_BOUNCE_OUT", 
+const EASING_BOUNCE_OUT = Module.cwrap("get_EASING_BOUNCE_OUT", 
     "number", []);
-const EASING_BOUNCE_INOUT = Module.cwrap("EASING_BOUNCE_INOUT", 
+const EASING_BOUNCE_INOUT = Module.cwrap("get_EASING_BOUNCE_INOUT", 
     "number", []);
-const MIME_TYPE_APPLICATION_ENVOY = Module.cwrap("MIME_TYPE_APPLICATION_ENVOY", 
+const MIME_TYPE_APPLICATION_ENVOY = Module.cwrap("get_MIME_TYPE_APPLICATION_ENVOY", 
     "string", []);
-const MIME_TYPE_APPLICATION_FRACTALS = Module.cwrap("MIME_TYPE_APPLICATION_FRACTALS", 
+const MIME_TYPE_APPLICATION_FRACTALS = Module.cwrap("get_MIME_TYPE_APPLICATION_FRACTALS", 
     "string", []);
-const MIME_TYPE_APPLICATION_FUTURESPLASH = Module.cwrap("MIME_TYPE_APPLICATION_FUTURESPLASH", 
+const MIME_TYPE_APPLICATION_FUTURESPLASH = Module.cwrap("get_MIME_TYPE_APPLICATION_FUTURESPLASH", 
     "string", []);
-const MIME_TYPE_APPLICATION_HTA = Module.cwrap("MIME_TYPE_APPLICATION_HTA", 
+const MIME_TYPE_APPLICATION_HTA = Module.cwrap("get_MIME_TYPE_APPLICATION_HTA", 
     "string", []);
-const MIME_TYPE_APPLICATION_JSON = Module.cwrap("MIME_TYPE_APPLICATION_JSON", 
+const MIME_TYPE_APPLICATION_JSON = Module.cwrap("get_MIME_TYPE_APPLICATION_JSON", 
     "string", []);
-const MIME_TYPE_APPLICATION_UBJSON = Module.cwrap("MIME_TYPE_APPLICATION_UBJSON", 
+const MIME_TYPE_APPLICATION_UBJSON = Module.cwrap("get_MIME_TYPE_APPLICATION_UBJSON", 
     "string", []);
-const MIME_TYPE_APPLICATION_MAC_BINHEX40 = Module.cwrap("MIME_TYPE_APPLICATION_MAC_BINHEX40", 
+const MIME_TYPE_APPLICATION_MAC_BINHEX40 = Module.cwrap("get_MIME_TYPE_APPLICATION_MAC_BINHEX40", 
     "string", []);
-const MIME_TYPE_APPLICATION_MSWORD = Module.cwrap("MIME_TYPE_APPLICATION_MSWORD", 
+const MIME_TYPE_APPLICATION_MSWORD = Module.cwrap("get_MIME_TYPE_APPLICATION_MSWORD", 
     "string", []);
-const MIME_TYPE_APPLICATION_OCTET_STREAM = Module.cwrap("MIME_TYPE_APPLICATION_OCTET_STREAM", 
+const MIME_TYPE_APPLICATION_OCTET_STREAM = Module.cwrap("get_MIME_TYPE_APPLICATION_OCTET_STREAM", 
     "string", []);
-const MIME_TYPE_APPLICATION_ODA = Module.cwrap("MIME_TYPE_APPLICATION_ODA", 
+const MIME_TYPE_APPLICATION_ODA = Module.cwrap("get_MIME_TYPE_APPLICATION_ODA", 
     "string", []);
-const MIME_TYPE_APPLICATION_OLESCRIPT = Module.cwrap("MIME_TYPE_APPLICATION_OLESCRIPT", 
+const MIME_TYPE_APPLICATION_OLESCRIPT = Module.cwrap("get_MIME_TYPE_APPLICATION_OLESCRIPT", 
     "string", []);
-const MIME_TYPE_APPLICATION_PDF = Module.cwrap("MIME_TYPE_APPLICATION_PDF", 
+const MIME_TYPE_APPLICATION_PDF = Module.cwrap("get_MIME_TYPE_APPLICATION_PDF", 
     "string", []);
-const MIME_TYPE_APPLICATION_PICS_RULES = Module.cwrap("MIME_TYPE_APPLICATION_PICS_RULES", 
+const MIME_TYPE_APPLICATION_PICS_RULES = Module.cwrap("get_MIME_TYPE_APPLICATION_PICS_RULES", 
     "string", []);
-const MIME_TYPE_APPLICATION_PKCS10 = Module.cwrap("MIME_TYPE_APPLICATION_PKCS10", 
+const MIME_TYPE_APPLICATION_PKCS10 = Module.cwrap("get_MIME_TYPE_APPLICATION_PKCS10", 
     "string", []);
-const MIME_TYPE_APPLICATION_PKIX_CRL = Module.cwrap("MIME_TYPE_APPLICATION_PKIX_CRL", 
+const MIME_TYPE_APPLICATION_PKIX_CRL = Module.cwrap("get_MIME_TYPE_APPLICATION_PKIX_CRL", 
     "string", []);
-const MIME_TYPE_APPLICATION_POSTSCRIPT = Module.cwrap("MIME_TYPE_APPLICATION_POSTSCRIPT", 
+const MIME_TYPE_APPLICATION_POSTSCRIPT = Module.cwrap("get_MIME_TYPE_APPLICATION_POSTSCRIPT", 
     "string", []);
-const MIME_TYPE_APPLICATION_RTF = Module.cwrap("MIME_TYPE_APPLICATION_RTF", 
+const MIME_TYPE_APPLICATION_RTF = Module.cwrap("get_MIME_TYPE_APPLICATION_RTF", 
     "string", []);
-const MIME_TYPE_APPLICATION_VND_MS_EXCEL = Module.cwrap("MIME_TYPE_APPLICATION_VND_MS_EXCEL", 
+const MIME_TYPE_APPLICATION_VND_MS_EXCEL = Module.cwrap("get_MIME_TYPE_APPLICATION_VND_MS_EXCEL", 
     "string", []);
-const MIME_TYPE_APPLICATION_VND_MS_OUTLOOK = Module.cwrap("MIME_TYPE_APPLICATION_VND_MS_OUTLOOK", 
+const MIME_TYPE_APPLICATION_VND_MS_OUTLOOK = Module.cwrap("get_MIME_TYPE_APPLICATION_VND_MS_OUTLOOK", 
     "string", []);
-const MIME_TYPE_APPLICATION_VND_MS_PKICERTSTORE = Module.cwrap("MIME_TYPE_APPLICATION_VND_MS_PKICERTSTORE", 
+const MIME_TYPE_APPLICATION_VND_MS_PKICERTSTORE = Module.cwrap("get_MIME_TYPE_APPLICATION_VND_MS_PKICERTSTORE", 
     "string", []);
-const MIME_TYPE_APPLICATION_VND_MS_PKISECCAT = Module.cwrap("MIME_TYPE_APPLICATION_VND_MS_PKISECCAT", 
+const MIME_TYPE_APPLICATION_VND_MS_PKISECCAT = Module.cwrap("get_MIME_TYPE_APPLICATION_VND_MS_PKISECCAT", 
     "string", []);
-const MIME_TYPE_APPLICATION_VND_MS_PKISTL = Module.cwrap("MIME_TYPE_APPLICATION_VND_MS_PKISTL", 
+const MIME_TYPE_APPLICATION_VND_MS_PKISTL = Module.cwrap("get_MIME_TYPE_APPLICATION_VND_MS_PKISTL", 
     "string", []);
-const MIME_TYPE_APPLICATION_VND_MS_POWERPOINT = Module.cwrap("MIME_TYPE_APPLICATION_VND_MS_POWERPOINT", 
+const MIME_TYPE_APPLICATION_VND_MS_POWERPOINT = Module.cwrap("get_MIME_TYPE_APPLICATION_VND_MS_POWERPOINT", 
     "string", []);
-const MIME_TYPE_APPLICATION_VND_MS_PROJECT = Module.cwrap("MIME_TYPE_APPLICATION_VND_MS_PROJECT", 
+const MIME_TYPE_APPLICATION_VND_MS_PROJECT = Module.cwrap("get_MIME_TYPE_APPLICATION_VND_MS_PROJECT", 
     "string", []);
-const MIME_TYPE_APPLICATION_VND_MS_WORKS = Module.cwrap("MIME_TYPE_APPLICATION_VND_MS_WORKS", 
+const MIME_TYPE_APPLICATION_VND_MS_WORKS = Module.cwrap("get_MIME_TYPE_APPLICATION_VND_MS_WORKS", 
     "string", []);
-const MIME_TYPE_APPLICATION_WINHLP = Module.cwrap("MIME_TYPE_APPLICATION_WINHLP", 
+const MIME_TYPE_APPLICATION_WINHLP = Module.cwrap("get_MIME_TYPE_APPLICATION_WINHLP", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_BCPIO = Module.cwrap("MIME_TYPE_APPLICATION_X_BCPIO", 
+const MIME_TYPE_APPLICATION_X_BCPIO = Module.cwrap("get_MIME_TYPE_APPLICATION_X_BCPIO", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_CDF = Module.cwrap("MIME_TYPE_APPLICATION_X_CDF", 
+const MIME_TYPE_APPLICATION_X_CDF = Module.cwrap("get_MIME_TYPE_APPLICATION_X_CDF", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_COMPRESS = Module.cwrap("MIME_TYPE_APPLICATION_X_COMPRESS", 
+const MIME_TYPE_APPLICATION_X_COMPRESS = Module.cwrap("get_MIME_TYPE_APPLICATION_X_COMPRESS", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_COMPRESSED = Module.cwrap("MIME_TYPE_APPLICATION_X_COMPRESSED", 
+const MIME_TYPE_APPLICATION_X_COMPRESSED = Module.cwrap("get_MIME_TYPE_APPLICATION_X_COMPRESSED", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_CPIO = Module.cwrap("MIME_TYPE_APPLICATION_X_CPIO", 
+const MIME_TYPE_APPLICATION_X_CPIO = Module.cwrap("get_MIME_TYPE_APPLICATION_X_CPIO", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_CSH = Module.cwrap("MIME_TYPE_APPLICATION_X_CSH", 
+const MIME_TYPE_APPLICATION_X_CSH = Module.cwrap("get_MIME_TYPE_APPLICATION_X_CSH", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_DIRECTOR = Module.cwrap("MIME_TYPE_APPLICATION_X_DIRECTOR", 
+const MIME_TYPE_APPLICATION_X_DIRECTOR = Module.cwrap("get_MIME_TYPE_APPLICATION_X_DIRECTOR", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_DVI = Module.cwrap("MIME_TYPE_APPLICATION_X_DVI", 
+const MIME_TYPE_APPLICATION_X_DVI = Module.cwrap("get_MIME_TYPE_APPLICATION_X_DVI", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_GTAR = Module.cwrap("MIME_TYPE_APPLICATION_X_GTAR", 
+const MIME_TYPE_APPLICATION_X_GTAR = Module.cwrap("get_MIME_TYPE_APPLICATION_X_GTAR", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_GZIP = Module.cwrap("MIME_TYPE_APPLICATION_X_GZIP", 
+const MIME_TYPE_APPLICATION_X_GZIP = Module.cwrap("get_MIME_TYPE_APPLICATION_X_GZIP", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_HDF = Module.cwrap("MIME_TYPE_APPLICATION_X_HDF", 
+const MIME_TYPE_APPLICATION_X_HDF = Module.cwrap("get_MIME_TYPE_APPLICATION_X_HDF", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_IPHONE = Module.cwrap("MIME_TYPE_APPLICATION_X_IPHONE", 
+const MIME_TYPE_APPLICATION_X_IPHONE = Module.cwrap("get_MIME_TYPE_APPLICATION_X_IPHONE", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_JAVASCRIPT = Module.cwrap("MIME_TYPE_APPLICATION_X_JAVASCRIPT", 
+const MIME_TYPE_APPLICATION_X_JAVASCRIPT = Module.cwrap("get_MIME_TYPE_APPLICATION_X_JAVASCRIPT", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_LATEX = Module.cwrap("MIME_TYPE_APPLICATION_X_LATEX", 
+const MIME_TYPE_APPLICATION_X_LATEX = Module.cwrap("get_MIME_TYPE_APPLICATION_X_LATEX", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_MSACCESS = Module.cwrap("MIME_TYPE_APPLICATION_X_MSACCESS", 
+const MIME_TYPE_APPLICATION_X_MSACCESS = Module.cwrap("get_MIME_TYPE_APPLICATION_X_MSACCESS", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_MSCARDFILE = Module.cwrap("MIME_TYPE_APPLICATION_X_MSCARDFILE", 
+const MIME_TYPE_APPLICATION_X_MSCARDFILE = Module.cwrap("get_MIME_TYPE_APPLICATION_X_MSCARDFILE", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_MSCLIP = Module.cwrap("MIME_TYPE_APPLICATION_X_MSCLIP", 
+const MIME_TYPE_APPLICATION_X_MSCLIP = Module.cwrap("get_MIME_TYPE_APPLICATION_X_MSCLIP", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_MSDOWNLOAD = Module.cwrap("MIME_TYPE_APPLICATION_X_MSDOWNLOAD", 
+const MIME_TYPE_APPLICATION_X_MSDOWNLOAD = Module.cwrap("get_MIME_TYPE_APPLICATION_X_MSDOWNLOAD", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_MSMEDIAVIEW = Module.cwrap("MIME_TYPE_APPLICATION_X_MSMEDIAVIEW", 
+const MIME_TYPE_APPLICATION_X_MSMEDIAVIEW = Module.cwrap("get_MIME_TYPE_APPLICATION_X_MSMEDIAVIEW", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_MSMETAFILE = Module.cwrap("MIME_TYPE_APPLICATION_X_MSMETAFILE", 
+const MIME_TYPE_APPLICATION_X_MSMETAFILE = Module.cwrap("get_MIME_TYPE_APPLICATION_X_MSMETAFILE", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_MSMONEY = Module.cwrap("MIME_TYPE_APPLICATION_X_MSMONEY", 
+const MIME_TYPE_APPLICATION_X_MSMONEY = Module.cwrap("get_MIME_TYPE_APPLICATION_X_MSMONEY", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_MSPUBLISHER = Module.cwrap("MIME_TYPE_APPLICATION_X_MSPUBLISHER", 
+const MIME_TYPE_APPLICATION_X_MSPUBLISHER = Module.cwrap("get_MIME_TYPE_APPLICATION_X_MSPUBLISHER", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_MSSCHEDULE = Module.cwrap("MIME_TYPE_APPLICATION_X_MSSCHEDULE", 
+const MIME_TYPE_APPLICATION_X_MSSCHEDULE = Module.cwrap("get_MIME_TYPE_APPLICATION_X_MSSCHEDULE", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_MSTERMINAL = Module.cwrap("MIME_TYPE_APPLICATION_X_MSTERMINAL", 
+const MIME_TYPE_APPLICATION_X_MSTERMINAL = Module.cwrap("get_MIME_TYPE_APPLICATION_X_MSTERMINAL", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_MSWRITE = Module.cwrap("MIME_TYPE_APPLICATION_X_MSWRITE", 
+const MIME_TYPE_APPLICATION_X_MSWRITE = Module.cwrap("get_MIME_TYPE_APPLICATION_X_MSWRITE", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_NETCDF = Module.cwrap("MIME_TYPE_APPLICATION_X_NETCDF", 
+const MIME_TYPE_APPLICATION_X_NETCDF = Module.cwrap("get_MIME_TYPE_APPLICATION_X_NETCDF", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_PERFMON = Module.cwrap("MIME_TYPE_APPLICATION_X_PERFMON", 
+const MIME_TYPE_APPLICATION_X_PERFMON = Module.cwrap("get_MIME_TYPE_APPLICATION_X_PERFMON", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_PKCS12 = Module.cwrap("MIME_TYPE_APPLICATION_X_PKCS12", 
+const MIME_TYPE_APPLICATION_X_PKCS12 = Module.cwrap("get_MIME_TYPE_APPLICATION_X_PKCS12", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_SH = Module.cwrap("MIME_TYPE_APPLICATION_X_SH", 
+const MIME_TYPE_APPLICATION_X_SH = Module.cwrap("get_MIME_TYPE_APPLICATION_X_SH", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_SHAR = Module.cwrap("MIME_TYPE_APPLICATION_X_SHAR", 
+const MIME_TYPE_APPLICATION_X_SHAR = Module.cwrap("get_MIME_TYPE_APPLICATION_X_SHAR", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_SHOCKWAVE_FLASH = Module.cwrap("MIME_TYPE_APPLICATION_X_SHOCKWAVE_FLASH", 
+const MIME_TYPE_APPLICATION_X_SHOCKWAVE_FLASH = Module.cwrap("get_MIME_TYPE_APPLICATION_X_SHOCKWAVE_FLASH", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_STUFFIT = Module.cwrap("MIME_TYPE_APPLICATION_X_STUFFIT", 
+const MIME_TYPE_APPLICATION_X_STUFFIT = Module.cwrap("get_MIME_TYPE_APPLICATION_X_STUFFIT", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_SV4CPIO = Module.cwrap("MIME_TYPE_APPLICATION_X_SV4CPIO", 
+const MIME_TYPE_APPLICATION_X_SV4CPIO = Module.cwrap("get_MIME_TYPE_APPLICATION_X_SV4CPIO", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_SV4CRC = Module.cwrap("MIME_TYPE_APPLICATION_X_SV4CRC", 
+const MIME_TYPE_APPLICATION_X_SV4CRC = Module.cwrap("get_MIME_TYPE_APPLICATION_X_SV4CRC", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_TAR = Module.cwrap("MIME_TYPE_APPLICATION_X_TAR", 
+const MIME_TYPE_APPLICATION_X_TAR = Module.cwrap("get_MIME_TYPE_APPLICATION_X_TAR", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_TCL = Module.cwrap("MIME_TYPE_APPLICATION_X_TCL", 
+const MIME_TYPE_APPLICATION_X_TCL = Module.cwrap("get_MIME_TYPE_APPLICATION_X_TCL", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_TEX = Module.cwrap("MIME_TYPE_APPLICATION_X_TEX", 
+const MIME_TYPE_APPLICATION_X_TEX = Module.cwrap("get_MIME_TYPE_APPLICATION_X_TEX", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_TEXINFO = Module.cwrap("MIME_TYPE_APPLICATION_X_TEXINFO", 
+const MIME_TYPE_APPLICATION_X_TEXINFO = Module.cwrap("get_MIME_TYPE_APPLICATION_X_TEXINFO", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_TROFF = Module.cwrap("MIME_TYPE_APPLICATION_X_TROFF", 
+const MIME_TYPE_APPLICATION_X_TROFF = Module.cwrap("get_MIME_TYPE_APPLICATION_X_TROFF", 
     "string", []);
-const MIME_TYPE_APPLICATION_X_USTAR = Module.cwrap("MIME_TYPE_APPLICATION_X_USTAR", 
+const MIME_TYPE_APPLICATION_X_USTAR = Module.cwrap("get_MIME_TYPE_APPLICATION_X_USTAR", 
     "string", []);
-const MIME_TYPE_APPLICATION_ZIP = Module.cwrap("MIME_TYPE_APPLICATION_ZIP", 
+const MIME_TYPE_APPLICATION_ZIP = Module.cwrap("get_MIME_TYPE_APPLICATION_ZIP", 
     "string", []);
-const MIME_TYPE_AUDIO_BASIC = Module.cwrap("MIME_TYPE_AUDIO_BASIC", 
+const MIME_TYPE_AUDIO_BASIC = Module.cwrap("get_MIME_TYPE_AUDIO_BASIC", 
     "string", []);
-const MIME_TYPE_AUDIO_MID = Module.cwrap("MIME_TYPE_AUDIO_MID", 
+const MIME_TYPE_AUDIO_MID = Module.cwrap("get_MIME_TYPE_AUDIO_MID", 
     "string", []);
-const MIME_TYPE_AUDIO_MPEG = Module.cwrap("MIME_TYPE_AUDIO_MPEG", 
+const MIME_TYPE_AUDIO_MPEG = Module.cwrap("get_MIME_TYPE_AUDIO_MPEG", 
     "string", []);
-const MIME_TYPE_AUDIO_X_AIFF = Module.cwrap("MIME_TYPE_AUDIO_X_AIFF", 
+const MIME_TYPE_AUDIO_X_AIFF = Module.cwrap("get_MIME_TYPE_AUDIO_X_AIFF", 
     "string", []);
-const MIME_TYPE_AUDIO_X_MPEGURL = Module.cwrap("MIME_TYPE_AUDIO_X_MPEGURL", 
+const MIME_TYPE_AUDIO_X_MPEGURL = Module.cwrap("get_MIME_TYPE_AUDIO_X_MPEGURL", 
     "string", []);
-const MIME_TYPE_AUDIO_X_WAV = Module.cwrap("MIME_TYPE_AUDIO_X_WAV", 
+const MIME_TYPE_AUDIO_X_WAV = Module.cwrap("get_MIME_TYPE_AUDIO_X_WAV", 
     "string", []);
-const MIME_TYPE_IMAGE_BMP = Module.cwrap("MIME_TYPE_IMAGE_BMP", 
+const MIME_TYPE_IMAGE_BMP = Module.cwrap("get_MIME_TYPE_IMAGE_BMP", 
     "string", []);
-const MIME_TYPE_IMAGE_CIS_COD = Module.cwrap("MIME_TYPE_IMAGE_CIS_COD", 
+const MIME_TYPE_IMAGE_CIS_COD = Module.cwrap("get_MIME_TYPE_IMAGE_CIS_COD", 
     "string", []);
-const MIME_TYPE_IMAGE_GIF = Module.cwrap("MIME_TYPE_IMAGE_GIF", 
+const MIME_TYPE_IMAGE_GIF = Module.cwrap("get_MIME_TYPE_IMAGE_GIF", 
     "string", []);
-const MIME_TYPE_IMAGE_IEF = Module.cwrap("MIME_TYPE_IMAGE_IEF", 
+const MIME_TYPE_IMAGE_IEF = Module.cwrap("get_MIME_TYPE_IMAGE_IEF", 
     "string", []);
-const MIME_TYPE_IMAGE_JPEG = Module.cwrap("MIME_TYPE_IMAGE_JPEG", 
+const MIME_TYPE_IMAGE_JPEG = Module.cwrap("get_MIME_TYPE_IMAGE_JPEG", 
     "string", []);
-const MIME_TYPE_IMAGE_PIPEG = Module.cwrap("MIME_TYPE_IMAGE_PIPEG", 
+const MIME_TYPE_IMAGE_PIPEG = Module.cwrap("get_MIME_TYPE_IMAGE_PIPEG", 
     "string", []);
-const MIME_TYPE_IMAGE_SVG_XML = Module.cwrap("MIME_TYPE_IMAGE_SVG_XML", 
+const MIME_TYPE_IMAGE_SVG_XML = Module.cwrap("get_MIME_TYPE_IMAGE_SVG_XML", 
     "string", []);
-const MIME_TYPE_IMAGE_TIFF = Module.cwrap("MIME_TYPE_IMAGE_TIFF", 
+const MIME_TYPE_IMAGE_TIFF = Module.cwrap("get_MIME_TYPE_IMAGE_TIFF", 
     "string", []);
-const MIME_TYPE_IMAGE_X_CMX = Module.cwrap("MIME_TYPE_IMAGE_X_CMX", 
+const MIME_TYPE_IMAGE_X_CMX = Module.cwrap("get_MIME_TYPE_IMAGE_X_CMX", 
     "string", []);
-const MIME_TYPE_IMAGE_X_ICON = Module.cwrap("MIME_TYPE_IMAGE_X_ICON", 
+const MIME_TYPE_IMAGE_X_ICON = Module.cwrap("get_MIME_TYPE_IMAGE_X_ICON", 
     "string", []);
-const MIME_TYPE_IMAGE_X_RGB = Module.cwrap("MIME_TYPE_IMAGE_X_RGB", 
+const MIME_TYPE_IMAGE_X_RGB = Module.cwrap("get_MIME_TYPE_IMAGE_X_RGB", 
     "string", []);
-const MIME_TYPE_IMAGE_X_XBITMAP = Module.cwrap("MIME_TYPE_IMAGE_X_XBITMAP", 
+const MIME_TYPE_IMAGE_X_XBITMAP = Module.cwrap("get_MIME_TYPE_IMAGE_X_XBITMAP", 
     "string", []);
-const MIME_TYPE_IMAGE_X_XPIXMAP = Module.cwrap("MIME_TYPE_IMAGE_X_XPIXMAP", 
+const MIME_TYPE_IMAGE_X_XPIXMAP = Module.cwrap("get_MIME_TYPE_IMAGE_X_XPIXMAP", 
     "string", []);
-const MIME_TYPE_IMAGE_X_XWINDOWDUMP = Module.cwrap("MIME_TYPE_IMAGE_X_XWINDOWDUMP", 
+const MIME_TYPE_IMAGE_X_XWINDOWDUMP = Module.cwrap("get_MIME_TYPE_IMAGE_X_XWINDOWDUMP", 
     "string", []);
-const MIME_TYPE_MESSAGE_RFC822 = Module.cwrap("MIME_TYPE_MESSAGE_RFC822", 
+const MIME_TYPE_MESSAGE_RFC822 = Module.cwrap("get_MIME_TYPE_MESSAGE_RFC822", 
     "string", []);
-const MIME_TYPE_TEXT_CSS = Module.cwrap("MIME_TYPE_TEXT_CSS", 
+const MIME_TYPE_TEXT_CSS = Module.cwrap("get_MIME_TYPE_TEXT_CSS", 
     "string", []);
-const MIME_TYPE_TEXT_H323 = Module.cwrap("MIME_TYPE_TEXT_H323", 
+const MIME_TYPE_TEXT_H323 = Module.cwrap("get_MIME_TYPE_TEXT_H323", 
     "string", []);
-const MIME_TYPE_TEXT_HTML = Module.cwrap("MIME_TYPE_TEXT_HTML", 
+const MIME_TYPE_TEXT_HTML = Module.cwrap("get_MIME_TYPE_TEXT_HTML", 
     "string", []);
-const MIME_TYPE_TEXT_IULS = Module.cwrap("MIME_TYPE_TEXT_IULS", 
+const MIME_TYPE_TEXT_IULS = Module.cwrap("get_MIME_TYPE_TEXT_IULS", 
     "string", []);
-const MIME_TYPE_TEXT_PLAIN = Module.cwrap("MIME_TYPE_TEXT_PLAIN", 
+const MIME_TYPE_TEXT_PLAIN = Module.cwrap("get_MIME_TYPE_TEXT_PLAIN", 
     "string", []);
-const MIME_TYPE_TEXT_RICHTEXT = Module.cwrap("MIME_TYPE_TEXT_RICHTEXT", 
+const MIME_TYPE_TEXT_RICHTEXT = Module.cwrap("get_MIME_TYPE_TEXT_RICHTEXT", 
     "string", []);
-const MIME_TYPE_TEXT_SCRIPTLET = Module.cwrap("MIME_TYPE_TEXT_SCRIPTLET", 
+const MIME_TYPE_TEXT_SCRIPTLET = Module.cwrap("get_MIME_TYPE_TEXT_SCRIPTLET", 
     "string", []);
-const MIME_TYPE_TEXT_WEBVIEWHTML = Module.cwrap("MIME_TYPE_TEXT_WEBVIEWHTML", 
+const MIME_TYPE_TEXT_WEBVIEWHTML = Module.cwrap("get_MIME_TYPE_TEXT_WEBVIEWHTML", 
     "string", []);
-const MIME_TYPE_TEXT_X_COMPONENT = Module.cwrap("MIME_TYPE_TEXT_X_COMPONENT", 
+const MIME_TYPE_TEXT_X_COMPONENT = Module.cwrap("get_MIME_TYPE_TEXT_X_COMPONENT", 
     "string", []);
-const MIME_TYPE_TEXT_X_SETEXT = Module.cwrap("MIME_TYPE_TEXT_X_SETEXT", 
+const MIME_TYPE_TEXT_X_SETEXT = Module.cwrap("get_MIME_TYPE_TEXT_X_SETEXT", 
     "string", []);
-const MIME_TYPE_TEXT_X_VCARD = Module.cwrap("MIME_TYPE_TEXT_X_VCARD", 
+const MIME_TYPE_TEXT_X_VCARD = Module.cwrap("get_MIME_TYPE_TEXT_X_VCARD", 
     "string", []);
-const MIME_TYPE_VIDEO_MPEG = Module.cwrap("MIME_TYPE_VIDEO_MPEG", 
+const MIME_TYPE_VIDEO_MPEG = Module.cwrap("get_MIME_TYPE_VIDEO_MPEG", 
     "string", []);
-const MIME_TYPE_VIDEO_QUICKTIME = Module.cwrap("MIME_TYPE_VIDEO_QUICKTIME", 
+const MIME_TYPE_VIDEO_QUICKTIME = Module.cwrap("get_MIME_TYPE_VIDEO_QUICKTIME", 
     "string", []);
-const MIME_TYPE_VIDEO_X_MSVIDEO = Module.cwrap("MIME_TYPE_VIDEO_X_MSVIDEO", 
+const MIME_TYPE_VIDEO_X_MSVIDEO = Module.cwrap("get_MIME_TYPE_VIDEO_X_MSVIDEO", 
     "string", []);
 const named_value_create = Module.cwrap("named_value_create", 
-    "TNamedValue", []);
+    "number", []);
 const named_value_cast = Module.cwrap("named_value_cast", 
-    "TNamedValue", ["TNamedValue"]);
+    "number", ["number"]);
 const named_value_set_name = Module.cwrap("named_value_set_name", 
-    "TRet", ["TNamedValue","string"]);
+    "number", ["number","string"]);
 const named_value_set_value = Module.cwrap("named_value_set_value", 
-    "TRet", ["TNamedValue","TValue"]);
+    "number", ["number","number"]);
 const named_value_get_value = Module.cwrap("named_value_get_value", 
-    "TValue", ["TNamedValue"]);
+    "number", ["number"]);
 const named_value_destroy = Module.cwrap("named_value_destroy", 
-    "TRet", ["TNamedValue"]);
+    "number", ["number"]);
 const named_value_t_get_prop_name = Module.cwrap("named_value_t_get_prop_name", 
     "string", ["number"]);
-const OBJECT_CMD_SAVE = Module.cwrap("OBJECT_CMD_SAVE", 
+const OBJECT_CMD_SAVE = Module.cwrap("get_OBJECT_CMD_SAVE", 
     "string", []);
-const OBJECT_CMD_RELOAD = Module.cwrap("OBJECT_CMD_RELOAD", 
+const OBJECT_CMD_RELOAD = Module.cwrap("get_OBJECT_CMD_RELOAD", 
     "string", []);
-const OBJECT_CMD_MOVE_UP = Module.cwrap("OBJECT_CMD_MOVE_UP", 
+const OBJECT_CMD_MOVE_UP = Module.cwrap("get_OBJECT_CMD_MOVE_UP", 
     "string", []);
-const OBJECT_CMD_MOVE_DOWN = Module.cwrap("OBJECT_CMD_MOVE_DOWN", 
+const OBJECT_CMD_MOVE_DOWN = Module.cwrap("get_OBJECT_CMD_MOVE_DOWN", 
     "string", []);
-const OBJECT_CMD_REMOVE = Module.cwrap("OBJECT_CMD_REMOVE", 
+const OBJECT_CMD_REMOVE = Module.cwrap("get_OBJECT_CMD_REMOVE", 
     "string", []);
-const OBJECT_CMD_REMOVE_CHECKED = Module.cwrap("OBJECT_CMD_REMOVE_CHECKED", 
+const OBJECT_CMD_REMOVE_CHECKED = Module.cwrap("get_OBJECT_CMD_REMOVE_CHECKED", 
     "string", []);
-const OBJECT_CMD_CLEAR = Module.cwrap("OBJECT_CMD_CLEAR", 
+const OBJECT_CMD_CLEAR = Module.cwrap("get_OBJECT_CMD_CLEAR", 
     "string", []);
-const OBJECT_CMD_ADD = Module.cwrap("OBJECT_CMD_ADD", 
+const OBJECT_CMD_ADD = Module.cwrap("get_OBJECT_CMD_ADD", 
     "string", []);
-const OBJECT_CMD_DETAIL = Module.cwrap("OBJECT_CMD_DETAIL", 
+const OBJECT_CMD_DETAIL = Module.cwrap("get_OBJECT_CMD_DETAIL", 
     "string", []);
-const OBJECT_CMD_EDIT = Module.cwrap("OBJECT_CMD_EDIT", 
+const OBJECT_CMD_EDIT = Module.cwrap("get_OBJECT_CMD_EDIT", 
     "string", []);
-const OBJECT_PROP_SIZE = Module.cwrap("OBJECT_PROP_SIZE", 
+const OBJECT_PROP_SIZE = Module.cwrap("get_OBJECT_PROP_SIZE", 
     "string", []);
-const OBJECT_PROP_CHECKED = Module.cwrap("OBJECT_PROP_CHECKED", 
+const OBJECT_PROP_CHECKED = Module.cwrap("get_OBJECT_PROP_CHECKED", 
     "string", []);
 const rlog_create = Module.cwrap("rlog_create", 
-    "TRlog", ["string","number","number"]);
+    "number", ["string","number","number"]);
 const rlog_write = Module.cwrap("rlog_write", 
-    "TRet", ["TRlog","string"]);
+    "number", ["number","string"]);
 const time_now_s = Module.cwrap("time_now_s", 
     "number", []);
 const time_now_ms = Module.cwrap("time_now_ms", 
     "number", []);
 const time_now_us = Module.cwrap("time_now_us", 
     "number", []);
-const RET_OK = Module.cwrap("RET_OK", 
+const RET_OK = Module.cwrap("get_RET_OK", 
     "number", []);
-const RET_OOM = Module.cwrap("RET_OOM", 
+const RET_OOM = Module.cwrap("get_RET_OOM", 
     "number", []);
-const RET_FAIL = Module.cwrap("RET_FAIL", 
+const RET_FAIL = Module.cwrap("get_RET_FAIL", 
     "number", []);
-const RET_NOT_IMPL = Module.cwrap("RET_NOT_IMPL", 
+const RET_NOT_IMPL = Module.cwrap("get_RET_NOT_IMPL", 
     "number", []);
-const RET_QUIT = Module.cwrap("RET_QUIT", 
+const RET_QUIT = Module.cwrap("get_RET_QUIT", 
     "number", []);
-const RET_FOUND = Module.cwrap("RET_FOUND", 
+const RET_FOUND = Module.cwrap("get_RET_FOUND", 
     "number", []);
-const RET_BUSY = Module.cwrap("RET_BUSY", 
+const RET_BUSY = Module.cwrap("get_RET_BUSY", 
     "number", []);
-const RET_REMOVE = Module.cwrap("RET_REMOVE", 
+const RET_REMOVE = Module.cwrap("get_RET_REMOVE", 
     "number", []);
-const RET_REPEAT = Module.cwrap("RET_REPEAT", 
+const RET_REPEAT = Module.cwrap("get_RET_REPEAT", 
     "number", []);
-const RET_NOT_FOUND = Module.cwrap("RET_NOT_FOUND", 
+const RET_NOT_FOUND = Module.cwrap("get_RET_NOT_FOUND", 
     "number", []);
-const RET_DONE = Module.cwrap("RET_DONE", 
+const RET_DONE = Module.cwrap("get_RET_DONE", 
     "number", []);
-const RET_STOP = Module.cwrap("RET_STOP", 
+const RET_STOP = Module.cwrap("get_RET_STOP", 
     "number", []);
-const RET_SKIP = Module.cwrap("RET_SKIP", 
+const RET_SKIP = Module.cwrap("get_RET_SKIP", 
     "number", []);
-const RET_CONTINUE = Module.cwrap("RET_CONTINUE", 
+const RET_CONTINUE = Module.cwrap("get_RET_CONTINUE", 
     "number", []);
-const RET_OBJECT_CHANGED = Module.cwrap("RET_OBJECT_CHANGED", 
+const RET_OBJECT_CHANGED = Module.cwrap("get_RET_OBJECT_CHANGED", 
     "number", []);
-const RET_ITEMS_CHANGED = Module.cwrap("RET_ITEMS_CHANGED", 
+const RET_ITEMS_CHANGED = Module.cwrap("get_RET_ITEMS_CHANGED", 
     "number", []);
-const RET_BAD_PARAMS = Module.cwrap("RET_BAD_PARAMS", 
+const RET_BAD_PARAMS = Module.cwrap("get_RET_BAD_PARAMS", 
     "number", []);
-const RET_TIMEOUT = Module.cwrap("RET_TIMEOUT", 
+const RET_TIMEOUT = Module.cwrap("get_RET_TIMEOUT", 
     "number", []);
-const RET_CRC = Module.cwrap("RET_CRC", 
+const RET_CRC = Module.cwrap("get_RET_CRC", 
     "number", []);
-const RET_IO = Module.cwrap("RET_IO", 
+const RET_IO = Module.cwrap("get_RET_IO", 
     "number", []);
-const RET_EOS = Module.cwrap("RET_EOS", 
+const RET_EOS = Module.cwrap("get_RET_EOS", 
     "number", []);
-const RET_NOT_MODIFIED = Module.cwrap("RET_NOT_MODIFIED", 
+const RET_NOT_MODIFIED = Module.cwrap("get_RET_NOT_MODIFIED", 
     "number", []);
-const VALUE_TYPE_INVALID = Module.cwrap("VALUE_TYPE_INVALID", 
+const VALUE_TYPE_INVALID = Module.cwrap("get_VALUE_TYPE_INVALID", 
     "number", []);
-const VALUE_TYPE_BOOL = Module.cwrap("VALUE_TYPE_BOOL", 
+const VALUE_TYPE_BOOL = Module.cwrap("get_VALUE_TYPE_BOOL", 
     "number", []);
-const VALUE_TYPE_INT8 = Module.cwrap("VALUE_TYPE_INT8", 
+const VALUE_TYPE_INT8 = Module.cwrap("get_VALUE_TYPE_INT8", 
     "number", []);
-const VALUE_TYPE_UINT8 = Module.cwrap("VALUE_TYPE_UINT8", 
+const VALUE_TYPE_UINT8 = Module.cwrap("get_VALUE_TYPE_UINT8", 
     "number", []);
-const VALUE_TYPE_INT16 = Module.cwrap("VALUE_TYPE_INT16", 
+const VALUE_TYPE_INT16 = Module.cwrap("get_VALUE_TYPE_INT16", 
     "number", []);
-const VALUE_TYPE_UINT16 = Module.cwrap("VALUE_TYPE_UINT16", 
+const VALUE_TYPE_UINT16 = Module.cwrap("get_VALUE_TYPE_UINT16", 
     "number", []);
-const VALUE_TYPE_INT32 = Module.cwrap("VALUE_TYPE_INT32", 
+const VALUE_TYPE_INT32 = Module.cwrap("get_VALUE_TYPE_INT32", 
     "number", []);
-const VALUE_TYPE_UINT32 = Module.cwrap("VALUE_TYPE_UINT32", 
+const VALUE_TYPE_UINT32 = Module.cwrap("get_VALUE_TYPE_UINT32", 
     "number", []);
-const VALUE_TYPE_INT64 = Module.cwrap("VALUE_TYPE_INT64", 
+const VALUE_TYPE_INT64 = Module.cwrap("get_VALUE_TYPE_INT64", 
     "number", []);
-const VALUE_TYPE_UINT64 = Module.cwrap("VALUE_TYPE_UINT64", 
+const VALUE_TYPE_UINT64 = Module.cwrap("get_VALUE_TYPE_UINT64", 
     "number", []);
-const VALUE_TYPE_POINTER = Module.cwrap("VALUE_TYPE_POINTER", 
+const VALUE_TYPE_POINTER = Module.cwrap("get_VALUE_TYPE_POINTER", 
     "number", []);
-const VALUE_TYPE_FLOAT = Module.cwrap("VALUE_TYPE_FLOAT", 
+const VALUE_TYPE_FLOAT = Module.cwrap("get_VALUE_TYPE_FLOAT", 
     "number", []);
-const VALUE_TYPE_FLOAT32 = Module.cwrap("VALUE_TYPE_FLOAT32", 
+const VALUE_TYPE_FLOAT32 = Module.cwrap("get_VALUE_TYPE_FLOAT32", 
     "number", []);
-const VALUE_TYPE_DOUBLE = Module.cwrap("VALUE_TYPE_DOUBLE", 
+const VALUE_TYPE_DOUBLE = Module.cwrap("get_VALUE_TYPE_DOUBLE", 
     "number", []);
-const VALUE_TYPE_STRING = Module.cwrap("VALUE_TYPE_STRING", 
+const VALUE_TYPE_STRING = Module.cwrap("get_VALUE_TYPE_STRING", 
     "number", []);
-const VALUE_TYPE_WSTRING = Module.cwrap("VALUE_TYPE_WSTRING", 
+const VALUE_TYPE_WSTRING = Module.cwrap("get_VALUE_TYPE_WSTRING", 
     "number", []);
-const VALUE_TYPE_OBJECT = Module.cwrap("VALUE_TYPE_OBJECT", 
+const VALUE_TYPE_OBJECT = Module.cwrap("get_VALUE_TYPE_OBJECT", 
     "number", []);
-const VALUE_TYPE_SIZED_STRING = Module.cwrap("VALUE_TYPE_SIZED_STRING", 
+const VALUE_TYPE_SIZED_STRING = Module.cwrap("get_VALUE_TYPE_SIZED_STRING", 
     "number", []);
-const VALUE_TYPE_BINARY = Module.cwrap("VALUE_TYPE_BINARY", 
+const VALUE_TYPE_BINARY = Module.cwrap("get_VALUE_TYPE_BINARY", 
     "number", []);
-const VALUE_TYPE_UBJSON = Module.cwrap("VALUE_TYPE_UBJSON", 
+const VALUE_TYPE_UBJSON = Module.cwrap("get_VALUE_TYPE_UBJSON", 
     "number", []);
-const VALUE_TYPE_TOKEN = Module.cwrap("VALUE_TYPE_TOKEN", 
+const VALUE_TYPE_TOKEN = Module.cwrap("get_VALUE_TYPE_TOKEN", 
     "number", []);
 const assets_manager = Module.cwrap("assets_manager", 
-    "TAssetsManager", []);
+    "number", []);
 const assets_manager_set_theme = Module.cwrap("assets_manager_set_theme", 
-    "TRet", ["TAssetsManager","string"]);
+    "number", ["number","string"]);
 const assets_manager_ref = Module.cwrap("assets_manager_ref", 
-    "TAssetInfo", ["TAssetsManager","TAssetType","string"]);
+    "number", ["number","number","string"]);
 const assets_manager_ref_ex = Module.cwrap("assets_manager_ref_ex", 
-    "TAssetInfo", ["TAssetsManager","TAssetType","number","string"]);
+    "number", ["number","number","number","string"]);
 const assets_manager_unref = Module.cwrap("assets_manager_unref", 
-    "TRet", ["TAssetsManager","TAssetInfo"]);
+    "number", ["number","number"]);
 const wheel_event_cast = Module.cwrap("wheel_event_cast", 
-    "TWheelEvent", ["TEvent"]);
+    "number", ["number"]);
 const wheel_event_t_get_prop_dy = Module.cwrap("wheel_event_t_get_prop_dy", 
     "number", ["number"]);
 const wheel_event_t_get_prop_alt = Module.cwrap("wheel_event_t_get_prop_alt", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const wheel_event_t_get_prop_ctrl = Module.cwrap("wheel_event_t_get_prop_ctrl", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const wheel_event_t_get_prop_shift = Module.cwrap("wheel_event_t_get_prop_shift", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const orientation_event_cast = Module.cwrap("orientation_event_cast", 
-    "TOrientationEvent", ["TEvent"]);
+    "number", ["number"]);
 const orientation_event_t_get_prop_orientation = Module.cwrap("orientation_event_t_get_prop_orientation", 
     "number", ["number"]);
 const value_change_event_cast = Module.cwrap("value_change_event_cast", 
-    "TValueChangeEvent", ["TEvent"]);
+    "number", ["number"]);
 const pointer_event_cast = Module.cwrap("pointer_event_cast", 
-    "TPointerEvent", ["TEvent"]);
+    "number", ["number"]);
 const pointer_event_t_get_prop_x = Module.cwrap("pointer_event_t_get_prop_x", 
     "number", ["number"]);
 const pointer_event_t_get_prop_y = Module.cwrap("pointer_event_t_get_prop_y", 
@@ -2659,55 +2659,55 @@ const pointer_event_t_get_prop_y = Module.cwrap("pointer_event_t_get_prop_y",
 const pointer_event_t_get_prop_button = Module.cwrap("pointer_event_t_get_prop_button", 
     "number", ["number"]);
 const pointer_event_t_get_prop_pressed = Module.cwrap("pointer_event_t_get_prop_pressed", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const pointer_event_t_get_prop_alt = Module.cwrap("pointer_event_t_get_prop_alt", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const pointer_event_t_get_prop_ctrl = Module.cwrap("pointer_event_t_get_prop_ctrl", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const pointer_event_t_get_prop_cmd = Module.cwrap("pointer_event_t_get_prop_cmd", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const pointer_event_t_get_prop_menu = Module.cwrap("pointer_event_t_get_prop_menu", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const pointer_event_t_get_prop_shift = Module.cwrap("pointer_event_t_get_prop_shift", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_cast = Module.cwrap("key_event_cast", 
-    "TKeyEvent", ["TEvent"]);
+    "number", ["number"]);
 const key_event_t_get_prop_key = Module.cwrap("key_event_t_get_prop_key", 
     "number", ["number"]);
 const key_event_t_get_prop_alt = Module.cwrap("key_event_t_get_prop_alt", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_t_get_prop_lalt = Module.cwrap("key_event_t_get_prop_lalt", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_t_get_prop_ralt = Module.cwrap("key_event_t_get_prop_ralt", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_t_get_prop_ctrl = Module.cwrap("key_event_t_get_prop_ctrl", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_t_get_prop_lctrl = Module.cwrap("key_event_t_get_prop_lctrl", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_t_get_prop_rctrl = Module.cwrap("key_event_t_get_prop_rctrl", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_t_get_prop_shift = Module.cwrap("key_event_t_get_prop_shift", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_t_get_prop_lshift = Module.cwrap("key_event_t_get_prop_lshift", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_t_get_prop_rshift = Module.cwrap("key_event_t_get_prop_rshift", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_t_get_prop_cmd = Module.cwrap("key_event_t_get_prop_cmd", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_t_get_prop_menu = Module.cwrap("key_event_t_get_prop_menu", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const key_event_t_get_prop_capslock = Module.cwrap("key_event_t_get_prop_capslock", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const paint_event_cast = Module.cwrap("paint_event_cast", 
-    "TPaintEvent", ["TEvent"]);
+    "number", ["number"]);
 const paint_event_t_get_prop_c = Module.cwrap("paint_event_t_get_prop_c", 
-    "TCanvas", ["number"]);
+    "number", ["number"]);
 const window_event_cast = Module.cwrap("window_event_cast", 
-    "TWindowEvent", ["TEvent"]);
+    "number", ["number"]);
 const window_event_t_get_prop_window = Module.cwrap("window_event_t_get_prop_window", 
-    "TWidget", ["number"]);
+    "number", ["number"]);
 const multi_gesture_event_cast = Module.cwrap("multi_gesture_event_cast", 
-    "TMultiGestureEvent", ["TEvent"]);
+    "number", ["number"]);
 const multi_gesture_event_t_get_prop_x = Module.cwrap("multi_gesture_event_t_get_prop_x", 
     "number", ["number"]);
 const multi_gesture_event_t_get_prop_y = Module.cwrap("multi_gesture_event_t_get_prop_y", 
@@ -2717,21 +2717,21 @@ const multi_gesture_event_t_get_prop_rotation = Module.cwrap("multi_gesture_even
 const multi_gesture_event_t_get_prop_distance = Module.cwrap("multi_gesture_event_t_get_prop_distance", 
     "number", ["number"]);
 const image_base_set_image = Module.cwrap("image_base_set_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const image_base_set_rotation = Module.cwrap("image_base_set_rotation", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const image_base_set_scale = Module.cwrap("image_base_set_scale", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const image_base_set_anchor = Module.cwrap("image_base_set_anchor", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const image_base_set_selected = Module.cwrap("image_base_set_selected", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const image_base_set_selectable = Module.cwrap("image_base_set_selectable", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const image_base_set_clickable = Module.cwrap("image_base_set_clickable", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const image_base_cast = Module.cwrap("image_base_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const image_base_t_get_prop_image = Module.cwrap("image_base_t_get_prop_image", 
     "string", ["number"]);
 const image_base_t_get_prop_anchor_x = Module.cwrap("image_base_t_get_prop_anchor_x", 
@@ -2745,23 +2745,23 @@ const image_base_t_get_prop_scale_y = Module.cwrap("image_base_t_get_prop_scale_
 const image_base_t_get_prop_rotation = Module.cwrap("image_base_t_get_prop_rotation", 
     "number", ["number"]);
 const image_base_t_get_prop_clickable = Module.cwrap("image_base_t_get_prop_clickable", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const image_base_t_get_prop_selectable = Module.cwrap("image_base_t_get_prop_selectable", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const image_base_t_get_prop_selected = Module.cwrap("image_base_t_get_prop_selected", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const style_mutable_set_name = Module.cwrap("style_mutable_set_name", 
-    "TRet", ["TStyle","string"]);
+    "number", ["number","string"]);
 const style_mutable_set_int = Module.cwrap("style_mutable_set_int", 
-    "TRet", ["TStyle","string","string","number"]);
+    "number", ["number","string","string","number"]);
 const style_mutable_cast = Module.cwrap("style_mutable_cast", 
-    "TStyle", ["TStyle"]);
+    "number", ["number"]);
 const style_mutable_create = Module.cwrap("style_mutable_create", 
-    "TStyle", ["TStyle"]);
+    "number", ["number"]);
 const style_mutable_t_get_prop_name = Module.cwrap("style_mutable_t_get_prop_name", 
     "string", ["number"]);
 const window_base_cast = Module.cwrap("window_base_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const window_base_t_get_prop_theme = Module.cwrap("window_base_t_get_prop_theme", 
     "string", ["number"]);
 const window_base_t_get_prop_design_w = Module.cwrap("window_base_t_get_prop_design_w", 
@@ -2769,17 +2769,17 @@ const window_base_t_get_prop_design_w = Module.cwrap("window_base_t_get_prop_des
 const window_base_t_get_prop_design_h = Module.cwrap("window_base_t_get_prop_design_h", 
     "number", ["number"]);
 const window_base_t_get_prop_auto_scale_children_x = Module.cwrap("window_base_t_get_prop_auto_scale_children_x", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const window_base_t_get_prop_auto_scale_children_y = Module.cwrap("window_base_t_get_prop_auto_scale_children_y", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const window_base_t_get_prop_auto_scale_children_w = Module.cwrap("window_base_t_get_prop_auto_scale_children_w", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const window_base_t_get_prop_auto_scale_children_h = Module.cwrap("window_base_t_get_prop_auto_scale_children_h", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const window_base_t_get_prop_disable_anim = Module.cwrap("window_base_t_get_prop_disable_anim", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const window_base_t_get_prop_closable = Module.cwrap("window_base_t_get_prop_closable", 
-    "TWindowClosable", ["number"]);
+    "number", ["number"]);
 const window_base_t_get_prop_open_anim_hint = Module.cwrap("window_base_t_get_prop_open_anim_hint", 
     "string", ["number"]);
 const window_base_t_get_prop_close_anim_hint = Module.cwrap("window_base_t_get_prop_close_anim_hint", 
@@ -2797,81 +2797,81 @@ const window_base_t_get_prop_move_focus_left_key = Module.cwrap("window_base_t_g
 const window_base_t_get_prop_move_focus_right_key = Module.cwrap("window_base_t_get_prop_move_focus_right_key", 
     "string", ["number"]);
 const window_base_t_get_prop_single_instance = Module.cwrap("window_base_t_get_prop_single_instance", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const window_base_t_get_prop_strongly_focus = Module.cwrap("window_base_t_get_prop_strongly_focus", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const window_manager = Module.cwrap("window_manager", 
-    "TWidget", []);
+    "number", []);
 const window_manager_cast = Module.cwrap("window_manager_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const window_manager_get_top_main_window = Module.cwrap("window_manager_get_top_main_window", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const window_manager_get_top_window = Module.cwrap("window_manager_get_top_window", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const window_manager_get_prev_window = Module.cwrap("window_manager_get_prev_window", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const window_manager_get_pointer_x = Module.cwrap("window_manager_get_pointer_x", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const window_manager_get_pointer_y = Module.cwrap("window_manager_get_pointer_y", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const window_manager_get_pointer_pressed = Module.cwrap("window_manager_get_pointer_pressed", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const window_manager_is_animating = Module.cwrap("window_manager_is_animating", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const window_manager_set_show_fps = Module.cwrap("window_manager_set_show_fps", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const window_manager_set_max_fps = Module.cwrap("window_manager_set_max_fps", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const window_manager_set_ignore_input_events = Module.cwrap("window_manager_set_ignore_input_events", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const window_manager_set_screen_saver_time = Module.cwrap("window_manager_set_screen_saver_time", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const window_manager_set_cursor = Module.cwrap("window_manager_set_cursor", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const window_manager_back = Module.cwrap("window_manager_back", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const window_manager_back_to_home = Module.cwrap("window_manager_back_to_home", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const window_manager_back_to = Module.cwrap("window_manager_back_to", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const window_manager_resize = Module.cwrap("window_manager_resize", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const window_manager_close_all = Module.cwrap("window_manager_close_all", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const canvas_widget_create = Module.cwrap("canvas_widget_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const canvas_widget_cast = Module.cwrap("canvas_widget_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const color_component_create = Module.cwrap("color_component_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const color_component_cast = Module.cwrap("color_component_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const color_picker_create = Module.cwrap("color_picker_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const color_picker_set_color = Module.cwrap("color_picker_set_color", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const color_picker_cast = Module.cwrap("color_picker_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const color_picker_t_get_prop_value = Module.cwrap("color_picker_t_get_prop_value", 
     "string", ["number"]);
 const draggable_create = Module.cwrap("draggable_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const draggable_cast = Module.cwrap("draggable_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const draggable_set_top = Module.cwrap("draggable_set_top", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const draggable_set_bottom = Module.cwrap("draggable_set_bottom", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const draggable_set_left = Module.cwrap("draggable_set_left", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const draggable_set_right = Module.cwrap("draggable_set_right", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const draggable_set_vertical_only = Module.cwrap("draggable_set_vertical_only", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const draggable_set_horizontal_only = Module.cwrap("draggable_set_horizontal_only", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const draggable_set_drag_window = Module.cwrap("draggable_set_drag_window", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const draggable_t_get_prop_top = Module.cwrap("draggable_t_get_prop_top", 
     "number", ["number"]);
 const draggable_t_get_prop_bottom = Module.cwrap("draggable_t_get_prop_bottom", 
@@ -2881,37 +2881,37 @@ const draggable_t_get_prop_left = Module.cwrap("draggable_t_get_prop_left",
 const draggable_t_get_prop_right = Module.cwrap("draggable_t_get_prop_right", 
     "number", ["number"]);
 const draggable_t_get_prop_vertical_only = Module.cwrap("draggable_t_get_prop_vertical_only", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const draggable_t_get_prop_horizontal_only = Module.cwrap("draggable_t_get_prop_horizontal_only", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const draggable_t_get_prop_drag_window = Module.cwrap("draggable_t_get_prop_drag_window", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const file_browser_view_create = Module.cwrap("file_browser_view_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const file_browser_view_cast = Module.cwrap("file_browser_view_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const file_browser_view_set_init_dir = Module.cwrap("file_browser_view_set_init_dir", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const file_browser_view_set_top_dir = Module.cwrap("file_browser_view_set_top_dir", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const file_browser_view_set_filter = Module.cwrap("file_browser_view_set_filter", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const file_browser_view_reload = Module.cwrap("file_browser_view_reload", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const file_browser_view_set_ignore_hidden_files = Module.cwrap("file_browser_view_set_ignore_hidden_files", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const file_browser_view_set_sort_ascending = Module.cwrap("file_browser_view_set_sort_ascending", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const file_browser_view_set_show_check_button = Module.cwrap("file_browser_view_set_show_check_button", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const file_browser_view_set_sort_by = Module.cwrap("file_browser_view_set_sort_by", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const file_browser_view_get_cwd = Module.cwrap("file_browser_view_get_cwd", 
-    "string", ["TWidget"]);
+    "string", ["number"]);
 const file_browser_view_create_dir = Module.cwrap("file_browser_view_create_dir", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const file_browser_view_create_file = Module.cwrap("file_browser_view_create_file", 
-    "TRet", ["TWidget","string","string","number"]);
+    "number", ["number","string","string","number"]);
 const file_browser_view_t_get_prop_init_dir = Module.cwrap("file_browser_view_t_get_prop_init_dir", 
     "string", ["number"]);
 const file_browser_view_t_get_prop_top_dir = Module.cwrap("file_browser_view_t_get_prop_top_dir", 
@@ -2919,45 +2919,45 @@ const file_browser_view_t_get_prop_top_dir = Module.cwrap("file_browser_view_t_g
 const file_browser_view_t_get_prop_filter = Module.cwrap("file_browser_view_t_get_prop_filter", 
     "string", ["number"]);
 const file_browser_view_t_get_prop_ignore_hidden_files = Module.cwrap("file_browser_view_t_get_prop_ignore_hidden_files", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const file_browser_view_t_get_prop_sort_ascending = Module.cwrap("file_browser_view_t_get_prop_sort_ascending", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const file_browser_view_t_get_prop_show_check_button = Module.cwrap("file_browser_view_t_get_prop_show_check_button", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const file_browser_view_t_get_prop_sort_by = Module.cwrap("file_browser_view_t_get_prop_sort_by", 
     "string", ["number"]);
 const file_chooser_create = Module.cwrap("file_chooser_create", 
-    "TFileChooser", []);
+    "number", []);
 const file_chooser_set_init_dir = Module.cwrap("file_chooser_set_init_dir", 
-    "TRet", ["TFileChooser","string"]);
+    "number", ["number","string"]);
 const file_chooser_set_top_dir = Module.cwrap("file_chooser_set_top_dir", 
-    "TRet", ["TFileChooser","string"]);
+    "number", ["number","string"]);
 const file_chooser_set_filter = Module.cwrap("file_chooser_set_filter", 
-    "TRet", ["TFileChooser","string"]);
+    "number", ["number","string"]);
 const file_chooser_cast = Module.cwrap("file_chooser_cast", 
-    "TFileChooser", ["TFileChooser"]);
+    "number", ["number"]);
 const file_chooser_choose_file_for_save = Module.cwrap("file_chooser_choose_file_for_save", 
-    "TRet", ["TFileChooser"]);
+    "number", ["number"]);
 const file_chooser_choose_file_for_open = Module.cwrap("file_chooser_choose_file_for_open", 
-    "TRet", ["TFileChooser"]);
+    "number", ["number"]);
 const file_chooser_choose_folder = Module.cwrap("file_chooser_choose_folder", 
-    "TRet", ["TFileChooser"]);
+    "number", ["number"]);
 const file_chooser_get_dir = Module.cwrap("file_chooser_get_dir", 
-    "string", ["TFileChooser"]);
+    "string", ["number"]);
 const file_chooser_get_filename = Module.cwrap("file_chooser_get_filename", 
-    "string", ["TFileChooser"]);
+    "string", ["number"]);
 const file_chooser_is_aborted = Module.cwrap("file_chooser_is_aborted", 
-    "boolean", ["TFileChooser"]);
+    "number", ["number"]);
 const gauge_pointer_create = Module.cwrap("gauge_pointer_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const gauge_pointer_cast = Module.cwrap("gauge_pointer_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const gauge_pointer_set_angle = Module.cwrap("gauge_pointer_set_angle", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const gauge_pointer_set_image = Module.cwrap("gauge_pointer_set_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const gauge_pointer_set_anchor = Module.cwrap("gauge_pointer_set_anchor", 
-    "TRet", ["TWidget","string","string"]);
+    "number", ["number","string","string"]);
 const gauge_pointer_t_get_prop_angle = Module.cwrap("gauge_pointer_t_get_prop_angle", 
     "number", ["number"]);
 const gauge_pointer_t_get_prop_image = Module.cwrap("gauge_pointer_t_get_prop_image", 
@@ -2967,53 +2967,53 @@ const gauge_pointer_t_get_prop_anchor_x = Module.cwrap("gauge_pointer_t_get_prop
 const gauge_pointer_t_get_prop_anchor_y = Module.cwrap("gauge_pointer_t_get_prop_anchor_y", 
     "string", ["number"]);
 const gauge_create = Module.cwrap("gauge_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const gauge_cast = Module.cwrap("gauge_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const gauge_set_image = Module.cwrap("gauge_set_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const gauge_set_draw_type = Module.cwrap("gauge_set_draw_type", 
-    "TRet", ["TWidget","TImageDrawType"]);
+    "number", ["number","number"]);
 const gauge_t_get_prop_image = Module.cwrap("gauge_t_get_prop_image", 
     "string", ["number"]);
 const gauge_t_get_prop_draw_type = Module.cwrap("gauge_t_get_prop_draw_type", 
-    "TImageDrawType", ["number"]);
+    "number", ["number"]);
 const image_animation_create = Module.cwrap("image_animation_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const image_animation_set_loop = Module.cwrap("image_animation_set_loop", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const image_animation_set_image = Module.cwrap("image_animation_set_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const image_animation_set_interval = Module.cwrap("image_animation_set_interval", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const image_animation_set_delay = Module.cwrap("image_animation_set_delay", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const image_animation_set_auto_play = Module.cwrap("image_animation_set_auto_play", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const image_animation_set_sequence = Module.cwrap("image_animation_set_sequence", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const image_animation_set_range_sequence = Module.cwrap("image_animation_set_range_sequence", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const image_animation_play = Module.cwrap("image_animation_play", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const image_animation_stop = Module.cwrap("image_animation_stop", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const image_animation_pause = Module.cwrap("image_animation_pause", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const image_animation_next = Module.cwrap("image_animation_next", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const image_animation_set_format = Module.cwrap("image_animation_set_format", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const image_animation_set_unload_after_paint = Module.cwrap("image_animation_set_unload_after_paint", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const image_animation_set_reverse = Module.cwrap("image_animation_set_reverse", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const image_animation_set_show_when_done = Module.cwrap("image_animation_set_show_when_done", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const image_animation_cast = Module.cwrap("image_animation_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const image_animation_is_playing = Module.cwrap("image_animation_is_playing", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const image_animation_t_get_prop_image = Module.cwrap("image_animation_t_get_prop_image", 
     "string", ["number"]);
 const image_animation_t_get_prop_sequence = Module.cwrap("image_animation_t_get_prop_sequence", 
@@ -3023,13 +3023,13 @@ const image_animation_t_get_prop_start_index = Module.cwrap("image_animation_t_g
 const image_animation_t_get_prop_end_index = Module.cwrap("image_animation_t_get_prop_end_index", 
     "number", ["number"]);
 const image_animation_t_get_prop_reverse = Module.cwrap("image_animation_t_get_prop_reverse", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const image_animation_t_get_prop_loop = Module.cwrap("image_animation_t_get_prop_loop", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const image_animation_t_get_prop_auto_play = Module.cwrap("image_animation_t_get_prop_auto_play", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const image_animation_t_get_prop_unload_after_paint = Module.cwrap("image_animation_t_get_prop_unload_after_paint", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const image_animation_t_get_prop_format = Module.cwrap("image_animation_t_get_prop_format", 
     "string", ["number"]);
 const image_animation_t_get_prop_interval = Module.cwrap("image_animation_t_get_prop_interval", 
@@ -3037,23 +3037,23 @@ const image_animation_t_get_prop_interval = Module.cwrap("image_animation_t_get_
 const image_animation_t_get_prop_delay = Module.cwrap("image_animation_t_get_prop_delay", 
     "number", ["number"]);
 const image_animation_t_get_prop_show_when_done = Module.cwrap("image_animation_t_get_prop_show_when_done", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const image_value_create = Module.cwrap("image_value_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const image_value_set_image = Module.cwrap("image_value_set_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const image_value_set_format = Module.cwrap("image_value_set_format", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const image_value_set_click_add_delta = Module.cwrap("image_value_set_click_add_delta", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const image_value_set_value = Module.cwrap("image_value_set_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const image_value_set_min = Module.cwrap("image_value_set_min", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const image_value_set_max = Module.cwrap("image_value_set_max", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const image_value_cast = Module.cwrap("image_value_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const image_value_t_get_prop_image = Module.cwrap("image_value_t_get_prop_image", 
     "string", ["number"]);
 const image_value_t_get_prop_format = Module.cwrap("image_value_t_get_prop_format", 
@@ -3067,83 +3067,83 @@ const image_value_t_get_prop_min = Module.cwrap("image_value_t_get_prop_min",
 const image_value_t_get_prop_max = Module.cwrap("image_value_t_get_prop_max", 
     "number", ["number"]);
 const candidates_create = Module.cwrap("candidates_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const candidates_cast = Module.cwrap("candidates_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const candidates_set_pre = Module.cwrap("candidates_set_pre", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const candidates_set_select_by_num = Module.cwrap("candidates_set_select_by_num", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const candidates_set_auto_hide = Module.cwrap("candidates_set_auto_hide", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const candidates_set_button_style = Module.cwrap("candidates_set_button_style", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const candidates_t_get_prop_pre = Module.cwrap("candidates_t_get_prop_pre", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const candidates_t_get_prop_select_by_num = Module.cwrap("candidates_t_get_prop_select_by_num", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const candidates_t_get_prop_auto_hide = Module.cwrap("candidates_t_get_prop_auto_hide", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const candidates_t_get_prop_button_style = Module.cwrap("candidates_t_get_prop_button_style", 
     "string", ["number"]);
 const lang_indicator_create = Module.cwrap("lang_indicator_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const lang_indicator_set_image = Module.cwrap("lang_indicator_set_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const lang_indicator_cast = Module.cwrap("lang_indicator_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const lang_indicator_t_get_prop_image = Module.cwrap("lang_indicator_t_get_prop_image", 
     "string", ["number"]);
 const line_number_create = Module.cwrap("line_number_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const line_number_set_top_margin = Module.cwrap("line_number_set_top_margin", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const line_number_set_bottom_margin = Module.cwrap("line_number_set_bottom_margin", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const line_number_set_line_height = Module.cwrap("line_number_set_line_height", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const line_number_set_yoffset = Module.cwrap("line_number_set_yoffset", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const line_number_cast = Module.cwrap("line_number_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const mledit_create = Module.cwrap("mledit_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const mledit_set_readonly = Module.cwrap("mledit_set_readonly", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const mledit_set_cancelable = Module.cwrap("mledit_set_cancelable", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const mledit_set_focus = Module.cwrap("mledit_set_focus", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const mledit_set_wrap_word = Module.cwrap("mledit_set_wrap_word", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const mledit_set_max_lines = Module.cwrap("mledit_set_max_lines", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const mledit_set_max_chars = Module.cwrap("mledit_set_max_chars", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const mledit_set_tips = Module.cwrap("mledit_set_tips", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const mledit_set_tr_tips = Module.cwrap("mledit_set_tr_tips", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const mledit_set_keyboard = Module.cwrap("mledit_set_keyboard", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const mledit_set_cursor = Module.cwrap("mledit_set_cursor", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const mledit_get_cursor = Module.cwrap("mledit_get_cursor", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const mledit_set_scroll_line = Module.cwrap("mledit_set_scroll_line", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const mledit_scroll_to_offset = Module.cwrap("mledit_scroll_to_offset", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const mledit_set_open_im_when_focused = Module.cwrap("mledit_set_open_im_when_focused", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const mledit_set_close_im_when_blured = Module.cwrap("mledit_set_close_im_when_blured", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const mledit_set_select = Module.cwrap("mledit_set_select", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const mledit_get_selected_text = Module.cwrap("mledit_get_selected_text", 
-    "string", ["TWidget"]);
+    "string", ["number"]);
 const mledit_cast = Module.cwrap("mledit_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const mledit_t_get_prop_tips = Module.cwrap("mledit_t_get_prop_tips", 
     "string", ["number"]);
 const mledit_t_get_prop_tr_tips = Module.cwrap("mledit_t_get_prop_tr_tips", 
@@ -3155,37 +3155,37 @@ const mledit_t_get_prop_max_lines = Module.cwrap("mledit_t_get_prop_max_lines",
 const mledit_t_get_prop_max_chars = Module.cwrap("mledit_t_get_prop_max_chars", 
     "number", ["number"]);
 const mledit_t_get_prop_wrap_word = Module.cwrap("mledit_t_get_prop_wrap_word", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const mledit_t_get_prop_scroll_line = Module.cwrap("mledit_t_get_prop_scroll_line", 
     "number", ["number"]);
 const mledit_t_get_prop_readonly = Module.cwrap("mledit_t_get_prop_readonly", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const mledit_t_get_prop_cancelable = Module.cwrap("mledit_t_get_prop_cancelable", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const mledit_t_get_prop_open_im_when_focused = Module.cwrap("mledit_t_get_prop_open_im_when_focused", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const mledit_t_get_prop_close_im_when_blured = Module.cwrap("mledit_t_get_prop_close_im_when_blured", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const progress_circle_create = Module.cwrap("progress_circle_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const progress_circle_cast = Module.cwrap("progress_circle_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const progress_circle_set_value = Module.cwrap("progress_circle_set_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const progress_circle_set_max = Module.cwrap("progress_circle_set_max", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const progress_circle_set_format = Module.cwrap("progress_circle_set_format", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const progress_circle_set_line_width = Module.cwrap("progress_circle_set_line_width", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const progress_circle_set_start_angle = Module.cwrap("progress_circle_set_start_angle", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const progress_circle_set_line_cap = Module.cwrap("progress_circle_set_line_cap", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const progress_circle_set_show_text = Module.cwrap("progress_circle_set_show_text", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const progress_circle_set_counter_clock_wise = Module.cwrap("progress_circle_set_counter_clock_wise", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const progress_circle_t_get_prop_value = Module.cwrap("progress_circle_t_get_prop_value", 
     "number", ["number"]);
 const progress_circle_t_get_prop_max = Module.cwrap("progress_circle_t_get_prop_max", 
@@ -3199,59 +3199,59 @@ const progress_circle_t_get_prop_line_width = Module.cwrap("progress_circle_t_ge
 const progress_circle_t_get_prop_line_cap = Module.cwrap("progress_circle_t_get_prop_line_cap", 
     "string", ["number"]);
 const progress_circle_t_get_prop_counter_clock_wise = Module.cwrap("progress_circle_t_get_prop_counter_clock_wise", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const progress_circle_t_get_prop_show_text = Module.cwrap("progress_circle_t_get_prop_show_text", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const rich_text_view_create = Module.cwrap("rich_text_view_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const rich_text_view_cast = Module.cwrap("rich_text_view_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const rich_text_create = Module.cwrap("rich_text_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const rich_text_set_text = Module.cwrap("rich_text_set_text", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const rich_text_set_yslidable = Module.cwrap("rich_text_set_yslidable", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const rich_text_cast = Module.cwrap("rich_text_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const rich_text_t_get_prop_line_gap = Module.cwrap("rich_text_t_get_prop_line_gap", 
     "number", ["number"]);
 const rich_text_t_get_prop_yslidable = Module.cwrap("rich_text_t_get_prop_yslidable", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const hscroll_label_create = Module.cwrap("hscroll_label_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const hscroll_label_set_lull = Module.cwrap("hscroll_label_set_lull", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const hscroll_label_set_duration = Module.cwrap("hscroll_label_set_duration", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const hscroll_label_set_only_focus = Module.cwrap("hscroll_label_set_only_focus", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const hscroll_label_set_only_parent_focus = Module.cwrap("hscroll_label_set_only_parent_focus", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const hscroll_label_set_loop = Module.cwrap("hscroll_label_set_loop", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const hscroll_label_set_yoyo = Module.cwrap("hscroll_label_set_yoyo", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const hscroll_label_set_ellipses = Module.cwrap("hscroll_label_set_ellipses", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const hscroll_label_set_xoffset = Module.cwrap("hscroll_label_set_xoffset", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const hscroll_label_start = Module.cwrap("hscroll_label_start", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const hscroll_label_stop = Module.cwrap("hscroll_label_stop", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const hscroll_label_cast = Module.cwrap("hscroll_label_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const hscroll_label_t_get_prop_only_focus = Module.cwrap("hscroll_label_t_get_prop_only_focus", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const hscroll_label_t_get_prop_only_parent_focus = Module.cwrap("hscroll_label_t_get_prop_only_parent_focus", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const hscroll_label_t_get_prop_loop = Module.cwrap("hscroll_label_t_get_prop_loop", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const hscroll_label_t_get_prop_yoyo = Module.cwrap("hscroll_label_t_get_prop_yoyo", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const hscroll_label_t_get_prop_ellipses = Module.cwrap("hscroll_label_t_get_prop_ellipses", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const hscroll_label_t_get_prop_lull = Module.cwrap("hscroll_label_t_get_prop_lull", 
     "number", ["number"]);
 const hscroll_label_t_get_prop_duration = Module.cwrap("hscroll_label_t_get_prop_duration", 
@@ -3261,67 +3261,67 @@ const hscroll_label_t_get_prop_xoffset = Module.cwrap("hscroll_label_t_get_prop_
 const hscroll_label_t_get_prop_text_w = Module.cwrap("hscroll_label_t_get_prop_text_w", 
     "number", ["number"]);
 const list_item_create = Module.cwrap("list_item_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const list_item_cast = Module.cwrap("list_item_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const list_view_h_create = Module.cwrap("list_view_h_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const list_view_h_set_item_width = Module.cwrap("list_view_h_set_item_width", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const list_view_h_set_spacing = Module.cwrap("list_view_h_set_spacing", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const list_view_h_cast = Module.cwrap("list_view_h_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const list_view_h_t_get_prop_item_width = Module.cwrap("list_view_h_t_get_prop_item_width", 
     "number", ["number"]);
 const list_view_h_t_get_prop_spacing = Module.cwrap("list_view_h_t_get_prop_spacing", 
     "number", ["number"]);
 const list_view_create = Module.cwrap("list_view_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const list_view_set_item_height = Module.cwrap("list_view_set_item_height", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const list_view_set_default_item_height = Module.cwrap("list_view_set_default_item_height", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const list_view_set_auto_hide_scroll_bar = Module.cwrap("list_view_set_auto_hide_scroll_bar", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const list_view_set_floating_scroll_bar = Module.cwrap("list_view_set_floating_scroll_bar", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const list_view_cast = Module.cwrap("list_view_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const list_view_reinit = Module.cwrap("list_view_reinit", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const list_view_t_get_prop_item_height = Module.cwrap("list_view_t_get_prop_item_height", 
     "number", ["number"]);
 const list_view_t_get_prop_default_item_height = Module.cwrap("list_view_t_get_prop_default_item_height", 
     "number", ["number"]);
 const list_view_t_get_prop_auto_hide_scroll_bar = Module.cwrap("list_view_t_get_prop_auto_hide_scroll_bar", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const list_view_t_get_prop_floating_scroll_bar = Module.cwrap("list_view_t_get_prop_floating_scroll_bar", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const scroll_bar_create = Module.cwrap("scroll_bar_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const scroll_bar_cast = Module.cwrap("scroll_bar_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const scroll_bar_create_mobile = Module.cwrap("scroll_bar_create_mobile", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const scroll_bar_create_desktop = Module.cwrap("scroll_bar_create_desktop", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const scroll_bar_set_params = Module.cwrap("scroll_bar_set_params", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const scroll_bar_scroll_to = Module.cwrap("scroll_bar_scroll_to", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const scroll_bar_set_value = Module.cwrap("scroll_bar_set_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const scroll_bar_add_delta = Module.cwrap("scroll_bar_add_delta", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const scroll_bar_scroll_delta = Module.cwrap("scroll_bar_scroll_delta", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const scroll_bar_set_value_only = Module.cwrap("scroll_bar_set_value_only", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const scroll_bar_set_auto_hide = Module.cwrap("scroll_bar_set_auto_hide", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const scroll_bar_is_mobile = Module.cwrap("scroll_bar_is_mobile", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const scroll_bar_t_get_prop_virtual_size = Module.cwrap("scroll_bar_t_get_prop_virtual_size", 
     "number", ["number"]);
 const scroll_bar_t_get_prop_value = Module.cwrap("scroll_bar_t_get_prop_value", 
@@ -3329,37 +3329,37 @@ const scroll_bar_t_get_prop_value = Module.cwrap("scroll_bar_t_get_prop_value",
 const scroll_bar_t_get_prop_row = Module.cwrap("scroll_bar_t_get_prop_row", 
     "number", ["number"]);
 const scroll_bar_t_get_prop_animatable = Module.cwrap("scroll_bar_t_get_prop_animatable", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const scroll_bar_t_get_prop_auto_hide = Module.cwrap("scroll_bar_t_get_prop_auto_hide", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const scroll_view_create = Module.cwrap("scroll_view_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const scroll_view_cast = Module.cwrap("scroll_view_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const scroll_view_set_virtual_w = Module.cwrap("scroll_view_set_virtual_w", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const scroll_view_set_virtual_h = Module.cwrap("scroll_view_set_virtual_h", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const scroll_view_set_xslidable = Module.cwrap("scroll_view_set_xslidable", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const scroll_view_set_yslidable = Module.cwrap("scroll_view_set_yslidable", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const scroll_view_set_snap_to_page = Module.cwrap("scroll_view_set_snap_to_page", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const scroll_view_set_move_to_page = Module.cwrap("scroll_view_set_move_to_page", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const scroll_view_set_recursive = Module.cwrap("scroll_view_set_recursive", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const scroll_view_set_recursive_only = Module.cwrap("scroll_view_set_recursive_only", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const scroll_view_set_offset = Module.cwrap("scroll_view_set_offset", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const scroll_view_set_speed_scale = Module.cwrap("scroll_view_set_speed_scale", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const scroll_view_scroll_to = Module.cwrap("scroll_view_scroll_to", 
-    "TRet", ["TWidget","number","number","number"]);
+    "number", ["number","number","number","number"]);
 const scroll_view_scroll_delta_to = Module.cwrap("scroll_view_scroll_delta_to", 
-    "TRet", ["TWidget","number","number","number"]);
+    "number", ["number","number","number","number"]);
 const scroll_view_t_get_prop_virtual_w = Module.cwrap("scroll_view_t_get_prop_virtual_w", 
     "number", ["number"]);
 const scroll_view_t_get_prop_virtual_h = Module.cwrap("scroll_view_t_get_prop_virtual_h", 
@@ -3373,63 +3373,63 @@ const scroll_view_t_get_prop_xspeed_scale = Module.cwrap("scroll_view_t_get_prop
 const scroll_view_t_get_prop_yspeed_scale = Module.cwrap("scroll_view_t_get_prop_yspeed_scale", 
     "number", ["number"]);
 const scroll_view_t_get_prop_xslidable = Module.cwrap("scroll_view_t_get_prop_xslidable", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const scroll_view_t_get_prop_yslidable = Module.cwrap("scroll_view_t_get_prop_yslidable", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const scroll_view_t_get_prop_snap_to_page = Module.cwrap("scroll_view_t_get_prop_snap_to_page", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const scroll_view_t_get_prop_move_to_page = Module.cwrap("scroll_view_t_get_prop_move_to_page", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const scroll_view_t_get_prop_recursive = Module.cwrap("scroll_view_t_get_prop_recursive", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const slide_menu_create = Module.cwrap("slide_menu_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const slide_menu_cast = Module.cwrap("slide_menu_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const slide_menu_set_value = Module.cwrap("slide_menu_set_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slide_menu_set_align_v = Module.cwrap("slide_menu_set_align_v", 
-    "TRet", ["TWidget","TAlignV"]);
+    "number", ["number","number"]);
 const slide_menu_set_min_scale = Module.cwrap("slide_menu_set_min_scale", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slide_menu_t_get_prop_value = Module.cwrap("slide_menu_t_get_prop_value", 
     "number", ["number"]);
 const slide_menu_t_get_prop_align_v = Module.cwrap("slide_menu_t_get_prop_align_v", 
-    "TAlignV", ["number"]);
+    "number", ["number"]);
 const slide_menu_t_get_prop_min_scale = Module.cwrap("slide_menu_t_get_prop_min_scale", 
     "number", ["number"]);
 const slide_indicator_create = Module.cwrap("slide_indicator_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const slide_indicator_create_linear = Module.cwrap("slide_indicator_create_linear", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const slide_indicator_create_arc = Module.cwrap("slide_indicator_create_arc", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const slide_indicator_cast = Module.cwrap("slide_indicator_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const slide_indicator_set_value = Module.cwrap("slide_indicator_set_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slide_indicator_set_max = Module.cwrap("slide_indicator_set_max", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slide_indicator_set_default_paint = Module.cwrap("slide_indicator_set_default_paint", 
-    "TRet", ["TWidget","TIndicatorDefaultPaint"]);
+    "number", ["number","number"]);
 const slide_indicator_set_auto_hide = Module.cwrap("slide_indicator_set_auto_hide", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slide_indicator_set_margin = Module.cwrap("slide_indicator_set_margin", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slide_indicator_set_spacing = Module.cwrap("slide_indicator_set_spacing", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slide_indicator_set_size = Module.cwrap("slide_indicator_set_size", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slide_indicator_set_anchor = Module.cwrap("slide_indicator_set_anchor", 
-    "TRet", ["TWidget","string","string"]);
+    "number", ["number","string","string"]);
 const slide_indicator_set_indicated_target = Module.cwrap("slide_indicator_set_indicated_target", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const slide_indicator_t_get_prop_value = Module.cwrap("slide_indicator_t_get_prop_value", 
     "number", ["number"]);
 const slide_indicator_t_get_prop_max = Module.cwrap("slide_indicator_t_get_prop_max", 
     "number", ["number"]);
 const slide_indicator_t_get_prop_default_paint = Module.cwrap("slide_indicator_t_get_prop_default_paint", 
-    "TIndicatorDefaultPaint", ["number"]);
+    "number", ["number"]);
 const slide_indicator_t_get_prop_auto_hide = Module.cwrap("slide_indicator_t_get_prop_auto_hide", 
     "number", ["number"]);
 const slide_indicator_t_get_prop_margin = Module.cwrap("slide_indicator_t_get_prop_margin", 
@@ -3445,79 +3445,79 @@ const slide_indicator_t_get_prop_anchor_y = Module.cwrap("slide_indicator_t_get_
 const slide_indicator_t_get_prop_indicated_target = Module.cwrap("slide_indicator_t_get_prop_indicated_target", 
     "string", ["number"]);
 const slide_view_create = Module.cwrap("slide_view_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const slide_view_cast = Module.cwrap("slide_view_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const slide_view_set_auto_play = Module.cwrap("slide_view_set_auto_play", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slide_view_set_active = Module.cwrap("slide_view_set_active", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slide_view_set_active_ex = Module.cwrap("slide_view_set_active_ex", 
-    "TRet", ["TWidget","number","boolean"]);
+    "number", ["number","number","number"]);
 const slide_view_set_vertical = Module.cwrap("slide_view_set_vertical", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const slide_view_set_anim_hint = Module.cwrap("slide_view_set_anim_hint", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const slide_view_set_loop = Module.cwrap("slide_view_set_loop", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const slide_view_remove_index = Module.cwrap("slide_view_remove_index", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slide_view_t_get_prop_vertical = Module.cwrap("slide_view_t_get_prop_vertical", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const slide_view_t_get_prop_auto_play = Module.cwrap("slide_view_t_get_prop_auto_play", 
     "number", ["number"]);
 const slide_view_t_get_prop_loop = Module.cwrap("slide_view_t_get_prop_loop", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const slide_view_t_get_prop_anim_hint = Module.cwrap("slide_view_t_get_prop_anim_hint", 
     "string", ["number"]);
 const switch_create = Module.cwrap("switch_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const switch_set_value = Module.cwrap("switch_set_value", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const switch_cast = Module.cwrap("switch_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const switch_t_get_prop_value = Module.cwrap("switch_t_get_prop_value", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const switch_t_get_prop_max_xoffset_ratio = Module.cwrap("switch_t_get_prop_max_xoffset_ratio", 
     "number", ["number"]);
 const text_selector_create = Module.cwrap("text_selector_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const text_selector_cast = Module.cwrap("text_selector_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const text_selector_reset_options = Module.cwrap("text_selector_reset_options", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const text_selector_count_options = Module.cwrap("text_selector_count_options", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const text_selector_append_option = Module.cwrap("text_selector_append_option", 
-    "TRet", ["TWidget","number","string"]);
+    "number", ["number","number","string"]);
 const text_selector_set_options = Module.cwrap("text_selector_set_options", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const text_selector_set_range_options_ex = Module.cwrap("text_selector_set_range_options_ex", 
-    "TRet", ["TWidget","number","number","number","string"]);
+    "number", ["number","number","number","number","string"]);
 const text_selector_set_range_options = Module.cwrap("text_selector_set_range_options", 
-    "TRet", ["TWidget","number","number","number"]);
+    "number", ["number","number","number","number"]);
 const text_selector_get_value = Module.cwrap("text_selector_get_value", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const text_selector_set_value = Module.cwrap("text_selector_set_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const text_selector_get_text = Module.cwrap("text_selector_get_text", 
-    "string", ["TWidget"]);
+    "string", ["number"]);
 const text_selector_set_text = Module.cwrap("text_selector_set_text", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const text_selector_set_selected_index = Module.cwrap("text_selector_set_selected_index", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const text_selector_set_visible_nr = Module.cwrap("text_selector_set_visible_nr", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const text_selector_set_localize_options = Module.cwrap("text_selector_set_localize_options", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const text_selector_set_loop_options = Module.cwrap("text_selector_set_loop_options", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const text_selector_set_yspeed_scale = Module.cwrap("text_selector_set_yspeed_scale", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const text_selector_set_animating_time = Module.cwrap("text_selector_set_animating_time", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const text_selector_set_enable_value_animator = Module.cwrap("text_selector_set_enable_value_animator", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const text_selector_t_get_prop_visible_nr = Module.cwrap("text_selector_t_get_prop_visible_nr", 
     "number", ["number"]);
 const text_selector_t_get_prop_selected_index = Module.cwrap("text_selector_t_get_prop_selected_index", 
@@ -3529,37 +3529,37 @@ const text_selector_t_get_prop_yspeed_scale = Module.cwrap("text_selector_t_get_
 const text_selector_t_get_prop_animating_time = Module.cwrap("text_selector_t_get_prop_animating_time", 
     "number", ["number"]);
 const text_selector_t_get_prop_localize_options = Module.cwrap("text_selector_t_get_prop_localize_options", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const text_selector_t_get_prop_loop_options = Module.cwrap("text_selector_t_get_prop_loop_options", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const text_selector_t_get_prop_enable_value_animator = Module.cwrap("text_selector_t_get_prop_enable_value_animator", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const time_clock_create = Module.cwrap("time_clock_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const time_clock_cast = Module.cwrap("time_clock_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const time_clock_set_hour = Module.cwrap("time_clock_set_hour", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const time_clock_set_minute = Module.cwrap("time_clock_set_minute", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const time_clock_set_second = Module.cwrap("time_clock_set_second", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const time_clock_set_hour_image = Module.cwrap("time_clock_set_hour_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const time_clock_set_minute_image = Module.cwrap("time_clock_set_minute_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const time_clock_set_second_image = Module.cwrap("time_clock_set_second_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const time_clock_set_bg_image = Module.cwrap("time_clock_set_bg_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const time_clock_set_image = Module.cwrap("time_clock_set_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const time_clock_set_hour_anchor = Module.cwrap("time_clock_set_hour_anchor", 
-    "TRet", ["TWidget","string","string"]);
+    "number", ["number","string","string"]);
 const time_clock_set_minute_anchor = Module.cwrap("time_clock_set_minute_anchor", 
-    "TRet", ["TWidget","string","string"]);
+    "number", ["number","string","string"]);
 const time_clock_set_second_anchor = Module.cwrap("time_clock_set_second_anchor", 
-    "TRet", ["TWidget","string","string"]);
+    "number", ["number","string","string"]);
 const time_clock_t_get_prop_hour = Module.cwrap("time_clock_t_get_prop_hour", 
     "number", ["number"]);
 const time_clock_t_get_prop_minute = Module.cwrap("time_clock_t_get_prop_minute", 
@@ -3589,137 +3589,137 @@ const time_clock_t_get_prop_second_anchor_x = Module.cwrap("time_clock_t_get_pro
 const time_clock_t_get_prop_second_anchor_y = Module.cwrap("time_clock_t_get_prop_second_anchor_y", 
     "string", ["number"]);
 const vpage_create = Module.cwrap("vpage_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const vpage_cast = Module.cwrap("vpage_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const vpage_set_ui_asset = Module.cwrap("vpage_set_ui_asset", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const vpage_set_anim_hint = Module.cwrap("vpage_set_anim_hint", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const vpage_t_get_prop_ui_asset = Module.cwrap("vpage_t_get_prop_ui_asset", 
     "string", ["number"]);
 const vpage_t_get_prop_anim_hint = Module.cwrap("vpage_t_get_prop_anim_hint", 
     "string", ["number"]);
 const prop_change_event_cast = Module.cwrap("prop_change_event_cast", 
-    "TPropChangeEvent", ["TEvent"]);
+    "number", ["number"]);
 const prop_change_event_t_get_prop_name = Module.cwrap("prop_change_event_t_get_prop_name", 
     "string", ["number"]);
 const prop_change_event_t_get_prop_value = Module.cwrap("prop_change_event_t_get_prop_value", 
-    "TValue", ["number"]);
+    "number", ["number"]);
 const progress_event_cast = Module.cwrap("progress_event_cast", 
-    "TProgressEvent", ["TEvent"]);
+    "number", ["number"]);
 const progress_event_t_get_prop_percent = Module.cwrap("progress_event_t_get_prop_percent", 
     "number", ["number"]);
 const done_event_cast = Module.cwrap("done_event_cast", 
-    "TDoneEvent", ["TEvent"]);
+    "number", ["number"]);
 const done_event_t_get_prop_result = Module.cwrap("done_event_t_get_prop_result", 
-    "TRet", ["number"]);
+    "number", ["number"]);
 const error_event_cast = Module.cwrap("error_event_cast", 
-    "TErrorEvent", ["TEvent"]);
+    "number", ["number"]);
 const error_event_t_get_prop_code = Module.cwrap("error_event_t_get_prop_code", 
     "number", ["number"]);
 const error_event_t_get_prop_message = Module.cwrap("error_event_t_get_prop_message", 
     "string", ["number"]);
 const cmd_exec_event_cast = Module.cwrap("cmd_exec_event_cast", 
-    "TCmdExecEvent", ["TEvent"]);
+    "number", ["number"]);
 const cmd_exec_event_t_get_prop_name = Module.cwrap("cmd_exec_event_t_get_prop_name", 
     "string", ["number"]);
 const cmd_exec_event_t_get_prop_args = Module.cwrap("cmd_exec_event_t_get_prop_args", 
     "string", ["number"]);
 const cmd_exec_event_t_get_prop_result = Module.cwrap("cmd_exec_event_t_get_prop_result", 
-    "TRet", ["number"]);
+    "number", ["number"]);
 const cmd_exec_event_t_get_prop_can_exec = Module.cwrap("cmd_exec_event_t_get_prop_can_exec", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const app_bar_create = Module.cwrap("app_bar_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const app_bar_cast = Module.cwrap("app_bar_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const button_group_create = Module.cwrap("button_group_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const button_group_cast = Module.cwrap("button_group_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const button_create = Module.cwrap("button_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const button_cast = Module.cwrap("button_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const button_set_repeat = Module.cwrap("button_set_repeat", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const button_set_long_press_time = Module.cwrap("button_set_long_press_time", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const button_set_enable_long_press = Module.cwrap("button_set_enable_long_press", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const button_t_get_prop_repeat = Module.cwrap("button_t_get_prop_repeat", 
     "number", ["number"]);
 const button_t_get_prop_enable_long_press = Module.cwrap("button_t_get_prop_enable_long_press", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const button_t_get_prop_long_press_time = Module.cwrap("button_t_get_prop_long_press_time", 
     "number", ["number"]);
 const check_button_create = Module.cwrap("check_button_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const check_button_create_radio = Module.cwrap("check_button_create_radio", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const check_button_set_value = Module.cwrap("check_button_set_value", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const check_button_cast = Module.cwrap("check_button_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const check_button_t_get_prop_value = Module.cwrap("check_button_t_get_prop_value", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const clip_view_create = Module.cwrap("clip_view_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const clip_view_cast = Module.cwrap("clip_view_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const color_tile_create = Module.cwrap("color_tile_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const color_tile_cast = Module.cwrap("color_tile_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const color_tile_set_bg_color = Module.cwrap("color_tile_set_bg_color", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const color_tile_get_bg_color = Module.cwrap("color_tile_get_bg_color", 
-    "string", ["TWidget"]);
+    "string", ["number"]);
 const color_tile_get_border_color = Module.cwrap("color_tile_get_border_color", 
-    "string", ["TWidget"]);
+    "string", ["number"]);
 const color_tile_t_get_prop_bg_color = Module.cwrap("color_tile_t_get_prop_bg_color", 
     "string", ["number"]);
 const color_tile_t_get_prop_border_color = Module.cwrap("color_tile_t_get_prop_border_color", 
     "string", ["number"]);
 const column_create = Module.cwrap("column_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const column_cast = Module.cwrap("column_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const combo_box_item_create = Module.cwrap("combo_box_item_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const combo_box_item_cast = Module.cwrap("combo_box_item_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const combo_box_item_set_checked = Module.cwrap("combo_box_item_set_checked", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const combo_box_item_set_value = Module.cwrap("combo_box_item_set_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const combo_box_item_t_get_prop_value = Module.cwrap("combo_box_item_t_get_prop_value", 
     "number", ["number"]);
 const combo_box_item_t_get_prop_checked = Module.cwrap("combo_box_item_t_get_prop_checked", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const dialog_client_create = Module.cwrap("dialog_client_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const dialog_client_cast = Module.cwrap("dialog_client_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const dialog_title_create = Module.cwrap("dialog_title_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const dialog_title_cast = Module.cwrap("dialog_title_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const digit_clock_create = Module.cwrap("digit_clock_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const digit_clock_cast = Module.cwrap("digit_clock_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const digit_clock_set_format = Module.cwrap("digit_clock_set_format", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const digit_clock_t_get_prop_format = Module.cwrap("digit_clock_t_get_prop_format", 
     "string", ["number"]);
 const dragger_create = Module.cwrap("dragger_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const dragger_cast = Module.cwrap("dragger_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const dragger_set_range = Module.cwrap("dragger_set_range", 
-    "TRet", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const dragger_t_get_prop_x_min = Module.cwrap("dragger_t_get_prop_x_min", 
     "number", ["number"]);
 const dragger_t_get_prop_y_min = Module.cwrap("dragger_t_get_prop_y_min", 
@@ -3729,57 +3729,57 @@ const dragger_t_get_prop_x_max = Module.cwrap("dragger_t_get_prop_x_max",
 const dragger_t_get_prop_y_max = Module.cwrap("dragger_t_get_prop_y_max", 
     "number", ["number"]);
 const edit_create = Module.cwrap("edit_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const edit_cast = Module.cwrap("edit_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const edit_get_int = Module.cwrap("edit_get_int", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const edit_get_double = Module.cwrap("edit_get_double", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const edit_set_int = Module.cwrap("edit_set_int", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const edit_set_double = Module.cwrap("edit_set_double", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const edit_set_text_limit = Module.cwrap("edit_set_text_limit", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const edit_set_int_limit = Module.cwrap("edit_set_int_limit", 
-    "TRet", ["TWidget","number","number","number"]);
+    "number", ["number","number","number","number"]);
 const edit_set_float_limit = Module.cwrap("edit_set_float_limit", 
-    "TRet", ["TWidget","number","number","number"]);
+    "number", ["number","number","number","number"]);
 const edit_set_readonly = Module.cwrap("edit_set_readonly", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const edit_set_cancelable = Module.cwrap("edit_set_cancelable", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const edit_set_auto_fix = Module.cwrap("edit_set_auto_fix", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const edit_set_select_none_when_focused = Module.cwrap("edit_set_select_none_when_focused", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const edit_set_open_im_when_focused = Module.cwrap("edit_set_open_im_when_focused", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const edit_set_close_im_when_blured = Module.cwrap("edit_set_close_im_when_blured", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const edit_set_input_type = Module.cwrap("edit_set_input_type", 
-    "TRet", ["TWidget","TInputType"]);
+    "number", ["number","number"]);
 const edit_set_action_text = Module.cwrap("edit_set_action_text", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const edit_set_tips = Module.cwrap("edit_set_tips", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const edit_set_tr_tips = Module.cwrap("edit_set_tr_tips", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const edit_set_keyboard = Module.cwrap("edit_set_keyboard", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const edit_set_password_visible = Module.cwrap("edit_set_password_visible", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const edit_set_focus = Module.cwrap("edit_set_focus", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const edit_set_cursor = Module.cwrap("edit_set_cursor", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const edit_get_cursor = Module.cwrap("edit_get_cursor", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const edit_set_select = Module.cwrap("edit_set_select", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const edit_get_selected_text = Module.cwrap("edit_get_selected_text", 
-    "string", ["TWidget"]);
+    "string", ["number"]);
 const edit_t_get_prop_tips = Module.cwrap("edit_t_get_prop_tips", 
     "string", ["number"]);
 const edit_t_get_prop_tr_tips = Module.cwrap("edit_t_get_prop_tr_tips", 
@@ -3795,83 +3795,83 @@ const edit_t_get_prop_max = Module.cwrap("edit_t_get_prop_max",
 const edit_t_get_prop_step = Module.cwrap("edit_t_get_prop_step", 
     "number", ["number"]);
 const edit_t_get_prop_input_type = Module.cwrap("edit_t_get_prop_input_type", 
-    "TInputType", ["number"]);
+    "number", ["number"]);
 const edit_t_get_prop_readonly = Module.cwrap("edit_t_get_prop_readonly", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const edit_t_get_prop_password_visible = Module.cwrap("edit_t_get_prop_password_visible", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const edit_t_get_prop_auto_fix = Module.cwrap("edit_t_get_prop_auto_fix", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const edit_t_get_prop_select_none_when_focused = Module.cwrap("edit_t_get_prop_select_none_when_focused", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const edit_t_get_prop_open_im_when_focused = Module.cwrap("edit_t_get_prop_open_im_when_focused", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const edit_t_get_prop_close_im_when_blured = Module.cwrap("edit_t_get_prop_close_im_when_blured", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const edit_t_get_prop_cancelable = Module.cwrap("edit_t_get_prop_cancelable", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const grid_item_create = Module.cwrap("grid_item_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const grid_item_cast = Module.cwrap("grid_item_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const grid_create = Module.cwrap("grid_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const grid_cast = Module.cwrap("grid_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const group_box_create = Module.cwrap("group_box_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const group_box_cast = Module.cwrap("group_box_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const label_create = Module.cwrap("label_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const label_set_length = Module.cwrap("label_set_length", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const label_set_max_w = Module.cwrap("label_set_max_w", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const label_set_line_wrap = Module.cwrap("label_set_line_wrap", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const label_set_word_wrap = Module.cwrap("label_set_word_wrap", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const label_resize_to_content = Module.cwrap("label_resize_to_content", 
-    "TRet", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const label_cast = Module.cwrap("label_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const label_t_get_prop_length = Module.cwrap("label_t_get_prop_length", 
     "number", ["number"]);
 const label_t_get_prop_line_wrap = Module.cwrap("label_t_get_prop_line_wrap", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const label_t_get_prop_word_wrap = Module.cwrap("label_t_get_prop_word_wrap", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const label_t_get_prop_max_w = Module.cwrap("label_t_get_prop_max_w", 
     "number", ["number"]);
 const pages_create = Module.cwrap("pages_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const pages_cast = Module.cwrap("pages_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const pages_set_active = Module.cwrap("pages_set_active", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const pages_set_active_by_name = Module.cwrap("pages_set_active_by_name", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const pages_t_get_prop_active = Module.cwrap("pages_t_get_prop_active", 
     "number", ["number"]);
 const progress_bar_create = Module.cwrap("progress_bar_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const progress_bar_cast = Module.cwrap("progress_bar_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const progress_bar_set_value = Module.cwrap("progress_bar_set_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const progress_bar_set_max = Module.cwrap("progress_bar_set_max", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const progress_bar_set_format = Module.cwrap("progress_bar_set_format", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const progress_bar_set_vertical = Module.cwrap("progress_bar_set_vertical", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const progress_bar_set_show_text = Module.cwrap("progress_bar_set_show_text", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const progress_bar_set_reverse = Module.cwrap("progress_bar_set_reverse", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const progress_bar_get_percent = Module.cwrap("progress_bar_get_percent", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const progress_bar_t_get_prop_value = Module.cwrap("progress_bar_t_get_prop_value", 
     "number", ["number"]);
 const progress_bar_t_get_prop_max = Module.cwrap("progress_bar_t_get_prop_max", 
@@ -3879,31 +3879,31 @@ const progress_bar_t_get_prop_max = Module.cwrap("progress_bar_t_get_prop_max",
 const progress_bar_t_get_prop_format = Module.cwrap("progress_bar_t_get_prop_format", 
     "string", ["number"]);
 const progress_bar_t_get_prop_vertical = Module.cwrap("progress_bar_t_get_prop_vertical", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const progress_bar_t_get_prop_show_text = Module.cwrap("progress_bar_t_get_prop_show_text", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const progress_bar_t_get_prop_reverse = Module.cwrap("progress_bar_t_get_prop_reverse", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const row_create = Module.cwrap("row_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const row_cast = Module.cwrap("row_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const slider_create = Module.cwrap("slider_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const slider_cast = Module.cwrap("slider_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const slider_set_value = Module.cwrap("slider_set_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slider_set_min = Module.cwrap("slider_set_min", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slider_set_max = Module.cwrap("slider_set_max", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slider_set_step = Module.cwrap("slider_set_step", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slider_set_bar_size = Module.cwrap("slider_set_bar_size", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const slider_set_vertical = Module.cwrap("slider_set_vertical", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const slider_t_get_prop_value = Module.cwrap("slider_t_get_prop_value", 
     "number", ["number"]);
 const slider_t_get_prop_min = Module.cwrap("slider_t_get_prop_min", 
@@ -3913,41 +3913,41 @@ const slider_t_get_prop_max = Module.cwrap("slider_t_get_prop_max",
 const slider_t_get_prop_step = Module.cwrap("slider_t_get_prop_step", 
     "number", ["number"]);
 const slider_t_get_prop_vertical = Module.cwrap("slider_t_get_prop_vertical", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const slider_t_get_prop_bar_size = Module.cwrap("slider_t_get_prop_bar_size", 
     "number", ["number"]);
 const slider_t_get_prop_dragger_size = Module.cwrap("slider_t_get_prop_dragger_size", 
     "number", ["number"]);
 const slider_t_get_prop_dragger_adapt_to_icon = Module.cwrap("slider_t_get_prop_dragger_adapt_to_icon", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const slider_t_get_prop_slide_with_bar = Module.cwrap("slider_t_get_prop_slide_with_bar", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const tab_button_group_create = Module.cwrap("tab_button_group_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const tab_button_group_set_compact = Module.cwrap("tab_button_group_set_compact", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const tab_button_group_set_scrollable = Module.cwrap("tab_button_group_set_scrollable", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const tab_button_group_cast = Module.cwrap("tab_button_group_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const tab_button_group_t_get_prop_compact = Module.cwrap("tab_button_group_t_get_prop_compact", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const tab_button_group_t_get_prop_scrollable = Module.cwrap("tab_button_group_t_get_prop_scrollable", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const tab_button_create = Module.cwrap("tab_button_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const tab_button_cast = Module.cwrap("tab_button_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const tab_button_set_value = Module.cwrap("tab_button_set_value", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const tab_button_set_icon = Module.cwrap("tab_button_set_icon", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const tab_button_set_active_icon = Module.cwrap("tab_button_set_active_icon", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const tab_button_set_load_ui = Module.cwrap("tab_button_set_load_ui", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const tab_button_t_get_prop_value = Module.cwrap("tab_button_t_get_prop_value", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const tab_button_t_get_prop_load_ui = Module.cwrap("tab_button_t_get_prop_load_ui", 
     "string", ["number"]);
 const tab_button_t_get_prop_active_icon = Module.cwrap("tab_button_t_get_prop_active_icon", 
@@ -3955,187 +3955,187 @@ const tab_button_t_get_prop_active_icon = Module.cwrap("tab_button_t_get_prop_ac
 const tab_button_t_get_prop_icon = Module.cwrap("tab_button_t_get_prop_icon", 
     "string", ["number"]);
 const tab_control_create = Module.cwrap("tab_control_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const tab_control_cast = Module.cwrap("tab_control_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const view_create = Module.cwrap("view_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const view_set_default_focused_child = Module.cwrap("view_set_default_focused_child", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const view_cast = Module.cwrap("view_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const view_t_get_prop_default_focused_child = Module.cwrap("view_t_get_prop_default_focused_child", 
     "string", ["number"]);
 const dialog_create = Module.cwrap("dialog_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const dialog_create_simple = Module.cwrap("dialog_create_simple", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const dialog_cast = Module.cwrap("dialog_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const dialog_get_title = Module.cwrap("dialog_get_title", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const dialog_get_client = Module.cwrap("dialog_get_client", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const dialog_open = Module.cwrap("dialog_open", 
-    "TWidget", ["string"]);
+    "number", ["string"]);
 const dialog_set_title = Module.cwrap("dialog_set_title", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const dialog_modal = Module.cwrap("dialog_modal", 
-    "TDialogQuitCode", ["TWidget"]);
+    "number", ["number"]);
 const dialog_quit = Module.cwrap("dialog_quit", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const dialog_is_quited = Module.cwrap("dialog_is_quited", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const dialog_is_modal = Module.cwrap("dialog_is_modal", 
-    "boolean", ["TWidget"]);
+    "number", ["number"]);
 const dialog_toast = Module.cwrap("dialog_toast", 
-    "TRet", ["string","number"]);
+    "number", ["string","number"]);
 const dialog_info = Module.cwrap("dialog_info", 
-    "TRet", ["string","string"]);
+    "number", ["string","string"]);
 const dialog_warn = Module.cwrap("dialog_warn", 
-    "TRet", ["string","string"]);
+    "number", ["string","string"]);
 const dialog_confirm = Module.cwrap("dialog_confirm", 
-    "TRet", ["string","string"]);
+    "number", ["string","string"]);
 const dialog_t_get_prop_highlight = Module.cwrap("dialog_t_get_prop_highlight", 
     "string", ["number"]);
 const native_window_move = Module.cwrap("native_window_move", 
-    "TRet", ["TNativeWindow","number","number","boolean"]);
+    "number", ["number","number","number","number"]);
 const native_window_resize = Module.cwrap("native_window_resize", 
-    "TRet", ["TNativeWindow","number","number","boolean"]);
+    "number", ["number","number","number","number"]);
 const native_window_minimize = Module.cwrap("native_window_minimize", 
-    "TRet", ["TNativeWindow"]);
+    "number", ["number"]);
 const native_window_maximize = Module.cwrap("native_window_maximize", 
-    "TRet", ["TNativeWindow"]);
+    "number", ["number"]);
 const native_window_restore = Module.cwrap("native_window_restore", 
-    "TRet", ["TNativeWindow"]);
+    "number", ["number"]);
 const native_window_center = Module.cwrap("native_window_center", 
-    "TRet", ["TNativeWindow"]);
+    "number", ["number"]);
 const native_window_show_border = Module.cwrap("native_window_show_border", 
-    "TRet", ["TNativeWindow","boolean"]);
+    "number", ["number","number"]);
 const native_window_set_fullscreen = Module.cwrap("native_window_set_fullscreen", 
-    "TRet", ["TNativeWindow","boolean"]);
+    "number", ["number","number"]);
 const native_window_set_cursor = Module.cwrap("native_window_set_cursor", 
-    "TRet", ["TNativeWindow","string","TBitmap"]);
+    "number", ["number","string","number"]);
 const window_create = Module.cwrap("window_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const window_create_default = Module.cwrap("window_create_default", 
-    "TWidget", []);
+    "number", []);
 const window_set_fullscreen = Module.cwrap("window_set_fullscreen", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const window_set_auto_scale_children = Module.cwrap("window_set_auto_scale_children", 
-    "TRet", ["TWidget","number","number"]);
+    "number", ["number","number","number"]);
 const window_open = Module.cwrap("window_open", 
-    "TWidget", ["string"]);
+    "number", ["string"]);
 const window_open_and_close = Module.cwrap("window_open_and_close", 
-    "TWidget", ["string","TWidget"]);
+    "number", ["string","number"]);
 const window_close = Module.cwrap("window_close", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const window_close_force = Module.cwrap("window_close_force", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const window_cast = Module.cwrap("window_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const window_t_get_prop_fullscreen = Module.cwrap("window_t_get_prop_fullscreen", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const gif_image_create = Module.cwrap("gif_image_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const gif_image_play = Module.cwrap("gif_image_play", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const gif_image_stop = Module.cwrap("gif_image_stop", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const gif_image_pause = Module.cwrap("gif_image_pause", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const gif_image_cast = Module.cwrap("gif_image_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const keyboard_create = Module.cwrap("keyboard_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const keyboard_cast = Module.cwrap("keyboard_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const mutable_image_create = Module.cwrap("mutable_image_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const svg_image_create = Module.cwrap("svg_image_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const svg_image_set_image = Module.cwrap("svg_image_set_image", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const svg_image_cast = Module.cwrap("svg_image_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const idle_info_cast = Module.cwrap("idle_info_cast", 
-    "TIdleInfo", ["TIdleInfo"]);
+    "number", ["number"]);
 const idle_info_t_get_prop_ctx = Module.cwrap("idle_info_t_get_prop_ctx", 
-    "any", ["number"]);
+    "number", ["number"]);
 const idle_info_t_get_prop_extra_ctx = Module.cwrap("idle_info_t_get_prop_extra_ctx", 
-    "any", ["number"]);
+    "number", ["number"]);
 const idle_info_t_get_prop_id = Module.cwrap("idle_info_t_get_prop_id", 
     "number", ["number"]);
 const object_array_create = Module.cwrap("object_array_create", 
-    "TObject", []);
+    "number", []);
 const object_array_unref = Module.cwrap("object_array_unref", 
-    "TRet", ["TObject"]);
+    "number", ["number"]);
 const object_array_clear_props = Module.cwrap("object_array_clear_props", 
-    "TRet", ["TObject"]);
+    "number", ["number"]);
 const object_array_insert = Module.cwrap("object_array_insert", 
-    "TRet", ["TObject","number","TValue"]);
+    "number", ["number","number","number"]);
 const object_array_push = Module.cwrap("object_array_push", 
-    "TRet", ["TObject","TValue"]);
+    "number", ["number","number"]);
 const object_array_index_of = Module.cwrap("object_array_index_of", 
-    "number", ["TObject","TValue"]);
+    "number", ["number","number"]);
 const object_array_last_index_of = Module.cwrap("object_array_last_index_of", 
-    "number", ["TObject","TValue"]);
+    "number", ["number","number"]);
 const object_array_remove = Module.cwrap("object_array_remove", 
-    "TRet", ["TObject","number"]);
+    "number", ["number","number"]);
 const object_array_get_and_remove = Module.cwrap("object_array_get_and_remove", 
-    "TRet", ["TObject","number","TValue"]);
+    "number", ["number","number","number"]);
 const object_array_t_get_prop_size = Module.cwrap("object_array_t_get_prop_size", 
     "number", ["number"]);
 const object_default_create = Module.cwrap("object_default_create", 
-    "TObject", []);
+    "number", []);
 const object_default_unref = Module.cwrap("object_default_unref", 
-    "TRet", ["TObject"]);
+    "number", ["number"]);
 const object_default_clear_props = Module.cwrap("object_default_clear_props", 
-    "TRet", ["TObject"]);
+    "number", ["number"]);
 const object_default_t_get_prop_props_size = Module.cwrap("object_default_t_get_prop_props_size", 
     "number", ["number"]);
 const timer_info_cast = Module.cwrap("timer_info_cast", 
-    "TTimerInfo", ["TTimerInfo"]);
+    "number", ["number"]);
 const timer_info_t_get_prop_ctx = Module.cwrap("timer_info_t_get_prop_ctx", 
-    "any", ["number"]);
+    "number", ["number"]);
 const timer_info_t_get_prop_extra_ctx = Module.cwrap("timer_info_t_get_prop_extra_ctx", 
-    "any", ["number"]);
+    "number", ["number"]);
 const timer_info_t_get_prop_id = Module.cwrap("timer_info_t_get_prop_id", 
     "number", ["number"]);
 const timer_info_t_get_prop_now = Module.cwrap("timer_info_t_get_prop_now", 
     "number", ["number"]);
 const calibration_win_create = Module.cwrap("calibration_win_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const calibration_win_cast = Module.cwrap("calibration_win_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const combo_box_create = Module.cwrap("combo_box_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const combo_box_cast = Module.cwrap("combo_box_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const combo_box_set_open_window = Module.cwrap("combo_box_set_open_window", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const combo_box_reset_options = Module.cwrap("combo_box_reset_options", 
-    "TRet", ["TWidget"]);
+    "number", ["number"]);
 const combo_box_count_options = Module.cwrap("combo_box_count_options", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const combo_box_set_selected_index = Module.cwrap("combo_box_set_selected_index", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const combo_box_set_localize_options = Module.cwrap("combo_box_set_localize_options", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const combo_box_set_value = Module.cwrap("combo_box_set_value", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const combo_box_set_item_height = Module.cwrap("combo_box_set_item_height", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const combo_box_append_option = Module.cwrap("combo_box_append_option", 
-    "TRet", ["TWidget","number","string"]);
+    "number", ["number","number","string"]);
 const combo_box_remove_option = Module.cwrap("combo_box_remove_option", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const combo_box_set_options = Module.cwrap("combo_box_set_options", 
-    "TRet", ["TWidget","string"]);
+    "number", ["number","string"]);
 const combo_box_get_value = Module.cwrap("combo_box_get_value", 
-    "number", ["TWidget"]);
+    "number", ["number"]);
 const combo_box_get_text = Module.cwrap("combo_box_get_text", 
-    "string", ["TWidget"]);
+    "string", ["number"]);
 const combo_box_t_get_prop_open_window = Module.cwrap("combo_box_t_get_prop_open_window", 
     "string", ["number"]);
 const combo_box_t_get_prop_selected_index = Module.cwrap("combo_box_t_get_prop_selected_index", 
@@ -4143,57 +4143,57 @@ const combo_box_t_get_prop_selected_index = Module.cwrap("combo_box_t_get_prop_s
 const combo_box_t_get_prop_value = Module.cwrap("combo_box_t_get_prop_value", 
     "number", ["number"]);
 const combo_box_t_get_prop_localize_options = Module.cwrap("combo_box_t_get_prop_localize_options", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const combo_box_t_get_prop_options = Module.cwrap("combo_box_t_get_prop_options", 
     "string", ["number"]);
 const combo_box_t_get_prop_item_height = Module.cwrap("combo_box_t_get_prop_item_height", 
     "number", ["number"]);
 const image_create = Module.cwrap("image_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const image_set_draw_type = Module.cwrap("image_set_draw_type", 
-    "TRet", ["TWidget","TImageDrawType"]);
+    "number", ["number","number"]);
 const image_cast = Module.cwrap("image_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const image_t_get_prop_draw_type = Module.cwrap("image_t_get_prop_draw_type", 
-    "TImageDrawType", ["number"]);
+    "number", ["number"]);
 const overlay_create = Module.cwrap("overlay_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const overlay_set_click_through = Module.cwrap("overlay_set_click_through", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const overlay_set_always_on_top = Module.cwrap("overlay_set_always_on_top", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const overlay_cast = Module.cwrap("overlay_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const overlay_t_get_prop_click_through = Module.cwrap("overlay_t_get_prop_click_through", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const overlay_t_get_prop_always_on_top = Module.cwrap("overlay_t_get_prop_always_on_top", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const popup_create = Module.cwrap("popup_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const popup_cast = Module.cwrap("popup_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const popup_set_close_when_click = Module.cwrap("popup_set_close_when_click", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const popup_set_close_when_click_outside = Module.cwrap("popup_set_close_when_click_outside", 
-    "TRet", ["TWidget","boolean"]);
+    "number", ["number","number"]);
 const popup_set_close_when_timeout = Module.cwrap("popup_set_close_when_timeout", 
-    "TRet", ["TWidget","number"]);
+    "number", ["number","number"]);
 const popup_t_get_prop_close_when_click = Module.cwrap("popup_t_get_prop_close_when_click", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const popup_t_get_prop_close_when_click_outside = Module.cwrap("popup_t_get_prop_close_when_click_outside", 
-    "boolean", ["number"]);
+    "number", ["number"]);
 const popup_t_get_prop_close_when_timeout = Module.cwrap("popup_t_get_prop_close_when_timeout", 
     "number", ["number"]);
 const spin_box_create = Module.cwrap("spin_box_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const spin_box_cast = Module.cwrap("spin_box_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const system_bar_create = Module.cwrap("system_bar_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 const system_bar_cast = Module.cwrap("system_bar_cast", 
-    "TWidget", ["TWidget"]);
+    "number", ["number"]);
 const combo_box_ex_create = Module.cwrap("combo_box_ex_create", 
-    "TWidget", ["TWidget","number","number","number","number"]);
+    "number", ["number","number","number","number","number"]);
 
 /**
  * 事件分发器, 用于实现观察者模式。
@@ -4254,7 +4254,7 @@ export class TEmitter {
    * @returns 返回id，用于emitter_off。
    */
  on(etype : TEventType, handler : Function, ctx : any) : number  {
-    return emitter_on(this != null ? (this.nativeObj || this) : null, etype, handler, ctx);
+    return emitter_on(this != null ? (this.nativeObj || this) : null, etype, TBrowser.addFunction(wrap_on_event(handler), "iii"), ctx);
  }
 
 
@@ -7464,7 +7464,7 @@ export class TIdle {
    * @returns 返回idle的ID，0表示失败。
    */
  static add(on_idle : Function, ctx : any) : number  {
-    return idle_add(on_idle, ctx);
+    return idle_add(TBrowser.addFunction(on_idle, "ii"), ctx);
  }
 
 
@@ -9087,7 +9087,7 @@ export class TTimer {
    * @returns 返回timer的ID，TK_INVALID_ID表示失败。
    */
  static add(on_timer : Function, ctx : any, duration : number) : number  {
-    return timer_add(on_timer, ctx, duration);
+    return timer_add(TBrowser.addFunction(on_timer, "ii"), ctx, duration);
  }
 
 
@@ -12637,7 +12637,7 @@ export class TWidget {
    * @returns 返回id，用于widget_off。
    */
  on(type : TEventType, on_event : Function, ctx : any) : number  {
-    return widget_on(this != null ? (this.nativeObj || this) : null, type, on_event, ctx);
+    return widget_on(this != null ? (this.nativeObj || this) : null, type, TBrowser.addFunction(wrap_on_event(on_event), "iii"), ctx);
  }
 
 
@@ -12945,7 +12945,7 @@ export class TWidget {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  foreach(visit : Function, ctx : any) : TRet  {
-    return widget_foreach(this != null ? (this.nativeObj || this) : null, visit, ctx);
+    return widget_foreach(this != null ? (this.nativeObj || this) : null, TBrowser.addFunction(wrap_on_visit(visit), "iii"), ctx);
  }
 
 
