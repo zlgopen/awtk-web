@@ -118,7 +118,8 @@ def build_app_js(config):
     sources = config['sources']
     output = join_path(config_get_js_dir(config), 'app.js')
     if(need_awtk_api_js(config)):
-        app_files.append('gen/ts/awtk_api.js')
+        app_files.append('api/awtk_api_browser_prefix.js')
+        app_files.append('api/awtk_api.js')
     for f in sources:
         if f.endswith('.js'):
             app_files = app_files + glob.glob(join_path(src_app_root, f))
