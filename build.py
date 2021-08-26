@@ -248,7 +248,7 @@ def build_awtk_js(src_app_root, config, flags):
         for f in includes_files:
             includes_path += ('-I ' + join_path(src_app_root, f) + " ")
 
-    COMMON_FLAGS = ' ' + flags + ' -Werror '
+    COMMON_FLAGS = ' ' + flags + ' '
     COMMON_FLAGS = COMMON_FLAGS + ' -DSAFE_HEAP=1 -DASSERTIONS=1 -DSTACK_OVERFLOW_CHECK=1 '
     COMMON_FLAGS = COMMON_FLAGS + \
         ' -s EXTRA_EXPORTED_RUNTIME_METHODS=@configs/export_runtime_funcs.json '
