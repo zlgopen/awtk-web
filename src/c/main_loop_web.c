@@ -38,6 +38,7 @@ ret_t main_loop_web_step(main_loop_t *l) {
 
   timer_dispatch();
   idle_dispatch();
+  window_manager_check_and_layout(loop->base.wm);
   window_manager_paint(loop->base.wm);
 
   return RET_OK;
