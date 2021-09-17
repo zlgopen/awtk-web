@@ -3630,6 +3630,49 @@
             "type": "wh_t",
             "name": "h",
             "desc": "高度。"
+          },
+          {
+            "type": "gradient_t*",
+            "name": "gradient",
+            "desc": "渐变颜色。"
+          }
+        ],
+        "annotation": {
+          "scriptable": true
+        },
+        "desc": "绘制矩形。",
+        "name": "canvas_fill_rect_gradient",
+        "return": {
+          "type": "ret_t",
+          "desc": "返回RET_OK表示成功，否则表示失败。"
+        }
+      },
+      {
+        "params": [
+          {
+            "type": "canvas_t*",
+            "name": "c",
+            "desc": "canvas对象。"
+          },
+          {
+            "type": "xy_t",
+            "name": "x",
+            "desc": "x坐标。"
+          },
+          {
+            "type": "xy_t",
+            "name": "y",
+            "desc": "y坐标。"
+          },
+          {
+            "type": "wh_t",
+            "name": "w",
+            "desc": "宽度。"
+          },
+          {
+            "type": "wh_t",
+            "name": "h",
+            "desc": "高度。"
           }
         ],
         "annotation": {
@@ -14706,6 +14749,10 @@
       {
         "desc": "特殊用途。",
         "name": "VALUE_TYPE_TOKEN"
+      },
+      {
+        "desc": "渐变颜色。",
+        "name": "VALUE_TYPE_GRADIENT"
       }
     ],
     "header": "tkc/value.h",
@@ -14951,6 +14998,15 @@
       {
         "name": "orientation",
         "desc": "屏幕方向。",
+        "type": "int32_t",
+        "annotation": {
+          "readable": true,
+          "scriptable": true
+        }
+      },
+      {
+        "name": "old_orientation",
+        "desc": "旧的屏幕方向。",
         "type": "int32_t",
         "annotation": {
           "readable": true,
@@ -19762,6 +19818,29 @@
             "desc": "widget对象。"
           },
           {
+            "type": "bool_t",
+            "name": "overwrite",
+            "desc": "是否启用覆盖行。"
+          }
+        ],
+        "annotation": {
+          "scriptable": true
+        },
+        "desc": "设置编辑器是否启用覆盖行（在行数达到最大行数时，可继续新增行，但最早的行将会消失）。",
+        "name": "mledit_set_overwrite",
+        "return": {
+          "type": "ret_t",
+          "desc": "返回RET_OK表示成功，否则表示失败。"
+        }
+      },
+      {
+        "params": [
+          {
+            "type": "widget_t*",
+            "name": "widget",
+            "desc": "widget对象。"
+          },
+          {
             "type": "uint32_t",
             "name": "max_lines",
             "desc": "最大行数。"
@@ -20053,6 +20132,34 @@
           {
             "type": "widget_t*",
             "name": "widget",
+            "desc": "widget对象。"
+          },
+          {
+            "type": "uint32_t",
+            "name": "offset",
+            "desc": "插入的偏移位置。"
+          },
+          {
+            "type": "const char*",
+            "name": "text",
+            "desc": "待插入的文本。"
+          }
+        ],
+        "annotation": {
+          "scriptable": true
+        },
+        "desc": "插入一段文本。",
+        "name": "mledit_insert_text",
+        "return": {
+          "type": "ret_t",
+          "desc": "返回RET_OK表示成功，否则表示失败。"
+        }
+      },
+      {
+        "params": [
+          {
+            "type": "widget_t*",
+            "name": "widget",
             "desc": "mledit对象。"
           }
         ],
@@ -20147,8 +20254,21 @@
         }
       },
       {
-        "name": "wrap_word",
-        "desc": "是否自动折行。",
+        "name": "scroll_line",
+        "desc": "鼠标一次滚动行数。",
+        "type": "uint32_t",
+        "annotation": {
+          "set_prop": true,
+          "get_prop": true,
+          "readable": true,
+          "persitent": true,
+          "design": true,
+          "scriptable": true
+        }
+      },
+      {
+        "name": "overwrite",
+        "desc": "是否启用覆盖行。",
         "type": "bool_t",
         "annotation": {
           "set_prop": true,
@@ -20160,9 +20280,9 @@
         }
       },
       {
-        "name": "scroll_line",
-        "desc": "鼠标一次滚动行数。",
-        "type": "uint32_t",
+        "name": "wrap_word",
+        "desc": "是否自动折行。",
+        "type": "bool_t",
         "annotation": {
           "set_prop": true,
           "get_prop": true,
@@ -21231,7 +21351,7 @@
       }
     ],
     "header": "scroll_label/hscroll_label.h",
-    "desc": "可水平滚动的文本控件，方便实现长文本滚动。\n\n\nhscroll\\_label\\_t是[widget\\_t](widget_t.md)的子类控件，widget\\_t的函数均适用于hscroll\\_label\\_t控件。\n\n在xml中使用\"hscroll\\_label\"标签创建行号控件，一般配合mledit使用。如：\n\n```xml\n```\n\n> 更多用法请参考：[mledit.xml](\nhttps://github.com/zlgopen/awtk/blob/master/design/default/ui/mledit.xml)\n\n可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：\n\n```xml\n<style name=\"default\" text_color=\"black\">\n<normal   />\n<focused  />\n</style>\n```\n\n> 更多用法请参考：\n[theme default](\nhttps://github.com/zlgopen/awtk/blob/master/design/default/styles/default.xml)",
+    "desc": "可水平滚动的文本控件，方便实现长文本滚动。\n\n\nhscroll\\_label\\_t是[widget\\_t](widget_t.md)的子类控件，widget\\_t的函数均适用于hscroll\\_label\\_t控件。\n\n> 更多用法请参考：[hscroll_label.xml](\nhttps://github.com/zlgopen/awtk/blob/master/design/default/ui/hscroll_label.xml)\n\n可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：\n\n```xml\n<style name=\"default\" text_color=\"black\">\n<normal   />\n<focused  />\n</style>\n```\n\n> 更多用法请参考：\n[theme default](\nhttps://github.com/zlgopen/awtk/blob/master/design/default/styles/default.xml)",
     "name": "hscroll_label_t",
     "parent": "widget_t",
     "annotation": {
@@ -27499,7 +27619,7 @@
       },
       {
         "name": "keyboard",
-        "desc": "自定义软键盘名称。AWTK优先查找keyboard属性设置的键盘文件名（该键盘的XML文件需要在default\\raw\\ui目录下存在），如果keyboard为空就找input_type设置的键盘类型",
+        "desc": "自定义软键盘名称。AWTK优先查找keyboard属性设置的键盘文件名（该键盘的XML文件需要在default\\raw\\ui目录下存在），如果没有指定keyboard，就找input_type设置的键盘类型。如果指定为空字符串，则表示不需要软键盘。",
         "type": "char*",
         "annotation": {
           "set_prop": true,
@@ -30063,6 +30183,34 @@
             "type": "native_window_t*",
             "name": "win",
             "desc": "win对象。"
+          },
+          {
+            "type": "lcd_orientation_t",
+            "name": "old_orientation",
+            "desc": "旧的旋转角度。"
+          },
+          {
+            "type": "lcd_orientation_t",
+            "name": "new_orientation",
+            "desc": "新的旋转角度。"
+          }
+        ],
+        "annotation": {
+          "scriptable": true
+        },
+        "desc": "调整窗口旋转。",
+        "name": "native_window_set_orientation",
+        "return": {
+          "type": "ret_t",
+          "desc": "返回RET_OK表示成功，否则表示失败。"
+        }
+      },
+      {
+        "params": [
+          {
+            "type": "native_window_t*",
+            "name": "win",
+            "desc": "win对象。"
           }
         ],
         "annotation": {
@@ -31116,6 +31264,26 @@
       {
         "params": [
           {
+            "type": "bool_t",
+            "name": "enable_path",
+            "desc": "是否支持按路径访问属性。"
+          }
+        ],
+        "annotation": {
+          "constructor": true,
+          "scriptable": true,
+          "gc": true
+        },
+        "desc": "创建对象。",
+        "name": "object_default_create_ex",
+        "return": {
+          "type": "object_t*",
+          "desc": "返回object对象。"
+        }
+      },
+      {
+        "params": [
+          {
             "type": "object_t*",
             "name": "obj",
             "desc": "对象。"
@@ -31153,17 +31321,7 @@
       }
     ],
     "events": [],
-    "properties": [
-      {
-        "name": "props_size",
-        "desc": "属性个数。",
-        "type": "uint32_t",
-        "annotation": {
-          "readable": true,
-          "scriptable": true
-        }
-      }
-    ],
+    "properties": [],
     "header": "tkc/object_default.h",
     "desc": "对象接口的缺省实现。\n\n内部使用有序数组保存所有属性，可以快速查找指定名称的属性。",
     "name": "object_default_t",

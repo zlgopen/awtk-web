@@ -3692,6 +3692,10 @@ int32_t get_VALUE_TYPE_TOKEN (void) {
   return VALUE_TYPE_TOKEN;
 }
 
+int32_t get_VALUE_TYPE_GRADIENT (void) {
+  return VALUE_TYPE_GRADIENT;
+}
+
 int32_t wheel_event_t_get_prop_dy (wheel_event_t* obj) {
   return obj->dy;
 }
@@ -3710,6 +3714,10 @@ bool_t wheel_event_t_get_prop_shift (wheel_event_t* obj) {
 
 int32_t orientation_event_t_get_prop_orientation (orientation_event_t* obj) {
   return obj->orientation;
+}
+
+int32_t orientation_event_t_get_prop_old_orientation (orientation_event_t* obj) {
+  return obj->old_orientation;
 }
 
 xy_t pointer_event_t_get_prop_x (pointer_event_t* obj) {
@@ -4136,12 +4144,16 @@ uint32_t mledit_t_get_prop_max_chars (mledit_t* obj) {
   return obj->max_chars;
 }
 
-bool_t mledit_t_get_prop_wrap_word (mledit_t* obj) {
-  return obj->wrap_word;
-}
-
 uint32_t mledit_t_get_prop_scroll_line (mledit_t* obj) {
   return obj->scroll_line;
+}
+
+bool_t mledit_t_get_prop_overwrite (mledit_t* obj) {
+  return obj->overwrite;
+}
+
+bool_t mledit_t_get_prop_wrap_word (mledit_t* obj) {
+  return obj->wrap_word;
 }
 
 bool_t mledit_t_get_prop_readonly (mledit_t* obj) {
@@ -4778,10 +4790,6 @@ uint32_t idle_info_t_get_prop_id (idle_info_t* obj) {
 
 uint32_t object_array_t_get_prop_size (object_array_t* obj) {
   return obj->size;
-}
-
-uint32_t object_default_t_get_prop_props_size (object_default_t* obj) {
-  return obj->props_size;
 }
 
 void* timer_info_t_get_prop_ctx (timer_info_t* obj) {

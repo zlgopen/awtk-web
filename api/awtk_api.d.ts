@@ -1458,6 +1458,18 @@ export declare class TCanvas {
      */
     fillRect(x: number, y: number, w: number, h: number): TRet;
     /**
+     * 绘制矩形。
+     *
+     * @param x x坐标。
+     * @param y y坐标。
+     * @param w 宽度。
+     * @param h 高度。
+     * @param gradient 渐变颜色。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    fillRectGradient(x: number, y: number, w: number, h: number, gradient: any): TRet;
+    /**
      * 用填充颜色填充指定矩形。
      *
      *> 如果lcd的颜色格式带alpha通道，连同alpha的值一起修改。
@@ -8572,7 +8584,12 @@ export declare enum TValueType {
      * 特殊用途。
      *
      */
-    TOKEN
+    TOKEN,
+    /**
+     * 渐变颜色。
+     *
+     */
+    GRADIENT
 }
 /**
  * 资源管理器。
@@ -8708,6 +8725,11 @@ export declare class TOrientationEvent extends TEvent {
      *
      */
     get orientation(): number;
+    /**
+     * 旧的屏幕方向。
+     *
+     */
+    get oldOrientation(): number;
 }
 /**
  * 值变化事件。
@@ -10949,6 +10971,14 @@ export declare class TMledit extends TWidget {
      */
     setWrapWord(wrap_word: boolean): TRet;
     /**
+     * 设置编辑器是否启用覆盖行（在行数达到最大行数时，可继续新增行，但最早的行将会消失）。
+     *
+     * @param overwrite 是否启用覆盖行。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setOverwrite(overwrite: boolean): TRet;
+    /**
      * 设置编辑器的最大行数。
      *
      * @param max_lines 最大行数。
@@ -11056,6 +11086,15 @@ export declare class TMledit extends TWidget {
      */
     getSelectedText(): string;
     /**
+     * 插入一段文本。
+     *
+     * @param offset 插入的偏移位置。
+     * @param text 待插入的文本。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    insertText(offset: number, text: string): TRet;
+    /**
      * 转换为mledit对象(供脚本语言使用)。
      *
      * @param widget mledit对象。
@@ -11094,17 +11133,23 @@ export declare class TMledit extends TWidget {
     get maxChars(): number;
     set maxChars(v: number);
     /**
-     * 是否自动折行。
-     *
-     */
-    get wrapWord(): boolean;
-    set wrapWord(v: boolean);
-    /**
      * 鼠标一次滚动行数。
      *
      */
     get scrollLine(): number;
     set scrollLine(v: number);
+    /**
+     * 是否启用覆盖行。
+     *
+     */
+    get overwrite(): boolean;
+    set overwrite(v: boolean);
+    /**
+     * 是否自动折行。
+     *
+     */
+    get wrapWord(): boolean;
+    set wrapWord(v: boolean);
     /**
      * 编辑器是否为只读。
      *
@@ -11451,13 +11496,8 @@ export declare class TRichText extends TWidget {
  *
  *hscroll\_label\_t是[widget\_t](widget_t.md)的子类控件，widget\_t的函数均适用于hscroll\_label\_t控件。
  *
- *在xml中使用"hscroll\_label"标签创建行号控件，一般配合mledit使用。如：
- *
- *```xml
- *```
- *
- *> 更多用法请参考：[mledit.xml](
- *https://github.com/zlgopen/awtk/blob/master/design/default/ui/mledit.xml)
+ *> 更多用法请参考：[hscroll_label.xml](
+ *https://github.com/zlgopen/awtk/blob/master/design/default/ui/hscroll_label.xml)
  *
  *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
  *
@@ -14672,7 +14712,7 @@ export declare class TEdit extends TWidget {
     get actionText(): string;
     set actionText(v: string);
     /**
-     * 自定义软键盘名称。AWTK优先查找keyboard属性设置的键盘文件名（该键盘的XML文件需要在default\raw\ui目录下存在），如果keyboard为空就找input_type设置的键盘类型
+     * 自定义软键盘名称。AWTK优先查找keyboard属性设置的键盘文件名（该键盘的XML文件需要在default\raw\ui目录下存在），如果没有指定keyboard，就找input_type设置的键盘类型。如果指定为空字符串，则表示不需要软键盘。
      *
      */
     get keyboard(): string;
@@ -16087,6 +16127,15 @@ export declare class TNativeWindow extends TObject {
      */
     resize(w: number, h: number, force: boolean): TRet;
     /**
+     * 调整窗口旋转。
+     *
+     * @param old_orientation 旧的旋转角度。
+     * @param new_orientation 新的旋转角度。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setOrientation(old_orientation: any, new_orientation: any): TRet;
+    /**
      * 最小化窗口。
      *
      *
@@ -16740,6 +16789,14 @@ export declare class TObjectDefault extends TObject {
      */
     static create(): TObjectDefault;
     /**
+     * 创建对象。
+     *
+     * @param enable_path 是否支持按路径访问属性。
+     *
+     * @returns 返回object对象。
+     */
+    static createEx(enable_path: boolean): TObjectDefault;
+    /**
      * for script gc
      *
      *
@@ -16753,11 +16810,6 @@ export declare class TObjectDefault extends TObject {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     clearProps(): TRet;
-    /**
-     * 属性个数。
-     *
-     */
-    get propsSize(): number;
 }
 /**
  * 单个定时器的信息。

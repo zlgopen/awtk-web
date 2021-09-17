@@ -211,6 +211,7 @@ var canvas_untranslate = Module.cwrap("canvas_untranslate", "number", ["number",
 var canvas_draw_vline = Module.cwrap("canvas_draw_vline", "number", ["number", "number", "number", "number"]);
 var canvas_draw_hline = Module.cwrap("canvas_draw_hline", "number", ["number", "number", "number", "number"]);
 var canvas_fill_rect = Module.cwrap("canvas_fill_rect", "number", ["number", "number", "number", "number", "number"]);
+var canvas_fill_rect_gradient = Module.cwrap("canvas_fill_rect_gradient", "number", ["number", "number", "number", "number", "number", "number"]);
 var canvas_clear_rect = Module.cwrap("canvas_clear_rect", "number", ["number", "number", "number", "number", "number"]);
 var canvas_stroke_rect = Module.cwrap("canvas_stroke_rect", "number", ["number", "number", "number", "number", "number"]);
 var canvas_set_font = Module.cwrap("canvas_set_font", "number", ["number", "string", "number"]);
@@ -1337,6 +1338,7 @@ var VALUE_TYPE_SIZED_STRING = Module.cwrap("get_VALUE_TYPE_SIZED_STRING", "numbe
 var VALUE_TYPE_BINARY = Module.cwrap("get_VALUE_TYPE_BINARY", "number", []);
 var VALUE_TYPE_UBJSON = Module.cwrap("get_VALUE_TYPE_UBJSON", "number", []);
 var VALUE_TYPE_TOKEN = Module.cwrap("get_VALUE_TYPE_TOKEN", "number", []);
+var VALUE_TYPE_GRADIENT = Module.cwrap("get_VALUE_TYPE_GRADIENT", "number", []);
 var assets_manager = Module.cwrap("assets_manager", "number", []);
 var assets_manager_set_theme = Module.cwrap("assets_manager_set_theme", "number", ["number", "string"]);
 var assets_manager_ref = Module.cwrap("assets_manager_ref", "number", ["number", "number", "string"]);
@@ -1349,6 +1351,7 @@ var wheel_event_t_get_prop_ctrl = Module.cwrap("wheel_event_t_get_prop_ctrl", "n
 var wheel_event_t_get_prop_shift = Module.cwrap("wheel_event_t_get_prop_shift", "number", ["number"]);
 var orientation_event_cast = Module.cwrap("orientation_event_cast", "number", ["number"]);
 var orientation_event_t_get_prop_orientation = Module.cwrap("orientation_event_t_get_prop_orientation", "number", ["number"]);
+var orientation_event_t_get_prop_old_orientation = Module.cwrap("orientation_event_t_get_prop_old_orientation", "number", ["number"]);
 var value_change_event_cast = Module.cwrap("value_change_event_cast", "number", ["number"]);
 var pointer_event_cast = Module.cwrap("pointer_event_cast", "number", ["number"]);
 var pointer_event_t_get_prop_x = Module.cwrap("pointer_event_t_get_prop_x", "number", ["number"]);
@@ -1583,6 +1586,7 @@ var mledit_set_readonly = Module.cwrap("mledit_set_readonly", "number", ["number
 var mledit_set_cancelable = Module.cwrap("mledit_set_cancelable", "number", ["number", "number"]);
 var mledit_set_focus = Module.cwrap("mledit_set_focus", "number", ["number", "number"]);
 var mledit_set_wrap_word = Module.cwrap("mledit_set_wrap_word", "number", ["number", "number"]);
+var mledit_set_overwrite = Module.cwrap("mledit_set_overwrite", "number", ["number", "number"]);
 var mledit_set_max_lines = Module.cwrap("mledit_set_max_lines", "number", ["number", "number"]);
 var mledit_set_max_chars = Module.cwrap("mledit_set_max_chars", "number", ["number", "number"]);
 var mledit_set_tips = Module.cwrap("mledit_set_tips", "number", ["number", "string"]);
@@ -1596,14 +1600,16 @@ var mledit_set_open_im_when_focused = Module.cwrap("mledit_set_open_im_when_focu
 var mledit_set_close_im_when_blured = Module.cwrap("mledit_set_close_im_when_blured", "number", ["number", "number"]);
 var mledit_set_select = Module.cwrap("mledit_set_select", "number", ["number", "number", "number"]);
 var mledit_get_selected_text = Module.cwrap("mledit_get_selected_text", "string", ["number"]);
+var mledit_insert_text = Module.cwrap("mledit_insert_text", "number", ["number", "number", "string"]);
 var mledit_cast = Module.cwrap("mledit_cast", "number", ["number"]);
 var mledit_t_get_prop_tips = Module.cwrap("mledit_t_get_prop_tips", "string", ["number"]);
 var mledit_t_get_prop_tr_tips = Module.cwrap("mledit_t_get_prop_tr_tips", "string", ["number"]);
 var mledit_t_get_prop_keyboard = Module.cwrap("mledit_t_get_prop_keyboard", "string", ["number"]);
 var mledit_t_get_prop_max_lines = Module.cwrap("mledit_t_get_prop_max_lines", "number", ["number"]);
 var mledit_t_get_prop_max_chars = Module.cwrap("mledit_t_get_prop_max_chars", "number", ["number"]);
-var mledit_t_get_prop_wrap_word = Module.cwrap("mledit_t_get_prop_wrap_word", "number", ["number"]);
 var mledit_t_get_prop_scroll_line = Module.cwrap("mledit_t_get_prop_scroll_line", "number", ["number"]);
+var mledit_t_get_prop_overwrite = Module.cwrap("mledit_t_get_prop_overwrite", "number", ["number"]);
+var mledit_t_get_prop_wrap_word = Module.cwrap("mledit_t_get_prop_wrap_word", "number", ["number"]);
 var mledit_t_get_prop_readonly = Module.cwrap("mledit_t_get_prop_readonly", "number", ["number"]);
 var mledit_t_get_prop_cancelable = Module.cwrap("mledit_t_get_prop_cancelable", "number", ["number"]);
 var mledit_t_get_prop_open_im_when_focused = Module.cwrap("mledit_t_get_prop_open_im_when_focused", "number", ["number"]);
@@ -2026,6 +2032,7 @@ var dialog_confirm = Module.cwrap("dialog_confirm", "number", ["string", "string
 var dialog_t_get_prop_highlight = Module.cwrap("dialog_t_get_prop_highlight", "string", ["number"]);
 var native_window_move = Module.cwrap("native_window_move", "number", ["number", "number", "number", "number"]);
 var native_window_resize = Module.cwrap("native_window_resize", "number", ["number", "number", "number", "number"]);
+var native_window_set_orientation = Module.cwrap("native_window_set_orientation", "number", ["number", "number", "number"]);
 var native_window_minimize = Module.cwrap("native_window_minimize", "number", ["number"]);
 var native_window_maximize = Module.cwrap("native_window_maximize", "number", ["number"]);
 var native_window_restore = Module.cwrap("native_window_restore", "number", ["number"]);
@@ -2069,9 +2076,9 @@ var object_array_remove = Module.cwrap("object_array_remove", "number", ["number
 var object_array_get_and_remove = Module.cwrap("object_array_get_and_remove", "number", ["number", "number", "number"]);
 var object_array_t_get_prop_size = Module.cwrap("object_array_t_get_prop_size", "number", ["number"]);
 var object_default_create = Module.cwrap("object_default_create", "number", []);
+var object_default_create_ex = Module.cwrap("object_default_create_ex", "number", ["number"]);
 var object_default_unref = Module.cwrap("object_default_unref", "number", ["number"]);
 var object_default_clear_props = Module.cwrap("object_default_clear_props", "number", ["number"]);
-var object_default_t_get_prop_props_size = Module.cwrap("object_default_t_get_prop_props_size", "number", ["number"]);
 var timer_info_cast = Module.cwrap("timer_info_cast", "number", ["number"]);
 var timer_info_t_get_prop_ctx = Module.cwrap("timer_info_t_get_prop_ctx", "number", ["number"]);
 var timer_info_t_get_prop_extra_ctx = Module.cwrap("timer_info_t_get_prop_extra_ctx", "number", ["number"]);
@@ -3984,6 +3991,20 @@ var TCanvas = /** @class */ (function () {
      */
     TCanvas.prototype.fillRect = function (x, y, w, h) {
         return canvas_fill_rect(this != null ? (this.nativeObj || this) : null, x, y, w, h);
+    };
+    /**
+     * 绘制矩形。
+     *
+     * @param x x坐标。
+     * @param y y坐标。
+     * @param w 宽度。
+     * @param h 高度。
+     * @param gradient 渐变颜色。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TCanvas.prototype.fillRectGradient = function (x, y, w, h, gradient) {
+        return canvas_fill_rect_gradient(this != null ? (this.nativeObj || this) : null, x, y, w, h, gradient);
     };
     /**
      * 用填充颜色填充指定矩形。
@@ -12208,6 +12229,11 @@ var TValueType;
      *
      */
     TValueType[TValueType["TOKEN"] = VALUE_TYPE_TOKEN()] = "TOKEN";
+    /**
+     * 渐变颜色。
+     *
+     */
+    TValueType[TValueType["GRADIENT"] = VALUE_TYPE_GRADIENT()] = "GRADIENT";
 })(TValueType = exports.TValueType || (exports.TValueType = {}));
 ;
 /**
@@ -12396,6 +12422,17 @@ var TOrientationEvent = /** @class */ (function (_super) {
          */
         get: function () {
             return orientation_event_t_get_prop_orientation(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TOrientationEvent.prototype, "oldOrientation", {
+        /**
+         * 旧的屏幕方向。
+         *
+         */
+        get: function () {
+            return orientation_event_t_get_prop_old_orientation(this.nativeObj);
         },
         enumerable: false,
         configurable: true
@@ -15723,6 +15760,16 @@ var TMledit = /** @class */ (function (_super) {
         return mledit_set_wrap_word(this != null ? (this.nativeObj || this) : null, wrap_word);
     };
     /**
+     * 设置编辑器是否启用覆盖行（在行数达到最大行数时，可继续新增行，但最早的行将会消失）。
+     *
+     * @param overwrite 是否启用覆盖行。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TMledit.prototype.setOverwrite = function (overwrite) {
+        return mledit_set_overwrite(this != null ? (this.nativeObj || this) : null, overwrite);
+    };
+    /**
      * 设置编辑器的最大行数。
      *
      * @param max_lines 最大行数。
@@ -15856,6 +15903,17 @@ var TMledit = /** @class */ (function (_super) {
         return mledit_get_selected_text(this != null ? (this.nativeObj || this) : null);
     };
     /**
+     * 插入一段文本。
+     *
+     * @param offset 插入的偏移位置。
+     * @param text 待插入的文本。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TMledit.prototype.insertText = function (offset, text) {
+        return mledit_insert_text(this != null ? (this.nativeObj || this) : null, offset, text);
+    };
+    /**
      * 转换为mledit对象(供脚本语言使用)。
      *
      * @param widget mledit对象。
@@ -15935,20 +15993,6 @@ var TMledit = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
-    Object.defineProperty(TMledit.prototype, "wrapWord", {
-        /**
-         * 是否自动折行。
-         *
-         */
-        get: function () {
-            return mledit_t_get_prop_wrap_word(this.nativeObj);
-        },
-        set: function (v) {
-            this.setWrapWord(v);
-        },
-        enumerable: false,
-        configurable: true
-    });
     Object.defineProperty(TMledit.prototype, "scrollLine", {
         /**
          * 鼠标一次滚动行数。
@@ -15959,6 +16003,34 @@ var TMledit = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setScrollLine(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TMledit.prototype, "overwrite", {
+        /**
+         * 是否启用覆盖行。
+         *
+         */
+        get: function () {
+            return mledit_t_get_prop_overwrite(this.nativeObj);
+        },
+        set: function (v) {
+            this.setOverwrite(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TMledit.prototype, "wrapWord", {
+        /**
+         * 是否自动折行。
+         *
+         */
+        get: function () {
+            return mledit_t_get_prop_wrap_word(this.nativeObj);
+        },
+        set: function (v) {
+            this.setWrapWord(v);
         },
         enumerable: false,
         configurable: true
@@ -16469,13 +16541,8 @@ exports.TRichText = TRichText;
  *
  *hscroll\_label\_t是[widget\_t](widget_t.md)的子类控件，widget\_t的函数均适用于hscroll\_label\_t控件。
  *
- *在xml中使用"hscroll\_label"标签创建行号控件，一般配合mledit使用。如：
- *
- *```xml
- *```
- *
- *> 更多用法请参考：[mledit.xml](
- *https://github.com/zlgopen/awtk/blob/master/design/default/ui/mledit.xml)
+ *> 更多用法请参考：[hscroll_label.xml](
+ *https://github.com/zlgopen/awtk/blob/master/design/default/ui/hscroll_label.xml)
  *
  *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
  *
@@ -20947,7 +21014,7 @@ var TEdit = /** @class */ (function (_super) {
     });
     Object.defineProperty(TEdit.prototype, "keyboard", {
         /**
-         * 自定义软键盘名称。AWTK优先查找keyboard属性设置的键盘文件名（该键盘的XML文件需要在default\raw\ui目录下存在），如果keyboard为空就找input_type设置的键盘类型
+         * 自定义软键盘名称。AWTK优先查找keyboard属性设置的键盘文件名（该键盘的XML文件需要在default\raw\ui目录下存在），如果没有指定keyboard，就找input_type设置的键盘类型。如果指定为空字符串，则表示不需要软键盘。
          *
          */
         get: function () {
@@ -22873,6 +22940,17 @@ var TNativeWindow = /** @class */ (function (_super) {
         return native_window_resize(this != null ? (this.nativeObj || this) : null, w, h, force);
     };
     /**
+     * 调整窗口旋转。
+     *
+     * @param old_orientation 旧的旋转角度。
+     * @param new_orientation 新的旋转角度。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TNativeWindow.prototype.setOrientation = function (old_orientation, new_orientation) {
+        return native_window_set_orientation(this != null ? (this.nativeObj || this) : null, old_orientation, new_orientation);
+    };
+    /**
      * 最小化窗口。
      *
      *
@@ -23674,6 +23752,16 @@ var TObjectDefault = /** @class */ (function (_super) {
         return new TObjectDefault(object_default_create());
     };
     /**
+     * 创建对象。
+     *
+     * @param enable_path 是否支持按路径访问属性。
+     *
+     * @returns 返回object对象。
+     */
+    TObjectDefault.createEx = function (enable_path) {
+        return new TObjectDefault(object_default_create_ex(enable_path));
+    };
+    /**
      * for script gc
      *
      *
@@ -23691,17 +23779,6 @@ var TObjectDefault = /** @class */ (function (_super) {
     TObjectDefault.prototype.clearProps = function () {
         return object_default_clear_props(this != null ? (this.nativeObj || this) : null);
     };
-    Object.defineProperty(TObjectDefault.prototype, "propsSize", {
-        /**
-         * 属性个数。
-         *
-         */
-        get: function () {
-            return object_default_t_get_prop_props_size(this.nativeObj);
-        },
-        enumerable: false,
-        configurable: true
-    });
     return TObjectDefault;
 }(TObject));
 exports.TObjectDefault = TObjectDefault;

@@ -19,5 +19,5 @@ node gen_export.js
 生成typescript接口的代码生成器放到了awtk-binding中，运行下面的脚本拷贝即可：
 
 ```
-cp ../../../awtk-binding/tools/code_gen/js/output/awtk_api.ts ../../gen/ts
+npm run build
 ```

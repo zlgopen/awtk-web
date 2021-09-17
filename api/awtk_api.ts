@@ -372,6 +372,8 @@ const canvas_draw_hline = Module.cwrap("canvas_draw_hline",
     "number", ["number","number","number","number"]);
 const canvas_fill_rect = Module.cwrap("canvas_fill_rect", 
     "number", ["number","number","number","number","number"]);
+const canvas_fill_rect_gradient = Module.cwrap("canvas_fill_rect_gradient", 
+    "number", ["number","number","number","number","number","number"]);
 const canvas_clear_rect = Module.cwrap("canvas_clear_rect", 
     "number", ["number","number","number","number","number"]);
 const canvas_stroke_rect = Module.cwrap("canvas_stroke_rect", 
@@ -2624,6 +2626,8 @@ const VALUE_TYPE_UBJSON = Module.cwrap("get_VALUE_TYPE_UBJSON",
     "number", []);
 const VALUE_TYPE_TOKEN = Module.cwrap("get_VALUE_TYPE_TOKEN", 
     "number", []);
+const VALUE_TYPE_GRADIENT = Module.cwrap("get_VALUE_TYPE_GRADIENT", 
+    "number", []);
 const assets_manager = Module.cwrap("assets_manager", 
     "number", []);
 const assets_manager_set_theme = Module.cwrap("assets_manager_set_theme", 
@@ -2647,6 +2651,8 @@ const wheel_event_t_get_prop_shift = Module.cwrap("wheel_event_t_get_prop_shift"
 const orientation_event_cast = Module.cwrap("orientation_event_cast", 
     "number", ["number"]);
 const orientation_event_t_get_prop_orientation = Module.cwrap("orientation_event_t_get_prop_orientation", 
+    "number", ["number"]);
+const orientation_event_t_get_prop_old_orientation = Module.cwrap("orientation_event_t_get_prop_old_orientation", 
     "number", ["number"]);
 const value_change_event_cast = Module.cwrap("value_change_event_cast", 
     "number", ["number"]);
@@ -3116,6 +3122,8 @@ const mledit_set_focus = Module.cwrap("mledit_set_focus",
     "number", ["number","number"]);
 const mledit_set_wrap_word = Module.cwrap("mledit_set_wrap_word", 
     "number", ["number","number"]);
+const mledit_set_overwrite = Module.cwrap("mledit_set_overwrite", 
+    "number", ["number","number"]);
 const mledit_set_max_lines = Module.cwrap("mledit_set_max_lines", 
     "number", ["number","number"]);
 const mledit_set_max_chars = Module.cwrap("mledit_set_max_chars", 
@@ -3142,6 +3150,8 @@ const mledit_set_select = Module.cwrap("mledit_set_select",
     "number", ["number","number","number"]);
 const mledit_get_selected_text = Module.cwrap("mledit_get_selected_text", 
     "string", ["number"]);
+const mledit_insert_text = Module.cwrap("mledit_insert_text", 
+    "number", ["number","number","string"]);
 const mledit_cast = Module.cwrap("mledit_cast", 
     "number", ["number"]);
 const mledit_t_get_prop_tips = Module.cwrap("mledit_t_get_prop_tips", 
@@ -3154,9 +3164,11 @@ const mledit_t_get_prop_max_lines = Module.cwrap("mledit_t_get_prop_max_lines",
     "number", ["number"]);
 const mledit_t_get_prop_max_chars = Module.cwrap("mledit_t_get_prop_max_chars", 
     "number", ["number"]);
-const mledit_t_get_prop_wrap_word = Module.cwrap("mledit_t_get_prop_wrap_word", 
-    "number", ["number"]);
 const mledit_t_get_prop_scroll_line = Module.cwrap("mledit_t_get_prop_scroll_line", 
+    "number", ["number"]);
+const mledit_t_get_prop_overwrite = Module.cwrap("mledit_t_get_prop_overwrite", 
+    "number", ["number"]);
+const mledit_t_get_prop_wrap_word = Module.cwrap("mledit_t_get_prop_wrap_word", 
     "number", ["number"]);
 const mledit_t_get_prop_readonly = Module.cwrap("mledit_t_get_prop_readonly", 
     "number", ["number"]);
@@ -4002,6 +4014,8 @@ const native_window_move = Module.cwrap("native_window_move",
     "number", ["number","number","number","number"]);
 const native_window_resize = Module.cwrap("native_window_resize", 
     "number", ["number","number","number","number"]);
+const native_window_set_orientation = Module.cwrap("native_window_set_orientation", 
+    "number", ["number","number","number"]);
 const native_window_minimize = Module.cwrap("native_window_minimize", 
     "number", ["number"]);
 const native_window_maximize = Module.cwrap("native_window_maximize", 
@@ -4088,11 +4102,11 @@ const object_array_t_get_prop_size = Module.cwrap("object_array_t_get_prop_size"
     "number", ["number"]);
 const object_default_create = Module.cwrap("object_default_create", 
     "number", []);
+const object_default_create_ex = Module.cwrap("object_default_create_ex", 
+    "number", ["number"]);
 const object_default_unref = Module.cwrap("object_default_unref", 
     "number", ["number"]);
 const object_default_clear_props = Module.cwrap("object_default_clear_props", 
-    "number", ["number"]);
-const object_default_t_get_prop_props_size = Module.cwrap("object_default_t_get_prop_props_size", 
     "number", ["number"]);
 const timer_info_cast = Module.cwrap("timer_info_cast", 
     "number", ["number"]);
@@ -6305,6 +6319,22 @@ export class TCanvas {
    */
  fillRect(x : number, y : number, w : number, h : number) : TRet  {
     return canvas_fill_rect(this != null ? (this.nativeObj || this) : null, x, y, w, h);
+ }
+
+
+  /**
+   * 绘制矩形。
+   * 
+   * @param x x坐标。
+   * @param y y坐标。
+   * @param w 宽度。
+   * @param h 高度。
+   * @param gradient 渐变颜色。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ fillRectGradient(x : number, y : number, w : number, h : number, gradient : any) : TRet  {
+    return canvas_fill_rect_gradient(this != null ? (this.nativeObj || this) : null, x, y, w, h, gradient);
  }
 
 
@@ -15744,6 +15774,12 @@ export enum TValueType {
    *
    */
  TOKEN = VALUE_TYPE_TOKEN(),
+
+  /**
+   * 渐变颜色。
+   *
+   */
+ GRADIENT = VALUE_TYPE_GRADIENT(),
 };
 
 
@@ -15936,6 +15972,15 @@ export class TOrientationEvent extends TEvent {
    */
  get orientation() : number {
    return orientation_event_t_get_prop_orientation(this.nativeObj);
+ }
+
+
+  /**
+   * 旧的屏幕方向。
+   *
+   */
+ get oldOrientation() : number {
+   return orientation_event_t_get_prop_old_orientation(this.nativeObj);
  }
 
 };
@@ -19323,6 +19368,18 @@ export class TMledit extends TWidget {
 
 
   /**
+   * 设置编辑器是否启用覆盖行（在行数达到最大行数时，可继续新增行，但最早的行将会消失）。
+   * 
+   * @param overwrite 是否启用覆盖行。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setOverwrite(overwrite : boolean) : TRet  {
+    return mledit_set_overwrite(this != null ? (this.nativeObj || this) : null, overwrite);
+ }
+
+
+  /**
    * 设置编辑器的最大行数。
    * 
    * @param max_lines 最大行数。
@@ -19482,6 +19539,19 @@ export class TMledit extends TWidget {
 
 
   /**
+   * 插入一段文本。
+   * 
+   * @param offset 插入的偏移位置。
+   * @param text 待插入的文本。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ insertText(offset : number, text : string) : TRet  {
+    return mledit_insert_text(this != null ? (this.nativeObj || this) : null, offset, text);
+ }
+
+
+  /**
    * 转换为mledit对象(供脚本语言使用)。
    * 
    * @param widget mledit对象。
@@ -19559,19 +19629,6 @@ export class TMledit extends TWidget {
 
 
   /**
-   * 是否自动折行。
-   *
-   */
- get wrapWord() : boolean {
-   return mledit_t_get_prop_wrap_word(this.nativeObj);
- }
-
- set wrapWord(v : boolean) {
-   this.setWrapWord(v);
- }
-
-
-  /**
    * 鼠标一次滚动行数。
    *
    */
@@ -19581,6 +19638,32 @@ export class TMledit extends TWidget {
 
  set scrollLine(v : number) {
    this.setScrollLine(v);
+ }
+
+
+  /**
+   * 是否启用覆盖行。
+   *
+   */
+ get overwrite() : boolean {
+   return mledit_t_get_prop_overwrite(this.nativeObj);
+ }
+
+ set overwrite(v : boolean) {
+   this.setOverwrite(v);
+ }
+
+
+  /**
+   * 是否自动折行。
+   *
+   */
+ get wrapWord() : boolean {
+   return mledit_t_get_prop_wrap_word(this.nativeObj);
+ }
+
+ set wrapWord(v : boolean) {
+   this.setWrapWord(v);
  }
 
 
@@ -20097,13 +20180,8 @@ export class TRichText extends TWidget {
  *
  *hscroll\_label\_t是[widget\_t](widget_t.md)的子类控件，widget\_t的函数均适用于hscroll\_label\_t控件。
  *
- *在xml中使用"hscroll\_label"标签创建行号控件，一般配合mledit使用。如：
- *
- *```xml
- *```
- *
- *> 更多用法请参考：[mledit.xml](
- *https://github.com/zlgopen/awtk/blob/master/design/default/ui/mledit.xml)
+ *> 更多用法请参考：[hscroll_label.xml](
+ *https://github.com/zlgopen/awtk/blob/master/design/default/ui/hscroll_label.xml)
  *
  *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
  *
@@ -24752,7 +24830,7 @@ export class TEdit extends TWidget {
 
 
   /**
-   * 自定义软键盘名称。AWTK优先查找keyboard属性设置的键盘文件名（该键盘的XML文件需要在default\raw\ui目录下存在），如果keyboard为空就找input_type设置的键盘类型
+   * 自定义软键盘名称。AWTK优先查找keyboard属性设置的键盘文件名（该键盘的XML文件需要在default\raw\ui目录下存在），如果没有指定keyboard，就找input_type设置的键盘类型。如果指定为空字符串，则表示不需要软键盘。
    *
    */
  get keyboard() : string {
@@ -26740,6 +26818,19 @@ export class TNativeWindow extends TObject {
 
 
   /**
+   * 调整窗口旋转。
+   * 
+   * @param old_orientation 旧的旋转角度。
+   * @param new_orientation 新的旋转角度。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setOrientation(old_orientation : any, new_orientation : any) : TRet  {
+    return native_window_set_orientation(this != null ? (this.nativeObj || this) : null, old_orientation, new_orientation);
+ }
+
+
+  /**
    * 最小化窗口。
    * 
    *
@@ -27592,6 +27683,18 @@ export class TObjectDefault extends TObject {
 
 
   /**
+   * 创建对象。
+   * 
+   * @param enable_path 是否支持按路径访问属性。
+   *
+   * @returns 返回object对象。
+   */
+ static createEx(enable_path : boolean) : TObjectDefault  {
+    return new TObjectDefault(object_default_create_ex(enable_path));
+ }
+
+
+  /**
    * for script gc
    * 
    *
@@ -27610,15 +27713,6 @@ export class TObjectDefault extends TObject {
    */
  clearProps() : TRet  {
     return object_default_clear_props(this != null ? (this.nativeObj || this) : null);
- }
-
-
-  /**
-   * 属性个数。
-   *
-   */
- get propsSize() : number {
-   return object_default_t_get_prop_props_size(this.nativeObj);
  }
 
 };
