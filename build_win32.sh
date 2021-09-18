@@ -14,6 +14,8 @@ if [ "$#" -ne 2 ]; then
 else
   source /d/work/tools/emsdk/emsdk_env.sh
   #use abs path of python, to avoid use python in emsdk 
+  '/d/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/python.exe' -m pip install --upgrade pip 
+  '/d/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Scripts/pip3' install Pillow 
   '/d/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/python.exe' build.py $* 
 fi
 
