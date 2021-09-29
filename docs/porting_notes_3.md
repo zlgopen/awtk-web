@@ -41,13 +41,20 @@ const g_awtk_assets = {
 优先找满足当前 DPI 的图片，如果找不到再使用 x1 的图片。
 
 ```
-AssetsManager.getImageByDPI = function (name, dpi) {
+AssetsManager.getImageByDPI = function (name, dpi, theme = 'default') {
   let anydpi = '/xx/';
+  let _theme = '/' + theme + '/';
   const assets = g_awtk_assets['image'];
+
   if (assets) {
-    const asset = assets.find(iter => {
-      return name == iter.name && (iter.uri.indexOf(anydpi) >= 0 || iter.uri.indexOf(dpi) >= 0);;
+    let asset = assets.find(iter => {
+      return name == iter.name && iter.uri.indexOf(_theme) >= 0 && iter.uri.indexOf(dpi) >= 0;
     });
+    if (asset == null) {
+      asset = assets.find(iter => {
+        return name == iter.name && iter.uri.indexOf(_theme) >= 0 && iter.uri.indexOf(anydpi) >= 0;
+      });
+    }
 
     return asset;
   }
@@ -55,15 +62,11 @@ AssetsManager.getImageByDPI = function (name, dpi) {
   return null;
 }
 
-AssetsManager.getImage = function (name) {
-  let dpi = '/x' + TBrowser.getDevicePixelRatio() + '/';
-  let asset = AssetsManager.getImageByDPI(name, dpi);
+AssetsManager.getImage = function (name, theme = 'default', log = true) {
+  let dpi = '/x' + Math.round(TBrowser.getDevicePixelRatio()) + '/';
+  let asset = AssetsManager.getImageByDPI(name, dpi, theme);
 
-  if(!asset) {
-    asset = AssetsManager.getImageByDPI(name, '/x1/');
-  }
-
-  if(!asset) {
+  if (!asset && log) {
     console.log('Not found ' + name);
   }
 
@@ -81,12 +84,16 @@ static ret_t image_loader_web_load(image_loader_t *l, const asset_info_t *asset,
   int32_t w = 0;
   int32_t h = 0;
   int32_t id = 0;
-  const char *name = NULL;
-  return_value_if_fail(l != NULL && asset != NULL && image != NULL,
+  const char* name = NULL;
+  const char* theme = NULL;
+  assets_manager_t* am = assets_manager();
+  return_value_if_fail(l != NULL && asset != NULL && image != NULL && am != NULL,
                        RET_BAD_PARAMS);
 
   name = asset->name;
-  id = EM_ASM_INT({ return ImageLoader.load(pointerToString($0)); }, name);
+  theme = am->theme;
+
+  id = EM_ASM_INT({ return ImageLoader.load(pointerToString($0), pointerToString($1)); }, name, theme);
   w = EM_ASM_INT({ return ImageLoader.getWidth(pointerToString($0)); }, name);
   h = EM_ASM_INT({ return ImageLoader.getHeight(pointerToString($0)); }, name);
 
@@ -102,24 +109,26 @@ static ret_t image_loader_web_load(image_loader_t *l, const asset_info_t *asset,
 在 JS 一侧，通过 ImageCache 建立 ID 与 Image 对象之间的关系。
 
 ```
-ImageLoader.load = function (name) {
-  let id = ImageCache.getIdOfName(name);
-  if (id !== ImageCache.invalidImageId) {
-    return id;
-  } else {
-    let uri = AssetsManager.getImageURI(name);
+ImageLoader.load = function (name, theme = 'default') {
+  let id = ImageCache.getIdOfNameAndTheme(name, theme);
+  if (id == ImageCache.invalidImageId) {
+    let is_default_theme = (theme == 'default');
+    let uri = AssetsManager.getImageURI(name, theme, is_default_theme);
     if (uri) {
       let image = new Image();
+      let name_with_theme = theme + ':' + name;
       image.src = uri;
-      image.name = name;
-      image.onload = function() {
-        console.log('image loaded: ' + name + ' ' + uri);
+      image.name = name_with_theme;
+      image.onload = function () {
+        console.log('image loaded: ' + name_with_theme + ' ' + uri);
         Awtk.requestRepaint(1);
       }
-      return ImageCache.add(image);
+      id = ImageCache.add(image);
+    } else if (!is_default_theme) {
+      id = ImageLoader.load(name);
     }
   }
-  return ImageCache.invalidImageId;
+  return id;
 }
 ```
 

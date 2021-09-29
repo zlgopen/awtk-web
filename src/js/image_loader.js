@@ -1,4 +1,4 @@
-function ImageLoader() {}
+function ImageLoader() { }
 
 ImageLoader.getWidth = function (name) {
   let image = AssetsManager.getImage(name);
@@ -12,24 +12,26 @@ ImageLoader.getHeight = function (name) {
   return image ? image.h : 0;
 }
 
-ImageLoader.load = function (name) {
-  let id = ImageCache.getIdOfName(name);
-  if (id !== ImageCache.invalidImageId) {
-    return id;
-  } else {
-    let uri = AssetsManager.getImageURI(name);
+ImageLoader.load = function (name, theme = 'default') {
+  let id = ImageCache.getIdOfNameAndTheme(name, theme);
+  if (id == ImageCache.invalidImageId) {
+    let is_default_theme = (theme == 'default');
+    let uri = AssetsManager.getImageURI(name, theme, is_default_theme);
     if (uri) {
       let image = new Image();
+      let name_with_theme = theme + ':' + name;
       image.src = uri;
-      image.name = name;
-      image.onload = function() {
-        console.log('image loaded: ' + name + ' ' + uri);
+      image.name = name_with_theme;
+      image.onload = function () {
+        console.log('image loaded: ' + name_with_theme + ' ' + uri);
         Awtk.requestRepaint(1);
       }
-      return ImageCache.add(image);
+      id = ImageCache.add(image);
+    } else if (!is_default_theme) {
+      id = ImageLoader.load(name);
     }
   }
-  return ImageCache.invalidImageId;
+  return id;
 }
 
 function testImageLoader() {

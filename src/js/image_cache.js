@@ -33,12 +33,13 @@ ImageCache.get = function (id) {
   }
 }
 
-ImageCache.getIdOfName = function (name) {
+ImageCache.getIdOfNameAndTheme = function (name, theme = 'default') {
+  let name_with_theme = theme + ':' + name;
   const images = ImageCache.images;
 
   for (const key in images) {
     const image = images[key];
-    if (image.name === name) {
+    if (image.name === name_with_theme) {
       return key;
     }
   }

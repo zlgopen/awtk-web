@@ -96,7 +96,7 @@ def update_assets(config):
     cwd = os.getcwd()
     app_target_dir = config_get_app_target_dir(config)
     os.chdir(app_target_dir)
-    os.system('\"'+sys.executable+'\"' + ' scripts/update_res.py all')
+    os.system('\"'+sys.executable+'\"' + ' scripts/update_res.py res')
     os.system('\"'+sys.executable+'\"' + ' scripts/update_res.py json')
     os.system('\"'+sys.executable+'\"' + ' scripts/update_res.py web')
     os.chdir(cwd)
