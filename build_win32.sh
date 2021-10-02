@@ -12,11 +12,14 @@ if [ "$#" -ne 2 ]; then
   echo "  all:          same as debug. build debug version."
   echo "============================================================="
 else
+  #use abs path of python, to avoid use python in emsdk
+  PYTHON_PATH=`where 'python'` #'/d/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/python.exe'
+  echo "python path : $PYTHON_PATH"
+
   source /d/work/tools/emsdk/emsdk_env.sh
-  #use abs path of python, to avoid use python in emsdk 
-  '/d/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/python.exe' -m pip install --upgrade pip 
-  '/d/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Scripts/pip3' install Pillow 
-  '/d/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/python.exe' build.py $* 
+  ${PYTHON_PATH} -m pip install --upgrade pip
+  ${PYTHON_PATH} -m pip install Pillow
+  ${PYTHON_PATH} build.py $*
 fi
 
 cd ${AWTK_WEB}

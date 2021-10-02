@@ -42,7 +42,7 @@ def merge_files(srcs, dst):
     with open(dst, 'w') as outfile:
         for fname in srcs:
             print(fname)
-            with open(fname) as infile:
+            with open(fname, encoding='utf-8-sig') as infile:
                 outfile.write(infile.read())
                 outfile.write("\n")
 
