@@ -47,6 +47,22 @@ static ret_t vgcanvas_web_reinit(vgcanvas_t *vg, uint32_t w, uint32_t h,
   return RET_OK;
 }
 
+static const rectf_t* vgcanvas_web_get_clip_rect(vgcanvas_t* vgcanvas) {
+  return &vgcanvas->clip_rect;
+}
+
+static bool_t vgcanvas_web_is_rectf_in_clip_rect(vgcanvas_t* vgcanvas, float_t left, float_t top,
+                                                 float_t right, float_t bottom) {
+  float_t clip_left = vgcanvas->clip_rect.x;
+  float_t clip_right = vgcanvas->clip_rect.x + vgcanvas->clip_rect.w;
+  float_t clip_top = vgcanvas->clip_rect.y;
+  float_t clip_bottom = vgcanvas->clip_rect.y + vgcanvas->clip_rect.h;
+  if (left > clip_right || right < clip_left || top > clip_bottom || bottom < clip_top) {
+    return FALSE;
+  }
+  return TRUE;
+}
+
 static ret_t vgcanvas_web_begin_frame(vgcanvas_t *vgcanvas,
                                       const dirty_rects_t *dirty_rect) {
   EM_ASM_INT({ return VGCanvas.beginFrame(); }, 0);
@@ -236,6 +252,10 @@ static ret_t vgcanvas_web_close_path(vgcanvas_t *vgcanvas) {
 static ret_t vgcanvas_web_clip_rect(vgcanvas_t *vgcanvas, float_t x, float_t y,
                                     float_t w, float_t h) {
   EM_ASM_INT({ return VGCanvas.clipRect($0, $1, $2, $3); }, x, y, w, h);
+  vgcanvas->clip_rect.x = x;
+  vgcanvas->clip_rect.y = y;
+  vgcanvas->clip_rect.w = w;
+  vgcanvas->clip_rect.h = h;
   return RET_OK;
 }
 
@@ -464,6 +484,8 @@ static ret_t vgcanvas_web_restore(vgcanvas_t *vgcanvas) {
 static const vgcanvas_vtable_t vt = {
     .reinit = vgcanvas_web_reinit,
     .begin_frame = vgcanvas_web_begin_frame,
+    .get_clip_rect = vgcanvas_web_get_clip_rect,
+    .is_rectf_in_clip_rect = vgcanvas_web_is_rectf_in_clip_rect,
     .reset = vgcanvas_web_reset,
     .flush = vgcanvas_web_flush,
     .clear_rect = vgcanvas_web_clear_rect,
