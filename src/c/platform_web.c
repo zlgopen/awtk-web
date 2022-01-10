@@ -43,6 +43,9 @@ uint64_t get_time_ms64() {
   return (uint64_t)(EM_ASM_DOUBLE({ return Date.now(); }, 0));
 }
 
+void sleep_ms(uint32_t ms) {
+}
+
 ret_t platform_prepare(void) {
   date_time_set_impl(date_time_get_now_impl);
 
