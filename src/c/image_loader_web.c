@@ -36,7 +36,7 @@ static ret_t image_loader_web_load(image_loader_t *l, const asset_info_t *asset,
   return_value_if_fail(l != NULL && asset != NULL && image != NULL && am != NULL,
                        RET_BAD_PARAMS);
 
-  name = asset->name;
+  name = asset_info_get_name(asset);
   theme = am->theme;
 
   id = EM_ASM_INT({ return ImageLoader.load(pointerToString($0), pointerToString($1)); }, name, theme);
