@@ -14,6 +14,7 @@ if [ "$#" -ne 2 ]; then
 else
   source /Users/jim/work/tools/emsdk/emsdk_env.sh
   #use abs path of python, to avoid use python in emsdk 
+  /Library/Developer/CommandLineTools/usr/bin/pip3 install Pillow
   /Library/Developer/CommandLineTools/usr/bin/python3 build.py $* 
 fi
 
