@@ -1,4 +1,6 @@
 [
+    "_malloc",
+    "_free",
     "_awtk_web_init",
     "_awtk_web_deinit",
     "_awtk_web_main_loop_step",

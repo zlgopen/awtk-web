@@ -148,3 +148,6 @@ python -m http.server 8080 --directory webroot
 * [JS 示例 ](https://github.com/zlgopen/awtk-web/blob/master/examples/button.json)
 
 * [C 示例 ](https://github.com/zlgopen/awtk/blob/master/build.json)
+
+* [调试](https://www.cnblogs.com/bigben0123/articles/15753240.html)
+

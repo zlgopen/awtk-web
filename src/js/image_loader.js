@@ -20,6 +20,15 @@ ImageLoader.load = function (name, theme = 'default') {
     if (uri) {
       let image = new Image();
       let name_with_theme = theme + ':' + name;
+
+      if (TBrowser.nonce) {
+        image.setAttribute('nonce', TBrowser.nonce);
+      }
+
+      if (TBrowser.rootUri) {
+        uri = TBrowser.rootUri + '/' + uri;
+      } 
+
       image.src = uri;
       image.name = name_with_theme;
       image.onload = function () {

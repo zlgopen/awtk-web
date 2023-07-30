@@ -9,7 +9,3 @@ ret_t image_copy(bitmap_t *dst, bitmap_t *src, rect_t *src_r, xy_t dx,
   return RET_OK;
 }
 
-fs_t* os_fs(void) {
-  return NULL;
-}
-

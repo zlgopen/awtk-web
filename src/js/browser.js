@@ -226,8 +226,10 @@ TBrowser.getParam = function (name, defval) {
   return defval;
 }
 
-TBrowser.init = function () {
+TBrowser.init = function (rootUri, nonce) {
   var u = navigator.userAgent;
+  TBrowser.rootUri = rootUri;
+  TBrowser.nonce = nonce;
 
   TBrowser.ie9 = u.indexOf('MSIE 9.0') >= 0;
   TBrowser.ie10 = u.indexOf('MSIE 10.0') >= 0;
@@ -289,6 +291,14 @@ TBrowser.isMobile = function () {
 
 TBrowser.loadScript= function (url) {
   var node = document.createElement('script');
+
+  if (TBrowser.nonce) { 
+    node.setAttribute('nonce', TBrowser.nonce);
+  }
+      
+  if (TBrowser.rootUri) {
+    url = TBrowser.rootUri + '/' + url;
+  }
 
   node.src=url;
   node.onload = function() {
@@ -358,4 +368,11 @@ TBrowser.releaseFunction = function(funcID) {
   }
   return true;
 }
+
+TBrowser.readBinary = (url) => { 
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, false);
+    xhr.send(null);
+    return new Uint8Array(/** @type{!ArrayBuffer} */(xhr.response));
+};   
 

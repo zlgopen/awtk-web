@@ -71,6 +71,6 @@ font-family 就是字体的名称，[AWTK](https://github.com/zlgopen/awtk) 的�
 > 其它的 GUI 的 WEB 版本，基本上都使用了 SDL 进行渲染，即使只是演示英文版，体积已经是 AWTK 的数十倍了，要是加上中文字体那就更惨不忍睹了。
 > 
 
-在CSS加载完成后，调用Awtk.requestRepaint重绘界面。
+在 CSS 加载完成后，调用 Awtk.requestRepaint 重绘界面。
 
-> 其实我不太确定CSS加载完成时字体是否加载完成，主要是也没找到字体加载完成的事件，暂时先这样吧。
+> 其实我不太确定 CSS 加载完成时字体是否加载完成，主要是也没找到字体加载完成的事件，暂时先这样吧。

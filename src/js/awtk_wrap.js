@@ -2,8 +2,52 @@ function Awtk() {
 
 }
 
+function downloadMultipleBinaryFiles(files, onAllDone, onFail) {
+  var totalFiles = files.length;
+  var loadedFiles = 0;
+  var fileContents = [];
+
+  function handleFileLoad(event) {
+    var xhr = event.target;
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+
+      loadedFiles++;
+      if (xhr.status === 200) {
+        fileContents.push({url:xhr.responseURL, data: new Uint8Array(/** @type{!ArrayBuffer} */(xhr.response))});
+      } else {
+        onFail(xhr.statusText);
+      }
+
+      if (loadedFiles === totalFiles) {
+        onAllDone(fileContents);
+      }
+    }
+  }
+
+  for (var i = 0; i < totalFiles; i++) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', files[i], true);
+    xhr.responseType = 'arraybuffer';
+    xhr.onload = handleFileLoad;
+    xhr.onerror = function() {
+      onFail(xhr.statusText);
+    };
+    xhr.send();
+  }
+}
+
+function copyArrayToMemory(array) {
+  var pointer = Module._malloc(array.length);
+  Module.HEAPU8.set(array, pointer);
+  return pointer;
+}
+
+function freeMemory(pointer) {
+  Module._free(pointer);
+}
+
 Awtk.init = function () {
-  Awtk._init = Module.cwrap('awtk_web_init', 'number', []);
+  Awtk._init = Module.cwrap('awtk_web_init', 'number', ['number', 'number', 'number', 'number']);
   Awtk._deinit = Module.cwrap('awtk_web_deinit', 'number', []);
   Awtk._mainLoopStep = Module.cwrap('awtk_web_main_loop_step', 'number', ['number']);
   Awtk._requestRepaint = Module.cwrap('awtk_web_request_repaint', 'number', ['number']);
@@ -29,10 +73,44 @@ Awtk.init = function () {
     loading.remove();
   }
 
-  return Awtk._init();
+  function onAllDone(fileContents) {
+    if (fileContents.length == 2) {
+      Awtk.romfsHeaderData = copyArrayToMemory(fileContents[0].data);
+      const romfsHeaderSize = fileContents[0].data.length;
+      Awtk.romfsBodyData = copyArrayToMemory(fileContents[1].data);
+      const romfsBodySize = fileContents[1].data.length;
+
+      Awtk._init(Awtk.romfsHeaderData, romfsHeaderSize, Awtk.romfsBodyData, romfsBodySize);
+    } else {
+      Awtk._init(0, 0, 0, 0);
+    }
+  }   
+  function onFail(errorMessage) {
+    console.error('文件下载失败:', errorMessage);
+  }
+
+  let headerURL = "data/romfs.header";
+  if (TBrowser.rootUri) {
+    headerURL = TBrowser.rootUri + '/' + headerURL;
+  }
+  let bodyURL = "data/romfs.body";
+  if (TBrowser.rootUri) {
+    bodyURL = TBrowser.rootUri + '/' + bodyURL;
+  }
+
+  downloadMultipleBinaryFiles([headerURL, bodyURL], onAllDone, onFail);
+
+  return 0;
 }
 
 Awtk.deinit = function () {
+  if(Awtk.romfsHeaderData) {
+    freeMemory(Awtk.romfsHeaderData);
+  }
+
+  if(Awtk.romfsBodyData) {
+    freeMemory(Awtk.romfsBodyData);
+  }
   return Awtk._deinit();
 }
 

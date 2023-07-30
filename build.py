@@ -5,13 +5,16 @@ import json
 import shutil
 
 def join_path(root, subdir):
-    return os.path.normpath(os.path.join(root, subdir))
+    return os.path.abspath(os.path.normpath(os.path.join(root, subdir)))
   
 WEB_ROOT = os.path.abspath('webroot')
 AWTK_ROOT_DIR = os.path.abspath('../awtk')
+TARGET_PLATFORM="web"
+
 os.environ['AWTK_ROOT_DIR'] = AWTK_ROOT_DIR
 sys.path.append(join_path(AWTK_ROOT_DIR, 'staticcheck/common'))
 import awtk_files as awtk
+import helper as helper
 
 
 def mkdir_if_not_exist(fullpath):
@@ -122,7 +125,7 @@ def build_app_js(config):
         app_files.append('api/awtk_api.js')
     for f in sources:
         if f.endswith('.js'):
-            app_files = app_files + glob.glob(join_path(src_app_root, f))
+            app_files = app_files + glob.glob(join_path(app_root, f))
     merge_files(app_files, output)
     print(app_files, output)
 
@@ -191,12 +194,24 @@ def copy_project_json(src_app_root, config):
     shutil.copyfile(src, dst)
 
 
+def build_romfs(src_app_root, config):
+    if 'romfs' in config:
+        romfs = join_path(src_app_root, config['romfs'])
+        romfs_make = join_path(AWTK_ROOT_DIR, 'bin/romfs_make')
+        output = join_path(config_get_app_target_dir(config), "data/romfs")
+        mkdir_if_not_exist(join_path(config_get_app_target_dir(config), "data"))
+        
+        cmd = romfs_make + " " + romfs + " " + output + " true"
+        os.system(cmd)
+        return True
+        
 def build_app_assets(src_app_root, config):
     copy_assets(src_app_root, config)
     copy_project_json(src_app_root, config)
     copy_data_file(config, 'app.html')
     copy_data_file(config, 'index.html')
     update_assets(config)
+    build_romfs(app_root, config);
 
 
 def prepare_export_funcs(src_app_root, config):
@@ -232,7 +247,7 @@ def build_awtk_js(src_app_root, config, flags):
     sources = config['sources']
     for f in sources:
         if f.endswith('.c') or f.endswith('.cpp'):
-            app_files = app_files + glob.glob(join_path(src_app_root, f))
+            app_files = app_files + glob.glob(f)
 
     web_files = glob.glob('src/c/*.c')
     files = awtk.getWebFiles() + web_files + app_files
@@ -246,18 +261,28 @@ def build_awtk_js(src_app_root, config, flags):
     if 'includes' in config:
         includes_files = config['includes']
         for f in includes_files:
-            includes_path += ('-I ' + join_path(src_app_root, f) + " ")
+            includes_path += ('-I ' + f + " ")
 
     COMMON_FLAGS = ' ' + flags + ' '
+    
+    if 'cflags' in config:
+        COMMON_FLAGS = COMMON_FLAGS + ' ' + ' '.join(config['cflags'])
+    if 'cxxflags' in config:
+        COMMON_FLAGS = COMMON_FLAGS + ' ' + ' '.join(config['cxxflags'])
+
     COMMON_FLAGS = COMMON_FLAGS + ' -DSAFE_HEAP=1 -DASSERTIONS=1 -DSTACK_OVERFLOW_CHECK=1 '
     COMMON_FLAGS = COMMON_FLAGS + \
-        ' -s EXTRA_EXPORTED_RUNTIME_METHODS=@configs/export_runtime_funcs.json '
+        ' -s EXPORTED_RUNTIME_METHODS=@configs/export_runtime_funcs.json '
+    COMMON_FLAGS = COMMON_FLAGS + '-s ALLOW_MEMORY_GROWTH=1 -s USE_SDL=2'
+
+
     if(is_js_app(config)):
         COMMON_FLAGS = COMMON_FLAGS + ' -DAWTK_WEB_JS '
         COMMON_FLAGS = COMMON_FLAGS + ' -s RESERVED_FUNCTION_POINTERS=1000 '
 
     COMMON_FLAGS = COMMON_FLAGS + ' -s EXPORTED_FUNCTIONS=@gen/export_all_funcs.json'
 
+    COMMON_FLAGS = COMMON_FLAGS + ' -DWITH_DATA_READER_WRITER '
     COMMON_FLAGS = COMMON_FLAGS + ' -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB -Isrc/c '
     COMMON_FLAGS = COMMON_FLAGS + ' -DWITH_WINDOW_ANIMATORS -DWITH_NANOVG_GPU '
     output = join_path(config_get_js_dir(config), "awtk.js")
@@ -301,44 +326,43 @@ def clean_temp_files(config):
     app_target_dir = config_get_app_target_dir(config)
     os.remove(join_path(app_target_dir, 'assets_web.js'))
 
-
-def merge_and_check_config(config):
-    if 'web' in config:
-        for key in config['web']:
-            config[key] = config['web'][key]
-
-    return config
+##########################################
 
 
-with open(filename, 'r') as load_f:
-    config = merge_and_check_config(json.load(load_f))
-    src_app_root = os.path.dirname(filename)
+def run(app_root, config, action):
     prepare_app_target_dir(config)
-    prepare_export_funcs(src_app_root, config)
+    prepare_export_funcs(app_root, config)
 
     if action == 'all':
-        build_app_assets(src_app_root, config)
-        build_awtk_js(src_app_root, config, '')
+        build_app_assets(app_root, config)
+        build_awtk_js(app_root, config, ' -g4 -gsource-map ')
         build_awtk_web_js(config)
     elif action == 'debug':
-        build_app_assets(src_app_root, config)
-        build_awtk_js(src_app_root, config, '-g')
+        build_app_assets(app_root, config)
+        build_awtk_js(app_root, config, ' -g4 -gsource-map ')
         build_awtk_web_js(config)
     elif action == 'release':
-        build_app_assets(src_app_root, config)
-        build_awtk_js(src_app_root, config, '-Os --memory-init-file 0')
+        build_app_assets(app_root, config)
+        build_awtk_js(app_root, config, '-Os --memory-init-file 0')
         build_awtk_web_js(config)
         clean_temp_files(config)
     elif action == 'assets':
-        build_app_assets(src_app_root, config)
+        build_app_assets(app_root, config)
     elif action == 'awtk_js':
-        build_awtk_js(src_app_root, config, '')
+        build_awtk_js(app_root, config, '')
     elif action == 'awtk_web_js':
         build_awtk_web_js(config)
     elif action == 'app':
         build_app_js(config)
     elif action == 'js':
         build_awtk_web_js(config)
-        build_awtk_js(src_app_root, config, '')
+        build_awtk_js(app_root, config, '')
     else:
         show_usage()
+
+
+with open(filename, 'r') as f:
+    app_root = os.path.dirname(filename)
+    config = helper.load_app_config(filename, TARGET_PLATFORM)
+
+    run(app_root, config, action)

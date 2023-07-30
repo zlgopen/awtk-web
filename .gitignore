@@ -61,3 +61,4 @@ gen/app.js
 gen/export_all_funcs.json
 gen/app_config.js
 filter.json
+__pycache__
