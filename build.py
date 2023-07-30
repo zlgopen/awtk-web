@@ -14,7 +14,7 @@ TARGET_PLATFORM="web"
 os.environ['AWTK_ROOT_DIR'] = AWTK_ROOT_DIR
 sys.path.append(join_path(AWTK_ROOT_DIR, 'staticcheck/common'))
 import awtk_files as awtk
-import helper as helper
+import config_helper as helper
 
 
 def mkdir_if_not_exist(fullpath):

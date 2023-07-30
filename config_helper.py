@@ -52,12 +52,12 @@ def merge_platform_config(config, root_dir, platform):
                     config[key].update(config[platform][key])
                 else:
                     config[key] = config[platform][key]
+    if platform == 'web':
+        if 'sources' in config:
+            abs_conf_files(config['sources'], root_dir)
 
-    if 'sources' in config:
-        abs_conf_files(config['sources'], root_dir)
-
-    if 'includes' in config:
-        abs_conf_files(config['includes'], root_dir)
+        if 'includes' in config:
+            abs_conf_files(config['includes'], root_dir)
 
 def load_config(filename, target_platform):
     config_root = os.path.dirname(filename)
