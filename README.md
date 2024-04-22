@@ -32,8 +32,7 @@
 | --------     | -----:     | :---- |
 | QT           | 9M        |   http://example.qt.io/qt-webassembly/SensorTagDemo/SensorTagDemo.html    |
 | QT           | 3M        |   http://example.qt.io/qt-webassembly/opengl/hellowindow/hellowindow.html    |
-| LittleVG     | 1.3M      |   https://littlevgl.com/demo-basic    |
-| AWTK         | 150K      |   http://zlgawtk.bceapp.com/awtk/demos/demoui/index.html    |
+| AWTK         | 3M      |   https://awtk.zlg.cn/demos/awtk/demoui/index.html  |
 
 * 快。Android 手机浏览器性能普遍不高，要到达实用价值，性能优化至关重要。
 
