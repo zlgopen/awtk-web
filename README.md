@@ -14,7 +14,7 @@
 
 * 3.[AWTK](https://github.com/zlgopen/awtk) 在浏览器中运行是在各种小程序中运行的基础。
 
-在线演示：[http://zlgawtk.bceapp.com](http://zlgawtk.bceapp.com/)
+在线演示：[demoui](https://awtk.zlg.cn/demos/awtk/demoui/index.html)
 
 ## 二、目标
 
