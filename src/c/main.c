@@ -8,7 +8,7 @@ extern ret_t assets_init(void);
 
 #ifdef AWTK_WEB_JS
 #include <emscripten.h>
-#include "assets_web.inc"
+#include "assets.inc"
 #else
 extern ret_t application_init(void);
 #endif/*AWTK_WEB_JS*/

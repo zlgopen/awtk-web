@@ -91,7 +91,7 @@ class CodeGenerator {
   }
 
   genJsonAll(ojson) {
-    this.genFuncsDecl(this.filterScriptableJson(ojson));
+    this.genFuncsDecl(ojson);
   }
 
   genAll(filename) {
@@ -109,7 +109,7 @@ class CodeGenerator {
 
   static gen() {
     const gen = new CodeGenerator();
-    const input = '../../../awtk/tools/idl_gen/idl.json';
+    const input = '../../../awtk-binding/tools/code_gen/js/filter.json';
     const output = '../../configs/export_awtk_funcs.json';
 
     gen.genAll(input);

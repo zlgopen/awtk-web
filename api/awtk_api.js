@@ -15,10 +15,10 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TVpageEvent = exports.TIndicatorDefaultPaint = exports.TExtWidgets = exports.TAppConf = exports.TWidget = exports.TWidgetCursor = exports.TWidgetState = exports.TWindowClosable = exports.TWindowStage = exports.TWidgetType = exports.TWidgetProp = exports.TVgcanvasLineJoin = exports.TVgcanvasLineCap = exports.TVgcanvas = exports.TBitmapFlag = exports.TBitmapFormat = exports.TAppType = exports.TAlignH = exports.TAlignV = exports.TTimer = exports.TTheme = exports.TStyle = exports.TStyleId = exports.TLocaleInfo = exports.TKeyCode = exports.TInputMethod = exports.TInputType = exports.TImageManager = exports.TIdle = exports.TGlyphFormat = exports.TFontManager = exports.TEvent = exports.TEventType = exports.TDialogQuitCode = exports.TClipBoard = exports.TClipBoardDataType = exports.TCanvas = exports.TCanvasOffline = exports.TImageDrawType = exports.TBidiType = exports.TGlobal = exports.TValue = exports.TObject = exports.TBitmap = exports.TRect = exports.TRectf = exports.TPointf = exports.TPoint = exports.TEmitter = exports.init = void 0;
-exports.TScrollBar = exports.TListView = exports.TListViewH = exports.TListItem = exports.THscrollLabel = exports.TRichText = exports.TRichTextView = exports.TProgressCircle = exports.TMledit = exports.TLineNumber = exports.TLangIndicator = exports.TCandidates = exports.TImageValue = exports.TImageAnimation = exports.TGauge = exports.TGaugePointer = exports.TFileChooser = exports.TFileBrowserView = exports.TDraggable = exports.TColorPicker = exports.TColorComponent = exports.TCanvasWidget = exports.TWindowManager = exports.TWindowBase = exports.TStyleMutable = exports.TImageBase = exports.TMultiGestureEvent = exports.TWindowEvent = exports.TPaintEvent = exports.TKeyEvent = exports.TPointerEvent = exports.TValueChangeEvent = exports.TOrientationEvent = exports.TWheelEvent = exports.TAssetsManager = exports.TValueType = exports.TRet = exports.TTimerManager = exports.TTimeNow = exports.TRlog = exports.TObjectProp = exports.TObjectCmd = exports.TNamedValue = exports.TMIME_TYPE = exports.TIdleManager = exports.TEasingType = exports.TDateTime = exports.TColor = exports.TAssetInfo = exports.TAssetType = void 0;
-exports.TCalibrationWin = exports.TTimerInfo = exports.TObjectDefault = exports.TObjectArray = exports.TIdleInfo = exports.TSvgImage = exports.TMutableImage = exports.TKeyboard = exports.TGifImage = exports.TWindow = exports.TNativeWindow = exports.TDialog = exports.TView = exports.TTabControl = exports.TTabButton = exports.TTabButtonGroup = exports.TSlider = exports.TRow = exports.TProgressBar = exports.TPages = exports.TLabel = exports.TGroupBox = exports.TGrid = exports.TGridItem = exports.TEdit = exports.TDragger = exports.TDigitClock = exports.TDialogTitle = exports.TDialogClient = exports.TComboBoxItem = exports.TColumn = exports.TColorTile = exports.TClipView = exports.TCheckButton = exports.TButton = exports.TButtonGroup = exports.TAppBar = exports.TCmdExecEvent = exports.TErrorEvent = exports.TDoneEvent = exports.TProgressEvent = exports.TPropChangeEvent = exports.TVpage = exports.TTimeClock = exports.TTextSelector = exports.TSwitch = exports.TSlideView = exports.TSlideIndicator = exports.TSlideMenu = exports.TScrollView = void 0;
-exports.TComboBoxEx = exports.TSystemBar = exports.TSpinBox = exports.TPopup = exports.TOverlay = exports.TImage = exports.TComboBox = void 0;
+exports.TIndicatorDefaultPaint = exports.TExtWidgets = exports.TAppConf = exports.TWidget = exports.TWidgetCursor = exports.TWidgetState = exports.TWindowClosable = exports.TWindowStage = exports.TWidgetType = exports.TWidgetProp = exports.TVgcanvasLineJoin = exports.TVgcanvasLineCap = exports.TVgcanvas = exports.TBitmapFlag = exports.TBitmapFormat = exports.TAppType = exports.TAlignH = exports.TAlignV = exports.TTimer = exports.TTheme = exports.TSystemInfoFlag = exports.TStyle = exports.TStyleId = exports.TLocaleInfos = exports.TLocaleInfo = exports.TKeyCode = exports.TInputMethod = exports.TInputType = exports.TImageManager = exports.TIdle = exports.TGlyphFormat = exports.TEvent = exports.TEventType = exports.TDialogQuitCode = exports.TClipBoard = exports.TClipBoardDataType = exports.TCanvas = exports.TCanvasOffline = exports.TImageDrawType = exports.TBidiType = exports.TGlobal = exports.TValue = exports.TTkObject = exports.TBitmap = exports.TRect = exports.TRectf = exports.TPointf = exports.TPoint = exports.TEmitter = exports.init = void 0;
+exports.TMledit = exports.TLineNumber = exports.TLangIndicator = exports.TCandidates = exports.TImageValue = exports.TImageAnimation = exports.TGauge = exports.TGaugePointer = exports.TFileChooser = exports.TFileBrowserView = exports.TDraggable = exports.TColorPicker = exports.TColorComponent = exports.TCanvasWidget = exports.TWindowManager = exports.TWindowBase = exports.TStyleMutable = exports.TImageBase = exports.TFontManager = exports.TUiLoadEvent = exports.TSystemEvent = exports.TDropFileEvent = exports.TThemeChangeEvent = exports.TMultiGestureEvent = exports.TWindowEvent = exports.TPaintEvent = exports.TKeyEvent = exports.TPointerEvent = exports.TOffsetChangeEvent = exports.TOrientationEvent = exports.TWheelEvent = exports.TModelEvent = exports.TWidgetAnimatorEvent = exports.TAssetsManager = exports.TValueType = exports.TRet = exports.TTimerManager = exports.TTimeNow = exports.TRlog = exports.TObjectProp = exports.TObjectCmd = exports.TNamedValue = exports.TMIME_TYPE = exports.TIdleManager = exports.TEasingType = exports.TDateTime = exports.TColor = exports.TAssetInfo = exports.TAssetType = exports.TVpageEvent = void 0;
+exports.TView = exports.TTabControl = exports.TTabButton = exports.TTabButtonGroup = exports.TSlider = exports.TRow = exports.TProgressBar = exports.TPages = exports.TLabel = exports.TGroupBox = exports.TGrid = exports.TGridItem = exports.TEdit = exports.TDragger = exports.TDigitClock = exports.TDialogTitle = exports.TDialogClient = exports.TComboBoxItem = exports.TColumn = exports.TColorTile = exports.TClipView = exports.TCheckButton = exports.TButton = exports.TButtonGroup = exports.TAppBar = exports.TLogMessageEvent = exports.TValueChangeEvent = exports.TCmdExecEvent = exports.TErrorEvent = exports.TDoneEvent = exports.TProgressEvent = exports.TPropChangeEvent = exports.TVpage = exports.TTimerWidget = exports.TTimeClock = exports.TTextSelector = exports.TSwitch = exports.TSlideView = exports.TSlideIndicator = exports.TSlideMenu = exports.TSerialWidget = exports.TScrollView = exports.TScrollBar = exports.TListView = exports.TListViewH = exports.TListItem = exports.THscrollLabel = exports.TRichText = exports.TRichTextView = exports.TProgressCircle = void 0;
+exports.TComboBoxEx = exports.TSystemBar = exports.TSpinBox = exports.TPopup = exports.TOverlay = exports.TImage = exports.TComboBox = exports.TCalibrationWin = exports.TTimerInfo = exports.TObjectDefault = exports.TObjectArray = exports.TIdleInfo = exports.TSvgImage = exports.TListItemSeperator = exports.TMutableImage = exports.TKeyboard = exports.TGifImage = exports.TWindow = exports.TNativeWindow = exports.TDialog = void 0;
 var Module = window.Module || {};
 var TBrowser = window.TBrowser || {};
 function wrap_on_event(func) {
@@ -67,69 +67,70 @@ var bitmap_t_get_prop_line_length = Module.cwrap("bitmap_t_get_prop_line_length"
 var bitmap_t_get_prop_flags = Module.cwrap("bitmap_t_get_prop_flags", "number", ["number"]);
 var bitmap_t_get_prop_format = Module.cwrap("bitmap_t_get_prop_format", "number", ["number"]);
 var bitmap_t_get_prop_name = Module.cwrap("bitmap_t_get_prop_name", "string", ["number"]);
-var object_unref = Module.cwrap("object_unref", "number", ["number"]);
-var object_ref = Module.cwrap("object_ref", "number", ["number"]);
-var object_get_type = Module.cwrap("object_get_type", "string", ["number"]);
-var object_get_desc = Module.cwrap("object_get_desc", "string", ["number"]);
-var object_get_size = Module.cwrap("object_get_size", "number", ["number"]);
-var object_is_collection = Module.cwrap("object_is_collection", "number", ["number"]);
-var object_set_name = Module.cwrap("object_set_name", "number", ["number", "string"]);
-var object_compare = Module.cwrap("object_compare", "number", ["number", "number"]);
-var object_get_prop = Module.cwrap("object_get_prop", "number", ["number", "string", "number"]);
-var object_get_prop_str = Module.cwrap("object_get_prop_str", "string", ["number", "string"]);
-var object_get_prop_pointer = Module.cwrap("object_get_prop_pointer", "number", ["number", "string"]);
-var object_get_prop_object = Module.cwrap("object_get_prop_object", "number", ["number", "string"]);
-var object_get_prop_int = Module.cwrap("object_get_prop_int", "number", ["number", "string", "number"]);
-var object_get_prop_bool = Module.cwrap("object_get_prop_bool", "number", ["number", "string", "number"]);
-var object_get_prop_float = Module.cwrap("object_get_prop_float", "number", ["number", "string", "number"]);
-var object_get_prop_double = Module.cwrap("object_get_prop_double", "number", ["number", "string", "number"]);
-var object_remove_prop = Module.cwrap("object_remove_prop", "number", ["number", "string"]);
-var object_set_prop = Module.cwrap("object_set_prop", "number", ["number", "string", "number"]);
-var object_set_prop_str = Module.cwrap("object_set_prop_str", "number", ["number", "string", "string"]);
-var object_set_prop_object = Module.cwrap("object_set_prop_object", "number", ["number", "string", "number"]);
-var object_set_prop_int = Module.cwrap("object_set_prop_int", "number", ["number", "string", "number"]);
-var object_set_prop_bool = Module.cwrap("object_set_prop_bool", "number", ["number", "string", "number"]);
-var object_set_prop_float = Module.cwrap("object_set_prop_float", "number", ["number", "string", "number"]);
-var object_set_prop_double = Module.cwrap("object_set_prop_double", "number", ["number", "string", "number"]);
-var object_copy_prop = Module.cwrap("object_copy_prop", "number", ["number", "number", "string"]);
-var object_has_prop = Module.cwrap("object_has_prop", "number", ["number", "string"]);
-var object_eval = Module.cwrap("object_eval", "number", ["number", "string", "number"]);
-var object_can_exec = Module.cwrap("object_can_exec", "number", ["number", "string", "string"]);
-var object_exec = Module.cwrap("object_exec", "number", ["number", "string", "string"]);
-var object_notify_changed = Module.cwrap("object_notify_changed", "number", ["number"]);
-var object_has_prop_by_path = Module.cwrap("object_has_prop_by_path", "number", ["number", "string"]);
-var object_get_prop_str_by_path = Module.cwrap("object_get_prop_str_by_path", "string", ["number", "string"]);
-var object_get_prop_pointer_by_path = Module.cwrap("object_get_prop_pointer_by_path", "number", ["number", "string"]);
-var object_get_prop_object_by_path = Module.cwrap("object_get_prop_object_by_path", "number", ["number", "string"]);
-var object_get_prop_int_by_path = Module.cwrap("object_get_prop_int_by_path", "number", ["number", "string", "number"]);
-var object_get_prop_bool_by_path = Module.cwrap("object_get_prop_bool_by_path", "number", ["number", "string", "number"]);
-var object_get_prop_float_by_path = Module.cwrap("object_get_prop_float_by_path", "number", ["number", "string", "number"]);
-var object_set_prop_by_path = Module.cwrap("object_set_prop_by_path", "number", ["number", "string", "number"]);
-var object_set_prop_str_by_path = Module.cwrap("object_set_prop_str_by_path", "number", ["number", "string", "string"]);
-var object_set_prop_object_by_path = Module.cwrap("object_set_prop_object_by_path", "number", ["number", "string", "number"]);
-var object_set_prop_int_by_path = Module.cwrap("object_set_prop_int_by_path", "number", ["number", "string", "number"]);
-var object_set_prop_bool_by_path = Module.cwrap("object_set_prop_bool_by_path", "number", ["number", "string", "number"]);
-var object_set_prop_float_by_path = Module.cwrap("object_set_prop_float_by_path", "number", ["number", "string", "number"]);
-var object_can_exec_by_path = Module.cwrap("object_can_exec_by_path", "number", ["number", "string", "string"]);
-var object_exec_by_path = Module.cwrap("object_exec_by_path", "number", ["number", "string", "string"]);
-var object_get_prop_int8 = Module.cwrap("object_get_prop_int8", "number", ["number", "string", "number"]);
-var object_set_prop_int8 = Module.cwrap("object_set_prop_int8", "number", ["number", "string", "number"]);
-var object_get_prop_uint8 = Module.cwrap("object_get_prop_uint8", "number", ["number", "string", "number"]);
-var object_set_prop_uint8 = Module.cwrap("object_set_prop_uint8", "number", ["number", "string", "number"]);
-var object_get_prop_int16 = Module.cwrap("object_get_prop_int16", "number", ["number", "string", "number"]);
-var object_set_prop_int16 = Module.cwrap("object_set_prop_int16", "number", ["number", "string", "number"]);
-var object_get_prop_uint16 = Module.cwrap("object_get_prop_uint16", "number", ["number", "string", "number"]);
-var object_set_prop_uint16 = Module.cwrap("object_set_prop_uint16", "number", ["number", "string", "number"]);
-var object_get_prop_int32 = Module.cwrap("object_get_prop_int32", "number", ["number", "string", "number"]);
-var object_set_prop_int32 = Module.cwrap("object_set_prop_int32", "number", ["number", "string", "number"]);
-var object_get_prop_uint32 = Module.cwrap("object_get_prop_uint32", "number", ["number", "string", "number"]);
-var object_set_prop_uint32 = Module.cwrap("object_set_prop_uint32", "number", ["number", "string", "number"]);
-var object_get_prop_int64 = Module.cwrap("object_get_prop_int64", "number", ["number", "string", "number"]);
-var object_set_prop_int64 = Module.cwrap("object_set_prop_int64", "number", ["number", "string", "number"]);
-var object_get_prop_uint64 = Module.cwrap("object_get_prop_uint64", "number", ["number", "string", "number"]);
-var object_set_prop_uint64 = Module.cwrap("object_set_prop_uint64", "number", ["number", "string", "number"]);
-var object_t_get_prop_ref_count = Module.cwrap("object_t_get_prop_ref_count", "number", ["number"]);
-var object_t_get_prop_name = Module.cwrap("object_t_get_prop_name", "string", ["number"]);
+var tk_object_unref = Module.cwrap("tk_object_unref", "number", ["number"]);
+var tk_object_ref = Module.cwrap("tk_object_ref", "number", ["number"]);
+var tk_object_get_type = Module.cwrap("tk_object_get_type", "string", ["number"]);
+var tk_object_get_desc = Module.cwrap("tk_object_get_desc", "string", ["number"]);
+var tk_object_get_size = Module.cwrap("tk_object_get_size", "number", ["number"]);
+var tk_object_is_collection = Module.cwrap("tk_object_is_collection", "number", ["number"]);
+var tk_object_set_name = Module.cwrap("tk_object_set_name", "number", ["number", "string"]);
+var tk_object_compare = Module.cwrap("tk_object_compare", "number", ["number", "number"]);
+var tk_object_get_prop = Module.cwrap("tk_object_get_prop", "number", ["number", "string", "number"]);
+var tk_object_get_prop_str = Module.cwrap("tk_object_get_prop_str", "string", ["number", "string"]);
+var tk_object_get_prop_pointer = Module.cwrap("tk_object_get_prop_pointer", "number", ["number", "string"]);
+var tk_object_get_prop_object = Module.cwrap("tk_object_get_prop_object", "number", ["number", "string"]);
+var tk_object_get_prop_int = Module.cwrap("tk_object_get_prop_int", "number", ["number", "string", "number"]);
+var tk_object_get_prop_bool = Module.cwrap("tk_object_get_prop_bool", "number", ["number", "string", "number"]);
+var tk_object_get_prop_float = Module.cwrap("tk_object_get_prop_float", "number", ["number", "string", "number"]);
+var tk_object_get_prop_double = Module.cwrap("tk_object_get_prop_double", "number", ["number", "string", "number"]);
+var tk_object_remove_prop = Module.cwrap("tk_object_remove_prop", "number", ["number", "string"]);
+var tk_object_set_prop = Module.cwrap("tk_object_set_prop", "number", ["number", "string", "number"]);
+var tk_object_set_prop_str = Module.cwrap("tk_object_set_prop_str", "number", ["number", "string", "string"]);
+var tk_object_set_prop_object = Module.cwrap("tk_object_set_prop_object", "number", ["number", "string", "number"]);
+var tk_object_set_prop_int = Module.cwrap("tk_object_set_prop_int", "number", ["number", "string", "number"]);
+var tk_object_set_prop_bool = Module.cwrap("tk_object_set_prop_bool", "number", ["number", "string", "number"]);
+var tk_object_set_prop_float = Module.cwrap("tk_object_set_prop_float", "number", ["number", "string", "number"]);
+var tk_object_set_prop_double = Module.cwrap("tk_object_set_prop_double", "number", ["number", "string", "number"]);
+var tk_object_copy_prop = Module.cwrap("tk_object_copy_prop", "number", ["number", "number", "string"]);
+var tk_object_copy_props = Module.cwrap("tk_object_copy_props", "number", ["number", "number", "number"]);
+var tk_object_has_prop = Module.cwrap("tk_object_has_prop", "number", ["number", "string"]);
+var tk_object_eval = Module.cwrap("tk_object_eval", "number", ["number", "string", "number"]);
+var tk_object_can_exec = Module.cwrap("tk_object_can_exec", "number", ["number", "string", "string"]);
+var tk_object_exec = Module.cwrap("tk_object_exec", "number", ["number", "string", "string"]);
+var tk_object_notify_changed = Module.cwrap("tk_object_notify_changed", "number", ["number"]);
+var tk_object_has_prop_by_path = Module.cwrap("tk_object_has_prop_by_path", "number", ["number", "string"]);
+var tk_object_get_prop_str_by_path = Module.cwrap("tk_object_get_prop_str_by_path", "string", ["number", "string"]);
+var tk_object_get_prop_pointer_by_path = Module.cwrap("tk_object_get_prop_pointer_by_path", "number", ["number", "string"]);
+var tk_object_get_prop_object_by_path = Module.cwrap("tk_object_get_prop_object_by_path", "number", ["number", "string"]);
+var tk_object_get_prop_int_by_path = Module.cwrap("tk_object_get_prop_int_by_path", "number", ["number", "string", "number"]);
+var tk_object_get_prop_bool_by_path = Module.cwrap("tk_object_get_prop_bool_by_path", "number", ["number", "string", "number"]);
+var tk_object_get_prop_float_by_path = Module.cwrap("tk_object_get_prop_float_by_path", "number", ["number", "string", "number"]);
+var tk_object_set_prop_by_path = Module.cwrap("tk_object_set_prop_by_path", "number", ["number", "string", "number"]);
+var tk_object_set_prop_str_by_path = Module.cwrap("tk_object_set_prop_str_by_path", "number", ["number", "string", "string"]);
+var tk_object_set_prop_object_by_path = Module.cwrap("tk_object_set_prop_object_by_path", "number", ["number", "string", "number"]);
+var tk_object_set_prop_int_by_path = Module.cwrap("tk_object_set_prop_int_by_path", "number", ["number", "string", "number"]);
+var tk_object_set_prop_bool_by_path = Module.cwrap("tk_object_set_prop_bool_by_path", "number", ["number", "string", "number"]);
+var tk_object_set_prop_float_by_path = Module.cwrap("tk_object_set_prop_float_by_path", "number", ["number", "string", "number"]);
+var tk_object_can_exec_by_path = Module.cwrap("tk_object_can_exec_by_path", "number", ["number", "string", "string"]);
+var tk_object_exec_by_path = Module.cwrap("tk_object_exec_by_path", "number", ["number", "string", "string"]);
+var tk_object_get_prop_int8 = Module.cwrap("tk_object_get_prop_int8", "number", ["number", "string", "number"]);
+var tk_object_set_prop_int8 = Module.cwrap("tk_object_set_prop_int8", "number", ["number", "string", "number"]);
+var tk_object_get_prop_uint8 = Module.cwrap("tk_object_get_prop_uint8", "number", ["number", "string", "number"]);
+var tk_object_set_prop_uint8 = Module.cwrap("tk_object_set_prop_uint8", "number", ["number", "string", "number"]);
+var tk_object_get_prop_int16 = Module.cwrap("tk_object_get_prop_int16", "number", ["number", "string", "number"]);
+var tk_object_set_prop_int16 = Module.cwrap("tk_object_set_prop_int16", "number", ["number", "string", "number"]);
+var tk_object_get_prop_uint16 = Module.cwrap("tk_object_get_prop_uint16", "number", ["number", "string", "number"]);
+var tk_object_set_prop_uint16 = Module.cwrap("tk_object_set_prop_uint16", "number", ["number", "string", "number"]);
+var tk_object_get_prop_int32 = Module.cwrap("tk_object_get_prop_int32", "number", ["number", "string", "number"]);
+var tk_object_set_prop_int32 = Module.cwrap("tk_object_set_prop_int32", "number", ["number", "string", "number"]);
+var tk_object_get_prop_uint32 = Module.cwrap("tk_object_get_prop_uint32", "number", ["number", "string", "number"]);
+var tk_object_set_prop_uint32 = Module.cwrap("tk_object_set_prop_uint32", "number", ["number", "string", "number"]);
+var tk_object_get_prop_int64 = Module.cwrap("tk_object_get_prop_int64", "number", ["number", "string", "number"]);
+var tk_object_set_prop_int64 = Module.cwrap("tk_object_set_prop_int64", "number", ["number", "string", "number"]);
+var tk_object_get_prop_uint64 = Module.cwrap("tk_object_get_prop_uint64", "number", ["number", "string", "number"]);
+var tk_object_set_prop_uint64 = Module.cwrap("tk_object_set_prop_uint64", "number", ["number", "string", "number"]);
+var tk_object_t_get_prop_ref_count = Module.cwrap("tk_object_t_get_prop_ref_count", "number", ["number"]);
+var tk_object_t_get_prop_name = Module.cwrap("tk_object_t_get_prop_name", "string", ["number"]);
 var value_set_bool = Module.cwrap("value_set_bool", "number", ["number", "number"]);
 var value_bool = Module.cwrap("value_bool", "number", ["number"]);
 var value_set_int8 = Module.cwrap("value_set_int8", "number", ["number", "number"]);
@@ -155,6 +156,8 @@ var value_dup_str = Module.cwrap("value_dup_str", "number", ["number", "string"]
 var value_str = Module.cwrap("value_str", "string", ["number"]);
 var value_str_ex = Module.cwrap("value_str_ex", "string", ["number", "string", "number"]);
 var value_is_null = Module.cwrap("value_is_null", "number", ["number"]);
+var value_equal = Module.cwrap("value_equal", "number", ["number", "number"]);
+var value_int = Module.cwrap("value_int", "number", ["number"]);
 var value_set_int = Module.cwrap("value_set_int", "number", ["number", "number"]);
 var value_set_object = Module.cwrap("value_set_object", "number", ["number", "number"]);
 var value_object = Module.cwrap("value_object", "number", ["number"]);
@@ -164,9 +167,16 @@ var value_create = Module.cwrap("value_create", "number", []);
 var value_destroy = Module.cwrap("value_destroy", "number", ["number"]);
 var value_reset = Module.cwrap("value_reset", "number", ["number"]);
 var value_cast = Module.cwrap("value_cast", "number", ["number"]);
+var value_id = Module.cwrap("value_id", "string", ["number"]);
+var value_func = Module.cwrap("value_func", "number", ["number"]);
+var value_func_def = Module.cwrap("value_func_def", "number", ["number"]);
+var value_bitmap = Module.cwrap("value_bitmap", "number", ["number"]);
+var value_rect = Module.cwrap("value_rect", "number", ["number"]);
+var tk_pre_init = Module.cwrap("tk_pre_init", "number", []);
 var tk_init = Module.cwrap("tk_init", "number", ["number", "number", "number", "string", "string"]);
 var tk_run = Module.cwrap("tk_run", "number", []);
 var tk_quit = Module.cwrap("tk_quit", "number", []);
+var tk_quit_ex = Module.cwrap("tk_quit_ex", "number", ["number"]);
 var tk_get_pointer_x = Module.cwrap("tk_get_pointer_x", "number", []);
 var tk_get_pointer_y = Module.cwrap("tk_get_pointer_y", "number", []);
 var tk_is_pointer_pressed = Module.cwrap("tk_is_pointer_pressed", "number", []);
@@ -185,6 +195,7 @@ var IMAGE_DRAW_SCALE_AUTO = Module.cwrap("get_IMAGE_DRAW_SCALE_AUTO", "number", 
 var IMAGE_DRAW_SCALE_DOWN = Module.cwrap("get_IMAGE_DRAW_SCALE_DOWN", "number", []);
 var IMAGE_DRAW_SCALE_W = Module.cwrap("get_IMAGE_DRAW_SCALE_W", "number", []);
 var IMAGE_DRAW_SCALE_H = Module.cwrap("get_IMAGE_DRAW_SCALE_H", "number", []);
+var IMAGE_DRAW_FILL = Module.cwrap("get_IMAGE_DRAW_FILL", "number", []);
 var IMAGE_DRAW_REPEAT = Module.cwrap("get_IMAGE_DRAW_REPEAT", "number", []);
 var IMAGE_DRAW_REPEAT_X = Module.cwrap("get_IMAGE_DRAW_REPEAT_X", "number", []);
 var IMAGE_DRAW_REPEAT_Y = Module.cwrap("get_IMAGE_DRAW_REPEAT_Y", "number", []);
@@ -211,10 +222,10 @@ var canvas_untranslate = Module.cwrap("canvas_untranslate", "number", ["number",
 var canvas_draw_vline = Module.cwrap("canvas_draw_vline", "number", ["number", "number", "number", "number"]);
 var canvas_draw_hline = Module.cwrap("canvas_draw_hline", "number", ["number", "number", "number", "number"]);
 var canvas_fill_rect = Module.cwrap("canvas_fill_rect", "number", ["number", "number", "number", "number", "number"]);
-var canvas_fill_rect_gradient = Module.cwrap("canvas_fill_rect_gradient", "number", ["number", "number", "number", "number", "number", "number"]);
 var canvas_clear_rect = Module.cwrap("canvas_clear_rect", "number", ["number", "number", "number", "number", "number"]);
 var canvas_stroke_rect = Module.cwrap("canvas_stroke_rect", "number", ["number", "number", "number", "number", "number"]);
 var canvas_set_font = Module.cwrap("canvas_set_font", "number", ["number", "string", "number"]);
+var canvas_reset_font = Module.cwrap("canvas_reset_font", "number", ["number"]);
 var canvas_measure_utf8 = Module.cwrap("canvas_measure_utf8", "number", ["number", "string"]);
 var canvas_draw_utf8 = Module.cwrap("canvas_draw_utf8", "number", ["number", "string", "number", "number"]);
 var canvas_draw_utf8_in_rect = Module.cwrap("canvas_draw_utf8_in_rect", "number", ["number", "string", "number"]);
@@ -225,6 +236,7 @@ var canvas_draw_image_ex2 = Module.cwrap("canvas_draw_image_ex2", "number", ["nu
 var canvas_get_vgcanvas = Module.cwrap("canvas_get_vgcanvas", "number", ["number"]);
 var canvas_cast = Module.cwrap("canvas_cast", "number", ["number"]);
 var canvas_reset = Module.cwrap("canvas_reset", "number", ["number"]);
+var canvas_reset_cache = Module.cwrap("canvas_reset_cache", "number", ["number"]);
 var canvas_t_get_prop_ox = Module.cwrap("canvas_t_get_prop_ox", "number", ["number"]);
 var canvas_t_get_prop_oy = Module.cwrap("canvas_t_get_prop_oy", "number", ["number"]);
 var canvas_t_get_prop_font_name = Module.cwrap("canvas_t_get_prop_font_name", "string", ["number"]);
@@ -254,6 +266,7 @@ var EVT_POINTER_ENTER = Module.cwrap("get_EVT_POINTER_ENTER", "number", []);
 var EVT_POINTER_LEAVE = Module.cwrap("get_EVT_POINTER_LEAVE", "number", []);
 var EVT_LONG_PRESS = Module.cwrap("get_EVT_LONG_PRESS", "number", []);
 var EVT_CLICK = Module.cwrap("get_EVT_CLICK", "number", []);
+var EVT_DOUBLE_CLICK = Module.cwrap("get_EVT_DOUBLE_CLICK", "number", []);
 var EVT_FOCUS = Module.cwrap("get_EVT_FOCUS", "number", []);
 var EVT_BLUR = Module.cwrap("get_EVT_BLUR", "number", []);
 var EVT_KEY_DOWN = Module.cwrap("get_EVT_KEY_DOWN", "number", []);
@@ -268,9 +281,6 @@ var EVT_WILL_RESIZE = Module.cwrap("get_EVT_WILL_RESIZE", "number", []);
 var EVT_RESIZE = Module.cwrap("get_EVT_RESIZE", "number", []);
 var EVT_WILL_MOVE_RESIZE = Module.cwrap("get_EVT_WILL_MOVE_RESIZE", "number", []);
 var EVT_MOVE_RESIZE = Module.cwrap("get_EVT_MOVE_RESIZE", "number", []);
-var EVT_VALUE_WILL_CHANGE = Module.cwrap("get_EVT_VALUE_WILL_CHANGE", "number", []);
-var EVT_VALUE_CHANGED = Module.cwrap("get_EVT_VALUE_CHANGED", "number", []);
-var EVT_VALUE_CHANGING = Module.cwrap("get_EVT_VALUE_CHANGING", "number", []);
 var EVT_PAINT = Module.cwrap("get_EVT_PAINT", "number", []);
 var EVT_BEFORE_PAINT = Module.cwrap("get_EVT_BEFORE_PAINT", "number", []);
 var EVT_AFTER_PAINT = Module.cwrap("get_EVT_AFTER_PAINT", "number", []);
@@ -314,7 +324,10 @@ var EVT_ORIENTATION_WILL_CHANGED = Module.cwrap("get_EVT_ORIENTATION_WILL_CHANGE
 var EVT_ORIENTATION_CHANGED = Module.cwrap("get_EVT_ORIENTATION_CHANGED", "number", []);
 var EVT_WIDGET_CREATED = Module.cwrap("get_EVT_WIDGET_CREATED", "number", []);
 var EVT_REQUEST_QUIT_APP = Module.cwrap("get_EVT_REQUEST_QUIT_APP", "number", []);
+var EVT_THEME_WILL_CHANGE = Module.cwrap("get_EVT_THEME_WILL_CHANGE", "number", []);
 var EVT_THEME_CHANGED = Module.cwrap("get_EVT_THEME_CHANGED", "number", []);
+var EVT_WIDGET_WILL_UPDATE_STYLE = Module.cwrap("get_EVT_WIDGET_WILL_UPDATE_STYLE", "number", []);
+var EVT_WIDGET_UPDATE_STYLE = Module.cwrap("get_EVT_WIDGET_UPDATE_STYLE", "number", []);
 var EVT_WIDGET_ADD_CHILD = Module.cwrap("get_EVT_WIDGET_ADD_CHILD", "number", []);
 var EVT_WIDGET_REMOVE_CHILD = Module.cwrap("get_EVT_WIDGET_REMOVE_CHILD", "number", []);
 var EVT_SCROLL_START = Module.cwrap("get_EVT_SCROLL_START", "number", []);
@@ -322,10 +335,21 @@ var EVT_SCROLL = Module.cwrap("get_EVT_SCROLL", "number", []);
 var EVT_SCROLL_END = Module.cwrap("get_EVT_SCROLL_END", "number", []);
 var EVT_MULTI_GESTURE = Module.cwrap("get_EVT_MULTI_GESTURE", "number", []);
 var EVT_PAGE_CHANGED = Module.cwrap("get_EVT_PAGE_CHANGED", "number", []);
+var EVT_PAGE_CHANGING = Module.cwrap("get_EVT_PAGE_CHANGING", "number", []);
 var EVT_ASSET_MANAGER_LOAD_ASSET = Module.cwrap("get_EVT_ASSET_MANAGER_LOAD_ASSET", "number", []);
 var EVT_ASSET_MANAGER_UNLOAD_ASSET = Module.cwrap("get_EVT_ASSET_MANAGER_UNLOAD_ASSET", "number", []);
 var EVT_ASSET_MANAGER_CLEAR_CACHE = Module.cwrap("get_EVT_ASSET_MANAGER_CLEAR_CACHE", "number", []);
 var EVT_TIMER = Module.cwrap("get_EVT_TIMER", "number", []);
+var EVT_DATA = Module.cwrap("get_EVT_DATA", "number", []);
+var EVT_CONNECT = Module.cwrap("get_EVT_CONNECT", "number", []);
+var EVT_MODEL_CHANGE = Module.cwrap("get_EVT_MODEL_CHANGE", "number", []);
+var EVT_SYSTEM = Module.cwrap("get_EVT_SYSTEM", "number", []);
+var EVT_DROP_FILE = Module.cwrap("get_EVT_DROP_FILE", "number", []);
+var EVT_LOCALE_INFOS_LOAD_INFO = Module.cwrap("get_EVT_LOCALE_INFOS_LOAD_INFO", "number", []);
+var EVT_LOCALE_INFOS_UNLOAD_INFO = Module.cwrap("get_EVT_LOCALE_INFOS_UNLOAD_INFO", "number", []);
+var EVT_ACTIVATED = Module.cwrap("get_EVT_ACTIVATED", "number", []);
+var EVT_UNACTIVATED = Module.cwrap("get_EVT_UNACTIVATED", "number", []);
+var EVT_UI_LOAD = Module.cwrap("get_EVT_UI_LOAD", "number", []);
 var EVT_REQ_START = Module.cwrap("get_EVT_REQ_START", "number", []);
 var EVT_USER_START = Module.cwrap("get_EVT_USER_START", "number", []);
 var EVT_NONE = Module.cwrap("get_EVT_NONE", "number", []);
@@ -341,6 +365,10 @@ var EVT_PROGRESS = Module.cwrap("get_EVT_PROGRESS", "number", []);
 var EVT_DONE = Module.cwrap("get_EVT_DONE", "number", []);
 var EVT_ERROR = Module.cwrap("get_EVT_ERROR", "number", []);
 var EVT_DESTROY = Module.cwrap("get_EVT_DESTROY", "number", []);
+var EVT_VALUE_WILL_CHANGE = Module.cwrap("get_EVT_VALUE_WILL_CHANGE", "number", []);
+var EVT_VALUE_CHANGED = Module.cwrap("get_EVT_VALUE_CHANGED", "number", []);
+var EVT_VALUE_CHANGING = Module.cwrap("get_EVT_VALUE_CHANGING", "number", []);
+var EVT_LOG_MESSAGE = Module.cwrap("get_EVT_LOG_MESSAGE", "number", []);
 var event_from_name = Module.cwrap("event_from_name", "number", ["string"]);
 var event_cast = Module.cwrap("event_cast", "number", ["number"]);
 var event_get_type = Module.cwrap("event_get_type", "number", ["number"]);
@@ -350,12 +378,11 @@ var event_t_get_prop_type = Module.cwrap("event_t_get_prop_type", "number", ["nu
 var event_t_get_prop_size = Module.cwrap("event_t_get_prop_size", "number", ["number"]);
 var event_t_get_prop_time = Module.cwrap("event_t_get_prop_time", "number", ["number"]);
 var event_t_get_prop_target = Module.cwrap("event_t_get_prop_target", "number", ["number"]);
-var font_manager_unload_font = Module.cwrap("font_manager_unload_font", "number", ["number", "string", "number"]);
-var font_manager_shrink_cache = Module.cwrap("font_manager_shrink_cache", "number", ["number", "number"]);
-var font_manager_unload_all = Module.cwrap("font_manager_unload_all", "number", ["number"]);
 var GLYPH_FMT_ALPHA = Module.cwrap("get_GLYPH_FMT_ALPHA", "number", []);
 var GLYPH_FMT_MONO = Module.cwrap("get_GLYPH_FMT_MONO", "number", []);
 var GLYPH_FMT_RGBA = Module.cwrap("get_GLYPH_FMT_RGBA", "number", []);
+var GLYPH_FMT_ALPHA2 = Module.cwrap("get_GLYPH_FMT_ALPHA2", "number", []);
+var GLYPH_FMT_ALPHA4 = Module.cwrap("get_GLYPH_FMT_ALPHA4", "number", []);
 var idle_add = Module.cwrap("idle_add", "number", ["number", "number"]);
 var idle_remove = Module.cwrap("idle_remove", "number", ["number"]);
 var idle_remove_all_by_ctx = Module.cwrap("idle_remove_all_by_ctx", "number", ["number"]);
@@ -518,13 +545,37 @@ var TK_KEY_MENU = Module.cwrap("get_TK_KEY_MENU", "number", []);
 var TK_KEY_COMMAND = Module.cwrap("get_TK_KEY_COMMAND", "number", []);
 var TK_KEY_BACK = Module.cwrap("get_TK_KEY_BACK", "number", []);
 var TK_KEY_CANCEL = Module.cwrap("get_TK_KEY_CANCEL", "number", []);
+var TK_KEY_KP_DIVIDE = Module.cwrap("get_TK_KEY_KP_DIVIDE", "number", []);
+var TK_KEY_KP_MULTIPLY = Module.cwrap("get_TK_KEY_KP_MULTIPLY", "number", []);
+var TK_KEY_KP_MINUS = Module.cwrap("get_TK_KEY_KP_MINUS", "number", []);
+var TK_KEY_KP_PLUS = Module.cwrap("get_TK_KEY_KP_PLUS", "number", []);
+var TK_KEY_KP_ENTER = Module.cwrap("get_TK_KEY_KP_ENTER", "number", []);
+var TK_KEY_KP_1 = Module.cwrap("get_TK_KEY_KP_1", "number", []);
+var TK_KEY_KP_2 = Module.cwrap("get_TK_KEY_KP_2", "number", []);
+var TK_KEY_KP_3 = Module.cwrap("get_TK_KEY_KP_3", "number", []);
+var TK_KEY_KP_4 = Module.cwrap("get_TK_KEY_KP_4", "number", []);
+var TK_KEY_KP_5 = Module.cwrap("get_TK_KEY_KP_5", "number", []);
+var TK_KEY_KP_6 = Module.cwrap("get_TK_KEY_KP_6", "number", []);
+var TK_KEY_KP_7 = Module.cwrap("get_TK_KEY_KP_7", "number", []);
+var TK_KEY_KP_8 = Module.cwrap("get_TK_KEY_KP_8", "number", []);
+var TK_KEY_KP_9 = Module.cwrap("get_TK_KEY_KP_9", "number", []);
+var TK_KEY_KP_0 = Module.cwrap("get_TK_KEY_KP_0", "number", []);
+var TK_KEY_KP_PERIOD = Module.cwrap("get_TK_KEY_KP_PERIOD", "number", []);
+var TK_KEY_NUMLOCKCLEAR = Module.cwrap("get_TK_KEY_NUMLOCKCLEAR", "number", []);
 var TK_KEY_WHEEL = Module.cwrap("get_TK_KEY_WHEEL", "number", []);
 var locale_info = Module.cwrap("locale_info", "number", []);
 var locale_info_tr = Module.cwrap("locale_info_tr", "string", ["number", "string"]);
 var locale_info_change = Module.cwrap("locale_info_change", "number", ["number", "string", "string"]);
 var locale_info_off = Module.cwrap("locale_info_off", "number", ["number", "number"]);
+var locale_infos_ref = Module.cwrap("locale_infos_ref", "number", ["string"]);
+var locale_infos_unref = Module.cwrap("locale_infos_unref", "number", ["number"]);
+var locale_infos_change = Module.cwrap("locale_infos_change", "number", ["string", "string"]);
+var locale_infos_on = Module.cwrap("locale_infos_on", "number", ["number", "number", "number"]);
+var locale_infos_off = Module.cwrap("locale_infos_off", "number", ["number"]);
+var locale_infos_reload_all = Module.cwrap("locale_infos_reload_all", "number", []);
 var STYLE_ID_BG_COLOR = Module.cwrap("get_STYLE_ID_BG_COLOR", "string", []);
 var STYLE_ID_FG_COLOR = Module.cwrap("get_STYLE_ID_FG_COLOR", "string", []);
+var STYLE_ID_DRAGGER_COLOR = Module.cwrap("get_STYLE_ID_DRAGGER_COLOR", "string", []);
 var STYLE_ID_MASK_COLOR = Module.cwrap("get_STYLE_ID_MASK_COLOR", "string", []);
 var STYLE_ID_FONT_NAME = Module.cwrap("get_STYLE_ID_FONT_NAME", "string", []);
 var STYLE_ID_FONT_SIZE = Module.cwrap("get_STYLE_ID_FONT_SIZE", "string", []);
@@ -558,24 +609,31 @@ var STYLE_ID_SELECTED_BG_COLOR = Module.cwrap("get_STYLE_ID_SELECTED_BG_COLOR", 
 var STYLE_ID_SELECTED_FG_COLOR = Module.cwrap("get_STYLE_ID_SELECTED_FG_COLOR", "string", []);
 var STYLE_ID_SELECTED_TEXT_COLOR = Module.cwrap("get_STYLE_ID_SELECTED_TEXT_COLOR", "string", []);
 var STYLE_ID_ROUND_RADIUS = Module.cwrap("get_STYLE_ID_ROUND_RADIUS", "string", []);
-var STYLE_ID_ROUND_RADIUS_TOP_LETF = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_TOP_LETF", "string", []);
+var STYLE_ID_ROUND_RADIUS_TOP_LEFT = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_TOP_LEFT", "string", []);
 var STYLE_ID_ROUND_RADIUS_TOP_RIGHT = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_TOP_RIGHT", "string", []);
-var STYLE_ID_ROUND_RADIUS_BOTTOM_LETF = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_BOTTOM_LETF", "string", []);
+var STYLE_ID_ROUND_RADIUS_BOTTOM_LEFT = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_BOTTOM_LEFT", "string", []);
 var STYLE_ID_ROUND_RADIUS_BOTTOM_RIGHT = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_BOTTOM_RIGHT", "string", []);
 var STYLE_ID_CHILDREN_LAYOUT = Module.cwrap("get_STYLE_ID_CHILDREN_LAYOUT", "string", []);
 var STYLE_ID_SELF_LAYOUT = Module.cwrap("get_STYLE_ID_SELF_LAYOUT", "string", []);
 var STYLE_ID_FOCUSABLE = Module.cwrap("get_STYLE_ID_FOCUSABLE", "string", []);
 var STYLE_ID_FEEDBACK = Module.cwrap("get_STYLE_ID_FEEDBACK", "string", []);
+var STYLE_ID_CLEAR_BG = Module.cwrap("get_STYLE_ID_CLEAR_BG", "string", []);
+var STYLE_ID_GRID_COLOR = Module.cwrap("get_STYLE_ID_GRID_COLOR", "string", []);
+var STYLE_ID_EVEN_BG_COLOR = Module.cwrap("get_STYLE_ID_EVEN_BG_COLOR", "string", []);
+var STYLE_ID_ODD_BG_COLOR = Module.cwrap("get_STYLE_ID_ODD_BG_COLOR", "string", []);
 var style_notify_widget_state_changed = Module.cwrap("style_notify_widget_state_changed", "number", ["number", "number"]);
 var style_is_valid = Module.cwrap("style_is_valid", "number", ["number"]);
 var style_get_int = Module.cwrap("style_get_int", "number", ["number", "string", "number"]);
 var style_get_uint = Module.cwrap("style_get_uint", "number", ["number", "string", "number"]);
 var style_get_str = Module.cwrap("style_get_str", "string", ["number", "string", "string"]);
+var style_get = Module.cwrap("style_get", "number", ["number", "string", "string", "number"]);
 var style_set = Module.cwrap("style_set", "number", ["number", "string", "string", "number"]);
 var style_update_state = Module.cwrap("style_update_state", "number", ["number", "number", "string", "string", "string"]);
 var style_get_style_state = Module.cwrap("style_get_style_state", "string", ["number"]);
 var style_is_mutable = Module.cwrap("style_is_mutable", "number", ["number"]);
 var style_get_style_type = Module.cwrap("style_get_style_type", "string", ["number"]);
+var SYSTEM_INFO_FLAG_NONE = Module.cwrap("get_SYSTEM_INFO_FLAG_NONE", "number", []);
+var SYSTEM_INFO_FLAG_FAST_LCD_PORTRAIT = Module.cwrap("get_SYSTEM_INFO_FLAG_FAST_LCD_PORTRAIT", "number", []);
 var theme = Module.cwrap("theme", "number", []);
 var timer_add = Module.cwrap("timer_add", "number", ["number", "number", "number"]);
 var timer_remove = Module.cwrap("timer_remove", "number", ["number"]);
@@ -595,6 +653,7 @@ var ALIGN_H_RIGHT = Module.cwrap("get_ALIGN_H_RIGHT", "number", []);
 var APP_MOBILE = Module.cwrap("get_APP_MOBILE", "number", []);
 var APP_SIMULATOR = Module.cwrap("get_APP_SIMULATOR", "number", []);
 var APP_DESKTOP = Module.cwrap("get_APP_DESKTOP", "number", []);
+var APP_CONSOLE = Module.cwrap("get_APP_CONSOLE", "number", []);
 var BITMAP_FMT_NONE = Module.cwrap("get_BITMAP_FMT_NONE", "number", []);
 var BITMAP_FMT_RGBA8888 = Module.cwrap("get_BITMAP_FMT_RGBA8888", "number", []);
 var BITMAP_FMT_ABGR8888 = Module.cwrap("get_BITMAP_FMT_ABGR8888", "number", []);
@@ -612,6 +671,8 @@ var BITMAP_FLAG_IMMUTABLE = Module.cwrap("get_BITMAP_FLAG_IMMUTABLE", "number", 
 var BITMAP_FLAG_TEXTURE = Module.cwrap("get_BITMAP_FLAG_TEXTURE", "number", []);
 var BITMAP_FLAG_CHANGED = Module.cwrap("get_BITMAP_FLAG_CHANGED", "number", []);
 var BITMAP_FLAG_PREMULTI_ALPHA = Module.cwrap("get_BITMAP_FLAG_PREMULTI_ALPHA", "number", []);
+var BITMAP_FLAG_LCD_ORIENTATION = Module.cwrap("get_BITMAP_FLAG_LCD_ORIENTATION", "number", []);
+var BITMAP_FLAG_GPU_FBO_TEXTURE = Module.cwrap("get_BITMAP_FLAG_GPU_FBO_TEXTURE", "number", []);
 var vgcanvas_cast = Module.cwrap("vgcanvas_cast", "number", ["number"]);
 var vgcanvas_flush = Module.cwrap("vgcanvas_flush", "number", ["number"]);
 var vgcanvas_begin_path = Module.cwrap("vgcanvas_begin_path", "number", ["number"]);
@@ -634,6 +695,7 @@ var vgcanvas_transform = Module.cwrap("vgcanvas_transform", "number", ["number",
 var vgcanvas_set_transform = Module.cwrap("vgcanvas_set_transform", "number", ["number", "number", "number", "number", "number", "number", "number"]);
 var vgcanvas_clip_path = Module.cwrap("vgcanvas_clip_path", "number", ["number"]);
 var vgcanvas_clip_rect = Module.cwrap("vgcanvas_clip_rect", "number", ["number", "number", "number", "number", "number"]);
+var vgcanvas_is_rectf_in_clip_rect = Module.cwrap("vgcanvas_is_rectf_in_clip_rect", "number", ["number", "number", "number", "number", "number"]);
 var vgcanvas_intersect_clip_rect = Module.cwrap("vgcanvas_intersect_clip_rect", "number", ["number", "number", "number", "number", "number"]);
 var vgcanvas_fill = Module.cwrap("vgcanvas_fill", "number", ["number"]);
 var vgcanvas_stroke = Module.cwrap("vgcanvas_stroke", "number", ["number"]);
@@ -645,6 +707,7 @@ var vgcanvas_set_text_baseline = Module.cwrap("vgcanvas_set_text_baseline", "num
 var vgcanvas_fill_text = Module.cwrap("vgcanvas_fill_text", "number", ["number", "string", "number", "number", "number"]);
 var vgcanvas_measure_text = Module.cwrap("vgcanvas_measure_text", "number", ["number", "string"]);
 var vgcanvas_draw_image = Module.cwrap("vgcanvas_draw_image", "number", ["number", "number", "number", "number", "number", "number", "number", "number", "number", "number"]);
+var vgcanvas_draw_image_repeat = Module.cwrap("vgcanvas_draw_image_repeat", "number", ["number", "number", "number", "number", "number", "number", "number", "number", "number", "number", "number", "number"]);
 var vgcanvas_draw_icon = Module.cwrap("vgcanvas_draw_icon", "number", ["number", "number", "number", "number", "number", "number", "number", "number", "number", "number"]);
 var vgcanvas_set_antialias = Module.cwrap("vgcanvas_set_antialias", "number", ["number", "number"]);
 var vgcanvas_set_global_alpha = Module.cwrap("vgcanvas_set_global_alpha", "number", ["number", "number"]);
@@ -692,6 +755,7 @@ var WIDGET_PROP_INPUTING = Module.cwrap("get_WIDGET_PROP_INPUTING", "string", []
 var WIDGET_PROP_ALWAYS_ON_TOP = Module.cwrap("get_WIDGET_PROP_ALWAYS_ON_TOP", "string", []);
 var WIDGET_PROP_CARET_X = Module.cwrap("get_WIDGET_PROP_CARET_X", "string", []);
 var WIDGET_PROP_CARET_Y = Module.cwrap("get_WIDGET_PROP_CARET_Y", "string", []);
+var WIDGET_PROP_LINE_HEIGHT = Module.cwrap("get_WIDGET_PROP_LINE_HEIGHT", "string", []);
 var WIDGET_PROP_DIRTY_RECT_TOLERANCE = Module.cwrap("get_WIDGET_PROP_DIRTY_RECT_TOLERANCE", "string", []);
 var WIDGET_PROP_BIDI = Module.cwrap("get_WIDGET_PROP_BIDI", "string", []);
 var WIDGET_PROP_CANVAS = Module.cwrap("get_WIDGET_PROP_CANVAS", "string", []);
@@ -712,19 +776,23 @@ var WIDGET_PROP_LAYOUT_W = Module.cwrap("get_WIDGET_PROP_LAYOUT_W", "string", []
 var WIDGET_PROP_LAYOUT_H = Module.cwrap("get_WIDGET_PROP_LAYOUT_H", "string", []);
 var WIDGET_PROP_VIRTUAL_W = Module.cwrap("get_WIDGET_PROP_VIRTUAL_W", "string", []);
 var WIDGET_PROP_VIRTUAL_H = Module.cwrap("get_WIDGET_PROP_VIRTUAL_H", "string", []);
+var WIDGET_PROP_LOADING = Module.cwrap("get_WIDGET_PROP_LOADING", "string", []);
 var WIDGET_PROP_NAME = Module.cwrap("get_WIDGET_PROP_NAME", "string", []);
 var WIDGET_PROP_TYPE = Module.cwrap("get_WIDGET_PROP_TYPE", "string", []);
 var WIDGET_PROP_CLOSABLE = Module.cwrap("get_WIDGET_PROP_CLOSABLE", "string", []);
 var WIDGET_PROP_POINTER_CURSOR = Module.cwrap("get_WIDGET_PROP_POINTER_CURSOR", "string", []);
 var WIDGET_PROP_VALUE = Module.cwrap("get_WIDGET_PROP_VALUE", "string", []);
+var WIDGET_PROP_EASY_TOUCH_MODE = Module.cwrap("get_WIDGET_PROP_EASY_TOUCH_MODE", "string", []);
 var WIDGET_PROP_RADIO = Module.cwrap("get_WIDGET_PROP_RADIO", "string", []);
 var WIDGET_PROP_REVERSE = Module.cwrap("get_WIDGET_PROP_REVERSE", "string", []);
 var WIDGET_PROP_LENGTH = Module.cwrap("get_WIDGET_PROP_LENGTH", "string", []);
 var WIDGET_PROP_LINE_WRAP = Module.cwrap("get_WIDGET_PROP_LINE_WRAP", "string", []);
 var WIDGET_PROP_WORD_WRAP = Module.cwrap("get_WIDGET_PROP_WORD_WRAP", "string", []);
+var WIDGET_PROP_ELLIPSES = Module.cwrap("get_WIDGET_PROP_ELLIPSES", "string", []);
 var WIDGET_PROP_TEXT = Module.cwrap("get_WIDGET_PROP_TEXT", "string", []);
 var WIDGET_PROP_TR_TEXT = Module.cwrap("get_WIDGET_PROP_TR_TEXT", "string", []);
 var WIDGET_PROP_STYLE = Module.cwrap("get_WIDGET_PROP_STYLE", "string", []);
+var WIDGET_PROP_STATE = Module.cwrap("get_WIDGET_PROP_STATE", "string", []);
 var WIDGET_PROP_ENABLE = Module.cwrap("get_WIDGET_PROP_ENABLE", "string", []);
 var WIDGET_PROP_FEEDBACK = Module.cwrap("get_WIDGET_PROP_FEEDBACK", "string", []);
 var WIDGET_PROP_FLOATING = Module.cwrap("get_WIDGET_PROP_FLOATING", "string", []);
@@ -737,6 +805,7 @@ var WIDGET_PROP_BOTTOM_MARGIN = Module.cwrap("get_WIDGET_PROP_BOTTOM_MARGIN", "s
 var WIDGET_PROP_STEP = Module.cwrap("get_WIDGET_PROP_STEP", "string", []);
 var WIDGET_PROP_VISIBLE = Module.cwrap("get_WIDGET_PROP_VISIBLE", "string", []);
 var WIDGET_PROP_SENSITIVE = Module.cwrap("get_WIDGET_PROP_SENSITIVE", "string", []);
+var WIDGET_PROP_APPLET_NAME = Module.cwrap("get_WIDGET_PROP_APPLET_NAME", "string", []);
 var WIDGET_PROP_ANIMATION = Module.cwrap("get_WIDGET_PROP_ANIMATION", "string", []);
 var WIDGET_PROP_ANIM_HINT = Module.cwrap("get_WIDGET_PROP_ANIM_HINT", "string", []);
 var WIDGET_PROP_FULLSCREEN = Module.cwrap("get_WIDGET_PROP_FULLSCREEN", "string", []);
@@ -764,6 +833,7 @@ var WIDGET_PROP_ALIGN_V = Module.cwrap("get_WIDGET_PROP_ALIGN_V", "string", []);
 var WIDGET_PROP_ALIGN_H = Module.cwrap("get_WIDGET_PROP_ALIGN_H", "string", []);
 var WIDGET_PROP_AUTO_PLAY = Module.cwrap("get_WIDGET_PROP_AUTO_PLAY", "string", []);
 var WIDGET_PROP_LOOP = Module.cwrap("get_WIDGET_PROP_LOOP", "string", []);
+var WIDGET_PROP_RUNNING = Module.cwrap("get_WIDGET_PROP_RUNNING", "string", []);
 var WIDGET_PROP_AUTO_FIX = Module.cwrap("get_WIDGET_PROP_AUTO_FIX", "string", []);
 var WIDGET_PROP_SELECT_NONE_WHEN_FOCUSED = Module.cwrap("get_WIDGET_PROP_SELECT_NONE_WHEN_FOCUSED", "string", []);
 var WIDGET_PROP_OPEN_IM_WHEN_FOCUSED = Module.cwrap("get_WIDGET_PROP_OPEN_IM_WHEN_FOCUSED", "string", []);
@@ -792,6 +862,7 @@ var WIDGET_PROP_YSLIDABLE = Module.cwrap("get_WIDGET_PROP_YSLIDABLE", "string", 
 var WIDGET_PROP_REPEAT = Module.cwrap("get_WIDGET_PROP_REPEAT", "string", []);
 var WIDGET_PROP_LONG_PRESS_TIME = Module.cwrap("get_WIDGET_PROP_LONG_PRESS_TIME", "string", []);
 var WIDGET_PROP_ENABLE_LONG_PRESS = Module.cwrap("get_WIDGET_PROP_ENABLE_LONG_PRESS", "string", []);
+var WIDGET_PROP_ENABLE_PREVIEW = Module.cwrap("get_WIDGET_PROP_ENABLE_PREVIEW", "string", []);
 var WIDGET_PROP_CLICK_THROUGH = Module.cwrap("get_WIDGET_PROP_CLICK_THROUGH", "string", []);
 var WIDGET_PROP_ANIMATABLE = Module.cwrap("get_WIDGET_PROP_ANIMATABLE", "string", []);
 var WIDGET_PROP_AUTO_HIDE = Module.cwrap("get_WIDGET_PROP_AUTO_HIDE", "string", []);
@@ -815,6 +886,7 @@ var WIDGET_PROP_CHECKED = Module.cwrap("get_WIDGET_PROP_CHECKED", "string", []);
 var WIDGET_PROP_ACTIVE_ICON = Module.cwrap("get_WIDGET_PROP_ACTIVE_ICON", "string", []);
 var WIDGET_PROP_LOAD_UI = Module.cwrap("get_WIDGET_PROP_LOAD_UI", "string", []);
 var WIDGET_PROP_OPEN_WINDOW = Module.cwrap("get_WIDGET_PROP_OPEN_WINDOW", "string", []);
+var WIDGET_PROP_THEME_OF_POPUP = Module.cwrap("get_WIDGET_PROP_THEME_OF_POPUP", "string", []);
 var WIDGET_PROP_SELECTED_INDEX = Module.cwrap("get_WIDGET_PROP_SELECTED_INDEX", "string", []);
 var WIDGET_PROP_CLOSE_WHEN_CLICK = Module.cwrap("get_WIDGET_PROP_CLOSE_WHEN_CLICK", "string", []);
 var WIDGET_PROP_CLOSE_WHEN_CLICK_OUTSIDE = Module.cwrap("get_WIDGET_PROP_CLOSE_WHEN_CLICK_OUTSIDE", "string", []);
@@ -834,6 +906,18 @@ var WIDGET_PROP_MOVE_FOCUS_UP_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS_UP_
 var WIDGET_PROP_MOVE_FOCUS_DOWN_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS_DOWN_KEY", "string", []);
 var WIDGET_PROP_MOVE_FOCUS_LEFT_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS_LEFT_KEY", "string", []);
 var WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY", "string", []);
+var WIDGET_PROP_ROWS = Module.cwrap("get_WIDGET_PROP_ROWS", "string", []);
+var WIDGET_PROP_SHOW_GRID = Module.cwrap("get_WIDGET_PROP_SHOW_GRID", "string", []);
+var WIDGET_PROP_COLUMNS_DEFINITION = Module.cwrap("get_WIDGET_PROP_COLUMNS_DEFINITION", "string", []);
+var WIDGET_PROP_DRAG_THRESHOLD = Module.cwrap("get_WIDGET_PROP_DRAG_THRESHOLD", "string", []);
+var WIDGET_PROP_ANIMATING_TIME = Module.cwrap("get_WIDGET_PROP_ANIMATING_TIME", "string", []);
+var WIDGET_PROP_ANIMATE_PREFIX = Module.cwrap("get_WIDGET_PROP_ANIMATE_PREFIX", "string", []);
+var WIDGET_PROP_ANIMATE_ANIMATING_TIME = Module.cwrap("get_WIDGET_PROP_ANIMATE_ANIMATING_TIME", "string", []);
+var WIDGET_PROP_DIRTY_RECT = Module.cwrap("get_WIDGET_PROP_DIRTY_RECT", "string", []);
+var WIDGET_PROP_SCREEN_SAVER_TIME = Module.cwrap("get_WIDGET_PROP_SCREEN_SAVER_TIME", "string", []);
+var WIDGET_PROP_SHOW_FPS = Module.cwrap("get_WIDGET_PROP_SHOW_FPS", "string", []);
+var WIDGET_PROP_MAX_FPS = Module.cwrap("get_WIDGET_PROP_MAX_FPS", "string", []);
+var WIDGET_PROP_VALIDATOR = Module.cwrap("get_WIDGET_PROP_VALIDATOR", "string", []);
 var WIDGET_TYPE_NONE = Module.cwrap("get_WIDGET_TYPE_NONE", "string", []);
 var WIDGET_TYPE_WINDOW_MANAGER = Module.cwrap("get_WIDGET_TYPE_WINDOW_MANAGER", "string", []);
 var WIDGET_TYPE_NORMAL_WINDOW = Module.cwrap("get_WIDGET_TYPE_NORMAL_WINDOW", "string", []);
@@ -849,6 +933,7 @@ var WIDGET_TYPE_DND = Module.cwrap("get_WIDGET_TYPE_DND", "string", []);
 var WIDGET_TYPE_LABEL = Module.cwrap("get_WIDGET_TYPE_LABEL", "string", []);
 var WIDGET_TYPE_BUTTON = Module.cwrap("get_WIDGET_TYPE_BUTTON", "string", []);
 var WIDGET_TYPE_IMAGE = Module.cwrap("get_WIDGET_TYPE_IMAGE", "string", []);
+var WIDGET_TYPE_ICON = Module.cwrap("get_WIDGET_TYPE_ICON", "string", []);
 var WIDGET_TYPE_EDIT = Module.cwrap("get_WIDGET_TYPE_EDIT", "string", []);
 var WIDGET_TYPE_PROGRESS_BAR = Module.cwrap("get_WIDGET_TYPE_PROGRESS_BAR", "string", []);
 var WIDGET_TYPE_GROUP_BOX = Module.cwrap("get_WIDGET_TYPE_GROUP_BOX", "string", []);
@@ -858,6 +943,7 @@ var WIDGET_TYPE_DIALOG_TITLE = Module.cwrap("get_WIDGET_TYPE_DIALOG_TITLE", "str
 var WIDGET_TYPE_DIALOG_CLIENT = Module.cwrap("get_WIDGET_TYPE_DIALOG_CLIENT", "string", []);
 var WIDGET_TYPE_SLIDER = Module.cwrap("get_WIDGET_TYPE_SLIDER", "string", []);
 var WIDGET_TYPE_VIEW = Module.cwrap("get_WIDGET_TYPE_VIEW", "string", []);
+var WIDGET_TYPE_PAGE = Module.cwrap("get_WIDGET_TYPE_PAGE", "string", []);
 var WIDGET_TYPE_COMBO_BOX = Module.cwrap("get_WIDGET_TYPE_COMBO_BOX", "string", []);
 var WIDGET_TYPE_COMBO_BOX_ITEM = Module.cwrap("get_WIDGET_TYPE_COMBO_BOX_ITEM", "string", []);
 var WIDGET_TYPE_SLIDE_VIEW = Module.cwrap("get_WIDGET_TYPE_SLIDE_VIEW", "string", []);
@@ -900,6 +986,7 @@ var WINDOW_CLOSABLE_NO = Module.cwrap("get_WINDOW_CLOSABLE_NO", "number", []);
 var WINDOW_CLOSABLE_CONFIRM = Module.cwrap("get_WINDOW_CLOSABLE_CONFIRM", "number", []);
 var WIDGET_STATE_NONE = Module.cwrap("get_WIDGET_STATE_NONE", "string", []);
 var WIDGET_STATE_NORMAL = Module.cwrap("get_WIDGET_STATE_NORMAL", "string", []);
+var WIDGET_STATE_ACTIVATED = Module.cwrap("get_WIDGET_STATE_ACTIVATED", "string", []);
 var WIDGET_STATE_CHANGED = Module.cwrap("get_WIDGET_STATE_CHANGED", "string", []);
 var WIDGET_STATE_PRESSED = Module.cwrap("get_WIDGET_STATE_PRESSED", "string", []);
 var WIDGET_STATE_OVER = Module.cwrap("get_WIDGET_STATE_OVER", "string", []);
@@ -909,6 +996,7 @@ var WIDGET_STATE_CHECKED = Module.cwrap("get_WIDGET_STATE_CHECKED", "string", []
 var WIDGET_STATE_UNCHECKED = Module.cwrap("get_WIDGET_STATE_UNCHECKED", "string", []);
 var WIDGET_STATE_EMPTY = Module.cwrap("get_WIDGET_STATE_EMPTY", "string", []);
 var WIDGET_STATE_EMPTY_FOCUS = Module.cwrap("get_WIDGET_STATE_EMPTY_FOCUS", "string", []);
+var WIDGET_STATE_EMPTY_OVER = Module.cwrap("get_WIDGET_STATE_EMPTY_OVER", "string", []);
 var WIDGET_STATE_ERROR = Module.cwrap("get_WIDGET_STATE_ERROR", "string", []);
 var WIDGET_STATE_SELECTED = Module.cwrap("get_WIDGET_STATE_SELECTED", "string", []);
 var WIDGET_STATE_NORMAL_OF_CHECKED = Module.cwrap("get_WIDGET_STATE_NORMAL_OF_CHECKED", "string", []);
@@ -934,6 +1022,8 @@ var WIDGET_CURSOR_SIZENS = Module.cwrap("get_WIDGET_CURSOR_SIZENS", "string", []
 var WIDGET_CURSOR_SIZEALL = Module.cwrap("get_WIDGET_CURSOR_SIZEALL", "string", []);
 var widget_count_children = Module.cwrap("widget_count_children", "number", ["number"]);
 var widget_get_child = Module.cwrap("widget_get_child", "number", ["number", "number"]);
+var widget_find_parent_by_name = Module.cwrap("widget_find_parent_by_name", "number", ["number", "string"]);
+var widget_find_parent_by_type = Module.cwrap("widget_find_parent_by_type", "number", ["number", "string"]);
 var widget_get_focused_widget = Module.cwrap("widget_get_focused_widget", "number", ["number"]);
 var widget_get_native_window = Module.cwrap("widget_get_native_window", "number", ["number"]);
 var widget_index_of = Module.cwrap("widget_index_of", "number", ["number"]);
@@ -942,19 +1032,27 @@ var widget_close_window_force = Module.cwrap("widget_close_window_force", "numbe
 var widget_back = Module.cwrap("widget_back", "number", ["number"]);
 var widget_back_to_home = Module.cwrap("widget_back_to_home", "number", ["number"]);
 var widget_move = Module.cwrap("widget_move", "number", ["number", "number", "number"]);
+var widget_move_to_center = Module.cwrap("widget_move_to_center", "number", ["number"]);
 var widget_resize = Module.cwrap("widget_resize", "number", ["number", "number", "number"]);
 var widget_move_resize = Module.cwrap("widget_move_resize", "number", ["number", "number", "number", "number", "number"]);
+var widget_move_resize_ex = Module.cwrap("widget_move_resize_ex", "number", ["number", "number", "number", "number", "number", "number"]);
+var widget_get_value = Module.cwrap("widget_get_value", "number", ["number"]);
 var widget_set_value = Module.cwrap("widget_set_value", "number", ["number", "number"]);
-var widget_animate_value_to = Module.cwrap("widget_animate_value_to", "number", ["number", "number", "number"]);
 var widget_add_value = Module.cwrap("widget_add_value", "number", ["number", "number"]);
+var widget_get_value_int = Module.cwrap("widget_get_value_int", "number", ["number"]);
+var widget_set_value_int = Module.cwrap("widget_set_value_int", "number", ["number", "number"]);
+var widget_add_value_int = Module.cwrap("widget_add_value_int", "number", ["number", "number"]);
+var widget_animate_value_to = Module.cwrap("widget_animate_value_to", "number", ["number", "number", "number"]);
 var widget_is_style_exist = Module.cwrap("widget_is_style_exist", "number", ["number", "string", "string"]);
+var widget_is_support_highlighter = Module.cwrap("widget_is_support_highlighter", "number", ["number"]);
+var widget_has_highlighter = Module.cwrap("widget_has_highlighter", "number", ["number"]);
 var widget_use_style = Module.cwrap("widget_use_style", "number", ["number", "string"]);
 var widget_set_text_utf8 = Module.cwrap("widget_set_text_utf8", "number", ["number", "string"]);
+var widget_set_text_utf8_ex = Module.cwrap("widget_set_text_utf8_ex", "number", ["number", "string", "number"]);
 var widget_set_child_text_utf8 = Module.cwrap("widget_set_child_text_utf8", "number", ["number", "string", "string"]);
 var widget_set_child_text_with_double = Module.cwrap("widget_set_child_text_with_double", "number", ["number", "string", "string", "number"]);
 var widget_set_child_text_with_int = Module.cwrap("widget_set_child_text_with_int", "number", ["number", "string", "string", "number"]);
 var widget_set_tr_text = Module.cwrap("widget_set_tr_text", "number", ["number", "string"]);
-var widget_get_value = Module.cwrap("widget_get_value", "number", ["number"]);
 var widget_get_enable = Module.cwrap("widget_get_enable", "number", ["number"]);
 var widget_get_floating = Module.cwrap("widget_get_floating", "number", ["number"]);
 var widget_get_auto_adjust_size = Module.cwrap("widget_get_auto_adjust_size", "number", ["number"]);
@@ -966,6 +1064,7 @@ var widget_get_feedback = Module.cwrap("widget_get_feedback", "number", ["number
 var widget_get_text = Module.cwrap("widget_get_text", "number", ["number"]);
 var widget_set_name = Module.cwrap("widget_set_name", "number", ["number", "string"]);
 var widget_set_theme = Module.cwrap("widget_set_theme", "number", ["number", "string"]);
+var widget_get_theme_name = Module.cwrap("widget_get_theme_name", "string", ["number"]);
 var widget_set_pointer_cursor = Module.cwrap("widget_set_pointer_cursor", "number", ["number", "string"]);
 var widget_set_animation = Module.cwrap("widget_set_animation", "number", ["number", "string"]);
 var widget_create_animator = Module.cwrap("widget_create_animator", "number", ["number", "string"]);
@@ -997,10 +1096,15 @@ var widget_set_sensitive = Module.cwrap("widget_set_sensitive", "number", ["numb
 var widget_on = Module.cwrap("widget_on", "number", ["number", "number", "number", "number"]);
 var widget_off = Module.cwrap("widget_off", "number", ["number", "number"]);
 var widget_invalidate_force = Module.cwrap("widget_invalidate_force", "number", ["number", "number"]);
+var widget_get_prop = Module.cwrap("widget_get_prop", "number", ["number", "string", "number"]);
+var widget_set_prop = Module.cwrap("widget_set_prop", "number", ["number", "string", "number"]);
+var widget_set_props = Module.cwrap("widget_set_props", "number", ["number", "string"]);
 var widget_set_prop_str = Module.cwrap("widget_set_prop_str", "number", ["number", "string", "string"]);
 var widget_get_prop_str = Module.cwrap("widget_get_prop_str", "string", ["number", "string", "string"]);
 var widget_set_prop_pointer = Module.cwrap("widget_set_prop_pointer", "number", ["number", "string", "number"]);
 var widget_get_prop_pointer = Module.cwrap("widget_get_prop_pointer", "number", ["number", "string"]);
+var widget_set_prop_float = Module.cwrap("widget_set_prop_float", "number", ["number", "string", "number"]);
+var widget_get_prop_float = Module.cwrap("widget_get_prop_float", "number", ["number", "string", "number"]);
 var widget_set_prop_int = Module.cwrap("widget_set_prop_int", "number", ["number", "string", "number"]);
 var widget_get_prop_int = Module.cwrap("widget_get_prop_int", "number", ["number", "string", "number"]);
 var widget_set_prop_bool = Module.cwrap("widget_set_prop_bool", "number", ["number", "string", "number"]);
@@ -1012,9 +1116,11 @@ var widget_is_direct_parent_of = Module.cwrap("widget_is_direct_parent_of", "num
 var widget_is_window = Module.cwrap("widget_is_window", "number", ["number"]);
 var widget_is_system_bar = Module.cwrap("widget_is_system_bar", "number", ["number"]);
 var widget_is_normal_window = Module.cwrap("widget_is_normal_window", "number", ["number"]);
+var widget_is_fullscreen_window = Module.cwrap("widget_is_fullscreen_window", "number", ["number"]);
 var widget_is_dialog = Module.cwrap("widget_is_dialog", "number", ["number"]);
 var widget_is_popup = Module.cwrap("widget_is_popup", "number", ["number"]);
 var widget_is_overlay = Module.cwrap("widget_is_overlay", "number", ["number"]);
+var widget_is_always_on_top = Module.cwrap("widget_is_always_on_top", "number", ["number"]);
 var widget_is_opened_dialog = Module.cwrap("widget_is_opened_dialog", "number", ["number"]);
 var widget_is_opened_popup = Module.cwrap("widget_is_opened_popup", "number", ["number"]);
 var widget_is_keyboard = Module.cwrap("widget_is_keyboard", "number", ["number"]);
@@ -1049,6 +1155,7 @@ var widget_set_self_layout_params = Module.cwrap("widget_set_self_layout_params"
 var widget_set_style_int = Module.cwrap("widget_set_style_int", "number", ["number", "string", "number"]);
 var widget_set_style_str = Module.cwrap("widget_set_style_str", "number", ["number", "string", "string"]);
 var widget_set_style_color = Module.cwrap("widget_set_style_color", "number", ["number", "string", "number"]);
+var widget_add_child_default = Module.cwrap("widget_add_child_default", "number", ["number", "number"]);
 var widget_t_get_prop_x = Module.cwrap("widget_t_get_prop_x", "number", ["number"]);
 var widget_t_get_prop_y = Module.cwrap("widget_t_get_prop_y", "number", ["number"]);
 var widget_t_get_prop_w = Module.cwrap("widget_t_get_prop_w", "number", ["number"]);
@@ -1066,6 +1173,7 @@ var widget_t_get_prop_focusable = Module.cwrap("widget_t_get_prop_focusable", "n
 var widget_t_get_prop_with_focus_state = Module.cwrap("widget_t_get_prop_with_focus_state", "number", ["number"]);
 var widget_t_get_prop_auto_adjust_size = Module.cwrap("widget_t_get_prop_auto_adjust_size", "number", ["number"]);
 var widget_t_get_prop_floating = Module.cwrap("widget_t_get_prop_floating", "number", ["number"]);
+var widget_t_get_prop_opacity = Module.cwrap("widget_t_get_prop_opacity", "number", ["number"]);
 var widget_t_get_prop_dirty_rect_tolerance = Module.cwrap("widget_t_get_prop_dirty_rect_tolerance", "number", ["number"]);
 var widget_t_get_prop_parent = Module.cwrap("widget_t_get_prop_parent", "number", ["number"]);
 var app_conf_save = Module.cwrap("app_conf_save", "number", []);
@@ -1104,12 +1212,13 @@ var ASSET_TYPE_FLOW = Module.cwrap("get_ASSET_TYPE_FLOW", "number", []);
 var ASSET_TYPE_DATA = Module.cwrap("get_ASSET_TYPE_DATA", "number", []);
 var asset_info_get_type = Module.cwrap("asset_info_get_type", "number", ["number"]);
 var asset_info_get_name = Module.cwrap("asset_info_get_name", "string", ["number"]);
+var asset_info_is_in_rom = Module.cwrap("asset_info_is_in_rom", "number", ["number"]);
+var asset_info_set_is_in_rom = Module.cwrap("asset_info_set_is_in_rom", "number", ["number", "number"]);
 var asset_info_t_get_prop_type = Module.cwrap("asset_info_t_get_prop_type", "number", ["number"]);
 var asset_info_t_get_prop_subtype = Module.cwrap("asset_info_t_get_prop_subtype", "number", ["number"]);
-var asset_info_t_get_prop_is_in_rom = Module.cwrap("asset_info_t_get_prop_is_in_rom", "number", ["number"]);
+var asset_info_t_get_prop_flags = Module.cwrap("asset_info_t_get_prop_flags", "number", ["number"]);
 var asset_info_t_get_prop_size = Module.cwrap("asset_info_t_get_prop_size", "number", ["number"]);
 var asset_info_t_get_prop_refcount = Module.cwrap("asset_info_t_get_prop_refcount", "number", ["number"]);
-var asset_info_t_get_prop_name = Module.cwrap("asset_info_t_get_prop_name", "string", ["number"]);
 var color_create = Module.cwrap("color_create", "number", ["number", "number", "number", "number"]);
 var color_from_str = Module.cwrap("color_from_str", "number", ["number", "string"]);
 var color_r = Module.cwrap("color_r", "number", ["number"]);
@@ -1278,18 +1387,19 @@ var named_value_set_value = Module.cwrap("named_value_set_value", "number", ["nu
 var named_value_get_value = Module.cwrap("named_value_get_value", "number", ["number"]);
 var named_value_destroy = Module.cwrap("named_value_destroy", "number", ["number"]);
 var named_value_t_get_prop_name = Module.cwrap("named_value_t_get_prop_name", "string", ["number"]);
-var OBJECT_CMD_SAVE = Module.cwrap("get_OBJECT_CMD_SAVE", "string", []);
-var OBJECT_CMD_RELOAD = Module.cwrap("get_OBJECT_CMD_RELOAD", "string", []);
-var OBJECT_CMD_MOVE_UP = Module.cwrap("get_OBJECT_CMD_MOVE_UP", "string", []);
-var OBJECT_CMD_MOVE_DOWN = Module.cwrap("get_OBJECT_CMD_MOVE_DOWN", "string", []);
-var OBJECT_CMD_REMOVE = Module.cwrap("get_OBJECT_CMD_REMOVE", "string", []);
-var OBJECT_CMD_REMOVE_CHECKED = Module.cwrap("get_OBJECT_CMD_REMOVE_CHECKED", "string", []);
-var OBJECT_CMD_CLEAR = Module.cwrap("get_OBJECT_CMD_CLEAR", "string", []);
-var OBJECT_CMD_ADD = Module.cwrap("get_OBJECT_CMD_ADD", "string", []);
-var OBJECT_CMD_DETAIL = Module.cwrap("get_OBJECT_CMD_DETAIL", "string", []);
-var OBJECT_CMD_EDIT = Module.cwrap("get_OBJECT_CMD_EDIT", "string", []);
-var OBJECT_PROP_SIZE = Module.cwrap("get_OBJECT_PROP_SIZE", "string", []);
-var OBJECT_PROP_CHECKED = Module.cwrap("get_OBJECT_PROP_CHECKED", "string", []);
+var TK_OBJECT_CMD_SAVE = Module.cwrap("get_TK_OBJECT_CMD_SAVE", "string", []);
+var TK_OBJECT_CMD_RELOAD = Module.cwrap("get_TK_OBJECT_CMD_RELOAD", "string", []);
+var TK_OBJECT_CMD_MOVE_UP = Module.cwrap("get_TK_OBJECT_CMD_MOVE_UP", "string", []);
+var TK_OBJECT_CMD_MOVE_DOWN = Module.cwrap("get_TK_OBJECT_CMD_MOVE_DOWN", "string", []);
+var TK_OBJECT_CMD_REMOVE = Module.cwrap("get_TK_OBJECT_CMD_REMOVE", "string", []);
+var TK_OBJECT_CMD_REMOVE_CHECKED = Module.cwrap("get_TK_OBJECT_CMD_REMOVE_CHECKED", "string", []);
+var TK_OBJECT_CMD_CLEAR = Module.cwrap("get_TK_OBJECT_CMD_CLEAR", "string", []);
+var TK_OBJECT_CMD_ADD = Module.cwrap("get_TK_OBJECT_CMD_ADD", "string", []);
+var TK_OBJECT_CMD_DETAIL = Module.cwrap("get_TK_OBJECT_CMD_DETAIL", "string", []);
+var TK_OBJECT_CMD_EDIT = Module.cwrap("get_TK_OBJECT_CMD_EDIT", "string", []);
+var TK_OBJECT_PROP_SIZE = Module.cwrap("get_TK_OBJECT_PROP_SIZE", "string", []);
+var TK_OBJECT_PROP_CHECKED = Module.cwrap("get_TK_OBJECT_PROP_CHECKED", "string", []);
+var TK_OBJECT_PROP_SELECTED_INDEX = Module.cwrap("get_TK_OBJECT_PROP_SELECTED_INDEX", "string", []);
 var rlog_create = Module.cwrap("rlog_create", "number", ["string", "number", "number"]);
 var rlog_write = Module.cwrap("rlog_write", "number", ["number", "string"]);
 var time_now_s = Module.cwrap("time_now_s", "number", []);
@@ -1317,6 +1427,10 @@ var RET_CRC = Module.cwrap("get_RET_CRC", "number", []);
 var RET_IO = Module.cwrap("get_RET_IO", "number", []);
 var RET_EOS = Module.cwrap("get_RET_EOS", "number", []);
 var RET_NOT_MODIFIED = Module.cwrap("get_RET_NOT_MODIFIED", "number", []);
+var RET_NO_PERMISSION = Module.cwrap("get_RET_NO_PERMISSION", "number", []);
+var RET_INVALID_ADDR = Module.cwrap("get_RET_INVALID_ADDR", "number", []);
+var RET_EXCEED_RANGE = Module.cwrap("get_RET_EXCEED_RANGE", "number", []);
+var RET_MAX_NR = Module.cwrap("get_RET_MAX_NR", "number", []);
 var VALUE_TYPE_INVALID = Module.cwrap("get_VALUE_TYPE_INVALID", "number", []);
 var VALUE_TYPE_BOOL = Module.cwrap("get_VALUE_TYPE_BOOL", "number", []);
 var VALUE_TYPE_INT8 = Module.cwrap("get_VALUE_TYPE_INT8", "number", []);
@@ -1339,12 +1453,27 @@ var VALUE_TYPE_BINARY = Module.cwrap("get_VALUE_TYPE_BINARY", "number", []);
 var VALUE_TYPE_UBJSON = Module.cwrap("get_VALUE_TYPE_UBJSON", "number", []);
 var VALUE_TYPE_TOKEN = Module.cwrap("get_VALUE_TYPE_TOKEN", "number", []);
 var VALUE_TYPE_GRADIENT = Module.cwrap("get_VALUE_TYPE_GRADIENT", "number", []);
+var VALUE_TYPE_ID = Module.cwrap("get_VALUE_TYPE_ID", "number", []);
+var VALUE_TYPE_FUNC = Module.cwrap("get_VALUE_TYPE_FUNC", "number", []);
+var VALUE_TYPE_FUNC_DEF = Module.cwrap("get_VALUE_TYPE_FUNC_DEF", "number", []);
+var VALUE_TYPE_POINTER_REF = Module.cwrap("get_VALUE_TYPE_POINTER_REF", "number", []);
+var VALUE_TYPE_BITMAP = Module.cwrap("get_VALUE_TYPE_BITMAP", "number", []);
+var VALUE_TYPE_RECT = Module.cwrap("get_VALUE_TYPE_RECT", "number", []);
 var assets_manager = Module.cwrap("assets_manager", "number", []);
 var assets_manager_set_theme = Module.cwrap("assets_manager_set_theme", "number", ["number", "string"]);
 var assets_manager_ref = Module.cwrap("assets_manager_ref", "number", ["number", "number", "string"]);
 var assets_manager_ref_ex = Module.cwrap("assets_manager_ref_ex", "number", ["number", "number", "number", "string"]);
 var assets_manager_unref = Module.cwrap("assets_manager_unref", "number", ["number", "number"]);
+var widget_animator_event_cast = Module.cwrap("widget_animator_event_cast", "number", ["number"]);
+var widget_animator_event_t_get_prop_widget = Module.cwrap("widget_animator_event_t_get_prop_widget", "number", ["number"]);
+var widget_animator_event_t_get_prop_animator = Module.cwrap("widget_animator_event_t_get_prop_animator", "number", ["number"]);
+var model_event_cast = Module.cwrap("model_event_cast", "number", ["number"]);
+var model_event_t_get_prop_name = Module.cwrap("model_event_t_get_prop_name", "string", ["number"]);
+var model_event_t_get_prop_change_type = Module.cwrap("model_event_t_get_prop_change_type", "string", ["number"]);
+var model_event_t_get_prop_model = Module.cwrap("model_event_t_get_prop_model", "number", ["number"]);
 var wheel_event_cast = Module.cwrap("wheel_event_cast", "number", ["number"]);
+var wheel_event_t_get_prop_x = Module.cwrap("wheel_event_t_get_prop_x", "number", ["number"]);
+var wheel_event_t_get_prop_y = Module.cwrap("wheel_event_t_get_prop_y", "number", ["number"]);
 var wheel_event_t_get_prop_dy = Module.cwrap("wheel_event_t_get_prop_dy", "number", ["number"]);
 var wheel_event_t_get_prop_alt = Module.cwrap("wheel_event_t_get_prop_alt", "number", ["number"]);
 var wheel_event_t_get_prop_ctrl = Module.cwrap("wheel_event_t_get_prop_ctrl", "number", ["number"]);
@@ -1352,7 +1481,7 @@ var wheel_event_t_get_prop_shift = Module.cwrap("wheel_event_t_get_prop_shift", 
 var orientation_event_cast = Module.cwrap("orientation_event_cast", "number", ["number"]);
 var orientation_event_t_get_prop_orientation = Module.cwrap("orientation_event_t_get_prop_orientation", "number", ["number"]);
 var orientation_event_t_get_prop_old_orientation = Module.cwrap("orientation_event_t_get_prop_old_orientation", "number", ["number"]);
-var value_change_event_cast = Module.cwrap("value_change_event_cast", "number", ["number"]);
+var offset_change_event_cast = Module.cwrap("offset_change_event_cast", "number", ["number"]);
 var pointer_event_cast = Module.cwrap("pointer_event_cast", "number", ["number"]);
 var pointer_event_t_get_prop_x = Module.cwrap("pointer_event_t_get_prop_x", "number", ["number"]);
 var pointer_event_t_get_prop_y = Module.cwrap("pointer_event_t_get_prop_y", "number", ["number"]);
@@ -1377,6 +1506,7 @@ var key_event_t_get_prop_rshift = Module.cwrap("key_event_t_get_prop_rshift", "n
 var key_event_t_get_prop_cmd = Module.cwrap("key_event_t_get_prop_cmd", "number", ["number"]);
 var key_event_t_get_prop_menu = Module.cwrap("key_event_t_get_prop_menu", "number", ["number"]);
 var key_event_t_get_prop_capslock = Module.cwrap("key_event_t_get_prop_capslock", "number", ["number"]);
+var key_event_t_get_prop_numlock = Module.cwrap("key_event_t_get_prop_numlock", "number", ["number"]);
 var paint_event_cast = Module.cwrap("paint_event_cast", "number", ["number"]);
 var paint_event_t_get_prop_c = Module.cwrap("paint_event_t_get_prop_c", "number", ["number"]);
 var window_event_cast = Module.cwrap("window_event_cast", "number", ["number"]);
@@ -1386,6 +1516,18 @@ var multi_gesture_event_t_get_prop_x = Module.cwrap("multi_gesture_event_t_get_p
 var multi_gesture_event_t_get_prop_y = Module.cwrap("multi_gesture_event_t_get_prop_y", "number", ["number"]);
 var multi_gesture_event_t_get_prop_rotation = Module.cwrap("multi_gesture_event_t_get_prop_rotation", "number", ["number"]);
 var multi_gesture_event_t_get_prop_distance = Module.cwrap("multi_gesture_event_t_get_prop_distance", "number", ["number"]);
+var theme_change_event_cast = Module.cwrap("theme_change_event_cast", "number", ["number"]);
+var theme_change_event_t_get_prop_name = Module.cwrap("theme_change_event_t_get_prop_name", "string", ["number"]);
+var drop_file_event_cast = Module.cwrap("drop_file_event_cast", "number", ["number"]);
+var drop_file_event_t_get_prop_filename = Module.cwrap("drop_file_event_t_get_prop_filename", "string", ["number"]);
+var system_event_cast = Module.cwrap("system_event_cast", "number", ["number"]);
+var system_event_t_get_prop_sdl_event = Module.cwrap("system_event_t_get_prop_sdl_event", "number", ["number"]);
+var ui_load_event_cast = Module.cwrap("ui_load_event_cast", "number", ["number"]);
+var ui_load_event_t_get_prop_root = Module.cwrap("ui_load_event_t_get_prop_root", "number", ["number"]);
+var ui_load_event_t_get_prop_name = Module.cwrap("ui_load_event_t_get_prop_name", "string", ["number"]);
+var font_manager_unload_font = Module.cwrap("font_manager_unload_font", "number", ["number", "string", "number"]);
+var font_manager_shrink_cache = Module.cwrap("font_manager_shrink_cache", "number", ["number", "number"]);
+var font_manager_unload_all = Module.cwrap("font_manager_unload_all", "number", ["number"]);
 var image_base_set_image = Module.cwrap("image_base_set_image", "number", ["number", "string"]);
 var image_base_set_rotation = Module.cwrap("image_base_set_rotation", "number", ["number", "number"]);
 var image_base_set_scale = Module.cwrap("image_base_set_scale", "number", ["number", "number", "number"]);
@@ -1426,6 +1568,7 @@ var window_base_t_get_prop_move_focus_up_key = Module.cwrap("window_base_t_get_p
 var window_base_t_get_prop_move_focus_down_key = Module.cwrap("window_base_t_get_prop_move_focus_down_key", "string", ["number"]);
 var window_base_t_get_prop_move_focus_left_key = Module.cwrap("window_base_t_get_prop_move_focus_left_key", "string", ["number"]);
 var window_base_t_get_prop_move_focus_right_key = Module.cwrap("window_base_t_get_prop_move_focus_right_key", "string", ["number"]);
+var window_base_t_get_prop_applet_name = Module.cwrap("window_base_t_get_prop_applet_name", "string", ["number"]);
 var window_base_t_get_prop_single_instance = Module.cwrap("window_base_t_get_prop_single_instance", "number", ["number"]);
 var window_base_t_get_prop_strongly_focus = Module.cwrap("window_base_t_get_prop_strongly_focus", "number", ["number"]);
 var window_manager = Module.cwrap("window_manager", "number", []);
@@ -1438,6 +1581,7 @@ var window_manager_get_pointer_y = Module.cwrap("window_manager_get_pointer_y", 
 var window_manager_get_pointer_pressed = Module.cwrap("window_manager_get_pointer_pressed", "number", ["number"]);
 var window_manager_is_animating = Module.cwrap("window_manager_is_animating", "number", ["number"]);
 var window_manager_set_show_fps = Module.cwrap("window_manager_set_show_fps", "number", ["number", "number"]);
+var window_manager_set_show_fps_position = Module.cwrap("window_manager_set_show_fps_position", "number", ["number", "number", "number"]);
 var window_manager_set_max_fps = Module.cwrap("window_manager_set_max_fps", "number", ["number", "number"]);
 var window_manager_set_ignore_input_events = Module.cwrap("window_manager_set_ignore_input_events", "number", ["number", "number"]);
 var window_manager_set_screen_saver_time = Module.cwrap("window_manager_set_screen_saver_time", "number", ["number", "number"]);
@@ -1446,6 +1590,7 @@ var window_manager_back = Module.cwrap("window_manager_back", "number", ["number
 var window_manager_back_to_home = Module.cwrap("window_manager_back_to_home", "number", ["number"]);
 var window_manager_back_to = Module.cwrap("window_manager_back_to", "number", ["number", "string"]);
 var window_manager_resize = Module.cwrap("window_manager_resize", "number", ["number", "number", "number"]);
+var window_manager_set_fullscreen = Module.cwrap("window_manager_set_fullscreen", "number", ["number", "number"]);
 var window_manager_close_all = Module.cwrap("window_manager_close_all", "number", ["number"]);
 var canvas_widget_create = Module.cwrap("canvas_widget_create", "number", ["number", "number", "number", "number", "number"]);
 var canvas_widget_cast = Module.cwrap("canvas_widget_cast", "number", ["number"]);
@@ -1463,14 +1608,20 @@ var draggable_set_left = Module.cwrap("draggable_set_left", "number", ["number",
 var draggable_set_right = Module.cwrap("draggable_set_right", "number", ["number", "number"]);
 var draggable_set_vertical_only = Module.cwrap("draggable_set_vertical_only", "number", ["number", "number"]);
 var draggable_set_horizontal_only = Module.cwrap("draggable_set_horizontal_only", "number", ["number", "number"]);
+var draggable_set_allow_out_of_screen = Module.cwrap("draggable_set_allow_out_of_screen", "number", ["number", "number"]);
 var draggable_set_drag_window = Module.cwrap("draggable_set_drag_window", "number", ["number", "number"]);
+var draggable_set_drag_native_window = Module.cwrap("draggable_set_drag_native_window", "number", ["number", "number"]);
+var draggable_set_drag_parent = Module.cwrap("draggable_set_drag_parent", "number", ["number", "number"]);
 var draggable_t_get_prop_top = Module.cwrap("draggable_t_get_prop_top", "number", ["number"]);
 var draggable_t_get_prop_bottom = Module.cwrap("draggable_t_get_prop_bottom", "number", ["number"]);
 var draggable_t_get_prop_left = Module.cwrap("draggable_t_get_prop_left", "number", ["number"]);
 var draggable_t_get_prop_right = Module.cwrap("draggable_t_get_prop_right", "number", ["number"]);
+var draggable_t_get_prop_allow_out_of_screen = Module.cwrap("draggable_t_get_prop_allow_out_of_screen", "number", ["number"]);
 var draggable_t_get_prop_vertical_only = Module.cwrap("draggable_t_get_prop_vertical_only", "number", ["number"]);
 var draggable_t_get_prop_horizontal_only = Module.cwrap("draggable_t_get_prop_horizontal_only", "number", ["number"]);
 var draggable_t_get_prop_drag_window = Module.cwrap("draggable_t_get_prop_drag_window", "number", ["number"]);
+var draggable_t_get_prop_drag_native_window = Module.cwrap("draggable_t_get_prop_drag_native_window", "number", ["number"]);
+var draggable_t_get_prop_drag_parent = Module.cwrap("draggable_t_get_prop_drag_parent", "number", ["number"]);
 var file_browser_view_create = Module.cwrap("file_browser_view_create", "number", ["number", "number", "number", "number", "number"]);
 var file_browser_view_cast = Module.cwrap("file_browser_view_cast", "number", ["number"]);
 var file_browser_view_set_init_dir = Module.cwrap("file_browser_view_set_init_dir", "number", ["number", "string"]);
@@ -1481,6 +1632,8 @@ var file_browser_view_set_ignore_hidden_files = Module.cwrap("file_browser_view_
 var file_browser_view_set_sort_ascending = Module.cwrap("file_browser_view_set_sort_ascending", "number", ["number", "number"]);
 var file_browser_view_set_show_check_button = Module.cwrap("file_browser_view_set_show_check_button", "number", ["number", "number"]);
 var file_browser_view_set_sort_by = Module.cwrap("file_browser_view_set_sort_by", "number", ["number", "string"]);
+var file_browser_view_set_odd_item_style = Module.cwrap("file_browser_view_set_odd_item_style", "number", ["number", "string"]);
+var file_browser_view_set_even_item_style = Module.cwrap("file_browser_view_set_even_item_style", "number", ["number", "string"]);
 var file_browser_view_get_cwd = Module.cwrap("file_browser_view_get_cwd", "string", ["number"]);
 var file_browser_view_create_dir = Module.cwrap("file_browser_view_create_dir", "number", ["number", "string"]);
 var file_browser_view_create_file = Module.cwrap("file_browser_view_create_file", "number", ["number", "string", "string", "number"]);
@@ -1491,6 +1644,8 @@ var file_browser_view_t_get_prop_ignore_hidden_files = Module.cwrap("file_browse
 var file_browser_view_t_get_prop_sort_ascending = Module.cwrap("file_browser_view_t_get_prop_sort_ascending", "number", ["number"]);
 var file_browser_view_t_get_prop_show_check_button = Module.cwrap("file_browser_view_t_get_prop_show_check_button", "number", ["number"]);
 var file_browser_view_t_get_prop_sort_by = Module.cwrap("file_browser_view_t_get_prop_sort_by", "string", ["number"]);
+var file_browser_view_t_get_prop_odd_item_style = Module.cwrap("file_browser_view_t_get_prop_odd_item_style", "string", ["number"]);
+var file_browser_view_t_get_prop_even_item_style = Module.cwrap("file_browser_view_t_get_prop_even_item_style", "string", ["number"]);
 var file_chooser_create = Module.cwrap("file_chooser_create", "number", []);
 var file_chooser_set_init_dir = Module.cwrap("file_chooser_set_init_dir", "number", ["number", "string"]);
 var file_chooser_set_top_dir = Module.cwrap("file_chooser_set_top_dir", "number", ["number", "string"]);
@@ -1571,6 +1726,7 @@ var candidates_t_get_prop_pre = Module.cwrap("candidates_t_get_prop_pre", "numbe
 var candidates_t_get_prop_select_by_num = Module.cwrap("candidates_t_get_prop_select_by_num", "number", ["number"]);
 var candidates_t_get_prop_auto_hide = Module.cwrap("candidates_t_get_prop_auto_hide", "number", ["number"]);
 var candidates_t_get_prop_button_style = Module.cwrap("candidates_t_get_prop_button_style", "string", ["number"]);
+var candidates_t_get_prop_enable_preview = Module.cwrap("candidates_t_get_prop_enable_preview", "number", ["number"]);
 var lang_indicator_create = Module.cwrap("lang_indicator_create", "number", ["number", "number", "number", "number", "number"]);
 var lang_indicator_set_image = Module.cwrap("lang_indicator_set_image", "number", ["number", "string"]);
 var lang_indicator_cast = Module.cwrap("lang_indicator_cast", "number", ["number"]);
@@ -1581,6 +1737,10 @@ var line_number_set_bottom_margin = Module.cwrap("line_number_set_bottom_margin"
 var line_number_set_line_height = Module.cwrap("line_number_set_line_height", "number", ["number", "number"]);
 var line_number_set_yoffset = Module.cwrap("line_number_set_yoffset", "number", ["number", "number"]);
 var line_number_cast = Module.cwrap("line_number_cast", "number", ["number"]);
+var line_number_add_highlight_line = Module.cwrap("line_number_add_highlight_line", "number", ["number", "number"]);
+var line_number_set_active_line = Module.cwrap("line_number_set_active_line", "number", ["number", "number"]);
+var line_number_clear_highlight = Module.cwrap("line_number_clear_highlight", "number", ["number"]);
+var line_number_is_highlight_line = Module.cwrap("line_number_is_highlight_line", "number", ["number", "number"]);
 var mledit_create = Module.cwrap("mledit_create", "number", ["number", "number", "number", "number", "number"]);
 var mledit_set_readonly = Module.cwrap("mledit_set_readonly", "number", ["number", "number"]);
 var mledit_set_cancelable = Module.cwrap("mledit_set_cancelable", "number", ["number", "number"]);
@@ -1643,11 +1803,15 @@ var rich_text_t_get_prop_yslidable = Module.cwrap("rich_text_t_get_prop_yslidabl
 var hscroll_label_create = Module.cwrap("hscroll_label_create", "number", ["number", "number", "number", "number", "number"]);
 var hscroll_label_set_lull = Module.cwrap("hscroll_label_set_lull", "number", ["number", "number"]);
 var hscroll_label_set_duration = Module.cwrap("hscroll_label_set_duration", "number", ["number", "number"]);
+var hscroll_label_set_speed = Module.cwrap("hscroll_label_set_speed", "number", ["number", "number"]);
 var hscroll_label_set_only_focus = Module.cwrap("hscroll_label_set_only_focus", "number", ["number", "number"]);
 var hscroll_label_set_only_parent_focus = Module.cwrap("hscroll_label_set_only_parent_focus", "number", ["number", "number"]);
 var hscroll_label_set_loop = Module.cwrap("hscroll_label_set_loop", "number", ["number", "number"]);
 var hscroll_label_set_yoyo = Module.cwrap("hscroll_label_set_yoyo", "number", ["number", "number"]);
 var hscroll_label_set_ellipses = Module.cwrap("hscroll_label_set_ellipses", "number", ["number", "number"]);
+var hscroll_label_set_stop_at_begin = Module.cwrap("hscroll_label_set_stop_at_begin", "number", ["number", "number"]);
+var hscroll_label_set_delay = Module.cwrap("hscroll_label_set_delay", "number", ["number", "number"]);
+var hscroll_label_set_loop_interval_distance = Module.cwrap("hscroll_label_set_loop_interval_distance", "number", ["number", "number"]);
 var hscroll_label_set_xoffset = Module.cwrap("hscroll_label_set_xoffset", "number", ["number", "number"]);
 var hscroll_label_start = Module.cwrap("hscroll_label_start", "number", ["number"]);
 var hscroll_label_stop = Module.cwrap("hscroll_label_stop", "number", ["number"]);
@@ -1659,8 +1823,12 @@ var hscroll_label_t_get_prop_yoyo = Module.cwrap("hscroll_label_t_get_prop_yoyo"
 var hscroll_label_t_get_prop_ellipses = Module.cwrap("hscroll_label_t_get_prop_ellipses", "number", ["number"]);
 var hscroll_label_t_get_prop_lull = Module.cwrap("hscroll_label_t_get_prop_lull", "number", ["number"]);
 var hscroll_label_t_get_prop_duration = Module.cwrap("hscroll_label_t_get_prop_duration", "number", ["number"]);
+var hscroll_label_t_get_prop_delay = Module.cwrap("hscroll_label_t_get_prop_delay", "number", ["number"]);
+var hscroll_label_t_get_prop_speed = Module.cwrap("hscroll_label_t_get_prop_speed", "number", ["number"]);
 var hscroll_label_t_get_prop_xoffset = Module.cwrap("hscroll_label_t_get_prop_xoffset", "number", ["number"]);
 var hscroll_label_t_get_prop_text_w = Module.cwrap("hscroll_label_t_get_prop_text_w", "number", ["number"]);
+var hscroll_label_t_get_prop_stop_at_begin = Module.cwrap("hscroll_label_t_get_prop_stop_at_begin", "number", ["number"]);
+var hscroll_label_t_get_prop_loop_interval_distance = Module.cwrap("hscroll_label_t_get_prop_loop_interval_distance", "number", ["number"]);
 var list_item_create = Module.cwrap("list_item_create", "number", ["number", "number", "number", "number", "number"]);
 var list_item_cast = Module.cwrap("list_item_cast", "number", ["number"]);
 var list_view_h_create = Module.cwrap("list_view_h_create", "number", ["number", "number", "number", "number", "number"]);
@@ -1688,15 +1856,22 @@ var scroll_bar_set_params = Module.cwrap("scroll_bar_set_params", "number", ["nu
 var scroll_bar_scroll_to = Module.cwrap("scroll_bar_scroll_to", "number", ["number", "number", "number"]);
 var scroll_bar_set_value = Module.cwrap("scroll_bar_set_value", "number", ["number", "number"]);
 var scroll_bar_add_delta = Module.cwrap("scroll_bar_add_delta", "number", ["number", "number"]);
-var scroll_bar_scroll_delta = Module.cwrap("scroll_bar_scroll_delta", "number", ["number", "number"]);
 var scroll_bar_set_value_only = Module.cwrap("scroll_bar_set_value_only", "number", ["number", "number"]);
 var scroll_bar_set_auto_hide = Module.cwrap("scroll_bar_set_auto_hide", "number", ["number", "number"]);
 var scroll_bar_is_mobile = Module.cwrap("scroll_bar_is_mobile", "number", ["number"]);
+var scroll_bar_set_animator_time = Module.cwrap("scroll_bar_set_animator_time", "number", ["number", "number"]);
+var scroll_bar_hide_by_opacity_animation = Module.cwrap("scroll_bar_hide_by_opacity_animation", "number", ["number", "number", "number"]);
+var scroll_bar_show_by_opacity_animation = Module.cwrap("scroll_bar_show_by_opacity_animation", "number", ["number", "number", "number"]);
+var scroll_bar_set_wheel_scroll = Module.cwrap("scroll_bar_set_wheel_scroll", "number", ["number", "number"]);
+var scroll_bar_set_scroll_delta = Module.cwrap("scroll_bar_set_scroll_delta", "number", ["number", "number"]);
 var scroll_bar_t_get_prop_virtual_size = Module.cwrap("scroll_bar_t_get_prop_virtual_size", "number", ["number"]);
 var scroll_bar_t_get_prop_value = Module.cwrap("scroll_bar_t_get_prop_value", "number", ["number"]);
 var scroll_bar_t_get_prop_row = Module.cwrap("scroll_bar_t_get_prop_row", "number", ["number"]);
+var scroll_bar_t_get_prop_animator_time = Module.cwrap("scroll_bar_t_get_prop_animator_time", "number", ["number"]);
+var scroll_bar_t_get_prop_scroll_delta = Module.cwrap("scroll_bar_t_get_prop_scroll_delta", "number", ["number"]);
 var scroll_bar_t_get_prop_animatable = Module.cwrap("scroll_bar_t_get_prop_animatable", "number", ["number"]);
 var scroll_bar_t_get_prop_auto_hide = Module.cwrap("scroll_bar_t_get_prop_auto_hide", "number", ["number"]);
+var scroll_bar_t_get_prop_wheel_scroll = Module.cwrap("scroll_bar_t_get_prop_wheel_scroll", "number", ["number"]);
 var scroll_view_create = Module.cwrap("scroll_view_create", "number", ["number", "number", "number", "number", "number"]);
 var scroll_view_cast = Module.cwrap("scroll_view_cast", "number", ["number"]);
 var scroll_view_set_virtual_w = Module.cwrap("scroll_view_set_virtual_w", "number", ["number", "number"]);
@@ -1709,6 +1884,7 @@ var scroll_view_set_recursive = Module.cwrap("scroll_view_set_recursive", "numbe
 var scroll_view_set_recursive_only = Module.cwrap("scroll_view_set_recursive_only", "number", ["number", "number"]);
 var scroll_view_set_offset = Module.cwrap("scroll_view_set_offset", "number", ["number", "number", "number"]);
 var scroll_view_set_speed_scale = Module.cwrap("scroll_view_set_speed_scale", "number", ["number", "number", "number"]);
+var scroll_view_set_slide_limit_ratio = Module.cwrap("scroll_view_set_slide_limit_ratio", "number", ["number", "number"]);
 var scroll_view_scroll_to = Module.cwrap("scroll_view_scroll_to", "number", ["number", "number", "number", "number"]);
 var scroll_view_scroll_delta_to = Module.cwrap("scroll_view_scroll_delta_to", "number", ["number", "number", "number", "number"]);
 var scroll_view_t_get_prop_virtual_w = Module.cwrap("scroll_view_t_get_prop_virtual_w", "number", ["number"]);
@@ -1722,14 +1898,39 @@ var scroll_view_t_get_prop_yslidable = Module.cwrap("scroll_view_t_get_prop_ysli
 var scroll_view_t_get_prop_snap_to_page = Module.cwrap("scroll_view_t_get_prop_snap_to_page", "number", ["number"]);
 var scroll_view_t_get_prop_move_to_page = Module.cwrap("scroll_view_t_get_prop_move_to_page", "number", ["number"]);
 var scroll_view_t_get_prop_recursive = Module.cwrap("scroll_view_t_get_prop_recursive", "number", ["number"]);
+var scroll_view_t_get_prop_slide_limit_ratio = Module.cwrap("scroll_view_t_get_prop_slide_limit_ratio", "number", ["number"]);
+var serial_widget_create = Module.cwrap("serial_widget_create", "number", ["number", "number", "number", "number", "number"]);
+var serial_widget_cast = Module.cwrap("serial_widget_cast", "number", ["number"]);
+var serial_widget_set_baudrate = Module.cwrap("serial_widget_set_baudrate", "number", ["number", "number"]);
+var serial_widget_set_device = Module.cwrap("serial_widget_set_device", "number", ["number", "string"]);
+var serial_widget_set_bytesize = Module.cwrap("serial_widget_set_bytesize", "number", ["number", "number"]);
+var serial_widget_set_parity = Module.cwrap("serial_widget_set_parity", "number", ["number", "number"]);
+var serial_widget_set_stopbits = Module.cwrap("serial_widget_set_stopbits", "number", ["number", "number"]);
+var serial_widget_set_flowcontrol = Module.cwrap("serial_widget_set_flowcontrol", "number", ["number", "number"]);
+var serial_widget_set_check_interval = Module.cwrap("serial_widget_set_check_interval", "number", ["number", "number"]);
+var serial_widget_t_get_prop_device = Module.cwrap("serial_widget_t_get_prop_device", "string", ["number"]);
+var serial_widget_t_get_prop_baudrate = Module.cwrap("serial_widget_t_get_prop_baudrate", "number", ["number"]);
+var serial_widget_t_get_prop_bytesize = Module.cwrap("serial_widget_t_get_prop_bytesize", "number", ["number"]);
+var serial_widget_t_get_prop_parity = Module.cwrap("serial_widget_t_get_prop_parity", "number", ["number"]);
+var serial_widget_t_get_prop_stopbits = Module.cwrap("serial_widget_t_get_prop_stopbits", "number", ["number"]);
+var serial_widget_t_get_prop_flowcontrol = Module.cwrap("serial_widget_t_get_prop_flowcontrol", "number", ["number"]);
+var serial_widget_t_get_prop_check_interval = Module.cwrap("serial_widget_t_get_prop_check_interval", "number", ["number"]);
 var slide_menu_create = Module.cwrap("slide_menu_create", "number", ["number", "number", "number", "number", "number"]);
 var slide_menu_cast = Module.cwrap("slide_menu_cast", "number", ["number"]);
 var slide_menu_set_value = Module.cwrap("slide_menu_set_value", "number", ["number", "number"]);
 var slide_menu_set_align_v = Module.cwrap("slide_menu_set_align_v", "number", ["number", "number"]);
 var slide_menu_set_min_scale = Module.cwrap("slide_menu_set_min_scale", "number", ["number", "number"]);
+var slide_menu_set_spacer = Module.cwrap("slide_menu_set_spacer", "number", ["number", "number"]);
+var slide_menu_set_menu_w = Module.cwrap("slide_menu_set_menu_w", "number", ["number", "string"]);
+var slide_menu_set_clip = Module.cwrap("slide_menu_set_clip", "number", ["number", "number"]);
+var slide_menu_scroll_to_prev = Module.cwrap("slide_menu_scroll_to_prev", "number", ["number"]);
+var slide_menu_scroll_to_next = Module.cwrap("slide_menu_scroll_to_next", "number", ["number"]);
 var slide_menu_t_get_prop_value = Module.cwrap("slide_menu_t_get_prop_value", "number", ["number"]);
 var slide_menu_t_get_prop_align_v = Module.cwrap("slide_menu_t_get_prop_align_v", "number", ["number"]);
 var slide_menu_t_get_prop_min_scale = Module.cwrap("slide_menu_t_get_prop_min_scale", "number", ["number"]);
+var slide_menu_t_get_prop_spacer = Module.cwrap("slide_menu_t_get_prop_spacer", "number", ["number"]);
+var slide_menu_t_get_prop_menu_w = Module.cwrap("slide_menu_t_get_prop_menu_w", "string", ["number"]);
+var slide_menu_t_get_prop_clip = Module.cwrap("slide_menu_t_get_prop_clip", "number", ["number"]);
 var slide_indicator_create = Module.cwrap("slide_indicator_create", "number", ["number", "number", "number", "number", "number"]);
 var slide_indicator_create_linear = Module.cwrap("slide_indicator_create_linear", "number", ["number", "number", "number", "number", "number"]);
 var slide_indicator_create_arc = Module.cwrap("slide_indicator_create_arc", "number", ["number", "number", "number", "number", "number"]);
@@ -1743,6 +1944,7 @@ var slide_indicator_set_spacing = Module.cwrap("slide_indicator_set_spacing", "n
 var slide_indicator_set_size = Module.cwrap("slide_indicator_set_size", "number", ["number", "number"]);
 var slide_indicator_set_anchor = Module.cwrap("slide_indicator_set_anchor", "number", ["number", "string", "string"]);
 var slide_indicator_set_indicated_target = Module.cwrap("slide_indicator_set_indicated_target", "number", ["number", "string"]);
+var slide_indicator_set_transition = Module.cwrap("slide_indicator_set_transition", "number", ["number", "number"]);
 var slide_indicator_t_get_prop_value = Module.cwrap("slide_indicator_t_get_prop_value", "number", ["number"]);
 var slide_indicator_t_get_prop_max = Module.cwrap("slide_indicator_t_get_prop_max", "number", ["number"]);
 var slide_indicator_t_get_prop_default_paint = Module.cwrap("slide_indicator_t_get_prop_default_paint", "number", ["number"]);
@@ -1750,9 +1952,10 @@ var slide_indicator_t_get_prop_auto_hide = Module.cwrap("slide_indicator_t_get_p
 var slide_indicator_t_get_prop_margin = Module.cwrap("slide_indicator_t_get_prop_margin", "number", ["number"]);
 var slide_indicator_t_get_prop_spacing = Module.cwrap("slide_indicator_t_get_prop_spacing", "number", ["number"]);
 var slide_indicator_t_get_prop_size = Module.cwrap("slide_indicator_t_get_prop_size", "number", ["number"]);
-var slide_indicator_t_get_prop_anchor_x = Module.cwrap("slide_indicator_t_get_prop_anchor_x", "number", ["number"]);
-var slide_indicator_t_get_prop_anchor_y = Module.cwrap("slide_indicator_t_get_prop_anchor_y", "number", ["number"]);
+var slide_indicator_t_get_prop_anchor_x = Module.cwrap("slide_indicator_t_get_prop_anchor_x", "string", ["number"]);
+var slide_indicator_t_get_prop_anchor_y = Module.cwrap("slide_indicator_t_get_prop_anchor_y", "string", ["number"]);
 var slide_indicator_t_get_prop_indicated_target = Module.cwrap("slide_indicator_t_get_prop_indicated_target", "string", ["number"]);
+var slide_indicator_t_get_prop_transition = Module.cwrap("slide_indicator_t_get_prop_transition", "number", ["number"]);
 var slide_view_create = Module.cwrap("slide_view_create", "number", ["number", "number", "number", "number", "number"]);
 var slide_view_cast = Module.cwrap("slide_view_cast", "number", ["number"]);
 var slide_view_set_auto_play = Module.cwrap("slide_view_set_auto_play", "number", ["number", "number"]);
@@ -1761,11 +1964,15 @@ var slide_view_set_active_ex = Module.cwrap("slide_view_set_active_ex", "number"
 var slide_view_set_vertical = Module.cwrap("slide_view_set_vertical", "number", ["number", "number"]);
 var slide_view_set_anim_hint = Module.cwrap("slide_view_set_anim_hint", "number", ["number", "string"]);
 var slide_view_set_loop = Module.cwrap("slide_view_set_loop", "number", ["number", "number"]);
+var slide_view_set_drag_threshold = Module.cwrap("slide_view_set_drag_threshold", "number", ["number", "number"]);
+var slide_view_set_animating_time = Module.cwrap("slide_view_set_animating_time", "number", ["number", "number"]);
 var slide_view_remove_index = Module.cwrap("slide_view_remove_index", "number", ["number", "number"]);
 var slide_view_t_get_prop_vertical = Module.cwrap("slide_view_t_get_prop_vertical", "number", ["number"]);
 var slide_view_t_get_prop_auto_play = Module.cwrap("slide_view_t_get_prop_auto_play", "number", ["number"]);
 var slide_view_t_get_prop_loop = Module.cwrap("slide_view_t_get_prop_loop", "number", ["number"]);
 var slide_view_t_get_prop_anim_hint = Module.cwrap("slide_view_t_get_prop_anim_hint", "string", ["number"]);
+var slide_view_t_get_prop_drag_threshold = Module.cwrap("slide_view_t_get_prop_drag_threshold", "number", ["number"]);
+var slide_view_t_get_prop_animating_time = Module.cwrap("slide_view_t_get_prop_animating_time", "number", ["number"]);
 var switch_create = Module.cwrap("switch_create", "number", ["number", "number", "number", "number", "number"]);
 var switch_set_value = Module.cwrap("switch_set_value", "number", ["number", "number"]);
 var switch_cast = Module.cwrap("switch_cast", "number", ["number"]);
@@ -1790,6 +1997,9 @@ var text_selector_set_loop_options = Module.cwrap("text_selector_set_loop_option
 var text_selector_set_yspeed_scale = Module.cwrap("text_selector_set_yspeed_scale", "number", ["number", "number"]);
 var text_selector_set_animating_time = Module.cwrap("text_selector_set_animating_time", "number", ["number", "number"]);
 var text_selector_set_enable_value_animator = Module.cwrap("text_selector_set_enable_value_animator", "number", ["number", "number"]);
+var text_selector_set_mask_easing = Module.cwrap("text_selector_set_mask_easing", "number", ["number", "number"]);
+var text_selector_set_mask_area_scale = Module.cwrap("text_selector_set_mask_area_scale", "number", ["number", "number"]);
+var text_selector_set_ellipses = Module.cwrap("text_selector_set_ellipses", "number", ["number", "number"]);
 var text_selector_t_get_prop_visible_nr = Module.cwrap("text_selector_t_get_prop_visible_nr", "number", ["number"]);
 var text_selector_t_get_prop_selected_index = Module.cwrap("text_selector_t_get_prop_selected_index", "number", ["number"]);
 var text_selector_t_get_prop_options = Module.cwrap("text_selector_t_get_prop_options", "string", ["number"]);
@@ -1798,6 +2008,9 @@ var text_selector_t_get_prop_animating_time = Module.cwrap("text_selector_t_get_
 var text_selector_t_get_prop_localize_options = Module.cwrap("text_selector_t_get_prop_localize_options", "number", ["number"]);
 var text_selector_t_get_prop_loop_options = Module.cwrap("text_selector_t_get_prop_loop_options", "number", ["number"]);
 var text_selector_t_get_prop_enable_value_animator = Module.cwrap("text_selector_t_get_prop_enable_value_animator", "number", ["number"]);
+var text_selector_t_get_prop_ellipses = Module.cwrap("text_selector_t_get_prop_ellipses", "number", ["number"]);
+var text_selector_t_get_prop_mask_easing = Module.cwrap("text_selector_t_get_prop_mask_easing", "number", ["number"]);
+var text_selector_t_get_prop_mask_area_scale = Module.cwrap("text_selector_t_get_prop_mask_area_scale", "number", ["number"]);
 var time_clock_create = Module.cwrap("time_clock_create", "number", ["number", "number", "number", "number", "number"]);
 var time_clock_cast = Module.cwrap("time_clock_cast", "number", ["number"]);
 var time_clock_set_hour = Module.cwrap("time_clock_set_hour", "number", ["number", "number"]);
@@ -1825,6 +2038,10 @@ var time_clock_t_get_prop_minute_anchor_x = Module.cwrap("time_clock_t_get_prop_
 var time_clock_t_get_prop_minute_anchor_y = Module.cwrap("time_clock_t_get_prop_minute_anchor_y", "string", ["number"]);
 var time_clock_t_get_prop_second_anchor_x = Module.cwrap("time_clock_t_get_prop_second_anchor_x", "string", ["number"]);
 var time_clock_t_get_prop_second_anchor_y = Module.cwrap("time_clock_t_get_prop_second_anchor_y", "string", ["number"]);
+var timer_widget_create = Module.cwrap("timer_widget_create", "number", ["number", "number", "number", "number", "number"]);
+var timer_widget_cast = Module.cwrap("timer_widget_cast", "number", ["number"]);
+var timer_widget_set_duration = Module.cwrap("timer_widget_set_duration", "number", ["number", "number"]);
+var timer_widget_t_get_prop_duration = Module.cwrap("timer_widget_t_get_prop_duration", "number", ["number"]);
 var vpage_create = Module.cwrap("vpage_create", "number", ["number", "number", "number", "number", "number"]);
 var vpage_cast = Module.cwrap("vpage_cast", "number", ["number"]);
 var vpage_set_ui_asset = Module.cwrap("vpage_set_ui_asset", "number", ["number", "string"]);
@@ -1846,6 +2063,8 @@ var cmd_exec_event_t_get_prop_name = Module.cwrap("cmd_exec_event_t_get_prop_nam
 var cmd_exec_event_t_get_prop_args = Module.cwrap("cmd_exec_event_t_get_prop_args", "string", ["number"]);
 var cmd_exec_event_t_get_prop_result = Module.cwrap("cmd_exec_event_t_get_prop_result", "number", ["number"]);
 var cmd_exec_event_t_get_prop_can_exec = Module.cwrap("cmd_exec_event_t_get_prop_can_exec", "number", ["number"]);
+var value_change_event_cast = Module.cwrap("value_change_event_cast", "number", ["number"]);
+var log_message_event_cast = Module.cwrap("log_message_event_cast", "number", ["number"]);
 var app_bar_create = Module.cwrap("app_bar_create", "number", ["number", "number", "number", "number", "number"]);
 var app_bar_cast = Module.cwrap("app_bar_cast", "number", ["number"]);
 var button_group_create = Module.cwrap("button_group_create", "number", ["number", "number", "number", "number", "number"]);
@@ -1855,13 +2074,17 @@ var button_cast = Module.cwrap("button_cast", "number", ["number"]);
 var button_set_repeat = Module.cwrap("button_set_repeat", "number", ["number", "number"]);
 var button_set_long_press_time = Module.cwrap("button_set_long_press_time", "number", ["number", "number"]);
 var button_set_enable_long_press = Module.cwrap("button_set_enable_long_press", "number", ["number", "number"]);
+var button_set_enable_preview = Module.cwrap("button_set_enable_preview", "number", ["number", "number"]);
 var button_t_get_prop_repeat = Module.cwrap("button_t_get_prop_repeat", "number", ["number"]);
 var button_t_get_prop_enable_long_press = Module.cwrap("button_t_get_prop_enable_long_press", "number", ["number"]);
+var button_t_get_prop_enable_preview = Module.cwrap("button_t_get_prop_enable_preview", "number", ["number"]);
 var button_t_get_prop_long_press_time = Module.cwrap("button_t_get_prop_long_press_time", "number", ["number"]);
+var button_t_get_prop_pressed = Module.cwrap("button_t_get_prop_pressed", "number", ["number"]);
 var check_button_create = Module.cwrap("check_button_create", "number", ["number", "number", "number", "number", "number"]);
 var check_button_create_radio = Module.cwrap("check_button_create_radio", "number", ["number", "number", "number", "number", "number"]);
 var check_button_set_value = Module.cwrap("check_button_set_value", "number", ["number", "number"]);
 var check_button_cast = Module.cwrap("check_button_cast", "number", ["number"]);
+var check_button_create_ex = Module.cwrap("check_button_create_ex", "number", ["number", "number", "number", "number", "number", "string", "number"]);
 var check_button_t_get_prop_value = Module.cwrap("check_button_t_get_prop_value", "number", ["number"]);
 var clip_view_create = Module.cwrap("clip_view_create", "number", ["number", "number", "number", "number", "number"]);
 var clip_view_cast = Module.cwrap("clip_view_cast", "number", ["number"]);
@@ -1901,6 +2124,7 @@ var edit_get_int = Module.cwrap("edit_get_int", "number", ["number"]);
 var edit_get_double = Module.cwrap("edit_get_double", "number", ["number"]);
 var edit_set_int = Module.cwrap("edit_set_int", "number", ["number", "number"]);
 var edit_set_double = Module.cwrap("edit_set_double", "number", ["number", "number"]);
+var edit_set_double_ex = Module.cwrap("edit_set_double_ex", "number", ["number", "string", "number"]);
 var edit_set_text_limit = Module.cwrap("edit_set_text_limit", "number", ["number", "number", "number"]);
 var edit_set_int_limit = Module.cwrap("edit_set_int_limit", "number", ["number", "number", "number", "number"]);
 var edit_set_float_limit = Module.cwrap("edit_set_float_limit", "number", ["number", "number", "number", "number"]);
@@ -1921,9 +2145,11 @@ var edit_set_cursor = Module.cwrap("edit_set_cursor", "number", ["number", "numb
 var edit_get_cursor = Module.cwrap("edit_get_cursor", "number", ["number"]);
 var edit_set_select = Module.cwrap("edit_set_select", "number", ["number", "number", "number"]);
 var edit_get_selected_text = Module.cwrap("edit_get_selected_text", "string", ["number"]);
+var edit_set_focus_next_when_enter = Module.cwrap("edit_set_focus_next_when_enter", "number", ["number", "number"]);
 var edit_t_get_prop_tips = Module.cwrap("edit_t_get_prop_tips", "string", ["number"]);
 var edit_t_get_prop_tr_tips = Module.cwrap("edit_t_get_prop_tr_tips", "string", ["number"]);
 var edit_t_get_prop_action_text = Module.cwrap("edit_t_get_prop_action_text", "string", ["number"]);
+var edit_t_get_prop_validator = Module.cwrap("edit_t_get_prop_validator", "string", ["number"]);
 var edit_t_get_prop_keyboard = Module.cwrap("edit_t_get_prop_keyboard", "string", ["number"]);
 var edit_t_get_prop_min = Module.cwrap("edit_t_get_prop_min", "number", ["number"]);
 var edit_t_get_prop_max = Module.cwrap("edit_t_get_prop_max", "number", ["number"]);
@@ -1936,28 +2162,41 @@ var edit_t_get_prop_select_none_when_focused = Module.cwrap("edit_t_get_prop_sel
 var edit_t_get_prop_open_im_when_focused = Module.cwrap("edit_t_get_prop_open_im_when_focused", "number", ["number"]);
 var edit_t_get_prop_close_im_when_blured = Module.cwrap("edit_t_get_prop_close_im_when_blured", "number", ["number"]);
 var edit_t_get_prop_cancelable = Module.cwrap("edit_t_get_prop_cancelable", "number", ["number"]);
+var edit_t_get_prop_focus_next_when_enter = Module.cwrap("edit_t_get_prop_focus_next_when_enter", "number", ["number"]);
 var grid_item_create = Module.cwrap("grid_item_create", "number", ["number", "number", "number", "number", "number"]);
 var grid_item_cast = Module.cwrap("grid_item_cast", "number", ["number"]);
 var grid_create = Module.cwrap("grid_create", "number", ["number", "number", "number", "number", "number"]);
 var grid_cast = Module.cwrap("grid_cast", "number", ["number"]);
+var grid_set_rows = Module.cwrap("grid_set_rows", "number", ["number", "number"]);
+var grid_set_columns_definition = Module.cwrap("grid_set_columns_definition", "number", ["number", "string"]);
+var grid_set_show_grid = Module.cwrap("grid_set_show_grid", "number", ["number", "number"]);
+var grid_t_get_prop_rows = Module.cwrap("grid_t_get_prop_rows", "number", ["number"]);
+var grid_t_get_prop_columns_definition = Module.cwrap("grid_t_get_prop_columns_definition", "string", ["number"]);
+var grid_t_get_prop_show_grid = Module.cwrap("grid_t_get_prop_show_grid", "number", ["number"]);
 var group_box_create = Module.cwrap("group_box_create", "number", ["number", "number", "number", "number", "number"]);
+var group_box_set_value = Module.cwrap("group_box_set_value", "number", ["number", "number"]);
 var group_box_cast = Module.cwrap("group_box_cast", "number", ["number"]);
+var group_box_t_get_prop_value = Module.cwrap("group_box_t_get_prop_value", "number", ["number"]);
 var label_create = Module.cwrap("label_create", "number", ["number", "number", "number", "number", "number"]);
 var label_set_length = Module.cwrap("label_set_length", "number", ["number", "number"]);
 var label_set_max_w = Module.cwrap("label_set_max_w", "number", ["number", "number"]);
 var label_set_line_wrap = Module.cwrap("label_set_line_wrap", "number", ["number", "number"]);
 var label_set_word_wrap = Module.cwrap("label_set_word_wrap", "number", ["number", "number"]);
+var label_set_ellipses = Module.cwrap("label_set_ellipses", "number", ["number", "number"]);
 var label_resize_to_content = Module.cwrap("label_resize_to_content", "number", ["number", "number", "number", "number", "number"]);
 var label_cast = Module.cwrap("label_cast", "number", ["number"]);
 var label_t_get_prop_length = Module.cwrap("label_t_get_prop_length", "number", ["number"]);
 var label_t_get_prop_line_wrap = Module.cwrap("label_t_get_prop_line_wrap", "number", ["number"]);
 var label_t_get_prop_word_wrap = Module.cwrap("label_t_get_prop_word_wrap", "number", ["number"]);
+var label_t_get_prop_ellipses = Module.cwrap("label_t_get_prop_ellipses", "number", ["number"]);
 var label_t_get_prop_max_w = Module.cwrap("label_t_get_prop_max_w", "number", ["number"]);
 var pages_create = Module.cwrap("pages_create", "number", ["number", "number", "number", "number", "number"]);
 var pages_cast = Module.cwrap("pages_cast", "number", ["number"]);
 var pages_set_active = Module.cwrap("pages_set_active", "number", ["number", "number"]);
+var pages_set_auto_focused = Module.cwrap("pages_set_auto_focused", "number", ["number", "number"]);
 var pages_set_active_by_name = Module.cwrap("pages_set_active_by_name", "number", ["number", "string"]);
 var pages_t_get_prop_active = Module.cwrap("pages_t_get_prop_active", "number", ["number"]);
+var pages_t_get_prop_auto_focused = Module.cwrap("pages_t_get_prop_auto_focused", "number", ["number"]);
 var progress_bar_create = Module.cwrap("progress_bar_create", "number", ["number", "number", "number", "number", "number"]);
 var progress_bar_cast = Module.cwrap("progress_bar_cast", "number", ["number"]);
 var progress_bar_set_value = Module.cwrap("progress_bar_set_value", "number", ["number", "number"]);
@@ -1980,6 +2219,7 @@ var slider_cast = Module.cwrap("slider_cast", "number", ["number"]);
 var slider_set_value = Module.cwrap("slider_set_value", "number", ["number", "number"]);
 var slider_set_min = Module.cwrap("slider_set_min", "number", ["number", "number"]);
 var slider_set_max = Module.cwrap("slider_set_max", "number", ["number", "number"]);
+var slider_set_line_cap = Module.cwrap("slider_set_line_cap", "number", ["number", "string"]);
 var slider_set_step = Module.cwrap("slider_set_step", "number", ["number", "number"]);
 var slider_set_bar_size = Module.cwrap("slider_set_bar_size", "number", ["number", "number"]);
 var slider_set_vertical = Module.cwrap("slider_set_vertical", "number", ["number", "number"]);
@@ -1987,9 +2227,10 @@ var slider_t_get_prop_value = Module.cwrap("slider_t_get_prop_value", "number", 
 var slider_t_get_prop_min = Module.cwrap("slider_t_get_prop_min", "number", ["number"]);
 var slider_t_get_prop_max = Module.cwrap("slider_t_get_prop_max", "number", ["number"]);
 var slider_t_get_prop_step = Module.cwrap("slider_t_get_prop_step", "number", ["number"]);
-var slider_t_get_prop_vertical = Module.cwrap("slider_t_get_prop_vertical", "number", ["number"]);
 var slider_t_get_prop_bar_size = Module.cwrap("slider_t_get_prop_bar_size", "number", ["number"]);
 var slider_t_get_prop_dragger_size = Module.cwrap("slider_t_get_prop_dragger_size", "number", ["number"]);
+var slider_t_get_prop_line_cap = Module.cwrap("slider_t_get_prop_line_cap", "string", ["number"]);
+var slider_t_get_prop_vertical = Module.cwrap("slider_t_get_prop_vertical", "number", ["number"]);
 var slider_t_get_prop_dragger_adapt_to_icon = Module.cwrap("slider_t_get_prop_dragger_adapt_to_icon", "number", ["number"]);
 var slider_t_get_prop_slide_with_bar = Module.cwrap("slider_t_get_prop_slide_with_bar", "number", ["number"]);
 var tab_button_group_create = Module.cwrap("tab_button_group_create", "number", ["number", "number", "number", "number", "number"]);
@@ -2040,6 +2281,7 @@ var native_window_center = Module.cwrap("native_window_center", "number", ["numb
 var native_window_show_border = Module.cwrap("native_window_show_border", "number", ["number", "number"]);
 var native_window_set_fullscreen = Module.cwrap("native_window_set_fullscreen", "number", ["number", "number"]);
 var native_window_set_cursor = Module.cwrap("native_window_set_cursor", "number", ["number", "string", "number"]);
+var native_window_set_title = Module.cwrap("native_window_set_title", "number", ["number", "string"]);
 var window_create = Module.cwrap("window_create", "number", ["number", "number", "number", "number", "number"]);
 var window_create_default = Module.cwrap("window_create_default", "number", []);
 var window_set_fullscreen = Module.cwrap("window_set_fullscreen", "number", ["number", "number"]);
@@ -2054,13 +2296,21 @@ var gif_image_create = Module.cwrap("gif_image_create", "number", ["number", "nu
 var gif_image_play = Module.cwrap("gif_image_play", "number", ["number"]);
 var gif_image_stop = Module.cwrap("gif_image_stop", "number", ["number"]);
 var gif_image_pause = Module.cwrap("gif_image_pause", "number", ["number"]);
+var gif_image_set_loop = Module.cwrap("gif_image_set_loop", "number", ["number", "number"]);
 var gif_image_cast = Module.cwrap("gif_image_cast", "number", ["number"]);
+var gif_image_t_get_prop_loop = Module.cwrap("gif_image_t_get_prop_loop", "number", ["number"]);
 var keyboard_create = Module.cwrap("keyboard_create", "number", ["number", "number", "number", "number", "number"]);
 var keyboard_cast = Module.cwrap("keyboard_cast", "number", ["number"]);
 var mutable_image_create = Module.cwrap("mutable_image_create", "number", ["number", "number", "number", "number", "number"]);
+var list_item_seperator_create = Module.cwrap("list_item_seperator_create", "number", ["number", "number", "number", "number", "number"]);
+var list_item_seperator_cast = Module.cwrap("list_item_seperator_cast", "number", ["number"]);
 var svg_image_create = Module.cwrap("svg_image_create", "number", ["number", "number", "number", "number", "number"]);
 var svg_image_set_image = Module.cwrap("svg_image_set_image", "number", ["number", "string"]);
+var svg_image_set_cache_mode = Module.cwrap("svg_image_set_cache_mode", "number", ["number", "number"]);
+var svg_image_set_draw_type = Module.cwrap("svg_image_set_draw_type", "number", ["number", "number"]);
 var svg_image_cast = Module.cwrap("svg_image_cast", "number", ["number"]);
+var svg_image_t_get_prop_is_cache_mode = Module.cwrap("svg_image_t_get_prop_is_cache_mode", "number", ["number"]);
+var svg_image_t_get_prop_draw_type = Module.cwrap("svg_image_t_get_prop_draw_type", "number", ["number"]);
 var idle_info_cast = Module.cwrap("idle_info_cast", "number", ["number"]);
 var idle_info_t_get_prop_ctx = Module.cwrap("idle_info_t_get_prop_ctx", "number", ["number"]);
 var idle_info_t_get_prop_extra_ctx = Module.cwrap("idle_info_t_get_prop_extra_ctx", "number", ["number"]);
@@ -2073,12 +2323,14 @@ var object_array_push = Module.cwrap("object_array_push", "number", ["number", "
 var object_array_index_of = Module.cwrap("object_array_index_of", "number", ["number", "number"]);
 var object_array_last_index_of = Module.cwrap("object_array_last_index_of", "number", ["number", "number"]);
 var object_array_remove = Module.cwrap("object_array_remove", "number", ["number", "number"]);
+var object_array_remove_value = Module.cwrap("object_array_remove_value", "number", ["number", "number"]);
 var object_array_get_and_remove = Module.cwrap("object_array_get_and_remove", "number", ["number", "number", "number"]);
 var object_array_t_get_prop_size = Module.cwrap("object_array_t_get_prop_size", "number", ["number"]);
 var object_default_create = Module.cwrap("object_default_create", "number", []);
 var object_default_create_ex = Module.cwrap("object_default_create_ex", "number", ["number"]);
 var object_default_unref = Module.cwrap("object_default_unref", "number", ["number"]);
 var object_default_clear_props = Module.cwrap("object_default_clear_props", "number", ["number"]);
+var object_default_set_keep_prop_type = Module.cwrap("object_default_set_keep_prop_type", "number", ["number", "number"]);
 var timer_info_cast = Module.cwrap("timer_info_cast", "number", ["number"]);
 var timer_info_t_get_prop_ctx = Module.cwrap("timer_info_t_get_prop_ctx", "number", ["number"]);
 var timer_info_t_get_prop_extra_ctx = Module.cwrap("timer_info_t_get_prop_extra_ctx", "number", ["number"]);
@@ -2089,33 +2341,42 @@ var calibration_win_cast = Module.cwrap("calibration_win_cast", "number", ["numb
 var combo_box_create = Module.cwrap("combo_box_create", "number", ["number", "number", "number", "number", "number"]);
 var combo_box_cast = Module.cwrap("combo_box_cast", "number", ["number"]);
 var combo_box_set_open_window = Module.cwrap("combo_box_set_open_window", "number", ["number", "string"]);
+var combo_box_set_theme_of_popup = Module.cwrap("combo_box_set_theme_of_popup", "number", ["number", "string"]);
 var combo_box_reset_options = Module.cwrap("combo_box_reset_options", "number", ["number"]);
 var combo_box_count_options = Module.cwrap("combo_box_count_options", "number", ["number"]);
 var combo_box_set_selected_index = Module.cwrap("combo_box_set_selected_index", "number", ["number", "number"]);
+var combo_box_set_selected_index_by_text = Module.cwrap("combo_box_set_selected_index_by_text", "number", ["number", "string"]);
 var combo_box_set_localize_options = Module.cwrap("combo_box_set_localize_options", "number", ["number", "number"]);
 var combo_box_set_value = Module.cwrap("combo_box_set_value", "number", ["number", "number"]);
 var combo_box_set_item_height = Module.cwrap("combo_box_set_item_height", "number", ["number", "number"]);
 var combo_box_append_option = Module.cwrap("combo_box_append_option", "number", ["number", "number", "string"]);
 var combo_box_remove_option = Module.cwrap("combo_box_remove_option", "number", ["number", "number"]);
+var combo_box_remove_option_by_index = Module.cwrap("combo_box_remove_option_by_index", "number", ["number", "number"]);
 var combo_box_set_options = Module.cwrap("combo_box_set_options", "number", ["number", "string"]);
 var combo_box_get_value = Module.cwrap("combo_box_get_value", "number", ["number"]);
+var combo_box_has_option_text = Module.cwrap("combo_box_has_option_text", "number", ["number", "string"]);
 var combo_box_get_text = Module.cwrap("combo_box_get_text", "string", ["number"]);
+var combo_box_get_text_of_selected = Module.cwrap("combo_box_get_text_of_selected", "string", ["number"]);
 var combo_box_t_get_prop_open_window = Module.cwrap("combo_box_t_get_prop_open_window", "string", ["number"]);
+var combo_box_t_get_prop_theme_of_popup = Module.cwrap("combo_box_t_get_prop_theme_of_popup", "string", ["number"]);
 var combo_box_t_get_prop_selected_index = Module.cwrap("combo_box_t_get_prop_selected_index", "number", ["number"]);
 var combo_box_t_get_prop_value = Module.cwrap("combo_box_t_get_prop_value", "number", ["number"]);
 var combo_box_t_get_prop_localize_options = Module.cwrap("combo_box_t_get_prop_localize_options", "number", ["number"]);
 var combo_box_t_get_prop_options = Module.cwrap("combo_box_t_get_prop_options", "string", ["number"]);
 var combo_box_t_get_prop_item_height = Module.cwrap("combo_box_t_get_prop_item_height", "number", ["number"]);
 var image_create = Module.cwrap("image_create", "number", ["number", "number", "number", "number", "number"]);
+var icon_create = Module.cwrap("icon_create", "number", ["number", "number", "number", "number", "number"]);
 var image_set_draw_type = Module.cwrap("image_set_draw_type", "number", ["number", "number"]);
 var image_cast = Module.cwrap("image_cast", "number", ["number"]);
 var image_t_get_prop_draw_type = Module.cwrap("image_t_get_prop_draw_type", "number", ["number"]);
 var overlay_create = Module.cwrap("overlay_create", "number", ["number", "number", "number", "number", "number"]);
 var overlay_set_click_through = Module.cwrap("overlay_set_click_through", "number", ["number", "number"]);
 var overlay_set_always_on_top = Module.cwrap("overlay_set_always_on_top", "number", ["number", "number"]);
+var overlay_set_modeless = Module.cwrap("overlay_set_modeless", "number", ["number", "number"]);
 var overlay_cast = Module.cwrap("overlay_cast", "number", ["number"]);
 var overlay_t_get_prop_click_through = Module.cwrap("overlay_t_get_prop_click_through", "number", ["number"]);
 var overlay_t_get_prop_always_on_top = Module.cwrap("overlay_t_get_prop_always_on_top", "number", ["number"]);
+var overlay_t_get_prop_modeless = Module.cwrap("overlay_t_get_prop_modeless", "number", ["number"]);
 var popup_create = Module.cwrap("popup_create", "number", ["number", "number", "number", "number", "number"]);
 var popup_cast = Module.cwrap("popup_cast", "number", ["number"]);
 var popup_set_close_when_click = Module.cwrap("popup_set_close_when_click", "number", ["number", "number"]);
@@ -2126,6 +2387,11 @@ var popup_t_get_prop_close_when_click_outside = Module.cwrap("popup_t_get_prop_c
 var popup_t_get_prop_close_when_timeout = Module.cwrap("popup_t_get_prop_close_when_timeout", "number", ["number"]);
 var spin_box_create = Module.cwrap("spin_box_create", "number", ["number", "number", "number", "number", "number"]);
 var spin_box_cast = Module.cwrap("spin_box_cast", "number", ["number"]);
+var spin_box_set_easy_touch_mode = Module.cwrap("spin_box_set_easy_touch_mode", "number", ["number", "number"]);
+var spin_box_set_button_position = Module.cwrap("spin_box_set_button_position", "number", ["number", "string"]);
+var spin_set_repeat = Module.cwrap("spin_set_repeat", "number", ["number", "number"]);
+var spin_box_t_get_prop_easy_touch_mode = Module.cwrap("spin_box_t_get_prop_easy_touch_mode", "number", ["number"]);
+var spin_box_t_get_prop_button_position = Module.cwrap("spin_box_t_get_prop_button_position", "string", ["number"]);
 var system_bar_create = Module.cwrap("system_bar_create", "number", ["number", "number", "number", "number", "number"]);
 var system_bar_cast = Module.cwrap("system_bar_cast", "number", ["number"]);
 var combo_box_ex_create = Module.cwrap("combo_box_ex_create", "number", ["number", "number", "number", "number", "number"]);
@@ -2557,9 +2823,9 @@ exports.TBitmap = TBitmap;
  * 对象接口。
  *
  */
-var TObject = /** @class */ (function (_super) {
-    __extends(TObject, _super);
-    function TObject(nativeObj) {
+var TTkObject = /** @class */ (function (_super) {
+    __extends(TTkObject, _super);
+    function TTkObject(nativeObj) {
         return _super.call(this, nativeObj) || this;
     }
     /**
@@ -2568,8 +2834,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.unref = function () {
-        return object_unref(this != null ? (this.nativeObj || this) : null);
+    TTkObject.prototype.unref = function () {
+        return tk_object_unref(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 引用计数加1。
@@ -2578,8 +2844,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回object对象。
      */
-    TObject.ref = function (obj) {
-        return new TObject(object_ref(obj != null ? (obj.nativeObj || obj) : null));
+    TTkObject.ref = function (obj) {
+        return new TTkObject(tk_object_ref(obj != null ? (obj.nativeObj || obj) : null));
     };
     /**
      * 获取对象的类型名称。
@@ -2587,8 +2853,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回对象的类型名称。
      */
-    TObject.prototype.getType = function () {
-        return object_get_type(this != null ? (this.nativeObj || this) : null);
+    TTkObject.prototype.getType = function () {
+        return tk_object_get_type(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 获取对象的描述信息。
@@ -2596,8 +2862,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回对象的描述信息。
      */
-    TObject.prototype.getDesc = function () {
-        return object_get_desc(this != null ? (this.nativeObj || this) : null);
+    TTkObject.prototype.getDesc = function () {
+        return tk_object_get_desc(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 获取对象占用内存的大小。
@@ -2605,8 +2871,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回对象占用内存的大小。
      */
-    TObject.prototype.getSize = function () {
-        return object_get_size(this != null ? (this.nativeObj || this) : null);
+    TTkObject.prototype.getSize = function () {
+        return tk_object_get_size(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 判断对象是否是集合。
@@ -2614,8 +2880,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回TRUE表示是集合，否则不是。
      */
-    TObject.prototype.isCollection = function () {
-        return object_is_collection(this != null ? (this.nativeObj || this) : null);
+    TTkObject.prototype.isCollection = function () {
+        return tk_object_is_collection(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 设置对象的名称。
@@ -2624,8 +2890,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setName = function (name) {
-        return object_set_name(this != null ? (this.nativeObj || this) : null, name);
+    TTkObject.prototype.setName = function (name) {
+        return tk_object_set_name(this != null ? (this.nativeObj || this) : null, name);
     };
     /**
      * 比较两个对象。
@@ -2634,8 +2900,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回比较结果。
      */
-    TObject.prototype.compare = function (other) {
-        return object_compare(this != null ? (this.nativeObj || this) : null, other != null ? (other.nativeObj || other) : null);
+    TTkObject.prototype.compare = function (other) {
+        return tk_object_compare(this != null ? (this.nativeObj || this) : null, other != null ? (other.nativeObj || other) : null);
     };
     /**
      * 获取指定属性的值。
@@ -2645,8 +2911,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.getProp = function (name, v) {
-        return object_get_prop(this != null ? (this.nativeObj || this) : null, name, v != null ? (v.nativeObj || v) : null);
+    TTkObject.prototype.getProp = function (name, v) {
+        return tk_object_get_prop(this != null ? (this.nativeObj || this) : null, name, v != null ? (v.nativeObj || v) : null);
     };
     /**
      * 获取指定属性的字符串类型的值。
@@ -2655,8 +2921,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的字符串类型的值。
      */
-    TObject.prototype.getPropStr = function (name) {
-        return object_get_prop_str(this != null ? (this.nativeObj || this) : null, name);
+    TTkObject.prototype.getPropStr = function (name) {
+        return tk_object_get_prop_str(this != null ? (this.nativeObj || this) : null, name);
     };
     /**
      * 获取指定属性的指针类型的值。
@@ -2665,8 +2931,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的指针类型的值。
      */
-    TObject.prototype.getPropPointer = function (name) {
-        return object_get_prop_pointer(this != null ? (this.nativeObj || this) : null, name);
+    TTkObject.prototype.getPropPointer = function (name) {
+        return tk_object_get_prop_pointer(this != null ? (this.nativeObj || this) : null, name);
     };
     /**
      * 获取指定属性的object类型的值。
@@ -2675,8 +2941,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的object类型的值。
      */
-    TObject.prototype.getPropObject = function (name) {
-        return new TObject(object_get_prop_object(this != null ? (this.nativeObj || this) : null, name));
+    TTkObject.prototype.getPropObject = function (name) {
+        return new TTkObject(tk_object_get_prop_object(this != null ? (this.nativeObj || this) : null, name));
     };
     /**
      * 获取指定属性的整数类型的值。
@@ -2686,8 +2952,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的整数类型的值。
      */
-    TObject.prototype.getPropInt = function (name, defval) {
-        return object_get_prop_int(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropInt = function (name, defval) {
+        return tk_object_get_prop_int(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 获取指定属性的bool类型的值。
@@ -2697,8 +2963,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的bool类型的值。
      */
-    TObject.prototype.getPropBool = function (name, defval) {
-        return object_get_prop_bool(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropBool = function (name, defval) {
+        return tk_object_get_prop_bool(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 获取指定属性的浮点数类型的值。
@@ -2708,8 +2974,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的浮点数类型的值。
      */
-    TObject.prototype.getPropFloat = function (name, defval) {
-        return object_get_prop_float(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropFloat = function (name, defval) {
+        return tk_object_get_prop_float(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 获取指定属性的浮点数类型的值。
@@ -2719,8 +2985,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的浮点数类型的值。
      */
-    TObject.prototype.getPropDouble = function (name, defval) {
-        return object_get_prop_double(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropDouble = function (name, defval) {
+        return tk_object_get_prop_double(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 删除指定属性。
@@ -2729,8 +2995,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.removeProp = function (name) {
-        return object_remove_prop(this != null ? (this.nativeObj || this) : null, name);
+    TTkObject.prototype.removeProp = function (name) {
+        return tk_object_remove_prop(this != null ? (this.nativeObj || this) : null, name);
     };
     /**
      * 设置指定属性的值。
@@ -2740,8 +3006,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setProp = function (name, value) {
-        return object_set_prop(this != null ? (this.nativeObj || this) : null, name, value != null ? (value.nativeObj || value) : null);
+    TTkObject.prototype.setProp = function (name, value) {
+        return tk_object_set_prop(this != null ? (this.nativeObj || this) : null, name, value != null ? (value.nativeObj || value) : null);
     };
     /**
      * 设置指定属性的字符串类型的值。
@@ -2751,8 +3017,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropStr = function (name, value) {
-        return object_set_prop_str(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropStr = function (name, value) {
+        return tk_object_set_prop_str(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 设置指定属性的object类型的值。
@@ -2762,8 +3028,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropObject = function (name, value) {
-        return object_set_prop_object(this != null ? (this.nativeObj || this) : null, name, value != null ? (value.nativeObj || value) : null);
+    TTkObject.prototype.setPropObject = function (name, value) {
+        return tk_object_set_prop_object(this != null ? (this.nativeObj || this) : null, name, value != null ? (value.nativeObj || value) : null);
     };
     /**
      * 设置指定属性的整数类型的值。
@@ -2773,8 +3039,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropInt = function (name, value) {
-        return object_set_prop_int(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropInt = function (name, value) {
+        return tk_object_set_prop_int(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 设置指定属性的bool类型的值。
@@ -2784,8 +3050,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropBool = function (name, value) {
-        return object_set_prop_bool(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropBool = function (name, value) {
+        return tk_object_set_prop_bool(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 设置指定属性的浮点数类型的值。
@@ -2795,8 +3061,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropFloat = function (name, value) {
-        return object_set_prop_float(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropFloat = function (name, value) {
+        return tk_object_set_prop_float(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 设置指定属性的浮点数类型的值。
@@ -2806,8 +3072,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropDouble = function (name, value) {
-        return object_set_prop_double(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropDouble = function (name, value) {
+        return tk_object_set_prop_double(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 拷贝指定的属性。
@@ -2817,8 +3083,19 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.copyProp = function (src, name) {
-        return object_copy_prop(this != null ? (this.nativeObj || this) : null, src != null ? (src.nativeObj || src) : null, name);
+    TTkObject.prototype.copyProp = function (src, name) {
+        return tk_object_copy_prop(this != null ? (this.nativeObj || this) : null, src != null ? (src.nativeObj || src) : null, name);
+    };
+    /**
+     * 拷贝全部的属性。
+     *
+     * @param src 源对象。
+     * @param overwrite 如果属性存在是否覆盖。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TTkObject.prototype.copyProps = function (src, overwrite) {
+        return tk_object_copy_props(this != null ? (this.nativeObj || this) : null, src != null ? (src.nativeObj || src) : null, overwrite);
     };
     /**
      * 检查是否存在指定的属性。
@@ -2827,8 +3104,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回TRUE表示存在，否则表示不存在。
      */
-    TObject.prototype.hasProp = function (name) {
-        return object_has_prop(this != null ? (this.nativeObj || this) : null, name);
+    TTkObject.prototype.hasProp = function (name) {
+        return tk_object_has_prop(this != null ? (this.nativeObj || this) : null, name);
     };
     /**
      * 计算一个表达式，表达式中引用的变量从prop中获取。
@@ -2838,8 +3115,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.eval = function (expr, v) {
-        return object_eval(this != null ? (this.nativeObj || this) : null, expr, v != null ? (v.nativeObj || v) : null);
+    TTkObject.prototype.eval = function (expr, v) {
+        return tk_object_eval(this != null ? (this.nativeObj || this) : null, expr, v != null ? (v.nativeObj || v) : null);
     };
     /**
      * 检查是否可以执行指定的命令。
@@ -2849,8 +3126,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回TRUE表示可以执行，否则表示不可以执行。
      */
-    TObject.prototype.canExec = function (name, args) {
-        return object_can_exec(this != null ? (this.nativeObj || this) : null, name, args);
+    TTkObject.prototype.canExec = function (name, args) {
+        return tk_object_can_exec(this != null ? (this.nativeObj || this) : null, name, args);
     };
     /**
      * 执行指定的命令。
@@ -2860,8 +3137,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.execute = function (name, args) {
-        return object_exec(this != null ? (this.nativeObj || this) : null, name, args);
+    TTkObject.prototype.execute = function (name, args) {
+        return tk_object_exec(this != null ? (this.nativeObj || this) : null, name, args);
     };
     /**
      * 触发EVT_PROPS_CHANGED事件。
@@ -2869,8 +3146,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.notifyChanged = function () {
-        return object_notify_changed(this != null ? (this.nativeObj || this) : null);
+    TTkObject.prototype.notifyChanged = function () {
+        return tk_object_notify_changed(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 检查是否存在指定的属性。
@@ -2879,8 +3156,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回TRUE表示存在，否则表示不存在。
      */
-    TObject.prototype.hasPropByPath = function (path) {
-        return object_has_prop_by_path(this != null ? (this.nativeObj || this) : null, path);
+    TTkObject.prototype.hasPropByPath = function (path) {
+        return tk_object_has_prop_by_path(this != null ? (this.nativeObj || this) : null, path);
     };
     /**
      * 获取指定属性的字符串类型的值。
@@ -2889,8 +3166,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的字符串类型的值。
      */
-    TObject.prototype.getPropStrByPath = function (path) {
-        return object_get_prop_str_by_path(this != null ? (this.nativeObj || this) : null, path);
+    TTkObject.prototype.getPropStrByPath = function (path) {
+        return tk_object_get_prop_str_by_path(this != null ? (this.nativeObj || this) : null, path);
     };
     /**
      * 获取指定属性的指针类型的值。
@@ -2899,8 +3176,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的指针类型的值。
      */
-    TObject.prototype.getPropPointerByPath = function (path) {
-        return object_get_prop_pointer_by_path(this != null ? (this.nativeObj || this) : null, path);
+    TTkObject.prototype.getPropPointerByPath = function (path) {
+        return tk_object_get_prop_pointer_by_path(this != null ? (this.nativeObj || this) : null, path);
     };
     /**
      * 获取指定属性的object类型的值。
@@ -2909,8 +3186,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的object类型的值。
      */
-    TObject.prototype.getPropObjectByPath = function (path) {
-        return new TObject(object_get_prop_object_by_path(this != null ? (this.nativeObj || this) : null, path));
+    TTkObject.prototype.getPropObjectByPath = function (path) {
+        return new TTkObject(tk_object_get_prop_object_by_path(this != null ? (this.nativeObj || this) : null, path));
     };
     /**
      * 获取指定属性的整数类型的值。
@@ -2920,8 +3197,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的整数类型的值。
      */
-    TObject.prototype.getPropIntByPath = function (path, defval) {
-        return object_get_prop_int_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
+    TTkObject.prototype.getPropIntByPath = function (path, defval) {
+        return tk_object_get_prop_int_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
     };
     /**
      * 获取指定属性的bool类型的值。
@@ -2931,8 +3208,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的bool类型的值。
      */
-    TObject.prototype.getPropBoolByPath = function (path, defval) {
-        return object_get_prop_bool_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
+    TTkObject.prototype.getPropBoolByPath = function (path, defval) {
+        return tk_object_get_prop_bool_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
     };
     /**
      * 获取指定属性的浮点数类型的值。
@@ -2944,8 +3221,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的浮点数类型的值。
      */
-    TObject.prototype.getPropFloatByPath = function (path, defval) {
-        return object_get_prop_float_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
+    TTkObject.prototype.getPropFloatByPath = function (path, defval) {
+        return tk_object_get_prop_float_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
     };
     /**
      * 设置指定属性的值。
@@ -2955,8 +3232,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropByPath = function (path, value) {
-        return object_set_prop_by_path(this != null ? (this.nativeObj || this) : null, path, value != null ? (value.nativeObj || value) : null);
+    TTkObject.prototype.setPropByPath = function (path, value) {
+        return tk_object_set_prop_by_path(this != null ? (this.nativeObj || this) : null, path, value != null ? (value.nativeObj || value) : null);
     };
     /**
      * 设置指定属性的字符串类型的值。
@@ -2966,8 +3243,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropStrByPath = function (path, value) {
-        return object_set_prop_str_by_path(this != null ? (this.nativeObj || this) : null, path, value);
+    TTkObject.prototype.setPropStrByPath = function (path, value) {
+        return tk_object_set_prop_str_by_path(this != null ? (this.nativeObj || this) : null, path, value);
     };
     /**
      * 设置指定属性的object类型的值。
@@ -2977,8 +3254,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropObjectByPath = function (path, value) {
-        return object_set_prop_object_by_path(this != null ? (this.nativeObj || this) : null, path, value != null ? (value.nativeObj || value) : null);
+    TTkObject.prototype.setPropObjectByPath = function (path, value) {
+        return tk_object_set_prop_object_by_path(this != null ? (this.nativeObj || this) : null, path, value != null ? (value.nativeObj || value) : null);
     };
     /**
      * 设置指定属性的整数类型的值。
@@ -2988,8 +3265,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropIntByPath = function (path, value) {
-        return object_set_prop_int_by_path(this != null ? (this.nativeObj || this) : null, path, value);
+    TTkObject.prototype.setPropIntByPath = function (path, value) {
+        return tk_object_set_prop_int_by_path(this != null ? (this.nativeObj || this) : null, path, value);
     };
     /**
      * 设置指定属性的bool类型的值。
@@ -2999,8 +3276,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropBoolByPath = function (path, value) {
-        return object_set_prop_bool_by_path(this != null ? (this.nativeObj || this) : null, path, value);
+    TTkObject.prototype.setPropBoolByPath = function (path, value) {
+        return tk_object_set_prop_bool_by_path(this != null ? (this.nativeObj || this) : null, path, value);
     };
     /**
      * 设置指定属性的浮点数类型的值。
@@ -3010,8 +3287,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropFloatByPath = function (path, value) {
-        return object_set_prop_float_by_path(this != null ? (this.nativeObj || this) : null, path, value);
+    TTkObject.prototype.setPropFloatByPath = function (path, value) {
+        return tk_object_set_prop_float_by_path(this != null ? (this.nativeObj || this) : null, path, value);
     };
     /**
      * 检查是否可以执行指定的命令。
@@ -3021,8 +3298,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回TRUE表示可以执行，否则表示不可以执行。
      */
-    TObject.prototype.canExecByPath = function (path, args) {
-        return object_can_exec_by_path(this != null ? (this.nativeObj || this) : null, path, args);
+    TTkObject.prototype.canExecByPath = function (path, args) {
+        return tk_object_can_exec_by_path(this != null ? (this.nativeObj || this) : null, path, args);
     };
     /**
      * 执行指定的命令。
@@ -3032,8 +3309,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.executeByPath = function (path, args) {
-        return object_exec_by_path(this != null ? (this.nativeObj || this) : null, path, args);
+    TTkObject.prototype.executeByPath = function (path, args) {
+        return tk_object_exec_by_path(this != null ? (this.nativeObj || this) : null, path, args);
     };
     /**
      * 获取指定属性的int8类型的值。
@@ -3043,8 +3320,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的int8类型的值。
      */
-    TObject.prototype.getPropInt8 = function (name, defval) {
-        return object_get_prop_int8(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropInt8 = function (name, defval) {
+        return tk_object_get_prop_int8(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 设置指定属性的int8类型的值。
@@ -3054,8 +3331,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropInt8 = function (name, value) {
-        return object_set_prop_int8(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropInt8 = function (name, value) {
+        return tk_object_set_prop_int8(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 获取指定属性的uint8类型的值。
@@ -3065,8 +3342,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的uint8类型的值。
      */
-    TObject.prototype.getPropUint8 = function (name, defval) {
-        return object_get_prop_uint8(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropUint8 = function (name, defval) {
+        return tk_object_get_prop_uint8(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 设置指定属性的uint8类型的值。
@@ -3076,8 +3353,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropUint8 = function (name, value) {
-        return object_set_prop_uint8(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropUint8 = function (name, value) {
+        return tk_object_set_prop_uint8(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 获取指定属性的int16类型的值。
@@ -3087,8 +3364,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的int16类型的值。
      */
-    TObject.prototype.getPropInt16 = function (name, defval) {
-        return object_get_prop_int16(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropInt16 = function (name, defval) {
+        return tk_object_get_prop_int16(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 设置指定属性的int16类型的值。
@@ -3098,8 +3375,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropInt16 = function (name, value) {
-        return object_set_prop_int16(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropInt16 = function (name, value) {
+        return tk_object_set_prop_int16(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 获取指定属性的uint16类型的值。
@@ -3109,8 +3386,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的uint16类型的值。
      */
-    TObject.prototype.getPropUint16 = function (name, defval) {
-        return object_get_prop_uint16(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropUint16 = function (name, defval) {
+        return tk_object_get_prop_uint16(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 设置指定属性的uint16类型的值。
@@ -3120,8 +3397,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropUint16 = function (name, value) {
-        return object_set_prop_uint16(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropUint16 = function (name, value) {
+        return tk_object_set_prop_uint16(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 获取指定属性的int32类型的值。
@@ -3131,8 +3408,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的int32类型的值。
      */
-    TObject.prototype.getPropInt32 = function (name, defval) {
-        return object_get_prop_int32(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropInt32 = function (name, defval) {
+        return tk_object_get_prop_int32(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 设置指定属性的int32类型的值。
@@ -3142,8 +3419,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropInt32 = function (name, value) {
-        return object_set_prop_int32(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropInt32 = function (name, value) {
+        return tk_object_set_prop_int32(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 获取指定属性的uint32类型的值。
@@ -3153,8 +3430,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的uint32类型的值。
      */
-    TObject.prototype.getPropUint32 = function (name, defval) {
-        return object_get_prop_uint32(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropUint32 = function (name, defval) {
+        return tk_object_get_prop_uint32(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 设置指定属性的uint32类型的值。
@@ -3164,8 +3441,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropUint32 = function (name, value) {
-        return object_set_prop_uint32(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropUint32 = function (name, value) {
+        return tk_object_set_prop_uint32(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 获取指定属性的int64类型的值。
@@ -3175,8 +3452,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的int64类型的值。
      */
-    TObject.prototype.getPropInt64 = function (name, defval) {
-        return object_get_prop_int64(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropInt64 = function (name, defval) {
+        return tk_object_get_prop_int64(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 设置指定属性的int64类型的值。
@@ -3186,8 +3463,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropInt64 = function (name, value) {
-        return object_set_prop_int64(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropInt64 = function (name, value) {
+        return tk_object_set_prop_int64(this != null ? (this.nativeObj || this) : null, name, value);
     };
     /**
      * 获取指定属性的uint64类型的值。
@@ -3197,8 +3474,8 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回指定属性的uint64类型的值。
      */
-    TObject.prototype.getPropUint64 = function (name, defval) {
-        return object_get_prop_uint64(this != null ? (this.nativeObj || this) : null, name, defval);
+    TTkObject.prototype.getPropUint64 = function (name, defval) {
+        return tk_object_get_prop_uint64(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 设置指定属性的uint64类型的值。
@@ -3208,27 +3485,27 @@ var TObject = /** @class */ (function (_super) {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TObject.prototype.setPropUint64 = function (name, value) {
-        return object_set_prop_uint64(this != null ? (this.nativeObj || this) : null, name, value);
+    TTkObject.prototype.setPropUint64 = function (name, value) {
+        return tk_object_set_prop_uint64(this != null ? (this.nativeObj || this) : null, name, value);
     };
-    Object.defineProperty(TObject.prototype, "refCount", {
+    Object.defineProperty(TTkObject.prototype, "refCount", {
         /**
          * 引用计数。
          *
          */
         get: function () {
-            return object_t_get_prop_ref_count(this.nativeObj);
+            return tk_object_t_get_prop_ref_count(this.nativeObj);
         },
         enumerable: false,
         configurable: true
     });
-    Object.defineProperty(TObject.prototype, "name", {
+    Object.defineProperty(TTkObject.prototype, "name", {
         /**
          * 对象的名称。
          *
          */
         get: function () {
-            return object_t_get_prop_name(this.nativeObj);
+            return tk_object_t_get_prop_name(this.nativeObj);
         },
         set: function (v) {
             this.setName(v);
@@ -3236,14 +3513,15 @@ var TObject = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
-    return TObject;
+    return TTkObject;
 }(TEmitter));
-exports.TObject = TObject;
+exports.TTkObject = TTkObject;
 ;
 /**
  * 一个通用数据类型，用来存放整数、浮点数、字符串和其它对象。
  *
  *在C/C++中，一般不需动态创建对象，直接声明并初始化即可。如：
+ *
  *
  *
  *> 在脚本语言中，需要动态创建对象。
@@ -3475,7 +3753,7 @@ var TValue = /** @class */ (function () {
     /**
      * 获取类型为字符串的值。
      *
-     * @param buff 用于格式转换的缓冲区。
+     * @param buff 用于格式转换的缓冲区（如果 v 对象为 string 类型的话，不会把字符串数据拷贝到 buff 中）。
      * @param size 缓冲区大小。
      *
      * @returns 值。
@@ -3491,6 +3769,25 @@ var TValue = /** @class */ (function () {
      */
     TValue.prototype.isNull = function () {
         return value_is_null(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 判断两个value是否相同。
+     *
+     * @param other value对象。
+     *
+     * @returns 为空值返回TRUE，否则返回FALSE。
+     */
+    TValue.prototype.equal = function (other) {
+        return value_equal(this != null ? (this.nativeObj || this) : null, other != null ? (other.nativeObj || other) : null);
+    };
+    /**
+     * 转换为int的值。
+     *
+     *
+     * @returns 值。
+     */
+    TValue.prototype.int = function () {
+        return value_int(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 设置类型为int的值。
@@ -3519,7 +3816,7 @@ var TValue = /** @class */ (function () {
      * @returns 值。
      */
     TValue.prototype.object = function () {
-        return new TObject(value_object(this != null ? (this.nativeObj || this) : null));
+        return new TTkObject(value_object(this != null ? (this.nativeObj || this) : null));
     };
     /**
      * 设置类型为token的值。
@@ -3579,6 +3876,51 @@ var TValue = /** @class */ (function () {
     TValue.cast = function (value) {
         return new TValue(value_cast(value != null ? (value.nativeObj || value) : null));
     };
+    /**
+     * 获取类型为ID的值。
+     *
+     *
+     * @returns 值。
+     */
+    TValue.prototype.id = function () {
+        return value_id(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 获取类型为func的值。
+     *
+     *
+     * @returns 值。
+     */
+    TValue.prototype.func = function () {
+        return value_func(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 获取类型为func_def的值。
+     *
+     *
+     * @returns 值。
+     */
+    TValue.prototype.funcDef = function () {
+        return value_func_def(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 获取类型为位图对象。
+     *
+     *
+     * @returns 位图对象。
+     */
+    TValue.prototype.bitmap = function () {
+        return value_bitmap(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 获取类型为矩形区域数据。
+     *
+     *
+     * @returns 返回矩形区域数据。
+     */
+    TValue.prototype.rect = function () {
+        return new TRect(value_rect(this != null ? (this.nativeObj || this) : null));
+    };
     return TValue;
 }());
 exports.TValue = TValue;
@@ -3590,6 +3932,17 @@ exports.TValue = TValue;
 var TGlobal = /** @class */ (function () {
     function TGlobal() {
     }
+    /**
+     * 初始化基本功能。
+     *> 在tk_init之前，应用程序可能需要加载配置文件，
+     *> 为了保证这些功能正常工作，可以先调用tk_pre_init来初始化平台、内存和data reader等等。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TGlobal.preInit = function () {
+        return tk_pre_init();
+    };
     /**
      * 初始化TK。
      *
@@ -3621,6 +3974,16 @@ var TGlobal = /** @class */ (function () {
      */
     TGlobal.quit = function () {
         return tk_quit();
+    };
+    /**
+     * 退出TK事件主循环。
+     *
+     * @param delay 延迟退出的时间(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TGlobal.quitEx = function (delay) {
+        return tk_quit_ex(delay);
     };
     /**
      * 获取全局指针的X坐标。
@@ -3694,7 +4057,7 @@ var TBidiType;
      *
      */
     TBidiType[TBidiType["WRTL"] = BIDI_TYPE_WRTL()] = "WRTL";
-})(TBidiType = exports.TBidiType || (exports.TBidiType = {}));
+})(TBidiType || (exports.TBidiType = TBidiType = {}));
 ;
 /**
  * 图片绘制方法常量定义。
@@ -3742,6 +4105,11 @@ var TImageDrawType;
      *
      */
     TImageDrawType[TImageDrawType["SCALE_H"] = IMAGE_DRAW_SCALE_H()] = "SCALE_H";
+    /**
+     * 填充整个区域。将图片缩放至目标矩形的高度或宽度，包装填满整个目标区域，超出不部分不显示。
+     *
+     */
+    TImageDrawType[TImageDrawType["FILL"] = IMAGE_DRAW_FILL()] = "FILL";
     /**
      * 平铺显示。
      *
@@ -3816,7 +4184,7 @@ var TImageDrawType;
      *
      */
     TImageDrawType[TImageDrawType["REPEAT3_Y"] = IMAGE_DRAW_REPEAT3_Y()] = "REPEAT3_Y";
-})(TImageDrawType = exports.TImageDrawType || (exports.TImageDrawType = {}));
+})(TImageDrawType || (exports.TImageDrawType = TImageDrawType = {}));
 ;
 /**
  * 离线画布 canvas。
@@ -3993,20 +4361,6 @@ var TCanvas = /** @class */ (function () {
         return canvas_fill_rect(this != null ? (this.nativeObj || this) : null, x, y, w, h);
     };
     /**
-     * 绘制矩形。
-     *
-     * @param x x坐标。
-     * @param y y坐标。
-     * @param w 宽度。
-     * @param h 高度。
-     * @param gradient 渐变颜色。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    TCanvas.prototype.fillRectGradient = function (x, y, w, h, gradient) {
-        return canvas_fill_rect_gradient(this != null ? (this.nativeObj || this) : null, x, y, w, h, gradient);
-    };
-    /**
      * 用填充颜色填充指定矩形。
      *
      *> 如果lcd的颜色格式带alpha通道，连同alpha的值一起修改。
@@ -4044,6 +4398,15 @@ var TCanvas = /** @class */ (function () {
      */
     TCanvas.prototype.setFont = function (name, size) {
         return canvas_set_font(this != null ? (this.nativeObj || this) : null, name, size);
+    };
+    /**
+     * 释放canvas中字体相关的资源。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TCanvas.prototype.resetFont = function () {
+        return canvas_reset_font(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 计算文本所占的宽度。
@@ -4161,6 +4524,16 @@ var TCanvas = /** @class */ (function () {
     TCanvas.prototype.reset = function () {
         return canvas_reset(this != null ? (this.nativeObj || this) : null);
     };
+    /**
+     * 清除canvas中缓存。
+     *> 备注：主要用于窗口动画的离线画布绘制完成后重置在线画布，使下一帧中lcd对象的数据保持一致。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TCanvas.prototype.resetCache = function () {
+        return canvas_reset_cache(this != null ? (this.nativeObj || this) : null);
+    };
     Object.defineProperty(TCanvas.prototype, "ox", {
         /**
          * x坐标偏移。
@@ -4239,7 +4612,7 @@ var TClipBoardDataType;
      *
      */
     TClipBoardDataType[TClipBoardDataType["TEXT"] = CLIP_BOARD_DATA_TYPE_TEXT()] = "TEXT";
-})(TClipBoardDataType = exports.TClipBoardDataType || (exports.TClipBoardDataType = {}));
+})(TClipBoardDataType || (exports.TClipBoardDataType = TClipBoardDataType = {}));
 ;
 /**
  * 剪切板接口。
@@ -4310,7 +4683,7 @@ var TDialogQuitCode;
      *
      */
     TDialogQuitCode[TDialogQuitCode["OTHER"] = DIALOG_QUIT_OTHER()] = "OTHER";
-})(TDialogQuitCode = exports.TDialogQuitCode || (exports.TDialogQuitCode = {}));
+})(TDialogQuitCode || (exports.TDialogQuitCode = TDialogQuitCode = {}));
 ;
 /**
  * 类型常量定义。
@@ -4389,6 +4762,11 @@ var TEventType;
      */
     TEventType[TEventType["CLICK"] = EVT_CLICK()] = "CLICK";
     /**
+     * 双击事件名(pointer_event_t)。
+     *
+     */
+    TEventType[TEventType["DOUBLE_CLICK"] = EVT_DOUBLE_CLICK()] = "DOUBLE_CLICK";
+    /**
      * 得到焦点事件名(event_t)。
      *
      */
@@ -4458,21 +4836,6 @@ var TEventType;
      *
      */
     TEventType[TEventType["MOVE_RESIZE"] = EVT_MOVE_RESIZE()] = "MOVE_RESIZE";
-    /**
-     * 控件的值即将改变的事件名(value_change_event_t)。
-     *
-     */
-    TEventType[TEventType["VALUE_WILL_CHANGE"] = EVT_VALUE_WILL_CHANGE()] = "VALUE_WILL_CHANGE";
-    /**
-     * 控件的值改变的事件名(value_change_event_t)。
-     *
-     */
-    TEventType[TEventType["VALUE_CHANGED"] = EVT_VALUE_CHANGED()] = "VALUE_CHANGED";
-    /**
-     * 控件的值持续改变(如编辑器正在编辑)的事件名(value_change_event_t)。
-     *
-     */
-    TEventType[TEventType["VALUE_CHANGING"] = EVT_VALUE_CHANGING()] = "VALUE_CHANGING";
     /**
      * 绘制的事件名(paint_event_t)。
      *
@@ -4658,7 +5021,7 @@ var TEventType;
      */
     TEventType[TEventType["RESET"] = EVT_RESET()] = "RESET";
     /**
-     * 在指定的时间内(WITH_SCREEN_SAVER_TIME)，没有用户输入事件，由窗口管理器触发。
+     * 在指定的时间内，没有用户输入事件，由窗口管理器触发。
      *
      */
     TEventType[TEventType["SCREEN_SAVER"] = EVT_SCREEN_SAVER()] = "SCREEN_SAVER";
@@ -4694,10 +5057,25 @@ var TEventType;
      */
     TEventType[TEventType["REQUEST_QUIT_APP"] = EVT_REQUEST_QUIT_APP()] = "REQUEST_QUIT_APP";
     /**
+     * 即将改变主题(event_t)。
+     *
+     */
+    TEventType[TEventType["THEME_WILL_CHANGE"] = EVT_THEME_WILL_CHANGE()] = "THEME_WILL_CHANGE";
+    /**
      * 主题变化(event_t)。
      *
      */
     TEventType[TEventType["THEME_CHANGED"] = EVT_THEME_CHANGED()] = "THEME_CHANGED";
+    /**
+     * 控件根据自己当前状态即将更新style(event_t)。
+     *
+     */
+    TEventType[TEventType["WIDGET_WILL_UPDATE_STYLE"] = EVT_WIDGET_WILL_UPDATE_STYLE()] = "WIDGET_WILL_UPDATE_STYLE";
+    /**
+     * 控件根据自己当前状态更新style(event_t)。
+     *
+     */
+    TEventType[TEventType["WIDGET_UPDATE_STYLE"] = EVT_WIDGET_UPDATE_STYLE()] = "WIDGET_UPDATE_STYLE";
     /**
      * 控件加载新的子控件(event_t)。
      *
@@ -4729,10 +5107,15 @@ var TEventType;
      */
     TEventType[TEventType["MULTI_GESTURE"] = EVT_MULTI_GESTURE()] = "MULTI_GESTURE";
     /**
-     * 页面改变了(event_t)。
+     * 当前看到的页面改变了(event_t)。
      *
      */
     TEventType[TEventType["PAGE_CHANGED"] = EVT_PAGE_CHANGED()] = "PAGE_CHANGED";
+    /**
+     * 当前看到的页面正在改变(offset_change_event_t)。
+     *
+     */
+    TEventType[TEventType["PAGE_CHANGING"] = EVT_PAGE_CHANGING()] = "PAGE_CHANGING";
     /**
      * 资源管理加载某个资源(assets_event_t)。
      *
@@ -4753,6 +5136,56 @@ var TEventType;
      *
      */
     TEventType[TEventType["TIMER"] = EVT_TIMER()] = "TIMER";
+    /**
+     * 数据到来(event_t)。
+     *
+     */
+    TEventType[TEventType["DATA"] = EVT_DATA()] = "DATA";
+    /**
+     * 客户连接到来(event_t)。
+     *
+     */
+    TEventType[TEventType["CONNECT"] = EVT_CONNECT()] = "CONNECT";
+    /**
+     * 模型变化。用于fscript实现窗口间通讯(model_event_t)。
+     *
+     */
+    TEventType[TEventType["MODEL_CHANGE"] = EVT_MODEL_CHANGE()] = "MODEL_CHANGE";
+    /**
+     * SDL系统事件(system_event_t)。
+     *
+     */
+    TEventType[TEventType["SYSTEM"] = EVT_SYSTEM()] = "SYSTEM";
+    /**
+     * SDL文件拖入事件(drop_file_event_t)。
+     *
+     */
+    TEventType[TEventType["DROP_FILE"] = EVT_DROP_FILE()] = "DROP_FILE";
+    /**
+     * locale_infos加载某个本地化信息(event_t)。
+     *
+     */
+    TEventType[TEventType["LOCALE_INFOS_LOAD_INFO"] = EVT_LOCALE_INFOS_LOAD_INFO()] = "LOCALE_INFOS_LOAD_INFO";
+    /**
+     * locale_infos卸载某个本地化信息(event_t)。
+     *
+     */
+    TEventType[TEventType["LOCALE_INFOS_UNLOAD_INFO"] = EVT_LOCALE_INFOS_UNLOAD_INFO()] = "LOCALE_INFOS_UNLOAD_INFO";
+    /**
+     * 控件进入激活状态(event_t)。
+     *
+     */
+    TEventType[TEventType["ACTIVATED"] = EVT_ACTIVATED()] = "ACTIVATED";
+    /**
+     * 控件退出激活状态(event_t)。
+     *
+     */
+    TEventType[TEventType["UNACTIVATED"] = EVT_UNACTIVATED()] = "UNACTIVATED";
+    /**
+     * UI加载完成事件(event_t)。
+     *
+     */
+    TEventType[TEventType["UI_LOAD"] = EVT_UI_LOAD()] = "UI_LOAD";
     /**
      * event queue其它请求编号起始值。
      *
@@ -4828,7 +5261,27 @@ var TEventType;
      *
      */
     TEventType[TEventType["DESTROY"] = EVT_DESTROY()] = "DESTROY";
-})(TEventType = exports.TEventType || (exports.TEventType = {}));
+    /**
+     * 值即将改变的事件名(value_change_event_t)。
+     *
+     */
+    TEventType[TEventType["VALUE_WILL_CHANGE"] = EVT_VALUE_WILL_CHANGE()] = "VALUE_WILL_CHANGE";
+    /**
+     * 值改变的事件名(value_change_event_t)。
+     *
+     */
+    TEventType[TEventType["VALUE_CHANGED"] = EVT_VALUE_CHANGED()] = "VALUE_CHANGED";
+    /**
+     * 值持续改变(如编辑器正在编辑)的事件名(value_change_event_t)。
+     *
+     */
+    TEventType[TEventType["VALUE_CHANGING"] = EVT_VALUE_CHANGING()] = "VALUE_CHANGING";
+    /**
+     * 日志信息。
+     *
+     */
+    TEventType[TEventType["LOG_MESSAGE"] = EVT_LOG_MESSAGE()] = "LOG_MESSAGE";
+})(TEventType || (exports.TEventType = TEventType = {}));
 ;
 /**
  * 事件基类。
@@ -4916,7 +5369,7 @@ var TEvent = /** @class */ (function () {
     });
     Object.defineProperty(TEvent.prototype, "time", {
         /**
-         * 事件发生的时间。
+         * 事件发生的时间点（该时间点并非真实时间）。
          *
          */
         get: function () {
@@ -4941,49 +5394,6 @@ var TEvent = /** @class */ (function () {
 exports.TEvent = TEvent;
 ;
 /**
- * 字体管理器，负责字体的加载和缓存管理。
- *(如果使用nanovg，字体由nanovg内部管理)
- *
- */
-var TFontManager = /** @class */ (function () {
-    function TFontManager(nativeObj) {
-        this.nativeObj = nativeObj;
-    }
-    /**
-     * 卸载指定的字体。
-     *
-     * @param name 字体名，为NULL时使用缺省字体。
-     * @param size 字体的大小(矢量字体指定为0即可)。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    TFontManager.prototype.unloadFont = function (name, size) {
-        return font_manager_unload_font(this != null ? (this.nativeObj || this) : null, name, size);
-    };
-    /**
-     * 清除最久没有被使用的缓冲字模。
-     *
-     * @param cache_size 每种字体保留缓存字模的个数。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    TFontManager.prototype.shrinkCache = function (cache_size) {
-        return font_manager_shrink_cache(this != null ? (this.nativeObj || this) : null, cache_size);
-    };
-    /**
-     * 卸载全部字体。
-     *
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    TFontManager.prototype.unloadAll = function () {
-        return font_manager_unload_all(this != null ? (this.nativeObj || this) : null);
-    };
-    return TFontManager;
-}());
-exports.TFontManager = TFontManager;
-;
-/**
  * 字模格式常量定义。
  *
  */
@@ -5004,7 +5414,17 @@ var TGlyphFormat;
      *
      */
     TGlyphFormat[TGlyphFormat["RGBA"] = GLYPH_FMT_RGBA()] = "RGBA";
-})(TGlyphFormat = exports.TGlyphFormat || (exports.TGlyphFormat = {}));
+    /**
+     * 每个像素占用2bit。
+     *
+     */
+    TGlyphFormat[TGlyphFormat["ALPHA2"] = GLYPH_FMT_ALPHA2()] = "ALPHA2";
+    /**
+     * 每个像素占用4bit。
+     *
+     */
+    TGlyphFormat[TGlyphFormat["ALPHA4"] = GLYPH_FMT_ALPHA4()] = "ALPHA4";
+})(TGlyphFormat || (exports.TGlyphFormat = TGlyphFormat = {}));
 ;
 /**
  * idle可以看作是duration为0的定时器。
@@ -5012,6 +5432,7 @@ var TGlyphFormat;
  *> idle可以用来实现一些异步处理。
  *
  *示例：
+ *
  *
  *
  *> 在非GUI线程请用idle\_queue。
@@ -5184,7 +5605,7 @@ var TInputType;
      *
      */
     TInputType[TInputType["ASCII"] = INPUT_ASCII()] = "ASCII";
-})(TInputType = exports.TInputType || (exports.TInputType = {}));
+})(TInputType || (exports.TInputType = TInputType = {}));
 ;
 /**
  * 输入法接口。
@@ -5253,12 +5674,12 @@ var TInputMethod = /** @class */ (function () {
     /**
      * 提交按键。
      *
-     * @param key 键值。
+     * @param keys 键值。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TInputMethod.prototype.dispatchKeys = function (key) {
-        return input_method_dispatch_keys(this != null ? (this.nativeObj || this) : null, key);
+    TInputMethod.prototype.dispatchKeys = function (keys) {
+        return input_method_dispatch_keys(this != null ? (this.nativeObj || this) : null, keys);
     };
     /**
      * 分发进入预编辑状态的事件。
@@ -5962,11 +6383,96 @@ var TKeyCode;
      */
     TKeyCode[TKeyCode["KEY_CANCEL"] = TK_KEY_CANCEL()] = "KEY_CANCEL";
     /**
+     * TK_KEY_KP_DIVIDE
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_DIVIDE"] = TK_KEY_KP_DIVIDE()] = "KEY_KP_DIVIDE";
+    /**
+     * TK_KEY_KP_MULTIPLY
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_MULTIPLY"] = TK_KEY_KP_MULTIPLY()] = "KEY_KP_MULTIPLY";
+    /**
+     * TK_KEY_KP_MINUS
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_MINUS"] = TK_KEY_KP_MINUS()] = "KEY_KP_MINUS";
+    /**
+     * TK_KEY_KP_PLUS
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_PLUS"] = TK_KEY_KP_PLUS()] = "KEY_KP_PLUS";
+    /**
+     * TK_KEY_KP_ENTER
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_ENTER"] = TK_KEY_KP_ENTER()] = "KEY_KP_ENTER";
+    /**
+     * TK_KEY_KP_1
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_1"] = TK_KEY_KP_1()] = "KEY_KP_1";
+    /**
+     * TK_KEY_KP_2
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_2"] = TK_KEY_KP_2()] = "KEY_KP_2";
+    /**
+     * TK_KEY_KP_3
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_3"] = TK_KEY_KP_3()] = "KEY_KP_3";
+    /**
+     * TK_KEY_KP_4
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_4"] = TK_KEY_KP_4()] = "KEY_KP_4";
+    /**
+     * TK_KEY_KP_5
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_5"] = TK_KEY_KP_5()] = "KEY_KP_5";
+    /**
+     * TK_KEY_KP_6
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_6"] = TK_KEY_KP_6()] = "KEY_KP_6";
+    /**
+     * TK_KEY_KP_7
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_7"] = TK_KEY_KP_7()] = "KEY_KP_7";
+    /**
+     * TK_KEY_KP_8
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_8"] = TK_KEY_KP_8()] = "KEY_KP_8";
+    /**
+     * TK_KEY_KP_9
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_9"] = TK_KEY_KP_9()] = "KEY_KP_9";
+    /**
+     * TK_KEY_KP_0
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_0"] = TK_KEY_KP_0()] = "KEY_KP_0";
+    /**
+     * TK_KEY_KP_PERIOD
+     *
+     */
+    TKeyCode[TKeyCode["KEY_KP_PERIOD"] = TK_KEY_KP_PERIOD()] = "KEY_KP_PERIOD";
+    /**
+     * TK_KEY_NUMLOCKCLEAR
+     *
+     */
+    TKeyCode[TKeyCode["KEY_NUMLOCKCLEAR"] = TK_KEY_NUMLOCKCLEAR()] = "KEY_NUMLOCKCLEAR";
+    /**
      * TK_KEY_WHEEL
      *
      */
     TKeyCode[TKeyCode["KEY_WHEEL"] = TK_KEY_WHEEL()] = "KEY_WHEEL";
-})(TKeyCode = exports.TKeyCode || (exports.TKeyCode = {}));
+})(TKeyCode || (exports.TKeyCode = TKeyCode = {}));
 ;
 /**
  * 本地化信息。提供字符串翻译数据管理，当前语言改变的事件通知等等。
@@ -6021,6 +6527,80 @@ var TLocaleInfo = /** @class */ (function () {
 exports.TLocaleInfo = TLocaleInfo;
 ;
 /**
+ * 在某些情况下，需要多个资源管理器。比如在手表系统里，每个应用或表盘，可能放在独立的资源包中，
+ *此时优先加载应用自己的资源，如果没有就加载系统的资源。
+ *
+ */
+var TLocaleInfos = /** @class */ (function () {
+    function TLocaleInfos() {
+    }
+    /**
+     * 获取指定小应用程序(applet)的locale_info。
+     *
+     * @param name 小应用程序(applet)的名称。
+     *
+     * @returns 返回locale_info对象。
+     */
+    TLocaleInfos.ref = function (name) {
+        return new TLocaleInfo(locale_infos_ref(name));
+    };
+    /**
+     * 释放指定小应用程序(applet)的locale_info。
+     *
+     * @param locale_info locale_info对象。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TLocaleInfos.unref = function (locale_info) {
+        return locale_infos_unref(locale_info != null ? (locale_info.nativeObj || locale_info) : null);
+    };
+    /**
+     * 设置全部locale_info的当前国家和语言。
+     *
+     * @param language 语言。
+     * @param country 国家或地区。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TLocaleInfos.change = function (language, country) {
+        return locale_infos_change(language, country);
+    };
+    /**
+     * 注册指定事件的处理函数。
+     *
+     * @param type 事件类型，目前有EVT_LOCALE_INFOS_LOAD_INFO、EVT_LOCALE_INFOS_UNLOAD_INFO。
+     * @param on_event 事件处理函数。
+     * @param ctx 事件处理函数上下文。
+     *
+     * @returns 返回id，用于locale_infos_off。
+     */
+    TLocaleInfos.on = function (type, on_event, ctx) {
+        return locale_infos_on(type, TBrowser.addFunction(wrap_on_event(on_event), "iii"), ctx);
+    };
+    /**
+     * 注销指定事件的处理函数。
+     *
+     * @param id locale_infos_on返回的ID。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TLocaleInfos.off = function (id) {
+        return locale_infos_off(id);
+    };
+    /**
+     * 重新加载全部字符串资源。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TLocaleInfos.reloadAll = function () {
+        return locale_infos_reload_all();
+    };
+    return TLocaleInfos;
+}());
+exports.TLocaleInfos = TLocaleInfos;
+;
+/**
  * style常量定义。
  *
  */
@@ -6036,6 +6616,11 @@ var TStyleId;
      *
      */
     TStyleId[TStyleId["FG_COLOR"] = STYLE_ID_FG_COLOR()] = "FG_COLOR";
+    /**
+     * dragger颜色。
+     *
+     */
+    TStyleId[TStyleId["DRAGGER_COLOR"] = STYLE_ID_DRAGGER_COLOR()] = "DRAGGER_COLOR";
     /**
      * 蒙版颜色。
      *
@@ -6205,7 +6790,7 @@ var TStyleId;
      * 左上角圆角半径(仅在WITH_VGCANVAS定义时生效)。
      *
      */
-    TStyleId[TStyleId["ROUND_RADIUS_TOP_LETF"] = STYLE_ID_ROUND_RADIUS_TOP_LETF()] = "ROUND_RADIUS_TOP_LETF";
+    TStyleId[TStyleId["ROUND_RADIUS_TOP_LEFT"] = STYLE_ID_ROUND_RADIUS_TOP_LEFT()] = "ROUND_RADIUS_TOP_LEFT";
     /**
      * 右上角圆角半径(仅在WITH_VGCANVAS定义时生效)。
      *
@@ -6215,7 +6800,7 @@ var TStyleId;
      * 左下角圆角半径(仅在WITH_VGCANVAS定义时生效)。
      *
      */
-    TStyleId[TStyleId["ROUND_RADIUS_BOTTOM_LETF"] = STYLE_ID_ROUND_RADIUS_BOTTOM_LETF()] = "ROUND_RADIUS_BOTTOM_LETF";
+    TStyleId[TStyleId["ROUND_RADIUS_BOTTOM_LEFT"] = STYLE_ID_ROUND_RADIUS_BOTTOM_LEFT()] = "ROUND_RADIUS_BOTTOM_LEFT";
     /**
      * 右下角圆角半径(仅在WITH_VGCANVAS定义时生效)。
      *
@@ -6241,12 +6826,33 @@ var TStyleId;
      *
      */
     TStyleId[TStyleId["FEEDBACK"] = STYLE_ID_FEEDBACK()] = "FEEDBACK";
-})(TStyleId = exports.TStyleId || (exports.TStyleId = {}));
+    /**
+     * 是否用clear_rect代替fill_rect绘制背景。
+     *
+     */
+    TStyleId[TStyleId["CLEAR_BG"] = STYLE_ID_CLEAR_BG()] = "CLEAR_BG";
+    /**
+     * 网格线颜色(grid控件)
+     *
+     */
+    TStyleId[TStyleId["GRID_COLOR"] = STYLE_ID_GRID_COLOR()] = "GRID_COLOR";
+    /**
+     * 偶数行背景颜色(grid控件)
+     *
+     */
+    TStyleId[TStyleId["EVEN_BG_COLOR"] = STYLE_ID_EVEN_BG_COLOR()] = "EVEN_BG_COLOR";
+    /**
+     * 奇数行背景颜色(grid控件)
+     *
+     */
+    TStyleId[TStyleId["ODD_BG_COLOR"] = STYLE_ID_ODD_BG_COLOR()] = "ODD_BG_COLOR";
+})(TStyleId || (exports.TStyleId = TStyleId = {}));
 ;
 /**
  * 控件风格。
  *
  *widget从style对象中，获取诸如字体、颜色和图片相关的参数，根据这些参数来绘制界面。
+ *
  *
  *
  *属性名称的请参考[style\_id](style_id_t.md)
@@ -6309,6 +6915,18 @@ var TStyle = /** @class */ (function () {
         return style_get_str(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
+     * 获取指定状态的指定属性的值。
+     *
+     * @param state 状态。
+     * @param name 属性名。
+     * @param value 值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TStyle.prototype.get = function (state, name, value) {
+        return style_get(this != null ? (this.nativeObj || this) : null, state, name, value != null ? (value.nativeObj || value) : null);
+    };
+    /**
      * 设置指定状态的指定属性的值(仅仅对mutable的style有效)。
      *
      * @param state 状态。
@@ -6366,9 +6984,25 @@ var TStyle = /** @class */ (function () {
 exports.TStyle = TStyle;
 ;
 /**
- * 窗体样式。
+ * SystemInfo常量定义。
  *
- *负责管理缺省的窗体样式数据，方便实现style\_const。
+ */
+var TSystemInfoFlag;
+(function (TSystemInfoFlag) {
+    /**
+     * 无特殊标志。
+     *
+     */
+    TSystemInfoFlag[TSystemInfoFlag["NONE"] = SYSTEM_INFO_FLAG_NONE()] = "NONE";
+    /**
+     * 使用快速旋转功能。
+     *
+     */
+    TSystemInfoFlag[TSystemInfoFlag["FAST_LCD_PORTRAIT"] = SYSTEM_INFO_FLAG_FAST_LCD_PORTRAIT()] = "FAST_LCD_PORTRAIT";
+})(TSystemInfoFlag || (exports.TSystemInfoFlag = TSystemInfoFlag = {}));
+;
+/**
+ * 窗体样式。
  *
  */
 var TTheme = /** @class */ (function () {
@@ -6395,6 +7029,7 @@ exports.TTheme = TTheme;
  *
  *示例：
  *
+ *
  *> 在非GUI线程请用timer\_queue。
  *
  */
@@ -6406,7 +7041,7 @@ var TTimer = /** @class */ (function () {
      *
      * @param on_timer timer回调函数。
      * @param ctx timer回调函数的上下文。
-     * @param duration 时间。
+     * @param duration 时间(毫秒)。
      *
      * @returns 返回timer的ID，TK_INVALID_ID表示失败。
      */
@@ -6467,7 +7102,7 @@ var TTimer = /** @class */ (function () {
      * 修改指定的timer的duration，修改之后定时器重新开始计时。
      *
      * @param timer_id timerID。
-     * @param duration 新的时间。
+     * @param duration 新的时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -6504,7 +7139,7 @@ var TAlignV;
      *
      */
     TAlignV[TAlignV["BOTTOM"] = ALIGN_V_BOTTOM()] = "BOTTOM";
-})(TAlignV = exports.TAlignV || (exports.TAlignV = {}));
+})(TAlignV || (exports.TAlignV = TAlignV = {}));
 ;
 /**
  * 水平对齐的常量定义。
@@ -6532,7 +7167,7 @@ var TAlignH;
      *
      */
     TAlignH[TAlignH["RIGHT"] = ALIGN_H_RIGHT()] = "RIGHT";
-})(TAlignH = exports.TAlignH || (exports.TAlignH = {}));
+})(TAlignH || (exports.TAlignH = TAlignH = {}));
 ;
 /**
  * 应用程序类型。
@@ -6555,7 +7190,12 @@ var TAppType;
      *
      */
     TAppType[TAppType["DESKTOP"] = APP_DESKTOP()] = "DESKTOP";
-})(TAppType = exports.TAppType || (exports.TAppType = {}));
+    /**
+     * 控制台（没有界面）。
+     *
+     */
+    TAppType[TAppType["CONSOLE"] = APP_CONSOLE()] = "CONSOLE";
+})(TAppType || (exports.TAppType = TAppType = {}));
 ;
 /**
  * 位图格式常量定义。
@@ -6618,7 +7258,7 @@ var TBitmapFormat;
      *
      */
     TBitmapFormat[TBitmapFormat["MONO"] = BITMAP_FMT_MONO()] = "MONO";
-})(TBitmapFormat = exports.TBitmapFormat || (exports.TBitmapFormat = {}));
+})(TBitmapFormat || (exports.TBitmapFormat = TBitmapFormat = {}));
 ;
 /**
  * 位图标志常量定义。
@@ -6656,7 +7296,17 @@ var TBitmapFlag;
      *
      */
     TBitmapFlag[TBitmapFlag["PREMULTI_ALPHA"] = BITMAP_FLAG_PREMULTI_ALPHA()] = "PREMULTI_ALPHA";
-})(TBitmapFlag = exports.TBitmapFlag || (exports.TBitmapFlag = {}));
+    /**
+     * 位图数据已经处理了 lcd 旋转，同时说明 bitmap 的宽高和真实数据的宽高可能不一致
+     *
+     */
+    TBitmapFlag[TBitmapFlag["LCD_ORIENTATION"] = BITMAP_FLAG_LCD_ORIENTATION()] = "LCD_ORIENTATION";
+    /**
+     * 该位图为 GPU 的 fbo 数据。
+     *
+     */
+    TBitmapFlag[TBitmapFlag["GPU_FBO_TEXTURE"] = BITMAP_FLAG_GPU_FBO_TEXTURE()] = "GPU_FBO_TEXTURE";
+})(TBitmapFlag || (exports.TBitmapFlag = TBitmapFlag = {}));
 ;
 /**
  * 矢量图画布抽象基类。
@@ -6676,6 +7326,7 @@ var TBitmapFlag;
  *
  *
  *示例：
+ *
  *
  *
  *>请参考：https://www.w3schools.com/tags/ref_canvas.asp
@@ -6754,7 +7405,7 @@ var TVgcanvas = /** @class */ (function () {
      * @param cp1x 控制点1x坐标。
      * @param cp1y 控制点1y坐标。
      * @param cp2x 控制点2x坐标。
-     * @param cp2y 控制点3y坐标。
+     * @param cp2y 控制点2y坐标。
      * @param x x坐标。
      * @param y y坐标。
      *
@@ -6869,7 +7520,7 @@ var TVgcanvas = /** @class */ (function () {
     /**
      * 旋转。
      *
-     * @param rad 角度
+     * @param rad 旋转角度(单位弧度)
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -6952,6 +7603,19 @@ var TVgcanvas = /** @class */ (function () {
         return vgcanvas_clip_rect(this != null ? (this.nativeObj || this) : null, x, y, w, h);
     };
     /**
+     * 矩形区域是否在矩形裁剪中。
+     *
+     * @param left 矩形区域左边。
+     * @param top 矩形区域上边。
+     * @param right 矩形区域右边。
+     * @param bottom 矩形区域下边。
+     *
+     * @returns 返回 TURE 则在区域中，返回 FALSE 则不在区域中。
+     */
+    TVgcanvas.prototype.isRectfInClipRect = function (left, top, right, bottom) {
+        return vgcanvas_is_rectf_in_clip_rect(this != null ? (this.nativeObj || this) : null, left, top, right, bottom);
+    };
+    /**
      * 设置一个与前一个裁剪区做交集的矩形裁剪区。
      *如果下面这种情况，则不能直接调用 rect_intersect 函数来做矩形交集和 vgcanvas_clip_rect 函数设置裁剪区，而采用本函数做交集。
      *由于缩放和旋转以及平移会导致 vg 的坐标系和上一个裁剪区的坐标系不同，
@@ -7020,12 +7684,12 @@ var TVgcanvas = /** @class */ (function () {
     /**
      * 设置字体的大小。
      *
-     * @param font 字体大小。
+     * @param size 字体大小。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TVgcanvas.prototype.setFontSize = function (font) {
-        return vgcanvas_set_font_size(this != null ? (this.nativeObj || this) : null, font);
+    TVgcanvas.prototype.setFontSize = function (size) {
+        return vgcanvas_set_font_size(this != null ? (this.nativeObj || this) : null, size);
     };
     /**
      * 设置文本水平对齐的方式。
@@ -7087,6 +7751,30 @@ var TVgcanvas = /** @class */ (function () {
      */
     TVgcanvas.prototype.drawImage = function (img, sx, sy, sw, sh, dx, dy, dw, dh) {
         return vgcanvas_draw_image(this != null ? (this.nativeObj || this) : null, img != null ? (img.nativeObj || img) : null, sx, sy, sw, sh, dx, dy, dw, dh);
+    };
+    /**
+     * 绘制图片。
+     *
+     *备注：
+     *当绘制区域大于原图区域时，多余的绘制区域会重复绘制原图区域的东西。（绘制图区按照绘制图片的宽高来绘制的）
+     *当绘制图片的宽高和原图的不同，在重复绘制的同时加入缩放。
+     *
+     * @param img 图片。
+     * @param sx 原图区域的 x
+     * @param sy 原图区域的 y
+     * @param sw 原图区域的 w
+     * @param sh 原图区域的 h
+     * @param dx 绘制区域的 x
+     * @param dy 绘制区域的 y
+     * @param dw 绘制区域的 w
+     * @param dh 绘制区域的 h
+     * @param dst_w 绘制图片的宽
+     * @param dst_h 绘制图片的高
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TVgcanvas.prototype.drawImageRepeat = function (img, sx, sy, sw, sh, dx, dy, dw, dh, dst_w, dst_h) {
+        return vgcanvas_draw_image_repeat(this != null ? (this.nativeObj || this) : null, img != null ? (img.nativeObj || img) : null, sx, sy, sw, sh, dx, dy, dw, dh, dst_w, dst_h);
     };
     /**
      * 绘制图标。
@@ -7151,12 +7839,12 @@ var TVgcanvas = /** @class */ (function () {
     /**
      * 设置线条颜色。
      *
-     * @param color 颜色。
+     * @param str 颜色。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TVgcanvas.prototype.setStrokeColor = function (color) {
-        return vgcanvas_set_stroke_color_str(this != null ? (this.nativeObj || this) : null, color);
+    TVgcanvas.prototype.setStrokeColor = function (str) {
+        return vgcanvas_set_stroke_color_str(this != null ? (this.nativeObj || this) : null, str);
     };
     /**
      * 设置line cap。
@@ -7423,7 +8111,7 @@ var TVgcanvasLineCap;
      *
      */
     TVgcanvasLineCap[TVgcanvasLineCap["BUTT"] = VGCANVAS_LINE_CAP_BUTT()] = "BUTT";
-})(TVgcanvasLineCap = exports.TVgcanvasLineCap || (exports.TVgcanvasLineCap = {}));
+})(TVgcanvasLineCap || (exports.TVgcanvasLineCap = TVgcanvasLineCap = {}));
 ;
 /**
  * 线条连接类型。
@@ -7446,7 +8134,7 @@ var TVgcanvasLineJoin;
      *
      */
     TVgcanvasLineJoin[TVgcanvasLineJoin["MITTER"] = VGCANVAS_LINE_JOIN_MITTER()] = "MITTER";
-})(TVgcanvasLineJoin = exports.TVgcanvasLineJoin || (exports.TVgcanvasLineJoin = {}));
+})(TVgcanvasLineJoin || (exports.TVgcanvasLineJoin = TVgcanvasLineJoin = {}));
 ;
 /**
  * 控件的属性。
@@ -7534,6 +8222,11 @@ var TWidgetProp;
      *
      */
     TWidgetProp[TWidgetProp["CARET_Y"] = WIDGET_PROP_CARET_Y()] = "CARET_Y";
+    /**
+     * 行高。
+     *
+     */
+    TWidgetProp[TWidgetProp["LINE_HEIGHT"] = WIDGET_PROP_LINE_HEIGHT()] = "LINE_HEIGHT";
     /**
      * 脏矩形超出控件本身大小的最大范围。
      *
@@ -7635,6 +8328,11 @@ var TWidgetProp;
      */
     TWidgetProp[TWidgetProp["VIRTUAL_H"] = WIDGET_PROP_VIRTUAL_H()] = "VIRTUAL_H";
     /**
+     * 控件正在加载。
+     *
+     */
+    TWidgetProp[TWidgetProp["LOADING"] = WIDGET_PROP_LOADING()] = "LOADING";
+    /**
      * 名称。
      *
      */
@@ -7659,6 +8357,11 @@ var TWidgetProp;
      *
      */
     TWidgetProp[TWidgetProp["VALUE"] = WIDGET_PROP_VALUE()] = "VALUE";
+    /**
+     * 容易点击模式(目前用于spinbox)。
+     *
+     */
+    TWidgetProp[TWidgetProp["EASY_TOUCH_MODE"] = WIDGET_PROP_EASY_TOUCH_MODE()] = "EASY_TOUCH_MODE";
     /**
      * CheckButton是否单选。
      *
@@ -7685,6 +8388,11 @@ var TWidgetProp;
      */
     TWidgetProp[TWidgetProp["WORD_WRAP"] = WIDGET_PROP_WORD_WRAP()] = "WORD_WRAP";
     /**
+     * 是否省略。
+     *
+     */
+    TWidgetProp[TWidgetProp["ELLIPSES"] = WIDGET_PROP_ELLIPSES()] = "ELLIPSES";
+    /**
      * 文本。
      *
      */
@@ -7699,6 +8407,11 @@ var TWidgetProp;
      *
      */
     TWidgetProp[TWidgetProp["STYLE"] = WIDGET_PROP_STYLE()] = "STYLE";
+    /**
+     * 状态。
+     *
+     */
+    TWidgetProp[TWidgetProp["STATE"] = WIDGET_PROP_STATE()] = "STATE";
     /**
      * 是否启用。
      *
@@ -7759,6 +8472,11 @@ var TWidgetProp;
      *
      */
     TWidgetProp[TWidgetProp["SENSITIVE"] = WIDGET_PROP_SENSITIVE()] = "SENSITIVE";
+    /**
+     * 窗口所属的小应用程序(applet)名称。
+     *
+     */
+    TWidgetProp[TWidgetProp["APPLET_NAME"] = WIDGET_PROP_APPLET_NAME()] = "APPLET_NAME";
     /**
      * 控件动画。
      *
@@ -7865,12 +8583,14 @@ var TWidgetProp;
      */
     TWidgetProp[TWidgetProp["SHOW_TEXT"] = WIDGET_PROP_SHOW_TEXT()] = "SHOW_TEXT";
     /**
-     * X方向的偏移。
+     * X方向的偏移。（如果控件有继承 get_offset 函数指针的话，一定要和 get_offset 返回值保持一致，否则容易出现问题）
+     *详情请看 docs/how_to_use_offset_in_custom_widget.md
      *
      */
     TWidgetProp[TWidgetProp["XOFFSET"] = WIDGET_PROP_XOFFSET()] = "XOFFSET";
     /**
-     * Y方向的偏移。
+     * Y方向的偏移。（如果控件有继承 get_offset 函数指针的话，一定要和 get_offset 返回值保持一致，否则容易出现问题）
+     *详情请看 docs/how_to_use_offset_in_custom_widget.md
      *
      */
     TWidgetProp[TWidgetProp["YOFFSET"] = WIDGET_PROP_YOFFSET()] = "YOFFSET";
@@ -7885,7 +8605,7 @@ var TWidgetProp;
      */
     TWidgetProp[TWidgetProp["ALIGN_H"] = WIDGET_PROP_ALIGN_H()] = "ALIGN_H";
     /**
-     * 是否自动播放或指定播放的时间。
+     * 是否自动播放或指定播放的时间(毫秒)。
      *
      */
     TWidgetProp[TWidgetProp["AUTO_PLAY"] = WIDGET_PROP_AUTO_PLAY()] = "AUTO_PLAY";
@@ -7894,6 +8614,11 @@ var TWidgetProp;
      *
      */
     TWidgetProp[TWidgetProp["LOOP"] = WIDGET_PROP_LOOP()] = "LOOP";
+    /**
+     * 是否正在运行(播放)。
+     *
+     */
+    TWidgetProp[TWidgetProp["RUNNING"] = WIDGET_PROP_RUNNING()] = "RUNNING";
     /**
      * 是否启用自动更正功能。
      *
@@ -8025,7 +8750,7 @@ var TWidgetProp;
      */
     TWidgetProp[TWidgetProp["REPEAT"] = WIDGET_PROP_REPEAT()] = "REPEAT";
     /**
-     * 触发长按事件的时间(ms)。
+     * 触发长按事件的时间(毫秒)。
      *
      */
     TWidgetProp[TWidgetProp["LONG_PRESS_TIME"] = WIDGET_PROP_LONG_PRESS_TIME()] = "LONG_PRESS_TIME";
@@ -8034,6 +8759,11 @@ var TWidgetProp;
      *
      */
     TWidgetProp[TWidgetProp["ENABLE_LONG_PRESS"] = WIDGET_PROP_ENABLE_LONG_PRESS()] = "ENABLE_LONG_PRESS";
+    /**
+     * 是否启用预览。
+     *
+     */
+    TWidgetProp[TWidgetProp["ENABLE_PREVIEW"] = WIDGET_PROP_ENABLE_PREVIEW()] = "ENABLE_PREVIEW";
     /**
      * 是否启用点击穿透。
      *
@@ -8150,6 +8880,11 @@ var TWidgetProp;
      */
     TWidgetProp[TWidgetProp["OPEN_WINDOW"] = WIDGET_PROP_OPEN_WINDOW()] = "OPEN_WINDOW";
     /**
+     * ComboBox打开弹出窗口的主题。
+     *
+     */
+    TWidgetProp[TWidgetProp["THEME_OF_POPUP"] = WIDGET_PROP_THEME_OF_POPUP()] = "THEME_OF_POPUP";
+    /**
      * 被选中项的索引。
      *
      */
@@ -8244,7 +8979,67 @@ var TWidgetProp;
      *
      */
     TWidgetProp[TWidgetProp["MOVE_FOCUS_RIGHT_KEY"] = WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY()] = "MOVE_FOCUS_RIGHT_KEY";
-})(TWidgetProp = exports.TWidgetProp || (exports.TWidgetProp = {}));
+    /**
+     * 行数。
+     *
+     */
+    TWidgetProp[TWidgetProp["ROWS"] = WIDGET_PROP_ROWS()] = "ROWS";
+    /**
+     * 是否显示网格线。
+     *
+     */
+    TWidgetProp[TWidgetProp["SHOW_GRID"] = WIDGET_PROP_SHOW_GRID()] = "SHOW_GRID";
+    /**
+     * 各列的定义。
+     *
+     */
+    TWidgetProp[TWidgetProp["COLUMNS_DEFINITION"] = WIDGET_PROP_COLUMNS_DEFINITION()] = "COLUMNS_DEFINITION";
+    /**
+     * 拖拽临界值。
+     *
+     */
+    TWidgetProp[TWidgetProp["DRAG_THRESHOLD"] = WIDGET_PROP_DRAG_THRESHOLD()] = "DRAG_THRESHOLD";
+    /**
+     * 动画时间(毫秒)。
+     *
+     */
+    TWidgetProp[TWidgetProp["ANIMATING_TIME"] = WIDGET_PROP_ANIMATING_TIME()] = "ANIMATING_TIME";
+    /**
+     * 改变控件属性时附带动画的前缀。
+     *
+     */
+    TWidgetProp[TWidgetProp["ANIMATE_PREFIX"] = WIDGET_PROP_ANIMATE_PREFIX()] = "ANIMATE_PREFIX";
+    /**
+     * 改变控件属性时附带动画的播放时间(毫秒)。
+     *
+     */
+    TWidgetProp[TWidgetProp["ANIMATE_ANIMATING_TIME"] = WIDGET_PROP_ANIMATE_ANIMATING_TIME()] = "ANIMATE_ANIMATING_TIME";
+    /**
+     * 控件脏矩形区域。
+     *
+     */
+    TWidgetProp[TWidgetProp["DIRTY_RECT"] = WIDGET_PROP_DIRTY_RECT()] = "DIRTY_RECT";
+    /**
+     * 屏幕保护时间(毫秒)。
+     *
+     */
+    TWidgetProp[TWidgetProp["SCREEN_SAVER_TIME"] = WIDGET_PROP_SCREEN_SAVER_TIME()] = "SCREEN_SAVER_TIME";
+    /**
+     * 是否显示FPS。
+     *
+     */
+    TWidgetProp[TWidgetProp["SHOW_FPS"] = WIDGET_PROP_SHOW_FPS()] = "SHOW_FPS";
+    /**
+     * 最大FPS。
+     *
+     */
+    TWidgetProp[TWidgetProp["MAX_FPS"] = WIDGET_PROP_MAX_FPS()] = "MAX_FPS";
+    /**
+     * 数据校验脚本。
+     *
+     */
+    TWidgetProp[TWidgetProp["VALIDATOR"] = WIDGET_PROP_VALIDATOR()] = "VALIDATOR";
+})(TWidgetProp || (exports.TWidgetProp = TWidgetProp = {}));
 ;
 /**
  * 控件的类型。
@@ -8328,6 +9123,11 @@ var TWidgetType;
      */
     TWidgetType[TWidgetType["IMAGE"] = WIDGET_TYPE_IMAGE()] = "IMAGE";
     /**
+     * 图标控件。
+     *
+     */
+    TWidgetType[TWidgetType["ICON"] = WIDGET_TYPE_ICON()] = "ICON";
+    /**
      * 文本编辑控件。
      *
      */
@@ -8372,6 +9172,11 @@ var TWidgetType;
      *
      */
     TWidgetType[TWidgetType["VIEW"] = WIDGET_TYPE_VIEW()] = "VIEW";
+    /**
+     * page控件。
+     *
+     */
+    TWidgetType[TWidgetType["PAGE"] = WIDGET_TYPE_PAGE()] = "PAGE";
     /**
      * 下拉选择框控件。
      *
@@ -8527,7 +9332,7 @@ var TWidgetType;
      *
      */
     TWidgetType[TWidgetType["CALIBRATION_WIN"] = WIDGET_TYPE_CALIBRATION_WIN()] = "CALIBRATION_WIN";
-})(TWidgetType = exports.TWidgetType || (exports.TWidgetType = {}));
+})(TWidgetType || (exports.TWidgetType = TWidgetType = {}));
 ;
 /**
  * 窗口的生命周期常量定义。
@@ -8565,7 +9370,7 @@ var TWindowStage;
      *
      */
     TWindowStage[TWindowStage["SUSPEND"] = WINDOW_STAGE_SUSPEND()] = "SUSPEND";
-})(TWindowStage = exports.TWindowStage || (exports.TWindowStage = {}));
+})(TWindowStage || (exports.TWindowStage = TWindowStage = {}));
 ;
 /**
  * 窗口的closable常量定义。
@@ -8588,7 +9393,7 @@ var TWindowClosable;
      *
      */
     TWindowClosable[TWindowClosable["CONFIRM"] = WINDOW_CLOSABLE_CONFIRM()] = "CONFIRM";
-})(TWindowClosable = exports.TWindowClosable || (exports.TWindowClosable = {}));
+})(TWindowClosable || (exports.TWindowClosable = TWindowClosable = {}));
 ;
 /**
  * 控件状态常量定义。
@@ -8608,6 +9413,11 @@ var TWidgetState;
      *
      */
     TWidgetState[TWidgetState["NORMAL"] = WIDGET_STATE_NORMAL()] = "NORMAL";
+    /**
+     * 3/5keys模式时，进入激活状态(此时方向键用于修改值)。
+     *
+     */
+    TWidgetState[TWidgetState["ACTIVATED"] = WIDGET_STATE_ACTIVATED()] = "ACTIVATED";
     /**
      * 内容被修改的状态。
      *
@@ -8653,6 +9463,11 @@ var TWidgetState;
      *
      */
     TWidgetState[TWidgetState["EMPTY_FOCUS"] = WIDGET_STATE_EMPTY_FOCUS()] = "EMPTY_FOCUS";
+    /**
+     * 编辑器无内容同时指针悬浮的状态。
+     *
+     */
+    TWidgetState[TWidgetState["EMPTY_OVER"] = WIDGET_STATE_EMPTY_OVER()] = "EMPTY_OVER";
     /**
      * 输入错误状态。
      *
@@ -8713,7 +9528,7 @@ var TWidgetState;
      *
      */
     TWidgetState[TWidgetState["FOCUSED_OF_ACTIVE"] = WIDGET_STATE_FOCUSED_OF_ACTIVE()] = "FOCUSED_OF_ACTIVE";
-})(TWidgetState = exports.TWidgetState || (exports.TWidgetState = {}));
+})(TWidgetState || (exports.TWidgetState = TWidgetState = {}));
 ;
 /**
  * 控件鼠标光标常量定义。
@@ -8776,13 +9591,45 @@ var TWidgetCursor;
      *
      */
     TWidgetCursor[TWidgetCursor["CURSOR_SIZEALL"] = WIDGET_CURSOR_SIZEALL()] = "CURSOR_SIZEALL";
-})(TWidgetCursor = exports.TWidgetCursor || (exports.TWidgetCursor = {}));
+})(TWidgetCursor || (exports.TWidgetCursor = TWidgetCursor = {}));
 ;
 /**
- * widget_t* button = button_create(win, 10, 10, 128, 30);
- *widget_set_text(button, L"OK");
- *widget_on(button, EVT_CLICK, on_click, NULL);
+ * **widget_t** 是所有控件、窗口和窗口管理器的基类。
+ ***widget_t**也是一个容器，可放其它**widget_t**到它的内部，形成一个树形结构。
+ *
+ *
+ *
+ *通常**widget_t**通过一个矩形区域向用户呈现一些信息，接受用户的输入，并据此做出适当的反应。
+ *它负责控件的生命周期、通用状态、事件分发和Style的管理。
+ *本类提供的接口(函数和属性)除非特别说明，一般都适用于子类控件。
+ *
+ *为了便于解释，这里特别说明一下几个术语：
+ *
+ ** **父控件与子控件**：父控件与子控件指的两个控件的组合关系(这是在运行时决定的)。
+ *比如：在窗口中放一个按钮，此时，我们称按钮是窗口的子控件，窗口是按钮的父控件。
+ *
+ *
+ *
+ ** **子类控件与父类控件**：子类控件与父类控件指的两类控件的继承关系(这是在设计时决定的)。
+ *比如：我们称**button_t**是**widget_t**的子类控件，**widget_t**是**button_t**的父类控件。
+ *
+ *
+ *
+ *widget相关的函数都只能在GUI线程中执行，如果需在非GUI线程中想调用widget相关函数，
+ *请用idle\_queue或timer\_queue进行串行化。
+ *请参考[demo thread](https://github.com/zlgopen/awtk/blob/master/demos/demo_thread_app.c)
+ *
+ ***widget\_t**是抽象类，不要直接创建**widget\_t**的实例。控件支持两种创建方式：
+ *
+ ** 通过XML创建。如：
+ *
+ *```xml
+ *<button x="c" y="m" w="80" h="30" text="OK"/>
  *```
+ *
+ ** 通过代码创建。如：
+ *
+ *
  *
  */
 var TWidget = /** @class */ (function () {
@@ -8807,6 +9654,26 @@ var TWidget = /** @class */ (function () {
      */
     TWidget.prototype.getChild = function (index) {
         return new TWidget(widget_get_child(this != null ? (this.nativeObj || this) : null, index));
+    };
+    /**
+     * 通过名称查找父控件。
+     *
+     * @param name 名称。
+     *
+     * @returns 父控件。
+     */
+    TWidget.prototype.findParentByName = function (name) {
+        return new TWidget(widget_find_parent_by_name(this != null ? (this.nativeObj || this) : null, name));
+    };
+    /**
+     * 通过类型查找父控件。
+     *
+     * @param type 类型。
+     *
+     * @returns 父控件。
+     */
+    TWidget.prototype.findParentByType = function (type) {
+        return new TWidget(widget_find_parent_by_type(this != null ? (this.nativeObj || this) : null, type));
     };
     /**
      * 获取当前窗口中的焦点控件。
@@ -8883,6 +9750,15 @@ var TWidget = /** @class */ (function () {
         return widget_move(this != null ? (this.nativeObj || this) : null, x, y);
     };
     /**
+     * 移动控件到父控件中间。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWidget.prototype.moveToCenter = function () {
+        return widget_move_to_center(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
      * 调整控件的大小。
      *
      * @param w 宽度
@@ -8907,6 +9783,29 @@ var TWidget = /** @class */ (function () {
         return widget_move_resize(this != null ? (this.nativeObj || this) : null, x, y, w, h);
     };
     /**
+     * 移动控件并调整控件的大小。
+     *
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     * @param update_layout 是否更新布局
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWidget.prototype.moveResizeEx = function (x, y, w, h, update_layout) {
+        return widget_move_resize_ex(this != null ? (this.nativeObj || this) : null, x, y, w, h, update_layout);
+    };
+    /**
+     * 获取控件的值。只是对widget\_get\_prop的包装，值的意义由子类控件决定。
+     *
+     *
+     * @returns 返回值。
+     */
+    TWidget.prototype.getValue = function () {
+        return widget_get_value(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
      * 设置控件的值。
      *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
      *
@@ -8916,6 +9815,48 @@ var TWidget = /** @class */ (function () {
      */
     TWidget.prototype.setValue = function (value) {
         return widget_set_value(this != null ? (this.nativeObj || this) : null, value);
+    };
+    /**
+     * 增加控件的值。
+     *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
+     *
+     * @param delta 增量。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWidget.prototype.addValue = function (delta) {
+        return widget_add_value(this != null ? (this.nativeObj || this) : null, delta);
+    };
+    /**
+     * 获取控件的值。只是对widget\_get\_prop的包装，值的意义由子类控件决定。
+     *
+     *
+     * @returns 返回值。
+     */
+    TWidget.prototype.getValueInt = function () {
+        return widget_get_value_int(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 设置控件的值。
+     *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
+     *
+     * @param value 值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWidget.prototype.setValueInt = function (value) {
+        return widget_set_value_int(this != null ? (this.nativeObj || this) : null, value);
+    };
+    /**
+     * 增加控件的值。
+     *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
+     *
+     * @param delta 增量。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWidget.prototype.addValueInt = function (delta) {
+        return widget_add_value_int(this != null ? (this.nativeObj || this) : null, delta);
     };
     /**
      * 设置控件的值(以动画形式变化到指定的值)。
@@ -8930,17 +9871,6 @@ var TWidget = /** @class */ (function () {
         return widget_animate_value_to(this != null ? (this.nativeObj || this) : null, value, duration);
     };
     /**
-     * 增加控件的值。
-     *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
-     *
-     * @param delta 增量。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    TWidget.prototype.addValue = function (delta) {
-        return widget_add_value(this != null ? (this.nativeObj || this) : null, delta);
-    };
-    /**
      * 查询指定的style是否存在。
      *
      * @param style_name style的名称（如果为 NULL，则默认为 default）。
@@ -8950,6 +9880,24 @@ var TWidget = /** @class */ (function () {
      */
     TWidget.prototype.isStyleExist = function (style_name, state_name) {
         return widget_is_style_exist(this != null ? (this.nativeObj || this) : null, style_name, state_name);
+    };
+    /**
+     * 判断widget是否支持高亮。
+     *
+     *
+     * @returns 支持返回 TRUE，不支持返回 FALSE。
+     */
+    TWidget.prototype.isSupportHighlighter = function () {
+        return widget_is_support_highlighter(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 判断widget拥有高亮属性。
+     *
+     *
+     * @returns 拥有返回 TRUE，没有返回 FALSE。
+     */
+    TWidget.prototype.hasHighlighter = function () {
+        return widget_has_highlighter(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 启用指定的style。
@@ -8962,8 +9910,7 @@ var TWidget = /** @class */ (function () {
         return widget_use_style(this != null ? (this.nativeObj || this) : null, style);
     };
     /**
-     * 设置控件的文本。
-     *只是对widget\_set\_prop的包装，文本的意义由子类控件决定。
+     * 设置控件的文本。（如果字符串相同，则不会重复设置以及触发事件）
      *
      * @param text 文本。
      *
@@ -8971,6 +9918,17 @@ var TWidget = /** @class */ (function () {
      */
     TWidget.prototype.setText = function (text) {
         return widget_set_text_utf8(this != null ? (this.nativeObj || this) : null, text);
+    };
+    /**
+     * 设置控件的文本。
+     *
+     * @param text 文本。
+     * @param check_diff 是否检查设置的文本是否和控件中的文本一样。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWidget.prototype.setTextEx = function (text, check_diff) {
+        return widget_set_text_utf8_ex(this != null ? (this.nativeObj || this) : null, text, check_diff);
     };
     /**
      * 设置子控件的文本。
@@ -9019,15 +9977,6 @@ var TWidget = /** @class */ (function () {
      */
     TWidget.prototype.setTrText = function (text) {
         return widget_set_tr_text(this != null ? (this.nativeObj || this) : null, text);
-    };
-    /**
-     * 获取控件的值。只是对widget\_get\_prop的包装，值的意义由子类控件决定。
-     *
-     *
-     * @returns 返回值。
-     */
-    TWidget.prototype.getValue = function () {
-        return widget_get_value(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 获取控件enable属性值。
@@ -9102,12 +10051,12 @@ var TWidget = /** @class */ (function () {
         return widget_get_feedback(this != null ? (this.nativeObj || this) : null);
     };
     /**
-     * str_t str;
-     *str_init(&str, 0);
-     *str_from_wstr(&str, widget_get_text(target));
-     *log_debug("%s: %s\n", target->name, str.str);
-     *str_reset(&str);
-     *```
+     * 获取控件的文本。
+     *只是对widget\_get\_prop的包装，文本的意义由子类控件决定。
+     *
+     *如果希望获取UTF8格式的文本，可以参考下面的代码：
+     *
+     *
      *
      *
      * @returns 返回文本。
@@ -9128,14 +10077,21 @@ var TWidget = /** @class */ (function () {
     /**
      * 设置theme的名称，用于动态切换主题。名称与当前主题名称相同，则重新加载全部资源。
      *
-     *> 目前只支持带有文件系统的平台。
-     *
      * @param name 主题的名称。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     TWidget.prototype.setTheme = function (name) {
         return widget_set_theme(this != null ? (this.nativeObj || this) : null, name);
+    };
+    /**
+     * 获取 theme 的名称
+     *
+     *
+     * @returns 成功返回主题名称，失败否则 NULL。
+     */
+    TWidget.prototype.getThemeName = function () {
+        return widget_get_theme_name(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 设置鼠标指针的图片名。
@@ -9312,7 +10268,7 @@ var TWidget = /** @class */ (function () {
     /**
      * 设置控件的状态。
      *
-     * @param state 状态(必须为真正的常量字符串，在widget的整个生命周期有效)。
+     * @param state 状态。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -9454,10 +10410,10 @@ var TWidget = /** @class */ (function () {
         return widget_set_sensitive(this != null ? (this.nativeObj || this) : null, sensitive);
     };
     /**
-     * widget_t* ok = button_create(win, 10, 10, 80, 30);
-     *widget_on(ok, EVT_CLICK, on_click, NULL);
+     * 注册指定事件的处理函数。
+     *使用示例：
      *
-     *```
+     *
      *
      * @param type 事件类型。
      * @param on_event 事件处理函数。
@@ -9487,6 +10443,39 @@ var TWidget = /** @class */ (function () {
      */
     TWidget.prototype.invalidateForce = function (r) {
         return widget_invalidate_force(this != null ? (this.nativeObj || this) : null, r != null ? (r.nativeObj || r) : null);
+    };
+    /**
+     * 获取控件指定属性的值。
+     *
+     * @param name 属性的名称。
+     * @param v 返回属性的值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWidget.prototype.getProp = function (name, v) {
+        return widget_get_prop(this != null ? (this.nativeObj || this) : null, name, v != null ? (v.nativeObj || v) : null);
+    };
+    /**
+     * 设置控件指定属性的值。
+     *
+     * @param name 属性的名称。
+     * @param v 属性的值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWidget.prototype.setProp = function (name, v) {
+        return widget_set_prop(this != null ? (this.nativeObj || this) : null, name, v != null ? (v.nativeObj || v) : null);
+    };
+    /**
+     * 设置多个参数。
+     *>参数之间用&分隔，名称和值之间用=分隔。如: name=awtk&min=10&max=100
+     *
+     * @param params 参数列表。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWidget.prototype.setProps = function (params) {
+        return widget_set_props(this != null ? (this.nativeObj || this) : null, params);
     };
     /**
      * 设置字符串格式的属性。
@@ -9530,6 +10519,28 @@ var TWidget = /** @class */ (function () {
      */
     TWidget.prototype.getPropPointer = function (name) {
         return widget_get_prop_pointer(this != null ? (this.nativeObj || this) : null, name);
+    };
+    /**
+     * 设置浮点数格式的属性。
+     *
+     * @param name 属性的名称。
+     * @param v 属性的值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWidget.prototype.setPropFloat = function (name, v) {
+        return widget_set_prop_float(this != null ? (this.nativeObj || this) : null, name, v);
+    };
+    /**
+     * 获取浮点数格式的属性。
+     *
+     * @param name 属性的名称。
+     * @param defval 缺省值。
+     *
+     * @returns 返回属性的值。
+     */
+    TWidget.prototype.getPropFloat = function (name, defval) {
+        return widget_get_prop_float(this != null ? (this.nativeObj || this) : null, name, defval);
     };
     /**
      * 设置整数格式的属性。
@@ -9641,6 +10652,15 @@ var TWidget = /** @class */ (function () {
         return widget_is_normal_window(this != null ? (this.nativeObj || this) : null);
     };
     /**
+     * 检查控件是否是全屏窗口。
+     *
+     *
+     * @returns 返回FALSE表示不是，否则表示是。
+     */
+    TWidget.prototype.isFullscreenWindow = function () {
+        return widget_is_fullscreen_window(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
      * 检查控件是否是对话框类型。
      *
      *
@@ -9668,6 +10688,15 @@ var TWidget = /** @class */ (function () {
         return widget_is_overlay(this != null ? (this.nativeObj || this) : null);
     };
     /**
+     * 检查控件是否总在最上层。
+     *
+     *
+     * @returns 返回FALSE表示不是，否则表示是。
+     */
+    TWidget.prototype.isAlwaysOnTop = function () {
+        return widget_is_always_on_top(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
      * 检查控件弹出对话框控件是否已经打开了（而非挂起状态）。
      *
      *
@@ -9686,8 +10715,13 @@ var TWidget = /** @class */ (function () {
         return widget_is_opened_popup(this != null ? (this.nativeObj || this) : null);
     };
     /**
-     * widget_set_prop_bool(group, WIDGET_PROP_IS_KEYBOARD, TRUE);
-     *```
+     * 判断当前控件是否是keyboard。
+     *
+     *> keyboard收到pointer事件时，不会让当前控件失去焦点。
+     *
+     *在自定义软键盘时，将所有按钮放到一个容器当中，并设置为is_keyboard。
+     *
+     *
      *
      *
      * @returns 返回FALSE表示不是，否则表示是。
@@ -9947,6 +10981,7 @@ var TWidget = /** @class */ (function () {
     };
     /**
      * 设置控件自己的布局参数。
+     *备注：下一帧才会生效数据
      *
      * @param params 布局参数。
      *
@@ -9957,6 +10992,7 @@ var TWidget = /** @class */ (function () {
     };
     /**
      * 设置子控件的布局参数。
+     *备注：下一帧才会生效数据
      *
      * @param params 布局参数。
      *
@@ -9967,6 +11003,7 @@ var TWidget = /** @class */ (function () {
     };
     /**
      * 设置控件自己的布局(缺省布局器)参数(过时，请用widget\_set\_self\_layout)。
+     *备注：下一帧才会生效数据
      *
      * @param x x参数。
      * @param y y参数。
@@ -10007,8 +11044,15 @@ var TWidget = /** @class */ (function () {
         return widget_set_style_str(this != null ? (this.nativeObj || this) : null, state_and_name, value);
     };
     /**
-     * widget_set_style_color(label, "normal:bg_color", 0xFF332211);
-     *```
+     * 设置颜色类型的style。
+     *
+     *> * [state 的取值](https://github.com/zlgopen/awtk/blob/master/docs/manual/widget_state_t.md)
+     *> * [name 的取值](https://github.com/zlgopen/awtk/blob/master/docs/theme.md)
+     *
+     *
+     *在下面这个例子中，R=0x11 G=0x22 B=0x33 A=0xFF
+     *
+     *
      *
      * @param state_and_name 状态和名字，用英文的冒号分隔。
      * @param value 值。颜色值一般用十六进制表示，每两个数字表示一个颜色通道，从高位到低位，依次是ABGR。
@@ -10017,6 +11061,16 @@ var TWidget = /** @class */ (function () {
      */
     TWidget.prototype.setStyleColor = function (state_and_name, value) {
         return widget_set_style_color(this != null ? (this.nativeObj || this) : null, state_and_name, value);
+    };
+    /**
+     * 加入一个子控件默认实现(供子类调用)。
+     *
+     * @param child 子控件对象。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWidget.prototype.addChildDefault = function (child) {
+        return widget_add_child_default(this != null ? (this.nativeObj || this) : null, child != null ? (child.nativeObj || child) : null);
     };
     Object.defineProperty(TWidget.prototype, "x", {
         /**
@@ -10215,7 +11269,7 @@ var TWidget = /** @class */ (function () {
         /**
          * 是否根据子控件和文本自动调整控件自身大小。
          *
-         *> 为true时，最好不要使用child_layout，否则可能有冲突。
+         *> 为true时，最好不要使用 layout 的相关东西，否则可能有冲突。
          *> 注意：只是调整控件的本身的宽高，不会修改控件本身的位置。
          *
          */
@@ -10238,6 +11292,20 @@ var TWidget = /** @class */ (function () {
         },
         set: function (v) {
             this.setFloating(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TWidget.prototype, "opacity", {
+        /**
+         * 不透明度(0-255)，0完全透明，255完全不透明。
+         *
+         */
+        get: function () {
+            return widget_t_get_prop_opacity(this.nativeObj);
+        },
+        set: function (v) {
+            this.setOpacity(v);
         },
         enumerable: false,
         configurable: true
@@ -10274,8 +11342,15 @@ var TWidget = /** @class */ (function () {
 exports.TWidget = TWidget;
 ;
 /**
- * #include "conf_io/app_conf.h"
- *```
+ * 应用程序的配置信息。
+ *
+ *底层实现可以是任何格式，比如INI，XML，JSON和UBJSON。
+ *
+ *对于树状的文档，key可以是多级的，用.分隔。如network.ip。
+ *
+ *conf-io是可选组件，需要自己包含头文件，否则64位数据类型会被截断成32位的数据。
+ *
+ *
  *
  */
 var TAppConf = /** @class */ (function () {
@@ -10493,7 +11568,7 @@ var TIndicatorDefaultPaint;
      *
      */
     TIndicatorDefaultPaint[TIndicatorDefaultPaint["STROKE_RECT"] = INDICATOR_DEFAULT_PAINT_STROKE_RECT()] = "STROKE_RECT";
-})(TIndicatorDefaultPaint = exports.TIndicatorDefaultPaint || (exports.TIndicatorDefaultPaint = {}));
+})(TIndicatorDefaultPaint || (exports.TIndicatorDefaultPaint = TIndicatorDefaultPaint = {}));
 ;
 /**
  * 虚拟页面的事件。
@@ -10516,7 +11591,7 @@ var TVpageEvent;
      *
      */
     TVpageEvent[TVpageEvent["VPAGE_CLOSE"] = EVT_VPAGE_CLOSE()] = "VPAGE_CLOSE";
-})(TVpageEvent = exports.TVpageEvent || (exports.TVpageEvent = {}));
+})(TVpageEvent || (exports.TVpageEvent = TVpageEvent = {}));
 ;
 /**
  * 资源类型常量定义。
@@ -10574,7 +11649,7 @@ var TAssetType;
      *
      */
     TAssetType[TAssetType["DATA"] = ASSET_TYPE_DATA()] = "DATA";
-})(TAssetType = exports.TAssetType || (exports.TAssetType = {}));
+})(TAssetType || (exports.TAssetType = TAssetType = {}));
 ;
 /**
  * 单个资源的描述信息。
@@ -10602,6 +11677,25 @@ var TAssetInfo = /** @class */ (function () {
     TAssetInfo.prototype.getName = function () {
         return asset_info_get_name(this != null ? (this.nativeObj || this) : null);
     };
+    /**
+     * 资源是否在ROM中。
+     *
+     *
+     * @returns 返回 TRUE 为在 ROM 中，返回 FALSE 则不在。
+     */
+    TAssetInfo.prototype.isInRom = function () {
+        return asset_info_is_in_rom(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 设置资源是否在ROM中的标记位。
+     *
+     * @param is_in_rom 资源是否在ROM中。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TAssetInfo.prototype.setIsInRom = function (is_in_rom) {
+        return asset_info_set_is_in_rom(this != null ? (this.nativeObj || this) : null, is_in_rom);
+    };
     Object.defineProperty(TAssetInfo.prototype, "type", {
         /**
          * 类型。
@@ -10624,13 +11718,13 @@ var TAssetInfo = /** @class */ (function () {
         enumerable: false,
         configurable: true
     });
-    Object.defineProperty(TAssetInfo.prototype, "isInRom", {
+    Object.defineProperty(TAssetInfo.prototype, "flags", {
         /**
-         * 资源是否在ROM中。
+         * 资源标志。
          *
          */
         get: function () {
-            return asset_info_t_get_prop_is_in_rom(this.nativeObj);
+            return asset_info_t_get_prop_flags(this.nativeObj);
         },
         enumerable: false,
         configurable: true
@@ -10658,17 +11752,6 @@ var TAssetInfo = /** @class */ (function () {
         enumerable: false,
         configurable: true
     });
-    Object.defineProperty(TAssetInfo.prototype, "name", {
-        /**
-         * 名称。
-         *
-         */
-        get: function () {
-            return asset_info_t_get_prop_name(this.nativeObj);
-        },
-        enumerable: false,
-        configurable: true
-    });
     return TAssetInfo;
 }());
 exports.TAssetInfo = TAssetInfo;
@@ -10687,14 +11770,14 @@ var TColor = /** @class */ (function () {
      *> 主要供脚本语言使用。
      *
      * @param r 红色通道。
-     * @param b 蓝色通道。
      * @param g 绿色通道。
+     * @param b 蓝色通道。
      * @param a alpha通道。
      *
      * @returns color对象。
      */
-    TColor.create = function (r, b, g, a) {
-        return new TColor(color_create(r, b, g, a));
+    TColor.create = function (r, g, b, a) {
+        return new TColor(color_create(r, g, b, a));
     };
     /**
      * 创建color对象。
@@ -10892,7 +11975,7 @@ var TDateTime = /** @class */ (function () {
         return date_time_set(this != null ? (this.nativeObj || this) : null);
     };
     /**
-     * 从time转换而来。
+     * 从time转换而来(按GMT转换)。
      *
      * @param time 时间。
      *
@@ -10902,7 +11985,7 @@ var TDateTime = /** @class */ (function () {
         return date_time_from_time(this != null ? (this.nativeObj || this) : null, time);
     };
     /**
-     * 转换成time。
+     * 转换成time(按GMT转换)。
      *
      *
      * @returns 返回time。
@@ -10934,34 +12017,34 @@ var TDateTime = /** @class */ (function () {
      * 获取指定年份月份的天数。
      *
      * @param year 年份。
-     * @param montn 月份(1-12)。
+     * @param month 月份(1-12)。
      *
      * @returns 返回大于0表示天数，否则表示失败。
      */
-    TDateTime.getDays = function (year, montn) {
-        return date_time_get_days(year, montn);
+    TDateTime.getDays = function (year, month) {
+        return date_time_get_days(year, month);
     };
     /**
      * 获取指定日期是周几(0-6, Sunday = 0)。。
      *
      * @param year 年份。
-     * @param montn 月份(1-12)。
+     * @param month 月份(1-12)。
      * @param day 日(1-31)。
      *
      * @returns 返回大于等于0表示周几(0-6)，否则表示失败。
      */
-    TDateTime.getWday = function (year, montn, day) {
-        return date_time_get_wday(year, montn, day);
+    TDateTime.getWday = function (year, month, day) {
+        return date_time_get_wday(year, month, day);
     };
     /**
      * 获取指定月份的英文名称(简写)。
      *
-     * @param montn 月份(1-12)。
+     * @param month 月份(1-12)。
      *
      * @returns 返回指定月份的英文名称(简写)。
      */
-    TDateTime.getMonthName = function (montn) {
-        return date_time_get_month_name(montn);
+    TDateTime.getMonthName = function (month) {
+        return date_time_get_month_name(month);
     };
     /**
      * 获取周几的英文名称(简写)。
@@ -11207,7 +12290,7 @@ var TEasingType;
      *
      */
     TEasingType[TEasingType["BOUNCE_INOUT"] = EASING_BOUNCE_INOUT()] = "BOUNCE_INOUT";
-})(TEasingType = exports.TEasingType || (exports.TEasingType = {}));
+})(TEasingType || (exports.TEasingType = TEasingType = {}));
 ;
 /**
  * idle_manager_t管理器。
@@ -11737,7 +12820,7 @@ var TMIME_TYPE;
      *
      */
     TMIME_TYPE[TMIME_TYPE["VIDEO_X_MSVIDEO"] = MIME_TYPE_VIDEO_X_MSVIDEO()] = "VIDEO_X_MSVIDEO";
-})(TMIME_TYPE = exports.TMIME_TYPE || (exports.TMIME_TYPE = {}));
+})(TMIME_TYPE || (exports.TMIME_TYPE = TMIME_TYPE = {}));
 ;
 /**
  * 命名的值。
@@ -11832,61 +12915,61 @@ var TObjectCmd;
      * 保存命令
      *
      */
-    TObjectCmd[TObjectCmd["SAVE"] = OBJECT_CMD_SAVE()] = "SAVE";
+    TObjectCmd[TObjectCmd["SAVE"] = TK_OBJECT_CMD_SAVE()] = "SAVE";
     /**
      * 重新加载命令
      *
      */
-    TObjectCmd[TObjectCmd["RELOAD"] = OBJECT_CMD_RELOAD()] = "RELOAD";
+    TObjectCmd[TObjectCmd["RELOAD"] = TK_OBJECT_CMD_RELOAD()] = "RELOAD";
     /**
      * 和前一个属性交换位置
      *>参数为属性的名称或路径。
      *
      */
-    TObjectCmd[TObjectCmd["MOVE_UP"] = OBJECT_CMD_MOVE_UP()] = "MOVE_UP";
+    TObjectCmd[TObjectCmd["MOVE_UP"] = TK_OBJECT_CMD_MOVE_UP()] = "MOVE_UP";
     /**
      * 和后一个属性交换位置
      *>参数为属性的名称或路径。
      *
      */
-    TObjectCmd[TObjectCmd["MOVE_DOWN"] = OBJECT_CMD_MOVE_DOWN()] = "MOVE_DOWN";
+    TObjectCmd[TObjectCmd["MOVE_DOWN"] = TK_OBJECT_CMD_MOVE_DOWN()] = "MOVE_DOWN";
     /**
      * 删除属性。
      *>参数为属性的名称或路径。
      *
      */
-    TObjectCmd[TObjectCmd["REMOVE"] = OBJECT_CMD_REMOVE()] = "REMOVE";
+    TObjectCmd[TObjectCmd["REMOVE"] = TK_OBJECT_CMD_REMOVE()] = "REMOVE";
     /**
      * 删除勾选的属性。
      *>参数为属性的名称或路径。
      *
      */
-    TObjectCmd[TObjectCmd["REMOVE_CHECKED"] = OBJECT_CMD_REMOVE_CHECKED()] = "REMOVE_CHECKED";
+    TObjectCmd[TObjectCmd["REMOVE_CHECKED"] = TK_OBJECT_CMD_REMOVE_CHECKED()] = "REMOVE_CHECKED";
     /**
      * 清除全部属性。
      *>参数为属性的名称或路径。
      *
      */
-    TObjectCmd[TObjectCmd["CLEAR"] = OBJECT_CMD_CLEAR()] = "CLEAR";
+    TObjectCmd[TObjectCmd["CLEAR"] = TK_OBJECT_CMD_CLEAR()] = "CLEAR";
     /**
      * 增加子项。
      *>参数为属性的名称或路径。
      *
      */
-    TObjectCmd[TObjectCmd["ADD"] = OBJECT_CMD_ADD()] = "ADD";
+    TObjectCmd[TObjectCmd["ADD"] = TK_OBJECT_CMD_ADD()] = "ADD";
     /**
      * 显示对象详细信息。
      *>参数为属性的名称或路径。
      *
      */
-    TObjectCmd[TObjectCmd["DETAIL"] = OBJECT_CMD_DETAIL()] = "DETAIL";
+    TObjectCmd[TObjectCmd["DETAIL"] = TK_OBJECT_CMD_DETAIL()] = "DETAIL";
     /**
      * 编辑子项。
      *>参数为属性的名称或路径。
      *
      */
-    TObjectCmd[TObjectCmd["EDIT"] = OBJECT_CMD_EDIT()] = "EDIT";
-})(TObjectCmd = exports.TObjectCmd || (exports.TObjectCmd = {}));
+    TObjectCmd[TObjectCmd["EDIT"] = TK_OBJECT_CMD_EDIT()] = "EDIT";
+})(TObjectCmd || (exports.TObjectCmd = TObjectCmd = {}));
 ;
 /**
  * 对象常见属性定义
@@ -11898,13 +12981,18 @@ var TObjectProp;
      * 属性的个数。
      *
      */
-    TObjectProp[TObjectProp["SIZE"] = OBJECT_PROP_SIZE()] = "SIZE";
+    TObjectProp[TObjectProp["TK_SIZE"] = TK_OBJECT_PROP_SIZE()] = "TK_SIZE";
     /**
      * 属性是否勾选。
      *
      */
-    TObjectProp[TObjectProp["CHECKED"] = OBJECT_PROP_CHECKED()] = "CHECKED";
-})(TObjectProp = exports.TObjectProp || (exports.TObjectProp = {}));
+    TObjectProp[TObjectProp["TK_CHECKED"] = TK_OBJECT_PROP_CHECKED()] = "TK_CHECKED";
+    /**
+     * 选中的索引。
+     *
+     */
+    TObjectProp[TObjectProp["TK_SELECTED_INDEX"] = TK_OBJECT_PROP_SELECTED_INDEX()] = "TK_SELECTED_INDEX";
+})(TObjectProp || (exports.TObjectProp = TObjectProp = {}));
 ;
 /**
  * 循环记录日志(支持多线程访问)。
@@ -11920,10 +13008,9 @@ var TRlog = /** @class */ (function () {
         this.nativeObj = nativeObj;
     }
     /**
-     * rlog_t* log = rlog_create("./logs/%d.log", 1020*1024, 256);
-     *rlog_write(log, "hello\n");
-     *rlog_destroy(log);
-     *```
+     * 创建rlog对象。
+     *
+     *
      *
      * @param filename_pattern 用来确定文件名的路径和文件名。
      * @param max_size log文件占用最大磁盘空间(字节)。
@@ -11950,7 +13037,7 @@ exports.TRlog = TRlog;
 ;
 /**
  * 获取当前时间的函数。
- *这里的当前时间是相对的，在嵌入式系统一般相对于开机时间。
+ *这里的当前时间是相对的，在嵌入式系统一般相对于开机时间(毫秒)。
  *它本身并没有任何意义，一般用来计算时间间隔，如实现定时器和动画等等。
  *
  */
@@ -11959,6 +13046,8 @@ var TTimeNow = /** @class */ (function () {
     }
     /**
      * 获取当前时间(秒)。
+     *
+     *备注: 时间本身并不代表任何时间系，一般用来计算时间间隔。
      *
      *
      * @returns 返回当前时间(秒)。
@@ -11969,6 +13058,8 @@ var TTimeNow = /** @class */ (function () {
     /**
      * 获取当前时间(毫秒)。
      *
+     *备注: 时间本身并不代表任何时间系，一般用来计算时间间隔。
+     *
      *
      * @returns 返回当前时间(毫秒)。
      */
@@ -11977,6 +13068,8 @@ var TTimeNow = /** @class */ (function () {
     };
     /**
      * 获取当前时间(微秒)。
+     *
+     *备注: 时间本身并不代表任何时间系，一般用来计算时间间隔。
      *
      *
      * @returns 返回当前时间(微秒)。
@@ -12116,7 +13209,27 @@ var TRet;
      *
      */
     TRet[TRet["NOT_MODIFIED"] = RET_NOT_MODIFIED()] = "NOT_MODIFIED";
-})(TRet = exports.TRet || (exports.TRet = {}));
+    /**
+     * 没有权限。
+     *
+     */
+    TRet[TRet["NO_PERMISSION"] = RET_NO_PERMISSION()] = "NO_PERMISSION";
+    /**
+     * 无效地址。
+     *
+     */
+    TRet[TRet["INVALID_ADDR"] = RET_INVALID_ADDR()] = "INVALID_ADDR";
+    /**
+     * 超出范围。
+     *
+     */
+    TRet[TRet["EXCEED_RANGE"] = RET_EXCEED_RANGE()] = "EXCEED_RANGE";
+    /**
+     * 最大值。
+     *
+     */
+    TRet[TRet["MAX_NR"] = RET_MAX_NR()] = "MAX_NR";
+})(TRet || (exports.TRet = TRet = {}));
 ;
 /**
  * 类型常量定义。
@@ -12205,7 +13318,7 @@ var TValueType;
      */
     TValueType[TValueType["WSTRING"] = VALUE_TYPE_WSTRING()] = "WSTRING";
     /**
-     * object_t*类型。
+     * tk_object_t*类型。
      *
      */
     TValueType[TValueType["OBJECT"] = VALUE_TYPE_OBJECT()] = "OBJECT";
@@ -12234,7 +13347,37 @@ var TValueType;
      *
      */
     TValueType[TValueType["GRADIENT"] = VALUE_TYPE_GRADIENT()] = "GRADIENT";
-})(TValueType = exports.TValueType || (exports.TValueType = {}));
+    /**
+     * id。
+     *
+     */
+    TValueType[TValueType["ID"] = VALUE_TYPE_ID()] = "ID";
+    /**
+     * func。
+     *
+     */
+    TValueType[TValueType["FUNC"] = VALUE_TYPE_FUNC()] = "FUNC";
+    /**
+     * func definition。
+     *
+     */
+    TValueType[TValueType["FUNC_DEF"] = VALUE_TYPE_FUNC_DEF()] = "FUNC_DEF";
+    /**
+     * void*类型。
+     *
+     */
+    TValueType[TValueType["POINTER_REF"] = VALUE_TYPE_POINTER_REF()] = "POINTER_REF";
+    /**
+     * 位图类型。
+     *
+     */
+    TValueType[TValueType["BITMAP"] = VALUE_TYPE_BITMAP()] = "BITMAP";
+    /**
+     * 矩形类型。
+     *
+     */
+    TValueType[TValueType["RECT"] = VALUE_TYPE_RECT()] = "RECT";
+})(TValueType || (exports.TValueType = TValueType = {}));
 ;
 /**
  * 资源管理器。
@@ -12330,6 +13473,107 @@ var TAssetsManager = /** @class */ (function (_super) {
 exports.TAssetsManager = TAssetsManager;
 ;
 /**
+ * 控件动画事件。
+ *
+ */
+var TWidgetAnimatorEvent = /** @class */ (function (_super) {
+    __extends(TWidgetAnimatorEvent, _super);
+    function TWidgetAnimatorEvent(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 把event对象转widget_animator_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event对象。
+     */
+    TWidgetAnimatorEvent.cast = function (event) {
+        return new TWidgetAnimatorEvent(widget_animator_event_cast(event != null ? (event.nativeObj || event) : null));
+    };
+    Object.defineProperty(TWidgetAnimatorEvent.prototype, "widget", {
+        /**
+         * 控件对象。
+         *
+         */
+        get: function () {
+            return new TWidget(widget_animator_event_t_get_prop_widget(this.nativeObj));
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TWidgetAnimatorEvent.prototype, "animator", {
+        /**
+         * 控件动画句柄。
+         *
+         */
+        get: function () {
+            return widget_animator_event_t_get_prop_animator(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return TWidgetAnimatorEvent;
+}(TEvent));
+exports.TWidgetAnimatorEvent = TWidgetAnimatorEvent;
+;
+/**
+ * model变化事件。
+ *
+ */
+var TModelEvent = /** @class */ (function (_super) {
+    __extends(TModelEvent, _super);
+    function TModelEvent(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 把event对象转model_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event对象。
+     */
+    TModelEvent.cast = function (event) {
+        return new TModelEvent(model_event_cast(event != null ? (event.nativeObj || event) : null));
+    };
+    Object.defineProperty(TModelEvent.prototype, "name", {
+        /**
+         * 模型名称。
+         *
+         */
+        get: function () {
+            return model_event_t_get_prop_name(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TModelEvent.prototype, "changeType", {
+        /**
+         * 变化类型(update/add/remove)。
+         *
+         */
+        get: function () {
+            return model_event_t_get_prop_change_type(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TModelEvent.prototype, "model", {
+        /**
+         * 模型。
+         *
+         */
+        get: function () {
+            return new TTkObject(model_event_t_get_prop_model(this.nativeObj));
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return TModelEvent;
+}(TEvent));
+exports.TModelEvent = TModelEvent;
+;
+/**
  * 滚轮事件。
  *
  */
@@ -12339,7 +13583,7 @@ var TWheelEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转wheel_event_t对象，主要给脚本语言使用。
+     * 把event对象转wheel_event_t对象。
      *
      * @param event event对象。
      *
@@ -12348,6 +13592,28 @@ var TWheelEvent = /** @class */ (function (_super) {
     TWheelEvent.cast = function (event) {
         return new TWheelEvent(wheel_event_cast(event != null ? (event.nativeObj || event) : null));
     };
+    Object.defineProperty(TWheelEvent.prototype, "x", {
+        /**
+         * x坐标。
+         *
+         */
+        get: function () {
+            return wheel_event_t_get_prop_x(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TWheelEvent.prototype, "y", {
+        /**
+         * y坐标。
+         *
+         */
+        get: function () {
+            return wheel_event_t_get_prop_y(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(TWheelEvent.prototype, "dy", {
         /**
          * 滚轮的y值。
@@ -12406,7 +13672,7 @@ var TOrientationEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转orientation_event_t对象，主要给脚本语言使用。
+     * 把event对象转orientation_event_t对象。
      *
      * @param event event对象。
      *
@@ -12442,27 +13708,27 @@ var TOrientationEvent = /** @class */ (function (_super) {
 exports.TOrientationEvent = TOrientationEvent;
 ;
 /**
- * 值变化事件。
+ * offset变化事件。
  *
  */
-var TValueChangeEvent = /** @class */ (function (_super) {
-    __extends(TValueChangeEvent, _super);
-    function TValueChangeEvent(nativeObj) {
+var TOffsetChangeEvent = /** @class */ (function (_super) {
+    __extends(TOffsetChangeEvent, _super);
+    function TOffsetChangeEvent(nativeObj) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转value_change_event_t对象，主要给脚本语言使用。
+     * 把event对象转offset_change_event_t对象。
      *
      * @param event event对象。
      *
      * @returns event对象。
      */
-    TValueChangeEvent.cast = function (event) {
-        return new TValueChangeEvent(value_change_event_cast(event != null ? (event.nativeObj || event) : null));
+    TOffsetChangeEvent.cast = function (event) {
+        return new TOffsetChangeEvent(offset_change_event_cast(event != null ? (event.nativeObj || event) : null));
     };
-    return TValueChangeEvent;
+    return TOffsetChangeEvent;
 }(TEvent));
-exports.TValueChangeEvent = TValueChangeEvent;
+exports.TOffsetChangeEvent = TOffsetChangeEvent;
 ;
 /**
  * 指针事件。
@@ -12474,7 +13740,7 @@ var TPointerEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转pointer_event_t对象，主要给脚本语言使用。
+     * 把event对象转pointer_event_t对象。
      *
      * @param event event对象。
      *
@@ -12508,6 +13774,9 @@ var TPointerEvent = /** @class */ (function (_super) {
     Object.defineProperty(TPointerEvent.prototype, "button", {
         /**
          * button。
+         *在不同的平台，该属性会发生变化，
+         *PC ：左键为 1，中键为 2，右键为 3
+         *嵌入式：默认为 1
          *
          */
         get: function () {
@@ -12596,7 +13865,7 @@ var TKeyEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转key_event_t对象，主要给脚本语言使用。
+     * 把event对象转key_event_t对象。
      *
      * @param event event对象。
      *
@@ -12651,8 +13920,7 @@ var TKeyEvent = /** @class */ (function (_super) {
     });
     Object.defineProperty(TKeyEvent.prototype, "ctrl", {
         /**
-         * right alt键是否按下。
-         *ctrl键是否按下。
+         * ctrl键是否按下。
          *
          */
         get: function () {
@@ -12718,8 +13986,7 @@ var TKeyEvent = /** @class */ (function (_super) {
     });
     Object.defineProperty(TKeyEvent.prototype, "cmd", {
         /**
-         * left shift键是否按下。
-         *cmd/win键是否按下。
+         * cmd/win键是否按下。
          *
          */
         get: function () {
@@ -12750,6 +14017,17 @@ var TKeyEvent = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TKeyEvent.prototype, "numlock", {
+        /**
+         * numlock键是否按下。
+         *
+         */
+        get: function () {
+            return key_event_t_get_prop_numlock(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TKeyEvent;
 }(TEvent));
 exports.TKeyEvent = TKeyEvent;
@@ -12764,7 +14042,7 @@ var TPaintEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转paint_event_t对象。主要给脚本语言使用。
+     * 把event对象转paint_event_t对象。
      *
      * @param event event对象。
      *
@@ -12798,7 +14076,7 @@ var TWindowEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转window_event_t对象。主要给脚本语言使用。
+     * 把event对象转window_event_t对象。
      *
      * @param event event对象。
      *
@@ -12832,7 +14110,7 @@ var TMultiGestureEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转multi_gesture_event_t对象，主要给脚本语言使用。
+     * 把event对象转multi_gesture_event_t对象。
      *
      * @param event event对象。
      *
@@ -12888,6 +14166,197 @@ var TMultiGestureEvent = /** @class */ (function (_super) {
     return TMultiGestureEvent;
 }(TEvent));
 exports.TMultiGestureEvent = TMultiGestureEvent;
+;
+/**
+ * 主题变化事件。
+ *
+ */
+var TThemeChangeEvent = /** @class */ (function (_super) {
+    __extends(TThemeChangeEvent, _super);
+    function TThemeChangeEvent(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 把event对象转theme_change_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns 返回event对象。
+     */
+    TThemeChangeEvent.cast = function (event) {
+        return new TThemeChangeEvent(theme_change_event_cast(event != null ? (event.nativeObj || event) : null));
+    };
+    Object.defineProperty(TThemeChangeEvent.prototype, "name", {
+        /**
+         * 主题名称。
+         *
+         */
+        get: function () {
+            return theme_change_event_t_get_prop_name(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return TThemeChangeEvent;
+}(TEvent));
+exports.TThemeChangeEvent = TThemeChangeEvent;
+;
+/**
+ * 文件拖入事件。
+ *
+ */
+var TDropFileEvent = /** @class */ (function (_super) {
+    __extends(TDropFileEvent, _super);
+    function TDropFileEvent(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 把event对象转drop_file_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event 对象。
+     */
+    TDropFileEvent.cast = function (event) {
+        return new TDropFileEvent(drop_file_event_cast(event != null ? (event.nativeObj || event) : null));
+    };
+    Object.defineProperty(TDropFileEvent.prototype, "filename", {
+        /**
+         * 文件名。
+         *
+         */
+        get: function () {
+            return drop_file_event_t_get_prop_filename(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return TDropFileEvent;
+}(TEvent));
+exports.TDropFileEvent = TDropFileEvent;
+;
+/**
+ * 系统事件。
+ *
+ */
+var TSystemEvent = /** @class */ (function (_super) {
+    __extends(TSystemEvent, _super);
+    function TSystemEvent(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 把event对象转system_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event 对象。
+     */
+    TSystemEvent.cast = function (event) {
+        return new TSystemEvent(system_event_cast(event != null ? (event.nativeObj || event) : null));
+    };
+    Object.defineProperty(TSystemEvent.prototype, "sdlEvent", {
+        /**
+         * SDL_Event。
+         *
+         */
+        get: function () {
+            return system_event_t_get_prop_sdl_event(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return TSystemEvent;
+}(TEvent));
+exports.TSystemEvent = TSystemEvent;
+;
+/**
+ * UI加载完成事件。
+ *
+ */
+var TUiLoadEvent = /** @class */ (function (_super) {
+    __extends(TUiLoadEvent, _super);
+    function TUiLoadEvent(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 把event对象转ui_load_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event 对象。
+     */
+    TUiLoadEvent.cast = function (event) {
+        return new TUiLoadEvent(ui_load_event_cast(event != null ? (event.nativeObj || event) : null));
+    };
+    Object.defineProperty(TUiLoadEvent.prototype, "root", {
+        /**
+         * UI的根控件对象。
+         *
+         */
+        get: function () {
+            return new TWidget(ui_load_event_t_get_prop_root(this.nativeObj));
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TUiLoadEvent.prototype, "name", {
+        /**
+         * UI的名称。
+         *
+         */
+        get: function () {
+            return ui_load_event_t_get_prop_name(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return TUiLoadEvent;
+}(TEvent));
+exports.TUiLoadEvent = TUiLoadEvent;
+;
+/**
+ * 字体管理器，负责字体的加载和缓存管理。
+ *(如果使用nanovg，字体由nanovg内部管理)
+ *
+ */
+var TFontManager = /** @class */ (function (_super) {
+    __extends(TFontManager, _super);
+    function TFontManager(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 卸载指定的字体。
+     *
+     * @param name 字体名，为NULL时使用缺省字体。
+     * @param size 字体的大小(矢量字体指定为0即可)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TFontManager.prototype.unloadFont = function (name, size) {
+        return font_manager_unload_font(this != null ? (this.nativeObj || this) : null, name, size);
+    };
+    /**
+     * 清除最久没有被使用的缓冲字模。
+     *
+     * @param cache_size 每种字体保留缓存字模的个数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TFontManager.prototype.shrinkCache = function (cache_size) {
+        return font_manager_shrink_cache(this != null ? (this.nativeObj || this) : null, cache_size);
+    };
+    /**
+     * 卸载全部字体。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TFontManager.prototype.unloadAll = function () {
+        return font_manager_unload_all(this != null ? (this.nativeObj || this) : null);
+    };
+    return TFontManager;
+}(TEmitter));
+exports.TFontManager = TFontManager;
 ;
 /**
  * 图片控件基类。
@@ -13424,6 +14893,19 @@ var TWindowBase = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TWindowBase.prototype, "appletName", {
+        /**
+         * 小应用程序(applet)的名称。
+         *
+         *> 如果该窗口属于某个独立的小程序应用(applet)，需要指定它的名称，以便到对应的资源目录查找资源。
+         *
+         */
+        get: function () {
+            return window_base_t_get_prop_applet_name(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(TWindowBase.prototype, "singleInstance", {
         /**
          * 单例。如果窗口存在，先关闭再打开。
@@ -13552,6 +15034,17 @@ var TWindowManager = /** @class */ (function (_super) {
         return window_manager_set_show_fps(this != null ? (this.nativeObj || this) : null, show_fps);
     };
     /**
+     * 设置显示FPS的起始坐标。
+     *
+     * @param x 左上角x坐标。
+     * @param y 左上角x坐标。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWindowManager.prototype.setShowFpsPosition = function (x, y) {
+        return window_manager_set_show_fps_position(this != null ? (this.nativeObj || this) : null, x, y);
+    };
+    /**
      * 限制最大帧率。
      *
      *> TK\_MAX\_LOOP\_FPS/max\_fps最好是整数，比如TK\_MAX\_LOOP\_FPS为120，max\_fps可取60/30/20/10等。
@@ -13574,7 +15067,7 @@ var TWindowManager = /** @class */ (function (_super) {
         return window_manager_set_ignore_input_events(this != null ? (this.nativeObj || this) : null, ignore_input_events);
     };
     /**
-     * 设置屏保时间。
+     * 设置屏保时间(毫秒)。
      *
      * @param screen_saver_time 屏保时间(单位毫秒), 为0关闭屏保。
      *
@@ -13639,6 +15132,16 @@ var TWindowManager = /** @class */ (function (_super) {
         return window_manager_resize(this != null ? (this.nativeObj || this) : null, w, h);
     };
     /**
+     * 设置原生窗口是否全屏。
+     *
+     * @param fullscreen 是否全屏
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TWindowManager.prototype.setFullscreen = function (fullscreen) {
+        return window_manager_set_fullscreen(this != null ? (this.nativeObj || this) : null, fullscreen);
+    };
+    /**
      * 关闭全部窗口。
      *
      *
@@ -13670,11 +15173,14 @@ exports.TWindowManager = TWindowManager;
  *在c代码中使用函数canvas\_widget\_create创建画布控件。如：
  *
  *
+ *
  *> 创建之后，需要用widget\_on注册EVT\_PAINT事件，并在EVT\_PAINT事件处理函数中绘制。
+ *
  *
  *
  *绘制时，可以通过canvas接口去绘制，也可以通过vgcanvas接口去绘制。
  *先从evt获取canvas对象，再通过canvas\_get\_vgcanvas从canvas中获取vgcanvas对象。
+ *
  *
  *
  *> 完整示例请参考：
@@ -13872,6 +15378,7 @@ exports.TColorPicker = TColorPicker;
  *在c代码中使用函数draggable\_create创建按钮控件。如：
  *
  *
+ *
  *> draggable本身不可见，故无需style。
  *
  */
@@ -13965,15 +15472,47 @@ var TDraggable = /** @class */ (function (_super) {
         return draggable_set_horizontal_only(this != null ? (this.nativeObj || this) : null, horizontal_only);
     };
     /**
+     * 设置是否无范围限制拖动。
+     *备注：可以让窗口拖动到外面去。
+     *
+     * @param allow_out_of_screen 是否无范围限制拖动。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TDraggable.prototype.setAllowOutOfScreen = function (allow_out_of_screen) {
+        return draggable_set_allow_out_of_screen(this != null ? (this.nativeObj || this) : null, allow_out_of_screen);
+    };
+    /**
      * 设置drag_window。
      *拖动窗口而不是父控件。比如放在对话框的titlebar上，拖动titlebar其实是希望拖动对话框。
      *
-     * @param drag_window drag_window
+     * @param drag_window 是否拖动窗口。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     TDraggable.prototype.setDragWindow = function (drag_window) {
         return draggable_set_drag_window(this != null ? (this.nativeObj || this) : null, drag_window);
+    };
+    /**
+     * 设置drag_native_window。
+     *
+     * @param drag_native_window 是否拖动原生窗口。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TDraggable.prototype.setDragNativeWindow = function (drag_native_window) {
+        return draggable_set_drag_native_window(this != null ? (this.nativeObj || this) : null, drag_native_window);
+    };
+    /**
+     * 设置drag_parent。
+     *拖动窗口而不是父控件。比如放在对话框的titlebar上，拖动titlebar其实是希望拖动对话框。
+     *
+     * @param drag_parent 0表示直系父控件，1表示父控件的父控件，依次类推。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TDraggable.prototype.setDragParent = function (drag_parent) {
+        return draggable_set_drag_parent(this != null ? (this.nativeObj || this) : null, drag_parent);
     };
     Object.defineProperty(TDraggable.prototype, "top", {
         /**
@@ -14031,6 +15570,20 @@ var TDraggable = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TDraggable.prototype, "allowOutOfScreen", {
+        /**
+         * 支持超出原生窗口边界拖动。（无法完全移出原生窗口，同时优先受到拖动范围限制的影响）
+         *
+         */
+        get: function () {
+            return draggable_t_get_prop_allow_out_of_screen(this.nativeObj);
+        },
+        set: function (v) {
+            this.setAllowOutOfScreen(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(TDraggable.prototype, "verticalOnly", {
         /**
          * 只允许垂直拖动。
@@ -14069,6 +15622,34 @@ var TDraggable = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setDragWindow(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TDraggable.prototype, "dragNativeWindow", {
+        /**
+         * 拖动原生窗口。
+         *
+         */
+        get: function () {
+            return draggable_t_get_prop_drag_native_window(this.nativeObj);
+        },
+        set: function (v) {
+            this.setDragNativeWindow(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TDraggable.prototype, "dragParent", {
+        /**
+         * 拖动父控件。0表示直系父控件，1表示父控件的父控件，依次类推。
+         *
+         */
+        get: function () {
+            return draggable_t_get_prop_drag_parent(this.nativeObj);
+        },
+        set: function (v) {
+            this.setDragParent(v);
         },
         enumerable: false,
         configurable: true
@@ -14225,6 +15806,26 @@ var TFileBrowserView = /** @class */ (function (_super) {
         return file_browser_view_set_sort_by(this != null ? (this.nativeObj || this) : null, sort_by);
     };
     /**
+     * 设置 奇数项样式。
+     *
+     * @param odd_item_style 奇数项样式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TFileBrowserView.prototype.setOddItemStyle = function (odd_item_style) {
+        return file_browser_view_set_odd_item_style(this != null ? (this.nativeObj || this) : null, odd_item_style);
+    };
+    /**
+     * 设置 偶数项样式。
+     *
+     * @param even_item_style 奇数项样式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TFileBrowserView.prototype.setEvenItemStyle = function (even_item_style) {
+        return file_browser_view_set_even_item_style(this != null ? (this.nativeObj || this) : null, even_item_style);
+    };
+    /**
      * 获取当前路径。
      *
      *
@@ -14349,6 +15950,34 @@ var TFileBrowserView = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setSortBy(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TFileBrowserView.prototype, "oddItemStyle", {
+        /**
+         * 奇数项样式。
+         *
+         */
+        get: function () {
+            return file_browser_view_t_get_prop_odd_item_style(this.nativeObj);
+        },
+        set: function (v) {
+            this.setOddItemStyle(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TFileBrowserView.prototype, "evenItemStyle", {
+        /**
+         * 偶数项样式。
+         *
+         */
+        get: function () {
+            return file_browser_view_t_get_prop_even_item_style(this.nativeObj);
+        },
+        set: function (v) {
+            this.setEvenItemStyle(v);
         },
         enumerable: false,
         configurable: true
@@ -14495,6 +16124,7 @@ exports.TFileChooser = TFileChooser;
  *在c代码中使用函数gauge\_pointer\_create创建仪表指针控件。如：
  *
  *
+ *
  *> 创建之后，需要用gauge\_pointer\_set\_image设置仪表指针图片。
  *
  */
@@ -14633,6 +16263,7 @@ exports.TGaugePointer = TGaugePointer;
  *在c代码中使用函数gauge\_create创建表盘控件。如：
  *
  *
+ *
  *可用通过style来设置控件的显示风格，如背景和边框等。如：
  *
  *```xml
@@ -14752,6 +16383,7 @@ exports.TGauge = TGauge;
  *在c代码中使用函数image\_animation\_create创建图片动画控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[image_animation
  *demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/image_animation.c)
@@ -14799,7 +16431,7 @@ var TImageAnimation = /** @class */ (function (_super) {
         return image_animation_set_image(this != null ? (this.nativeObj || this) : null, image);
     };
     /**
-     * 设置播放间隔时间。
+     * 设置播放间隔时间(毫秒)。
      *
      * @param interval 间隔时间(毫秒)。
      *
@@ -15149,6 +16781,7 @@ exports.TImageAnimation = TImageAnimation;
  *在c代码中使用函数image\_value\_create创建图片值控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[image_value demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/image_value.c)
  *
@@ -15197,12 +16830,12 @@ var TImageValue = /** @class */ (function (_super) {
     /**
      * 设置点击时加上的增量。
      *
-     * @param delta 增量。
+     * @param click_add_delta 增量。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TImageValue.prototype.setClickAddDelta = function (delta) {
-        return image_value_set_click_add_delta(this != null ? (this.nativeObj || this) : null, delta);
+    TImageValue.prototype.setClickAddDelta = function (click_add_delta) {
+        return image_value_set_click_add_delta(this != null ? (this.nativeObj || this) : null, click_add_delta);
     };
     /**
      * 设置值。
@@ -15487,6 +17120,17 @@ var TCandidates = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TCandidates.prototype, "enablePreview", {
+        /**
+         * 是否启用候选字预览。
+         *
+         */
+        get: function () {
+            return candidates_t_get_prop_enable_preview(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TCandidates;
 }(TWidget));
 exports.TCandidates = TCandidates;
@@ -15673,6 +17317,45 @@ var TLineNumber = /** @class */ (function (_super) {
     TLineNumber.cast = function (widget) {
         return new TLineNumber(line_number_cast(widget != null ? (widget.nativeObj || widget) : null));
     };
+    /**
+     * 增加高亮行。
+     *
+     * @param line 行号。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TLineNumber.prototype.addHighlightLine = function (line) {
+        return line_number_add_highlight_line(this != null ? (this.nativeObj || this) : null, line);
+    };
+    /**
+     * 设置active行。
+     *
+     * @param line 行号。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TLineNumber.prototype.setActiveLine = function (line) {
+        return line_number_set_active_line(this != null ? (this.nativeObj || this) : null, line);
+    };
+    /**
+     * 清除高亮行。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TLineNumber.prototype.clearHighlight = function () {
+        return line_number_clear_highlight(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 判断指定行是否是高亮行。
+     *
+     * @param line 行号。
+     *
+     * @returns 返回TRUE表示是，否则不是。
+     */
+    TLineNumber.prototype.isHighlightLine = function (line) {
+        return line_number_is_highlight_line(this != null ? (this.nativeObj || this) : null, line);
+    };
     return TLineNumber;
 }(TWidget));
 exports.TLineNumber = TLineNumber;
@@ -15692,6 +17375,7 @@ exports.TLineNumber = TLineNumber;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/mledit.xml)
  *
  *在c代码中使用函数mledit\_create创建多行编辑器控件。如：
+ *
  *
  *
  *> 完整示例请参考：[mledit demo](
@@ -16117,6 +17801,7 @@ exports.TMledit = TMledit;
  *在c代码中使用函数progress\_circle\_create创建进度圆环控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[progress_circle
  *demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/progress_circle.c)
@@ -16301,7 +17986,7 @@ var TProgressCircle = /** @class */ (function (_super) {
     });
     Object.defineProperty(TProgressCircle.prototype, "lineWidth", {
         /**
-         * 环线的厚度(缺省为8)。
+         * 环线的厚度(缺省为8)，line_width r/2时，使用扇形绘制。
          *
          */
         get: function () {
@@ -16315,7 +18000,7 @@ var TProgressCircle = /** @class */ (function (_super) {
     });
     Object.defineProperty(TProgressCircle.prototype, "lineCap", {
         /**
-         * 线帽类型(round:圆头，square:方头)。
+         * 线帽类型(round:圆头，square:方头，butt:平头)。
          *
          */
         get: function () {
@@ -16434,6 +18119,7 @@ exports.TRichTextView = TRichTextView;
  *[rich_text.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/rich_text.xml)
  *
  *在c代码中使用函数rich\_text\_create创建图文混排控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -16580,7 +18266,7 @@ var THscrollLabel = /** @class */ (function (_super) {
     /**
      * 设置lull。
      *
-     * @param lull 间歇时间(ms)。
+     * @param lull 间歇时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -16590,12 +18276,22 @@ var THscrollLabel = /** @class */ (function (_super) {
     /**
      * 设置duration。
      *
-     * @param duration 滚动时间(ms)。
+     * @param duration 滚动时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     THscrollLabel.prototype.setDuration = function (duration) {
         return hscroll_label_set_duration(this != null ? (this.nativeObj || this) : null, duration);
+    };
+    /**
+     * 设置speed（设置后 duration 不生效）。
+     *
+     * @param speed 滚动速度(px/ms)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    THscrollLabel.prototype.setSpeed = function (speed) {
+        return hscroll_label_set_speed(this != null ? (this.nativeObj || this) : null, speed);
     };
     /**
      * 设置only_focus。
@@ -16646,6 +18342,36 @@ var THscrollLabel = /** @class */ (function (_super) {
      */
     THscrollLabel.prototype.setEllipses = function (ellipses) {
         return hscroll_label_set_ellipses(this != null ? (this.nativeObj || this) : null, ellipses);
+    };
+    /**
+     * 设置stop_at_begin。
+     *
+     * @param stop_at_begin 是否在滚动完毕后停在文本结尾。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    THscrollLabel.prototype.setStopAtBegin = function (stop_at_begin) {
+        return hscroll_label_set_stop_at_begin(this != null ? (this.nativeObj || this) : null, stop_at_begin);
+    };
+    /**
+     * 设置开始延迟时间。
+     *
+     * @param delay 开始延迟时间。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    THscrollLabel.prototype.setDelay = function (delay) {
+        return hscroll_label_set_delay(this != null ? (this.nativeObj || this) : null, delay);
+    };
+    /**
+     * 设置滚动文本结尾和文本开头间隔距离
+     *
+     * @param loop_interval_distance 间隔距离。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    THscrollLabel.prototype.setLoopIntervalDistance = function (loop_interval_distance) {
+        return hscroll_label_set_loop_interval_distance(this != null ? (this.nativeObj || this) : null, loop_interval_distance);
     };
     /**
      * 设置x偏移(一般无需用户调用)。。
@@ -16757,7 +18483,7 @@ var THscrollLabel = /** @class */ (function (_super) {
     });
     Object.defineProperty(THscrollLabel.prototype, "lull", {
         /**
-         * 滚动之间的间歇时间(ms)，缺省3000ms。
+         * 滚动之间的间歇时间(毫秒)，缺省3000ms。
          *
          */
         get: function () {
@@ -16771,7 +18497,7 @@ var THscrollLabel = /** @class */ (function (_super) {
     });
     Object.defineProperty(THscrollLabel.prototype, "duration", {
         /**
-         * 完整的滚动一次需要的时间(ms)，缺省5000ms。
+         * 滚动一次需要的时间(毫秒)，缺省5000ms。
          *
          */
         get: function () {
@@ -16779,6 +18505,34 @@ var THscrollLabel = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setDuration(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(THscrollLabel.prototype, "delay", {
+        /**
+         * 延迟多久才开始滚动，缺省0ms。
+         *
+         */
+        get: function () {
+            return hscroll_label_t_get_prop_delay(this.nativeObj);
+        },
+        set: function (v) {
+            this.setDelay(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(THscrollLabel.prototype, "speed", {
+        /**
+         * 滚动速度(px/ms)（设置后 duration 不生效）。
+         *
+         */
+        get: function () {
+            return hscroll_label_t_get_prop_speed(this.nativeObj);
+        },
+        set: function (v) {
+            this.setSpeed(v);
         },
         enumerable: false,
         configurable: true
@@ -16804,6 +18558,35 @@ var THscrollLabel = /** @class */ (function (_super) {
          */
         get: function () {
             return hscroll_label_t_get_prop_text_w(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(THscrollLabel.prototype, "stopAtBegin", {
+        /**
+         * 滚动完毕后停在文本开头(缺省FALSE)。
+         *> 注：yoyo 为 TRUE 时，该功能失效。
+         *
+         */
+        get: function () {
+            return hscroll_label_t_get_prop_stop_at_begin(this.nativeObj);
+        },
+        set: function (v) {
+            this.setStopAtBegin(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(THscrollLabel.prototype, "loopIntervalDistance", {
+        /**
+         * 滚动文本结尾和文本开头间隔距离(缺省值为 -1，小于 0 视为使用控件宽度作为间隔距离)。
+         *
+         */
+        get: function () {
+            return hscroll_label_t_get_prop_loop_interval_distance(this.nativeObj);
+        },
+        set: function (v) {
+            this.setLoopIntervalDistance(v);
         },
         enumerable: false,
         configurable: true
@@ -16839,6 +18622,7 @@ exports.THscrollLabel = THscrollLabel;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_m.xml)
  *
  *在c代码中使用函数list\_item\_create创建列表项控件。如：
+ *
  *
  *
  *> 列表项控件大小一般由列表控制，不需指定xywh参数。
@@ -16913,6 +18697,7 @@ exports.TListItem = TListItem;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_h.xml)
  *
  *在c代码中使用函数list\_view\_h\_create创建水平列表视图控件。如：
+ *
  *
  *
  *用代码构造列表视图是比较繁琐的事情，最好用XML来构造。
@@ -17040,6 +18825,7 @@ exports.TListViewH = TListViewH;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_m.xml)
  *
  *在c代码中使用函数list\_view\_create创建列表视图控件。如：
+ *
  *
  *
  *用代码构造列表视图是比较繁琐的事情，最好用XML来构造。
@@ -17218,6 +19004,7 @@ exports.TListView = TListView;
  *在c代码中使用函数scroll\_bar\_create创建列表项控件。如：
  *
  *
+ *
  *```xml
  *<style name="default">
  *<normal bg_color="#c0c0c0" fg_color="#808080"/>
@@ -17304,7 +19091,7 @@ var TScrollBar = /** @class */ (function (_super) {
      * 滚动到指定的值。
      *
      * @param value 值。
-     * @param duration 动画持续时间。
+     * @param duration 动画持续时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -17330,16 +19117,6 @@ var TScrollBar = /** @class */ (function (_super) {
      */
     TScrollBar.prototype.addDelta = function (delta) {
         return scroll_bar_add_delta(this != null ? (this.nativeObj || this) : null, delta);
-    };
-    /**
-     * 在当前的值上增加一个值，并滚动到新的值，并触发EVT_VALUE_CHANGED事件。
-     *
-     * @param delta 值。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    TScrollBar.prototype.scrollDelta = function (delta) {
-        return scroll_bar_scroll_delta(this != null ? (this.nativeObj || this) : null, delta);
     };
     /**
      * 设置值，但不触发EVT_VALUE_CHANGED事件。
@@ -17371,6 +19148,58 @@ var TScrollBar = /** @class */ (function (_super) {
      */
     TScrollBar.prototype.isMobile = function () {
         return scroll_bar_is_mobile(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 设置翻页滚动动画时间(毫秒)。
+     *
+     * @param animator_time 时间(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TScrollBar.prototype.setAnimatorTime = function (animator_time) {
+        return scroll_bar_set_animator_time(this != null ? (this.nativeObj || this) : null, animator_time);
+    };
+    /**
+     * 通过动画隐藏滚动条。
+     *
+     * @param duration 动画持续时间(毫秒)。
+     * @param delay 动画执行时间(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TScrollBar.prototype.hideByOpacityAnimation = function (duration, delay) {
+        return scroll_bar_hide_by_opacity_animation(this != null ? (this.nativeObj || this) : null, duration, delay);
+    };
+    /**
+     * 通过动画显示滚动条。
+     *
+     * @param duration 动画持续时间(毫秒)。
+     * @param delay 动画执行时间(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TScrollBar.prototype.showByOpacityAnimation = function (duration, delay) {
+        return scroll_bar_show_by_opacity_animation(this != null ? (this.nativeObj || this) : null, duration, delay);
+    };
+    /**
+     * 设置鼠标滚轮是否滚动(仅对desktop风格的滚动条有效)。
+     *
+     * @param scroll 是否设置该功能。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TScrollBar.prototype.setWheelScroll = function (scroll) {
+        return scroll_bar_set_wheel_scroll(this != null ? (this.nativeObj || this) : null, scroll);
+    };
+    /**
+     * 设置鼠标滚轮幅度(仅对desktop风格的滚动条有效)。
+     *
+     * @param scroll_delta 滚动幅度。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TScrollBar.prototype.setScrollDelta = function (scroll_delta) {
+        return scroll_bar_set_scroll_delta(this != null ? (this.nativeObj || this) : null, scroll_delta);
     };
     Object.defineProperty(TScrollBar.prototype, "virtualSize", {
         /**
@@ -17408,6 +19237,34 @@ var TScrollBar = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TScrollBar.prototype, "animatorTime", {
+        /**
+         * 翻页滚动动画时间(毫秒)。
+         *
+         */
+        get: function () {
+            return scroll_bar_t_get_prop_animator_time(this.nativeObj);
+        },
+        set: function (v) {
+            this.setAnimatorTime(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TScrollBar.prototype, "scrollDelta", {
+        /**
+         * 每次鼠标滚动值。（缺省值为0，0 则使用鼠标滚动默认值）
+         *
+         */
+        get: function () {
+            return scroll_bar_t_get_prop_scroll_delta(this.nativeObj);
+        },
+        set: function (v) {
+            this.setScrollDelta(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(TScrollBar.prototype, "animatable", {
         /**
          * 滚动时是否启用动画。
@@ -17429,6 +19286,20 @@ var TScrollBar = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setAutoHide(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TScrollBar.prototype, "wheelScroll", {
+        /**
+         * 设置鼠标滚轮是否滚动(仅对desktop风格的滚动条有效)（垂直滚动条缺省值为TRUE，水平滚动条缺省值为FALSE）。
+         *
+         */
+        get: function () {
+            return scroll_bar_t_get_prop_wheel_scroll(this.nativeObj);
+        },
+        set: function (v) {
+            this.setWheelScroll(v);
         },
         enumerable: false,
         configurable: true
@@ -17464,6 +19335,7 @@ exports.TScrollBar = TScrollBar;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_m.xml)
  *
  *在c代码中使用函数scroll\_view\_create创建列表视图控件。如：
+ *
  *
  *
  *可用通过style来设置控件的显示风格，如背景颜色和边框颜色等(一般情况不需要)。
@@ -17602,11 +19474,21 @@ var TScrollView = /** @class */ (function (_super) {
         return scroll_view_set_speed_scale(this != null ? (this.nativeObj || this) : null, xspeed_scale, yspeed_scale);
     };
     /**
+     * 设置滑动到极限时可继续滑动区域的占比。
+     *
+     * @param slide_limit_ratio 滑动到极限时可继续滑动区域的占比。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TScrollView.prototype.setSlideLimitRatio = function (slide_limit_ratio) {
+        return scroll_view_set_slide_limit_ratio(this != null ? (this.nativeObj || this) : null, slide_limit_ratio);
+    };
+    /**
      * 滚动到指定的偏移量。
      *
      * @param xoffset_end x偏移量。
      * @param yoffset_end y偏移量。
-     * @param duration 时间。
+     * @param duration 时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -17618,7 +19500,7 @@ var TScrollView = /** @class */ (function (_super) {
      *
      * @param xoffset_delta x偏移量。
      * @param yoffset_delta y偏移量。
-     * @param duration 时间。
+     * @param duration 时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -17767,9 +19649,247 @@ var TScrollView = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TScrollView.prototype, "slideLimitRatio", {
+        /**
+         * 滑动到极限时可继续滑动区域的占比。
+         *
+         */
+        get: function () {
+            return scroll_view_t_get_prop_slide_limit_ratio(this.nativeObj);
+        },
+        set: function (v) {
+            this.setSlideLimitRatio(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TScrollView;
 }(TWidget));
 exports.TScrollView = TScrollView;
+;
+/**
+ * 用于串口通信的控件
+ *在xml中使用"serial"标签创建控件。如：
+ *
+ *```xml
+ *<!-- ui -->
+ *<serial device="COM1" baudrate="115200"/>
+ *```
+ *
+ *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
+ *> 本控件默认不可见，无需指定style。
+ *
+ *```xml
+ *<!-- style -->
+ *<serial>
+ *<style name="default" font_size="32">
+ *<normal text_color="black" />
+ *</style>
+ *</serial>
+ *```
+ *
+ */
+var TSerialWidget = /** @class */ (function (_super) {
+    __extends(TSerialWidget, _super);
+    function TSerialWidget(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 创建serial_widget对象
+     *
+     * @param parent 父控件
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     *
+     * @returns serial_widget对象。
+     */
+    TSerialWidget.create = function (parent, x, y, w, h) {
+        return new TSerialWidget(serial_widget_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
+    };
+    /**
+     * 转换为serial_widget对象(供脚本语言使用)。
+     *
+     * @param widget serial_widget对象。
+     *
+     * @returns serial_widget对象。
+     */
+    TSerialWidget.cast = function (widget) {
+        return new TSerialWidget(serial_widget_cast(widget != null ? (widget.nativeObj || widget) : null));
+    };
+    /**
+     * 设置 波特率。
+     *
+     * @param baudrate 波特率。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSerialWidget.prototype.setBaudrate = function (baudrate) {
+        return serial_widget_set_baudrate(this != null ? (this.nativeObj || this) : null, baudrate);
+    };
+    /**
+     * 设置 设备。
+     *
+     * @param device 设备。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSerialWidget.prototype.setDevice = function (device) {
+        return serial_widget_set_device(this != null ? (this.nativeObj || this) : null, device);
+    };
+    /**
+     * 设置 字节位数。
+     *
+     * @param bytesize 字节位数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSerialWidget.prototype.setBytesize = function (bytesize) {
+        return serial_widget_set_bytesize(this != null ? (this.nativeObj || this) : null, bytesize);
+    };
+    /**
+     * 设置 奇偶校验。
+     *
+     * @param parity 奇偶校验。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSerialWidget.prototype.setParity = function (parity) {
+        return serial_widget_set_parity(this != null ? (this.nativeObj || this) : null, parity);
+    };
+    /**
+     * 设置 停止位。
+     *
+     * @param stopbits 停止位。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSerialWidget.prototype.setStopbits = function (stopbits) {
+        return serial_widget_set_stopbits(this != null ? (this.nativeObj || this) : null, stopbits);
+    };
+    /**
+     * 设置 流控。
+     *
+     * @param flowcontrol 流控。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSerialWidget.prototype.setFlowcontrol = function (flowcontrol) {
+        return serial_widget_set_flowcontrol(this != null ? (this.nativeObj || this) : null, flowcontrol);
+    };
+    /**
+     * 设置 轮询时间(毫秒)。
+     *
+     * @param check_interval 轮询时间（单位：ms）。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSerialWidget.prototype.setCheckInterval = function (check_interval) {
+        return serial_widget_set_check_interval(this != null ? (this.nativeObj || this) : null, check_interval);
+    };
+    Object.defineProperty(TSerialWidget.prototype, "device", {
+        /**
+         * 设备(文件)名。
+         *
+         */
+        get: function () {
+            return serial_widget_t_get_prop_device(this.nativeObj);
+        },
+        set: function (v) {
+            this.setDevice(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSerialWidget.prototype, "baudrate", {
+        /**
+         * 波特率。
+         *
+         */
+        get: function () {
+            return serial_widget_t_get_prop_baudrate(this.nativeObj);
+        },
+        set: function (v) {
+            this.setBaudrate(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSerialWidget.prototype, "bytesize", {
+        /**
+         * 字节位数。
+         *
+         */
+        get: function () {
+            return serial_widget_t_get_prop_bytesize(this.nativeObj);
+        },
+        set: function (v) {
+            this.setBytesize(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSerialWidget.prototype, "parity", {
+        /**
+         * 奇偶校验。
+         *
+         */
+        get: function () {
+            return serial_widget_t_get_prop_parity(this.nativeObj);
+        },
+        set: function (v) {
+            this.setParity(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSerialWidget.prototype, "stopbits", {
+        /**
+         * 停止位。
+         *
+         */
+        get: function () {
+            return serial_widget_t_get_prop_stopbits(this.nativeObj);
+        },
+        set: function (v) {
+            this.setStopbits(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSerialWidget.prototype, "flowcontrol", {
+        /**
+         * 流控。
+         *
+         */
+        get: function () {
+            return serial_widget_t_get_prop_flowcontrol(this.nativeObj);
+        },
+        set: function (v) {
+            this.setFlowcontrol(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSerialWidget.prototype, "checkInterval", {
+        /**
+         * 轮询时间（单位：ms）。
+         *> 仅在不支持用select等待串口数据的嵌入式设备上有效。
+         *
+         */
+        get: function () {
+            return serial_widget_t_get_prop_check_interval(this.nativeObj);
+        },
+        set: function (v) {
+            this.setCheckInterval(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return TSerialWidget;
+}(TWidget));
+exports.TSerialWidget = TSerialWidget;
 ;
 /**
  * 左右滑动菜单控件。
@@ -17796,10 +19916,13 @@ exports.TScrollView = TScrollView;
  *在c代码中使用函数slide\_menu\_create创建左右滑动菜单控件。如：
  *
  *
+ *
  *可按下面的方法关注当前项改变的事件：
  *
  *
+ *
  *可按下面的方法关注当前按钮被点击的事件：
+ *
  *
  *
  *> 完整示例请参考：[slide_menu demo](
@@ -17876,6 +19999,54 @@ var TSlideMenu = /** @class */ (function (_super) {
     TSlideMenu.prototype.setMinScale = function (min_scale) {
         return slide_menu_set_min_scale(this != null ? (this.nativeObj || this) : null, min_scale);
     };
+    /**
+     * 设置菜单项之间的间距。
+     *
+     * @param spacer 菜单项之间的间距。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSlideMenu.prototype.setSpacer = function (spacer) {
+        return slide_menu_set_spacer(this != null ? (this.nativeObj || this) : null, spacer);
+    };
+    /**
+     * 设置菜单项的宽度。
+     *
+     * @param menu_w 菜单项的宽度。(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)(空字符串则使用控件高度)
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSlideMenu.prototype.setMenuW = function (menu_w) {
+        return slide_menu_set_menu_w(this != null ? (this.nativeObj || this) : null, menu_w);
+    };
+    /**
+     * 设置是否动态裁剪菜单项。
+     *
+     * @param clip 是否动态裁剪菜单项。(关闭后，如果显示偶数项，左边会多一项)
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSlideMenu.prototype.setClip = function (clip) {
+        return slide_menu_set_clip(this != null ? (this.nativeObj || this) : null, clip);
+    };
+    /**
+     * 切换至上一项。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSlideMenu.prototype.scrollToPrev = function () {
+        return slide_menu_scroll_to_prev(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 切换至下一项。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSlideMenu.prototype.scrollToNext = function () {
+        return slide_menu_scroll_to_next(this != null ? (this.nativeObj || this) : null);
+    };
     Object.defineProperty(TSlideMenu.prototype, "value", {
         /**
          * 值。代表当前选中项的索引。
@@ -17918,6 +20089,48 @@ var TSlideMenu = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TSlideMenu.prototype, "spacer", {
+        /**
+         * 菜单项之间的间距。
+         *
+         */
+        get: function () {
+            return slide_menu_t_get_prop_spacer(this.nativeObj);
+        },
+        set: function (v) {
+            this.setSpacer(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSlideMenu.prototype, "menuW", {
+        /**
+         * 菜单项的宽度(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)(空字符串则使用控件高度)。
+         *
+         */
+        get: function () {
+            return slide_menu_t_get_prop_menu_w(this.nativeObj);
+        },
+        set: function (v) {
+            this.setMenuW(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSlideMenu.prototype, "clip", {
+        /**
+         * 是否动态裁剪菜单项(默认裁剪，不裁剪时，如果显示偶数项，左边会多一项)。
+         *
+         */
+        get: function () {
+            return slide_menu_t_get_prop_clip(this.nativeObj);
+        },
+        set: function (v) {
+            this.setClip(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TSlideMenu;
 }(TWidget));
 exports.TSlideMenu = TSlideMenu;
@@ -17942,6 +20155,7 @@ exports.TSlideMenu = TSlideMenu;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/slide_view.xml)
  *
  *在c代码中使用函数slide\_indicator\_create创建指示器控件。如：
+ *
  *
  *
  *```xml
@@ -18102,6 +20316,16 @@ var TSlideIndicator = /** @class */ (function (_super) {
     TSlideIndicator.prototype.setIndicatedTarget = function (target_name) {
         return slide_indicator_set_indicated_target(this != null ? (this.nativeObj || this) : null, target_name);
     };
+    /**
+     * 设置是否启用过渡效果。
+     *
+     * @param transition 是否启用过渡效果
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSlideIndicator.prototype.setTransition = function (transition) {
+        return slide_indicator_set_transition(this != null ? (this.nativeObj || this) : null, transition);
+    };
     Object.defineProperty(TSlideIndicator.prototype, "value", {
         /**
          * 值(缺省为0)。
@@ -18202,7 +20426,7 @@ var TSlideIndicator = /** @class */ (function (_super) {
     });
     Object.defineProperty(TSlideIndicator.prototype, "anchorX", {
         /**
-         * 锚点x坐标。
+         * 锚点x坐标。(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)
          *
          */
         get: function () {
@@ -18213,7 +20437,7 @@ var TSlideIndicator = /** @class */ (function (_super) {
     });
     Object.defineProperty(TSlideIndicator.prototype, "anchorY", {
         /**
-         * 锚点y坐标。
+         * 锚点y坐标。(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)
          *
          */
         get: function () {
@@ -18232,6 +20456,20 @@ var TSlideIndicator = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setIndicatedTarget(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSlideIndicator.prototype, "transition", {
+        /**
+         * 是否启用过渡效果。
+         *
+         */
+        get: function () {
+            return slide_indicator_t_get_prop_transition(this.nativeObj);
+        },
+        set: function (v) {
+            this.setTransition(v);
         },
         enumerable: false,
         configurable: true
@@ -18264,6 +20502,7 @@ exports.TSlideIndicator = TSlideIndicator;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/slide_view.xml)
  *
  *在c代码中使用函数slide\_view\_create创建滑动视图控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -18316,7 +20555,7 @@ var TSlideView = /** @class */ (function (_super) {
     /**
      * 设置为自动播放模式。
      *
-     * @param auto_play 0表示禁止自动播放，非0表示自动播放时每一页播放的时间。
+     * @param auto_play 0表示禁止自动播放，非0表示自动播放时每一页播放的时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -18386,6 +20625,26 @@ var TSlideView = /** @class */ (function (_super) {
         return slide_view_set_loop(this != null ? (this.nativeObj || this) : null, loop);
     };
     /**
+     * 设置拖拽临界值。
+     *
+     * @param drag_threshold 拖动临界值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSlideView.prototype.setDragThreshold = function (drag_threshold) {
+        return slide_view_set_drag_threshold(this != null ? (this.nativeObj || this) : null, drag_threshold);
+    };
+    /**
+     * 设置动画时间(毫秒)。
+     *
+     * @param animating_time 动画时间(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSlideView.prototype.setAnimatingTime = function (animating_time) {
+        return slide_view_set_animating_time(this != null ? (this.nativeObj || this) : null, animating_time);
+    };
+    /**
      * 删除指定序号页面。
      *
      * @param index 删除页面的序号。
@@ -18411,7 +20670,7 @@ var TSlideView = /** @class */ (function (_super) {
     });
     Object.defineProperty(TSlideView.prototype, "autoPlay", {
         /**
-         * 自动播放。0表示禁止自动播放，非0表示自动播放时每一页播放的时间。
+         * 自动播放。0表示禁止自动播放，非0表示自动播放时每一页播放的时间(毫秒)。
          *
          */
         get: function () {
@@ -18454,6 +20713,34 @@ var TSlideView = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TSlideView.prototype, "dragThreshold", {
+        /**
+         * 拖动临界值。
+         *
+         */
+        get: function () {
+            return slide_view_t_get_prop_drag_threshold(this.nativeObj);
+        },
+        set: function (v) {
+            this.setDragThreshold(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSlideView.prototype, "animatingTime", {
+        /**
+         * 动画时间（单位：毫秒）。
+         *
+         */
+        get: function () {
+            return slide_view_t_get_prop_animating_time(this.nativeObj);
+        },
+        set: function (v) {
+            this.setAnimatingTime(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TSlideView;
 }(TWidget));
 exports.TSlideView = TSlideView;
@@ -18473,6 +20760,7 @@ exports.TSlideView = TSlideView;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/switch.xml)
  *
  *在c代码中使用函数switch\_create创建开关控件。如：
+ *
  *
  *
  *> 完整示例请参考：[switch demo](
@@ -18575,6 +20863,7 @@ exports.TSwitch = TSwitch;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/text_selector.xml)
  *
  *在c代码中使用函数text\_selector\_create创建文本选择器控件。如：
+ *
  *
  *
  *> 完整示例请参考：[text\_selector demo](
@@ -18691,7 +20980,7 @@ var TTextSelector = /** @class */ (function (_super) {
      *
      * @returns 返回值。
      */
-    TTextSelector.prototype.getValue = function () {
+    TTextSelector.prototype.getValueInt = function () {
         return text_selector_get_value(this != null ? (this.nativeObj || this) : null);
     };
     /**
@@ -18793,6 +21082,36 @@ var TTextSelector = /** @class */ (function (_super) {
     TTextSelector.prototype.setEnableValueAnimator = function (enable_value_animator) {
         return text_selector_set_enable_value_animator(this != null ? (this.nativeObj || this) : null, enable_value_animator);
     };
+    /**
+     * 设置绘制蒙版的变化趋势。
+     *
+     * @param mask_easing 绘制蒙版的变化趋势。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TTextSelector.prototype.setMaskEasing = function (mask_easing) {
+        return text_selector_set_mask_easing(this != null ? (this.nativeObj || this) : null, mask_easing);
+    };
+    /**
+     * 设置绘制蒙版的区域占比（范围0~1）。
+     *
+     * @param mask_area_scale 绘制蒙版的区域占比（范围0~1）。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TTextSelector.prototype.setMaskAreaScale = function (mask_area_scale) {
+        return text_selector_set_mask_area_scale(this != null ? (this.nativeObj || this) : null, mask_area_scale);
+    };
+    /**
+     * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+     *
+     * @param ellipses 是否开启缩写。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TTextSelector.prototype.setEllipses = function (ellipses) {
+        return text_selector_set_ellipses(this != null ? (this.nativeObj || this) : null, ellipses);
+    };
     Object.defineProperty(TTextSelector.prototype, "visibleNr", {
         /**
          * 可见的选项数量(只能是1或者3或者5，缺省为5)。
@@ -18823,9 +21142,13 @@ var TTextSelector = /** @class */ (function (_super) {
     });
     Object.defineProperty(TTextSelector.prototype, "options", {
         /**
-         * 设置可选项(冒号分隔值和文本，分号分隔选项，如:1:red;2:green;3:blue)。
-         *对于数值选项，也可以指定一个范围，用『-』分隔起始值、结束值和格式。
+         * 设置可选项(英文冒号(:)分隔值和文本，英文分号(;)分隔选项，如:1:red;2:green;3:blue)。
+         *对于数值选项，也可以指定一个范围，用英文负号(-)分隔起始值、结束值和格式。
          *如："1-7-%02d"表示1到7，格式为『02d』，格式为可选，缺省为『%d』。
+         *> 如果数据本身中有英文冒号(:)、英文分号(;)和英文负号(-)。请用16进制转义。
+         *> * 英文冒号(:)写为\\x3a
+         *> * 英文冒号(;)写为\\x3b
+         *> * 英文冒号(-)写为\\x2d
          *
          */
         get: function () {
@@ -18907,6 +21230,48 @@ var TTextSelector = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TTextSelector.prototype, "ellipses", {
+        /**
+         * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+         *
+         */
+        get: function () {
+            return text_selector_t_get_prop_ellipses(this.nativeObj);
+        },
+        set: function (v) {
+            this.setEllipses(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TTextSelector.prototype, "maskEasing", {
+        /**
+         * 绘制蒙版的变化趋势。
+         *
+         */
+        get: function () {
+            return text_selector_t_get_prop_mask_easing(this.nativeObj);
+        },
+        set: function (v) {
+            this.setMaskEasing(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TTextSelector.prototype, "maskAreaScale", {
+        /**
+         * 绘制蒙版的区域占比（范围0~1）。
+         *
+         */
+        get: function () {
+            return text_selector_t_get_prop_mask_area_scale(this.nativeObj);
+        },
+        set: function (v) {
+            this.setMaskAreaScale(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TTextSelector;
 }(TWidget));
 exports.TTextSelector = TTextSelector;
@@ -18927,6 +21292,7 @@ exports.TTextSelector = TTextSelector;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/time_clock.xml)
  *
  *在c代码中使用函数time\_clock\_create创建模拟时钟控件。如：
+ *
  *
  *
  *> 完整示例请参考：[time_clock demo](
@@ -19263,6 +21629,86 @@ var TTimeClock = /** @class */ (function (_super) {
 exports.TTimeClock = TTimeClock;
 ;
 /**
+ * 定时器。
+ *> 主要目的是方便以拖拽的方式创建定时器，并用AWBlock编写简单的事件处理程序。
+ *在xml中使用"timer"标签创建控件。如：
+ *
+ *```xml
+ *<!-- ui -->
+ *<timer x="c" y="50" w="100" h="100" duration="1000"/>
+ *```
+ *
+ *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
+ *> 本控件默认不可见，无需指定style。
+ *
+ *```xml
+ *<!-- style -->
+ *<timer>
+ *<style name="default" font_size="32">
+ *<normal text_color="black" />
+ *</style>
+ *</timer>
+ *```
+ *
+ */
+var TTimerWidget = /** @class */ (function (_super) {
+    __extends(TTimerWidget, _super);
+    function TTimerWidget(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 创建timer_widget对象
+     *
+     * @param parent 父控件
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     *
+     * @returns timer_widget对象。
+     */
+    TTimerWidget.create = function (parent, x, y, w, h) {
+        return new TTimerWidget(timer_widget_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
+    };
+    /**
+     * 转换为timer_widget对象(供脚本语言使用)。
+     *
+     * @param widget timer_widget对象。
+     *
+     * @returns timer_widget对象。
+     */
+    TTimerWidget.cast = function (widget) {
+        return new TTimerWidget(timer_widget_cast(widget != null ? (widget.nativeObj || widget) : null));
+    };
+    /**
+     * 设置 时长(毫秒)。
+     *
+     * @param duration 时长(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TTimerWidget.prototype.setDuration = function (duration) {
+        return timer_widget_set_duration(this != null ? (this.nativeObj || this) : null, duration);
+    };
+    Object.defineProperty(TTimerWidget.prototype, "duration", {
+        /**
+         * 时长(毫秒)。
+         *
+         */
+        get: function () {
+            return timer_widget_t_get_prop_duration(this.nativeObj);
+        },
+        set: function (v) {
+            this.setDuration(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return TTimerWidget;
+}(TWidget));
+exports.TTimerWidget = TTimerWidget;
+;
+/**
  * 虚拟页面(根据情况自动加载/卸载页面，并提供入场/出场动画)。
  *
  *> 虚拟页面只能作为pages的直接子控件使用。
@@ -19384,7 +21830,7 @@ var TPropChangeEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转prop_change_event_t对象，主要给脚本语言使用。
+     * 把event对象转prop_change_event_t对象。
      *
      * @param event event对象。
      *
@@ -19429,7 +21875,7 @@ var TProgressEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转progress_event_t对象，主要给脚本语言使用。
+     * 把event对象转progress_event_t对象。
      *
      * @param event event对象。
      *
@@ -19463,7 +21909,7 @@ var TDoneEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转done_event_t对象，主要给脚本语言使用。
+     * 把event对象转done_event_t对象。
      *
      * @param event event对象。
      *
@@ -19497,7 +21943,7 @@ var TErrorEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转error_event_t对象，主要给脚本语言使用。
+     * 把event对象转error_event_t对象。
      *
      * @param event event对象。
      *
@@ -19542,7 +21988,7 @@ var TCmdExecEvent = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 把event对象转cmd_exec_event_t对象，主要给脚本语言使用。
+     * 把event对象转cmd_exec_event_t对象。
      *
      * @param event event对象。
      *
@@ -19600,6 +22046,52 @@ var TCmdExecEvent = /** @class */ (function (_super) {
 exports.TCmdExecEvent = TCmdExecEvent;
 ;
 /**
+ * 值变化事件。
+ *
+ */
+var TValueChangeEvent = /** @class */ (function (_super) {
+    __extends(TValueChangeEvent, _super);
+    function TValueChangeEvent(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 把event对象转value_change_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event对象。
+     */
+    TValueChangeEvent.cast = function (event) {
+        return new TValueChangeEvent(value_change_event_cast(event != null ? (event.nativeObj || event) : null));
+    };
+    return TValueChangeEvent;
+}(TEvent));
+exports.TValueChangeEvent = TValueChangeEvent;
+;
+/**
+ * 日志事件。
+ *
+ */
+var TLogMessageEvent = /** @class */ (function (_super) {
+    __extends(TLogMessageEvent, _super);
+    function TLogMessageEvent(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 把event对象转log_message_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event对象。
+     */
+    TLogMessageEvent.cast = function (event) {
+        return new TLogMessageEvent(log_message_event_cast(event != null ? (event.nativeObj || event) : null));
+    };
+    return TLogMessageEvent;
+}(TEvent));
+exports.TLogMessageEvent = TLogMessageEvent;
+;
+/**
  * app_bar控件。
  *
  *一个简单的容器控件，一般在窗口的顶部，用于显示本窗口的状态和信息。
@@ -19619,6 +22111,7 @@ exports.TCmdExecEvent = TCmdExecEvent;
  *```
  *
  *在c代码中使用函数app\_bar\_create创建app\_bar。如：
+ *
  *
  *
  *可用通过style来设置控件的显示风格，如背景颜色等。如：
@@ -19746,6 +22239,7 @@ exports.TButtonGroup = TButtonGroup;
  *在c代码中使用函数button\_create创建按钮控件。如：
  *
  *
+ *
  *> 创建之后，需要用widget\_set\_text或widget\_set\_text\_utf8设置文本内容。
  *
  *> 完整示例请参考：
@@ -19807,7 +22301,7 @@ var TButton = /** @class */ (function (_super) {
         return button_set_repeat(this != null ? (this.nativeObj || this) : null, repeat);
     };
     /**
-     * 设置触发长按事件的时间。
+     * 设置触发长按事件的时间(毫秒)。
      *
      * @param long_press_time 触发长按事件的时间(毫秒)。
      *
@@ -19825,6 +22319,16 @@ var TButton = /** @class */ (function (_super) {
      */
     TButton.prototype.setEnableLongPress = function (enable_long_press) {
         return button_set_enable_long_press(this != null ? (this.nativeObj || this) : null, enable_long_press);
+    };
+    /**
+     * 设置是否启用预览。
+     *
+     * @param enable_preview 是否启用预览。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TButton.prototype.setEnablePreview = function (enable_preview) {
+        return button_set_enable_preview(this != null ? (this.nativeObj || this) : null, enable_preview);
     };
     Object.defineProperty(TButton.prototype, "repeat", {
         /**
@@ -19859,9 +22363,23 @@ var TButton = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TButton.prototype, "enablePreview", {
+        /**
+         * 是否启用预览(主要用于软键盘)。
+         *
+         */
+        get: function () {
+            return button_t_get_prop_enable_preview(this.nativeObj);
+        },
+        set: function (v) {
+            this.setEnablePreview(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(TButton.prototype, "longPressTime", {
         /**
-         * 触发长按事件的时间(ms)
+         * 触发长按事件的时间(毫秒)
          *
          */
         get: function () {
@@ -19869,6 +22387,17 @@ var TButton = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setLongPressTime(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TButton.prototype, "pressed", {
+        /**
+         * 当前是否按下。
+         *
+         */
+        get: function () {
+            return button_t_get_prop_pressed(this.nativeObj);
         },
         enumerable: false,
         configurable: true
@@ -19900,7 +22429,9 @@ exports.TButton = TButton;
  *在c代码中使用函数check\_button\_create创建多选按钮控件。如：
  *
  *
+ *
  *在c代码中使用函数check\_button\_create\_radio创建单选按钮控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -19976,6 +22507,22 @@ var TCheckButton = /** @class */ (function (_super) {
      */
     TCheckButton.cast = function (widget) {
         return new TCheckButton(check_button_cast(widget != null ? (widget.nativeObj || widget) : null));
+    };
+    /**
+     * 创建check button对象
+     *
+     * @param parent 父控件
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     * @param type 类型。
+     * @param radio 是否单选。
+     *
+     * @returns widget对象。
+     */
+    TCheckButton.createEx = function (parent, x, y, w, h, type, radio) {
+        return new TCheckButton(check_button_create_ex(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h, type, radio));
     };
     Object.defineProperty(TCheckButton.prototype, "value", {
         /**
@@ -20075,6 +22622,7 @@ exports.TClipView = TClipView;
  *[color_tile](https://github.com/zlgopen/awtk/blob/master/design/default/ui/color_picker_rgb.xml)
  *
  *在c代码中使用函数color_tile\_create创建色块控件。如：
+ *
  *
  *> 创建之后，用color\_tile\_set\_bg\_color设置背景颜色。
  *
@@ -20447,6 +22995,7 @@ exports.TDialogTitle = TDialogTitle;
  *在c代码中使用函数digit\_clock\_create创建数字时钟控件。如：
  *
  *
+ *
  *> 完整示例请参考：[digit\_clock demo](
  *https://github.com/zlgopen/awtk-c-demos/blob/master/demos/digit_clock.c)
  *
@@ -20509,14 +23058,17 @@ var TDigitClock = /** @class */ (function (_super) {
          ** M 代表月(1-12)
          ** D 代表日(1-31)
          ** h 代表时(0-23)
+         ** H 代表时(1-12)
          ** m 代表分(0-59)
          ** s 代表秒(0-59)
          ** w 代表星期(0-6)
          ** W 代表星期的英文缩写(支持翻译)
+         ** T 代表时段AM/PM(支持翻译)
          ** YY 代表年(只显示末两位)
          ** MM 代表月(01-12)
          ** DD 代表日(01-31)
          ** hh 代表时(00-23)
+         ** HH 代表时(01-12)
          ** mm 代表分(00-59)
          ** ss 代表秒(00-59)
          ** MMM 代表月的英文缩写(支持翻译)
@@ -20668,6 +23220,7 @@ exports.TDragger = TDragger;
  *在c代码中使用函数edit\_create创建编辑器控件。如：
  *
  *
+ *
  *> 创建之后，可以用widget\_set\_text或widget\_set\_text\_utf8设置文本内容。
  *
  *> 完整示例请参考：
@@ -20756,6 +23309,17 @@ var TEdit = /** @class */ (function (_super) {
      */
     TEdit.prototype.setDouble = function (value) {
         return edit_set_double(this != null ? (this.nativeObj || this) : null, value);
+    };
+    /**
+     * 设置double类型的值。
+     *
+     * @param format 格式(缺省为"%2.2lf")。
+     * @param value 值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TEdit.prototype.setDoubleEx = function (format, value) {
+        return edit_set_double_ex(this != null ? (this.nativeObj || this) : null, format, value);
     };
     /**
      * 设置为文本输入及其长度限制，不允许输入超过max个字符，少于min个字符时进入error状态。
@@ -20965,6 +23529,16 @@ var TEdit = /** @class */ (function (_super) {
     TEdit.prototype.getSelectedText = function () {
         return edit_get_selected_text(this != null ? (this.nativeObj || this) : null);
     };
+    /**
+     * 设置输入回车后是否跳到下一个控件中。
+     *
+     * @param focus_next_when_enter 是否跳入下一个控件中。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TEdit.prototype.setFocusNextWhenEnter = function (focus_next_when_enter) {
+        return edit_set_focus_next_when_enter(this != null ? (this.nativeObj || this) : null, focus_next_when_enter);
+    };
     Object.defineProperty(TEdit.prototype, "tips", {
         /**
          * 输入提示。
@@ -21008,6 +23582,19 @@ var TEdit = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setActionText(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TEdit.prototype, "validator", {
+        /**
+         * fscript脚本，用输入校验，如：(len(text) 3) && (len(text) < 10)。
+         *
+         *> 用于校验输入的文本是否合法。
+         *
+         */
+        get: function () {
+            return edit_t_get_prop_validator(this.nativeObj);
         },
         enumerable: false,
         configurable: true
@@ -21179,6 +23766,20 @@ var TEdit = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TEdit.prototype, "focusNextWhenEnter", {
+        /**
+         * 输入回车后是否跳到下一个控件中。
+         *
+         */
+        get: function () {
+            return edit_t_get_prop_focus_next_when_enter(this.nativeObj);
+        },
+        set: function (v) {
+            this.setFocusNextWhenEnter(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TEdit;
 }(TWidget));
 exports.TEdit = TEdit;
@@ -21255,31 +23856,23 @@ var TGridItem = /** @class */ (function (_super) {
 exports.TGridItem = TGridItem;
 ;
 /**
- * grid控件。一个简单的容器控件，用于网格排列一组控件。
- *
- *它本身不提供布局功能，仅提供具有语义的标签，让xml更具有可读性。
- *子控件的布局可用layout\_children属性指定。
- *请参考[布局参数](https://github.com/zlgopen/awtk/blob/master/docs/layout.md)。
- *
- *grid\_t是[widget\_t](widget_t.md)的子类控件，widget\_t的函数均适用于grid\_t控件。
- *
- *在xml中使用"grid"标签创建grid。如：
+ * 网格。
+ *在xml中使用"grid"标签创建控件。如：
  *
  *```xml
- *<grid x="0" y="0" w="100%" h="100%" children_layout="default(c=2,r=2,m=5,s=5)">
- *<button name="open:basic" text="Basic"/>
- *<button name="open:button" text="Buttons"/>
- *<button name="open:edit" text="Edits"/>
- *<button name="open:keyboard" text="KeyBoard"/>
- *</grid>
+ *<!-- ui -->
+ *<grid x="c" y="50" w="100" h="100"/>
  *```
  *
- *可用通过style来设置控件的显示风格，如背景颜色等。如：
+ *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
  *
  *```xml
- *<style name="default" border_color="#a0a0a0">
- *<normal     bg_color="#f0f0f0" />
+ *<!-- style -->
+ *<grid>
+ *<style name="default" grid_color="gray" border_color="black" odd_bg_color="#f5f5f5" even_bg_color="#eeeeee">
+ *<normal />
  *</style>
+ *</grid>
  *```
  *
  */
@@ -21297,7 +23890,7 @@ var TGrid = /** @class */ (function (_super) {
      * @param w 宽度
      * @param h 高度
      *
-     * @returns 对象。
+     * @returns grid对象。
      */
     TGrid.create = function (parent, x, y, w, h) {
         return new TGrid(grid_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
@@ -21312,6 +23905,90 @@ var TGrid = /** @class */ (function (_super) {
     TGrid.cast = function (widget) {
         return new TGrid(grid_cast(widget != null ? (widget.nativeObj || widget) : null));
     };
+    /**
+     * 设置 行数。
+     *
+     * @param rows 行数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TGrid.prototype.setRows = function (rows) {
+        return grid_set_rows(this != null ? (this.nativeObj || this) : null, rows);
+    };
+    /**
+     * 设置 各列的参数。
+     *
+     * @param columns_definition 各列的参数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TGrid.prototype.setColumnsDefinition = function (columns_definition) {
+        return grid_set_columns_definition(this != null ? (this.nativeObj || this) : null, columns_definition);
+    };
+    /**
+     * 设置 是否显示网格。
+     *
+     * @param show_grid 是否显示网格。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TGrid.prototype.setShowGrid = function (show_grid) {
+        return grid_set_show_grid(this != null ? (this.nativeObj || this) : null, show_grid);
+    };
+    Object.defineProperty(TGrid.prototype, "rows", {
+        /**
+         * 行数。
+         *
+         */
+        get: function () {
+            return grid_t_get_prop_rows(this.nativeObj);
+        },
+        set: function (v) {
+            this.setRows(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TGrid.prototype, "columnsDefinition", {
+        /**
+         * 各列的参数。
+         *各列的参数之间用英文的分号(;)分隔，每列参数的格式为：
+         *
+         *col(w=?,left_margin=?,right_margin=?,top_maorgin=?,bottom_margin=?)
+         *
+         ** w 为列的宽度(必须存在)。取值在(0-1]区间时，视为grid控件宽度的比例，否则为像素宽度。
+         *(如果为负数，将计算结果加上控件的宽度)
+         ** left_margin(可选，可缩写为l) 该列左边的边距。
+         ** right_margin(可选，可缩写为r) 该列右边的边距。
+         ** top_margin(可选，可缩写为t) 该列顶部的边距。
+         ** bottom_margin(可选，可缩写为b) 该列底部的边距。
+         ** margin(可选，可缩写为m) 同时指定上面4个边距。
+         ** fill_available(可选，可缩写为f) 填充剩余宽度(只有一列可以指定)。
+         *
+         */
+        get: function () {
+            return grid_t_get_prop_columns_definition(this.nativeObj);
+        },
+        set: function (v) {
+            this.setColumnsDefinition(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TGrid.prototype, "showGrid", {
+        /**
+         * 是否显示网格。
+         *
+         */
+        get: function () {
+            return grid_t_get_prop_show_grid(this.nativeObj);
+        },
+        set: function (v) {
+            this.setShowGrid(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TGrid;
 }(TWidget));
 exports.TGrid = TGrid;
@@ -21366,6 +24043,16 @@ var TGroupBox = /** @class */ (function (_super) {
         return new TGroupBox(group_box_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
     };
     /**
+     * 设置选中的单选按钮的索引。
+     *
+     * @param value 选中的单选按钮的索引。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TGroupBox.prototype.setValue = function (value) {
+        return group_box_set_value(this != null ? (this.nativeObj || this) : null, value);
+    };
+    /**
      * 转换为group_box对象(供脚本语言使用)。
      *
      * @param widget group_box对象。
@@ -21375,6 +24062,20 @@ var TGroupBox = /** @class */ (function (_super) {
     TGroupBox.cast = function (widget) {
         return new TGroupBox(group_box_cast(widget != null ? (widget.nativeObj || widget) : null));
     };
+    Object.defineProperty(TGroupBox.prototype, "value", {
+        /**
+         * 选中的单选按钮的索引。
+         *
+         */
+        get: function () {
+            return group_box_t_get_prop_value(this.nativeObj);
+        },
+        set: function (v) {
+            this.setValue(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TGroupBox;
 }(TWidget));
 exports.TGroupBox = TGroupBox;
@@ -21398,6 +24099,7 @@ exports.TGroupBox = TGroupBox;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/label.xml)
  *
  *在c代码中使用函数label\_create创建文本控件。如：
+ *
  *
  *
  *> 创建之后，需要用widget\_set\_text或widget\_set\_text\_utf8设置文本内容。
@@ -21438,7 +24140,7 @@ var TLabel = /** @class */ (function (_super) {
         return new TLabel(label_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
     };
     /**
-     * 设置显示字符的个数(小余0时全部显示)。
+     * 设置显示字符的个数(小于0时全部显示)。
      *
      * @param length 最大可显示字符个数。
      *
@@ -21478,6 +24180,16 @@ var TLabel = /** @class */ (function (_super) {
         return label_set_word_wrap(this != null ? (this.nativeObj || this) : null, word_wrap);
     };
     /**
+     * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+     *
+     * @param ellipses 是否开启缩写。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TLabel.prototype.setEllipses = function (ellipses) {
+        return label_set_ellipses(this != null ? (this.nativeObj || this) : null, ellipses);
+    };
+    /**
      * 根据文本内容调节控件大小。
      *
      * @param min_w 最小宽度。
@@ -21502,7 +24214,7 @@ var TLabel = /** @class */ (function (_super) {
     };
     Object.defineProperty(TLabel.prototype, "length", {
         /**
-         * 显示字符的个数(小余0时全部显示)。
+         * 显示字符的个数(小于0时全部显示)。
          *主要用于动态改变显示字符的个数，来实现类似[拨号中...]的动画效果。
          *
          */
@@ -21540,6 +24252,21 @@ var TLabel = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setWordWrap(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TLabel.prototype, "ellipses", {
+        /**
+         * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+         *> 和换行是冲突的，换行后，该属性不生效
+         *
+         */
+        get: function () {
+            return label_t_get_prop_ellipses(this.nativeObj);
+        },
+        set: function (v) {
+            this.setEllipses(v);
         },
         enumerable: false,
         configurable: true
@@ -21629,6 +24356,16 @@ var TPages = /** @class */ (function (_super) {
         return pages_set_active(this != null ? (this.nativeObj || this) : null, index);
     };
     /**
+     * 设置切换界面时是否自动聚焦。
+     *
+     * @param auto_focused 切换界面时是否自动聚焦。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TPages.prototype.setAutoFocused = function (auto_focused) {
+        return pages_set_auto_focused(this != null ? (this.nativeObj || this) : null, auto_focused);
+    };
+    /**
      * 通过页面的名字设置当前的Page。
      *
      * @param name 当前Page的名字。
@@ -21640,7 +24377,7 @@ var TPages = /** @class */ (function (_super) {
     };
     Object.defineProperty(TPages.prototype, "active", {
         /**
-         * 当前活跃的page。
+         * 当前活跃的page。(需要用到 MVVM 数据绑定请设置 value 属性)
          *
          */
         get: function () {
@@ -21648,6 +24385,20 @@ var TPages = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setActive(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TPages.prototype, "autoFocused", {
+        /**
+         * 选择切换界面时是否自动聚焦上一次保存的焦点。（默认为TRUE）
+         *
+         */
+        get: function () {
+            return pages_t_get_prop_auto_focused(this.nativeObj);
+        },
+        set: function (v) {
+            this.setAutoFocused(v);
         },
         enumerable: false,
         configurable: true
@@ -21674,6 +24425,7 @@ exports.TPages = TPages;
  *[basic demo](https://github.com/zlgopen/awtk/blob/master/design/default/ui/basic.xml)
  *
  *在c代码中使用函数progress\_bar\_create创建进度条控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -21961,6 +24713,7 @@ exports.TRow = TRow;
  *在c代码中使用函数slider\_create创建滑块控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[slider demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/slider.c)
  *
@@ -22037,6 +24790,16 @@ var TSlider = /** @class */ (function (_super) {
      */
     TSlider.prototype.setMax = function (max) {
         return slider_set_max(this != null ? (this.nativeObj || this) : null, max);
+    };
+    /**
+     * 设置前景色的线帽形状。（默认为跟随风格的圆角设置，但是在没有设置圆角的时候无法使用 "round" 来设置圆角）
+     *
+     * @param line_cap 前景色的线帽形状，取值为：butt|round
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSlider.prototype.setLineCap = function (line_cap) {
+        return slider_set_line_cap(this != null ? (this.nativeObj || this) : null, line_cap);
     };
     /**
      * 设置滑块的拖动的最小单位。
@@ -22124,20 +24887,6 @@ var TSlider = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
-    Object.defineProperty(TSlider.prototype, "vertical", {
-        /**
-         * 滑块的是否为垂直方向。
-         *
-         */
-        get: function () {
-            return slider_t_get_prop_vertical(this.nativeObj);
-        },
-        set: function (v) {
-            this.setVertical(v);
-        },
-        enumerable: false,
-        configurable: true
-    });
     Object.defineProperty(TSlider.prototype, "barSize", {
         /**
          * 轴的宽度或高度（单位：像素），为0表示为控件的宽度或高度的一半，缺省为0。
@@ -22154,11 +24903,39 @@ var TSlider = /** @class */ (function (_super) {
     });
     Object.defineProperty(TSlider.prototype, "draggerSize", {
         /**
-         * 滑块的宽度或高度（单位：像素），缺省为10。
+         * 滑块的宽度或高度（单位：像素），缺省为 bar_size * 1.5。
          *
          */
         get: function () {
             return slider_t_get_prop_dragger_size(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSlider.prototype, "lineCap", {
+        /**
+         * 前景色的线帽形状。（取值：butt|round，默认为跟随风格的圆角设置, 但是在没有设置圆角的时候无法使用 "round" 来设置圆角）
+         *
+         */
+        get: function () {
+            return slider_t_get_prop_line_cap(this.nativeObj);
+        },
+        set: function (v) {
+            this.setLineCap(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSlider.prototype, "vertical", {
+        /**
+         * 滑块的是否为垂直方向。
+         *
+         */
+        get: function () {
+            return slider_t_get_prop_vertical(this.nativeObj);
+        },
+        set: function (v) {
+            this.setVertical(v);
         },
         enumerable: false,
         configurable: true
@@ -22685,10 +25462,13 @@ exports.TView = TView;
  *打开非模态对话框时，其用法与普通窗口一样。打开非模态对话框时，还需要调用dialog\_modal。
  *
  *
+ *
  *关闭模态对话框用dialog\_quit
  *
  *
+ *
  *关闭非模态对话框用window\_close。
+ *
  *
  *
  *> 更多用法请参考：
@@ -22800,9 +25580,10 @@ var TDialog = /** @class */ (function (_super) {
      * 模态显示对话框。
      *dialog_modal返回后，dialog对象将在下一个idle函数中回收。
      *也就是在dialog_modal调用完成后仍然可以访问dialog中控件，直到本次事件结束。
+     *调用该函数会使线程进入阻塞状态，需要调用dialog_quit来解除阻塞。
      *
      *
-     * @returns 返回退出码。
+     * @returns 返回退出码，值为dialog_quit函数中传入的参数。
      */
     TDialog.prototype.modal = function () {
         return dialog_modal(this != null ? (this.nativeObj || this) : null);
@@ -23017,8 +25798,18 @@ var TNativeWindow = /** @class */ (function (_super) {
     TNativeWindow.prototype.setCursor = function (name, img) {
         return native_window_set_cursor(this != null ? (this.nativeObj || this) : null, name, img != null ? (img.nativeObj || img) : null);
     };
+    /**
+     * 设置程序窗口的名称。
+     *
+     * @param app_name 程序窗口的名称。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TNativeWindow.prototype.setTitle = function (app_name) {
+        return native_window_set_title(this != null ? (this.nativeObj || this) : null, app_name);
+    };
     return TNativeWindow;
-}(TObject));
+}(TTkObject));
 exports.TNativeWindow = TNativeWindow;
 ;
 /**
@@ -23040,6 +25831,7 @@ exports.TNativeWindow = TNativeWindow;
  *更多用法请参考：[window.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/)
  *
  *在c代码中使用函数window\_create创建窗口。如：
+ *
  *
  *
  *> 无需指定父控件、坐标和大小，使用0即可。
@@ -23185,7 +25977,7 @@ exports.TWindow = TWindow;
  * GIF图片控件。
  *
  *> 注意：GIF图片的尺寸大于控件大小时会自动缩小图片，但一般的嵌入式系统的硬件加速都不支持图片缩放，
- *所以缩放图片会导致性能明显下降。如果性能不满意时，请确认一下GIF图片的尺寸是否小余控件大小。
+ *所以缩放图片会导致性能明显下降。如果性能不满意时，请确认一下GIF图片的尺寸是否小于控件大小。
  *
  *gif\_image\_t是[image\_base\_t](image_base_t.md)的子类控件，image\_base\_t的函数均适用于gif\_image\_t控件。
  *
@@ -23200,6 +25992,7 @@ exports.TWindow = TWindow;
  *image](https://github.com/zlgopen/awtk/blob/master/design/default/ui/gif_image.xml)
  *
  *在c代码中使用函数gif\_image\_create创建GIF图片控件。如：
+ *
  *
  *
  *> 创建之后:
@@ -23252,7 +26045,7 @@ var TGifImage = /** @class */ (function (_super) {
         return gif_image_play(this != null ? (this.nativeObj || this) : null);
     };
     /**
-     * 停止(并重置index为-1)。
+     * 停止(并重置index为0)。
      *
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
@@ -23270,6 +26063,16 @@ var TGifImage = /** @class */ (function (_super) {
         return gif_image_pause(this != null ? (this.nativeObj || this) : null);
     };
     /**
+     * 设置循环播放次数。
+     *
+     * @param loop 循环播放次数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TGifImage.prototype.setLoop = function (loop) {
+        return gif_image_set_loop(this != null ? (this.nativeObj || this) : null, loop);
+    };
+    /**
      * 转换为gif_image对象(供脚本语言使用)。
      *
      * @param widget gif_image对象。
@@ -23279,6 +26082,20 @@ var TGifImage = /** @class */ (function (_super) {
     TGifImage.cast = function (widget) {
         return new TGifImage(gif_image_cast(widget != null ? (widget.nativeObj || widget) : null));
     };
+    Object.defineProperty(TGifImage.prototype, "loop", {
+        /**
+         * 循环播放的次数。
+         *
+         */
+        get: function () {
+            return gif_image_t_get_prop_loop(this.nativeObj);
+        },
+        set: function (v) {
+            this.setLoop(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TGifImage;
 }(TImageBase));
 exports.TGifImage = TGifImage;
@@ -23440,6 +26257,7 @@ exports.TKeyboard = TKeyboard;
  *在c代码中使用函数mutable\_image\_create创建mutable图片控件。如：
  *
  *
+ *
  *> 创建之后:
  *>
  *> 需要用mutable\_image\_set\_create\_image设置创建图片的回调函数。
@@ -23475,6 +26293,87 @@ var TMutableImage = /** @class */ (function (_super) {
 exports.TMutableImage = TMutableImage;
 ;
 /**
+ * list_item_seperator。
+ *用来模拟实现风琴控件(accordion)和属性页分组控件。
+ *> 当前控件被点击时，显示/隐藏当前控件到下一个分隔符控件之间的控件。
+ *list_item_seperator\_t是[widget\_t](widget_t.md)的子类控件，widget\_t的函数均适用于list_item_seperator\_t控件。
+ *
+ *在xml中使用"list_item_seperator"标签创建list_item_seperator。如：
+ *
+ *```xml
+ *<list_item_seperator radio="true" text="Group2" h="32"/>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="ASCII"/>
+ *<edit w="70%" text="" tips="ascii" input_type="ascii" focused="true" action_text="next"/>
+ *</list_item>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="Int"/>
+ *<edit w="70%" text="" tips="int" input_type="int"/>
+ *</list_item>
+ *
+ *<list_item_seperator radio="true" text="Group3" h="32"/>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="Float"/>
+ *<edit w="70%" text="" tips="float" input_type="float"/>
+ *</list_item>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="UFloat"/>
+ *<edit w="70%" text="" tips="unsigned float" input_type="ufloat"/>
+ *</list_item>
+ *```
+ *
+ *可用通过style来设置控件的显示风格，如背景颜色等。如：
+ *
+ *```xml
+ *<list_item_seperator text_color="black" bg_color="#e0e0e0">
+ *<style name="default" icon_at="left">
+ *<normal  icon="collapse" />
+ *<pressed icon="collapse" />
+ *<over    icon="collapse" text_color="green"/>
+ *<focused icon="collapse" text_color="green"/>
+ *<normal_of_checked icon="expand" text_color="blue"/>
+ *<pressed_of_checked icon="expand" text_color="blue"/>
+ *<over_of_checked icon="expand" text_color="green"/>
+ *<focused_of_checked icon="expand" text_color="green"/>
+ *</style>
+ *</list_item_seperator>
+ *```
+ *
+ */
+var TListItemSeperator = /** @class */ (function (_super) {
+    __extends(TListItemSeperator, _super);
+    function TListItemSeperator(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 创建list_item_seperator对象
+     *
+     * @param parent 父控件
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     *
+     * @returns 对象。
+     */
+    TListItemSeperator.create = function (parent, x, y, w, h) {
+        return new TListItemSeperator(list_item_seperator_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
+    };
+    /**
+     * 转换为list_item_seperator对象(供脚本语言使用)。
+     *
+     * @param widget list_item_seperator对象。
+     *
+     * @returns list_item_seperator对象。
+     */
+    TListItemSeperator.cast = function (widget) {
+        return new TListItemSeperator(list_item_seperator_cast(widget != null ? (widget.nativeObj || widget) : null));
+    };
+    return TListItemSeperator;
+}(TCheckButton));
+exports.TListItemSeperator = TListItemSeperator;
+;
+/**
  * SVG图片控件。
  *
  *svg\_image\_t是[image\_base\_t](image_base_t.md)的子类控件，image\_base\_t的函数均适用于svg\_image\_t控件。
@@ -23489,6 +26388,7 @@ exports.TMutableImage = TMutableImage;
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/svg_image.xml)
  *
  *在c代码中使用函数svg\_image\_create创建SVG图片控件。如：
+ *
  *
  *
  *> 创建之后: 需要用widget\_set\_image设置图片名称。
@@ -23542,6 +26442,28 @@ var TSvgImage = /** @class */ (function (_super) {
         return svg_image_set_image(this != null ? (this.nativeObj || this) : null, name);
     };
     /**
+     * 控件设置是否开启离线缓存渲染模式。
+     *
+     *> 在确保svg图片不经常变化大小及状态的情况下，开启离线缓存渲染能够减少解析bsvg的开销，提高效率。
+     *
+     * @param is_cache_mode 是否开启缓存模式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSvgImage.prototype.setCacheMode = function (is_cache_mode) {
+        return svg_image_set_cache_mode(this != null ? (this.nativeObj || this) : null, is_cache_mode);
+    };
+    /**
+     * 控件设置svg图片绘制模式。
+     *
+     * @param draw_type 绘制模式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSvgImage.prototype.setDrawType = function (draw_type) {
+        return svg_image_set_draw_type(this != null ? (this.nativeObj || this) : null, draw_type);
+    };
+    /**
      * 转换为svg_image对象(供脚本语言使用)。
      *
      * @param widget svg_image对象。
@@ -23551,6 +26473,31 @@ var TSvgImage = /** @class */ (function (_super) {
     TSvgImage.cast = function (widget) {
         return new TSvgImage(svg_image_cast(widget != null ? (widget.nativeObj || widget) : null));
     };
+    Object.defineProperty(TSvgImage.prototype, "isCacheMode", {
+        /**
+         * 离线缓存渲染模式。
+         *
+         */
+        get: function () {
+            return svg_image_t_get_prop_is_cache_mode(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSvgImage.prototype, "drawType", {
+        /**
+         * svg图片的绘制方式(支持旋转缩放, 目前仅支持scale、scale_auto模式)。
+         *
+         */
+        get: function () {
+            return svg_image_t_get_prop_draw_type(this.nativeObj);
+        },
+        set: function (v) {
+            this.setDrawType(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TSvgImage;
 }(TImageBase));
 exports.TSvgImage = TSvgImage;
@@ -23610,7 +26557,7 @@ var TIdleInfo = /** @class */ (function (_super) {
         configurable: true
     });
     return TIdleInfo;
-}(TObject));
+}(TTkObject));
 exports.TIdleInfo = TIdleInfo;
 ;
 /**
@@ -23706,6 +26653,16 @@ var TObjectArray = /** @class */ (function (_super) {
         return object_array_remove(this != null ? (this.nativeObj || this) : null, index);
     };
     /**
+     * 删除指定的值。
+     *
+     * @param v 值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TObjectArray.prototype.removeValue = function (v) {
+        return object_array_remove_value(this != null ? (this.nativeObj || this) : null, v != null ? (v.nativeObj || v) : null);
+    };
+    /**
      * 在指定位置删除一个元素，并返回它。
      *
      * @param index 位置。
@@ -23728,13 +26685,17 @@ var TObjectArray = /** @class */ (function (_super) {
         configurable: true
     });
     return TObjectArray;
-}(TObject));
+}(TTkObject));
 exports.TObjectArray = TObjectArray;
 ;
 /**
  * 对象接口的缺省实现。
  *
- *内部使用有序数组保存所有属性，可以快速查找指定名称的属性。
+ *通用当作 map 数据结构使用，内部用有序数组保存所有属性，因此可以快速查找指定名称的属性。
+ *
+ *示例
+ *
+ *
  *
  */
 var TObjectDefault = /** @class */ (function (_super) {
@@ -23779,8 +26740,18 @@ var TObjectDefault = /** @class */ (function (_super) {
     TObjectDefault.prototype.clearProps = function () {
         return object_default_clear_props(this != null ? (this.nativeObj || this) : null);
     };
+    /**
+     * 设置属性值时不改变属性的类型。
+     *
+     * @param keep_prop_type 不改变属性的类型。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TObjectDefault.prototype.setKeepPropType = function (keep_prop_type) {
+        return object_default_set_keep_prop_type(this != null ? (this.nativeObj || this) : null, keep_prop_type);
+    };
     return TObjectDefault;
-}(TObject));
+}(TTkObject));
 exports.TObjectDefault = TObjectDefault;
 ;
 /**
@@ -23849,7 +26820,7 @@ var TTimerInfo = /** @class */ (function (_super) {
         configurable: true
     });
     return TTimerInfo;
-}(TObject));
+}(TTkObject));
 exports.TTimerInfo = TTimerInfo;
 ;
 /**
@@ -23869,6 +26840,7 @@ exports.TTimerInfo = TTimerInfo;
  *[window.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/calibration_win.xml)
  *
  *在c代码中使用函数calibration\_win\_create创建窗口。如：
+ *
  *
  *
  *通过calibration\_win\_set\_on\_done注册回调函数，用于保存校准数据。
@@ -23967,6 +26939,7 @@ exports.TCalibrationWin = TCalibrationWin;
  *在c代码中使用函数combo\_box\_create创建下拉列表控件。如：
  *
  *
+ *
  *创建之后：
  *
  ** 用combo\_box\_set\_options设置可选项目。
@@ -24007,6 +26980,22 @@ exports.TCalibrationWin = TCalibrationWin;
  *<normal bg_color="#808080"/>
  *</style>
  *</popup>
+ *```
+ ** 3.combobox的下拉框中的列表项的样式，可以设置combo_box_item的style来改变。
+ *
+ *```xml
+ *<combo_box_item>
+ *<style name="default" icon_at="left" text_color="black" bg_color="#f0f0f0">
+ *<normal  icon="empty"/>
+ *<focused icon="empty" bg_color="#1296db" text_color="gold" />
+ *<pressed icon="empty" bg_color="#1296db" text_color="white" />
+ *<over    icon="empty" bg_color="#1296db" text_color="white" />
+ *<normal_of_checked  icon="check"/>
+ *<focused_of_checked  icon="check" bg_color="#1296db" text_color="gold"/>
+ *<pressed_of_checked icon="check" bg_color="#1296db" text_color="white" />
+ *<over_of_checked    icon="check" bg_color="#1296db" text_color="white" />
+ *</style>
+ *</combo_box_item>
  *```
  *
  *> 更多用法请参考：[theme
@@ -24053,6 +27042,16 @@ var TComboBox = /** @class */ (function (_super) {
         return combo_box_set_open_window(this != null ? (this.nativeObj || this) : null, open_window);
     };
     /**
+     * 设置弹出窗口的主题。
+     *
+     * @param theme_of_popup 弹出的窗口主题。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TComboBox.prototype.setThemeOfPopup = function (theme_of_popup) {
+        return combo_box_set_theme_of_popup(this != null ? (this.nativeObj || this) : null, theme_of_popup);
+    };
+    /**
      * 重置所有选项。
      *
      *
@@ -24079,6 +27078,16 @@ var TComboBox = /** @class */ (function (_super) {
      */
     TComboBox.prototype.setSelectedIndex = function (index) {
         return combo_box_set_selected_index(this != null ? (this.nativeObj || this) : null, index);
+    };
+    /**
+     * 根据文本设置当前选中的选项。
+     *
+     * @param text 原生(非翻译的文本)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TComboBox.prototype.setSelectedIndexByText = function (text) {
+        return combo_box_set_selected_index_by_text(this != null ? (this.nativeObj || this) : null, text);
     };
     /**
      * 设置是否本地化(翻译)选项。
@@ -24122,14 +27131,24 @@ var TComboBox = /** @class */ (function (_super) {
         return combo_box_append_option(this != null ? (this.nativeObj || this) : null, value, text);
     };
     /**
-     * 删除选项。
+     * 删除第一个值为value的选项。
      *
-     * @param value 值。
+     * @param value 选项的值。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     TComboBox.prototype.removeOption = function (value) {
         return combo_box_remove_option(this != null ? (this.nativeObj || this) : null, value);
+    };
+    /**
+     * 删除指定序数的选项。
+     *
+     * @param index 选项的序数(0表示第一个)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TComboBox.prototype.removeOptionByIndex = function (index) {
+        return combo_box_remove_option_by_index(this != null ? (this.nativeObj || this) : null, index);
     };
     /**
      * 设置选项。
@@ -24147,17 +27166,36 @@ var TComboBox = /** @class */ (function (_super) {
      *
      * @returns 返回值。
      */
-    TComboBox.prototype.getValue = function () {
+    TComboBox.prototype.getValueInt = function () {
         return combo_box_get_value(this != null ? (this.nativeObj || this) : null);
     };
     /**
-     * 获取combo_box的文本。
+     * 检查选项中是否存在指定的文本。
+     *
+     * @param text option text
+     *
+     * @returns 返回TRUE表示存在，否则表示不存在。
+     */
+    TComboBox.prototype.hasOptionText = function (text) {
+        return combo_box_has_option_text(this != null ? (this.nativeObj || this) : null, text);
+    };
+    /**
+     * 获取combo_box的文本(可能是翻译后的文本)。
      *
      *
      * @returns 返回文本。
      */
     TComboBox.prototype.getTextValue = function () {
         return combo_box_get_text(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 获取combo_box当前选中项目的文本(原生非翻译的文本)。
+     *
+     *
+     * @returns 返回文本。
+     */
+    TComboBox.prototype.getTextOfSelected = function () {
+        return combo_box_get_text_of_selected(this != null ? (this.nativeObj || this) : null);
     };
     Object.defineProperty(TComboBox.prototype, "openWindow", {
         /**
@@ -24169,6 +27207,20 @@ var TComboBox = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setOpenWindow(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TComboBox.prototype, "themeOfPopup", {
+        /**
+         * 弹出窗口的主题(对应的style文件必须存在)，方便为不同combo box的弹出窗口指定不同的样式。
+         *
+         */
+        get: function () {
+            return combo_box_t_get_prop_theme_of_popup(this.nativeObj);
+        },
+        set: function (v) {
+            this.setThemeOfPopup(v);
         },
         enumerable: false,
         configurable: true
@@ -24218,6 +27270,9 @@ var TComboBox = /** @class */ (function (_super) {
     Object.defineProperty(TComboBox.prototype, "options", {
         /**
          * 设置可选项(冒号分隔值和文本，分号分隔选项，如:1:red;2:green;3:blue)。
+         *> 如果数据本身中有英文冒号(:)和英文分号(;)，请用16进制转义。
+         *> * 英文冒号(:)写为\\x3a
+         *> * 英文冒号(;)写为\\x3b
          *
          */
         get: function () {
@@ -24274,6 +27329,7 @@ exports.TComboBox = TComboBox;
  *在c代码中使用函数image\_create创建图片控件。如：
  *
  *
+ *
  *> 创建之后:
  *>
  *> 需要用widget\_set\_image设置图片名称。
@@ -24321,6 +27377,20 @@ var TImage = /** @class */ (function (_super) {
      */
     TImage.create = function (parent, x, y, w, h) {
         return new TImage(image_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
+    };
+    /**
+     * 创建icon对象
+     *
+     * @param parent 父控件
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     *
+     * @returns 对象。
+     */
+    TImage.iconCreate = function (parent, x, y, w, h) {
+        return new TImage(icon_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
     };
     /**
      * 设置图片的绘制方式。
@@ -24383,6 +27453,7 @@ exports.TImage = TImage;
  *在c代码中使用函数overlay\_create创建窗口。如：
  *
  *
+ *
  *> 完整示例请参考：[overlay
  *demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/)
  *
@@ -24438,6 +27509,16 @@ var TOverlay = /** @class */ (function (_super) {
         return overlay_set_always_on_top(this != null ? (this.nativeObj || this) : null, always_on_top);
     };
     /**
+     * 设置是否非模态窗口模式。
+     *
+     * @param modeless 是否非模态窗口模式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TOverlay.prototype.setModeless = function (modeless) {
+        return overlay_set_modeless(this != null ? (this.nativeObj || this) : null, modeless);
+    };
+    /**
      * 转换为overlay对象(供脚本语言使用)。
      *
      * @param widget overlay对象。
@@ -24479,6 +27560,22 @@ var TOverlay = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TOverlay.prototype, "modeless", {
+        /**
+         * 非模态窗口。
+         *
+         *缺省不启用。
+         *
+         */
+        get: function () {
+            return overlay_t_get_prop_modeless(this.nativeObj);
+        },
+        set: function (v) {
+            this.setModeless(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TOverlay;
 }(TWindowBase));
 exports.TOverlay = TOverlay;
@@ -24508,6 +27605,7 @@ exports.TOverlay = TOverlay;
  *更多用法请参考：[popup](https://github.com/zlgopen/awtk/blob/master/design/default/ui/)
  *
  *在c代码中使用函数popup\_create创建弹出窗口。如：
+ *
  *
  *
  *> 创建之后，和使用普通窗口是一样的。
@@ -24578,9 +27676,9 @@ var TPopup = /** @class */ (function (_super) {
         return popup_set_close_when_click_outside(this != null ? (this.nativeObj || this) : null, close_when_click_outside);
     };
     /**
-     * 设置超时关闭时间(ms)。
+     * 设置超时关闭时间(毫秒)。
      *
-     * @param close_when_timeout 大于0时，为定时器时间(ms)，超时关闭窗口。
+     * @param close_when_timeout 大于0时，为定时器时间(毫秒)，超时关闭窗口。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -24617,7 +27715,7 @@ var TPopup = /** @class */ (function (_super) {
     });
     Object.defineProperty(TPopup.prototype, "closeWhenTimeout", {
         /**
-         * 超时后自动关闭窗口(ms)。
+         * 超时后自动关闭窗口(毫秒)。
          *
          */
         get: function () {
@@ -24653,6 +27751,7 @@ exports.TPopup = TPopup;
  *更多用法请参考：[spin_box.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/spinbox.xml)
  *
  *在c代码中使用函数spin_box\_create创建spinbox控件。如：
+ *
  *
  *
  *> 创建之后:
@@ -24709,6 +27808,74 @@ var TSpinBox = /** @class */ (function (_super) {
     TSpinBox.cast = function (widget) {
         return new TSpinBox(spin_box_cast(widget != null ? (widget.nativeObj || widget) : null));
     };
+    /**
+     * 设置是否启用易点击模式。
+     *
+     * @param easy_touch_mode 易点击模式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSpinBox.prototype.setEasyTouchMode = function (easy_touch_mode) {
+        return spin_box_set_easy_touch_mode(this != null ? (this.nativeObj || this) : null, easy_touch_mode);
+    };
+    /**
+     * 设置按钮位置样式。
+     *
+     * @param button_position 按钮位置样式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSpinBox.prototype.setButtonPosition = function (button_position) {
+        return spin_box_set_button_position(this != null ? (this.nativeObj || this) : null, button_position);
+    };
+    /**
+     * 设置连击的时间间隔。
+     *备注：时间间隔越低，速度越快。
+     *
+     * @param repeat 连击的时间间隔。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSpinBox.prototype.spinSetRepeat = function (repeat) {
+        return spin_set_repeat(this != null ? (this.nativeObj || this) : null, repeat);
+    };
+    Object.defineProperty(TSpinBox.prototype, "easyTouchMode", {
+        /**
+         * 是否启用易点击模式(在电容屏设备上建议启用)。
+         *> 在该模式下：
+         *> * 1.当高度大于font size的3倍时，inc按钮在顶部(style名为spinbox_top)，dec按钮在底部(style名为spinbox_bottom)。
+         *> * 2.当高度正常时，dec按钮在左边(style名为spinbox_left)，inc按钮在右边(style名为spinbox_right)。
+         *> 不在该模式下：
+         *> inc按钮在右上角(style名为spinbox_up)，dec按钮在右下角(style名为spinbox_down)。
+         *
+         */
+        get: function () {
+            return spin_box_t_get_prop_easy_touch_mode(this.nativeObj);
+        },
+        set: function (v) {
+            this.setEasyTouchMode(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TSpinBox.prototype, "buttonPosition", {
+        /**
+         * 按钮位置样式选择，优先级高于easy_touch_mode，各模式对应样式如下,默认为none。
+         *none：按照easy_touch_mode选择样式
+         *default：inc按钮在右上角，dec按钮在右下角。
+         *left_right：dec按钮在左边，inc按钮在右边。
+         *top_bottom：inc按钮在顶部，dec按钮在底部。
+         *
+         */
+        get: function () {
+            return spin_box_t_get_prop_button_position(this.nativeObj);
+        },
+        set: function (v) {
+            this.setButtonPosition(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TSpinBox;
 }(TEdit));
 exports.TSpinBox = TSpinBox;
@@ -24744,6 +27911,7 @@ exports.TSpinBox = TSpinBox;
  *[system_bar](https://github.com/zlgopen/awtk/blob/master/design/default/ui/system_bar.xml)
  *
  *在c代码中使用函数system\_bar\_create创建system\_bar窗口。如：
+ *
  *
  *
  *> 创建之后，和使用普通窗口是一样的。
@@ -24796,7 +27964,10 @@ var TSystemBar = /** @class */ (function (_super) {
 exports.TSystemBar = TSystemBar;
 ;
 /**
- * 可滚动的combo_box控件。
+ * 扩展combo_box控件。支持以下功能：
+ ** 支持滚动。项目比较多时显示滚动条。
+ ** 自动调整弹出窗口的宽度。根据最长文本自动调整弹出窗口的宽度。
+ ** 支持分组显示。如果item的文本以"seperator."开头，视为一个分组开始，其后的文本为分组的标题。比如: "seperator.basic"，会创建一个basic为标题的分组。
  *
  */
 var TComboBoxEx = /** @class */ (function (_super) {

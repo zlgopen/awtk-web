@@ -141,27 +141,8 @@ class CodeGenerator {
     return result;
   }
 
-
-  filterScriptableJson(ojson) {
-    let json = ojson.filter(isScriptable);
-
-    json.forEach(iter => {
-      if (iter.methods && iter.methods.length) {
-        iter.methods = iter.methods.filter(isScriptable);
-      }
-
-      if (iter.properties && iter.properties.length) {
-        iter.properties = iter.properties.filter(isScriptable);
-      }
-    })
-
-    fs.writeFileSync('filter.json', JSON.stringify(json, null, '  '));
-
-    return json;
-  }
-
   genJsonAll(ojson) {
-    let json = this.filterScriptableJson(ojson);
+    let json = ojson;
     let result = this.genIncludes(json);
 
     json.forEach(iter => {
@@ -181,7 +162,7 @@ class CodeGenerator {
 
   static gen() {
     const gen = new CodeGenerator();
-    const input = '../../../awtk/tools/idl_gen/idl.json';
+    const input = '../../../awtk-binding/tools/code_gen/js/filter.json';
     const output = '../../gen/c/awtk_wrap.c';
 
     gen.genAll(input);

@@ -84,131 +84,133 @@ const bitmap_t_get_prop_format = Module.cwrap("bitmap_t_get_prop_format",
     "number", ["number"]);
 const bitmap_t_get_prop_name = Module.cwrap("bitmap_t_get_prop_name", 
     "string", ["number"]);
-const object_unref = Module.cwrap("object_unref", 
+const tk_object_unref = Module.cwrap("tk_object_unref", 
     "number", ["number"]);
-const object_ref = Module.cwrap("object_ref", 
+const tk_object_ref = Module.cwrap("tk_object_ref", 
     "number", ["number"]);
-const object_get_type = Module.cwrap("object_get_type", 
+const tk_object_get_type = Module.cwrap("tk_object_get_type", 
     "string", ["number"]);
-const object_get_desc = Module.cwrap("object_get_desc", 
+const tk_object_get_desc = Module.cwrap("tk_object_get_desc", 
     "string", ["number"]);
-const object_get_size = Module.cwrap("object_get_size", 
+const tk_object_get_size = Module.cwrap("tk_object_get_size", 
     "number", ["number"]);
-const object_is_collection = Module.cwrap("object_is_collection", 
+const tk_object_is_collection = Module.cwrap("tk_object_is_collection", 
     "number", ["number"]);
-const object_set_name = Module.cwrap("object_set_name", 
+const tk_object_set_name = Module.cwrap("tk_object_set_name", 
     "number", ["number","string"]);
-const object_compare = Module.cwrap("object_compare", 
+const tk_object_compare = Module.cwrap("tk_object_compare", 
     "number", ["number","number"]);
-const object_get_prop = Module.cwrap("object_get_prop", 
+const tk_object_get_prop = Module.cwrap("tk_object_get_prop", 
     "number", ["number","string","number"]);
-const object_get_prop_str = Module.cwrap("object_get_prop_str", 
+const tk_object_get_prop_str = Module.cwrap("tk_object_get_prop_str", 
     "string", ["number","string"]);
-const object_get_prop_pointer = Module.cwrap("object_get_prop_pointer", 
+const tk_object_get_prop_pointer = Module.cwrap("tk_object_get_prop_pointer", 
     "number", ["number","string"]);
-const object_get_prop_object = Module.cwrap("object_get_prop_object", 
+const tk_object_get_prop_object = Module.cwrap("tk_object_get_prop_object", 
     "number", ["number","string"]);
-const object_get_prop_int = Module.cwrap("object_get_prop_int", 
+const tk_object_get_prop_int = Module.cwrap("tk_object_get_prop_int", 
     "number", ["number","string","number"]);
-const object_get_prop_bool = Module.cwrap("object_get_prop_bool", 
+const tk_object_get_prop_bool = Module.cwrap("tk_object_get_prop_bool", 
     "number", ["number","string","number"]);
-const object_get_prop_float = Module.cwrap("object_get_prop_float", 
+const tk_object_get_prop_float = Module.cwrap("tk_object_get_prop_float", 
     "number", ["number","string","number"]);
-const object_get_prop_double = Module.cwrap("object_get_prop_double", 
+const tk_object_get_prop_double = Module.cwrap("tk_object_get_prop_double", 
     "number", ["number","string","number"]);
-const object_remove_prop = Module.cwrap("object_remove_prop", 
+const tk_object_remove_prop = Module.cwrap("tk_object_remove_prop", 
     "number", ["number","string"]);
-const object_set_prop = Module.cwrap("object_set_prop", 
+const tk_object_set_prop = Module.cwrap("tk_object_set_prop", 
     "number", ["number","string","number"]);
-const object_set_prop_str = Module.cwrap("object_set_prop_str", 
+const tk_object_set_prop_str = Module.cwrap("tk_object_set_prop_str", 
     "number", ["number","string","string"]);
-const object_set_prop_object = Module.cwrap("object_set_prop_object", 
+const tk_object_set_prop_object = Module.cwrap("tk_object_set_prop_object", 
     "number", ["number","string","number"]);
-const object_set_prop_int = Module.cwrap("object_set_prop_int", 
+const tk_object_set_prop_int = Module.cwrap("tk_object_set_prop_int", 
     "number", ["number","string","number"]);
-const object_set_prop_bool = Module.cwrap("object_set_prop_bool", 
+const tk_object_set_prop_bool = Module.cwrap("tk_object_set_prop_bool", 
     "number", ["number","string","number"]);
-const object_set_prop_float = Module.cwrap("object_set_prop_float", 
+const tk_object_set_prop_float = Module.cwrap("tk_object_set_prop_float", 
     "number", ["number","string","number"]);
-const object_set_prop_double = Module.cwrap("object_set_prop_double", 
+const tk_object_set_prop_double = Module.cwrap("tk_object_set_prop_double", 
     "number", ["number","string","number"]);
-const object_copy_prop = Module.cwrap("object_copy_prop", 
+const tk_object_copy_prop = Module.cwrap("tk_object_copy_prop", 
     "number", ["number","number","string"]);
-const object_has_prop = Module.cwrap("object_has_prop", 
+const tk_object_copy_props = Module.cwrap("tk_object_copy_props", 
+    "number", ["number","number","number"]);
+const tk_object_has_prop = Module.cwrap("tk_object_has_prop", 
     "number", ["number","string"]);
-const object_eval = Module.cwrap("object_eval", 
+const tk_object_eval = Module.cwrap("tk_object_eval", 
     "number", ["number","string","number"]);
-const object_can_exec = Module.cwrap("object_can_exec", 
+const tk_object_can_exec = Module.cwrap("tk_object_can_exec", 
     "number", ["number","string","string"]);
-const object_exec = Module.cwrap("object_exec", 
+const tk_object_exec = Module.cwrap("tk_object_exec", 
     "number", ["number","string","string"]);
-const object_notify_changed = Module.cwrap("object_notify_changed", 
+const tk_object_notify_changed = Module.cwrap("tk_object_notify_changed", 
     "number", ["number"]);
-const object_has_prop_by_path = Module.cwrap("object_has_prop_by_path", 
+const tk_object_has_prop_by_path = Module.cwrap("tk_object_has_prop_by_path", 
     "number", ["number","string"]);
-const object_get_prop_str_by_path = Module.cwrap("object_get_prop_str_by_path", 
+const tk_object_get_prop_str_by_path = Module.cwrap("tk_object_get_prop_str_by_path", 
     "string", ["number","string"]);
-const object_get_prop_pointer_by_path = Module.cwrap("object_get_prop_pointer_by_path", 
+const tk_object_get_prop_pointer_by_path = Module.cwrap("tk_object_get_prop_pointer_by_path", 
     "number", ["number","string"]);
-const object_get_prop_object_by_path = Module.cwrap("object_get_prop_object_by_path", 
+const tk_object_get_prop_object_by_path = Module.cwrap("tk_object_get_prop_object_by_path", 
     "number", ["number","string"]);
-const object_get_prop_int_by_path = Module.cwrap("object_get_prop_int_by_path", 
+const tk_object_get_prop_int_by_path = Module.cwrap("tk_object_get_prop_int_by_path", 
     "number", ["number","string","number"]);
-const object_get_prop_bool_by_path = Module.cwrap("object_get_prop_bool_by_path", 
+const tk_object_get_prop_bool_by_path = Module.cwrap("tk_object_get_prop_bool_by_path", 
     "number", ["number","string","number"]);
-const object_get_prop_float_by_path = Module.cwrap("object_get_prop_float_by_path", 
+const tk_object_get_prop_float_by_path = Module.cwrap("tk_object_get_prop_float_by_path", 
     "number", ["number","string","number"]);
-const object_set_prop_by_path = Module.cwrap("object_set_prop_by_path", 
+const tk_object_set_prop_by_path = Module.cwrap("tk_object_set_prop_by_path", 
     "number", ["number","string","number"]);
-const object_set_prop_str_by_path = Module.cwrap("object_set_prop_str_by_path", 
+const tk_object_set_prop_str_by_path = Module.cwrap("tk_object_set_prop_str_by_path", 
     "number", ["number","string","string"]);
-const object_set_prop_object_by_path = Module.cwrap("object_set_prop_object_by_path", 
+const tk_object_set_prop_object_by_path = Module.cwrap("tk_object_set_prop_object_by_path", 
     "number", ["number","string","number"]);
-const object_set_prop_int_by_path = Module.cwrap("object_set_prop_int_by_path", 
+const tk_object_set_prop_int_by_path = Module.cwrap("tk_object_set_prop_int_by_path", 
     "number", ["number","string","number"]);
-const object_set_prop_bool_by_path = Module.cwrap("object_set_prop_bool_by_path", 
+const tk_object_set_prop_bool_by_path = Module.cwrap("tk_object_set_prop_bool_by_path", 
     "number", ["number","string","number"]);
-const object_set_prop_float_by_path = Module.cwrap("object_set_prop_float_by_path", 
+const tk_object_set_prop_float_by_path = Module.cwrap("tk_object_set_prop_float_by_path", 
     "number", ["number","string","number"]);
-const object_can_exec_by_path = Module.cwrap("object_can_exec_by_path", 
+const tk_object_can_exec_by_path = Module.cwrap("tk_object_can_exec_by_path", 
     "number", ["number","string","string"]);
-const object_exec_by_path = Module.cwrap("object_exec_by_path", 
+const tk_object_exec_by_path = Module.cwrap("tk_object_exec_by_path", 
     "number", ["number","string","string"]);
-const object_get_prop_int8 = Module.cwrap("object_get_prop_int8", 
+const tk_object_get_prop_int8 = Module.cwrap("tk_object_get_prop_int8", 
     "number", ["number","string","number"]);
-const object_set_prop_int8 = Module.cwrap("object_set_prop_int8", 
+const tk_object_set_prop_int8 = Module.cwrap("tk_object_set_prop_int8", 
     "number", ["number","string","number"]);
-const object_get_prop_uint8 = Module.cwrap("object_get_prop_uint8", 
+const tk_object_get_prop_uint8 = Module.cwrap("tk_object_get_prop_uint8", 
     "number", ["number","string","number"]);
-const object_set_prop_uint8 = Module.cwrap("object_set_prop_uint8", 
+const tk_object_set_prop_uint8 = Module.cwrap("tk_object_set_prop_uint8", 
     "number", ["number","string","number"]);
-const object_get_prop_int16 = Module.cwrap("object_get_prop_int16", 
+const tk_object_get_prop_int16 = Module.cwrap("tk_object_get_prop_int16", 
     "number", ["number","string","number"]);
-const object_set_prop_int16 = Module.cwrap("object_set_prop_int16", 
+const tk_object_set_prop_int16 = Module.cwrap("tk_object_set_prop_int16", 
     "number", ["number","string","number"]);
-const object_get_prop_uint16 = Module.cwrap("object_get_prop_uint16", 
+const tk_object_get_prop_uint16 = Module.cwrap("tk_object_get_prop_uint16", 
     "number", ["number","string","number"]);
-const object_set_prop_uint16 = Module.cwrap("object_set_prop_uint16", 
+const tk_object_set_prop_uint16 = Module.cwrap("tk_object_set_prop_uint16", 
     "number", ["number","string","number"]);
-const object_get_prop_int32 = Module.cwrap("object_get_prop_int32", 
+const tk_object_get_prop_int32 = Module.cwrap("tk_object_get_prop_int32", 
     "number", ["number","string","number"]);
-const object_set_prop_int32 = Module.cwrap("object_set_prop_int32", 
+const tk_object_set_prop_int32 = Module.cwrap("tk_object_set_prop_int32", 
     "number", ["number","string","number"]);
-const object_get_prop_uint32 = Module.cwrap("object_get_prop_uint32", 
+const tk_object_get_prop_uint32 = Module.cwrap("tk_object_get_prop_uint32", 
     "number", ["number","string","number"]);
-const object_set_prop_uint32 = Module.cwrap("object_set_prop_uint32", 
+const tk_object_set_prop_uint32 = Module.cwrap("tk_object_set_prop_uint32", 
     "number", ["number","string","number"]);
-const object_get_prop_int64 = Module.cwrap("object_get_prop_int64", 
+const tk_object_get_prop_int64 = Module.cwrap("tk_object_get_prop_int64", 
     "number", ["number","string","number"]);
-const object_set_prop_int64 = Module.cwrap("object_set_prop_int64", 
+const tk_object_set_prop_int64 = Module.cwrap("tk_object_set_prop_int64", 
     "number", ["number","string","number"]);
-const object_get_prop_uint64 = Module.cwrap("object_get_prop_uint64", 
+const tk_object_get_prop_uint64 = Module.cwrap("tk_object_get_prop_uint64", 
     "number", ["number","string","number"]);
-const object_set_prop_uint64 = Module.cwrap("object_set_prop_uint64", 
+const tk_object_set_prop_uint64 = Module.cwrap("tk_object_set_prop_uint64", 
     "number", ["number","string","number"]);
-const object_t_get_prop_ref_count = Module.cwrap("object_t_get_prop_ref_count", 
+const tk_object_t_get_prop_ref_count = Module.cwrap("tk_object_t_get_prop_ref_count", 
     "number", ["number"]);
-const object_t_get_prop_name = Module.cwrap("object_t_get_prop_name", 
+const tk_object_t_get_prop_name = Module.cwrap("tk_object_t_get_prop_name", 
     "string", ["number"]);
 const value_set_bool = Module.cwrap("value_set_bool", 
     "number", ["number","number"]);
@@ -260,6 +262,10 @@ const value_str_ex = Module.cwrap("value_str_ex",
     "string", ["number","string","number"]);
 const value_is_null = Module.cwrap("value_is_null", 
     "number", ["number"]);
+const value_equal = Module.cwrap("value_equal", 
+    "number", ["number","number"]);
+const value_int = Module.cwrap("value_int", 
+    "number", ["number"]);
 const value_set_int = Module.cwrap("value_set_int", 
     "number", ["number","number"]);
 const value_set_object = Module.cwrap("value_set_object", 
@@ -278,12 +284,26 @@ const value_reset = Module.cwrap("value_reset",
     "number", ["number"]);
 const value_cast = Module.cwrap("value_cast", 
     "number", ["number"]);
+const value_id = Module.cwrap("value_id", 
+    "string", ["number"]);
+const value_func = Module.cwrap("value_func", 
+    "number", ["number"]);
+const value_func_def = Module.cwrap("value_func_def", 
+    "number", ["number"]);
+const value_bitmap = Module.cwrap("value_bitmap", 
+    "number", ["number"]);
+const value_rect = Module.cwrap("value_rect", 
+    "number", ["number"]);
+const tk_pre_init = Module.cwrap("tk_pre_init", 
+    "number", []);
 const tk_init = Module.cwrap("tk_init", 
     "number", ["number","number","number","string","string"]);
 const tk_run = Module.cwrap("tk_run", 
     "number", []);
 const tk_quit = Module.cwrap("tk_quit", 
     "number", []);
+const tk_quit_ex = Module.cwrap("tk_quit_ex", 
+    "number", ["number"]);
 const tk_get_pointer_x = Module.cwrap("tk_get_pointer_x", 
     "number", []);
 const tk_get_pointer_y = Module.cwrap("tk_get_pointer_y", 
@@ -319,6 +339,8 @@ const IMAGE_DRAW_SCALE_DOWN = Module.cwrap("get_IMAGE_DRAW_SCALE_DOWN",
 const IMAGE_DRAW_SCALE_W = Module.cwrap("get_IMAGE_DRAW_SCALE_W", 
     "number", []);
 const IMAGE_DRAW_SCALE_H = Module.cwrap("get_IMAGE_DRAW_SCALE_H", 
+    "number", []);
+const IMAGE_DRAW_FILL = Module.cwrap("get_IMAGE_DRAW_FILL", 
     "number", []);
 const IMAGE_DRAW_REPEAT = Module.cwrap("get_IMAGE_DRAW_REPEAT", 
     "number", []);
@@ -372,14 +394,14 @@ const canvas_draw_hline = Module.cwrap("canvas_draw_hline",
     "number", ["number","number","number","number"]);
 const canvas_fill_rect = Module.cwrap("canvas_fill_rect", 
     "number", ["number","number","number","number","number"]);
-const canvas_fill_rect_gradient = Module.cwrap("canvas_fill_rect_gradient", 
-    "number", ["number","number","number","number","number","number"]);
 const canvas_clear_rect = Module.cwrap("canvas_clear_rect", 
     "number", ["number","number","number","number","number"]);
 const canvas_stroke_rect = Module.cwrap("canvas_stroke_rect", 
     "number", ["number","number","number","number","number"]);
 const canvas_set_font = Module.cwrap("canvas_set_font", 
     "number", ["number","string","number"]);
+const canvas_reset_font = Module.cwrap("canvas_reset_font", 
+    "number", ["number"]);
 const canvas_measure_utf8 = Module.cwrap("canvas_measure_utf8", 
     "number", ["number","string"]);
 const canvas_draw_utf8 = Module.cwrap("canvas_draw_utf8", 
@@ -399,6 +421,8 @@ const canvas_get_vgcanvas = Module.cwrap("canvas_get_vgcanvas",
 const canvas_cast = Module.cwrap("canvas_cast", 
     "number", ["number"]);
 const canvas_reset = Module.cwrap("canvas_reset", 
+    "number", ["number"]);
+const canvas_reset_cache = Module.cwrap("canvas_reset_cache", 
     "number", ["number"]);
 const canvas_t_get_prop_ox = Module.cwrap("canvas_t_get_prop_ox", 
     "number", ["number"]);
@@ -458,6 +482,8 @@ const EVT_LONG_PRESS = Module.cwrap("get_EVT_LONG_PRESS",
     "number", []);
 const EVT_CLICK = Module.cwrap("get_EVT_CLICK", 
     "number", []);
+const EVT_DOUBLE_CLICK = Module.cwrap("get_EVT_DOUBLE_CLICK", 
+    "number", []);
 const EVT_FOCUS = Module.cwrap("get_EVT_FOCUS", 
     "number", []);
 const EVT_BLUR = Module.cwrap("get_EVT_BLUR", 
@@ -485,12 +511,6 @@ const EVT_RESIZE = Module.cwrap("get_EVT_RESIZE",
 const EVT_WILL_MOVE_RESIZE = Module.cwrap("get_EVT_WILL_MOVE_RESIZE", 
     "number", []);
 const EVT_MOVE_RESIZE = Module.cwrap("get_EVT_MOVE_RESIZE", 
-    "number", []);
-const EVT_VALUE_WILL_CHANGE = Module.cwrap("get_EVT_VALUE_WILL_CHANGE", 
-    "number", []);
-const EVT_VALUE_CHANGED = Module.cwrap("get_EVT_VALUE_CHANGED", 
-    "number", []);
-const EVT_VALUE_CHANGING = Module.cwrap("get_EVT_VALUE_CHANGING", 
     "number", []);
 const EVT_PAINT = Module.cwrap("get_EVT_PAINT", 
     "number", []);
@@ -578,7 +598,13 @@ const EVT_WIDGET_CREATED = Module.cwrap("get_EVT_WIDGET_CREATED",
     "number", []);
 const EVT_REQUEST_QUIT_APP = Module.cwrap("get_EVT_REQUEST_QUIT_APP", 
     "number", []);
+const EVT_THEME_WILL_CHANGE = Module.cwrap("get_EVT_THEME_WILL_CHANGE", 
+    "number", []);
 const EVT_THEME_CHANGED = Module.cwrap("get_EVT_THEME_CHANGED", 
+    "number", []);
+const EVT_WIDGET_WILL_UPDATE_STYLE = Module.cwrap("get_EVT_WIDGET_WILL_UPDATE_STYLE", 
+    "number", []);
+const EVT_WIDGET_UPDATE_STYLE = Module.cwrap("get_EVT_WIDGET_UPDATE_STYLE", 
     "number", []);
 const EVT_WIDGET_ADD_CHILD = Module.cwrap("get_EVT_WIDGET_ADD_CHILD", 
     "number", []);
@@ -594,6 +620,8 @@ const EVT_MULTI_GESTURE = Module.cwrap("get_EVT_MULTI_GESTURE",
     "number", []);
 const EVT_PAGE_CHANGED = Module.cwrap("get_EVT_PAGE_CHANGED", 
     "number", []);
+const EVT_PAGE_CHANGING = Module.cwrap("get_EVT_PAGE_CHANGING", 
+    "number", []);
 const EVT_ASSET_MANAGER_LOAD_ASSET = Module.cwrap("get_EVT_ASSET_MANAGER_LOAD_ASSET", 
     "number", []);
 const EVT_ASSET_MANAGER_UNLOAD_ASSET = Module.cwrap("get_EVT_ASSET_MANAGER_UNLOAD_ASSET", 
@@ -601,6 +629,26 @@ const EVT_ASSET_MANAGER_UNLOAD_ASSET = Module.cwrap("get_EVT_ASSET_MANAGER_UNLOA
 const EVT_ASSET_MANAGER_CLEAR_CACHE = Module.cwrap("get_EVT_ASSET_MANAGER_CLEAR_CACHE", 
     "number", []);
 const EVT_TIMER = Module.cwrap("get_EVT_TIMER", 
+    "number", []);
+const EVT_DATA = Module.cwrap("get_EVT_DATA", 
+    "number", []);
+const EVT_CONNECT = Module.cwrap("get_EVT_CONNECT", 
+    "number", []);
+const EVT_MODEL_CHANGE = Module.cwrap("get_EVT_MODEL_CHANGE", 
+    "number", []);
+const EVT_SYSTEM = Module.cwrap("get_EVT_SYSTEM", 
+    "number", []);
+const EVT_DROP_FILE = Module.cwrap("get_EVT_DROP_FILE", 
+    "number", []);
+const EVT_LOCALE_INFOS_LOAD_INFO = Module.cwrap("get_EVT_LOCALE_INFOS_LOAD_INFO", 
+    "number", []);
+const EVT_LOCALE_INFOS_UNLOAD_INFO = Module.cwrap("get_EVT_LOCALE_INFOS_UNLOAD_INFO", 
+    "number", []);
+const EVT_ACTIVATED = Module.cwrap("get_EVT_ACTIVATED", 
+    "number", []);
+const EVT_UNACTIVATED = Module.cwrap("get_EVT_UNACTIVATED", 
+    "number", []);
+const EVT_UI_LOAD = Module.cwrap("get_EVT_UI_LOAD", 
     "number", []);
 const EVT_REQ_START = Module.cwrap("get_EVT_REQ_START", 
     "number", []);
@@ -632,6 +680,14 @@ const EVT_ERROR = Module.cwrap("get_EVT_ERROR",
     "number", []);
 const EVT_DESTROY = Module.cwrap("get_EVT_DESTROY", 
     "number", []);
+const EVT_VALUE_WILL_CHANGE = Module.cwrap("get_EVT_VALUE_WILL_CHANGE", 
+    "number", []);
+const EVT_VALUE_CHANGED = Module.cwrap("get_EVT_VALUE_CHANGED", 
+    "number", []);
+const EVT_VALUE_CHANGING = Module.cwrap("get_EVT_VALUE_CHANGING", 
+    "number", []);
+const EVT_LOG_MESSAGE = Module.cwrap("get_EVT_LOG_MESSAGE", 
+    "number", []);
 const event_from_name = Module.cwrap("event_from_name", 
     "number", ["string"]);
 const event_cast = Module.cwrap("event_cast", 
@@ -650,17 +706,15 @@ const event_t_get_prop_time = Module.cwrap("event_t_get_prop_time",
     "number", ["number"]);
 const event_t_get_prop_target = Module.cwrap("event_t_get_prop_target", 
     "number", ["number"]);
-const font_manager_unload_font = Module.cwrap("font_manager_unload_font", 
-    "number", ["number","string","number"]);
-const font_manager_shrink_cache = Module.cwrap("font_manager_shrink_cache", 
-    "number", ["number","number"]);
-const font_manager_unload_all = Module.cwrap("font_manager_unload_all", 
-    "number", ["number"]);
 const GLYPH_FMT_ALPHA = Module.cwrap("get_GLYPH_FMT_ALPHA", 
     "number", []);
 const GLYPH_FMT_MONO = Module.cwrap("get_GLYPH_FMT_MONO", 
     "number", []);
 const GLYPH_FMT_RGBA = Module.cwrap("get_GLYPH_FMT_RGBA", 
+    "number", []);
+const GLYPH_FMT_ALPHA2 = Module.cwrap("get_GLYPH_FMT_ALPHA2", 
+    "number", []);
+const GLYPH_FMT_ALPHA4 = Module.cwrap("get_GLYPH_FMT_ALPHA4", 
     "number", []);
 const idle_add = Module.cwrap("idle_add", 
     "number", ["number","number"]);
@@ -986,6 +1040,40 @@ const TK_KEY_BACK = Module.cwrap("get_TK_KEY_BACK",
     "number", []);
 const TK_KEY_CANCEL = Module.cwrap("get_TK_KEY_CANCEL", 
     "number", []);
+const TK_KEY_KP_DIVIDE = Module.cwrap("get_TK_KEY_KP_DIVIDE", 
+    "number", []);
+const TK_KEY_KP_MULTIPLY = Module.cwrap("get_TK_KEY_KP_MULTIPLY", 
+    "number", []);
+const TK_KEY_KP_MINUS = Module.cwrap("get_TK_KEY_KP_MINUS", 
+    "number", []);
+const TK_KEY_KP_PLUS = Module.cwrap("get_TK_KEY_KP_PLUS", 
+    "number", []);
+const TK_KEY_KP_ENTER = Module.cwrap("get_TK_KEY_KP_ENTER", 
+    "number", []);
+const TK_KEY_KP_1 = Module.cwrap("get_TK_KEY_KP_1", 
+    "number", []);
+const TK_KEY_KP_2 = Module.cwrap("get_TK_KEY_KP_2", 
+    "number", []);
+const TK_KEY_KP_3 = Module.cwrap("get_TK_KEY_KP_3", 
+    "number", []);
+const TK_KEY_KP_4 = Module.cwrap("get_TK_KEY_KP_4", 
+    "number", []);
+const TK_KEY_KP_5 = Module.cwrap("get_TK_KEY_KP_5", 
+    "number", []);
+const TK_KEY_KP_6 = Module.cwrap("get_TK_KEY_KP_6", 
+    "number", []);
+const TK_KEY_KP_7 = Module.cwrap("get_TK_KEY_KP_7", 
+    "number", []);
+const TK_KEY_KP_8 = Module.cwrap("get_TK_KEY_KP_8", 
+    "number", []);
+const TK_KEY_KP_9 = Module.cwrap("get_TK_KEY_KP_9", 
+    "number", []);
+const TK_KEY_KP_0 = Module.cwrap("get_TK_KEY_KP_0", 
+    "number", []);
+const TK_KEY_KP_PERIOD = Module.cwrap("get_TK_KEY_KP_PERIOD", 
+    "number", []);
+const TK_KEY_NUMLOCKCLEAR = Module.cwrap("get_TK_KEY_NUMLOCKCLEAR", 
+    "number", []);
 const TK_KEY_WHEEL = Module.cwrap("get_TK_KEY_WHEEL", 
     "number", []);
 const locale_info = Module.cwrap("locale_info", 
@@ -996,9 +1084,23 @@ const locale_info_change = Module.cwrap("locale_info_change",
     "number", ["number","string","string"]);
 const locale_info_off = Module.cwrap("locale_info_off", 
     "number", ["number","number"]);
+const locale_infos_ref = Module.cwrap("locale_infos_ref", 
+    "number", ["string"]);
+const locale_infos_unref = Module.cwrap("locale_infos_unref", 
+    "number", ["number"]);
+const locale_infos_change = Module.cwrap("locale_infos_change", 
+    "number", ["string","string"]);
+const locale_infos_on = Module.cwrap("locale_infos_on", 
+    "number", ["number","number","number"]);
+const locale_infos_off = Module.cwrap("locale_infos_off", 
+    "number", ["number"]);
+const locale_infos_reload_all = Module.cwrap("locale_infos_reload_all", 
+    "number", []);
 const STYLE_ID_BG_COLOR = Module.cwrap("get_STYLE_ID_BG_COLOR", 
     "string", []);
 const STYLE_ID_FG_COLOR = Module.cwrap("get_STYLE_ID_FG_COLOR", 
+    "string", []);
+const STYLE_ID_DRAGGER_COLOR = Module.cwrap("get_STYLE_ID_DRAGGER_COLOR", 
     "string", []);
 const STYLE_ID_MASK_COLOR = Module.cwrap("get_STYLE_ID_MASK_COLOR", 
     "string", []);
@@ -1066,11 +1168,11 @@ const STYLE_ID_SELECTED_TEXT_COLOR = Module.cwrap("get_STYLE_ID_SELECTED_TEXT_CO
     "string", []);
 const STYLE_ID_ROUND_RADIUS = Module.cwrap("get_STYLE_ID_ROUND_RADIUS", 
     "string", []);
-const STYLE_ID_ROUND_RADIUS_TOP_LETF = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_TOP_LETF", 
+const STYLE_ID_ROUND_RADIUS_TOP_LEFT = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_TOP_LEFT", 
     "string", []);
 const STYLE_ID_ROUND_RADIUS_TOP_RIGHT = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_TOP_RIGHT", 
     "string", []);
-const STYLE_ID_ROUND_RADIUS_BOTTOM_LETF = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_BOTTOM_LETF", 
+const STYLE_ID_ROUND_RADIUS_BOTTOM_LEFT = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_BOTTOM_LEFT", 
     "string", []);
 const STYLE_ID_ROUND_RADIUS_BOTTOM_RIGHT = Module.cwrap("get_STYLE_ID_ROUND_RADIUS_BOTTOM_RIGHT", 
     "string", []);
@@ -1082,6 +1184,14 @@ const STYLE_ID_FOCUSABLE = Module.cwrap("get_STYLE_ID_FOCUSABLE",
     "string", []);
 const STYLE_ID_FEEDBACK = Module.cwrap("get_STYLE_ID_FEEDBACK", 
     "string", []);
+const STYLE_ID_CLEAR_BG = Module.cwrap("get_STYLE_ID_CLEAR_BG", 
+    "string", []);
+const STYLE_ID_GRID_COLOR = Module.cwrap("get_STYLE_ID_GRID_COLOR", 
+    "string", []);
+const STYLE_ID_EVEN_BG_COLOR = Module.cwrap("get_STYLE_ID_EVEN_BG_COLOR", 
+    "string", []);
+const STYLE_ID_ODD_BG_COLOR = Module.cwrap("get_STYLE_ID_ODD_BG_COLOR", 
+    "string", []);
 const style_notify_widget_state_changed = Module.cwrap("style_notify_widget_state_changed", 
     "number", ["number","number"]);
 const style_is_valid = Module.cwrap("style_is_valid", 
@@ -1092,6 +1202,8 @@ const style_get_uint = Module.cwrap("style_get_uint",
     "number", ["number","string","number"]);
 const style_get_str = Module.cwrap("style_get_str", 
     "string", ["number","string","string"]);
+const style_get = Module.cwrap("style_get", 
+    "number", ["number","string","string","number"]);
 const style_set = Module.cwrap("style_set", 
     "number", ["number","string","string","number"]);
 const style_update_state = Module.cwrap("style_update_state", 
@@ -1102,6 +1214,10 @@ const style_is_mutable = Module.cwrap("style_is_mutable",
     "number", ["number"]);
 const style_get_style_type = Module.cwrap("style_get_style_type", 
     "string", ["number"]);
+const SYSTEM_INFO_FLAG_NONE = Module.cwrap("get_SYSTEM_INFO_FLAG_NONE", 
+    "number", []);
+const SYSTEM_INFO_FLAG_FAST_LCD_PORTRAIT = Module.cwrap("get_SYSTEM_INFO_FLAG_FAST_LCD_PORTRAIT", 
+    "number", []);
 const theme = Module.cwrap("theme", 
     "number", []);
 const timer_add = Module.cwrap("timer_add", 
@@ -1140,6 +1256,8 @@ const APP_SIMULATOR = Module.cwrap("get_APP_SIMULATOR",
     "number", []);
 const APP_DESKTOP = Module.cwrap("get_APP_DESKTOP", 
     "number", []);
+const APP_CONSOLE = Module.cwrap("get_APP_CONSOLE", 
+    "number", []);
 const BITMAP_FMT_NONE = Module.cwrap("get_BITMAP_FMT_NONE", 
     "number", []);
 const BITMAP_FMT_RGBA8888 = Module.cwrap("get_BITMAP_FMT_RGBA8888", 
@@ -1173,6 +1291,10 @@ const BITMAP_FLAG_TEXTURE = Module.cwrap("get_BITMAP_FLAG_TEXTURE",
 const BITMAP_FLAG_CHANGED = Module.cwrap("get_BITMAP_FLAG_CHANGED", 
     "number", []);
 const BITMAP_FLAG_PREMULTI_ALPHA = Module.cwrap("get_BITMAP_FLAG_PREMULTI_ALPHA", 
+    "number", []);
+const BITMAP_FLAG_LCD_ORIENTATION = Module.cwrap("get_BITMAP_FLAG_LCD_ORIENTATION", 
+    "number", []);
+const BITMAP_FLAG_GPU_FBO_TEXTURE = Module.cwrap("get_BITMAP_FLAG_GPU_FBO_TEXTURE", 
     "number", []);
 const vgcanvas_cast = Module.cwrap("vgcanvas_cast", 
     "number", ["number"]);
@@ -1218,6 +1340,8 @@ const vgcanvas_clip_path = Module.cwrap("vgcanvas_clip_path",
     "number", ["number"]);
 const vgcanvas_clip_rect = Module.cwrap("vgcanvas_clip_rect", 
     "number", ["number","number","number","number","number"]);
+const vgcanvas_is_rectf_in_clip_rect = Module.cwrap("vgcanvas_is_rectf_in_clip_rect", 
+    "number", ["number","number","number","number","number"]);
 const vgcanvas_intersect_clip_rect = Module.cwrap("vgcanvas_intersect_clip_rect", 
     "number", ["number","number","number","number","number"]);
 const vgcanvas_fill = Module.cwrap("vgcanvas_fill", 
@@ -1240,6 +1364,8 @@ const vgcanvas_measure_text = Module.cwrap("vgcanvas_measure_text",
     "number", ["number","string"]);
 const vgcanvas_draw_image = Module.cwrap("vgcanvas_draw_image", 
     "number", ["number","number","number","number","number","number","number","number","number","number"]);
+const vgcanvas_draw_image_repeat = Module.cwrap("vgcanvas_draw_image_repeat", 
+    "number", ["number","number","number","number","number","number","number","number","number","number","number","number"]);
 const vgcanvas_draw_icon = Module.cwrap("vgcanvas_draw_icon", 
     "number", ["number","number","number","number","number","number","number","number","number","number"]);
 const vgcanvas_set_antialias = Module.cwrap("vgcanvas_set_antialias", 
@@ -1334,6 +1460,8 @@ const WIDGET_PROP_CARET_X = Module.cwrap("get_WIDGET_PROP_CARET_X",
     "string", []);
 const WIDGET_PROP_CARET_Y = Module.cwrap("get_WIDGET_PROP_CARET_Y", 
     "string", []);
+const WIDGET_PROP_LINE_HEIGHT = Module.cwrap("get_WIDGET_PROP_LINE_HEIGHT", 
+    "string", []);
 const WIDGET_PROP_DIRTY_RECT_TOLERANCE = Module.cwrap("get_WIDGET_PROP_DIRTY_RECT_TOLERANCE", 
     "string", []);
 const WIDGET_PROP_BIDI = Module.cwrap("get_WIDGET_PROP_BIDI", 
@@ -1374,6 +1502,8 @@ const WIDGET_PROP_VIRTUAL_W = Module.cwrap("get_WIDGET_PROP_VIRTUAL_W",
     "string", []);
 const WIDGET_PROP_VIRTUAL_H = Module.cwrap("get_WIDGET_PROP_VIRTUAL_H", 
     "string", []);
+const WIDGET_PROP_LOADING = Module.cwrap("get_WIDGET_PROP_LOADING", 
+    "string", []);
 const WIDGET_PROP_NAME = Module.cwrap("get_WIDGET_PROP_NAME", 
     "string", []);
 const WIDGET_PROP_TYPE = Module.cwrap("get_WIDGET_PROP_TYPE", 
@@ -1383,6 +1513,8 @@ const WIDGET_PROP_CLOSABLE = Module.cwrap("get_WIDGET_PROP_CLOSABLE",
 const WIDGET_PROP_POINTER_CURSOR = Module.cwrap("get_WIDGET_PROP_POINTER_CURSOR", 
     "string", []);
 const WIDGET_PROP_VALUE = Module.cwrap("get_WIDGET_PROP_VALUE", 
+    "string", []);
+const WIDGET_PROP_EASY_TOUCH_MODE = Module.cwrap("get_WIDGET_PROP_EASY_TOUCH_MODE", 
     "string", []);
 const WIDGET_PROP_RADIO = Module.cwrap("get_WIDGET_PROP_RADIO", 
     "string", []);
@@ -1394,11 +1526,15 @@ const WIDGET_PROP_LINE_WRAP = Module.cwrap("get_WIDGET_PROP_LINE_WRAP",
     "string", []);
 const WIDGET_PROP_WORD_WRAP = Module.cwrap("get_WIDGET_PROP_WORD_WRAP", 
     "string", []);
+const WIDGET_PROP_ELLIPSES = Module.cwrap("get_WIDGET_PROP_ELLIPSES", 
+    "string", []);
 const WIDGET_PROP_TEXT = Module.cwrap("get_WIDGET_PROP_TEXT", 
     "string", []);
 const WIDGET_PROP_TR_TEXT = Module.cwrap("get_WIDGET_PROP_TR_TEXT", 
     "string", []);
 const WIDGET_PROP_STYLE = Module.cwrap("get_WIDGET_PROP_STYLE", 
+    "string", []);
+const WIDGET_PROP_STATE = Module.cwrap("get_WIDGET_PROP_STATE", 
     "string", []);
 const WIDGET_PROP_ENABLE = Module.cwrap("get_WIDGET_PROP_ENABLE", 
     "string", []);
@@ -1423,6 +1559,8 @@ const WIDGET_PROP_STEP = Module.cwrap("get_WIDGET_PROP_STEP",
 const WIDGET_PROP_VISIBLE = Module.cwrap("get_WIDGET_PROP_VISIBLE", 
     "string", []);
 const WIDGET_PROP_SENSITIVE = Module.cwrap("get_WIDGET_PROP_SENSITIVE", 
+    "string", []);
+const WIDGET_PROP_APPLET_NAME = Module.cwrap("get_WIDGET_PROP_APPLET_NAME", 
     "string", []);
 const WIDGET_PROP_ANIMATION = Module.cwrap("get_WIDGET_PROP_ANIMATION", 
     "string", []);
@@ -1477,6 +1615,8 @@ const WIDGET_PROP_ALIGN_H = Module.cwrap("get_WIDGET_PROP_ALIGN_H",
 const WIDGET_PROP_AUTO_PLAY = Module.cwrap("get_WIDGET_PROP_AUTO_PLAY", 
     "string", []);
 const WIDGET_PROP_LOOP = Module.cwrap("get_WIDGET_PROP_LOOP", 
+    "string", []);
+const WIDGET_PROP_RUNNING = Module.cwrap("get_WIDGET_PROP_RUNNING", 
     "string", []);
 const WIDGET_PROP_AUTO_FIX = Module.cwrap("get_WIDGET_PROP_AUTO_FIX", 
     "string", []);
@@ -1534,6 +1674,8 @@ const WIDGET_PROP_LONG_PRESS_TIME = Module.cwrap("get_WIDGET_PROP_LONG_PRESS_TIM
     "string", []);
 const WIDGET_PROP_ENABLE_LONG_PRESS = Module.cwrap("get_WIDGET_PROP_ENABLE_LONG_PRESS", 
     "string", []);
+const WIDGET_PROP_ENABLE_PREVIEW = Module.cwrap("get_WIDGET_PROP_ENABLE_PREVIEW", 
+    "string", []);
 const WIDGET_PROP_CLICK_THROUGH = Module.cwrap("get_WIDGET_PROP_CLICK_THROUGH", 
     "string", []);
 const WIDGET_PROP_ANIMATABLE = Module.cwrap("get_WIDGET_PROP_ANIMATABLE", 
@@ -1580,6 +1722,8 @@ const WIDGET_PROP_LOAD_UI = Module.cwrap("get_WIDGET_PROP_LOAD_UI",
     "string", []);
 const WIDGET_PROP_OPEN_WINDOW = Module.cwrap("get_WIDGET_PROP_OPEN_WINDOW", 
     "string", []);
+const WIDGET_PROP_THEME_OF_POPUP = Module.cwrap("get_WIDGET_PROP_THEME_OF_POPUP", 
+    "string", []);
 const WIDGET_PROP_SELECTED_INDEX = Module.cwrap("get_WIDGET_PROP_SELECTED_INDEX", 
     "string", []);
 const WIDGET_PROP_CLOSE_WHEN_CLICK = Module.cwrap("get_WIDGET_PROP_CLOSE_WHEN_CLICK", 
@@ -1618,6 +1762,30 @@ const WIDGET_PROP_MOVE_FOCUS_LEFT_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS
     "string", []);
 const WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY = Module.cwrap("get_WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY", 
     "string", []);
+const WIDGET_PROP_ROWS = Module.cwrap("get_WIDGET_PROP_ROWS", 
+    "string", []);
+const WIDGET_PROP_SHOW_GRID = Module.cwrap("get_WIDGET_PROP_SHOW_GRID", 
+    "string", []);
+const WIDGET_PROP_COLUMNS_DEFINITION = Module.cwrap("get_WIDGET_PROP_COLUMNS_DEFINITION", 
+    "string", []);
+const WIDGET_PROP_DRAG_THRESHOLD = Module.cwrap("get_WIDGET_PROP_DRAG_THRESHOLD", 
+    "string", []);
+const WIDGET_PROP_ANIMATING_TIME = Module.cwrap("get_WIDGET_PROP_ANIMATING_TIME", 
+    "string", []);
+const WIDGET_PROP_ANIMATE_PREFIX = Module.cwrap("get_WIDGET_PROP_ANIMATE_PREFIX", 
+    "string", []);
+const WIDGET_PROP_ANIMATE_ANIMATING_TIME = Module.cwrap("get_WIDGET_PROP_ANIMATE_ANIMATING_TIME", 
+    "string", []);
+const WIDGET_PROP_DIRTY_RECT = Module.cwrap("get_WIDGET_PROP_DIRTY_RECT", 
+    "string", []);
+const WIDGET_PROP_SCREEN_SAVER_TIME = Module.cwrap("get_WIDGET_PROP_SCREEN_SAVER_TIME", 
+    "string", []);
+const WIDGET_PROP_SHOW_FPS = Module.cwrap("get_WIDGET_PROP_SHOW_FPS", 
+    "string", []);
+const WIDGET_PROP_MAX_FPS = Module.cwrap("get_WIDGET_PROP_MAX_FPS", 
+    "string", []);
+const WIDGET_PROP_VALIDATOR = Module.cwrap("get_WIDGET_PROP_VALIDATOR", 
+    "string", []);
 const WIDGET_TYPE_NONE = Module.cwrap("get_WIDGET_TYPE_NONE", 
     "string", []);
 const WIDGET_TYPE_WINDOW_MANAGER = Module.cwrap("get_WIDGET_TYPE_WINDOW_MANAGER", 
@@ -1648,6 +1816,8 @@ const WIDGET_TYPE_BUTTON = Module.cwrap("get_WIDGET_TYPE_BUTTON",
     "string", []);
 const WIDGET_TYPE_IMAGE = Module.cwrap("get_WIDGET_TYPE_IMAGE", 
     "string", []);
+const WIDGET_TYPE_ICON = Module.cwrap("get_WIDGET_TYPE_ICON", 
+    "string", []);
 const WIDGET_TYPE_EDIT = Module.cwrap("get_WIDGET_TYPE_EDIT", 
     "string", []);
 const WIDGET_TYPE_PROGRESS_BAR = Module.cwrap("get_WIDGET_TYPE_PROGRESS_BAR", 
@@ -1665,6 +1835,8 @@ const WIDGET_TYPE_DIALOG_CLIENT = Module.cwrap("get_WIDGET_TYPE_DIALOG_CLIENT",
 const WIDGET_TYPE_SLIDER = Module.cwrap("get_WIDGET_TYPE_SLIDER", 
     "string", []);
 const WIDGET_TYPE_VIEW = Module.cwrap("get_WIDGET_TYPE_VIEW", 
+    "string", []);
+const WIDGET_TYPE_PAGE = Module.cwrap("get_WIDGET_TYPE_PAGE", 
     "string", []);
 const WIDGET_TYPE_COMBO_BOX = Module.cwrap("get_WIDGET_TYPE_COMBO_BOX", 
     "string", []);
@@ -1750,6 +1922,8 @@ const WIDGET_STATE_NONE = Module.cwrap("get_WIDGET_STATE_NONE",
     "string", []);
 const WIDGET_STATE_NORMAL = Module.cwrap("get_WIDGET_STATE_NORMAL", 
     "string", []);
+const WIDGET_STATE_ACTIVATED = Module.cwrap("get_WIDGET_STATE_ACTIVATED", 
+    "string", []);
 const WIDGET_STATE_CHANGED = Module.cwrap("get_WIDGET_STATE_CHANGED", 
     "string", []);
 const WIDGET_STATE_PRESSED = Module.cwrap("get_WIDGET_STATE_PRESSED", 
@@ -1767,6 +1941,8 @@ const WIDGET_STATE_UNCHECKED = Module.cwrap("get_WIDGET_STATE_UNCHECKED",
 const WIDGET_STATE_EMPTY = Module.cwrap("get_WIDGET_STATE_EMPTY", 
     "string", []);
 const WIDGET_STATE_EMPTY_FOCUS = Module.cwrap("get_WIDGET_STATE_EMPTY_FOCUS", 
+    "string", []);
+const WIDGET_STATE_EMPTY_OVER = Module.cwrap("get_WIDGET_STATE_EMPTY_OVER", 
     "string", []);
 const WIDGET_STATE_ERROR = Module.cwrap("get_WIDGET_STATE_ERROR", 
     "string", []);
@@ -1818,6 +1994,10 @@ const widget_count_children = Module.cwrap("widget_count_children",
     "number", ["number"]);
 const widget_get_child = Module.cwrap("widget_get_child", 
     "number", ["number","number"]);
+const widget_find_parent_by_name = Module.cwrap("widget_find_parent_by_name", 
+    "number", ["number","string"]);
+const widget_find_parent_by_type = Module.cwrap("widget_find_parent_by_type", 
+    "number", ["number","string"]);
 const widget_get_focused_widget = Module.cwrap("widget_get_focused_widget", 
     "number", ["number"]);
 const widget_get_native_window = Module.cwrap("widget_get_native_window", 
@@ -1834,22 +2014,40 @@ const widget_back_to_home = Module.cwrap("widget_back_to_home",
     "number", ["number"]);
 const widget_move = Module.cwrap("widget_move", 
     "number", ["number","number","number"]);
+const widget_move_to_center = Module.cwrap("widget_move_to_center", 
+    "number", ["number"]);
 const widget_resize = Module.cwrap("widget_resize", 
     "number", ["number","number","number"]);
 const widget_move_resize = Module.cwrap("widget_move_resize", 
     "number", ["number","number","number","number","number"]);
+const widget_move_resize_ex = Module.cwrap("widget_move_resize_ex", 
+    "number", ["number","number","number","number","number","number"]);
+const widget_get_value = Module.cwrap("widget_get_value", 
+    "number", ["number"]);
 const widget_set_value = Module.cwrap("widget_set_value", 
+    "number", ["number","number"]);
+const widget_add_value = Module.cwrap("widget_add_value", 
+    "number", ["number","number"]);
+const widget_get_value_int = Module.cwrap("widget_get_value_int", 
+    "number", ["number"]);
+const widget_set_value_int = Module.cwrap("widget_set_value_int", 
+    "number", ["number","number"]);
+const widget_add_value_int = Module.cwrap("widget_add_value_int", 
     "number", ["number","number"]);
 const widget_animate_value_to = Module.cwrap("widget_animate_value_to", 
     "number", ["number","number","number"]);
-const widget_add_value = Module.cwrap("widget_add_value", 
-    "number", ["number","number"]);
 const widget_is_style_exist = Module.cwrap("widget_is_style_exist", 
     "number", ["number","string","string"]);
+const widget_is_support_highlighter = Module.cwrap("widget_is_support_highlighter", 
+    "number", ["number"]);
+const widget_has_highlighter = Module.cwrap("widget_has_highlighter", 
+    "number", ["number"]);
 const widget_use_style = Module.cwrap("widget_use_style", 
     "number", ["number","string"]);
 const widget_set_text_utf8 = Module.cwrap("widget_set_text_utf8", 
     "number", ["number","string"]);
+const widget_set_text_utf8_ex = Module.cwrap("widget_set_text_utf8_ex", 
+    "number", ["number","string","number"]);
 const widget_set_child_text_utf8 = Module.cwrap("widget_set_child_text_utf8", 
     "number", ["number","string","string"]);
 const widget_set_child_text_with_double = Module.cwrap("widget_set_child_text_with_double", 
@@ -1858,8 +2056,6 @@ const widget_set_child_text_with_int = Module.cwrap("widget_set_child_text_with_
     "number", ["number","string","string","number"]);
 const widget_set_tr_text = Module.cwrap("widget_set_tr_text", 
     "number", ["number","string"]);
-const widget_get_value = Module.cwrap("widget_get_value", 
-    "number", ["number"]);
 const widget_get_enable = Module.cwrap("widget_get_enable", 
     "number", ["number"]);
 const widget_get_floating = Module.cwrap("widget_get_floating", 
@@ -1882,6 +2078,8 @@ const widget_set_name = Module.cwrap("widget_set_name",
     "number", ["number","string"]);
 const widget_set_theme = Module.cwrap("widget_set_theme", 
     "number", ["number","string"]);
+const widget_get_theme_name = Module.cwrap("widget_get_theme_name", 
+    "string", ["number"]);
 const widget_set_pointer_cursor = Module.cwrap("widget_set_pointer_cursor", 
     "number", ["number","string"]);
 const widget_set_animation = Module.cwrap("widget_set_animation", 
@@ -1944,6 +2142,12 @@ const widget_off = Module.cwrap("widget_off",
     "number", ["number","number"]);
 const widget_invalidate_force = Module.cwrap("widget_invalidate_force", 
     "number", ["number","number"]);
+const widget_get_prop = Module.cwrap("widget_get_prop", 
+    "number", ["number","string","number"]);
+const widget_set_prop = Module.cwrap("widget_set_prop", 
+    "number", ["number","string","number"]);
+const widget_set_props = Module.cwrap("widget_set_props", 
+    "number", ["number","string"]);
 const widget_set_prop_str = Module.cwrap("widget_set_prop_str", 
     "number", ["number","string","string"]);
 const widget_get_prop_str = Module.cwrap("widget_get_prop_str", 
@@ -1952,6 +2156,10 @@ const widget_set_prop_pointer = Module.cwrap("widget_set_prop_pointer",
     "number", ["number","string","number"]);
 const widget_get_prop_pointer = Module.cwrap("widget_get_prop_pointer", 
     "number", ["number","string"]);
+const widget_set_prop_float = Module.cwrap("widget_set_prop_float", 
+    "number", ["number","string","number"]);
+const widget_get_prop_float = Module.cwrap("widget_get_prop_float", 
+    "number", ["number","string","number"]);
 const widget_set_prop_int = Module.cwrap("widget_set_prop_int", 
     "number", ["number","string","number"]);
 const widget_get_prop_int = Module.cwrap("widget_get_prop_int", 
@@ -1974,11 +2182,15 @@ const widget_is_system_bar = Module.cwrap("widget_is_system_bar",
     "number", ["number"]);
 const widget_is_normal_window = Module.cwrap("widget_is_normal_window", 
     "number", ["number"]);
+const widget_is_fullscreen_window = Module.cwrap("widget_is_fullscreen_window", 
+    "number", ["number"]);
 const widget_is_dialog = Module.cwrap("widget_is_dialog", 
     "number", ["number"]);
 const widget_is_popup = Module.cwrap("widget_is_popup", 
     "number", ["number"]);
 const widget_is_overlay = Module.cwrap("widget_is_overlay", 
+    "number", ["number"]);
+const widget_is_always_on_top = Module.cwrap("widget_is_always_on_top", 
     "number", ["number"]);
 const widget_is_opened_dialog = Module.cwrap("widget_is_opened_dialog", 
     "number", ["number"]);
@@ -2048,6 +2260,8 @@ const widget_set_style_str = Module.cwrap("widget_set_style_str",
     "number", ["number","string","string"]);
 const widget_set_style_color = Module.cwrap("widget_set_style_color", 
     "number", ["number","string","number"]);
+const widget_add_child_default = Module.cwrap("widget_add_child_default", 
+    "number", ["number","number"]);
 const widget_t_get_prop_x = Module.cwrap("widget_t_get_prop_x", 
     "number", ["number"]);
 const widget_t_get_prop_y = Module.cwrap("widget_t_get_prop_y", 
@@ -2081,6 +2295,8 @@ const widget_t_get_prop_with_focus_state = Module.cwrap("widget_t_get_prop_with_
 const widget_t_get_prop_auto_adjust_size = Module.cwrap("widget_t_get_prop_auto_adjust_size", 
     "number", ["number"]);
 const widget_t_get_prop_floating = Module.cwrap("widget_t_get_prop_floating", 
+    "number", ["number"]);
+const widget_t_get_prop_opacity = Module.cwrap("widget_t_get_prop_opacity", 
     "number", ["number"]);
 const widget_t_get_prop_dirty_rect_tolerance = Module.cwrap("widget_t_get_prop_dirty_rect_tolerance", 
     "number", ["number"]);
@@ -2158,18 +2374,20 @@ const asset_info_get_type = Module.cwrap("asset_info_get_type",
     "number", ["number"]);
 const asset_info_get_name = Module.cwrap("asset_info_get_name", 
     "string", ["number"]);
+const asset_info_is_in_rom = Module.cwrap("asset_info_is_in_rom", 
+    "number", ["number"]);
+const asset_info_set_is_in_rom = Module.cwrap("asset_info_set_is_in_rom", 
+    "number", ["number","number"]);
 const asset_info_t_get_prop_type = Module.cwrap("asset_info_t_get_prop_type", 
     "number", ["number"]);
 const asset_info_t_get_prop_subtype = Module.cwrap("asset_info_t_get_prop_subtype", 
     "number", ["number"]);
-const asset_info_t_get_prop_is_in_rom = Module.cwrap("asset_info_t_get_prop_is_in_rom", 
+const asset_info_t_get_prop_flags = Module.cwrap("asset_info_t_get_prop_flags", 
     "number", ["number"]);
 const asset_info_t_get_prop_size = Module.cwrap("asset_info_t_get_prop_size", 
     "number", ["number"]);
 const asset_info_t_get_prop_refcount = Module.cwrap("asset_info_t_get_prop_refcount", 
     "number", ["number"]);
-const asset_info_t_get_prop_name = Module.cwrap("asset_info_t_get_prop_name", 
-    "string", ["number"]);
 const color_create = Module.cwrap("color_create", 
     "number", ["number","number","number","number"]);
 const color_from_str = Module.cwrap("color_from_str", 
@@ -2506,29 +2724,31 @@ const named_value_destroy = Module.cwrap("named_value_destroy",
     "number", ["number"]);
 const named_value_t_get_prop_name = Module.cwrap("named_value_t_get_prop_name", 
     "string", ["number"]);
-const OBJECT_CMD_SAVE = Module.cwrap("get_OBJECT_CMD_SAVE", 
+const TK_OBJECT_CMD_SAVE = Module.cwrap("get_TK_OBJECT_CMD_SAVE", 
     "string", []);
-const OBJECT_CMD_RELOAD = Module.cwrap("get_OBJECT_CMD_RELOAD", 
+const TK_OBJECT_CMD_RELOAD = Module.cwrap("get_TK_OBJECT_CMD_RELOAD", 
     "string", []);
-const OBJECT_CMD_MOVE_UP = Module.cwrap("get_OBJECT_CMD_MOVE_UP", 
+const TK_OBJECT_CMD_MOVE_UP = Module.cwrap("get_TK_OBJECT_CMD_MOVE_UP", 
     "string", []);
-const OBJECT_CMD_MOVE_DOWN = Module.cwrap("get_OBJECT_CMD_MOVE_DOWN", 
+const TK_OBJECT_CMD_MOVE_DOWN = Module.cwrap("get_TK_OBJECT_CMD_MOVE_DOWN", 
     "string", []);
-const OBJECT_CMD_REMOVE = Module.cwrap("get_OBJECT_CMD_REMOVE", 
+const TK_OBJECT_CMD_REMOVE = Module.cwrap("get_TK_OBJECT_CMD_REMOVE", 
     "string", []);
-const OBJECT_CMD_REMOVE_CHECKED = Module.cwrap("get_OBJECT_CMD_REMOVE_CHECKED", 
+const TK_OBJECT_CMD_REMOVE_CHECKED = Module.cwrap("get_TK_OBJECT_CMD_REMOVE_CHECKED", 
     "string", []);
-const OBJECT_CMD_CLEAR = Module.cwrap("get_OBJECT_CMD_CLEAR", 
+const TK_OBJECT_CMD_CLEAR = Module.cwrap("get_TK_OBJECT_CMD_CLEAR", 
     "string", []);
-const OBJECT_CMD_ADD = Module.cwrap("get_OBJECT_CMD_ADD", 
+const TK_OBJECT_CMD_ADD = Module.cwrap("get_TK_OBJECT_CMD_ADD", 
     "string", []);
-const OBJECT_CMD_DETAIL = Module.cwrap("get_OBJECT_CMD_DETAIL", 
+const TK_OBJECT_CMD_DETAIL = Module.cwrap("get_TK_OBJECT_CMD_DETAIL", 
     "string", []);
-const OBJECT_CMD_EDIT = Module.cwrap("get_OBJECT_CMD_EDIT", 
+const TK_OBJECT_CMD_EDIT = Module.cwrap("get_TK_OBJECT_CMD_EDIT", 
     "string", []);
-const OBJECT_PROP_SIZE = Module.cwrap("get_OBJECT_PROP_SIZE", 
+const TK_OBJECT_PROP_SIZE = Module.cwrap("get_TK_OBJECT_PROP_SIZE", 
     "string", []);
-const OBJECT_PROP_CHECKED = Module.cwrap("get_OBJECT_PROP_CHECKED", 
+const TK_OBJECT_PROP_CHECKED = Module.cwrap("get_TK_OBJECT_PROP_CHECKED", 
+    "string", []);
+const TK_OBJECT_PROP_SELECTED_INDEX = Module.cwrap("get_TK_OBJECT_PROP_SELECTED_INDEX", 
     "string", []);
 const rlog_create = Module.cwrap("rlog_create", 
     "number", ["string","number","number"]);
@@ -2584,6 +2804,14 @@ const RET_EOS = Module.cwrap("get_RET_EOS",
     "number", []);
 const RET_NOT_MODIFIED = Module.cwrap("get_RET_NOT_MODIFIED", 
     "number", []);
+const RET_NO_PERMISSION = Module.cwrap("get_RET_NO_PERMISSION", 
+    "number", []);
+const RET_INVALID_ADDR = Module.cwrap("get_RET_INVALID_ADDR", 
+    "number", []);
+const RET_EXCEED_RANGE = Module.cwrap("get_RET_EXCEED_RANGE", 
+    "number", []);
+const RET_MAX_NR = Module.cwrap("get_RET_MAX_NR", 
+    "number", []);
 const VALUE_TYPE_INVALID = Module.cwrap("get_VALUE_TYPE_INVALID", 
     "number", []);
 const VALUE_TYPE_BOOL = Module.cwrap("get_VALUE_TYPE_BOOL", 
@@ -2628,6 +2856,18 @@ const VALUE_TYPE_TOKEN = Module.cwrap("get_VALUE_TYPE_TOKEN",
     "number", []);
 const VALUE_TYPE_GRADIENT = Module.cwrap("get_VALUE_TYPE_GRADIENT", 
     "number", []);
+const VALUE_TYPE_ID = Module.cwrap("get_VALUE_TYPE_ID", 
+    "number", []);
+const VALUE_TYPE_FUNC = Module.cwrap("get_VALUE_TYPE_FUNC", 
+    "number", []);
+const VALUE_TYPE_FUNC_DEF = Module.cwrap("get_VALUE_TYPE_FUNC_DEF", 
+    "number", []);
+const VALUE_TYPE_POINTER_REF = Module.cwrap("get_VALUE_TYPE_POINTER_REF", 
+    "number", []);
+const VALUE_TYPE_BITMAP = Module.cwrap("get_VALUE_TYPE_BITMAP", 
+    "number", []);
+const VALUE_TYPE_RECT = Module.cwrap("get_VALUE_TYPE_RECT", 
+    "number", []);
 const assets_manager = Module.cwrap("assets_manager", 
     "number", []);
 const assets_manager_set_theme = Module.cwrap("assets_manager_set_theme", 
@@ -2638,7 +2878,25 @@ const assets_manager_ref_ex = Module.cwrap("assets_manager_ref_ex",
     "number", ["number","number","number","string"]);
 const assets_manager_unref = Module.cwrap("assets_manager_unref", 
     "number", ["number","number"]);
+const widget_animator_event_cast = Module.cwrap("widget_animator_event_cast", 
+    "number", ["number"]);
+const widget_animator_event_t_get_prop_widget = Module.cwrap("widget_animator_event_t_get_prop_widget", 
+    "number", ["number"]);
+const widget_animator_event_t_get_prop_animator = Module.cwrap("widget_animator_event_t_get_prop_animator", 
+    "number", ["number"]);
+const model_event_cast = Module.cwrap("model_event_cast", 
+    "number", ["number"]);
+const model_event_t_get_prop_name = Module.cwrap("model_event_t_get_prop_name", 
+    "string", ["number"]);
+const model_event_t_get_prop_change_type = Module.cwrap("model_event_t_get_prop_change_type", 
+    "string", ["number"]);
+const model_event_t_get_prop_model = Module.cwrap("model_event_t_get_prop_model", 
+    "number", ["number"]);
 const wheel_event_cast = Module.cwrap("wheel_event_cast", 
+    "number", ["number"]);
+const wheel_event_t_get_prop_x = Module.cwrap("wheel_event_t_get_prop_x", 
+    "number", ["number"]);
+const wheel_event_t_get_prop_y = Module.cwrap("wheel_event_t_get_prop_y", 
     "number", ["number"]);
 const wheel_event_t_get_prop_dy = Module.cwrap("wheel_event_t_get_prop_dy", 
     "number", ["number"]);
@@ -2654,7 +2912,7 @@ const orientation_event_t_get_prop_orientation = Module.cwrap("orientation_event
     "number", ["number"]);
 const orientation_event_t_get_prop_old_orientation = Module.cwrap("orientation_event_t_get_prop_old_orientation", 
     "number", ["number"]);
-const value_change_event_cast = Module.cwrap("value_change_event_cast", 
+const offset_change_event_cast = Module.cwrap("offset_change_event_cast", 
     "number", ["number"]);
 const pointer_event_cast = Module.cwrap("pointer_event_cast", 
     "number", ["number"]);
@@ -2704,6 +2962,8 @@ const key_event_t_get_prop_menu = Module.cwrap("key_event_t_get_prop_menu",
     "number", ["number"]);
 const key_event_t_get_prop_capslock = Module.cwrap("key_event_t_get_prop_capslock", 
     "number", ["number"]);
+const key_event_t_get_prop_numlock = Module.cwrap("key_event_t_get_prop_numlock", 
+    "number", ["number"]);
 const paint_event_cast = Module.cwrap("paint_event_cast", 
     "number", ["number"]);
 const paint_event_t_get_prop_c = Module.cwrap("paint_event_t_get_prop_c", 
@@ -2721,6 +2981,30 @@ const multi_gesture_event_t_get_prop_y = Module.cwrap("multi_gesture_event_t_get
 const multi_gesture_event_t_get_prop_rotation = Module.cwrap("multi_gesture_event_t_get_prop_rotation", 
     "number", ["number"]);
 const multi_gesture_event_t_get_prop_distance = Module.cwrap("multi_gesture_event_t_get_prop_distance", 
+    "number", ["number"]);
+const theme_change_event_cast = Module.cwrap("theme_change_event_cast", 
+    "number", ["number"]);
+const theme_change_event_t_get_prop_name = Module.cwrap("theme_change_event_t_get_prop_name", 
+    "string", ["number"]);
+const drop_file_event_cast = Module.cwrap("drop_file_event_cast", 
+    "number", ["number"]);
+const drop_file_event_t_get_prop_filename = Module.cwrap("drop_file_event_t_get_prop_filename", 
+    "string", ["number"]);
+const system_event_cast = Module.cwrap("system_event_cast", 
+    "number", ["number"]);
+const system_event_t_get_prop_sdl_event = Module.cwrap("system_event_t_get_prop_sdl_event", 
+    "number", ["number"]);
+const ui_load_event_cast = Module.cwrap("ui_load_event_cast", 
+    "number", ["number"]);
+const ui_load_event_t_get_prop_root = Module.cwrap("ui_load_event_t_get_prop_root", 
+    "number", ["number"]);
+const ui_load_event_t_get_prop_name = Module.cwrap("ui_load_event_t_get_prop_name", 
+    "string", ["number"]);
+const font_manager_unload_font = Module.cwrap("font_manager_unload_font", 
+    "number", ["number","string","number"]);
+const font_manager_shrink_cache = Module.cwrap("font_manager_shrink_cache", 
+    "number", ["number","number"]);
+const font_manager_unload_all = Module.cwrap("font_manager_unload_all", 
     "number", ["number"]);
 const image_base_set_image = Module.cwrap("image_base_set_image", 
     "number", ["number","string"]);
@@ -2802,6 +3086,8 @@ const window_base_t_get_prop_move_focus_left_key = Module.cwrap("window_base_t_g
     "string", ["number"]);
 const window_base_t_get_prop_move_focus_right_key = Module.cwrap("window_base_t_get_prop_move_focus_right_key", 
     "string", ["number"]);
+const window_base_t_get_prop_applet_name = Module.cwrap("window_base_t_get_prop_applet_name", 
+    "string", ["number"]);
 const window_base_t_get_prop_single_instance = Module.cwrap("window_base_t_get_prop_single_instance", 
     "number", ["number"]);
 const window_base_t_get_prop_strongly_focus = Module.cwrap("window_base_t_get_prop_strongly_focus", 
@@ -2826,6 +3112,8 @@ const window_manager_is_animating = Module.cwrap("window_manager_is_animating",
     "number", ["number"]);
 const window_manager_set_show_fps = Module.cwrap("window_manager_set_show_fps", 
     "number", ["number","number"]);
+const window_manager_set_show_fps_position = Module.cwrap("window_manager_set_show_fps_position", 
+    "number", ["number","number","number"]);
 const window_manager_set_max_fps = Module.cwrap("window_manager_set_max_fps", 
     "number", ["number","number"]);
 const window_manager_set_ignore_input_events = Module.cwrap("window_manager_set_ignore_input_events", 
@@ -2842,6 +3130,8 @@ const window_manager_back_to = Module.cwrap("window_manager_back_to",
     "number", ["number","string"]);
 const window_manager_resize = Module.cwrap("window_manager_resize", 
     "number", ["number","number","number"]);
+const window_manager_set_fullscreen = Module.cwrap("window_manager_set_fullscreen", 
+    "number", ["number","number"]);
 const window_manager_close_all = Module.cwrap("window_manager_close_all", 
     "number", ["number"]);
 const canvas_widget_create = Module.cwrap("canvas_widget_create", 
@@ -2876,7 +3166,13 @@ const draggable_set_vertical_only = Module.cwrap("draggable_set_vertical_only",
     "number", ["number","number"]);
 const draggable_set_horizontal_only = Module.cwrap("draggable_set_horizontal_only", 
     "number", ["number","number"]);
+const draggable_set_allow_out_of_screen = Module.cwrap("draggable_set_allow_out_of_screen", 
+    "number", ["number","number"]);
 const draggable_set_drag_window = Module.cwrap("draggable_set_drag_window", 
+    "number", ["number","number"]);
+const draggable_set_drag_native_window = Module.cwrap("draggable_set_drag_native_window", 
+    "number", ["number","number"]);
+const draggable_set_drag_parent = Module.cwrap("draggable_set_drag_parent", 
     "number", ["number","number"]);
 const draggable_t_get_prop_top = Module.cwrap("draggable_t_get_prop_top", 
     "number", ["number"]);
@@ -2886,11 +3182,17 @@ const draggable_t_get_prop_left = Module.cwrap("draggable_t_get_prop_left",
     "number", ["number"]);
 const draggable_t_get_prop_right = Module.cwrap("draggable_t_get_prop_right", 
     "number", ["number"]);
+const draggable_t_get_prop_allow_out_of_screen = Module.cwrap("draggable_t_get_prop_allow_out_of_screen", 
+    "number", ["number"]);
 const draggable_t_get_prop_vertical_only = Module.cwrap("draggable_t_get_prop_vertical_only", 
     "number", ["number"]);
 const draggable_t_get_prop_horizontal_only = Module.cwrap("draggable_t_get_prop_horizontal_only", 
     "number", ["number"]);
 const draggable_t_get_prop_drag_window = Module.cwrap("draggable_t_get_prop_drag_window", 
+    "number", ["number"]);
+const draggable_t_get_prop_drag_native_window = Module.cwrap("draggable_t_get_prop_drag_native_window", 
+    "number", ["number"]);
+const draggable_t_get_prop_drag_parent = Module.cwrap("draggable_t_get_prop_drag_parent", 
     "number", ["number"]);
 const file_browser_view_create = Module.cwrap("file_browser_view_create", 
     "number", ["number","number","number","number","number"]);
@@ -2912,6 +3214,10 @@ const file_browser_view_set_show_check_button = Module.cwrap("file_browser_view_
     "number", ["number","number"]);
 const file_browser_view_set_sort_by = Module.cwrap("file_browser_view_set_sort_by", 
     "number", ["number","string"]);
+const file_browser_view_set_odd_item_style = Module.cwrap("file_browser_view_set_odd_item_style", 
+    "number", ["number","string"]);
+const file_browser_view_set_even_item_style = Module.cwrap("file_browser_view_set_even_item_style", 
+    "number", ["number","string"]);
 const file_browser_view_get_cwd = Module.cwrap("file_browser_view_get_cwd", 
     "string", ["number"]);
 const file_browser_view_create_dir = Module.cwrap("file_browser_view_create_dir", 
@@ -2931,6 +3237,10 @@ const file_browser_view_t_get_prop_sort_ascending = Module.cwrap("file_browser_v
 const file_browser_view_t_get_prop_show_check_button = Module.cwrap("file_browser_view_t_get_prop_show_check_button", 
     "number", ["number"]);
 const file_browser_view_t_get_prop_sort_by = Module.cwrap("file_browser_view_t_get_prop_sort_by", 
+    "string", ["number"]);
+const file_browser_view_t_get_prop_odd_item_style = Module.cwrap("file_browser_view_t_get_prop_odd_item_style", 
+    "string", ["number"]);
+const file_browser_view_t_get_prop_even_item_style = Module.cwrap("file_browser_view_t_get_prop_even_item_style", 
     "string", ["number"]);
 const file_chooser_create = Module.cwrap("file_chooser_create", 
     "number", []);
@@ -3092,6 +3402,8 @@ const candidates_t_get_prop_auto_hide = Module.cwrap("candidates_t_get_prop_auto
     "number", ["number"]);
 const candidates_t_get_prop_button_style = Module.cwrap("candidates_t_get_prop_button_style", 
     "string", ["number"]);
+const candidates_t_get_prop_enable_preview = Module.cwrap("candidates_t_get_prop_enable_preview", 
+    "number", ["number"]);
 const lang_indicator_create = Module.cwrap("lang_indicator_create", 
     "number", ["number","number","number","number","number"]);
 const lang_indicator_set_image = Module.cwrap("lang_indicator_set_image", 
@@ -3112,6 +3424,14 @@ const line_number_set_yoffset = Module.cwrap("line_number_set_yoffset",
     "number", ["number","number"]);
 const line_number_cast = Module.cwrap("line_number_cast", 
     "number", ["number"]);
+const line_number_add_highlight_line = Module.cwrap("line_number_add_highlight_line", 
+    "number", ["number","number"]);
+const line_number_set_active_line = Module.cwrap("line_number_set_active_line", 
+    "number", ["number","number"]);
+const line_number_clear_highlight = Module.cwrap("line_number_clear_highlight", 
+    "number", ["number"]);
+const line_number_is_highlight_line = Module.cwrap("line_number_is_highlight_line", 
+    "number", ["number","number"]);
 const mledit_create = Module.cwrap("mledit_create", 
     "number", ["number","number","number","number","number"]);
 const mledit_set_readonly = Module.cwrap("mledit_set_readonly", 
@@ -3236,6 +3556,8 @@ const hscroll_label_set_lull = Module.cwrap("hscroll_label_set_lull",
     "number", ["number","number"]);
 const hscroll_label_set_duration = Module.cwrap("hscroll_label_set_duration", 
     "number", ["number","number"]);
+const hscroll_label_set_speed = Module.cwrap("hscroll_label_set_speed", 
+    "number", ["number","number"]);
 const hscroll_label_set_only_focus = Module.cwrap("hscroll_label_set_only_focus", 
     "number", ["number","number"]);
 const hscroll_label_set_only_parent_focus = Module.cwrap("hscroll_label_set_only_parent_focus", 
@@ -3245,6 +3567,12 @@ const hscroll_label_set_loop = Module.cwrap("hscroll_label_set_loop",
 const hscroll_label_set_yoyo = Module.cwrap("hscroll_label_set_yoyo", 
     "number", ["number","number"]);
 const hscroll_label_set_ellipses = Module.cwrap("hscroll_label_set_ellipses", 
+    "number", ["number","number"]);
+const hscroll_label_set_stop_at_begin = Module.cwrap("hscroll_label_set_stop_at_begin", 
+    "number", ["number","number"]);
+const hscroll_label_set_delay = Module.cwrap("hscroll_label_set_delay", 
+    "number", ["number","number"]);
+const hscroll_label_set_loop_interval_distance = Module.cwrap("hscroll_label_set_loop_interval_distance", 
     "number", ["number","number"]);
 const hscroll_label_set_xoffset = Module.cwrap("hscroll_label_set_xoffset", 
     "number", ["number","number"]);
@@ -3268,9 +3596,17 @@ const hscroll_label_t_get_prop_lull = Module.cwrap("hscroll_label_t_get_prop_lul
     "number", ["number"]);
 const hscroll_label_t_get_prop_duration = Module.cwrap("hscroll_label_t_get_prop_duration", 
     "number", ["number"]);
+const hscroll_label_t_get_prop_delay = Module.cwrap("hscroll_label_t_get_prop_delay", 
+    "number", ["number"]);
+const hscroll_label_t_get_prop_speed = Module.cwrap("hscroll_label_t_get_prop_speed", 
+    "number", ["number"]);
 const hscroll_label_t_get_prop_xoffset = Module.cwrap("hscroll_label_t_get_prop_xoffset", 
     "number", ["number"]);
 const hscroll_label_t_get_prop_text_w = Module.cwrap("hscroll_label_t_get_prop_text_w", 
+    "number", ["number"]);
+const hscroll_label_t_get_prop_stop_at_begin = Module.cwrap("hscroll_label_t_get_prop_stop_at_begin", 
+    "number", ["number"]);
+const hscroll_label_t_get_prop_loop_interval_distance = Module.cwrap("hscroll_label_t_get_prop_loop_interval_distance", 
     "number", ["number"]);
 const list_item_create = Module.cwrap("list_item_create", 
     "number", ["number","number","number","number","number"]);
@@ -3326,23 +3662,37 @@ const scroll_bar_set_value = Module.cwrap("scroll_bar_set_value",
     "number", ["number","number"]);
 const scroll_bar_add_delta = Module.cwrap("scroll_bar_add_delta", 
     "number", ["number","number"]);
-const scroll_bar_scroll_delta = Module.cwrap("scroll_bar_scroll_delta", 
-    "number", ["number","number"]);
 const scroll_bar_set_value_only = Module.cwrap("scroll_bar_set_value_only", 
     "number", ["number","number"]);
 const scroll_bar_set_auto_hide = Module.cwrap("scroll_bar_set_auto_hide", 
     "number", ["number","number"]);
 const scroll_bar_is_mobile = Module.cwrap("scroll_bar_is_mobile", 
     "number", ["number"]);
+const scroll_bar_set_animator_time = Module.cwrap("scroll_bar_set_animator_time", 
+    "number", ["number","number"]);
+const scroll_bar_hide_by_opacity_animation = Module.cwrap("scroll_bar_hide_by_opacity_animation", 
+    "number", ["number","number","number"]);
+const scroll_bar_show_by_opacity_animation = Module.cwrap("scroll_bar_show_by_opacity_animation", 
+    "number", ["number","number","number"]);
+const scroll_bar_set_wheel_scroll = Module.cwrap("scroll_bar_set_wheel_scroll", 
+    "number", ["number","number"]);
+const scroll_bar_set_scroll_delta = Module.cwrap("scroll_bar_set_scroll_delta", 
+    "number", ["number","number"]);
 const scroll_bar_t_get_prop_virtual_size = Module.cwrap("scroll_bar_t_get_prop_virtual_size", 
     "number", ["number"]);
 const scroll_bar_t_get_prop_value = Module.cwrap("scroll_bar_t_get_prop_value", 
     "number", ["number"]);
 const scroll_bar_t_get_prop_row = Module.cwrap("scroll_bar_t_get_prop_row", 
     "number", ["number"]);
+const scroll_bar_t_get_prop_animator_time = Module.cwrap("scroll_bar_t_get_prop_animator_time", 
+    "number", ["number"]);
+const scroll_bar_t_get_prop_scroll_delta = Module.cwrap("scroll_bar_t_get_prop_scroll_delta", 
+    "number", ["number"]);
 const scroll_bar_t_get_prop_animatable = Module.cwrap("scroll_bar_t_get_prop_animatable", 
     "number", ["number"]);
 const scroll_bar_t_get_prop_auto_hide = Module.cwrap("scroll_bar_t_get_prop_auto_hide", 
+    "number", ["number"]);
+const scroll_bar_t_get_prop_wheel_scroll = Module.cwrap("scroll_bar_t_get_prop_wheel_scroll", 
     "number", ["number"]);
 const scroll_view_create = Module.cwrap("scroll_view_create", 
     "number", ["number","number","number","number","number"]);
@@ -3368,6 +3718,8 @@ const scroll_view_set_offset = Module.cwrap("scroll_view_set_offset",
     "number", ["number","number","number"]);
 const scroll_view_set_speed_scale = Module.cwrap("scroll_view_set_speed_scale", 
     "number", ["number","number","number"]);
+const scroll_view_set_slide_limit_ratio = Module.cwrap("scroll_view_set_slide_limit_ratio", 
+    "number", ["number","number"]);
 const scroll_view_scroll_to = Module.cwrap("scroll_view_scroll_to", 
     "number", ["number","number","number","number"]);
 const scroll_view_scroll_delta_to = Module.cwrap("scroll_view_scroll_delta_to", 
@@ -3394,6 +3746,40 @@ const scroll_view_t_get_prop_move_to_page = Module.cwrap("scroll_view_t_get_prop
     "number", ["number"]);
 const scroll_view_t_get_prop_recursive = Module.cwrap("scroll_view_t_get_prop_recursive", 
     "number", ["number"]);
+const scroll_view_t_get_prop_slide_limit_ratio = Module.cwrap("scroll_view_t_get_prop_slide_limit_ratio", 
+    "number", ["number"]);
+const serial_widget_create = Module.cwrap("serial_widget_create", 
+    "number", ["number","number","number","number","number"]);
+const serial_widget_cast = Module.cwrap("serial_widget_cast", 
+    "number", ["number"]);
+const serial_widget_set_baudrate = Module.cwrap("serial_widget_set_baudrate", 
+    "number", ["number","number"]);
+const serial_widget_set_device = Module.cwrap("serial_widget_set_device", 
+    "number", ["number","string"]);
+const serial_widget_set_bytesize = Module.cwrap("serial_widget_set_bytesize", 
+    "number", ["number","number"]);
+const serial_widget_set_parity = Module.cwrap("serial_widget_set_parity", 
+    "number", ["number","number"]);
+const serial_widget_set_stopbits = Module.cwrap("serial_widget_set_stopbits", 
+    "number", ["number","number"]);
+const serial_widget_set_flowcontrol = Module.cwrap("serial_widget_set_flowcontrol", 
+    "number", ["number","number"]);
+const serial_widget_set_check_interval = Module.cwrap("serial_widget_set_check_interval", 
+    "number", ["number","number"]);
+const serial_widget_t_get_prop_device = Module.cwrap("serial_widget_t_get_prop_device", 
+    "string", ["number"]);
+const serial_widget_t_get_prop_baudrate = Module.cwrap("serial_widget_t_get_prop_baudrate", 
+    "number", ["number"]);
+const serial_widget_t_get_prop_bytesize = Module.cwrap("serial_widget_t_get_prop_bytesize", 
+    "number", ["number"]);
+const serial_widget_t_get_prop_parity = Module.cwrap("serial_widget_t_get_prop_parity", 
+    "number", ["number"]);
+const serial_widget_t_get_prop_stopbits = Module.cwrap("serial_widget_t_get_prop_stopbits", 
+    "number", ["number"]);
+const serial_widget_t_get_prop_flowcontrol = Module.cwrap("serial_widget_t_get_prop_flowcontrol", 
+    "number", ["number"]);
+const serial_widget_t_get_prop_check_interval = Module.cwrap("serial_widget_t_get_prop_check_interval", 
+    "number", ["number"]);
 const slide_menu_create = Module.cwrap("slide_menu_create", 
     "number", ["number","number","number","number","number"]);
 const slide_menu_cast = Module.cwrap("slide_menu_cast", 
@@ -3404,11 +3790,27 @@ const slide_menu_set_align_v = Module.cwrap("slide_menu_set_align_v",
     "number", ["number","number"]);
 const slide_menu_set_min_scale = Module.cwrap("slide_menu_set_min_scale", 
     "number", ["number","number"]);
+const slide_menu_set_spacer = Module.cwrap("slide_menu_set_spacer", 
+    "number", ["number","number"]);
+const slide_menu_set_menu_w = Module.cwrap("slide_menu_set_menu_w", 
+    "number", ["number","string"]);
+const slide_menu_set_clip = Module.cwrap("slide_menu_set_clip", 
+    "number", ["number","number"]);
+const slide_menu_scroll_to_prev = Module.cwrap("slide_menu_scroll_to_prev", 
+    "number", ["number"]);
+const slide_menu_scroll_to_next = Module.cwrap("slide_menu_scroll_to_next", 
+    "number", ["number"]);
 const slide_menu_t_get_prop_value = Module.cwrap("slide_menu_t_get_prop_value", 
     "number", ["number"]);
 const slide_menu_t_get_prop_align_v = Module.cwrap("slide_menu_t_get_prop_align_v", 
     "number", ["number"]);
 const slide_menu_t_get_prop_min_scale = Module.cwrap("slide_menu_t_get_prop_min_scale", 
+    "number", ["number"]);
+const slide_menu_t_get_prop_spacer = Module.cwrap("slide_menu_t_get_prop_spacer", 
+    "number", ["number"]);
+const slide_menu_t_get_prop_menu_w = Module.cwrap("slide_menu_t_get_prop_menu_w", 
+    "string", ["number"]);
+const slide_menu_t_get_prop_clip = Module.cwrap("slide_menu_t_get_prop_clip", 
     "number", ["number"]);
 const slide_indicator_create = Module.cwrap("slide_indicator_create", 
     "number", ["number","number","number","number","number"]);
@@ -3436,6 +3838,8 @@ const slide_indicator_set_anchor = Module.cwrap("slide_indicator_set_anchor",
     "number", ["number","string","string"]);
 const slide_indicator_set_indicated_target = Module.cwrap("slide_indicator_set_indicated_target", 
     "number", ["number","string"]);
+const slide_indicator_set_transition = Module.cwrap("slide_indicator_set_transition", 
+    "number", ["number","number"]);
 const slide_indicator_t_get_prop_value = Module.cwrap("slide_indicator_t_get_prop_value", 
     "number", ["number"]);
 const slide_indicator_t_get_prop_max = Module.cwrap("slide_indicator_t_get_prop_max", 
@@ -3451,11 +3855,13 @@ const slide_indicator_t_get_prop_spacing = Module.cwrap("slide_indicator_t_get_p
 const slide_indicator_t_get_prop_size = Module.cwrap("slide_indicator_t_get_prop_size", 
     "number", ["number"]);
 const slide_indicator_t_get_prop_anchor_x = Module.cwrap("slide_indicator_t_get_prop_anchor_x", 
-    "number", ["number"]);
+    "string", ["number"]);
 const slide_indicator_t_get_prop_anchor_y = Module.cwrap("slide_indicator_t_get_prop_anchor_y", 
-    "number", ["number"]);
+    "string", ["number"]);
 const slide_indicator_t_get_prop_indicated_target = Module.cwrap("slide_indicator_t_get_prop_indicated_target", 
     "string", ["number"]);
+const slide_indicator_t_get_prop_transition = Module.cwrap("slide_indicator_t_get_prop_transition", 
+    "number", ["number"]);
 const slide_view_create = Module.cwrap("slide_view_create", 
     "number", ["number","number","number","number","number"]);
 const slide_view_cast = Module.cwrap("slide_view_cast", 
@@ -3472,6 +3878,10 @@ const slide_view_set_anim_hint = Module.cwrap("slide_view_set_anim_hint",
     "number", ["number","string"]);
 const slide_view_set_loop = Module.cwrap("slide_view_set_loop", 
     "number", ["number","number"]);
+const slide_view_set_drag_threshold = Module.cwrap("slide_view_set_drag_threshold", 
+    "number", ["number","number"]);
+const slide_view_set_animating_time = Module.cwrap("slide_view_set_animating_time", 
+    "number", ["number","number"]);
 const slide_view_remove_index = Module.cwrap("slide_view_remove_index", 
     "number", ["number","number"]);
 const slide_view_t_get_prop_vertical = Module.cwrap("slide_view_t_get_prop_vertical", 
@@ -3482,6 +3892,10 @@ const slide_view_t_get_prop_loop = Module.cwrap("slide_view_t_get_prop_loop",
     "number", ["number"]);
 const slide_view_t_get_prop_anim_hint = Module.cwrap("slide_view_t_get_prop_anim_hint", 
     "string", ["number"]);
+const slide_view_t_get_prop_drag_threshold = Module.cwrap("slide_view_t_get_prop_drag_threshold", 
+    "number", ["number"]);
+const slide_view_t_get_prop_animating_time = Module.cwrap("slide_view_t_get_prop_animating_time", 
+    "number", ["number"]);
 const switch_create = Module.cwrap("switch_create", 
     "number", ["number","number","number","number","number"]);
 const switch_set_value = Module.cwrap("switch_set_value", 
@@ -3530,6 +3944,12 @@ const text_selector_set_animating_time = Module.cwrap("text_selector_set_animati
     "number", ["number","number"]);
 const text_selector_set_enable_value_animator = Module.cwrap("text_selector_set_enable_value_animator", 
     "number", ["number","number"]);
+const text_selector_set_mask_easing = Module.cwrap("text_selector_set_mask_easing", 
+    "number", ["number","number"]);
+const text_selector_set_mask_area_scale = Module.cwrap("text_selector_set_mask_area_scale", 
+    "number", ["number","number"]);
+const text_selector_set_ellipses = Module.cwrap("text_selector_set_ellipses", 
+    "number", ["number","number"]);
 const text_selector_t_get_prop_visible_nr = Module.cwrap("text_selector_t_get_prop_visible_nr", 
     "number", ["number"]);
 const text_selector_t_get_prop_selected_index = Module.cwrap("text_selector_t_get_prop_selected_index", 
@@ -3545,6 +3965,12 @@ const text_selector_t_get_prop_localize_options = Module.cwrap("text_selector_t_
 const text_selector_t_get_prop_loop_options = Module.cwrap("text_selector_t_get_prop_loop_options", 
     "number", ["number"]);
 const text_selector_t_get_prop_enable_value_animator = Module.cwrap("text_selector_t_get_prop_enable_value_animator", 
+    "number", ["number"]);
+const text_selector_t_get_prop_ellipses = Module.cwrap("text_selector_t_get_prop_ellipses", 
+    "number", ["number"]);
+const text_selector_t_get_prop_mask_easing = Module.cwrap("text_selector_t_get_prop_mask_easing", 
+    "number", ["number"]);
+const text_selector_t_get_prop_mask_area_scale = Module.cwrap("text_selector_t_get_prop_mask_area_scale", 
     "number", ["number"]);
 const time_clock_create = Module.cwrap("time_clock_create", 
     "number", ["number","number","number","number","number"]);
@@ -3600,6 +4026,14 @@ const time_clock_t_get_prop_second_anchor_x = Module.cwrap("time_clock_t_get_pro
     "string", ["number"]);
 const time_clock_t_get_prop_second_anchor_y = Module.cwrap("time_clock_t_get_prop_second_anchor_y", 
     "string", ["number"]);
+const timer_widget_create = Module.cwrap("timer_widget_create", 
+    "number", ["number","number","number","number","number"]);
+const timer_widget_cast = Module.cwrap("timer_widget_cast", 
+    "number", ["number"]);
+const timer_widget_set_duration = Module.cwrap("timer_widget_set_duration", 
+    "number", ["number","number"]);
+const timer_widget_t_get_prop_duration = Module.cwrap("timer_widget_t_get_prop_duration", 
+    "number", ["number"]);
 const vpage_create = Module.cwrap("vpage_create", 
     "number", ["number","number","number","number","number"]);
 const vpage_cast = Module.cwrap("vpage_cast", 
@@ -3642,6 +4076,10 @@ const cmd_exec_event_t_get_prop_result = Module.cwrap("cmd_exec_event_t_get_prop
     "number", ["number"]);
 const cmd_exec_event_t_get_prop_can_exec = Module.cwrap("cmd_exec_event_t_get_prop_can_exec", 
     "number", ["number"]);
+const value_change_event_cast = Module.cwrap("value_change_event_cast", 
+    "number", ["number"]);
+const log_message_event_cast = Module.cwrap("log_message_event_cast", 
+    "number", ["number"]);
 const app_bar_create = Module.cwrap("app_bar_create", 
     "number", ["number","number","number","number","number"]);
 const app_bar_cast = Module.cwrap("app_bar_cast", 
@@ -3660,11 +4098,17 @@ const button_set_long_press_time = Module.cwrap("button_set_long_press_time",
     "number", ["number","number"]);
 const button_set_enable_long_press = Module.cwrap("button_set_enable_long_press", 
     "number", ["number","number"]);
+const button_set_enable_preview = Module.cwrap("button_set_enable_preview", 
+    "number", ["number","number"]);
 const button_t_get_prop_repeat = Module.cwrap("button_t_get_prop_repeat", 
     "number", ["number"]);
 const button_t_get_prop_enable_long_press = Module.cwrap("button_t_get_prop_enable_long_press", 
     "number", ["number"]);
+const button_t_get_prop_enable_preview = Module.cwrap("button_t_get_prop_enable_preview", 
+    "number", ["number"]);
 const button_t_get_prop_long_press_time = Module.cwrap("button_t_get_prop_long_press_time", 
+    "number", ["number"]);
+const button_t_get_prop_pressed = Module.cwrap("button_t_get_prop_pressed", 
     "number", ["number"]);
 const check_button_create = Module.cwrap("check_button_create", 
     "number", ["number","number","number","number","number"]);
@@ -3674,6 +4118,8 @@ const check_button_set_value = Module.cwrap("check_button_set_value",
     "number", ["number","number"]);
 const check_button_cast = Module.cwrap("check_button_cast", 
     "number", ["number"]);
+const check_button_create_ex = Module.cwrap("check_button_create_ex", 
+    "number", ["number","number","number","number","number","string","number"]);
 const check_button_t_get_prop_value = Module.cwrap("check_button_t_get_prop_value", 
     "number", ["number"]);
 const clip_view_create = Module.cwrap("clip_view_create", 
@@ -3752,6 +4198,8 @@ const edit_set_int = Module.cwrap("edit_set_int",
     "number", ["number","number"]);
 const edit_set_double = Module.cwrap("edit_set_double", 
     "number", ["number","number"]);
+const edit_set_double_ex = Module.cwrap("edit_set_double_ex", 
+    "number", ["number","string","number"]);
 const edit_set_text_limit = Module.cwrap("edit_set_text_limit", 
     "number", ["number","number","number"]);
 const edit_set_int_limit = Module.cwrap("edit_set_int_limit", 
@@ -3792,11 +4240,15 @@ const edit_set_select = Module.cwrap("edit_set_select",
     "number", ["number","number","number"]);
 const edit_get_selected_text = Module.cwrap("edit_get_selected_text", 
     "string", ["number"]);
+const edit_set_focus_next_when_enter = Module.cwrap("edit_set_focus_next_when_enter", 
+    "number", ["number","number"]);
 const edit_t_get_prop_tips = Module.cwrap("edit_t_get_prop_tips", 
     "string", ["number"]);
 const edit_t_get_prop_tr_tips = Module.cwrap("edit_t_get_prop_tr_tips", 
     "string", ["number"]);
 const edit_t_get_prop_action_text = Module.cwrap("edit_t_get_prop_action_text", 
+    "string", ["number"]);
+const edit_t_get_prop_validator = Module.cwrap("edit_t_get_prop_validator", 
     "string", ["number"]);
 const edit_t_get_prop_keyboard = Module.cwrap("edit_t_get_prop_keyboard", 
     "string", ["number"]);
@@ -3822,6 +4274,8 @@ const edit_t_get_prop_close_im_when_blured = Module.cwrap("edit_t_get_prop_close
     "number", ["number"]);
 const edit_t_get_prop_cancelable = Module.cwrap("edit_t_get_prop_cancelable", 
     "number", ["number"]);
+const edit_t_get_prop_focus_next_when_enter = Module.cwrap("edit_t_get_prop_focus_next_when_enter", 
+    "number", ["number"]);
 const grid_item_create = Module.cwrap("grid_item_create", 
     "number", ["number","number","number","number","number"]);
 const grid_item_cast = Module.cwrap("grid_item_cast", 
@@ -3830,9 +4284,25 @@ const grid_create = Module.cwrap("grid_create",
     "number", ["number","number","number","number","number"]);
 const grid_cast = Module.cwrap("grid_cast", 
     "number", ["number"]);
+const grid_set_rows = Module.cwrap("grid_set_rows", 
+    "number", ["number","number"]);
+const grid_set_columns_definition = Module.cwrap("grid_set_columns_definition", 
+    "number", ["number","string"]);
+const grid_set_show_grid = Module.cwrap("grid_set_show_grid", 
+    "number", ["number","number"]);
+const grid_t_get_prop_rows = Module.cwrap("grid_t_get_prop_rows", 
+    "number", ["number"]);
+const grid_t_get_prop_columns_definition = Module.cwrap("grid_t_get_prop_columns_definition", 
+    "string", ["number"]);
+const grid_t_get_prop_show_grid = Module.cwrap("grid_t_get_prop_show_grid", 
+    "number", ["number"]);
 const group_box_create = Module.cwrap("group_box_create", 
     "number", ["number","number","number","number","number"]);
+const group_box_set_value = Module.cwrap("group_box_set_value", 
+    "number", ["number","number"]);
 const group_box_cast = Module.cwrap("group_box_cast", 
+    "number", ["number"]);
+const group_box_t_get_prop_value = Module.cwrap("group_box_t_get_prop_value", 
     "number", ["number"]);
 const label_create = Module.cwrap("label_create", 
     "number", ["number","number","number","number","number"]);
@@ -3844,6 +4314,8 @@ const label_set_line_wrap = Module.cwrap("label_set_line_wrap",
     "number", ["number","number"]);
 const label_set_word_wrap = Module.cwrap("label_set_word_wrap", 
     "number", ["number","number"]);
+const label_set_ellipses = Module.cwrap("label_set_ellipses", 
+    "number", ["number","number"]);
 const label_resize_to_content = Module.cwrap("label_resize_to_content", 
     "number", ["number","number","number","number","number"]);
 const label_cast = Module.cwrap("label_cast", 
@@ -3854,6 +4326,8 @@ const label_t_get_prop_line_wrap = Module.cwrap("label_t_get_prop_line_wrap",
     "number", ["number"]);
 const label_t_get_prop_word_wrap = Module.cwrap("label_t_get_prop_word_wrap", 
     "number", ["number"]);
+const label_t_get_prop_ellipses = Module.cwrap("label_t_get_prop_ellipses", 
+    "number", ["number"]);
 const label_t_get_prop_max_w = Module.cwrap("label_t_get_prop_max_w", 
     "number", ["number"]);
 const pages_create = Module.cwrap("pages_create", 
@@ -3862,9 +4336,13 @@ const pages_cast = Module.cwrap("pages_cast",
     "number", ["number"]);
 const pages_set_active = Module.cwrap("pages_set_active", 
     "number", ["number","number"]);
+const pages_set_auto_focused = Module.cwrap("pages_set_auto_focused", 
+    "number", ["number","number"]);
 const pages_set_active_by_name = Module.cwrap("pages_set_active_by_name", 
     "number", ["number","string"]);
 const pages_t_get_prop_active = Module.cwrap("pages_t_get_prop_active", 
+    "number", ["number"]);
+const pages_t_get_prop_auto_focused = Module.cwrap("pages_t_get_prop_auto_focused", 
     "number", ["number"]);
 const progress_bar_create = Module.cwrap("progress_bar_create", 
     "number", ["number","number","number","number","number"]);
@@ -3910,6 +4388,8 @@ const slider_set_min = Module.cwrap("slider_set_min",
     "number", ["number","number"]);
 const slider_set_max = Module.cwrap("slider_set_max", 
     "number", ["number","number"]);
+const slider_set_line_cap = Module.cwrap("slider_set_line_cap", 
+    "number", ["number","string"]);
 const slider_set_step = Module.cwrap("slider_set_step", 
     "number", ["number","number"]);
 const slider_set_bar_size = Module.cwrap("slider_set_bar_size", 
@@ -3924,11 +4404,13 @@ const slider_t_get_prop_max = Module.cwrap("slider_t_get_prop_max",
     "number", ["number"]);
 const slider_t_get_prop_step = Module.cwrap("slider_t_get_prop_step", 
     "number", ["number"]);
-const slider_t_get_prop_vertical = Module.cwrap("slider_t_get_prop_vertical", 
-    "number", ["number"]);
 const slider_t_get_prop_bar_size = Module.cwrap("slider_t_get_prop_bar_size", 
     "number", ["number"]);
 const slider_t_get_prop_dragger_size = Module.cwrap("slider_t_get_prop_dragger_size", 
+    "number", ["number"]);
+const slider_t_get_prop_line_cap = Module.cwrap("slider_t_get_prop_line_cap", 
+    "string", ["number"]);
+const slider_t_get_prop_vertical = Module.cwrap("slider_t_get_prop_vertical", 
     "number", ["number"]);
 const slider_t_get_prop_dragger_adapt_to_icon = Module.cwrap("slider_t_get_prop_dragger_adapt_to_icon", 
     "number", ["number"]);
@@ -4030,6 +4512,8 @@ const native_window_set_fullscreen = Module.cwrap("native_window_set_fullscreen"
     "number", ["number","number"]);
 const native_window_set_cursor = Module.cwrap("native_window_set_cursor", 
     "number", ["number","string","number"]);
+const native_window_set_title = Module.cwrap("native_window_set_title", 
+    "number", ["number","string"]);
 const window_create = Module.cwrap("window_create", 
     "number", ["number","number","number","number","number"]);
 const window_create_default = Module.cwrap("window_create_default", 
@@ -4058,7 +4542,11 @@ const gif_image_stop = Module.cwrap("gif_image_stop",
     "number", ["number"]);
 const gif_image_pause = Module.cwrap("gif_image_pause", 
     "number", ["number"]);
+const gif_image_set_loop = Module.cwrap("gif_image_set_loop", 
+    "number", ["number","number"]);
 const gif_image_cast = Module.cwrap("gif_image_cast", 
+    "number", ["number"]);
+const gif_image_t_get_prop_loop = Module.cwrap("gif_image_t_get_prop_loop", 
     "number", ["number"]);
 const keyboard_create = Module.cwrap("keyboard_create", 
     "number", ["number","number","number","number","number"]);
@@ -4066,11 +4554,23 @@ const keyboard_cast = Module.cwrap("keyboard_cast",
     "number", ["number"]);
 const mutable_image_create = Module.cwrap("mutable_image_create", 
     "number", ["number","number","number","number","number"]);
+const list_item_seperator_create = Module.cwrap("list_item_seperator_create", 
+    "number", ["number","number","number","number","number"]);
+const list_item_seperator_cast = Module.cwrap("list_item_seperator_cast", 
+    "number", ["number"]);
 const svg_image_create = Module.cwrap("svg_image_create", 
     "number", ["number","number","number","number","number"]);
 const svg_image_set_image = Module.cwrap("svg_image_set_image", 
     "number", ["number","string"]);
+const svg_image_set_cache_mode = Module.cwrap("svg_image_set_cache_mode", 
+    "number", ["number","number"]);
+const svg_image_set_draw_type = Module.cwrap("svg_image_set_draw_type", 
+    "number", ["number","number"]);
 const svg_image_cast = Module.cwrap("svg_image_cast", 
+    "number", ["number"]);
+const svg_image_t_get_prop_is_cache_mode = Module.cwrap("svg_image_t_get_prop_is_cache_mode", 
+    "number", ["number"]);
+const svg_image_t_get_prop_draw_type = Module.cwrap("svg_image_t_get_prop_draw_type", 
     "number", ["number"]);
 const idle_info_cast = Module.cwrap("idle_info_cast", 
     "number", ["number"]);
@@ -4096,6 +4596,8 @@ const object_array_last_index_of = Module.cwrap("object_array_last_index_of",
     "number", ["number","number"]);
 const object_array_remove = Module.cwrap("object_array_remove", 
     "number", ["number","number"]);
+const object_array_remove_value = Module.cwrap("object_array_remove_value", 
+    "number", ["number","number"]);
 const object_array_get_and_remove = Module.cwrap("object_array_get_and_remove", 
     "number", ["number","number","number"]);
 const object_array_t_get_prop_size = Module.cwrap("object_array_t_get_prop_size", 
@@ -4108,6 +4610,8 @@ const object_default_unref = Module.cwrap("object_default_unref",
     "number", ["number"]);
 const object_default_clear_props = Module.cwrap("object_default_clear_props", 
     "number", ["number"]);
+const object_default_set_keep_prop_type = Module.cwrap("object_default_set_keep_prop_type", 
+    "number", ["number","number"]);
 const timer_info_cast = Module.cwrap("timer_info_cast", 
     "number", ["number"]);
 const timer_info_t_get_prop_ctx = Module.cwrap("timer_info_t_get_prop_ctx", 
@@ -4128,12 +4632,16 @@ const combo_box_cast = Module.cwrap("combo_box_cast",
     "number", ["number"]);
 const combo_box_set_open_window = Module.cwrap("combo_box_set_open_window", 
     "number", ["number","string"]);
+const combo_box_set_theme_of_popup = Module.cwrap("combo_box_set_theme_of_popup", 
+    "number", ["number","string"]);
 const combo_box_reset_options = Module.cwrap("combo_box_reset_options", 
     "number", ["number"]);
 const combo_box_count_options = Module.cwrap("combo_box_count_options", 
     "number", ["number"]);
 const combo_box_set_selected_index = Module.cwrap("combo_box_set_selected_index", 
     "number", ["number","number"]);
+const combo_box_set_selected_index_by_text = Module.cwrap("combo_box_set_selected_index_by_text", 
+    "number", ["number","string"]);
 const combo_box_set_localize_options = Module.cwrap("combo_box_set_localize_options", 
     "number", ["number","number"]);
 const combo_box_set_value = Module.cwrap("combo_box_set_value", 
@@ -4144,13 +4652,21 @@ const combo_box_append_option = Module.cwrap("combo_box_append_option",
     "number", ["number","number","string"]);
 const combo_box_remove_option = Module.cwrap("combo_box_remove_option", 
     "number", ["number","number"]);
+const combo_box_remove_option_by_index = Module.cwrap("combo_box_remove_option_by_index", 
+    "number", ["number","number"]);
 const combo_box_set_options = Module.cwrap("combo_box_set_options", 
     "number", ["number","string"]);
 const combo_box_get_value = Module.cwrap("combo_box_get_value", 
     "number", ["number"]);
+const combo_box_has_option_text = Module.cwrap("combo_box_has_option_text", 
+    "number", ["number","string"]);
 const combo_box_get_text = Module.cwrap("combo_box_get_text", 
     "string", ["number"]);
+const combo_box_get_text_of_selected = Module.cwrap("combo_box_get_text_of_selected", 
+    "string", ["number"]);
 const combo_box_t_get_prop_open_window = Module.cwrap("combo_box_t_get_prop_open_window", 
+    "string", ["number"]);
+const combo_box_t_get_prop_theme_of_popup = Module.cwrap("combo_box_t_get_prop_theme_of_popup", 
     "string", ["number"]);
 const combo_box_t_get_prop_selected_index = Module.cwrap("combo_box_t_get_prop_selected_index", 
     "number", ["number"]);
@@ -4164,6 +4680,8 @@ const combo_box_t_get_prop_item_height = Module.cwrap("combo_box_t_get_prop_item
     "number", ["number"]);
 const image_create = Module.cwrap("image_create", 
     "number", ["number","number","number","number","number"]);
+const icon_create = Module.cwrap("icon_create", 
+    "number", ["number","number","number","number","number"]);
 const image_set_draw_type = Module.cwrap("image_set_draw_type", 
     "number", ["number","number"]);
 const image_cast = Module.cwrap("image_cast", 
@@ -4176,11 +4694,15 @@ const overlay_set_click_through = Module.cwrap("overlay_set_click_through",
     "number", ["number","number"]);
 const overlay_set_always_on_top = Module.cwrap("overlay_set_always_on_top", 
     "number", ["number","number"]);
+const overlay_set_modeless = Module.cwrap("overlay_set_modeless", 
+    "number", ["number","number"]);
 const overlay_cast = Module.cwrap("overlay_cast", 
     "number", ["number"]);
 const overlay_t_get_prop_click_through = Module.cwrap("overlay_t_get_prop_click_through", 
     "number", ["number"]);
 const overlay_t_get_prop_always_on_top = Module.cwrap("overlay_t_get_prop_always_on_top", 
+    "number", ["number"]);
+const overlay_t_get_prop_modeless = Module.cwrap("overlay_t_get_prop_modeless", 
     "number", ["number"]);
 const popup_create = Module.cwrap("popup_create", 
     "number", ["number","number","number","number","number"]);
@@ -4202,6 +4724,16 @@ const spin_box_create = Module.cwrap("spin_box_create",
     "number", ["number","number","number","number","number"]);
 const spin_box_cast = Module.cwrap("spin_box_cast", 
     "number", ["number"]);
+const spin_box_set_easy_touch_mode = Module.cwrap("spin_box_set_easy_touch_mode", 
+    "number", ["number","number"]);
+const spin_box_set_button_position = Module.cwrap("spin_box_set_button_position", 
+    "number", ["number","string"]);
+const spin_set_repeat = Module.cwrap("spin_set_repeat", 
+    "number", ["number","number"]);
+const spin_box_t_get_prop_easy_touch_mode = Module.cwrap("spin_box_t_get_prop_easy_touch_mode", 
+    "number", ["number"]);
+const spin_box_t_get_prop_button_position = Module.cwrap("spin_box_t_get_prop_button_position", 
+    "string", ["number"]);
 const system_bar_create = Module.cwrap("system_bar_create", 
     "number", ["number","number","number","number","number"]);
 const system_bar_cast = Module.cwrap("system_bar_cast", 
@@ -4267,7 +4799,7 @@ export class TEmitter {
    *
    * @returns 返回id，用于emitter_off。
    */
- on(etype : TEventType, handler : Function, ctx : any) : number  {
+ on(etype : number, handler : Function, ctx : any) : number  {
     return emitter_on(this != null ? (this.nativeObj || this) : null, etype, TBrowser.addFunction(wrap_on_event(handler), "iii"), ctx);
  }
 
@@ -4639,7 +5171,7 @@ export class TBitmap {
  * 对象接口。
  *
  */
-export class TObject extends TEmitter { 
+export class TTkObject extends TEmitter { 
  public nativeObj : any;
  constructor(nativeObj : any) {
    super(nativeObj);
@@ -4653,7 +5185,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  unref() : TRet  {
-    return object_unref(this != null ? (this.nativeObj || this) : null);
+    return tk_object_unref(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -4664,8 +5196,8 @@ export class TObject extends TEmitter {
    *
    * @returns 返回object对象。
    */
- static ref(obj : TObject) : TObject  {
-    return new TObject(object_ref(obj != null ? (obj.nativeObj || obj) : null));
+ static ref(obj : TTkObject) : TTkObject  {
+    return new TTkObject(tk_object_ref(obj != null ? (obj.nativeObj || obj) : null));
  }
 
 
@@ -4676,7 +5208,7 @@ export class TObject extends TEmitter {
    * @returns 返回对象的类型名称。
    */
  getType() : string  {
-    return object_get_type(this != null ? (this.nativeObj || this) : null);
+    return tk_object_get_type(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -4687,7 +5219,7 @@ export class TObject extends TEmitter {
    * @returns 返回对象的描述信息。
    */
  getDesc() : string  {
-    return object_get_desc(this != null ? (this.nativeObj || this) : null);
+    return tk_object_get_desc(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -4698,7 +5230,7 @@ export class TObject extends TEmitter {
    * @returns 返回对象占用内存的大小。
    */
  getSize() : number  {
-    return object_get_size(this != null ? (this.nativeObj || this) : null);
+    return tk_object_get_size(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -4709,7 +5241,7 @@ export class TObject extends TEmitter {
    * @returns 返回TRUE表示是集合，否则不是。
    */
  isCollection() : boolean  {
-    return object_is_collection(this != null ? (this.nativeObj || this) : null);
+    return tk_object_is_collection(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -4721,7 +5253,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setName(name : string) : TRet  {
-    return object_set_name(this != null ? (this.nativeObj || this) : null, name);
+    return tk_object_set_name(this != null ? (this.nativeObj || this) : null, name);
  }
 
 
@@ -4732,8 +5264,8 @@ export class TObject extends TEmitter {
    *
    * @returns 返回比较结果。
    */
- compare(other : TObject) : number  {
-    return object_compare(this != null ? (this.nativeObj || this) : null, other != null ? (other.nativeObj || other) : null);
+ compare(other : TTkObject) : number  {
+    return tk_object_compare(this != null ? (this.nativeObj || this) : null, other != null ? (other.nativeObj || other) : null);
  }
 
 
@@ -4746,7 +5278,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  getProp(name : string, v : TValue) : TRet  {
-    return object_get_prop(this != null ? (this.nativeObj || this) : null, name, v != null ? (v.nativeObj || v) : null);
+    return tk_object_get_prop(this != null ? (this.nativeObj || this) : null, name, v != null ? (v.nativeObj || v) : null);
  }
 
 
@@ -4758,7 +5290,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的字符串类型的值。
    */
  getPropStr(name : string) : string  {
-    return object_get_prop_str(this != null ? (this.nativeObj || this) : null, name);
+    return tk_object_get_prop_str(this != null ? (this.nativeObj || this) : null, name);
  }
 
 
@@ -4770,7 +5302,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的指针类型的值。
    */
  getPropPointer(name : string) : any  {
-    return object_get_prop_pointer(this != null ? (this.nativeObj || this) : null, name);
+    return tk_object_get_prop_pointer(this != null ? (this.nativeObj || this) : null, name);
  }
 
 
@@ -4781,8 +5313,8 @@ export class TObject extends TEmitter {
    *
    * @returns 返回指定属性的object类型的值。
    */
- getPropObject(name : string) : TObject  {
-    return new TObject(object_get_prop_object(this != null ? (this.nativeObj || this) : null, name));
+ getPropObject(name : string) : TTkObject  {
+    return new TTkObject(tk_object_get_prop_object(this != null ? (this.nativeObj || this) : null, name));
  }
 
 
@@ -4795,7 +5327,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的整数类型的值。
    */
  getPropInt(name : string, defval : number) : number  {
-    return object_get_prop_int(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_int(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -4808,7 +5340,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的bool类型的值。
    */
  getPropBool(name : string, defval : boolean) : boolean  {
-    return object_get_prop_bool(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_bool(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -4821,7 +5353,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的浮点数类型的值。
    */
  getPropFloat(name : string, defval : number) : number  {
-    return object_get_prop_float(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_float(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -4834,7 +5366,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的浮点数类型的值。
    */
  getPropDouble(name : string, defval : number) : number  {
-    return object_get_prop_double(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_double(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -4846,7 +5378,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  removeProp(name : string) : TRet  {
-    return object_remove_prop(this != null ? (this.nativeObj || this) : null, name);
+    return tk_object_remove_prop(this != null ? (this.nativeObj || this) : null, name);
  }
 
 
@@ -4859,7 +5391,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setProp(name : string, value : TValue) : TRet  {
-    return object_set_prop(this != null ? (this.nativeObj || this) : null, name, value != null ? (value.nativeObj || value) : null);
+    return tk_object_set_prop(this != null ? (this.nativeObj || this) : null, name, value != null ? (value.nativeObj || value) : null);
  }
 
 
@@ -4872,7 +5404,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropStr(name : string, value : string) : TRet  {
-    return object_set_prop_str(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_str(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -4884,8 +5416,8 @@ export class TObject extends TEmitter {
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
- setPropObject(name : string, value : TObject) : TRet  {
-    return object_set_prop_object(this != null ? (this.nativeObj || this) : null, name, value != null ? (value.nativeObj || value) : null);
+ setPropObject(name : string, value : TTkObject) : TRet  {
+    return tk_object_set_prop_object(this != null ? (this.nativeObj || this) : null, name, value != null ? (value.nativeObj || value) : null);
  }
 
 
@@ -4898,7 +5430,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropInt(name : string, value : any) : TRet  {
-    return object_set_prop_int(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_int(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -4911,7 +5443,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropBool(name : string, value : any) : TRet  {
-    return object_set_prop_bool(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_bool(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -4924,7 +5456,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropFloat(name : string, value : any) : TRet  {
-    return object_set_prop_float(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_float(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -4937,7 +5469,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropDouble(name : string, value : any) : TRet  {
-    return object_set_prop_double(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_double(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -4949,8 +5481,21 @@ export class TObject extends TEmitter {
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
- copyProp(src : TObject, name : string) : TRet  {
-    return object_copy_prop(this != null ? (this.nativeObj || this) : null, src != null ? (src.nativeObj || src) : null, name);
+ copyProp(src : TTkObject, name : string) : TRet  {
+    return tk_object_copy_prop(this != null ? (this.nativeObj || this) : null, src != null ? (src.nativeObj || src) : null, name);
+ }
+
+
+  /**
+   * 拷贝全部的属性。
+   * 
+   * @param src 源对象。
+   * @param overwrite 如果属性存在是否覆盖。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ copyProps(src : TTkObject, overwrite : boolean) : TRet  {
+    return tk_object_copy_props(this != null ? (this.nativeObj || this) : null, src != null ? (src.nativeObj || src) : null, overwrite);
  }
 
 
@@ -4962,7 +5507,7 @@ export class TObject extends TEmitter {
    * @returns 返回TRUE表示存在，否则表示不存在。
    */
  hasProp(name : string) : boolean  {
-    return object_has_prop(this != null ? (this.nativeObj || this) : null, name);
+    return tk_object_has_prop(this != null ? (this.nativeObj || this) : null, name);
  }
 
 
@@ -4975,7 +5520,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  eval(expr : string, v : TValue) : TRet  {
-    return object_eval(this != null ? (this.nativeObj || this) : null, expr, v != null ? (v.nativeObj || v) : null);
+    return tk_object_eval(this != null ? (this.nativeObj || this) : null, expr, v != null ? (v.nativeObj || v) : null);
  }
 
 
@@ -4988,7 +5533,7 @@ export class TObject extends TEmitter {
    * @returns 返回TRUE表示可以执行，否则表示不可以执行。
    */
  canExec(name : string, args : string) : boolean  {
-    return object_can_exec(this != null ? (this.nativeObj || this) : null, name, args);
+    return tk_object_can_exec(this != null ? (this.nativeObj || this) : null, name, args);
  }
 
 
@@ -5001,7 +5546,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  execute(name : string, args : string) : TRet  {
-    return object_exec(this != null ? (this.nativeObj || this) : null, name, args);
+    return tk_object_exec(this != null ? (this.nativeObj || this) : null, name, args);
  }
 
 
@@ -5012,7 +5557,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  notifyChanged() : TRet  {
-    return object_notify_changed(this != null ? (this.nativeObj || this) : null);
+    return tk_object_notify_changed(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -5024,7 +5569,7 @@ export class TObject extends TEmitter {
    * @returns 返回TRUE表示存在，否则表示不存在。
    */
  hasPropByPath(path : string) : boolean  {
-    return object_has_prop_by_path(this != null ? (this.nativeObj || this) : null, path);
+    return tk_object_has_prop_by_path(this != null ? (this.nativeObj || this) : null, path);
  }
 
 
@@ -5036,7 +5581,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的字符串类型的值。
    */
  getPropStrByPath(path : string) : string  {
-    return object_get_prop_str_by_path(this != null ? (this.nativeObj || this) : null, path);
+    return tk_object_get_prop_str_by_path(this != null ? (this.nativeObj || this) : null, path);
  }
 
 
@@ -5048,7 +5593,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的指针类型的值。
    */
  getPropPointerByPath(path : string) : any  {
-    return object_get_prop_pointer_by_path(this != null ? (this.nativeObj || this) : null, path);
+    return tk_object_get_prop_pointer_by_path(this != null ? (this.nativeObj || this) : null, path);
  }
 
 
@@ -5059,8 +5604,8 @@ export class TObject extends TEmitter {
    *
    * @returns 返回指定属性的object类型的值。
    */
- getPropObjectByPath(path : string) : TObject  {
-    return new TObject(object_get_prop_object_by_path(this != null ? (this.nativeObj || this) : null, path));
+ getPropObjectByPath(path : string) : TTkObject  {
+    return new TTkObject(tk_object_get_prop_object_by_path(this != null ? (this.nativeObj || this) : null, path));
  }
 
 
@@ -5073,7 +5618,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的整数类型的值。
    */
  getPropIntByPath(path : string, defval : number) : number  {
-    return object_get_prop_int_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
+    return tk_object_get_prop_int_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
  }
 
 
@@ -5086,7 +5631,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的bool类型的值。
    */
  getPropBoolByPath(path : string, defval : boolean) : boolean  {
-    return object_get_prop_bool_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
+    return tk_object_get_prop_bool_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
  }
 
 
@@ -5101,7 +5646,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的浮点数类型的值。
    */
  getPropFloatByPath(path : string, defval : number) : number  {
-    return object_get_prop_float_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
+    return tk_object_get_prop_float_by_path(this != null ? (this.nativeObj || this) : null, path, defval);
  }
 
 
@@ -5114,7 +5659,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropByPath(path : string, value : TValue) : TRet  {
-    return object_set_prop_by_path(this != null ? (this.nativeObj || this) : null, path, value != null ? (value.nativeObj || value) : null);
+    return tk_object_set_prop_by_path(this != null ? (this.nativeObj || this) : null, path, value != null ? (value.nativeObj || value) : null);
  }
 
 
@@ -5127,7 +5672,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropStrByPath(path : string, value : string) : TRet  {
-    return object_set_prop_str_by_path(this != null ? (this.nativeObj || this) : null, path, value);
+    return tk_object_set_prop_str_by_path(this != null ? (this.nativeObj || this) : null, path, value);
  }
 
 
@@ -5139,8 +5684,8 @@ export class TObject extends TEmitter {
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
- setPropObjectByPath(path : string, value : TObject) : TRet  {
-    return object_set_prop_object_by_path(this != null ? (this.nativeObj || this) : null, path, value != null ? (value.nativeObj || value) : null);
+ setPropObjectByPath(path : string, value : TTkObject) : TRet  {
+    return tk_object_set_prop_object_by_path(this != null ? (this.nativeObj || this) : null, path, value != null ? (value.nativeObj || value) : null);
  }
 
 
@@ -5153,7 +5698,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropIntByPath(path : string, value : any) : TRet  {
-    return object_set_prop_int_by_path(this != null ? (this.nativeObj || this) : null, path, value);
+    return tk_object_set_prop_int_by_path(this != null ? (this.nativeObj || this) : null, path, value);
  }
 
 
@@ -5166,7 +5711,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropBoolByPath(path : string, value : any) : TRet  {
-    return object_set_prop_bool_by_path(this != null ? (this.nativeObj || this) : null, path, value);
+    return tk_object_set_prop_bool_by_path(this != null ? (this.nativeObj || this) : null, path, value);
  }
 
 
@@ -5179,7 +5724,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropFloatByPath(path : string, value : any) : TRet  {
-    return object_set_prop_float_by_path(this != null ? (this.nativeObj || this) : null, path, value);
+    return tk_object_set_prop_float_by_path(this != null ? (this.nativeObj || this) : null, path, value);
  }
 
 
@@ -5192,7 +5737,7 @@ export class TObject extends TEmitter {
    * @returns 返回TRUE表示可以执行，否则表示不可以执行。
    */
  canExecByPath(path : string, args : string) : boolean  {
-    return object_can_exec_by_path(this != null ? (this.nativeObj || this) : null, path, args);
+    return tk_object_can_exec_by_path(this != null ? (this.nativeObj || this) : null, path, args);
  }
 
 
@@ -5205,7 +5750,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  executeByPath(path : string, args : string) : TRet  {
-    return object_exec_by_path(this != null ? (this.nativeObj || this) : null, path, args);
+    return tk_object_exec_by_path(this != null ? (this.nativeObj || this) : null, path, args);
  }
 
 
@@ -5218,7 +5763,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的int8类型的值。
    */
  getPropInt8(name : string, defval : number) : number  {
-    return object_get_prop_int8(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_int8(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -5231,7 +5776,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropInt8(name : string, value : any) : TRet  {
-    return object_set_prop_int8(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_int8(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -5244,7 +5789,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的uint8类型的值。
    */
  getPropUint8(name : string, defval : number) : number  {
-    return object_get_prop_uint8(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_uint8(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -5257,7 +5802,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropUint8(name : string, value : any) : TRet  {
-    return object_set_prop_uint8(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_uint8(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -5270,7 +5815,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的int16类型的值。
    */
  getPropInt16(name : string, defval : number) : number  {
-    return object_get_prop_int16(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_int16(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -5283,7 +5828,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropInt16(name : string, value : any) : TRet  {
-    return object_set_prop_int16(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_int16(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -5296,7 +5841,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的uint16类型的值。
    */
  getPropUint16(name : string, defval : number) : number  {
-    return object_get_prop_uint16(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_uint16(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -5309,7 +5854,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropUint16(name : string, value : any) : TRet  {
-    return object_set_prop_uint16(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_uint16(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -5322,7 +5867,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的int32类型的值。
    */
  getPropInt32(name : string, defval : number) : number  {
-    return object_get_prop_int32(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_int32(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -5335,7 +5880,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropInt32(name : string, value : any) : TRet  {
-    return object_set_prop_int32(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_int32(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -5348,7 +5893,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的uint32类型的值。
    */
  getPropUint32(name : string, defval : number) : number  {
-    return object_get_prop_uint32(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_uint32(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -5361,7 +5906,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropUint32(name : string, value : any) : TRet  {
-    return object_set_prop_uint32(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_uint32(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -5374,7 +5919,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的int64类型的值。
    */
  getPropInt64(name : string, defval : number) : number  {
-    return object_get_prop_int64(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_int64(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -5387,7 +5932,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropInt64(name : string, value : any) : TRet  {
-    return object_set_prop_int64(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_int64(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -5400,7 +5945,7 @@ export class TObject extends TEmitter {
    * @returns 返回指定属性的uint64类型的值。
    */
  getPropUint64(name : string, defval : number) : number  {
-    return object_get_prop_uint64(this != null ? (this.nativeObj || this) : null, name, defval);
+    return tk_object_get_prop_uint64(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -5413,7 +5958,7 @@ export class TObject extends TEmitter {
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setPropUint64(name : string, value : any) : TRet  {
-    return object_set_prop_uint64(this != null ? (this.nativeObj || this) : null, name, value);
+    return tk_object_set_prop_uint64(this != null ? (this.nativeObj || this) : null, name, value);
  }
 
 
@@ -5422,7 +5967,7 @@ export class TObject extends TEmitter {
    *
    */
  get refCount() : number {
-   return object_t_get_prop_ref_count(this.nativeObj);
+   return tk_object_t_get_prop_ref_count(this.nativeObj);
  }
 
 
@@ -5431,7 +5976,7 @@ export class TObject extends TEmitter {
    *
    */
  get name() : string {
-   return object_t_get_prop_name(this.nativeObj);
+   return tk_object_t_get_prop_name(this.nativeObj);
  }
 
  set name(v : string) {
@@ -5443,6 +5988,7 @@ export class TObject extends TEmitter {
  * 一个通用数据类型，用来存放整数、浮点数、字符串和其它对象。
  *
  *在C/C++中，一般不需动态创建对象，直接声明并初始化即可。如：
+ *
  *
  *
  *> 在脚本语言中，需要动态创建对象。
@@ -5723,7 +6269,7 @@ export class TValue {
   /**
    * 获取类型为字符串的值。
    * 
-   * @param buff 用于格式转换的缓冲区。
+   * @param buff 用于格式转换的缓冲区（如果 v 对象为 string 类型的话，不会把字符串数据拷贝到 buff 中）。
    * @param size 缓冲区大小。
    *
    * @returns 值。
@@ -5741,6 +6287,29 @@ export class TValue {
    */
  isNull() : boolean  {
     return value_is_null(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 判断两个value是否相同。
+   * 
+   * @param other value对象。
+   *
+   * @returns 为空值返回TRUE，否则返回FALSE。
+   */
+ equal(other : TValue) : boolean  {
+    return value_equal(this != null ? (this.nativeObj || this) : null, other != null ? (other.nativeObj || other) : null);
+ }
+
+
+  /**
+   * 转换为int的值。
+   * 
+   *
+   * @returns 值。
+   */
+ int() : number  {
+    return value_int(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -5763,7 +6332,7 @@ export class TValue {
    *
    * @returns value对象本身。
    */
- setObject(value : TObject) : TValue  {
+ setObject(value : TTkObject) : TValue  {
     return new TValue(value_set_object(this != null ? (this.nativeObj || this) : null, value != null ? (value.nativeObj || value) : null));
  }
 
@@ -5774,8 +6343,8 @@ export class TValue {
    *
    * @returns 值。
    */
- object() : TObject  {
-    return new TObject(value_object(this != null ? (this.nativeObj || this) : null));
+ object() : TTkObject  {
+    return new TTkObject(value_object(this != null ? (this.nativeObj || this) : null));
  }
 
 
@@ -5848,12 +6417,80 @@ export class TValue {
     return new TValue(value_cast(value != null ? (value.nativeObj || value) : null));
  }
 
+
+  /**
+   * 获取类型为ID的值。
+   * 
+   *
+   * @returns 值。
+   */
+ id() : string  {
+    return value_id(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 获取类型为func的值。
+   * 
+   *
+   * @returns 值。
+   */
+ func() : any  {
+    return value_func(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 获取类型为func_def的值。
+   * 
+   *
+   * @returns 值。
+   */
+ funcDef() : any  {
+    return value_func_def(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 获取类型为位图对象。
+   * 
+   *
+   * @returns 位图对象。
+   */
+ bitmap() : any  {
+    return value_bitmap(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 获取类型为矩形区域数据。
+   * 
+   *
+   * @returns 返回矩形区域数据。
+   */
+ rect() : TRect  {
+    return new TRect(value_rect(this != null ? (this.nativeObj || this) : null));
+ }
+
 };
 /**
  * TK全局对象。
  *
  */
 export class TGlobal { 
+
+  /**
+   * 初始化基本功能。
+   *> 在tk_init之前，应用程序可能需要加载配置文件，
+   *> 为了保证这些功能正常工作，可以先调用tk_pre_init来初始化平台、内存和data reader等等。
+   * 
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ static preInit() : TRet  {
+    return tk_pre_init();
+ }
+
 
   /**
    * 初始化TK。
@@ -5890,6 +6527,18 @@ export class TGlobal {
    */
  static quit() : TRet  {
     return tk_quit();
+ }
+
+
+  /**
+   * 退出TK事件主循环。
+   * 
+   * @param delay 延迟退出的时间(毫秒)。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ static quitEx(delay : number) : TRet  {
+    return tk_quit_ex(delay);
  }
 
 
@@ -6029,6 +6678,12 @@ export enum TImageDrawType {
    *
    */
  SCALE_H = IMAGE_DRAW_SCALE_H(),
+
+  /**
+   * 填充整个区域。将图片缩放至目标矩形的高度或宽度，包装填满整个目标区域，超出不部分不显示。
+   *
+   */
+ FILL = IMAGE_DRAW_FILL(),
 
   /**
    * 平铺显示。
@@ -6323,22 +6978,6 @@ export class TCanvas {
 
 
   /**
-   * 绘制矩形。
-   * 
-   * @param x x坐标。
-   * @param y y坐标。
-   * @param w 宽度。
-   * @param h 高度。
-   * @param gradient 渐变颜色。
-   *
-   * @returns 返回RET_OK表示成功，否则表示失败。
-   */
- fillRectGradient(x : number, y : number, w : number, h : number, gradient : any) : TRet  {
-    return canvas_fill_rect_gradient(this != null ? (this.nativeObj || this) : null, x, y, w, h, gradient);
- }
-
-
-  /**
    * 用填充颜色填充指定矩形。
    *
    *> 如果lcd的颜色格式带alpha通道，连同alpha的值一起修改。
@@ -6380,6 +7019,17 @@ export class TCanvas {
    */
  setFont(name : string, size : number) : TRet  {
     return canvas_set_font(this != null ? (this.nativeObj || this) : null, name, size);
+ }
+
+
+  /**
+   * 释放canvas中字体相关的资源。
+   * 
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ resetFont() : TRet  {
+    return canvas_reset_font(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -6516,6 +7166,18 @@ export class TCanvas {
    */
  reset() : TRet  {
     return canvas_reset(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 清除canvas中缓存。
+   *> 备注：主要用于窗口动画的离线画布绘制完成后重置在线画布，使下一帧中lcd对象的数据保持一致。
+   * 
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ resetCache() : TRet  {
+    return canvas_reset_cache(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -6759,6 +7421,12 @@ export enum TEventType {
  CLICK = EVT_CLICK(),
 
   /**
+   * 双击事件名(pointer_event_t)。
+   *
+   */
+ DOUBLE_CLICK = EVT_DOUBLE_CLICK(),
+
+  /**
    * 得到焦点事件名(event_t)。
    *
    */
@@ -6841,24 +7509,6 @@ export enum TEventType {
    *
    */
  MOVE_RESIZE = EVT_MOVE_RESIZE(),
-
-  /**
-   * 控件的值即将改变的事件名(value_change_event_t)。
-   *
-   */
- VALUE_WILL_CHANGE = EVT_VALUE_WILL_CHANGE(),
-
-  /**
-   * 控件的值改变的事件名(value_change_event_t)。
-   *
-   */
- VALUE_CHANGED = EVT_VALUE_CHANGED(),
-
-  /**
-   * 控件的值持续改变(如编辑器正在编辑)的事件名(value_change_event_t)。
-   *
-   */
- VALUE_CHANGING = EVT_VALUE_CHANGING(),
 
   /**
    * 绘制的事件名(paint_event_t)。
@@ -7081,7 +7731,7 @@ export enum TEventType {
  RESET = EVT_RESET(),
 
   /**
-   * 在指定的时间内(WITH_SCREEN_SAVER_TIME)，没有用户输入事件，由窗口管理器触发。
+   * 在指定的时间内，没有用户输入事件，由窗口管理器触发。
    *
    */
  SCREEN_SAVER = EVT_SCREEN_SAVER(),
@@ -7124,10 +7774,28 @@ export enum TEventType {
  REQUEST_QUIT_APP = EVT_REQUEST_QUIT_APP(),
 
   /**
+   * 即将改变主题(event_t)。
+   *
+   */
+ THEME_WILL_CHANGE = EVT_THEME_WILL_CHANGE(),
+
+  /**
    * 主题变化(event_t)。
    *
    */
  THEME_CHANGED = EVT_THEME_CHANGED(),
+
+  /**
+   * 控件根据自己当前状态即将更新style(event_t)。
+   *
+   */
+ WIDGET_WILL_UPDATE_STYLE = EVT_WIDGET_WILL_UPDATE_STYLE(),
+
+  /**
+   * 控件根据自己当前状态更新style(event_t)。
+   *
+   */
+ WIDGET_UPDATE_STYLE = EVT_WIDGET_UPDATE_STYLE(),
 
   /**
    * 控件加载新的子控件(event_t)。
@@ -7166,10 +7834,16 @@ export enum TEventType {
  MULTI_GESTURE = EVT_MULTI_GESTURE(),
 
   /**
-   * 页面改变了(event_t)。
+   * 当前看到的页面改变了(event_t)。
    *
    */
  PAGE_CHANGED = EVT_PAGE_CHANGED(),
+
+  /**
+   * 当前看到的页面正在改变(offset_change_event_t)。
+   *
+   */
+ PAGE_CHANGING = EVT_PAGE_CHANGING(),
 
   /**
    * 资源管理加载某个资源(assets_event_t)。
@@ -7194,6 +7868,66 @@ export enum TEventType {
    *
    */
  TIMER = EVT_TIMER(),
+
+  /**
+   * 数据到来(event_t)。
+   *
+   */
+ DATA = EVT_DATA(),
+
+  /**
+   * 客户连接到来(event_t)。
+   *
+   */
+ CONNECT = EVT_CONNECT(),
+
+  /**
+   * 模型变化。用于fscript实现窗口间通讯(model_event_t)。
+   *
+   */
+ MODEL_CHANGE = EVT_MODEL_CHANGE(),
+
+  /**
+   * SDL系统事件(system_event_t)。
+   *
+   */
+ SYSTEM = EVT_SYSTEM(),
+
+  /**
+   * SDL文件拖入事件(drop_file_event_t)。
+   *
+   */
+ DROP_FILE = EVT_DROP_FILE(),
+
+  /**
+   * locale_infos加载某个本地化信息(event_t)。
+   *
+   */
+ LOCALE_INFOS_LOAD_INFO = EVT_LOCALE_INFOS_LOAD_INFO(),
+
+  /**
+   * locale_infos卸载某个本地化信息(event_t)。
+   *
+   */
+ LOCALE_INFOS_UNLOAD_INFO = EVT_LOCALE_INFOS_UNLOAD_INFO(),
+
+  /**
+   * 控件进入激活状态(event_t)。
+   *
+   */
+ ACTIVATED = EVT_ACTIVATED(),
+
+  /**
+   * 控件退出激活状态(event_t)。
+   *
+   */
+ UNACTIVATED = EVT_UNACTIVATED(),
+
+  /**
+   * UI加载完成事件(event_t)。
+   *
+   */
+ UI_LOAD = EVT_UI_LOAD(),
 
   /**
    * event queue其它请求编号起始值。
@@ -7284,6 +8018,30 @@ export enum TEventType {
    *
    */
  DESTROY = EVT_DESTROY(),
+
+  /**
+   * 值即将改变的事件名(value_change_event_t)。
+   *
+   */
+ VALUE_WILL_CHANGE = EVT_VALUE_WILL_CHANGE(),
+
+  /**
+   * 值改变的事件名(value_change_event_t)。
+   *
+   */
+ VALUE_CHANGED = EVT_VALUE_CHANGED(),
+
+  /**
+   * 值持续改变(如编辑器正在编辑)的事件名(value_change_event_t)。
+   *
+   */
+ VALUE_CHANGING = EVT_VALUE_CHANGING(),
+
+  /**
+   * 日志信息。
+   *
+   */
+ LOG_MESSAGE = EVT_LOG_MESSAGE(),
 };
 
 
@@ -7381,7 +8139,7 @@ export class TEvent {
 
 
   /**
-   * 事件发生的时间。
+   * 事件发生的时间点（该时间点并非真实时间）。
    *
    */
  get time() : number {
@@ -7395,54 +8153,6 @@ export class TEvent {
    */
  get target() : any {
    return event_t_get_prop_target(this.nativeObj);
- }
-
-};
-/**
- * 字体管理器，负责字体的加载和缓存管理。
- *(如果使用nanovg，字体由nanovg内部管理)
- *
- */
-export class TFontManager { 
- public nativeObj : any;
- constructor(nativeObj : any) {
-   this.nativeObj = nativeObj;
- }
-
-
-  /**
-   * 卸载指定的字体。
-   * 
-   * @param name 字体名，为NULL时使用缺省字体。
-   * @param size 字体的大小(矢量字体指定为0即可)。
-   *
-   * @returns 返回RET_OK表示成功，否则表示失败。
-   */
- unloadFont(name : string, size : number) : TRet  {
-    return font_manager_unload_font(this != null ? (this.nativeObj || this) : null, name, size);
- }
-
-
-  /**
-   * 清除最久没有被使用的缓冲字模。
-   * 
-   * @param cache_size 每种字体保留缓存字模的个数。
-   *
-   * @returns 返回RET_OK表示成功，否则表示失败。
-   */
- shrinkCache(cache_size : number) : TRet  {
-    return font_manager_shrink_cache(this != null ? (this.nativeObj || this) : null, cache_size);
- }
-
-
-  /**
-   * 卸载全部字体。
-   * 
-   *
-   * @returns 返回RET_OK表示成功，否则表示失败。
-   */
- unloadAll() : TRet  {
-    return font_manager_unload_all(this != null ? (this.nativeObj || this) : null);
  }
 
 };
@@ -7469,6 +8179,18 @@ export enum TGlyphFormat {
    *
    */
  RGBA = GLYPH_FMT_RGBA(),
+
+  /**
+   * 每个像素占用2bit。
+   *
+   */
+ ALPHA2 = GLYPH_FMT_ALPHA2(),
+
+  /**
+   * 每个像素占用4bit。
+   *
+   */
+ ALPHA4 = GLYPH_FMT_ALPHA4(),
 };
 
 
@@ -7478,6 +8200,7 @@ export enum TGlyphFormat {
  *> idle可以用来实现一些异步处理。
  *
  *示例：
+ *
  *
  *
  *> 在非GUI线程请用idle\_queue。
@@ -7752,12 +8475,12 @@ export class TInputMethod {
   /**
    * 提交按键。
    * 
-   * @param key 键值。
+   * @param keys 键值。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
- dispatchKeys(key : string) : TRet  {
-    return input_method_dispatch_keys(this != null ? (this.nativeObj || this) : null, key);
+ dispatchKeys(keys : string) : TRet  {
+    return input_method_dispatch_keys(this != null ? (this.nativeObj || this) : null, keys);
  }
 
 
@@ -8598,6 +9321,108 @@ export enum TKeyCode {
  KEY_CANCEL = TK_KEY_CANCEL(),
 
   /**
+   * TK_KEY_KP_DIVIDE
+   *
+   */
+ KEY_KP_DIVIDE = TK_KEY_KP_DIVIDE(),
+
+  /**
+   * TK_KEY_KP_MULTIPLY
+   *
+   */
+ KEY_KP_MULTIPLY = TK_KEY_KP_MULTIPLY(),
+
+  /**
+   * TK_KEY_KP_MINUS
+   *
+   */
+ KEY_KP_MINUS = TK_KEY_KP_MINUS(),
+
+  /**
+   * TK_KEY_KP_PLUS
+   *
+   */
+ KEY_KP_PLUS = TK_KEY_KP_PLUS(),
+
+  /**
+   * TK_KEY_KP_ENTER
+   *
+   */
+ KEY_KP_ENTER = TK_KEY_KP_ENTER(),
+
+  /**
+   * TK_KEY_KP_1
+   *
+   */
+ KEY_KP_1 = TK_KEY_KP_1(),
+
+  /**
+   * TK_KEY_KP_2
+   *
+   */
+ KEY_KP_2 = TK_KEY_KP_2(),
+
+  /**
+   * TK_KEY_KP_3
+   *
+   */
+ KEY_KP_3 = TK_KEY_KP_3(),
+
+  /**
+   * TK_KEY_KP_4
+   *
+   */
+ KEY_KP_4 = TK_KEY_KP_4(),
+
+  /**
+   * TK_KEY_KP_5
+   *
+   */
+ KEY_KP_5 = TK_KEY_KP_5(),
+
+  /**
+   * TK_KEY_KP_6
+   *
+   */
+ KEY_KP_6 = TK_KEY_KP_6(),
+
+  /**
+   * TK_KEY_KP_7
+   *
+   */
+ KEY_KP_7 = TK_KEY_KP_7(),
+
+  /**
+   * TK_KEY_KP_8
+   *
+   */
+ KEY_KP_8 = TK_KEY_KP_8(),
+
+  /**
+   * TK_KEY_KP_9
+   *
+   */
+ KEY_KP_9 = TK_KEY_KP_9(),
+
+  /**
+   * TK_KEY_KP_0
+   *
+   */
+ KEY_KP_0 = TK_KEY_KP_0(),
+
+  /**
+   * TK_KEY_KP_PERIOD
+   *
+   */
+ KEY_KP_PERIOD = TK_KEY_KP_PERIOD(),
+
+  /**
+   * TK_KEY_NUMLOCKCLEAR
+   *
+   */
+ KEY_NUMLOCKCLEAR = TK_KEY_NUMLOCKCLEAR(),
+
+  /**
    * TK_KEY_WHEEL
    *
    */
@@ -8665,6 +9490,87 @@ export class TLocaleInfo {
 
 };
 /**
+ * 在某些情况下，需要多个资源管理器。比如在手表系统里，每个应用或表盘，可能放在独立的资源包中，
+ *此时优先加载应用自己的资源，如果没有就加载系统的资源。
+ *
+ */
+export class TLocaleInfos { 
+
+  /**
+   * 获取指定小应用程序(applet)的locale_info。
+   * 
+   * @param name 小应用程序(applet)的名称。
+   *
+   * @returns 返回locale_info对象。
+   */
+ static ref(name : string) : TLocaleInfos  {
+    return new TLocaleInfo(locale_infos_ref(name));
+ }
+
+
+  /**
+   * 释放指定小应用程序(applet)的locale_info。
+   * 
+   * @param locale_info locale_info对象。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ static unref(locale_info : TLocaleInfo) : TRet  {
+    return locale_infos_unref(locale_info != null ? (locale_info.nativeObj || locale_info) : null);
+ }
+
+
+  /**
+   * 设置全部locale_info的当前国家和语言。
+   * 
+   * @param language 语言。
+   * @param country 国家或地区。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ static change(language : string, country : string) : TRet  {
+    return locale_infos_change(language, country);
+ }
+
+
+  /**
+   * 注册指定事件的处理函数。
+   * 
+   * @param type 事件类型，目前有EVT_LOCALE_INFOS_LOAD_INFO、EVT_LOCALE_INFOS_UNLOAD_INFO。
+   * @param on_event 事件处理函数。
+   * @param ctx 事件处理函数上下文。
+   *
+   * @returns 返回id，用于locale_infos_off。
+   */
+ static on(type : TEventType, on_event : Function, ctx : any) : number  {
+    return locale_infos_on(type, TBrowser.addFunction(wrap_on_event(on_event), "iii"), ctx);
+ }
+
+
+  /**
+   * 注销指定事件的处理函数。
+   * 
+   * @param id locale_infos_on返回的ID。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ static off(id : number) : TRet  {
+    return locale_infos_off(id);
+ }
+
+
+  /**
+   * 重新加载全部字符串资源。
+   * 
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ static reloadAll() : TRet  {
+    return locale_infos_reload_all();
+ }
+
+};
+/**
  * style常量定义。
  *
  */
@@ -8681,6 +9587,12 @@ export enum TStyleId {
    *
    */
  FG_COLOR = STYLE_ID_FG_COLOR(),
+
+  /**
+   * dragger颜色。
+   *
+   */
+ DRAGGER_COLOR = STYLE_ID_DRAGGER_COLOR(),
 
   /**
    * 蒙版颜色。
@@ -8884,7 +9796,7 @@ export enum TStyleId {
    * 左上角圆角半径(仅在WITH_VGCANVAS定义时生效)。
    *
    */
- ROUND_RADIUS_TOP_LETF = STYLE_ID_ROUND_RADIUS_TOP_LETF(),
+ ROUND_RADIUS_TOP_LEFT = STYLE_ID_ROUND_RADIUS_TOP_LEFT(),
 
   /**
    * 右上角圆角半径(仅在WITH_VGCANVAS定义时生效)。
@@ -8896,7 +9808,7 @@ export enum TStyleId {
    * 左下角圆角半径(仅在WITH_VGCANVAS定义时生效)。
    *
    */
- ROUND_RADIUS_BOTTOM_LETF = STYLE_ID_ROUND_RADIUS_BOTTOM_LETF(),
+ ROUND_RADIUS_BOTTOM_LEFT = STYLE_ID_ROUND_RADIUS_BOTTOM_LEFT(),
 
   /**
    * 右下角圆角半径(仅在WITH_VGCANVAS定义时生效)。
@@ -8927,6 +9839,30 @@ export enum TStyleId {
    *
    */
  FEEDBACK = STYLE_ID_FEEDBACK(),
+
+  /**
+   * 是否用clear_rect代替fill_rect绘制背景。
+   *
+   */
+ CLEAR_BG = STYLE_ID_CLEAR_BG(),
+
+  /**
+   * 网格线颜色(grid控件)
+   *
+   */
+ GRID_COLOR = STYLE_ID_GRID_COLOR(),
+
+  /**
+   * 偶数行背景颜色(grid控件)
+   *
+   */
+ EVEN_BG_COLOR = STYLE_ID_EVEN_BG_COLOR(),
+
+  /**
+   * 奇数行背景颜色(grid控件)
+   *
+   */
+ ODD_BG_COLOR = STYLE_ID_ODD_BG_COLOR(),
 };
 
 
@@ -8934,6 +9870,7 @@ export enum TStyleId {
  * 控件风格。
  *
  *widget从style对象中，获取诸如字体、颜色和图片相关的参数，根据这些参数来绘制界面。
+ *
  *
  *
  *属性名称的请参考[style\_id](style_id_t.md)
@@ -9009,6 +9946,20 @@ export class TStyle {
 
 
   /**
+   * 获取指定状态的指定属性的值。
+   * 
+   * @param state 状态。
+   * @param name 属性名。
+   * @param value 值。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ get(state : string, name : string, value : TValue) : TRet  {
+    return style_get(this != null ? (this.nativeObj || this) : null, state, name, value != null ? (value.nativeObj || value) : null);
+ }
+
+
+  /**
    * 设置指定状态的指定属性的值(仅仅对mutable的style有效)。
    * 
    * @param state 状态。
@@ -9072,9 +10023,27 @@ export class TStyle {
 
 };
 /**
- * 窗体样式。
+ * SystemInfo常量定义。
  *
- *负责管理缺省的窗体样式数据，方便实现style\_const。
+ */
+export enum TSystemInfoFlag {
+
+  /**
+   * 无特殊标志。
+   *
+   */
+ NONE = SYSTEM_INFO_FLAG_NONE(),
+
+  /**
+   * 使用快速旋转功能。
+   *
+   */
+ FAST_LCD_PORTRAIT = SYSTEM_INFO_FLAG_FAST_LCD_PORTRAIT(),
+};
+
+
+/**
+ * 窗体样式。
  *
  */
 export class TTheme { 
@@ -9102,6 +10071,7 @@ export class TTheme {
  *
  *示例：
  *
+ *
  *> 在非GUI线程请用timer\_queue。
  *
  */
@@ -9112,7 +10082,7 @@ export class TTimer {
    * 
    * @param on_timer timer回调函数。
    * @param ctx timer回调函数的上下文。
-   * @param duration 时间。
+   * @param duration 时间(毫秒)。
    *
    * @returns 返回timer的ID，TK_INVALID_ID表示失败。
    */
@@ -9185,7 +10155,7 @@ export class TTimer {
    * 修改指定的timer的duration，修改之后定时器重新开始计时。
    * 
    * @param timer_id timerID。
-   * @param duration 新的时间。
+   * @param duration 新的时间(毫秒)。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
@@ -9281,6 +10251,12 @@ export enum TAppType {
    *
    */
  DESKTOP = APP_DESKTOP(),
+
+  /**
+   * 控制台（没有界面）。
+   *
+   */
+ CONSOLE = APP_CONSOLE(),
 };
 
 
@@ -9399,6 +10375,18 @@ export enum TBitmapFlag {
    *
    */
  PREMULTI_ALPHA = BITMAP_FLAG_PREMULTI_ALPHA(),
+
+  /**
+   * 位图数据已经处理了 lcd 旋转，同时说明 bitmap 的宽高和真实数据的宽高可能不一致
+   *
+   */
+ LCD_ORIENTATION = BITMAP_FLAG_LCD_ORIENTATION(),
+
+  /**
+   * 该位图为 GPU 的 fbo 数据。
+   *
+   */
+ GPU_FBO_TEXTURE = BITMAP_FLAG_GPU_FBO_TEXTURE(),
 };
 
 
@@ -9420,6 +10408,7 @@ export enum TBitmapFlag {
  *
  *
  *示例：
+ *
  *
  *
  *>请参考：https://www.w3schools.com/tags/ref_canvas.asp
@@ -9513,7 +10502,7 @@ export class TVgcanvas {
    * @param cp1x 控制点1x坐标。
    * @param cp1y 控制点1y坐标。
    * @param cp2x 控制点2x坐标。
-   * @param cp2y 控制点3y坐标。
+   * @param cp2y 控制点2y坐标。
    * @param x x坐标。
    * @param y y坐标。
    *
@@ -9646,7 +10635,7 @@ export class TVgcanvas {
   /**
    * 旋转。
    * 
-   * @param rad 角度
+   * @param rad 旋转角度(单位弧度)
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
@@ -9743,6 +10732,21 @@ export class TVgcanvas {
 
 
   /**
+   * 矩形区域是否在矩形裁剪中。
+   * 
+   * @param left 矩形区域左边。
+   * @param top 矩形区域上边。
+   * @param right 矩形区域右边。
+   * @param bottom 矩形区域下边。
+   *
+   * @returns 返回 TURE 则在区域中，返回 FALSE 则不在区域中。
+   */
+ isRectfInClipRect(left : number, top : number, right : number, bottom : number) : boolean  {
+    return vgcanvas_is_rectf_in_clip_rect(this != null ? (this.nativeObj || this) : null, left, top, right, bottom);
+ }
+
+
+  /**
    * 设置一个与前一个裁剪区做交集的矩形裁剪区。
    *如果下面这种情况，则不能直接调用 rect_intersect 函数来做矩形交集和 vgcanvas_clip_rect 函数设置裁剪区，而采用本函数做交集。
    *由于缩放和旋转以及平移会导致 vg 的坐标系和上一个裁剪区的坐标系不同，
@@ -9821,12 +10825,12 @@ export class TVgcanvas {
   /**
    * 设置字体的大小。
    * 
-   * @param font 字体大小。
+   * @param size 字体大小。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
- setFontSize(font : number) : TRet  {
-    return vgcanvas_set_font_size(this != null ? (this.nativeObj || this) : null, font);
+ setFontSize(size : number) : TRet  {
+    return vgcanvas_set_font_size(this != null ? (this.nativeObj || this) : null, size);
  }
 
 
@@ -9898,6 +10902,32 @@ export class TVgcanvas {
    */
  drawImage(img : TBitmap, sx : number, sy : number, sw : number, sh : number, dx : number, dy : number, dw : number, dh : number) : TRet  {
     return vgcanvas_draw_image(this != null ? (this.nativeObj || this) : null, img != null ? (img.nativeObj || img) : null, sx, sy, sw, sh, dx, dy, dw, dh);
+ }
+
+
+  /**
+   * 绘制图片。
+   *
+   *备注：
+   *当绘制区域大于原图区域时，多余的绘制区域会重复绘制原图区域的东西。（绘制图区按照绘制图片的宽高来绘制的）
+   *当绘制图片的宽高和原图的不同，在重复绘制的同时加入缩放。
+   * 
+   * @param img 图片。
+   * @param sx 原图区域的 x
+   * @param sy 原图区域的 y
+   * @param sw 原图区域的 w
+   * @param sh 原图区域的 h
+   * @param dx 绘制区域的 x
+   * @param dy 绘制区域的 y
+   * @param dw 绘制区域的 w
+   * @param dh 绘制区域的 h
+   * @param dst_w 绘制图片的宽
+   * @param dst_h 绘制图片的高
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ drawImageRepeat(img : TBitmap, sx : number, sy : number, sw : number, sh : number, dx : number, dy : number, dw : number, dh : number, dst_w : number, dst_h : number) : TRet  {
+    return vgcanvas_draw_image_repeat(this != null ? (this.nativeObj || this) : null, img != null ? (img.nativeObj || img) : null, sx, sy, sw, sh, dx, dy, dw, dh, dst_w, dst_h);
  }
 
 
@@ -9974,12 +11004,12 @@ export class TVgcanvas {
   /**
    * 设置线条颜色。
    * 
-   * @param color 颜色。
+   * @param str 颜色。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
- setStrokeColor(color : string) : TRet  {
-    return vgcanvas_set_stroke_color_str(this != null ? (this.nativeObj || this) : null, color);
+ setStrokeColor(str : string) : TRet  {
+    return vgcanvas_set_stroke_color_str(this != null ? (this.nativeObj || this) : null, str);
  }
 
 
@@ -10369,6 +11399,12 @@ export enum TWidgetProp {
  CARET_Y = WIDGET_PROP_CARET_Y(),
 
   /**
+   * 行高。
+   *
+   */
+ LINE_HEIGHT = WIDGET_PROP_LINE_HEIGHT(),
+
+  /**
    * 脏矩形超出控件本身大小的最大范围。
    *
    */
@@ -10489,6 +11525,12 @@ export enum TWidgetProp {
  VIRTUAL_H = WIDGET_PROP_VIRTUAL_H(),
 
   /**
+   * 控件正在加载。
+   *
+   */
+ LOADING = WIDGET_PROP_LOADING(),
+
+  /**
    * 名称。
    *
    */
@@ -10517,6 +11559,12 @@ export enum TWidgetProp {
    *
    */
  VALUE = WIDGET_PROP_VALUE(),
+
+  /**
+   * 容易点击模式(目前用于spinbox)。
+   *
+   */
+ EASY_TOUCH_MODE = WIDGET_PROP_EASY_TOUCH_MODE(),
 
   /**
    * CheckButton是否单选。
@@ -10549,6 +11597,12 @@ export enum TWidgetProp {
  WORD_WRAP = WIDGET_PROP_WORD_WRAP(),
 
   /**
+   * 是否省略。
+   *
+   */
+ ELLIPSES = WIDGET_PROP_ELLIPSES(),
+
+  /**
    * 文本。
    *
    */
@@ -10565,6 +11619,12 @@ export enum TWidgetProp {
    *
    */
  STYLE = WIDGET_PROP_STYLE(),
+
+  /**
+   * 状态。
+   *
+   */
+ STATE = WIDGET_PROP_STATE(),
 
   /**
    * 是否启用。
@@ -10637,6 +11697,12 @@ export enum TWidgetProp {
    *
    */
  SENSITIVE = WIDGET_PROP_SENSITIVE(),
+
+  /**
+   * 窗口所属的小应用程序(applet)名称。
+   *
+   */
+ APPLET_NAME = WIDGET_PROP_APPLET_NAME(),
 
   /**
    * 控件动画。
@@ -10765,13 +11831,15 @@ export enum TWidgetProp {
  SHOW_TEXT = WIDGET_PROP_SHOW_TEXT(),
 
   /**
-   * X方向的偏移。
+   * X方向的偏移。（如果控件有继承 get_offset 函数指针的话，一定要和 get_offset 返回值保持一致，否则容易出现问题）
+   *详情请看 docs/how_to_use_offset_in_custom_widget.md
    *
    */
  XOFFSET = WIDGET_PROP_XOFFSET(),
 
   /**
-   * Y方向的偏移。
+   * Y方向的偏移。（如果控件有继承 get_offset 函数指针的话，一定要和 get_offset 返回值保持一致，否则容易出现问题）
+   *详情请看 docs/how_to_use_offset_in_custom_widget.md
    *
    */
  YOFFSET = WIDGET_PROP_YOFFSET(),
@@ -10789,7 +11857,7 @@ export enum TWidgetProp {
  ALIGN_H = WIDGET_PROP_ALIGN_H(),
 
   /**
-   * 是否自动播放或指定播放的时间。
+   * 是否自动播放或指定播放的时间(毫秒)。
    *
    */
  AUTO_PLAY = WIDGET_PROP_AUTO_PLAY(),
@@ -10799,6 +11867,12 @@ export enum TWidgetProp {
    *
    */
  LOOP = WIDGET_PROP_LOOP(),
+
+  /**
+   * 是否正在运行(播放)。
+   *
+   */
+ RUNNING = WIDGET_PROP_RUNNING(),
 
   /**
    * 是否启用自动更正功能。
@@ -10957,7 +12031,7 @@ export enum TWidgetProp {
  REPEAT = WIDGET_PROP_REPEAT(),
 
   /**
-   * 触发长按事件的时间(ms)。
+   * 触发长按事件的时间(毫秒)。
    *
    */
  LONG_PRESS_TIME = WIDGET_PROP_LONG_PRESS_TIME(),
@@ -10967,6 +12041,12 @@ export enum TWidgetProp {
    *
    */
  ENABLE_LONG_PRESS = WIDGET_PROP_ENABLE_LONG_PRESS(),
+
+  /**
+   * 是否启用预览。
+   *
+   */
+ ENABLE_PREVIEW = WIDGET_PROP_ENABLE_PREVIEW(),
 
   /**
    * 是否启用点击穿透。
@@ -11107,6 +12187,12 @@ export enum TWidgetProp {
  OPEN_WINDOW = WIDGET_PROP_OPEN_WINDOW(),
 
   /**
+   * ComboBox打开弹出窗口的主题。
+   *
+   */
+ THEME_OF_POPUP = WIDGET_PROP_THEME_OF_POPUP(),
+
+  /**
    * 被选中项的索引。
    *
    */
@@ -11219,6 +12305,78 @@ export enum TWidgetProp {
    *
    */
  MOVE_FOCUS_RIGHT_KEY = WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY(),
+
+  /**
+   * 行数。
+   *
+   */
+ ROWS = WIDGET_PROP_ROWS(),
+
+  /**
+   * 是否显示网格线。
+   *
+   */
+ SHOW_GRID = WIDGET_PROP_SHOW_GRID(),
+
+  /**
+   * 各列的定义。
+   *
+   */
+ COLUMNS_DEFINITION = WIDGET_PROP_COLUMNS_DEFINITION(),
+
+  /**
+   * 拖拽临界值。
+   *
+   */
+ DRAG_THRESHOLD = WIDGET_PROP_DRAG_THRESHOLD(),
+
+  /**
+   * 动画时间(毫秒)。
+   *
+   */
+ ANIMATING_TIME = WIDGET_PROP_ANIMATING_TIME(),
+
+  /**
+   * 改变控件属性时附带动画的前缀。
+   *
+   */
+ ANIMATE_PREFIX = WIDGET_PROP_ANIMATE_PREFIX(),
+
+  /**
+   * 改变控件属性时附带动画的播放时间(毫秒)。
+   *
+   */
+ ANIMATE_ANIMATING_TIME = WIDGET_PROP_ANIMATE_ANIMATING_TIME(),
+
+  /**
+   * 控件脏矩形区域。
+   *
+   */
+ DIRTY_RECT = WIDGET_PROP_DIRTY_RECT(),
+
+  /**
+   * 屏幕保护时间(毫秒)。
+   *
+   */
+ SCREEN_SAVER_TIME = WIDGET_PROP_SCREEN_SAVER_TIME(),
+
+  /**
+   * 是否显示FPS。
+   *
+   */
+ SHOW_FPS = WIDGET_PROP_SHOW_FPS(),
+
+  /**
+   * 最大FPS。
+   *
+   */
+ MAX_FPS = WIDGET_PROP_MAX_FPS(),
+
+  /**
+   * 数据校验脚本。
+   *
+   */
+ VALIDATOR = WIDGET_PROP_VALIDATOR(),
 };
 
 
@@ -11319,6 +12477,12 @@ export enum TWidgetType {
  IMAGE = WIDGET_TYPE_IMAGE(),
 
   /**
+   * 图标控件。
+   *
+   */
+ ICON = WIDGET_TYPE_ICON(),
+
+  /**
    * 文本编辑控件。
    *
    */
@@ -11371,6 +12535,12 @@ export enum TWidgetType {
    *
    */
  VIEW = WIDGET_TYPE_VIEW(),
+
+  /**
+   * page控件。
+   *
+   */
+ PAGE = WIDGET_TYPE_PAGE(),
 
   /**
    * 下拉选择框控件。
@@ -11651,6 +12821,12 @@ export enum TWidgetState {
  NORMAL = WIDGET_STATE_NORMAL(),
 
   /**
+   * 3/5keys模式时，进入激活状态(此时方向键用于修改值)。
+   *
+   */
+ ACTIVATED = WIDGET_STATE_ACTIVATED(),
+
+  /**
    * 内容被修改的状态。
    *
    */
@@ -11703,6 +12879,12 @@ export enum TWidgetState {
    *
    */
  EMPTY_FOCUS = WIDGET_STATE_EMPTY_FOCUS(),
+
+  /**
+   * 编辑器无内容同时指针悬浮的状态。
+   *
+   */
+ EMPTY_OVER = WIDGET_STATE_EMPTY_OVER(),
 
   /**
    * 输入错误状态。
@@ -11853,10 +13035,42 @@ export enum TWidgetCursor {
 
 
 /**
- * widget_t* button = button_create(win, 10, 10, 128, 30);
- *widget_set_text(button, L"OK");
- *widget_on(button, EVT_CLICK, on_click, NULL);
+ * **widget_t** 是所有控件、窗口和窗口管理器的基类。
+ ***widget_t**也是一个容器，可放其它**widget_t**到它的内部，形成一个树形结构。
+ *
+ *
+ *
+ *通常**widget_t**通过一个矩形区域向用户呈现一些信息，接受用户的输入，并据此做出适当的反应。
+ *它负责控件的生命周期、通用状态、事件分发和Style的管理。
+ *本类提供的接口(函数和属性)除非特别说明，一般都适用于子类控件。
+ *
+ *为了便于解释，这里特别说明一下几个术语：
+ *
+ ** **父控件与子控件**：父控件与子控件指的两个控件的组合关系(这是在运行时决定的)。
+ *比如：在窗口中放一个按钮，此时，我们称按钮是窗口的子控件，窗口是按钮的父控件。
+ *
+ *
+ *
+ ** **子类控件与父类控件**：子类控件与父类控件指的两类控件的继承关系(这是在设计时决定的)。
+ *比如：我们称**button_t**是**widget_t**的子类控件，**widget_t**是**button_t**的父类控件。
+ *
+ *
+ *
+ *widget相关的函数都只能在GUI线程中执行，如果需在非GUI线程中想调用widget相关函数，
+ *请用idle\_queue或timer\_queue进行串行化。
+ *请参考[demo thread](https://github.com/zlgopen/awtk/blob/master/demos/demo_thread_app.c)
+ *
+ ***widget\_t**是抽象类，不要直接创建**widget\_t**的实例。控件支持两种创建方式：
+ *
+ ** 通过XML创建。如：
+ *
+ *```xml
+ *<button x="c" y="m" w="80" h="30" text="OK"/>
  *```
+ *
+ ** 通过代码创建。如：
+ *
+ *
  *
  */
 export class TWidget { 
@@ -11886,6 +13100,30 @@ export class TWidget {
    */
  getChild(index : number) : TWidget  {
     return new TWidget(widget_get_child(this != null ? (this.nativeObj || this) : null, index));
+ }
+
+
+  /**
+   * 通过名称查找父控件。
+   * 
+   * @param name 名称。
+   *
+   * @returns 父控件。
+   */
+ findParentByName(name : string) : TWidget  {
+    return new TWidget(widget_find_parent_by_name(this != null ? (this.nativeObj || this) : null, name));
+ }
+
+
+  /**
+   * 通过类型查找父控件。
+   * 
+   * @param type 类型。
+   *
+   * @returns 父控件。
+   */
+ findParentByType(type : string) : TWidget  {
+    return new TWidget(widget_find_parent_by_type(this != null ? (this.nativeObj || this) : null, type));
  }
 
 
@@ -11980,6 +13218,17 @@ export class TWidget {
 
 
   /**
+   * 移动控件到父控件中间。
+   * 
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ moveToCenter() : TRet  {
+    return widget_move_to_center(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
    * 调整控件的大小。
    * 
    * @param w 宽度
@@ -12008,6 +13257,33 @@ export class TWidget {
 
 
   /**
+   * 移动控件并调整控件的大小。
+   * 
+   * @param x x坐标
+   * @param y y坐标
+   * @param w 宽度
+   * @param h 高度
+   * @param update_layout 是否更新布局
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ moveResizeEx(x : number, y : number, w : number, h : number, update_layout : boolean) : TRet  {
+    return widget_move_resize_ex(this != null ? (this.nativeObj || this) : null, x, y, w, h, update_layout);
+ }
+
+
+  /**
+   * 获取控件的值。只是对widget\_get\_prop的包装，值的意义由子类控件决定。
+   * 
+   *
+   * @returns 返回值。
+   */
+ getValue() : number  {
+    return widget_get_value(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
    * 设置控件的值。
    *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
    * 
@@ -12017,6 +13293,56 @@ export class TWidget {
    */
  setValue(value : any) : TRet  {
     return widget_set_value(this != null ? (this.nativeObj || this) : null, value);
+ }
+
+
+  /**
+   * 增加控件的值。
+   *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
+   * 
+   * @param delta 增量。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ addValue(delta : number) : TRet  {
+    return widget_add_value(this != null ? (this.nativeObj || this) : null, delta);
+ }
+
+
+  /**
+   * 获取控件的值。只是对widget\_get\_prop的包装，值的意义由子类控件决定。
+   * 
+   *
+   * @returns 返回值。
+   */
+ getValueInt() : number  {
+    return widget_get_value_int(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 设置控件的值。
+   *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
+   * 
+   * @param value 值。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setValueInt(value : any) : TRet  {
+    return widget_set_value_int(this != null ? (this.nativeObj || this) : null, value);
+ }
+
+
+  /**
+   * 增加控件的值。
+   *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
+   * 
+   * @param delta 增量。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ addValueInt(delta : number) : TRet  {
+    return widget_add_value_int(this != null ? (this.nativeObj || this) : null, delta);
  }
 
 
@@ -12035,19 +13361,6 @@ export class TWidget {
 
 
   /**
-   * 增加控件的值。
-   *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
-   * 
-   * @param delta 增量。
-   *
-   * @returns 返回RET_OK表示成功，否则表示失败。
-   */
- addValue(delta : number) : TRet  {
-    return widget_add_value(this != null ? (this.nativeObj || this) : null, delta);
- }
-
-
-  /**
    * 查询指定的style是否存在。
    * 
    * @param style_name style的名称（如果为 NULL，则默认为 default）。
@@ -12057,6 +13370,28 @@ export class TWidget {
    */
  isStyleExist(style_name : string, state_name : string) : boolean  {
     return widget_is_style_exist(this != null ? (this.nativeObj || this) : null, style_name, state_name);
+ }
+
+
+  /**
+   * 判断widget是否支持高亮。
+   * 
+   *
+   * @returns 支持返回 TRUE，不支持返回 FALSE。
+   */
+ isSupportHighlighter() : boolean  {
+    return widget_is_support_highlighter(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 判断widget拥有高亮属性。
+   * 
+   *
+   * @returns 拥有返回 TRUE，没有返回 FALSE。
+   */
+ hasHighlighter() : boolean  {
+    return widget_has_highlighter(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -12073,8 +13408,7 @@ export class TWidget {
 
 
   /**
-   * 设置控件的文本。
-   *只是对widget\_set\_prop的包装，文本的意义由子类控件决定。
+   * 设置控件的文本。（如果字符串相同，则不会重复设置以及触发事件）
    * 
    * @param text 文本。
    *
@@ -12082,6 +13416,19 @@ export class TWidget {
    */
  setText(text : string) : TRet  {
     return widget_set_text_utf8(this != null ? (this.nativeObj || this) : null, text);
+ }
+
+
+  /**
+   * 设置控件的文本。
+   * 
+   * @param text 文本。
+   * @param check_diff 是否检查设置的文本是否和控件中的文本一样。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setTextEx(text : string, check_diff : boolean) : TRet  {
+    return widget_set_text_utf8_ex(this != null ? (this.nativeObj || this) : null, text, check_diff);
  }
 
 
@@ -12138,17 +13485,6 @@ export class TWidget {
    */
  setTrText(text : string) : TRet  {
     return widget_set_tr_text(this != null ? (this.nativeObj || this) : null, text);
- }
-
-
-  /**
-   * 获取控件的值。只是对widget\_get\_prop的包装，值的意义由子类控件决定。
-   * 
-   *
-   * @returns 返回值。
-   */
- getValue() : number  {
-    return widget_get_value(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -12241,12 +13577,12 @@ export class TWidget {
 
 
   /**
-   * str_t str;
-   *str_init(&str, 0);
-   *str_from_wstr(&str, widget_get_text(target));
-   *log_debug("%s: %s\n", target->name, str.str);
-   *str_reset(&str);
-   *```
+   * 获取控件的文本。
+   *只是对widget\_get\_prop的包装，文本的意义由子类控件决定。
+   *
+   *如果希望获取UTF8格式的文本，可以参考下面的代码：
+   *
+   *
    * 
    *
    * @returns 返回文本。
@@ -12270,8 +13606,6 @@ export class TWidget {
 
   /**
    * 设置theme的名称，用于动态切换主题。名称与当前主题名称相同，则重新加载全部资源。
-   *
-   *> 目前只支持带有文件系统的平台。
    * 
    * @param name 主题的名称。
    *
@@ -12279,6 +13613,17 @@ export class TWidget {
    */
  setTheme(name : string) : TRet  {
     return widget_set_theme(this != null ? (this.nativeObj || this) : null, name);
+ }
+
+
+  /**
+   * 获取 theme 的名称
+   * 
+   *
+   * @returns 成功返回主题名称，失败否则 NULL。
+   */
+ getThemeName() : string  {
+    return widget_get_theme_name(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -12485,7 +13830,7 @@ export class TWidget {
   /**
    * 设置控件的状态。
    * 
-   * @param state 状态(必须为真正的常量字符串，在widget的整个生命周期有效)。
+   * @param state 状态。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
@@ -12655,10 +14000,10 @@ export class TWidget {
 
 
   /**
-   * widget_t* ok = button_create(win, 10, 10, 80, 30);
-   *widget_on(ok, EVT_CLICK, on_click, NULL);
+   * 注册指定事件的处理函数。
+   *使用示例：
    *
-   *```
+   *
    * 
    * @param type 事件类型。
    * @param on_event 事件处理函数。
@@ -12666,7 +14011,7 @@ export class TWidget {
    *
    * @returns 返回id，用于widget_off。
    */
- on(type : TEventType, on_event : Function, ctx : any) : number  {
+ on(type : number, on_event : Function, ctx : any) : number  {
     return widget_on(this != null ? (this.nativeObj || this) : null, type, TBrowser.addFunction(wrap_on_event(on_event), "iii"), ctx);
  }
 
@@ -12692,6 +14037,45 @@ export class TWidget {
    */
  invalidateForce(r : TRect) : TRet  {
     return widget_invalidate_force(this != null ? (this.nativeObj || this) : null, r != null ? (r.nativeObj || r) : null);
+ }
+
+
+  /**
+   * 获取控件指定属性的值。
+   * 
+   * @param name 属性的名称。
+   * @param v 返回属性的值。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ getProp(name : string, v : TValue) : TRet  {
+    return widget_get_prop(this != null ? (this.nativeObj || this) : null, name, v != null ? (v.nativeObj || v) : null);
+ }
+
+
+  /**
+   * 设置控件指定属性的值。
+   * 
+   * @param name 属性的名称。
+   * @param v 属性的值。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setProp(name : string, v : TValue) : TRet  {
+    return widget_set_prop(this != null ? (this.nativeObj || this) : null, name, v != null ? (v.nativeObj || v) : null);
+ }
+
+
+  /**
+   * 设置多个参数。
+   *>参数之间用&分隔，名称和值之间用=分隔。如: name=awtk&min=10&max=100
+   * 
+   * @param params 参数列表。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setProps(params : string) : TRet  {
+    return widget_set_props(this != null ? (this.nativeObj || this) : null, params);
  }
 
 
@@ -12743,6 +14127,32 @@ export class TWidget {
    */
  getPropPointer(name : string) : any  {
     return widget_get_prop_pointer(this != null ? (this.nativeObj || this) : null, name);
+ }
+
+
+  /**
+   * 设置浮点数格式的属性。
+   * 
+   * @param name 属性的名称。
+   * @param v 属性的值。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setPropFloat(name : string, v : number) : TRet  {
+    return widget_set_prop_float(this != null ? (this.nativeObj || this) : null, name, v);
+ }
+
+
+  /**
+   * 获取浮点数格式的属性。
+   * 
+   * @param name 属性的名称。
+   * @param defval 缺省值。
+   *
+   * @returns 返回属性的值。
+   */
+ getPropFloat(name : string, defval : number) : number  {
+    return widget_get_prop_float(this != null ? (this.nativeObj || this) : null, name, defval);
  }
 
 
@@ -12878,6 +14288,17 @@ export class TWidget {
 
 
   /**
+   * 检查控件是否是全屏窗口。
+   * 
+   *
+   * @returns 返回FALSE表示不是，否则表示是。
+   */
+ isFullscreenWindow() : boolean  {
+    return widget_is_fullscreen_window(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
    * 检查控件是否是对话框类型。
    * 
    *
@@ -12911,6 +14332,17 @@ export class TWidget {
 
 
   /**
+   * 检查控件是否总在最上层。
+   * 
+   *
+   * @returns 返回FALSE表示不是，否则表示是。
+   */
+ isAlwaysOnTop() : boolean  {
+    return widget_is_always_on_top(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
    * 检查控件弹出对话框控件是否已经打开了（而非挂起状态）。
    * 
    *
@@ -12933,8 +14365,13 @@ export class TWidget {
 
 
   /**
-   * widget_set_prop_bool(group, WIDGET_PROP_IS_KEYBOARD, TRUE);
-   *```
+   * 判断当前控件是否是keyboard。
+   *
+   *> keyboard收到pointer事件时，不会让当前控件失去焦点。
+   *
+   *在自定义软键盘时，将所有按钮放到一个容器当中，并设置为is_keyboard。
+   *
+   *
    * 
    *
    * @returns 返回FALSE表示不是，否则表示是。
@@ -13246,6 +14683,7 @@ export class TWidget {
 
   /**
    * 设置控件自己的布局参数。
+   *备注：下一帧才会生效数据
    * 
    * @param params 布局参数。
    *
@@ -13258,6 +14696,7 @@ export class TWidget {
 
   /**
    * 设置子控件的布局参数。
+   *备注：下一帧才会生效数据
    * 
    * @param params 布局参数。
    *
@@ -13270,6 +14709,7 @@ export class TWidget {
 
   /**
    * 设置控件自己的布局(缺省布局器)参数(过时，请用widget\_set\_self\_layout)。
+   *备注：下一帧才会生效数据
    * 
    * @param x x参数。
    * @param y y参数。
@@ -13316,8 +14756,15 @@ export class TWidget {
 
 
   /**
-   * widget_set_style_color(label, "normal:bg_color", 0xFF332211);
-   *```
+   * 设置颜色类型的style。
+   *
+   *> * [state 的取值](https://github.com/zlgopen/awtk/blob/master/docs/manual/widget_state_t.md)
+   *> * [name 的取值](https://github.com/zlgopen/awtk/blob/master/docs/theme.md)
+   *
+   *
+   *在下面这个例子中，R=0x11 G=0x22 B=0x33 A=0xFF
+   *
+   *
    * 
    * @param state_and_name 状态和名字，用英文的冒号分隔。
    * @param value 值。颜色值一般用十六进制表示，每两个数字表示一个颜色通道，从高位到低位，依次是ABGR。
@@ -13326,6 +14773,18 @@ export class TWidget {
    */
  setStyleColor(state_and_name : string, value : any) : TRet  {
     return widget_set_style_color(this != null ? (this.nativeObj || this) : null, state_and_name, value);
+ }
+
+
+  /**
+   * 加入一个子控件默认实现(供子类调用)。
+   * 
+   * @param child 子控件对象。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ addChildDefault(child : TWidget) : TRet  {
+    return widget_add_child_default(this != null ? (this.nativeObj || this) : null, child != null ? (child.nativeObj || child) : null);
  }
 
 
@@ -13504,7 +14963,7 @@ export class TWidget {
   /**
    * 是否根据子控件和文本自动调整控件自身大小。
    *
-   *> 为true时，最好不要使用child_layout，否则可能有冲突。
+   *> 为true时，最好不要使用 layout 的相关东西，否则可能有冲突。
    *> 注意：只是调整控件的本身的宽高，不会修改控件本身的位置。
    *
    */
@@ -13527,6 +14986,19 @@ export class TWidget {
 
  set floating(v : boolean) {
    this.setFloating(v);
+ }
+
+
+  /**
+   * 不透明度(0-255)，0完全透明，255完全不透明。
+   *
+   */
+ get opacity() : number {
+   return widget_t_get_prop_opacity(this.nativeObj);
+ }
+
+ set opacity(v : number) {
+   this.setOpacity(v);
  }
 
 
@@ -13555,8 +15027,15 @@ export class TWidget {
 
 };
 /**
- * #include "conf_io/app_conf.h"
- *```
+ * 应用程序的配置信息。
+ *
+ *底层实现可以是任何格式，比如INI，XML，JSON和UBJSON。
+ *
+ *对于树状的文档，key可以是多级的，用.分隔。如network.ip。
+ *
+ *conf-io是可选组件，需要自己包含头文件，否则64位数据类型会被截断成32位的数据。
+ *
+ *
  *
  */
 export class TAppConf { 
@@ -13931,6 +15410,29 @@ export class TAssetInfo {
 
 
   /**
+   * 资源是否在ROM中。
+   * 
+   *
+   * @returns 返回 TRUE 为在 ROM 中，返回 FALSE 则不在。
+   */
+ isInRom() : boolean  {
+    return asset_info_is_in_rom(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 设置资源是否在ROM中的标记位。
+   * 
+   * @param is_in_rom 资源是否在ROM中。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setIsInRom(is_in_rom : boolean) : TRet  {
+    return asset_info_set_is_in_rom(this != null ? (this.nativeObj || this) : null, is_in_rom);
+ }
+
+
+  /**
    * 类型。
    *
    */
@@ -13949,11 +15451,11 @@ export class TAssetInfo {
 
 
   /**
-   * 资源是否在ROM中。
+   * 资源标志。
    *
    */
- get isInRom() : number {
-   return asset_info_t_get_prop_is_in_rom(this.nativeObj);
+ get flags() : number {
+   return asset_info_t_get_prop_flags(this.nativeObj);
  }
 
 
@@ -13975,15 +15477,6 @@ export class TAssetInfo {
    return asset_info_t_get_prop_refcount(this.nativeObj);
  }
 
-
-  /**
-   * 名称。
-   *
-   */
- get name() : string {
-   return asset_info_t_get_prop_name(this.nativeObj);
- }
-
 };
 /**
  * 颜色。
@@ -14002,14 +15495,14 @@ export class TColor {
    *> 主要供脚本语言使用。
    * 
    * @param r 红色通道。
-   * @param b 蓝色通道。
    * @param g 绿色通道。
+   * @param b 蓝色通道。
    * @param a alpha通道。
    *
    * @returns color对象。
    */
- static create(r : number, b : number, g : number, a : number) : TColor  {
-    return new TColor(color_create(r, b, g, a));
+ static create(r : number, g : number, b : number, a : number) : TColor  {
+    return new TColor(color_create(r, g, b, a));
  }
 
 
@@ -14239,7 +15732,7 @@ export class TDateTime {
 
 
   /**
-   * 从time转换而来。
+   * 从time转换而来(按GMT转换)。
    * 
    * @param time 时间。
    *
@@ -14251,7 +15744,7 @@ export class TDateTime {
 
 
   /**
-   * 转换成time。
+   * 转换成time(按GMT转换)。
    * 
    *
    * @returns 返回time。
@@ -14289,12 +15782,12 @@ export class TDateTime {
    * 获取指定年份月份的天数。
    * 
    * @param year 年份。
-   * @param montn 月份(1-12)。
+   * @param month 月份(1-12)。
    *
    * @returns 返回大于0表示天数，否则表示失败。
    */
- static getDays(year : number, montn : number) : number  {
-    return date_time_get_days(year, montn);
+ static getDays(year : number, month : number) : number  {
+    return date_time_get_days(year, month);
  }
 
 
@@ -14302,25 +15795,25 @@ export class TDateTime {
    * 获取指定日期是周几(0-6, Sunday = 0)。。
    * 
    * @param year 年份。
-   * @param montn 月份(1-12)。
+   * @param month 月份(1-12)。
    * @param day 日(1-31)。
    *
    * @returns 返回大于等于0表示周几(0-6)，否则表示失败。
    */
- static getWday(year : number, montn : number, day : number) : number  {
-    return date_time_get_wday(year, montn, day);
+ static getWday(year : number, month : number, day : number) : number  {
+    return date_time_get_wday(year, month, day);
  }
 
 
   /**
    * 获取指定月份的英文名称(简写)。
    * 
-   * @param montn 月份(1-12)。
+   * @param month 月份(1-12)。
    *
    * @returns 返回指定月份的英文名称(简写)。
    */
- static getMonthName(montn : number) : string  {
-    return date_time_get_month_name(montn);
+ static getMonthName(month : number) : string  {
+    return date_time_get_month_name(month);
  }
 
 
@@ -15320,69 +16813,69 @@ export enum TObjectCmd {
    * 保存命令
    *
    */
- SAVE = OBJECT_CMD_SAVE(),
+ SAVE = TK_OBJECT_CMD_SAVE(),
 
   /**
    * 重新加载命令
    *
    */
- RELOAD = OBJECT_CMD_RELOAD(),
+ RELOAD = TK_OBJECT_CMD_RELOAD(),
 
   /**
    * 和前一个属性交换位置
    *>参数为属性的名称或路径。
    *
    */
- MOVE_UP = OBJECT_CMD_MOVE_UP(),
+ MOVE_UP = TK_OBJECT_CMD_MOVE_UP(),
 
   /**
    * 和后一个属性交换位置
    *>参数为属性的名称或路径。
    *
    */
- MOVE_DOWN = OBJECT_CMD_MOVE_DOWN(),
+ MOVE_DOWN = TK_OBJECT_CMD_MOVE_DOWN(),
 
   /**
    * 删除属性。
    *>参数为属性的名称或路径。
    *
    */
- REMOVE = OBJECT_CMD_REMOVE(),
+ REMOVE = TK_OBJECT_CMD_REMOVE(),
 
   /**
    * 删除勾选的属性。
    *>参数为属性的名称或路径。
    *
    */
- REMOVE_CHECKED = OBJECT_CMD_REMOVE_CHECKED(),
+ REMOVE_CHECKED = TK_OBJECT_CMD_REMOVE_CHECKED(),
 
   /**
    * 清除全部属性。
    *>参数为属性的名称或路径。
    *
    */
- CLEAR = OBJECT_CMD_CLEAR(),
+ CLEAR = TK_OBJECT_CMD_CLEAR(),
 
   /**
    * 增加子项。
    *>参数为属性的名称或路径。
    *
    */
- ADD = OBJECT_CMD_ADD(),
+ ADD = TK_OBJECT_CMD_ADD(),
 
   /**
    * 显示对象详细信息。
    *>参数为属性的名称或路径。
    *
    */
- DETAIL = OBJECT_CMD_DETAIL(),
+ DETAIL = TK_OBJECT_CMD_DETAIL(),
 
   /**
    * 编辑子项。
    *>参数为属性的名称或路径。
    *
    */
- EDIT = OBJECT_CMD_EDIT(),
+ EDIT = TK_OBJECT_CMD_EDIT(),
 };
 
 
@@ -15396,13 +16889,19 @@ export enum TObjectProp {
    * 属性的个数。
    *
    */
- SIZE = OBJECT_PROP_SIZE(),
+ TK_SIZE = TK_OBJECT_PROP_SIZE(),
 
   /**
    * 属性是否勾选。
    *
    */
- CHECKED = OBJECT_PROP_CHECKED(),
+ TK_CHECKED = TK_OBJECT_PROP_CHECKED(),
+
+  /**
+   * 选中的索引。
+   *
+   */
+ TK_SELECTED_INDEX = TK_OBJECT_PROP_SELECTED_INDEX(),
 };
 
 
@@ -15423,10 +16922,9 @@ export class TRlog {
 
 
   /**
-   * rlog_t* log = rlog_create("./logs/%d.log", 1020*1024, 256);
-   *rlog_write(log, "hello\n");
-   *rlog_destroy(log);
-   *```
+   * 创建rlog对象。
+   *
+   *
    * 
    * @param filename_pattern 用来确定文件名的路径和文件名。
    * @param max_size log文件占用最大磁盘空间(字节)。
@@ -15453,7 +16951,7 @@ export class TRlog {
 };
 /**
  * 获取当前时间的函数。
- *这里的当前时间是相对的，在嵌入式系统一般相对于开机时间。
+ *这里的当前时间是相对的，在嵌入式系统一般相对于开机时间(毫秒)。
  *它本身并没有任何意义，一般用来计算时间间隔，如实现定时器和动画等等。
  *
  */
@@ -15461,6 +16959,8 @@ export class TTimeNow {
 
   /**
    * 获取当前时间(秒)。
+   *
+   *备注: 时间本身并不代表任何时间系，一般用来计算时间间隔。
    * 
    *
    * @returns 返回当前时间(秒)。
@@ -15472,6 +16972,8 @@ export class TTimeNow {
 
   /**
    * 获取当前时间(毫秒)。
+   *
+   *备注: 时间本身并不代表任何时间系，一般用来计算时间间隔。
    * 
    *
    * @returns 返回当前时间(毫秒)。
@@ -15483,6 +16985,8 @@ export class TTimeNow {
 
   /**
    * 获取当前时间(微秒)。
+   *
+   *备注: 时间本身并不代表任何时间系，一般用来计算时间间隔。
    * 
    *
    * @returns 返回当前时间(微秒)。
@@ -15640,6 +17144,30 @@ export enum TRet {
    *
    */
  NOT_MODIFIED = RET_NOT_MODIFIED(),
+
+  /**
+   * 没有权限。
+   *
+   */
+ NO_PERMISSION = RET_NO_PERMISSION(),
+
+  /**
+   * 无效地址。
+   *
+   */
+ INVALID_ADDR = RET_INVALID_ADDR(),
+
+  /**
+   * 超出范围。
+   *
+   */
+ EXCEED_RANGE = RET_EXCEED_RANGE(),
+
+  /**
+   * 最大值。
+   *
+   */
+ MAX_NR = RET_MAX_NR(),
 };
 
 
@@ -15746,7 +17274,7 @@ export enum TValueType {
  WSTRING = VALUE_TYPE_WSTRING(),
 
   /**
-   * object_t*类型。
+   * tk_object_t*类型。
    *
    */
  OBJECT = VALUE_TYPE_OBJECT(),
@@ -15780,6 +17308,42 @@ export enum TValueType {
    *
    */
  GRADIENT = VALUE_TYPE_GRADIENT(),
+
+  /**
+   * id。
+   *
+   */
+ ID = VALUE_TYPE_ID(),
+
+  /**
+   * func。
+   *
+   */
+ FUNC = VALUE_TYPE_FUNC(),
+
+  /**
+   * func definition。
+   *
+   */
+ FUNC_DEF = VALUE_TYPE_FUNC_DEF(),
+
+  /**
+   * void*类型。
+   *
+   */
+ POINTER_REF = VALUE_TYPE_POINTER_REF(),
+
+  /**
+   * 位图类型。
+   *
+   */
+ BITMAP = VALUE_TYPE_BITMAP(),
+
+  /**
+   * 矩形类型。
+   *
+   */
+ RECT = VALUE_TYPE_RECT(),
 };
 
 
@@ -15885,6 +17449,97 @@ export class TAssetsManager extends TEmitter {
 
 };
 /**
+ * 控件动画事件。
+ *
+ */
+export class TWidgetAnimatorEvent extends TEvent { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 把event对象转widget_animator_event_t对象。
+   * 
+   * @param event event对象。
+   *
+   * @returns event对象。
+   */
+ static cast(event : TEvent) : TWidgetAnimatorEvent  {
+    return new TWidgetAnimatorEvent(widget_animator_event_cast(event != null ? (event.nativeObj || event) : null));
+ }
+
+
+  /**
+   * 控件对象。
+   *
+   */
+ get widget() : TWidget {
+   return new TWidget(widget_animator_event_t_get_prop_widget(this.nativeObj));
+ }
+
+
+  /**
+   * 控件动画句柄。
+   *
+   */
+ get animator() : any {
+   return widget_animator_event_t_get_prop_animator(this.nativeObj);
+ }
+
+};
+/**
+ * model变化事件。
+ *
+ */
+export class TModelEvent extends TEvent { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 把event对象转model_event_t对象。
+   * 
+   * @param event event对象。
+   *
+   * @returns event对象。
+   */
+ static cast(event : TEvent) : TModelEvent  {
+    return new TModelEvent(model_event_cast(event != null ? (event.nativeObj || event) : null));
+ }
+
+
+  /**
+   * 模型名称。
+   *
+   */
+ get name() : string {
+   return model_event_t_get_prop_name(this.nativeObj);
+ }
+
+
+  /**
+   * 变化类型(update/add/remove)。
+   *
+   */
+ get changeType() : string {
+   return model_event_t_get_prop_change_type(this.nativeObj);
+ }
+
+
+  /**
+   * 模型。
+   *
+   */
+ get model() : TTkObject {
+   return new TTkObject(model_event_t_get_prop_model(this.nativeObj));
+ }
+
+};
+/**
  * 滚轮事件。
  *
  */
@@ -15896,7 +17551,7 @@ export class TWheelEvent extends TEvent {
 
 
   /**
-   * 把event对象转wheel_event_t对象，主要给脚本语言使用。
+   * 把event对象转wheel_event_t对象。
    * 
    * @param event event对象。
    *
@@ -15904,6 +17559,24 @@ export class TWheelEvent extends TEvent {
    */
  static cast(event : TEvent) : TWheelEvent  {
     return new TWheelEvent(wheel_event_cast(event != null ? (event.nativeObj || event) : null));
+ }
+
+
+  /**
+   * x坐标。
+   *
+   */
+ get x() : number {
+   return wheel_event_t_get_prop_x(this.nativeObj);
+ }
+
+
+  /**
+   * y坐标。
+   *
+   */
+ get y() : number {
+   return wheel_event_t_get_prop_y(this.nativeObj);
  }
 
 
@@ -15955,7 +17628,7 @@ export class TOrientationEvent extends TEvent {
 
 
   /**
-   * 把event对象转orientation_event_t对象，主要给脚本语言使用。
+   * 把event对象转orientation_event_t对象。
    * 
    * @param event event对象。
    *
@@ -15970,7 +17643,7 @@ export class TOrientationEvent extends TEvent {
    * 屏幕方向。
    *
    */
- get orientation() : number {
+ get orientation() : any {
    return orientation_event_t_get_prop_orientation(this.nativeObj);
  }
 
@@ -15979,16 +17652,16 @@ export class TOrientationEvent extends TEvent {
    * 旧的屏幕方向。
    *
    */
- get oldOrientation() : number {
+ get oldOrientation() : any {
    return orientation_event_t_get_prop_old_orientation(this.nativeObj);
  }
 
 };
 /**
- * 值变化事件。
+ * offset变化事件。
  *
  */
-export class TValueChangeEvent extends TEvent { 
+export class TOffsetChangeEvent extends TEvent { 
  public nativeObj : any;
  constructor(nativeObj : any) {
    super(nativeObj);
@@ -15996,14 +17669,14 @@ export class TValueChangeEvent extends TEvent {
 
 
   /**
-   * 把event对象转value_change_event_t对象，主要给脚本语言使用。
+   * 把event对象转offset_change_event_t对象。
    * 
    * @param event event对象。
    *
    * @returns event对象。
    */
- static cast(event : TEvent) : TValueChangeEvent  {
-    return new TValueChangeEvent(value_change_event_cast(event != null ? (event.nativeObj || event) : null));
+ static cast(event : TEvent) : TOffsetChangeEvent  {
+    return new TOffsetChangeEvent(offset_change_event_cast(event != null ? (event.nativeObj || event) : null));
  }
 
 };
@@ -16019,7 +17692,7 @@ export class TPointerEvent extends TEvent {
 
 
   /**
-   * 把event对象转pointer_event_t对象，主要给脚本语言使用。
+   * 把event对象转pointer_event_t对象。
    * 
    * @param event event对象。
    *
@@ -16050,6 +17723,9 @@ export class TPointerEvent extends TEvent {
 
   /**
    * button。
+   *在不同的平台，该属性会发生变化，
+   *PC ：左键为 1，中键为 2，右键为 3
+   *嵌入式：默认为 1
    *
    */
  get button() : number {
@@ -16123,7 +17799,7 @@ export class TKeyEvent extends TEvent {
 
 
   /**
-   * 把event对象转key_event_t对象，主要给脚本语言使用。
+   * 把event对象转key_event_t对象。
    * 
    * @param event event对象。
    *
@@ -16171,8 +17847,7 @@ export class TKeyEvent extends TEvent {
 
 
   /**
-   * right alt键是否按下。
-   *ctrl键是否按下。
+   * ctrl键是否按下。
    *
    */
  get ctrl() : boolean {
@@ -16226,8 +17901,7 @@ export class TKeyEvent extends TEvent {
 
 
   /**
-   * left shift键是否按下。
-   *cmd/win键是否按下。
+   * cmd/win键是否按下。
    *
    */
  get cmd() : boolean {
@@ -16252,6 +17926,15 @@ export class TKeyEvent extends TEvent {
    return key_event_t_get_prop_capslock(this.nativeObj);
  }
 
+
+  /**
+   * numlock键是否按下。
+   *
+   */
+ get numlock() : boolean {
+   return key_event_t_get_prop_numlock(this.nativeObj);
+ }
+
 };
 /**
  * 绘制事件。
@@ -16265,7 +17948,7 @@ export class TPaintEvent extends TEvent {
 
 
   /**
-   * 把event对象转paint_event_t对象。主要给脚本语言使用。
+   * 把event对象转paint_event_t对象。
    * 
    * @param event event对象。
    *
@@ -16297,7 +17980,7 @@ export class TWindowEvent extends TEvent {
 
 
   /**
-   * 把event对象转window_event_t对象。主要给脚本语言使用。
+   * 把event对象转window_event_t对象。
    * 
    * @param event event对象。
    *
@@ -16329,7 +18012,7 @@ export class TMultiGestureEvent extends TEvent {
 
 
   /**
-   * 把event对象转multi_gesture_event_t对象，主要给脚本语言使用。
+   * 把event对象转multi_gesture_event_t对象。
    * 
    * @param event event对象。
    *
@@ -16373,6 +18056,191 @@ export class TMultiGestureEvent extends TEvent {
    */
  get distance() : number {
    return multi_gesture_event_t_get_prop_distance(this.nativeObj);
+ }
+
+};
+/**
+ * 主题变化事件。
+ *
+ */
+export class TThemeChangeEvent extends TEvent { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 把event对象转theme_change_event_t对象。
+   * 
+   * @param event event对象。
+   *
+   * @returns 返回event对象。
+   */
+ static cast(event : TEvent) : TThemeChangeEvent  {
+    return new TThemeChangeEvent(theme_change_event_cast(event != null ? (event.nativeObj || event) : null));
+ }
+
+
+  /**
+   * 主题名称。
+   *
+   */
+ get name() : string {
+   return theme_change_event_t_get_prop_name(this.nativeObj);
+ }
+
+};
+/**
+ * 文件拖入事件。
+ *
+ */
+export class TDropFileEvent extends TEvent { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 把event对象转drop_file_event_t对象。
+   * 
+   * @param event event对象。
+   *
+   * @returns event 对象。
+   */
+ static cast(event : TEvent) : TDropFileEvent  {
+    return new TDropFileEvent(drop_file_event_cast(event != null ? (event.nativeObj || event) : null));
+ }
+
+
+  /**
+   * 文件名。
+   *
+   */
+ get filename() : string {
+   return drop_file_event_t_get_prop_filename(this.nativeObj);
+ }
+
+};
+/**
+ * 系统事件。
+ *
+ */
+export class TSystemEvent extends TEvent { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 把event对象转system_event_t对象。
+   * 
+   * @param event event对象。
+   *
+   * @returns event 对象。
+   */
+ static cast(event : TEvent) : TSystemEvent  {
+    return new TSystemEvent(system_event_cast(event != null ? (event.nativeObj || event) : null));
+ }
+
+
+  /**
+   * SDL_Event。
+   *
+   */
+ get sdlEvent() : any {
+   return system_event_t_get_prop_sdl_event(this.nativeObj);
+ }
+
+};
+/**
+ * UI加载完成事件。
+ *
+ */
+export class TUiLoadEvent extends TEvent { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 把event对象转ui_load_event_t对象。
+   * 
+   * @param event event对象。
+   *
+   * @returns event 对象。
+   */
+ static cast(event : TEvent) : TUiLoadEvent  {
+    return new TUiLoadEvent(ui_load_event_cast(event != null ? (event.nativeObj || event) : null));
+ }
+
+
+  /**
+   * UI的根控件对象。
+   *
+   */
+ get root() : TWidget {
+   return new TWidget(ui_load_event_t_get_prop_root(this.nativeObj));
+ }
+
+
+  /**
+   * UI的名称。
+   *
+   */
+ get name() : string {
+   return ui_load_event_t_get_prop_name(this.nativeObj);
+ }
+
+};
+/**
+ * 字体管理器，负责字体的加载和缓存管理。
+ *(如果使用nanovg，字体由nanovg内部管理)
+ *
+ */
+export class TFontManager extends TEmitter { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 卸载指定的字体。
+   * 
+   * @param name 字体名，为NULL时使用缺省字体。
+   * @param size 字体的大小(矢量字体指定为0即可)。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ unloadFont(name : string, size : number) : TRet  {
+    return font_manager_unload_font(this != null ? (this.nativeObj || this) : null, name, size);
+ }
+
+
+  /**
+   * 清除最久没有被使用的缓冲字模。
+   * 
+   * @param cache_size 每种字体保留缓存字模的个数。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ shrinkCache(cache_size : number) : TRet  {
+    return font_manager_shrink_cache(this != null ? (this.nativeObj || this) : null, cache_size);
+ }
+
+
+  /**
+   * 卸载全部字体。
+   * 
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ unloadAll() : TRet  {
+    return font_manager_unload_all(this != null ? (this.nativeObj || this) : null);
  }
 
 };
@@ -16888,6 +18756,17 @@ export class TWindowBase extends TWidget {
 
 
   /**
+   * 小应用程序(applet)的名称。
+   *
+   *> 如果该窗口属于某个独立的小程序应用(applet)，需要指定它的名称，以便到对应的资源目录查找资源。
+   *
+   */
+ get appletName() : string {
+   return window_base_t_get_prop_applet_name(this.nativeObj);
+ }
+
+
+  /**
    * 单例。如果窗口存在，先关闭再打开。
    *
    */
@@ -17029,6 +18908,19 @@ export class TWindowManager extends TWidget {
 
 
   /**
+   * 设置显示FPS的起始坐标。
+   * 
+   * @param x 左上角x坐标。
+   * @param y 左上角x坐标。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setShowFpsPosition(x : number, y : number) : TRet  {
+    return window_manager_set_show_fps_position(this != null ? (this.nativeObj || this) : null, x, y);
+ }
+
+
+  /**
    * 限制最大帧率。
    *
    *> TK\_MAX\_LOOP\_FPS/max\_fps最好是整数，比如TK\_MAX\_LOOP\_FPS为120，max\_fps可取60/30/20/10等。
@@ -17055,7 +18947,7 @@ export class TWindowManager extends TWidget {
 
 
   /**
-   * 设置屏保时间。
+   * 设置屏保时间(毫秒)。
    * 
    * @param screen_saver_time 屏保时间(单位毫秒), 为0关闭屏保。
    *
@@ -17132,6 +19024,18 @@ export class TWindowManager extends TWidget {
 
 
   /**
+   * 设置原生窗口是否全屏。
+   * 
+   * @param fullscreen 是否全屏
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setFullscreen(fullscreen : boolean) : TRet  {
+    return window_manager_set_fullscreen(this != null ? (this.nativeObj || this) : null, fullscreen);
+ }
+
+
+  /**
    * 关闭全部窗口。
    * 
    *
@@ -17161,11 +19065,14 @@ export class TWindowManager extends TWidget {
  *在c代码中使用函数canvas\_widget\_create创建画布控件。如：
  *
  *
+ *
  *> 创建之后，需要用widget\_on注册EVT\_PAINT事件，并在EVT\_PAINT事件处理函数中绘制。
+ *
  *
  *
  *绘制时，可以通过canvas接口去绘制，也可以通过vgcanvas接口去绘制。
  *先从evt获取canvas对象，再通过canvas\_get\_vgcanvas从canvas中获取vgcanvas对象。
+ *
  *
  *
  *> 完整示例请参考：
@@ -17369,6 +19276,7 @@ export class TColorPicker extends TWidget {
  *在c代码中使用函数draggable\_create创建按钮控件。如：
  *
  *
+ *
  *> draggable本身不可见，故无需style。
  *
  */
@@ -17480,15 +19388,53 @@ export class TDraggable extends TWidget {
 
 
   /**
+   * 设置是否无范围限制拖动。
+   *备注：可以让窗口拖动到外面去。
+   * 
+   * @param allow_out_of_screen 是否无范围限制拖动。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setAllowOutOfScreen(allow_out_of_screen : boolean) : TRet  {
+    return draggable_set_allow_out_of_screen(this != null ? (this.nativeObj || this) : null, allow_out_of_screen);
+ }
+
+
+  /**
    * 设置drag_window。
    *拖动窗口而不是父控件。比如放在对话框的titlebar上，拖动titlebar其实是希望拖动对话框。
    * 
-   * @param drag_window drag_window
+   * @param drag_window 是否拖动窗口。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setDragWindow(drag_window : boolean) : TRet  {
     return draggable_set_drag_window(this != null ? (this.nativeObj || this) : null, drag_window);
+ }
+
+
+  /**
+   * 设置drag_native_window。
+   * 
+   * @param drag_native_window 是否拖动原生窗口。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setDragNativeWindow(drag_native_window : boolean) : TRet  {
+    return draggable_set_drag_native_window(this != null ? (this.nativeObj || this) : null, drag_native_window);
+ }
+
+
+  /**
+   * 设置drag_parent。
+   *拖动窗口而不是父控件。比如放在对话框的titlebar上，拖动titlebar其实是希望拖动对话框。
+   * 
+   * @param drag_parent 0表示直系父控件，1表示父控件的父控件，依次类推。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setDragParent(drag_parent : number) : TRet  {
+    return draggable_set_drag_parent(this != null ? (this.nativeObj || this) : null, drag_parent);
  }
 
 
@@ -17545,6 +19491,19 @@ export class TDraggable extends TWidget {
 
 
   /**
+   * 支持超出原生窗口边界拖动。（无法完全移出原生窗口，同时优先受到拖动范围限制的影响）
+   *
+   */
+ get allowOutOfScreen() : boolean {
+   return draggable_t_get_prop_allow_out_of_screen(this.nativeObj);
+ }
+
+ set allowOutOfScreen(v : boolean) {
+   this.setAllowOutOfScreen(v);
+ }
+
+
+  /**
    * 只允许垂直拖动。
    *
    */
@@ -17580,6 +19539,32 @@ export class TDraggable extends TWidget {
 
  set dragWindow(v : boolean) {
    this.setDragWindow(v);
+ }
+
+
+  /**
+   * 拖动原生窗口。
+   *
+   */
+ get dragNativeWindow() : boolean {
+   return draggable_t_get_prop_drag_native_window(this.nativeObj);
+ }
+
+ set dragNativeWindow(v : boolean) {
+   this.setDragNativeWindow(v);
+ }
+
+
+  /**
+   * 拖动父控件。0表示直系父控件，1表示父控件的父控件，依次类推。
+   *
+   */
+ get dragParent() : number {
+   return draggable_t_get_prop_drag_parent(this.nativeObj);
+ }
+
+ set dragParent(v : number) {
+   this.setDragParent(v);
  }
 
 };
@@ -17753,6 +19738,30 @@ export class TFileBrowserView extends TWidget {
 
 
   /**
+   * 设置 奇数项样式。
+   * 
+   * @param odd_item_style 奇数项样式。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setOddItemStyle(odd_item_style : string) : TRet  {
+    return file_browser_view_set_odd_item_style(this != null ? (this.nativeObj || this) : null, odd_item_style);
+ }
+
+
+  /**
+   * 设置 偶数项样式。
+   * 
+   * @param even_item_style 奇数项样式。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setEvenItemStyle(even_item_style : string) : TRet  {
+    return file_browser_view_set_even_item_style(this != null ? (this.nativeObj || this) : null, even_item_style);
+ }
+
+
+  /**
    * 获取当前路径。
    * 
    *
@@ -17877,6 +19886,32 @@ export class TFileBrowserView extends TWidget {
 
  set sortBy(v : string) {
    this.setSortBy(v);
+ }
+
+
+  /**
+   * 奇数项样式。
+   *
+   */
+ get oddItemStyle() : string {
+   return file_browser_view_t_get_prop_odd_item_style(this.nativeObj);
+ }
+
+ set oddItemStyle(v : string) {
+   this.setOddItemStyle(v);
+ }
+
+
+  /**
+   * 偶数项样式。
+   *
+   */
+ get evenItemStyle() : string {
+   return file_browser_view_t_get_prop_even_item_style(this.nativeObj);
+ }
+
+ set evenItemStyle(v : string) {
+   this.setEvenItemStyle(v);
  }
 
 };
@@ -18038,6 +20073,7 @@ export class TFileChooser extends TEmitter {
  *在c代码中使用函数gauge\_pointer\_create创建仪表指针控件。如：
  *
  *
+ *
  *> 创建之后，需要用gauge\_pointer\_set\_image设置仪表指针图片。
  *
  */
@@ -18178,6 +20214,7 @@ export class TGaugePointer extends TWidget {
  *在c代码中使用函数gauge\_create创建表盘控件。如：
  *
  *
+ *
  *可用通过style来设置控件的显示风格，如背景和边框等。如：
  *
  *```xml
@@ -18301,6 +20338,7 @@ export class TGauge extends TWidget {
  *在c代码中使用函数image\_animation\_create创建图片动画控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[image_animation
  *demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/image_animation.c)
@@ -18356,7 +20394,7 @@ export class TImageAnimation extends TWidget {
 
 
   /**
-   * 设置播放间隔时间。
+   * 设置播放间隔时间(毫秒)。
    * 
    * @param interval 间隔时间(毫秒)。
    *
@@ -18718,6 +20756,7 @@ export class TImageAnimation extends TWidget {
  *在c代码中使用函数image\_value\_create创建图片值控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[image_value demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/image_value.c)
  *
@@ -18774,12 +20813,12 @@ export class TImageValue extends TWidget {
   /**
    * 设置点击时加上的增量。
    * 
-   * @param delta 增量。
+   * @param click_add_delta 增量。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
- setClickAddDelta(delta : number) : TRet  {
-    return image_value_set_click_add_delta(this != null ? (this.nativeObj || this) : null, delta);
+ setClickAddDelta(click_add_delta : number) : TRet  {
+    return image_value_set_click_add_delta(this != null ? (this.nativeObj || this) : null, click_add_delta);
  }
 
 
@@ -19073,6 +21112,15 @@ export class TCandidates extends TWidget {
    this.setButtonStyle(v);
  }
 
+
+  /**
+   * 是否启用候选字预览。
+   *
+   */
+ get enablePreview() : boolean {
+   return candidates_t_get_prop_enable_preview(this.nativeObj);
+ }
+
 };
 /**
  * 输入法语言指示器。
@@ -19272,6 +21320,53 @@ export class TLineNumber extends TWidget {
     return new TLineNumber(line_number_cast(widget != null ? (widget.nativeObj || widget) : null));
  }
 
+
+  /**
+   * 增加高亮行。
+   * 
+   * @param line 行号。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ addHighlightLine(line : number) : TRet  {
+    return line_number_add_highlight_line(this != null ? (this.nativeObj || this) : null, line);
+ }
+
+
+  /**
+   * 设置active行。
+   * 
+   * @param line 行号。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setActiveLine(line : number) : TRet  {
+    return line_number_set_active_line(this != null ? (this.nativeObj || this) : null, line);
+ }
+
+
+  /**
+   * 清除高亮行。
+   * 
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ clearHighlight() : TRet  {
+    return line_number_clear_highlight(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 判断指定行是否是高亮行。
+   * 
+   * @param line 行号。
+   *
+   * @returns 返回TRUE表示是，否则不是。
+   */
+ isHighlightLine(line : number) : boolean  {
+    return line_number_is_highlight_line(this != null ? (this.nativeObj || this) : null, line);
+ }
+
 };
 /**
  * 多行编辑器控件。
@@ -19288,6 +21383,7 @@ export class TLineNumber extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/mledit.xml)
  *
  *在c代码中使用函数mledit\_create创建多行编辑器控件。如：
+ *
  *
  *
  *> 完整示例请参考：[mledit demo](
@@ -19741,6 +21837,7 @@ export class TMledit extends TWidget {
  *在c代码中使用函数progress\_circle\_create创建进度圆环控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[progress_circle
  *demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/progress_circle.c)
@@ -19942,7 +22039,7 @@ export class TProgressCircle extends TWidget {
 
 
   /**
-   * 环线的厚度(缺省为8)。
+   * 环线的厚度(缺省为8)，line_width r/2时，使用扇形绘制。
    *
    */
  get lineWidth() : number {
@@ -19955,7 +22052,7 @@ export class TProgressCircle extends TWidget {
 
 
   /**
-   * 线帽类型(round:圆头，square:方头)。
+   * 线帽类型(round:圆头，square:方头，butt:平头)。
    *
    */
  get lineCap() : string {
@@ -20070,6 +22167,7 @@ export class TRichTextView extends TWidget {
  *[rich_text.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/rich_text.xml)
  *
  *在c代码中使用函数rich\_text\_create创建图文混排控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -20223,7 +22321,7 @@ export class THscrollLabel extends TWidget {
   /**
    * 设置lull。
    * 
-   * @param lull 间歇时间(ms)。
+   * @param lull 间歇时间(毫秒)。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
@@ -20235,12 +22333,24 @@ export class THscrollLabel extends TWidget {
   /**
    * 设置duration。
    * 
-   * @param duration 滚动时间(ms)。
+   * @param duration 滚动时间(毫秒)。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setDuration(duration : number) : TRet  {
     return hscroll_label_set_duration(this != null ? (this.nativeObj || this) : null, duration);
+ }
+
+
+  /**
+   * 设置speed（设置后 duration 不生效）。
+   * 
+   * @param speed 滚动速度(px/ms)。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setSpeed(speed : number) : TRet  {
+    return hscroll_label_set_speed(this != null ? (this.nativeObj || this) : null, speed);
  }
 
 
@@ -20301,6 +22411,42 @@ export class THscrollLabel extends TWidget {
    */
  setEllipses(ellipses : boolean) : TRet  {
     return hscroll_label_set_ellipses(this != null ? (this.nativeObj || this) : null, ellipses);
+ }
+
+
+  /**
+   * 设置stop_at_begin。
+   * 
+   * @param stop_at_begin 是否在滚动完毕后停在文本结尾。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setStopAtBegin(stop_at_begin : boolean) : TRet  {
+    return hscroll_label_set_stop_at_begin(this != null ? (this.nativeObj || this) : null, stop_at_begin);
+ }
+
+
+  /**
+   * 设置开始延迟时间。
+   * 
+   * @param delay 开始延迟时间。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setDelay(delay : number) : TRet  {
+    return hscroll_label_set_delay(this != null ? (this.nativeObj || this) : null, delay);
+ }
+
+
+  /**
+   * 设置滚动文本结尾和文本开头间隔距离
+   * 
+   * @param loop_interval_distance 间隔距离。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setLoopIntervalDistance(loop_interval_distance : number) : TRet  {
+    return hscroll_label_set_loop_interval_distance(this != null ? (this.nativeObj || this) : null, loop_interval_distance);
  }
 
 
@@ -20416,7 +22562,7 @@ export class THscrollLabel extends TWidget {
 
 
   /**
-   * 滚动之间的间歇时间(ms)，缺省3000ms。
+   * 滚动之间的间歇时间(毫秒)，缺省3000ms。
    *
    */
  get lull() : number {
@@ -20429,7 +22575,7 @@ export class THscrollLabel extends TWidget {
 
 
   /**
-   * 完整的滚动一次需要的时间(ms)，缺省5000ms。
+   * 滚动一次需要的时间(毫秒)，缺省5000ms。
    *
    */
  get duration() : number {
@@ -20438,6 +22584,32 @@ export class THscrollLabel extends TWidget {
 
  set duration(v : number) {
    this.setDuration(v);
+ }
+
+
+  /**
+   * 延迟多久才开始滚动，缺省0ms。
+   *
+   */
+ get delay() : number {
+   return hscroll_label_t_get_prop_delay(this.nativeObj);
+ }
+
+ set delay(v : number) {
+   this.setDelay(v);
+ }
+
+
+  /**
+   * 滚动速度(px/ms)（设置后 duration 不生效）。
+   *
+   */
+ get speed() : number {
+   return hscroll_label_t_get_prop_speed(this.nativeObj);
+ }
+
+ set speed(v : number) {
+   this.setSpeed(v);
  }
 
 
@@ -20460,6 +22632,33 @@ export class THscrollLabel extends TWidget {
    */
  get textW() : number {
    return hscroll_label_t_get_prop_text_w(this.nativeObj);
+ }
+
+
+  /**
+   * 滚动完毕后停在文本开头(缺省FALSE)。
+   *> 注：yoyo 为 TRUE 时，该功能失效。
+   *
+   */
+ get stopAtBegin() : boolean {
+   return hscroll_label_t_get_prop_stop_at_begin(this.nativeObj);
+ }
+
+ set stopAtBegin(v : boolean) {
+   this.setStopAtBegin(v);
+ }
+
+
+  /**
+   * 滚动文本结尾和文本开头间隔距离(缺省值为 -1，小于 0 视为使用控件宽度作为间隔距离)。
+   *
+   */
+ get loopIntervalDistance() : number {
+   return hscroll_label_t_get_prop_loop_interval_distance(this.nativeObj);
+ }
+
+ set loopIntervalDistance(v : number) {
+   this.setLoopIntervalDistance(v);
  }
 
 };
@@ -20490,6 +22689,7 @@ export class THscrollLabel extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_m.xml)
  *
  *在c代码中使用函数list\_item\_create创建列表项控件。如：
+ *
  *
  *
  *> 列表项控件大小一般由列表控制，不需指定xywh参数。
@@ -20566,6 +22766,7 @@ export class TListItem extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_h.xml)
  *
  *在c代码中使用函数list\_view\_h\_create创建水平列表视图控件。如：
+ *
  *
  *
  *用代码构造列表视图是比较繁琐的事情，最好用XML来构造。
@@ -20697,6 +22898,7 @@ export class TListViewH extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_m.xml)
  *
  *在c代码中使用函数list\_view\_create创建列表视图控件。如：
+ *
  *
  *
  *用代码构造列表视图是比较繁琐的事情，最好用XML来构造。
@@ -20883,6 +23085,7 @@ export class TListView extends TWidget {
  *在c代码中使用函数scroll\_bar\_create创建列表项控件。如：
  *
  *
+ *
  *```xml
  *<style name="default">
  *<normal bg_color="#c0c0c0" fg_color="#808080"/>
@@ -20981,7 +23184,7 @@ export class TScrollBar extends TWidget {
    * 滚动到指定的值。
    * 
    * @param value 值。
-   * @param duration 动画持续时间。
+   * @param duration 动画持续时间(毫秒)。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
@@ -21011,18 +23214,6 @@ export class TScrollBar extends TWidget {
    */
  addDelta(delta : number) : TRet  {
     return scroll_bar_add_delta(this != null ? (this.nativeObj || this) : null, delta);
- }
-
-
-  /**
-   * 在当前的值上增加一个值，并滚动到新的值，并触发EVT_VALUE_CHANGED事件。
-   * 
-   * @param delta 值。
-   *
-   * @returns 返回RET_OK表示成功，否则表示失败。
-   */
- scrollDelta(delta : number) : TRet  {
-    return scroll_bar_scroll_delta(this != null ? (this.nativeObj || this) : null, delta);
  }
 
 
@@ -21064,6 +23255,68 @@ export class TScrollBar extends TWidget {
 
 
   /**
+   * 设置翻页滚动动画时间(毫秒)。
+   * 
+   * @param animator_time 时间(毫秒)。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setAnimatorTime(animator_time : number) : TRet  {
+    return scroll_bar_set_animator_time(this != null ? (this.nativeObj || this) : null, animator_time);
+ }
+
+
+  /**
+   * 通过动画隐藏滚动条。
+   * 
+   * @param duration 动画持续时间(毫秒)。
+   * @param delay 动画执行时间(毫秒)。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ hideByOpacityAnimation(duration : number, delay : number) : TRet  {
+    return scroll_bar_hide_by_opacity_animation(this != null ? (this.nativeObj || this) : null, duration, delay);
+ }
+
+
+  /**
+   * 通过动画显示滚动条。
+   * 
+   * @param duration 动画持续时间(毫秒)。
+   * @param delay 动画执行时间(毫秒)。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ showByOpacityAnimation(duration : number, delay : number) : TRet  {
+    return scroll_bar_show_by_opacity_animation(this != null ? (this.nativeObj || this) : null, duration, delay);
+ }
+
+
+  /**
+   * 设置鼠标滚轮是否滚动(仅对desktop风格的滚动条有效)。
+   * 
+   * @param scroll 是否设置该功能。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setWheelScroll(scroll : boolean) : TRet  {
+    return scroll_bar_set_wheel_scroll(this != null ? (this.nativeObj || this) : null, scroll);
+ }
+
+
+  /**
+   * 设置鼠标滚轮幅度(仅对desktop风格的滚动条有效)。
+   * 
+   * @param scroll_delta 滚动幅度。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setScrollDelta(scroll_delta : number) : TRet  {
+    return scroll_bar_set_scroll_delta(this != null ? (this.nativeObj || this) : null, scroll_delta);
+ }
+
+
+  /**
    * 虚拟宽度或高度。
    *
    */
@@ -21095,6 +23348,32 @@ export class TScrollBar extends TWidget {
 
 
   /**
+   * 翻页滚动动画时间(毫秒)。
+   *
+   */
+ get animatorTime() : number {
+   return scroll_bar_t_get_prop_animator_time(this.nativeObj);
+ }
+
+ set animatorTime(v : number) {
+   this.setAnimatorTime(v);
+ }
+
+
+  /**
+   * 每次鼠标滚动值。（缺省值为0，0 则使用鼠标滚动默认值）
+   *
+   */
+ get scrollDelta() : number {
+   return scroll_bar_t_get_prop_scroll_delta(this.nativeObj);
+ }
+
+ set scrollDelta(v : number) {
+   this.setScrollDelta(v);
+ }
+
+
+  /**
    * 滚动时是否启用动画。
    *
    */
@@ -21113,6 +23392,19 @@ export class TScrollBar extends TWidget {
 
  set autoHide(v : boolean) {
    this.setAutoHide(v);
+ }
+
+
+  /**
+   * 设置鼠标滚轮是否滚动(仅对desktop风格的滚动条有效)（垂直滚动条缺省值为TRUE，水平滚动条缺省值为FALSE）。
+   *
+   */
+ get wheelScroll() : boolean {
+   return scroll_bar_t_get_prop_wheel_scroll(this.nativeObj);
+ }
+
+ set wheelScroll(v : boolean) {
+   this.setWheelScroll(v);
  }
 
 };
@@ -21143,6 +23435,7 @@ export class TScrollBar extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_m.xml)
  *
  *在c代码中使用函数scroll\_view\_create创建列表视图控件。如：
+ *
  *
  *
  *可用通过style来设置控件的显示风格，如背景颜色和边框颜色等(一般情况不需要)。
@@ -21307,11 +23600,23 @@ export class TScrollView extends TWidget {
 
 
   /**
+   * 设置滑动到极限时可继续滑动区域的占比。
+   * 
+   * @param slide_limit_ratio 滑动到极限时可继续滑动区域的占比。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setSlideLimitRatio(slide_limit_ratio : number) : TRet  {
+    return scroll_view_set_slide_limit_ratio(this != null ? (this.nativeObj || this) : null, slide_limit_ratio);
+ }
+
+
+  /**
    * 滚动到指定的偏移量。
    * 
    * @param xoffset_end x偏移量。
    * @param yoffset_end y偏移量。
-   * @param duration 时间。
+   * @param duration 时间(毫秒)。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
@@ -21325,7 +23630,7 @@ export class TScrollView extends TWidget {
    * 
    * @param xoffset_delta x偏移量。
    * @param yoffset_delta y偏移量。
-   * @param duration 时间。
+   * @param duration 时间(毫秒)。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
@@ -21460,6 +23765,252 @@ export class TScrollView extends TWidget {
    this.setRecursive(v);
  }
 
+
+  /**
+   * 滑动到极限时可继续滑动区域的占比。
+   *
+   */
+ get slideLimitRatio() : number {
+   return scroll_view_t_get_prop_slide_limit_ratio(this.nativeObj);
+ }
+
+ set slideLimitRatio(v : number) {
+   this.setSlideLimitRatio(v);
+ }
+
+};
+/**
+ * 用于串口通信的控件
+ *在xml中使用"serial"标签创建控件。如：
+ *
+ *```xml
+ *<!-- ui -->
+ *<serial device="COM1" baudrate="115200"/>
+ *```
+ *
+ *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
+ *> 本控件默认不可见，无需指定style。
+ *
+ *```xml
+ *<!-- style -->
+ *<serial>
+ *<style name="default" font_size="32">
+ *<normal text_color="black" />
+ *</style>
+ *</serial>
+ *```
+ *
+ */
+export class TSerialWidget extends TWidget { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 创建serial_widget对象
+   * 
+   * @param parent 父控件
+   * @param x x坐标
+   * @param y y坐标
+   * @param w 宽度
+   * @param h 高度
+   *
+   * @returns serial_widget对象。
+   */
+ static create(parent : TWidget, x : number, y : number, w : number, h : number) : TSerialWidget  {
+    return new TSerialWidget(serial_widget_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
+ }
+
+
+  /**
+   * 转换为serial_widget对象(供脚本语言使用)。
+   * 
+   * @param widget serial_widget对象。
+   *
+   * @returns serial_widget对象。
+   */
+ static cast(widget : TWidget) : TSerialWidget  {
+    return new TSerialWidget(serial_widget_cast(widget != null ? (widget.nativeObj || widget) : null));
+ }
+
+
+  /**
+   * 设置 波特率。
+   * 
+   * @param baudrate 波特率。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setBaudrate(baudrate : number) : TRet  {
+    return serial_widget_set_baudrate(this != null ? (this.nativeObj || this) : null, baudrate);
+ }
+
+
+  /**
+   * 设置 设备。
+   * 
+   * @param device 设备。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setDevice(device : string) : TRet  {
+    return serial_widget_set_device(this != null ? (this.nativeObj || this) : null, device);
+ }
+
+
+  /**
+   * 设置 字节位数。
+   * 
+   * @param bytesize 字节位数。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setBytesize(bytesize : number) : TRet  {
+    return serial_widget_set_bytesize(this != null ? (this.nativeObj || this) : null, bytesize);
+ }
+
+
+  /**
+   * 设置 奇偶校验。
+   * 
+   * @param parity 奇偶校验。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setParity(parity : number) : TRet  {
+    return serial_widget_set_parity(this != null ? (this.nativeObj || this) : null, parity);
+ }
+
+
+  /**
+   * 设置 停止位。
+   * 
+   * @param stopbits 停止位。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setStopbits(stopbits : number) : TRet  {
+    return serial_widget_set_stopbits(this != null ? (this.nativeObj || this) : null, stopbits);
+ }
+
+
+  /**
+   * 设置 流控。
+   * 
+   * @param flowcontrol 流控。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setFlowcontrol(flowcontrol : number) : TRet  {
+    return serial_widget_set_flowcontrol(this != null ? (this.nativeObj || this) : null, flowcontrol);
+ }
+
+
+  /**
+   * 设置 轮询时间(毫秒)。
+   * 
+   * @param check_interval 轮询时间（单位：ms）。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setCheckInterval(check_interval : number) : TRet  {
+    return serial_widget_set_check_interval(this != null ? (this.nativeObj || this) : null, check_interval);
+ }
+
+
+  /**
+   * 设备(文件)名。
+   *
+   */
+ get device() : string {
+   return serial_widget_t_get_prop_device(this.nativeObj);
+ }
+
+ set device(v : string) {
+   this.setDevice(v);
+ }
+
+
+  /**
+   * 波特率。
+   *
+   */
+ get baudrate() : number {
+   return serial_widget_t_get_prop_baudrate(this.nativeObj);
+ }
+
+ set baudrate(v : number) {
+   this.setBaudrate(v);
+ }
+
+
+  /**
+   * 字节位数。
+   *
+   */
+ get bytesize() : number {
+   return serial_widget_t_get_prop_bytesize(this.nativeObj);
+ }
+
+ set bytesize(v : number) {
+   this.setBytesize(v);
+ }
+
+
+  /**
+   * 奇偶校验。
+   *
+   */
+ get parity() : number {
+   return serial_widget_t_get_prop_parity(this.nativeObj);
+ }
+
+ set parity(v : number) {
+   this.setParity(v);
+ }
+
+
+  /**
+   * 停止位。
+   *
+   */
+ get stopbits() : number {
+   return serial_widget_t_get_prop_stopbits(this.nativeObj);
+ }
+
+ set stopbits(v : number) {
+   this.setStopbits(v);
+ }
+
+
+  /**
+   * 流控。
+   *
+   */
+ get flowcontrol() : number {
+   return serial_widget_t_get_prop_flowcontrol(this.nativeObj);
+ }
+
+ set flowcontrol(v : number) {
+   this.setFlowcontrol(v);
+ }
+
+
+  /**
+   * 轮询时间（单位：ms）。
+   *> 仅在不支持用select等待串口数据的嵌入式设备上有效。
+   *
+   */
+ get checkInterval() : number {
+   return serial_widget_t_get_prop_check_interval(this.nativeObj);
+ }
+
+ set checkInterval(v : number) {
+   this.setCheckInterval(v);
+ }
+
 };
 /**
  * 左右滑动菜单控件。
@@ -21486,10 +24037,13 @@ export class TScrollView extends TWidget {
  *在c代码中使用函数slide\_menu\_create创建左右滑动菜单控件。如：
  *
  *
+ *
  *可按下面的方法关注当前项改变的事件：
  *
  *
+ *
  *可按下面的方法关注当前按钮被点击的事件：
+ *
  *
  *
  *> 完整示例请参考：[slide_menu demo](
@@ -21579,6 +24133,64 @@ export class TSlideMenu extends TWidget {
 
 
   /**
+   * 设置菜单项之间的间距。
+   * 
+   * @param spacer 菜单项之间的间距。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setSpacer(spacer : number) : TRet  {
+    return slide_menu_set_spacer(this != null ? (this.nativeObj || this) : null, spacer);
+ }
+
+
+  /**
+   * 设置菜单项的宽度。
+   * 
+   * @param menu_w 菜单项的宽度。(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)(空字符串则使用控件高度)
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setMenuW(menu_w : string) : TRet  {
+    return slide_menu_set_menu_w(this != null ? (this.nativeObj || this) : null, menu_w);
+ }
+
+
+  /**
+   * 设置是否动态裁剪菜单项。
+   * 
+   * @param clip 是否动态裁剪菜单项。(关闭后，如果显示偶数项，左边会多一项)
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setClip(clip : boolean) : TRet  {
+    return slide_menu_set_clip(this != null ? (this.nativeObj || this) : null, clip);
+ }
+
+
+  /**
+   * 切换至上一项。
+   * 
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ scrollToPrev() : TRet  {
+    return slide_menu_scroll_to_prev(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 切换至下一项。
+   * 
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ scrollToNext() : TRet  {
+    return slide_menu_scroll_to_next(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
    * 值。代表当前选中项的索引。
    *
    */
@@ -21616,6 +24228,45 @@ export class TSlideMenu extends TWidget {
    this.setMinScale(v);
  }
 
+
+  /**
+   * 菜单项之间的间距。
+   *
+   */
+ get spacer() : number {
+   return slide_menu_t_get_prop_spacer(this.nativeObj);
+ }
+
+ set spacer(v : number) {
+   this.setSpacer(v);
+ }
+
+
+  /**
+   * 菜单项的宽度(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)(空字符串则使用控件高度)。
+   *
+   */
+ get menuW() : string {
+   return slide_menu_t_get_prop_menu_w(this.nativeObj);
+ }
+
+ set menuW(v : string) {
+   this.setMenuW(v);
+ }
+
+
+  /**
+   * 是否动态裁剪菜单项(默认裁剪，不裁剪时，如果显示偶数项，左边会多一项)。
+   *
+   */
+ get clip() : boolean {
+   return slide_menu_t_get_prop_clip(this.nativeObj);
+ }
+
+ set clip(v : boolean) {
+   this.setClip(v);
+ }
+
 };
 /**
  * slide_view的指示器控件。
@@ -21637,6 +24288,7 @@ export class TSlideMenu extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/slide_view.xml)
  *
  *在c代码中使用函数slide\_indicator\_create创建指示器控件。如：
+ *
  *
  *
  *```xml
@@ -21826,6 +24478,18 @@ export class TSlideIndicator extends TWidget {
 
 
   /**
+   * 设置是否启用过渡效果。
+   * 
+   * @param transition 是否启用过渡效果
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setTransition(transition : boolean) : TRet  {
+    return slide_indicator_set_transition(this != null ? (this.nativeObj || this) : null, transition);
+ }
+
+
+  /**
    * 值(缺省为0)。
    *
    */
@@ -21917,19 +24581,19 @@ export class TSlideIndicator extends TWidget {
 
 
   /**
-   * 锚点x坐标。
+   * 锚点x坐标。(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)
    *
    */
- get anchorX() : number {
+ get anchorX() : string {
    return slide_indicator_t_get_prop_anchor_x(this.nativeObj);
  }
 
 
   /**
-   * 锚点y坐标。
+   * 锚点y坐标。(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)
    *
    */
- get anchorY() : number {
+ get anchorY() : string {
    return slide_indicator_t_get_prop_anchor_y(this.nativeObj);
  }
 
@@ -21944,6 +24608,19 @@ export class TSlideIndicator extends TWidget {
 
  set indicatedTarget(v : string) {
    this.setIndicatedTarget(v);
+ }
+
+
+  /**
+   * 是否启用过渡效果。
+   *
+   */
+ get transition() : boolean {
+   return slide_indicator_t_get_prop_transition(this.nativeObj);
+ }
+
+ set transition(v : boolean) {
+   this.setTransition(v);
  }
 
 };
@@ -21971,6 +24648,7 @@ export class TSlideIndicator extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/slide_view.xml)
  *
  *在c代码中使用函数slide\_view\_create创建滑动视图控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -22029,7 +24707,7 @@ export class TSlideView extends TWidget {
   /**
    * 设置为自动播放模式。
    * 
-   * @param auto_play 0表示禁止自动播放，非0表示自动播放时每一页播放的时间。
+   * @param auto_play 0表示禁止自动播放，非0表示自动播放时每一页播放的时间(毫秒)。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
@@ -22111,6 +24789,30 @@ export class TSlideView extends TWidget {
 
 
   /**
+   * 设置拖拽临界值。
+   * 
+   * @param drag_threshold 拖动临界值。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setDragThreshold(drag_threshold : number) : TRet  {
+    return slide_view_set_drag_threshold(this != null ? (this.nativeObj || this) : null, drag_threshold);
+ }
+
+
+  /**
+   * 设置动画时间(毫秒)。
+   * 
+   * @param animating_time 动画时间(毫秒)。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setAnimatingTime(animating_time : number) : TRet  {
+    return slide_view_set_animating_time(this != null ? (this.nativeObj || this) : null, animating_time);
+ }
+
+
+  /**
    * 删除指定序号页面。
    * 
    * @param index 删除页面的序号。
@@ -22136,7 +24838,7 @@ export class TSlideView extends TWidget {
 
 
   /**
-   * 自动播放。0表示禁止自动播放，非0表示自动播放时每一页播放的时间。
+   * 自动播放。0表示禁止自动播放，非0表示自动播放时每一页播放的时间(毫秒)。
    *
    */
  get autoPlay() : number {
@@ -22176,6 +24878,32 @@ export class TSlideView extends TWidget {
    this.setAnimHint(v);
  }
 
+
+  /**
+   * 拖动临界值。
+   *
+   */
+ get dragThreshold() : number {
+   return slide_view_t_get_prop_drag_threshold(this.nativeObj);
+ }
+
+ set dragThreshold(v : number) {
+   this.setDragThreshold(v);
+ }
+
+
+  /**
+   * 动画时间（单位：毫秒）。
+   *
+   */
+ get animatingTime() : number {
+   return slide_view_t_get_prop_animating_time(this.nativeObj);
+ }
+
+ set animatingTime(v : number) {
+   this.setAnimatingTime(v);
+ }
+
 };
 /**
  * 开关控件。
@@ -22192,6 +24920,7 @@ export class TSlideView extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/switch.xml)
  *
  *在c代码中使用函数switch\_create创建开关控件。如：
+ *
  *
  *
  *> 完整示例请参考：[switch demo](
@@ -22295,6 +25024,7 @@ export class TSwitch extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/text_selector.xml)
  *
  *在c代码中使用函数text\_selector\_create创建文本选择器控件。如：
+ *
  *
  *
  *> 完整示例请参考：[text\_selector demo](
@@ -22429,7 +25159,7 @@ export class TTextSelector extends TWidget {
    *
    * @returns 返回值。
    */
- getValue() : number  {
+ getValueInt() : number  {
     return text_selector_get_value(this != null ? (this.nativeObj || this) : null);
  }
 
@@ -22554,6 +25284,42 @@ export class TTextSelector extends TWidget {
 
 
   /**
+   * 设置绘制蒙版的变化趋势。
+   * 
+   * @param mask_easing 绘制蒙版的变化趋势。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setMaskEasing(mask_easing : TEasingType) : TRet  {
+    return text_selector_set_mask_easing(this != null ? (this.nativeObj || this) : null, mask_easing);
+ }
+
+
+  /**
+   * 设置绘制蒙版的区域占比（范围0~1）。
+   * 
+   * @param mask_area_scale 绘制蒙版的区域占比（范围0~1）。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setMaskAreaScale(mask_area_scale : number) : TRet  {
+    return text_selector_set_mask_area_scale(this != null ? (this.nativeObj || this) : null, mask_area_scale);
+ }
+
+
+  /**
+   * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+   * 
+   * @param ellipses 是否开启缩写。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setEllipses(ellipses : boolean) : TRet  {
+    return text_selector_set_ellipses(this != null ? (this.nativeObj || this) : null, ellipses);
+ }
+
+
+  /**
    * 可见的选项数量(只能是1或者3或者5，缺省为5)。
    *
    */
@@ -22580,9 +25346,13 @@ export class TTextSelector extends TWidget {
 
 
   /**
-   * 设置可选项(冒号分隔值和文本，分号分隔选项，如:1:red;2:green;3:blue)。
-   *对于数值选项，也可以指定一个范围，用『-』分隔起始值、结束值和格式。
+   * 设置可选项(英文冒号(:)分隔值和文本，英文分号(;)分隔选项，如:1:red;2:green;3:blue)。
+   *对于数值选项，也可以指定一个范围，用英文负号(-)分隔起始值、结束值和格式。
    *如："1-7-%02d"表示1到7，格式为『02d』，格式为可选，缺省为『%d』。
+   *> 如果数据本身中有英文冒号(:)、英文分号(;)和英文负号(-)。请用16进制转义。
+   *> * 英文冒号(:)写为\\x3a
+   *> * 英文冒号(;)写为\\x3b
+   *> * 英文冒号(-)写为\\x2d
    *
    */
  get options() : string {
@@ -22658,6 +25428,45 @@ export class TTextSelector extends TWidget {
    this.setEnableValueAnimator(v);
  }
 
+
+  /**
+   * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+   *
+   */
+ get ellipses() : boolean {
+   return text_selector_t_get_prop_ellipses(this.nativeObj);
+ }
+
+ set ellipses(v : boolean) {
+   this.setEllipses(v);
+ }
+
+
+  /**
+   * 绘制蒙版的变化趋势。
+   *
+   */
+ get maskEasing() : TEasingType {
+   return text_selector_t_get_prop_mask_easing(this.nativeObj);
+ }
+
+ set maskEasing(v : TEasingType) {
+   this.setMaskEasing(v);
+ }
+
+
+  /**
+   * 绘制蒙版的区域占比（范围0~1）。
+   *
+   */
+ get maskAreaScale() : number {
+   return text_selector_t_get_prop_mask_area_scale(this.nativeObj);
+ }
+
+ set maskAreaScale(v : number) {
+   this.setMaskAreaScale(v);
+ }
+
 };
 /**
  * 模拟时钟控件。
@@ -22675,6 +25484,7 @@ export class TTextSelector extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/time_clock.xml)
  *
  *在c代码中使用函数time\_clock\_create创建模拟时钟控件。如：
+ *
  *
  *
  *> 完整示例请参考：[time_clock demo](
@@ -23015,6 +25825,89 @@ export class TTimeClock extends TWidget {
 
 };
 /**
+ * 定时器。
+ *> 主要目的是方便以拖拽的方式创建定时器，并用AWBlock编写简单的事件处理程序。
+ *在xml中使用"timer"标签创建控件。如：
+ *
+ *```xml
+ *<!-- ui -->
+ *<timer x="c" y="50" w="100" h="100" duration="1000"/>
+ *```
+ *
+ *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
+ *> 本控件默认不可见，无需指定style。
+ *
+ *```xml
+ *<!-- style -->
+ *<timer>
+ *<style name="default" font_size="32">
+ *<normal text_color="black" />
+ *</style>
+ *</timer>
+ *```
+ *
+ */
+export class TTimerWidget extends TWidget { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 创建timer_widget对象
+   * 
+   * @param parent 父控件
+   * @param x x坐标
+   * @param y y坐标
+   * @param w 宽度
+   * @param h 高度
+   *
+   * @returns timer_widget对象。
+   */
+ static create(parent : TWidget, x : number, y : number, w : number, h : number) : TTimerWidget  {
+    return new TTimerWidget(timer_widget_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
+ }
+
+
+  /**
+   * 转换为timer_widget对象(供脚本语言使用)。
+   * 
+   * @param widget timer_widget对象。
+   *
+   * @returns timer_widget对象。
+   */
+ static cast(widget : TWidget) : TTimerWidget  {
+    return new TTimerWidget(timer_widget_cast(widget != null ? (widget.nativeObj || widget) : null));
+ }
+
+
+  /**
+   * 设置 时长(毫秒)。
+   * 
+   * @param duration 时长(毫秒)。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setDuration(duration : number) : TRet  {
+    return timer_widget_set_duration(this != null ? (this.nativeObj || this) : null, duration);
+ }
+
+
+  /**
+   * 时长(毫秒)。
+   *
+   */
+ get duration() : number {
+   return timer_widget_t_get_prop_duration(this.nativeObj);
+ }
+
+ set duration(v : number) {
+   this.setDuration(v);
+ }
+
+};
+/**
  * 虚拟页面(根据情况自动加载/卸载页面，并提供入场/出场动画)。
  *
  *> 虚拟页面只能作为pages的直接子控件使用。
@@ -23142,7 +26035,7 @@ export class TPropChangeEvent extends TEvent {
 
 
   /**
-   * 把event对象转prop_change_event_t对象，主要给脚本语言使用。
+   * 把event对象转prop_change_event_t对象。
    * 
    * @param event event对象。
    *
@@ -23183,7 +26076,7 @@ export class TProgressEvent extends TEvent {
 
 
   /**
-   * 把event对象转progress_event_t对象，主要给脚本语言使用。
+   * 把event对象转progress_event_t对象。
    * 
    * @param event event对象。
    *
@@ -23215,7 +26108,7 @@ export class TDoneEvent extends TEvent {
 
 
   /**
-   * 把event对象转done_event_t对象，主要给脚本语言使用。
+   * 把event对象转done_event_t对象。
    * 
    * @param event event对象。
    *
@@ -23247,7 +26140,7 @@ export class TErrorEvent extends TEvent {
 
 
   /**
-   * 把event对象转error_event_t对象，主要给脚本语言使用。
+   * 把event对象转error_event_t对象。
    * 
    * @param event event对象。
    *
@@ -23288,7 +26181,7 @@ export class TCmdExecEvent extends TEvent {
 
 
   /**
-   * 把event对象转cmd_exec_event_t对象，主要给脚本语言使用。
+   * 把event对象转cmd_exec_event_t对象。
    * 
    * @param event event对象。
    *
@@ -23336,6 +26229,52 @@ export class TCmdExecEvent extends TEvent {
 
 };
 /**
+ * 值变化事件。
+ *
+ */
+export class TValueChangeEvent extends TEvent { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 把event对象转value_change_event_t对象。
+   * 
+   * @param event event对象。
+   *
+   * @returns event对象。
+   */
+ static cast(event : TEvent) : TValueChangeEvent  {
+    return new TValueChangeEvent(value_change_event_cast(event != null ? (event.nativeObj || event) : null));
+ }
+
+};
+/**
+ * 日志事件。
+ *
+ */
+export class TLogMessageEvent extends TEvent { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 把event对象转log_message_event_t对象。
+   * 
+   * @param event event对象。
+   *
+   * @returns event对象。
+   */
+ static cast(event : TEvent) : TLogMessageEvent  {
+    return new TLogMessageEvent(log_message_event_cast(event != null ? (event.nativeObj || event) : null));
+ }
+
+};
+/**
  * app_bar控件。
  *
  *一个简单的容器控件，一般在窗口的顶部，用于显示本窗口的状态和信息。
@@ -23355,6 +26294,7 @@ export class TCmdExecEvent extends TEvent {
  *```
  *
  *在c代码中使用函数app\_bar\_create创建app\_bar。如：
+ *
  *
  *
  *可用通过style来设置控件的显示风格，如背景颜色等。如：
@@ -23486,6 +26426,7 @@ export class TButtonGroup extends TWidget {
  *在c代码中使用函数button\_create创建按钮控件。如：
  *
  *
+ *
  *> 创建之后，需要用widget\_set\_text或widget\_set\_text\_utf8设置文本内容。
  *
  *> 完整示例请参考：
@@ -23555,7 +26496,7 @@ export class TButton extends TWidget {
 
 
   /**
-   * 设置触发长按事件的时间。
+   * 设置触发长按事件的时间(毫秒)。
    * 
    * @param long_press_time 触发长按事件的时间(毫秒)。
    *
@@ -23575,6 +26516,18 @@ export class TButton extends TWidget {
    */
  setEnableLongPress(enable_long_press : boolean) : TRet  {
     return button_set_enable_long_press(this != null ? (this.nativeObj || this) : null, enable_long_press);
+ }
+
+
+  /**
+   * 设置是否启用预览。
+   * 
+   * @param enable_preview 是否启用预览。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setEnablePreview(enable_preview : boolean) : TRet  {
+    return button_set_enable_preview(this != null ? (this.nativeObj || this) : null, enable_preview);
  }
 
 
@@ -23610,7 +26563,20 @@ export class TButton extends TWidget {
 
 
   /**
-   * 触发长按事件的时间(ms)
+   * 是否启用预览(主要用于软键盘)。
+   *
+   */
+ get enablePreview() : boolean {
+   return button_t_get_prop_enable_preview(this.nativeObj);
+ }
+
+ set enablePreview(v : boolean) {
+   this.setEnablePreview(v);
+ }
+
+
+  /**
+   * 触发长按事件的时间(毫秒)
    *
    */
  get longPressTime() : number {
@@ -23619,6 +26585,15 @@ export class TButton extends TWidget {
 
  set longPressTime(v : number) {
    this.setLongPressTime(v);
+ }
+
+
+  /**
+   * 当前是否按下。
+   *
+   */
+ get pressed() : boolean {
+   return button_t_get_prop_pressed(this.nativeObj);
  }
 
 };
@@ -23645,7 +26620,9 @@ export class TButton extends TWidget {
  *在c代码中使用函数check\_button\_create创建多选按钮控件。如：
  *
  *
+ *
  *在c代码中使用函数check\_button\_create\_radio创建单选按钮控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -23729,6 +26706,24 @@ export class TCheckButton extends TWidget {
    */
  static cast(widget : TWidget) : TCheckButton  {
     return new TCheckButton(check_button_cast(widget != null ? (widget.nativeObj || widget) : null));
+ }
+
+
+  /**
+   * 创建check button对象
+   * 
+   * @param parent 父控件
+   * @param x x坐标
+   * @param y y坐标
+   * @param w 宽度
+   * @param h 高度
+   * @param type 类型。
+   * @param radio 是否单选。
+   *
+   * @returns widget对象。
+   */
+ static createEx(parent : TWidget, x : number, y : number, w : number, h : number, type : string, radio : boolean) : TCheckButton  {
+    return new TCheckButton(check_button_create_ex(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h, type, radio));
  }
 
 
@@ -23827,6 +26822,7 @@ export class TClipView extends TWidget {
  *[color_tile](https://github.com/zlgopen/awtk/blob/master/design/default/ui/color_picker_rgb.xml)
  *
  *在c代码中使用函数color_tile\_create创建色块控件。如：
+ *
  *
  *> 创建之后，用color\_tile\_set\_bg\_color设置背景颜色。
  *
@@ -24214,6 +27210,7 @@ export class TDialogTitle extends TWidget {
  *在c代码中使用函数digit\_clock\_create创建数字时钟控件。如：
  *
  *
+ *
  *> 完整示例请参考：[digit\_clock demo](
  *https://github.com/zlgopen/awtk-c-demos/blob/master/demos/digit_clock.c)
  *
@@ -24283,14 +27280,17 @@ export class TDigitClock extends TWidget {
    ** M 代表月(1-12)
    ** D 代表日(1-31)
    ** h 代表时(0-23)
+   ** H 代表时(1-12)
    ** m 代表分(0-59)
    ** s 代表秒(0-59)
    ** w 代表星期(0-6)
    ** W 代表星期的英文缩写(支持翻译)
+   ** T 代表时段AM/PM(支持翻译)
    ** YY 代表年(只显示末两位)
    ** MM 代表月(01-12)
    ** DD 代表日(01-31)
    ** hh 代表时(00-23)
+   ** HH 代表时(01-12)
    ** mm 代表分(00-59)
    ** ss 代表秒(00-59)
    ** MMM 代表月的英文缩写(支持翻译)
@@ -24434,6 +27434,7 @@ export class TDragger extends TWidget {
  *在c代码中使用函数edit\_create创建编辑器控件。如：
  *
  *
+ *
  *> 创建之后，可以用widget\_set\_text或widget\_set\_text\_utf8设置文本内容。
  *
  *> 完整示例请参考：
@@ -24534,6 +27535,19 @@ export class TEdit extends TWidget {
    */
  setDouble(value : any) : TRet  {
     return edit_set_double(this != null ? (this.nativeObj || this) : null, value);
+ }
+
+
+  /**
+   * 设置double类型的值。
+   * 
+   * @param format 格式(缺省为"%2.2lf")。
+   * @param value 值。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setDoubleEx(format : string, value : any) : TRet  {
+    return edit_set_double_ex(this != null ? (this.nativeObj || this) : null, format, value);
  }
 
 
@@ -24786,6 +27800,18 @@ export class TEdit extends TWidget {
 
 
   /**
+   * 设置输入回车后是否跳到下一个控件中。
+   * 
+   * @param focus_next_when_enter 是否跳入下一个控件中。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setFocusNextWhenEnter(focus_next_when_enter : boolean) : TRet  {
+    return edit_set_focus_next_when_enter(this != null ? (this.nativeObj || this) : null, focus_next_when_enter);
+ }
+
+
+  /**
    * 输入提示。
    *
    */
@@ -24826,6 +27852,17 @@ export class TEdit extends TWidget {
 
  set actionText(v : string) {
    this.setActionText(v);
+ }
+
+
+  /**
+   * fscript脚本，用输入校验，如：(len(text) 3) && (len(text) < 10)。
+   *
+   *> 用于校验输入的文本是否合法。
+   *
+   */
+ get validator() : string {
+   return edit_t_get_prop_validator(this.nativeObj);
  }
 
 
@@ -24980,6 +28017,19 @@ export class TEdit extends TWidget {
    this.setCancelable(v);
  }
 
+
+  /**
+   * 输入回车后是否跳到下一个控件中。
+   *
+   */
+ get focusNextWhenEnter() : boolean {
+   return edit_t_get_prop_focus_next_when_enter(this.nativeObj);
+ }
+
+ set focusNextWhenEnter(v : boolean) {
+   this.setFocusNextWhenEnter(v);
+ }
+
 };
 /**
  * grid_item。一个简单的容器控件，一般作为grid的子控件。
@@ -25055,31 +28105,23 @@ export class TGridItem extends TWidget {
 
 };
 /**
- * grid控件。一个简单的容器控件，用于网格排列一组控件。
- *
- *它本身不提供布局功能，仅提供具有语义的标签，让xml更具有可读性。
- *子控件的布局可用layout\_children属性指定。
- *请参考[布局参数](https://github.com/zlgopen/awtk/blob/master/docs/layout.md)。
- *
- *grid\_t是[widget\_t](widget_t.md)的子类控件，widget\_t的函数均适用于grid\_t控件。
- *
- *在xml中使用"grid"标签创建grid。如：
+ * 网格。
+ *在xml中使用"grid"标签创建控件。如：
  *
  *```xml
- *<grid x="0" y="0" w="100%" h="100%" children_layout="default(c=2,r=2,m=5,s=5)">
- *<button name="open:basic" text="Basic"/>
- *<button name="open:button" text="Buttons"/>
- *<button name="open:edit" text="Edits"/>
- *<button name="open:keyboard" text="KeyBoard"/>
- *</grid>
+ *<!-- ui -->
+ *<grid x="c" y="50" w="100" h="100"/>
  *```
  *
- *可用通过style来设置控件的显示风格，如背景颜色等。如：
+ *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
  *
  *```xml
- *<style name="default" border_color="#a0a0a0">
- *<normal     bg_color="#f0f0f0" />
+ *<!-- style -->
+ *<grid>
+ *<style name="default" grid_color="gray" border_color="black" odd_bg_color="#f5f5f5" even_bg_color="#eeeeee">
+ *<normal />
  *</style>
+ *</grid>
  *```
  *
  */
@@ -25099,7 +28141,7 @@ export class TGrid extends TWidget {
    * @param w 宽度
    * @param h 高度
    *
-   * @returns 对象。
+   * @returns grid对象。
    */
  static create(parent : TWidget, x : number, y : number, w : number, h : number) : TGrid  {
     return new TGrid(grid_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
@@ -25115,6 +28157,93 @@ export class TGrid extends TWidget {
    */
  static cast(widget : TWidget) : TGrid  {
     return new TGrid(grid_cast(widget != null ? (widget.nativeObj || widget) : null));
+ }
+
+
+  /**
+   * 设置 行数。
+   * 
+   * @param rows 行数。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setRows(rows : number) : TRet  {
+    return grid_set_rows(this != null ? (this.nativeObj || this) : null, rows);
+ }
+
+
+  /**
+   * 设置 各列的参数。
+   * 
+   * @param columns_definition 各列的参数。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setColumnsDefinition(columns_definition : string) : TRet  {
+    return grid_set_columns_definition(this != null ? (this.nativeObj || this) : null, columns_definition);
+ }
+
+
+  /**
+   * 设置 是否显示网格。
+   * 
+   * @param show_grid 是否显示网格。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setShowGrid(show_grid : boolean) : TRet  {
+    return grid_set_show_grid(this != null ? (this.nativeObj || this) : null, show_grid);
+ }
+
+
+  /**
+   * 行数。
+   *
+   */
+ get rows() : number {
+   return grid_t_get_prop_rows(this.nativeObj);
+ }
+
+ set rows(v : number) {
+   this.setRows(v);
+ }
+
+
+  /**
+   * 各列的参数。
+   *各列的参数之间用英文的分号(;)分隔，每列参数的格式为：
+   *
+   *col(w=?,left_margin=?,right_margin=?,top_maorgin=?,bottom_margin=?)
+   *
+   ** w 为列的宽度(必须存在)。取值在(0-1]区间时，视为grid控件宽度的比例，否则为像素宽度。
+   *(如果为负数，将计算结果加上控件的宽度)
+   ** left_margin(可选，可缩写为l) 该列左边的边距。
+   ** right_margin(可选，可缩写为r) 该列右边的边距。
+   ** top_margin(可选，可缩写为t) 该列顶部的边距。
+   ** bottom_margin(可选，可缩写为b) 该列底部的边距。
+   ** margin(可选，可缩写为m) 同时指定上面4个边距。
+   ** fill_available(可选，可缩写为f) 填充剩余宽度(只有一列可以指定)。
+   *
+   */
+ get columnsDefinition() : string {
+   return grid_t_get_prop_columns_definition(this.nativeObj);
+ }
+
+ set columnsDefinition(v : string) {
+   this.setColumnsDefinition(v);
+ }
+
+
+  /**
+   * 是否显示网格。
+   *
+   */
+ get showGrid() : boolean {
+   return grid_t_get_prop_show_grid(this.nativeObj);
+ }
+
+ set showGrid(v : boolean) {
+   this.setShowGrid(v);
  }
 
 };
@@ -25172,6 +28301,18 @@ export class TGroupBox extends TWidget {
 
 
   /**
+   * 设置选中的单选按钮的索引。
+   * 
+   * @param value 选中的单选按钮的索引。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setValue(value : any) : TRet  {
+    return group_box_set_value(this != null ? (this.nativeObj || this) : null, value);
+ }
+
+
+  /**
    * 转换为group_box对象(供脚本语言使用)。
    * 
    * @param widget group_box对象。
@@ -25180,6 +28321,19 @@ export class TGroupBox extends TWidget {
    */
  static cast(widget : TWidget) : TGroupBox  {
     return new TGroupBox(group_box_cast(widget != null ? (widget.nativeObj || widget) : null));
+ }
+
+
+  /**
+   * 选中的单选按钮的索引。
+   *
+   */
+ get value() : number {
+   return group_box_t_get_prop_value(this.nativeObj);
+ }
+
+ set value(v : number) {
+   this.setValue(v);
  }
 
 };
@@ -25202,6 +28356,7 @@ export class TGroupBox extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/label.xml)
  *
  *在c代码中使用函数label\_create创建文本控件。如：
+ *
  *
  *
  *> 创建之后，需要用widget\_set\_text或widget\_set\_text\_utf8设置文本内容。
@@ -25246,7 +28401,7 @@ export class TLabel extends TWidget {
 
 
   /**
-   * 设置显示字符的个数(小余0时全部显示)。
+   * 设置显示字符的个数(小于0时全部显示)。
    * 
    * @param length 最大可显示字符个数。
    *
@@ -25294,6 +28449,18 @@ export class TLabel extends TWidget {
 
 
   /**
+   * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+   * 
+   * @param ellipses 是否开启缩写。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setEllipses(ellipses : boolean) : TRet  {
+    return label_set_ellipses(this != null ? (this.nativeObj || this) : null, ellipses);
+ }
+
+
+  /**
    * 根据文本内容调节控件大小。
    * 
    * @param min_w 最小宽度。
@@ -25321,7 +28488,7 @@ export class TLabel extends TWidget {
 
 
   /**
-   * 显示字符的个数(小余0时全部显示)。
+   * 显示字符的个数(小于0时全部显示)。
    *主要用于动态改变显示字符的个数，来实现类似[拨号中...]的动画效果。
    *
    */
@@ -25358,6 +28525,20 @@ export class TLabel extends TWidget {
 
  set wordWrap(v : boolean) {
    this.setWordWrap(v);
+ }
+
+
+  /**
+   * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+   *> 和换行是冲突的，换行后，该属性不生效
+   *
+   */
+ get ellipses() : boolean {
+   return label_t_get_prop_ellipses(this.nativeObj);
+ }
+
+ set ellipses(v : boolean) {
+   this.setEllipses(v);
  }
 
 
@@ -25449,6 +28630,18 @@ export class TPages extends TWidget {
 
 
   /**
+   * 设置切换界面时是否自动聚焦。
+   * 
+   * @param auto_focused 切换界面时是否自动聚焦。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setAutoFocused(auto_focused : boolean) : TRet  {
+    return pages_set_auto_focused(this != null ? (this.nativeObj || this) : null, auto_focused);
+ }
+
+
+  /**
    * 通过页面的名字设置当前的Page。
    * 
    * @param name 当前Page的名字。
@@ -25461,7 +28654,7 @@ export class TPages extends TWidget {
 
 
   /**
-   * 当前活跃的page。
+   * 当前活跃的page。(需要用到 MVVM 数据绑定请设置 value 属性)
    *
    */
  get active() : number {
@@ -25470,6 +28663,19 @@ export class TPages extends TWidget {
 
  set active(v : number) {
    this.setActive(v);
+ }
+
+
+  /**
+   * 选择切换界面时是否自动聚焦上一次保存的焦点。（默认为TRUE）
+   *
+   */
+ get autoFocused() : boolean {
+   return pages_t_get_prop_auto_focused(this.nativeObj);
+ }
+
+ set autoFocused(v : boolean) {
+   this.setAutoFocused(v);
  }
 
 };
@@ -25491,6 +28697,7 @@ export class TPages extends TWidget {
  *[basic demo](https://github.com/zlgopen/awtk/blob/master/design/default/ui/basic.xml)
  *
  *在c代码中使用函数progress\_bar\_create创建进度条控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -25790,6 +28997,7 @@ export class TRow extends TWidget {
  *在c代码中使用函数slider\_create创建滑块控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[slider demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/slider.c)
  *
@@ -25876,6 +29084,18 @@ export class TSlider extends TWidget {
    */
  setMax(max : number) : TRet  {
     return slider_set_max(this != null ? (this.nativeObj || this) : null, max);
+ }
+
+
+  /**
+   * 设置前景色的线帽形状。（默认为跟随风格的圆角设置，但是在没有设置圆角的时候无法使用 "round" 来设置圆角）
+   * 
+   * @param line_cap 前景色的线帽形状，取值为：butt|round
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setLineCap(line_cap : string) : TRet  {
+    return slider_set_line_cap(this != null ? (this.nativeObj || this) : null, line_cap);
  }
 
 
@@ -25968,19 +29188,6 @@ export class TSlider extends TWidget {
 
 
   /**
-   * 滑块的是否为垂直方向。
-   *
-   */
- get vertical() : boolean {
-   return slider_t_get_prop_vertical(this.nativeObj);
- }
-
- set vertical(v : boolean) {
-   this.setVertical(v);
- }
-
-
-  /**
    * 轴的宽度或高度（单位：像素），为0表示为控件的宽度或高度的一半，缺省为0。
    *
    */
@@ -25994,11 +29201,37 @@ export class TSlider extends TWidget {
 
 
   /**
-   * 滑块的宽度或高度（单位：像素），缺省为10。
+   * 滑块的宽度或高度（单位：像素），缺省为 bar_size * 1.5。
    *
    */
  get draggerSize() : number {
    return slider_t_get_prop_dragger_size(this.nativeObj);
+ }
+
+
+  /**
+   * 前景色的线帽形状。（取值：butt|round，默认为跟随风格的圆角设置, 但是在没有设置圆角的时候无法使用 "round" 来设置圆角）
+   *
+   */
+ get lineCap() : string {
+   return slider_t_get_prop_line_cap(this.nativeObj);
+ }
+
+ set lineCap(v : string) {
+   this.setLineCap(v);
+ }
+
+
+  /**
+   * 滑块的是否为垂直方向。
+   *
+   */
+ get vertical() : boolean {
+   return slider_t_get_prop_vertical(this.nativeObj);
+ }
+
+ set vertical(v : boolean) {
+   this.setVertical(v);
  }
 
 
@@ -26531,10 +29764,13 @@ export class TView extends TWidget {
  *打开非模态对话框时，其用法与普通窗口一样。打开非模态对话框时，还需要调用dialog\_modal。
  *
  *
+ *
  *关闭模态对话框用dialog\_quit
  *
  *
+ *
  *关闭非模态对话框用window\_close。
+ *
  *
  *
  *> 更多用法请参考：
@@ -26662,9 +29898,10 @@ export class TDialog extends TWindowBase {
    * 模态显示对话框。
    *dialog_modal返回后，dialog对象将在下一个idle函数中回收。
    *也就是在dialog_modal调用完成后仍然可以访问dialog中控件，直到本次事件结束。
+   *调用该函数会使线程进入阻塞状态，需要调用dialog_quit来解除阻塞。
    * 
    *
-   * @returns 返回退出码。
+   * @returns 返回退出码，值为dialog_quit函数中传入的参数。
    */
  modal() : TDialogQuitCode  {
     return dialog_modal(this != null ? (this.nativeObj || this) : null);
@@ -26782,7 +30019,7 @@ export class TDialog extends TWindowBase {
  * 原生窗口。
  *
  */
-export class TNativeWindow extends TObject { 
+export class TNativeWindow extends TTkObject { 
  public nativeObj : any;
  constructor(nativeObj : any) {
    super(nativeObj);
@@ -26910,6 +30147,18 @@ export class TNativeWindow extends TObject {
     return native_window_set_cursor(this != null ? (this.nativeObj || this) : null, name, img != null ? (img.nativeObj || img) : null);
  }
 
+
+  /**
+   * 设置程序窗口的名称。
+   * 
+   * @param app_name 程序窗口的名称。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setTitle(app_name : string) : TRet  {
+    return native_window_set_title(this != null ? (this.nativeObj || this) : null, app_name);
+ }
+
 };
 /**
  * 窗口。
@@ -26930,6 +30179,7 @@ export class TNativeWindow extends TObject {
  *更多用法请参考：[window.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/)
  *
  *在c代码中使用函数window\_create创建窗口。如：
+ *
  *
  *
  *> 无需指定父控件、坐标和大小，使用0即可。
@@ -27090,7 +30340,7 @@ export class TWindow extends TWindowBase {
  * GIF图片控件。
  *
  *> 注意：GIF图片的尺寸大于控件大小时会自动缩小图片，但一般的嵌入式系统的硬件加速都不支持图片缩放，
- *所以缩放图片会导致性能明显下降。如果性能不满意时，请确认一下GIF图片的尺寸是否小余控件大小。
+ *所以缩放图片会导致性能明显下降。如果性能不满意时，请确认一下GIF图片的尺寸是否小于控件大小。
  *
  *gif\_image\_t是[image\_base\_t](image_base_t.md)的子类控件，image\_base\_t的函数均适用于gif\_image\_t控件。
  *
@@ -27105,6 +30355,7 @@ export class TWindow extends TWindowBase {
  *image](https://github.com/zlgopen/awtk/blob/master/design/default/ui/gif_image.xml)
  *
  *在c代码中使用函数gif\_image\_create创建GIF图片控件。如：
+ *
  *
  *
  *> 创建之后:
@@ -27163,7 +30414,7 @@ export class TGifImage extends TImageBase {
 
 
   /**
-   * 停止(并重置index为-1)。
+   * 停止(并重置index为0)。
    * 
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
@@ -27185,6 +30436,18 @@ export class TGifImage extends TImageBase {
 
 
   /**
+   * 设置循环播放次数。
+   * 
+   * @param loop 循环播放次数。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setLoop(loop : number) : TRet  {
+    return gif_image_set_loop(this != null ? (this.nativeObj || this) : null, loop);
+ }
+
+
+  /**
    * 转换为gif_image对象(供脚本语言使用)。
    * 
    * @param widget gif_image对象。
@@ -27193,6 +30456,19 @@ export class TGifImage extends TImageBase {
    */
  static cast(widget : TWidget) : TGifImage  {
     return new TGifImage(gif_image_cast(widget != null ? (widget.nativeObj || widget) : null));
+ }
+
+
+  /**
+   * 循环播放的次数。
+   *
+   */
+ get loop() : number {
+   return gif_image_t_get_prop_loop(this.nativeObj);
+ }
+
+ set loop(v : number) {
+   this.setLoop(v);
  }
 
 };
@@ -27355,6 +30631,7 @@ export class TKeyboard extends TWindowBase {
  *在c代码中使用函数mutable\_image\_create创建mutable图片控件。如：
  *
  *
+ *
  *> 创建之后:
  *>
  *> 需要用mutable\_image\_set\_create\_image设置创建图片的回调函数。
@@ -27390,6 +30667,89 @@ export class TMutableImage extends TImageBase {
 
 };
 /**
+ * list_item_seperator。
+ *用来模拟实现风琴控件(accordion)和属性页分组控件。
+ *> 当前控件被点击时，显示/隐藏当前控件到下一个分隔符控件之间的控件。
+ *list_item_seperator\_t是[widget\_t](widget_t.md)的子类控件，widget\_t的函数均适用于list_item_seperator\_t控件。
+ *
+ *在xml中使用"list_item_seperator"标签创建list_item_seperator。如：
+ *
+ *```xml
+ *<list_item_seperator radio="true" text="Group2" h="32"/>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="ASCII"/>
+ *<edit w="70%" text="" tips="ascii" input_type="ascii" focused="true" action_text="next"/>
+ *</list_item>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="Int"/>
+ *<edit w="70%" text="" tips="int" input_type="int"/>
+ *</list_item>
+ *
+ *<list_item_seperator radio="true" text="Group3" h="32"/>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="Float"/>
+ *<edit w="70%" text="" tips="float" input_type="float"/>
+ *</list_item>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="UFloat"/>
+ *<edit w="70%" text="" tips="unsigned float" input_type="ufloat"/>
+ *</list_item>
+ *```
+ *
+ *可用通过style来设置控件的显示风格，如背景颜色等。如：
+ *
+ *```xml
+ *<list_item_seperator text_color="black" bg_color="#e0e0e0">
+ *<style name="default" icon_at="left">
+ *<normal  icon="collapse" />
+ *<pressed icon="collapse" />
+ *<over    icon="collapse" text_color="green"/>
+ *<focused icon="collapse" text_color="green"/>
+ *<normal_of_checked icon="expand" text_color="blue"/>
+ *<pressed_of_checked icon="expand" text_color="blue"/>
+ *<over_of_checked icon="expand" text_color="green"/>
+ *<focused_of_checked icon="expand" text_color="green"/>
+ *</style>
+ *</list_item_seperator>
+ *```
+ *
+ */
+export class TListItemSeperator extends TCheckButton { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 创建list_item_seperator对象
+   * 
+   * @param parent 父控件
+   * @param x x坐标
+   * @param y y坐标
+   * @param w 宽度
+   * @param h 高度
+   *
+   * @returns 对象。
+   */
+ static create(parent : TWidget, x : number, y : number, w : number, h : number) : TListItemSeperator  {
+    return new TListItemSeperator(list_item_seperator_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
+ }
+
+
+  /**
+   * 转换为list_item_seperator对象(供脚本语言使用)。
+   * 
+   * @param widget list_item_seperator对象。
+   *
+   * @returns list_item_seperator对象。
+   */
+ static cast(widget : TWidget) : TListItemSeperator  {
+    return new TListItemSeperator(list_item_seperator_cast(widget != null ? (widget.nativeObj || widget) : null));
+ }
+
+};
+/**
  * SVG图片控件。
  *
  *svg\_image\_t是[image\_base\_t](image_base_t.md)的子类控件，image\_base\_t的函数均适用于svg\_image\_t控件。
@@ -27404,6 +30764,7 @@ export class TMutableImage extends TImageBase {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/svg_image.xml)
  *
  *在c代码中使用函数svg\_image\_create创建SVG图片控件。如：
+ *
  *
  *
  *> 创建之后: 需要用widget\_set\_image设置图片名称。
@@ -27463,6 +30824,32 @@ export class TSvgImage extends TImageBase {
 
 
   /**
+   * 控件设置是否开启离线缓存渲染模式。
+   *
+   *> 在确保svg图片不经常变化大小及状态的情况下，开启离线缓存渲染能够减少解析bsvg的开销，提高效率。
+   * 
+   * @param is_cache_mode 是否开启缓存模式。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setCacheMode(is_cache_mode : boolean) : TRet  {
+    return svg_image_set_cache_mode(this != null ? (this.nativeObj || this) : null, is_cache_mode);
+ }
+
+
+  /**
+   * 控件设置svg图片绘制模式。
+   * 
+   * @param draw_type 绘制模式。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setDrawType(draw_type : TImageDrawType) : TRet  {
+    return svg_image_set_draw_type(this != null ? (this.nativeObj || this) : null, draw_type);
+ }
+
+
+  /**
    * 转换为svg_image对象(供脚本语言使用)。
    * 
    * @param widget svg_image对象。
@@ -27473,12 +30860,34 @@ export class TSvgImage extends TImageBase {
     return new TSvgImage(svg_image_cast(widget != null ? (widget.nativeObj || widget) : null));
  }
 
+
+  /**
+   * 离线缓存渲染模式。
+   *
+   */
+ get isCacheMode() : boolean {
+   return svg_image_t_get_prop_is_cache_mode(this.nativeObj);
+ }
+
+
+  /**
+   * svg图片的绘制方式(支持旋转缩放, 目前仅支持scale、scale_auto模式)。
+   *
+   */
+ get drawType() : TImageDrawType {
+   return svg_image_t_get_prop_draw_type(this.nativeObj);
+ }
+
+ set drawType(v : TImageDrawType) {
+   this.setDrawType(v);
+ }
+
 };
 /**
  * 单个idle的信息。
  *
  */
-export class TIdleInfo extends TObject { 
+export class TIdleInfo extends TTkObject { 
  public nativeObj : any;
  constructor(nativeObj : any) {
    super(nativeObj);
@@ -27535,7 +30944,7 @@ export class TIdleInfo extends TObject {
  ** index 用于访问属性，-1可以用来追加新元素。
  *
  */
-export class TObjectArray extends TObject { 
+export class TObjectArray extends TTkObject { 
  public nativeObj : any;
  constructor(nativeObj : any) {
    super(nativeObj);
@@ -27637,6 +31046,18 @@ export class TObjectArray extends TObject {
 
 
   /**
+   * 删除指定的值。
+   * 
+   * @param v 值。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ removeValue(v : TValue) : TRet  {
+    return object_array_remove_value(this != null ? (this.nativeObj || this) : null, v != null ? (v.nativeObj || v) : null);
+ }
+
+
+  /**
    * 在指定位置删除一个元素，并返回它。
    * 
    * @param index 位置。
@@ -27661,10 +31082,14 @@ export class TObjectArray extends TObject {
 /**
  * 对象接口的缺省实现。
  *
- *内部使用有序数组保存所有属性，可以快速查找指定名称的属性。
+ *通用当作 map 数据结构使用，内部用有序数组保存所有属性，因此可以快速查找指定名称的属性。
+ *
+ *示例
+ *
+ *
  *
  */
-export class TObjectDefault extends TObject { 
+export class TObjectDefault extends TTkObject { 
  public nativeObj : any;
  constructor(nativeObj : any) {
    super(nativeObj);
@@ -27715,12 +31140,24 @@ export class TObjectDefault extends TObject {
     return object_default_clear_props(this != null ? (this.nativeObj || this) : null);
  }
 
+
+  /**
+   * 设置属性值时不改变属性的类型。
+   * 
+   * @param keep_prop_type 不改变属性的类型。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setKeepPropType(keep_prop_type : boolean) : TRet  {
+    return object_default_set_keep_prop_type(this != null ? (this.nativeObj || this) : null, keep_prop_type);
+ }
+
 };
 /**
  * 单个定时器的信息。
  *
  */
-export class TTimerInfo extends TObject { 
+export class TTimerInfo extends TTkObject { 
  public nativeObj : any;
  constructor(nativeObj : any) {
    super(nativeObj);
@@ -27794,6 +31231,7 @@ export class TTimerInfo extends TObject {
  *[window.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/calibration_win.xml)
  *
  *在c代码中使用函数calibration\_win\_create创建窗口。如：
+ *
  *
  *
  *通过calibration\_win\_set\_on\_done注册回调函数，用于保存校准数据。
@@ -27894,6 +31332,7 @@ export class TCalibrationWin extends TWindowBase {
  *在c代码中使用函数combo\_box\_create创建下拉列表控件。如：
  *
  *
+ *
  *创建之后：
  *
  ** 用combo\_box\_set\_options设置可选项目。
@@ -27934,6 +31373,22 @@ export class TCalibrationWin extends TWindowBase {
  *<normal bg_color="#808080"/>
  *</style>
  *</popup>
+ *```
+ ** 3.combobox的下拉框中的列表项的样式，可以设置combo_box_item的style来改变。
+ *
+ *```xml
+ *<combo_box_item>
+ *<style name="default" icon_at="left" text_color="black" bg_color="#f0f0f0">
+ *<normal  icon="empty"/>
+ *<focused icon="empty" bg_color="#1296db" text_color="gold" />
+ *<pressed icon="empty" bg_color="#1296db" text_color="white" />
+ *<over    icon="empty" bg_color="#1296db" text_color="white" />
+ *<normal_of_checked  icon="check"/>
+ *<focused_of_checked  icon="check" bg_color="#1296db" text_color="gold"/>
+ *<pressed_of_checked icon="check" bg_color="#1296db" text_color="white" />
+ *<over_of_checked    icon="check" bg_color="#1296db" text_color="white" />
+ *</style>
+ *</combo_box_item>
  *```
  *
  *> 更多用法请参考：[theme
@@ -27988,6 +31443,18 @@ export class TComboBox extends TEdit {
 
 
   /**
+   * 设置弹出窗口的主题。
+   * 
+   * @param theme_of_popup 弹出的窗口主题。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setThemeOfPopup(theme_of_popup : string) : TRet  {
+    return combo_box_set_theme_of_popup(this != null ? (this.nativeObj || this) : null, theme_of_popup);
+ }
+
+
+  /**
    * 重置所有选项。
    * 
    *
@@ -28018,6 +31485,18 @@ export class TComboBox extends TEdit {
    */
  setSelectedIndex(index : number) : TRet  {
     return combo_box_set_selected_index(this != null ? (this.nativeObj || this) : null, index);
+ }
+
+
+  /**
+   * 根据文本设置当前选中的选项。
+   * 
+   * @param text 原生(非翻译的文本)。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setSelectedIndexByText(text : string) : TRet  {
+    return combo_box_set_selected_index_by_text(this != null ? (this.nativeObj || this) : null, text);
  }
 
 
@@ -28071,14 +31550,26 @@ export class TComboBox extends TEdit {
 
 
   /**
-   * 删除选项。
+   * 删除第一个值为value的选项。
    * 
-   * @param value 值。
+   * @param value 选项的值。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  removeOption(value : any) : TRet  {
     return combo_box_remove_option(this != null ? (this.nativeObj || this) : null, value);
+ }
+
+
+  /**
+   * 删除指定序数的选项。
+   * 
+   * @param index 选项的序数(0表示第一个)。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ removeOptionByIndex(index : number) : TRet  {
+    return combo_box_remove_option_by_index(this != null ? (this.nativeObj || this) : null, index);
  }
 
 
@@ -28100,19 +31591,42 @@ export class TComboBox extends TEdit {
    *
    * @returns 返回值。
    */
- getValue() : number  {
+ getValueInt() : number  {
     return combo_box_get_value(this != null ? (this.nativeObj || this) : null);
  }
 
 
   /**
-   * 获取combo_box的文本。
+   * 检查选项中是否存在指定的文本。
+   * 
+   * @param text option text
+   *
+   * @returns 返回TRUE表示存在，否则表示不存在。
+   */
+ hasOptionText(text : string) : boolean  {
+    return combo_box_has_option_text(this != null ? (this.nativeObj || this) : null, text);
+ }
+
+
+  /**
+   * 获取combo_box的文本(可能是翻译后的文本)。
    * 
    *
    * @returns 返回文本。
    */
  getTextValue() : string  {
     return combo_box_get_text(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 获取combo_box当前选中项目的文本(原生非翻译的文本)。
+   * 
+   *
+   * @returns 返回文本。
+   */
+ getTextOfSelected() : string  {
+    return combo_box_get_text_of_selected(this != null ? (this.nativeObj || this) : null);
  }
 
 
@@ -28126,6 +31640,19 @@ export class TComboBox extends TEdit {
 
  set openWindow(v : string) {
    this.setOpenWindow(v);
+ }
+
+
+  /**
+   * 弹出窗口的主题(对应的style文件必须存在)，方便为不同combo box的弹出窗口指定不同的样式。
+   *
+   */
+ get themeOfPopup() : string {
+   return combo_box_t_get_prop_theme_of_popup(this.nativeObj);
+ }
+
+ set themeOfPopup(v : string) {
+   this.setThemeOfPopup(v);
  }
 
 
@@ -28170,6 +31697,9 @@ export class TComboBox extends TEdit {
 
   /**
    * 设置可选项(冒号分隔值和文本，分号分隔选项，如:1:red;2:green;3:blue)。
+   *> 如果数据本身中有英文冒号(:)和英文分号(;)，请用16进制转义。
+   *> * 英文冒号(:)写为\\x3a
+   *> * 英文冒号(;)写为\\x3b
    *
    */
  get options() : string {
@@ -28221,6 +31751,7 @@ export class TComboBox extends TEdit {
  *在c代码中使用函数image\_create创建图片控件。如：
  *
  *
+ *
  *> 创建之后:
  *>
  *> 需要用widget\_set\_image设置图片名称。
@@ -28270,6 +31801,22 @@ export class TImage extends TImageBase {
    */
  static create(parent : TWidget, x : number, y : number, w : number, h : number) : TImage  {
     return new TImage(image_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
+ }
+
+
+  /**
+   * 创建icon对象
+   * 
+   * @param parent 父控件
+   * @param x x坐标
+   * @param y y坐标
+   * @param w 宽度
+   * @param h 高度
+   *
+   * @returns 对象。
+   */
+ static iconCreate(parent : TWidget, x : number, y : number, w : number, h : number) : TImage  {
+    return new TImage(icon_create(parent != null ? (parent.nativeObj || parent) : null, x, y, w, h));
  }
 
 
@@ -28331,6 +31878,7 @@ export class TImage extends TImageBase {
  *更多用法请参考：[overlay.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/)
  *
  *在c代码中使用函数overlay\_create创建窗口。如：
+ *
  *
  *
  *> 完整示例请参考：[overlay
@@ -28396,6 +31944,18 @@ export class TOverlay extends TWindowBase {
 
 
   /**
+   * 设置是否非模态窗口模式。
+   * 
+   * @param modeless 是否非模态窗口模式。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setModeless(modeless : boolean) : TRet  {
+    return overlay_set_modeless(this != null ? (this.nativeObj || this) : null, modeless);
+ }
+
+
+  /**
    * 转换为overlay对象(供脚本语言使用)。
    * 
    * @param widget overlay对象。
@@ -28436,6 +31996,21 @@ export class TOverlay extends TWindowBase {
    this.setAlwaysOnTop(v);
  }
 
+
+  /**
+   * 非模态窗口。
+   *
+   *缺省不启用。
+   *
+   */
+ get modeless() : boolean {
+   return overlay_t_get_prop_modeless(this.nativeObj);
+ }
+
+ set modeless(v : boolean) {
+   this.setModeless(v);
+ }
+
 };
 /**
  * 弹出窗口。
@@ -28462,6 +32037,7 @@ export class TOverlay extends TWindowBase {
  *更多用法请参考：[popup](https://github.com/zlgopen/awtk/blob/master/design/default/ui/)
  *
  *在c代码中使用函数popup\_create创建弹出窗口。如：
+ *
  *
  *
  *> 创建之后，和使用普通窗口是一样的。
@@ -28542,9 +32118,9 @@ export class TPopup extends TWindowBase {
 
 
   /**
-   * 设置超时关闭时间(ms)。
+   * 设置超时关闭时间(毫秒)。
    * 
-   * @param close_when_timeout 大于0时，为定时器时间(ms)，超时关闭窗口。
+   * @param close_when_timeout 大于0时，为定时器时间(毫秒)，超时关闭窗口。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
@@ -28580,7 +32156,7 @@ export class TPopup extends TWindowBase {
 
 
   /**
-   * 超时后自动关闭窗口(ms)。
+   * 超时后自动关闭窗口(毫秒)。
    *
    */
  get closeWhenTimeout() : number {
@@ -28612,6 +32188,7 @@ export class TPopup extends TWindowBase {
  *更多用法请参考：[spin_box.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/spinbox.xml)
  *
  *在c代码中使用函数spin_box\_create创建spinbox控件。如：
+ *
  *
  *
  *> 创建之后:
@@ -28673,6 +32250,78 @@ export class TSpinBox extends TEdit {
     return new TSpinBox(spin_box_cast(widget != null ? (widget.nativeObj || widget) : null));
  }
 
+
+  /**
+   * 设置是否启用易点击模式。
+   * 
+   * @param easy_touch_mode 易点击模式。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setEasyTouchMode(easy_touch_mode : boolean) : TRet  {
+    return spin_box_set_easy_touch_mode(this != null ? (this.nativeObj || this) : null, easy_touch_mode);
+ }
+
+
+  /**
+   * 设置按钮位置样式。
+   * 
+   * @param button_position 按钮位置样式。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setButtonPosition(button_position : string) : TRet  {
+    return spin_box_set_button_position(this != null ? (this.nativeObj || this) : null, button_position);
+ }
+
+
+  /**
+   * 设置连击的时间间隔。
+   *备注：时间间隔越低，速度越快。
+   * 
+   * @param repeat 连击的时间间隔。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ spinSetRepeat(repeat : number) : TRet  {
+    return spin_set_repeat(this != null ? (this.nativeObj || this) : null, repeat);
+ }
+
+
+  /**
+   * 是否启用易点击模式(在电容屏设备上建议启用)。
+   *> 在该模式下：
+   *> * 1.当高度大于font size的3倍时，inc按钮在顶部(style名为spinbox_top)，dec按钮在底部(style名为spinbox_bottom)。
+   *> * 2.当高度正常时，dec按钮在左边(style名为spinbox_left)，inc按钮在右边(style名为spinbox_right)。
+   *> 不在该模式下：
+   *> inc按钮在右上角(style名为spinbox_up)，dec按钮在右下角(style名为spinbox_down)。
+   *
+   */
+ get easyTouchMode() : boolean {
+   return spin_box_t_get_prop_easy_touch_mode(this.nativeObj);
+ }
+
+ set easyTouchMode(v : boolean) {
+   this.setEasyTouchMode(v);
+ }
+
+
+  /**
+   * 按钮位置样式选择，优先级高于easy_touch_mode，各模式对应样式如下,默认为none。
+   *none：按照easy_touch_mode选择样式
+   *default：inc按钮在右上角，dec按钮在右下角。
+   *left_right：dec按钮在左边，inc按钮在右边。
+   *top_bottom：inc按钮在顶部，dec按钮在底部。
+   *
+   */
+ get buttonPosition() : string {
+   return spin_box_t_get_prop_button_position(this.nativeObj);
+ }
+
+ set buttonPosition(v : string) {
+   this.setButtonPosition(v);
+ }
+
 };
 /**
  * system\_bar窗口。
@@ -28705,6 +32354,7 @@ export class TSpinBox extends TEdit {
  *[system_bar](https://github.com/zlgopen/awtk/blob/master/design/default/ui/system_bar.xml)
  *
  *在c代码中使用函数system\_bar\_create创建system\_bar窗口。如：
+ *
  *
  *
  *> 创建之后，和使用普通窗口是一样的。
@@ -28759,7 +32409,10 @@ export class TSystemBar extends TWindowBase {
 
 };
 /**
- * 可滚动的combo_box控件。
+ * 扩展combo_box控件。支持以下功能：
+ ** 支持滚动。项目比较多时显示滚动条。
+ ** 自动调整弹出窗口的宽度。根据最长文本自动调整弹出窗口的宽度。
+ ** 支持分组显示。如果item的文本以"seperator."开头，视为一个分组开始，其后的文本为分组的标题。比如: "seperator.basic"，会创建一个basic为标题的分组。
  *
  */
 export class TComboBoxEx extends TComboBox { 

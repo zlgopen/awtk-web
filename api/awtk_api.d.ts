@@ -47,7 +47,7 @@ export declare class TEmitter {
      *
      * @returns 返回id，用于emitter_off。
      */
-    on(etype: TEventType, handler: Function, ctx: any): number;
+    on(etype: number, handler: Function, ctx: any): number;
     /**
      * 注销指定事件的处理函数。
      *
@@ -289,7 +289,7 @@ export declare class TBitmap {
  * 对象接口。
  *
  */
-export declare class TObject extends TEmitter {
+export declare class TTkObject extends TEmitter {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
@@ -306,7 +306,7 @@ export declare class TObject extends TEmitter {
      *
      * @returns 返回object对象。
      */
-    static ref(obj: TObject): TObject;
+    static ref(obj: TTkObject): TTkObject;
     /**
      * 获取对象的类型名称。
      *
@@ -350,7 +350,7 @@ export declare class TObject extends TEmitter {
      *
      * @returns 返回比较结果。
      */
-    compare(other: TObject): number;
+    compare(other: TTkObject): number;
     /**
      * 获取指定属性的值。
      *
@@ -383,7 +383,7 @@ export declare class TObject extends TEmitter {
      *
      * @returns 返回指定属性的object类型的值。
      */
-    getPropObject(name: string): TObject;
+    getPropObject(name: string): TTkObject;
     /**
      * 获取指定属性的整数类型的值。
      *
@@ -454,7 +454,7 @@ export declare class TObject extends TEmitter {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    setPropObject(name: string, value: TObject): TRet;
+    setPropObject(name: string, value: TTkObject): TRet;
     /**
      * 设置指定属性的整数类型的值。
      *
@@ -499,7 +499,16 @@ export declare class TObject extends TEmitter {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    copyProp(src: TObject, name: string): TRet;
+    copyProp(src: TTkObject, name: string): TRet;
+    /**
+     * 拷贝全部的属性。
+     *
+     * @param src 源对象。
+     * @param overwrite 如果属性存在是否覆盖。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    copyProps(src: TTkObject, overwrite: boolean): TRet;
     /**
      * 检查是否存在指定的属性。
      *
@@ -573,7 +582,7 @@ export declare class TObject extends TEmitter {
      *
      * @returns 返回指定属性的object类型的值。
      */
-    getPropObjectByPath(path: string): TObject;
+    getPropObjectByPath(path: string): TTkObject;
     /**
      * 获取指定属性的整数类型的值。
      *
@@ -629,7 +638,7 @@ export declare class TObject extends TEmitter {
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    setPropObjectByPath(path: string, value: TObject): TRet;
+    setPropObjectByPath(path: string, value: TTkObject): TRet;
     /**
      * 设置指定属性的整数类型的值。
      *
@@ -837,6 +846,7 @@ export declare class TObject extends TEmitter {
  *在C/C++中，一般不需动态创建对象，直接声明并初始化即可。如：
  *
  *
+ *
  *> 在脚本语言中，需要动态创建对象。
  *
  */
@@ -1019,7 +1029,7 @@ export declare class TValue {
     /**
      * 获取类型为字符串的值。
      *
-     * @param buff 用于格式转换的缓冲区。
+     * @param buff 用于格式转换的缓冲区（如果 v 对象为 string 类型的话，不会把字符串数据拷贝到 buff 中）。
      * @param size 缓冲区大小。
      *
      * @returns 值。
@@ -1032,6 +1042,21 @@ export declare class TValue {
      * @returns 为空值返回TRUE，否则返回FALSE。
      */
     isNull(): boolean;
+    /**
+     * 判断两个value是否相同。
+     *
+     * @param other value对象。
+     *
+     * @returns 为空值返回TRUE，否则返回FALSE。
+     */
+    equal(other: TValue): boolean;
+    /**
+     * 转换为int的值。
+     *
+     *
+     * @returns 值。
+     */
+    int(): number;
     /**
      * 设置类型为int的值。
      *
@@ -1047,14 +1072,14 @@ export declare class TValue {
      *
      * @returns value对象本身。
      */
-    setObject(value: TObject): TValue;
+    setObject(value: TTkObject): TValue;
     /**
      * 转换为object的值。
      *
      *
      * @returns 值。
      */
-    object(): TObject;
+    object(): TTkObject;
     /**
      * 设置类型为token的值。
      *
@@ -1101,12 +1126,56 @@ export declare class TValue {
      * @returns 对象。
      */
     static cast(value: TValue): TValue;
+    /**
+     * 获取类型为ID的值。
+     *
+     *
+     * @returns 值。
+     */
+    id(): string;
+    /**
+     * 获取类型为func的值。
+     *
+     *
+     * @returns 值。
+     */
+    func(): any;
+    /**
+     * 获取类型为func_def的值。
+     *
+     *
+     * @returns 值。
+     */
+    funcDef(): any;
+    /**
+     * 获取类型为位图对象。
+     *
+     *
+     * @returns 位图对象。
+     */
+    bitmap(): any;
+    /**
+     * 获取类型为矩形区域数据。
+     *
+     *
+     * @returns 返回矩形区域数据。
+     */
+    rect(): TRect;
 }
 /**
  * TK全局对象。
  *
  */
 export declare class TGlobal {
+    /**
+     * 初始化基本功能。
+     *> 在tk_init之前，应用程序可能需要加载配置文件，
+     *> 为了保证这些功能正常工作，可以先调用tk_pre_init来初始化平台、内存和data reader等等。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    static preInit(): TRet;
     /**
      * 初始化TK。
      *
@@ -1133,6 +1202,14 @@ export declare class TGlobal {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     static quit(): TRet;
+    /**
+     * 退出TK事件主循环。
+     *
+     * @param delay 延迟退出的时间(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    static quitEx(delay: number): TRet;
     /**
      * 获取全局指针的X坐标。
      *
@@ -1241,6 +1318,11 @@ export declare enum TImageDrawType {
      *
      */
     SCALE_H,
+    /**
+     * 填充整个区域。将图片缩放至目标矩形的高度或宽度，包装填满整个目标区域，超出不部分不显示。
+     *
+     */
+    FILL,
     /**
      * 平铺显示。
      *
@@ -1458,18 +1540,6 @@ export declare class TCanvas {
      */
     fillRect(x: number, y: number, w: number, h: number): TRet;
     /**
-     * 绘制矩形。
-     *
-     * @param x x坐标。
-     * @param y y坐标。
-     * @param w 宽度。
-     * @param h 高度。
-     * @param gradient 渐变颜色。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    fillRectGradient(x: number, y: number, w: number, h: number, gradient: any): TRet;
-    /**
      * 用填充颜色填充指定矩形。
      *
      *> 如果lcd的颜色格式带alpha通道，连同alpha的值一起修改。
@@ -1502,6 +1572,13 @@ export declare class TCanvas {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setFont(name: string, size: number): TRet;
+    /**
+     * 释放canvas中字体相关的资源。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    resetFont(): TRet;
     /**
      * 计算文本所占的宽度。
      *
@@ -1598,6 +1675,14 @@ export declare class TCanvas {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     reset(): TRet;
+    /**
+     * 清除canvas中缓存。
+     *> 备注：主要用于窗口动画的离线画布绘制完成后重置在线画布，使下一帧中lcd对象的数据保持一致。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    resetCache(): TRet;
     /**
      * x坐标偏移。
      *
@@ -1778,6 +1863,11 @@ export declare enum TEventType {
      */
     CLICK,
     /**
+     * 双击事件名(pointer_event_t)。
+     *
+     */
+    DOUBLE_CLICK,
+    /**
      * 得到焦点事件名(event_t)。
      *
      */
@@ -1847,21 +1937,6 @@ export declare enum TEventType {
      *
      */
     MOVE_RESIZE,
-    /**
-     * 控件的值即将改变的事件名(value_change_event_t)。
-     *
-     */
-    VALUE_WILL_CHANGE,
-    /**
-     * 控件的值改变的事件名(value_change_event_t)。
-     *
-     */
-    VALUE_CHANGED,
-    /**
-     * 控件的值持续改变(如编辑器正在编辑)的事件名(value_change_event_t)。
-     *
-     */
-    VALUE_CHANGING,
     /**
      * 绘制的事件名(paint_event_t)。
      *
@@ -2047,7 +2122,7 @@ export declare enum TEventType {
      */
     RESET,
     /**
-     * 在指定的时间内(WITH_SCREEN_SAVER_TIME)，没有用户输入事件，由窗口管理器触发。
+     * 在指定的时间内，没有用户输入事件，由窗口管理器触发。
      *
      */
     SCREEN_SAVER,
@@ -2083,10 +2158,25 @@ export declare enum TEventType {
      */
     REQUEST_QUIT_APP,
     /**
+     * 即将改变主题(event_t)。
+     *
+     */
+    THEME_WILL_CHANGE,
+    /**
      * 主题变化(event_t)。
      *
      */
     THEME_CHANGED,
+    /**
+     * 控件根据自己当前状态即将更新style(event_t)。
+     *
+     */
+    WIDGET_WILL_UPDATE_STYLE,
+    /**
+     * 控件根据自己当前状态更新style(event_t)。
+     *
+     */
+    WIDGET_UPDATE_STYLE,
     /**
      * 控件加载新的子控件(event_t)。
      *
@@ -2118,10 +2208,15 @@ export declare enum TEventType {
      */
     MULTI_GESTURE,
     /**
-     * 页面改变了(event_t)。
+     * 当前看到的页面改变了(event_t)。
      *
      */
     PAGE_CHANGED,
+    /**
+     * 当前看到的页面正在改变(offset_change_event_t)。
+     *
+     */
+    PAGE_CHANGING,
     /**
      * 资源管理加载某个资源(assets_event_t)。
      *
@@ -2142,6 +2237,56 @@ export declare enum TEventType {
      *
      */
     TIMER,
+    /**
+     * 数据到来(event_t)。
+     *
+     */
+    DATA,
+    /**
+     * 客户连接到来(event_t)。
+     *
+     */
+    CONNECT,
+    /**
+     * 模型变化。用于fscript实现窗口间通讯(model_event_t)。
+     *
+     */
+    MODEL_CHANGE,
+    /**
+     * SDL系统事件(system_event_t)。
+     *
+     */
+    SYSTEM,
+    /**
+     * SDL文件拖入事件(drop_file_event_t)。
+     *
+     */
+    DROP_FILE,
+    /**
+     * locale_infos加载某个本地化信息(event_t)。
+     *
+     */
+    LOCALE_INFOS_LOAD_INFO,
+    /**
+     * locale_infos卸载某个本地化信息(event_t)。
+     *
+     */
+    LOCALE_INFOS_UNLOAD_INFO,
+    /**
+     * 控件进入激活状态(event_t)。
+     *
+     */
+    ACTIVATED,
+    /**
+     * 控件退出激活状态(event_t)。
+     *
+     */
+    UNACTIVATED,
+    /**
+     * UI加载完成事件(event_t)。
+     *
+     */
+    UI_LOAD,
     /**
      * event queue其它请求编号起始值。
      *
@@ -2216,7 +2361,27 @@ export declare enum TEventType {
      * 对象销毁事件名(event_t)。
      *
      */
-    DESTROY
+    DESTROY,
+    /**
+     * 值即将改变的事件名(value_change_event_t)。
+     *
+     */
+    VALUE_WILL_CHANGE,
+    /**
+     * 值改变的事件名(value_change_event_t)。
+     *
+     */
+    VALUE_CHANGED,
+    /**
+     * 值持续改变(如编辑器正在编辑)的事件名(value_change_event_t)。
+     *
+     */
+    VALUE_CHANGING,
+    /**
+     * 日志信息。
+     *
+     */
+    LOG_MESSAGE
 }
 /**
  * 事件基类。
@@ -2280,7 +2445,7 @@ export declare class TEvent {
      */
     get size(): number;
     /**
-     * 事件发生的时间。
+     * 事件发生的时间点（该时间点并非真实时间）。
      *
      */
     get time(): number;
@@ -2289,39 +2454,6 @@ export declare class TEvent {
      *
      */
     get target(): any;
-}
-/**
- * 字体管理器，负责字体的加载和缓存管理。
- *(如果使用nanovg，字体由nanovg内部管理)
- *
- */
-export declare class TFontManager {
-    nativeObj: any;
-    constructor(nativeObj: any);
-    /**
-     * 卸载指定的字体。
-     *
-     * @param name 字体名，为NULL时使用缺省字体。
-     * @param size 字体的大小(矢量字体指定为0即可)。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    unloadFont(name: string, size: number): TRet;
-    /**
-     * 清除最久没有被使用的缓冲字模。
-     *
-     * @param cache_size 每种字体保留缓存字模的个数。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    shrinkCache(cache_size: number): TRet;
-    /**
-     * 卸载全部字体。
-     *
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    unloadAll(): TRet;
 }
 /**
  * 字模格式常量定义。
@@ -2342,7 +2474,17 @@ export declare enum TGlyphFormat {
      * 每个像素占用4个字节。
      *
      */
-    RGBA
+    RGBA,
+    /**
+     * 每个像素占用2bit。
+     *
+     */
+    ALPHA2,
+    /**
+     * 每个像素占用4bit。
+     *
+     */
+    ALPHA4
 }
 /**
  * idle可以看作是duration为0的定时器。
@@ -2350,6 +2492,7 @@ export declare enum TGlyphFormat {
  *> idle可以用来实现一些异步处理。
  *
  *示例：
+ *
  *
  *
  *> 在非GUI线程请用idle\_queue。
@@ -2559,11 +2702,11 @@ export declare class TInputMethod {
     /**
      * 提交按键。
      *
-     * @param key 键值。
+     * @param keys 键值。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    dispatchKeys(key: string): TRet;
+    dispatchKeys(keys: string): TRet;
     /**
      * 分发进入预编辑状态的事件。
      *
@@ -3254,6 +3397,91 @@ export declare enum TKeyCode {
      */
     KEY_CANCEL,
     /**
+     * TK_KEY_KP_DIVIDE
+     *
+     */
+    KEY_KP_DIVIDE,
+    /**
+     * TK_KEY_KP_MULTIPLY
+     *
+     */
+    KEY_KP_MULTIPLY,
+    /**
+     * TK_KEY_KP_MINUS
+     *
+     */
+    KEY_KP_MINUS,
+    /**
+     * TK_KEY_KP_PLUS
+     *
+     */
+    KEY_KP_PLUS,
+    /**
+     * TK_KEY_KP_ENTER
+     *
+     */
+    KEY_KP_ENTER,
+    /**
+     * TK_KEY_KP_1
+     *
+     */
+    KEY_KP_1,
+    /**
+     * TK_KEY_KP_2
+     *
+     */
+    KEY_KP_2,
+    /**
+     * TK_KEY_KP_3
+     *
+     */
+    KEY_KP_3,
+    /**
+     * TK_KEY_KP_4
+     *
+     */
+    KEY_KP_4,
+    /**
+     * TK_KEY_KP_5
+     *
+     */
+    KEY_KP_5,
+    /**
+     * TK_KEY_KP_6
+     *
+     */
+    KEY_KP_6,
+    /**
+     * TK_KEY_KP_7
+     *
+     */
+    KEY_KP_7,
+    /**
+     * TK_KEY_KP_8
+     *
+     */
+    KEY_KP_8,
+    /**
+     * TK_KEY_KP_9
+     *
+     */
+    KEY_KP_9,
+    /**
+     * TK_KEY_KP_0
+     *
+     */
+    KEY_KP_0,
+    /**
+     * TK_KEY_KP_PERIOD
+     *
+     */
+    KEY_KP_PERIOD,
+    /**
+     * TK_KEY_NUMLOCKCLEAR
+     *
+     */
+    KEY_NUMLOCKCLEAR,
+    /**
      * TK_KEY_WHEEL
      *
      */
@@ -3300,6 +3528,63 @@ export declare class TLocaleInfo {
     off(id: number): TRet;
 }
 /**
+ * 在某些情况下，需要多个资源管理器。比如在手表系统里，每个应用或表盘，可能放在独立的资源包中，
+ *此时优先加载应用自己的资源，如果没有就加载系统的资源。
+ *
+ */
+export declare class TLocaleInfos {
+    /**
+     * 获取指定小应用程序(applet)的locale_info。
+     *
+     * @param name 小应用程序(applet)的名称。
+     *
+     * @returns 返回locale_info对象。
+     */
+    static ref(name: string): TLocaleInfos;
+    /**
+     * 释放指定小应用程序(applet)的locale_info。
+     *
+     * @param locale_info locale_info对象。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    static unref(locale_info: TLocaleInfo): TRet;
+    /**
+     * 设置全部locale_info的当前国家和语言。
+     *
+     * @param language 语言。
+     * @param country 国家或地区。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    static change(language: string, country: string): TRet;
+    /**
+     * 注册指定事件的处理函数。
+     *
+     * @param type 事件类型，目前有EVT_LOCALE_INFOS_LOAD_INFO、EVT_LOCALE_INFOS_UNLOAD_INFO。
+     * @param on_event 事件处理函数。
+     * @param ctx 事件处理函数上下文。
+     *
+     * @returns 返回id，用于locale_infos_off。
+     */
+    static on(type: TEventType, on_event: Function, ctx: any): number;
+    /**
+     * 注销指定事件的处理函数。
+     *
+     * @param id locale_infos_on返回的ID。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    static off(id: number): TRet;
+    /**
+     * 重新加载全部字符串资源。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    static reloadAll(): TRet;
+}
+/**
  * style常量定义。
  *
  */
@@ -3314,6 +3599,11 @@ export declare enum TStyleId {
      *
      */
     FG_COLOR,
+    /**
+     * dragger颜色。
+     *
+     */
+    DRAGGER_COLOR,
     /**
      * 蒙版颜色。
      *
@@ -3483,7 +3773,7 @@ export declare enum TStyleId {
      * 左上角圆角半径(仅在WITH_VGCANVAS定义时生效)。
      *
      */
-    ROUND_RADIUS_TOP_LETF,
+    ROUND_RADIUS_TOP_LEFT,
     /**
      * 右上角圆角半径(仅在WITH_VGCANVAS定义时生效)。
      *
@@ -3493,7 +3783,7 @@ export declare enum TStyleId {
      * 左下角圆角半径(仅在WITH_VGCANVAS定义时生效)。
      *
      */
-    ROUND_RADIUS_BOTTOM_LETF,
+    ROUND_RADIUS_BOTTOM_LEFT,
     /**
      * 右下角圆角半径(仅在WITH_VGCANVAS定义时生效)。
      *
@@ -3518,12 +3808,33 @@ export declare enum TStyleId {
      * 是否启用按键音、触屏音和震动等反馈。
      *
      */
-    FEEDBACK
+    FEEDBACK,
+    /**
+     * 是否用clear_rect代替fill_rect绘制背景。
+     *
+     */
+    CLEAR_BG,
+    /**
+     * 网格线颜色(grid控件)
+     *
+     */
+    GRID_COLOR,
+    /**
+     * 偶数行背景颜色(grid控件)
+     *
+     */
+    EVEN_BG_COLOR,
+    /**
+     * 奇数行背景颜色(grid控件)
+     *
+     */
+    ODD_BG_COLOR
 }
 /**
  * 控件风格。
  *
  *widget从style对象中，获取诸如字体、颜色和图片相关的参数，根据这些参数来绘制界面。
+ *
  *
  *
  *属性名称的请参考[style\_id](style_id_t.md)
@@ -3575,6 +3886,16 @@ export declare class TStyle {
      */
     getStr(name: string, defval: string): string;
     /**
+     * 获取指定状态的指定属性的值。
+     *
+     * @param state 状态。
+     * @param name 属性名。
+     * @param value 值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    get(state: string, name: string, value: TValue): TRet;
+    /**
      * 设置指定状态的指定属性的值(仅仅对mutable的style有效)。
      *
      * @param state 状态。
@@ -3619,9 +3940,23 @@ export declare class TStyle {
     getStyleType(): string;
 }
 /**
- * 窗体样式。
+ * SystemInfo常量定义。
  *
- *负责管理缺省的窗体样式数据，方便实现style\_const。
+ */
+export declare enum TSystemInfoFlag {
+    /**
+     * 无特殊标志。
+     *
+     */
+    NONE,
+    /**
+     * 使用快速旋转功能。
+     *
+     */
+    FAST_LCD_PORTRAIT
+}
+/**
+ * 窗体样式。
  *
  */
 export declare class TTheme {
@@ -3642,6 +3977,7 @@ export declare class TTheme {
  *
  *示例：
  *
+ *
  *> 在非GUI线程请用timer\_queue。
  *
  */
@@ -3651,7 +3987,7 @@ export declare class TTimer {
      *
      * @param on_timer timer回调函数。
      * @param ctx timer回调函数的上下文。
-     * @param duration 时间。
+     * @param duration 时间(毫秒)。
      *
      * @returns 返回timer的ID，TK_INVALID_ID表示失败。
      */
@@ -3700,7 +4036,7 @@ export declare class TTimer {
      * 修改指定的timer的duration，修改之后定时器重新开始计时。
      *
      * @param timer_id timerID。
-     * @param duration 新的时间。
+     * @param duration 新的时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -3777,7 +4113,12 @@ export declare enum TAppType {
      * 桌面应用程序。
      *
      */
-    DESKTOP
+    DESKTOP,
+    /**
+     * 控制台（没有界面）。
+     *
+     */
+    CONSOLE
 }
 /**
  * 位图格式常量定义。
@@ -3874,7 +4215,17 @@ export declare enum TBitmapFlag {
      * 预乘alpha。
      *
      */
-    PREMULTI_ALPHA
+    PREMULTI_ALPHA,
+    /**
+     * 位图数据已经处理了 lcd 旋转，同时说明 bitmap 的宽高和真实数据的宽高可能不一致
+     *
+     */
+    LCD_ORIENTATION,
+    /**
+     * 该位图为 GPU 的 fbo 数据。
+     *
+     */
+    GPU_FBO_TEXTURE
 }
 /**
  * 矢量图画布抽象基类。
@@ -3894,6 +4245,7 @@ export declare enum TBitmapFlag {
  *
  *
  *示例：
+ *
  *
  *
  *>请参考：https://www.w3schools.com/tags/ref_canvas.asp
@@ -3959,7 +4311,7 @@ export declare class TVgcanvas {
      * @param cp1x 控制点1x坐标。
      * @param cp1y 控制点1y坐标。
      * @param cp2x 控制点2x坐标。
-     * @param cp2y 控制点3y坐标。
+     * @param cp2y 控制点2y坐标。
      * @param x x坐标。
      * @param y y坐标。
      *
@@ -4056,7 +4408,7 @@ export declare class TVgcanvas {
     /**
      * 旋转。
      *
-     * @param rad 角度
+     * @param rad 旋转角度(单位弧度)
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -4125,6 +4477,17 @@ export declare class TVgcanvas {
      */
     clipRect(x: number, y: number, w: number, h: number): TRet;
     /**
+     * 矩形区域是否在矩形裁剪中。
+     *
+     * @param left 矩形区域左边。
+     * @param top 矩形区域上边。
+     * @param right 矩形区域右边。
+     * @param bottom 矩形区域下边。
+     *
+     * @returns 返回 TURE 则在区域中，返回 FALSE 则不在区域中。
+     */
+    isRectfInClipRect(left: number, top: number, right: number, bottom: number): boolean;
+    /**
      * 设置一个与前一个裁剪区做交集的矩形裁剪区。
      *如果下面这种情况，则不能直接调用 rect_intersect 函数来做矩形交集和 vgcanvas_clip_rect 函数设置裁剪区，而采用本函数做交集。
      *由于缩放和旋转以及平移会导致 vg 的坐标系和上一个裁剪区的坐标系不同，
@@ -4183,11 +4546,11 @@ export declare class TVgcanvas {
     /**
      * 设置字体的大小。
      *
-     * @param font 字体大小。
+     * @param size 字体大小。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    setFontSize(font: number): TRet;
+    setFontSize(size: number): TRet;
     /**
      * 设置文本水平对齐的方式。
      *
@@ -4239,6 +4602,28 @@ export declare class TVgcanvas {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     drawImage(img: TBitmap, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): TRet;
+    /**
+     * 绘制图片。
+     *
+     *备注：
+     *当绘制区域大于原图区域时，多余的绘制区域会重复绘制原图区域的东西。（绘制图区按照绘制图片的宽高来绘制的）
+     *当绘制图片的宽高和原图的不同，在重复绘制的同时加入缩放。
+     *
+     * @param img 图片。
+     * @param sx 原图区域的 x
+     * @param sy 原图区域的 y
+     * @param sw 原图区域的 w
+     * @param sh 原图区域的 h
+     * @param dx 绘制区域的 x
+     * @param dy 绘制区域的 y
+     * @param dw 绘制区域的 w
+     * @param dh 绘制区域的 h
+     * @param dst_w 绘制图片的宽
+     * @param dst_h 绘制图片的高
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    drawImageRepeat(img: TBitmap, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, dw: number, dh: number, dst_w: number, dst_h: number): TRet;
     /**
      * 绘制图标。
      *
@@ -4292,11 +4677,11 @@ export declare class TVgcanvas {
     /**
      * 设置线条颜色。
      *
-     * @param color 颜色。
+     * @param str 颜色。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    setStrokeColor(color: string): TRet;
+    setStrokeColor(str: string): TRet;
     /**
      * 设置line cap。
      *
@@ -4554,6 +4939,11 @@ export declare enum TWidgetProp {
      */
     CARET_Y,
     /**
+     * 行高。
+     *
+     */
+    LINE_HEIGHT,
+    /**
      * 脏矩形超出控件本身大小的最大范围。
      *
      */
@@ -4654,6 +5044,11 @@ export declare enum TWidgetProp {
      */
     VIRTUAL_H,
     /**
+     * 控件正在加载。
+     *
+     */
+    LOADING,
+    /**
      * 名称。
      *
      */
@@ -4678,6 +5073,11 @@ export declare enum TWidgetProp {
      *
      */
     VALUE,
+    /**
+     * 容易点击模式(目前用于spinbox)。
+     *
+     */
+    EASY_TOUCH_MODE,
     /**
      * CheckButton是否单选。
      *
@@ -4704,6 +5104,11 @@ export declare enum TWidgetProp {
      */
     WORD_WRAP,
     /**
+     * 是否省略。
+     *
+     */
+    ELLIPSES,
+    /**
      * 文本。
      *
      */
@@ -4718,6 +5123,11 @@ export declare enum TWidgetProp {
      *
      */
     STYLE,
+    /**
+     * 状态。
+     *
+     */
+    STATE,
     /**
      * 是否启用。
      *
@@ -4778,6 +5188,11 @@ export declare enum TWidgetProp {
      *
      */
     SENSITIVE,
+    /**
+     * 窗口所属的小应用程序(applet)名称。
+     *
+     */
+    APPLET_NAME,
     /**
      * 控件动画。
      *
@@ -4884,12 +5299,14 @@ export declare enum TWidgetProp {
      */
     SHOW_TEXT,
     /**
-     * X方向的偏移。
+     * X方向的偏移。（如果控件有继承 get_offset 函数指针的话，一定要和 get_offset 返回值保持一致，否则容易出现问题）
+     *详情请看 docs/how_to_use_offset_in_custom_widget.md
      *
      */
     XOFFSET,
     /**
-     * Y方向的偏移。
+     * Y方向的偏移。（如果控件有继承 get_offset 函数指针的话，一定要和 get_offset 返回值保持一致，否则容易出现问题）
+     *详情请看 docs/how_to_use_offset_in_custom_widget.md
      *
      */
     YOFFSET,
@@ -4904,7 +5321,7 @@ export declare enum TWidgetProp {
      */
     ALIGN_H,
     /**
-     * 是否自动播放或指定播放的时间。
+     * 是否自动播放或指定播放的时间(毫秒)。
      *
      */
     AUTO_PLAY,
@@ -4913,6 +5330,11 @@ export declare enum TWidgetProp {
      *
      */
     LOOP,
+    /**
+     * 是否正在运行(播放)。
+     *
+     */
+    RUNNING,
     /**
      * 是否启用自动更正功能。
      *
@@ -5044,7 +5466,7 @@ export declare enum TWidgetProp {
      */
     REPEAT,
     /**
-     * 触发长按事件的时间(ms)。
+     * 触发长按事件的时间(毫秒)。
      *
      */
     LONG_PRESS_TIME,
@@ -5053,6 +5475,11 @@ export declare enum TWidgetProp {
      *
      */
     ENABLE_LONG_PRESS,
+    /**
+     * 是否启用预览。
+     *
+     */
+    ENABLE_PREVIEW,
     /**
      * 是否启用点击穿透。
      *
@@ -5169,6 +5596,11 @@ export declare enum TWidgetProp {
      */
     OPEN_WINDOW,
     /**
+     * ComboBox打开弹出窗口的主题。
+     *
+     */
+    THEME_OF_POPUP,
+    /**
      * 被选中项的索引。
      *
      */
@@ -5262,7 +5694,67 @@ export declare enum TWidgetProp {
      * 将焦点向右移动的键值。
      *
      */
-    MOVE_FOCUS_RIGHT_KEY
+    MOVE_FOCUS_RIGHT_KEY,
+    /**
+     * 行数。
+     *
+     */
+    ROWS,
+    /**
+     * 是否显示网格线。
+     *
+     */
+    SHOW_GRID,
+    /**
+     * 各列的定义。
+     *
+     */
+    COLUMNS_DEFINITION,
+    /**
+     * 拖拽临界值。
+     *
+     */
+    DRAG_THRESHOLD,
+    /**
+     * 动画时间(毫秒)。
+     *
+     */
+    ANIMATING_TIME,
+    /**
+     * 改变控件属性时附带动画的前缀。
+     *
+     */
+    ANIMATE_PREFIX,
+    /**
+     * 改变控件属性时附带动画的播放时间(毫秒)。
+     *
+     */
+    ANIMATE_ANIMATING_TIME,
+    /**
+     * 控件脏矩形区域。
+     *
+     */
+    DIRTY_RECT,
+    /**
+     * 屏幕保护时间(毫秒)。
+     *
+     */
+    SCREEN_SAVER_TIME,
+    /**
+     * 是否显示FPS。
+     *
+     */
+    SHOW_FPS,
+    /**
+     * 最大FPS。
+     *
+     */
+    MAX_FPS,
+    /**
+     * 数据校验脚本。
+     *
+     */
+    VALIDATOR
 }
 /**
  * 控件的类型。
@@ -5345,6 +5837,11 @@ export declare enum TWidgetType {
      */
     IMAGE,
     /**
+     * 图标控件。
+     *
+     */
+    ICON,
+    /**
      * 文本编辑控件。
      *
      */
@@ -5389,6 +5886,11 @@ export declare enum TWidgetType {
      *
      */
     VIEW,
+    /**
+     * page控件。
+     *
+     */
+    PAGE,
     /**
      * 下拉选择框控件。
      *
@@ -5620,6 +6122,11 @@ export declare enum TWidgetState {
      */
     NORMAL,
     /**
+     * 3/5keys模式时，进入激活状态(此时方向键用于修改值)。
+     *
+     */
+    ACTIVATED,
+    /**
      * 内容被修改的状态。
      *
      */
@@ -5664,6 +6171,11 @@ export declare enum TWidgetState {
      *
      */
     EMPTY_FOCUS,
+    /**
+     * 编辑器无内容同时指针悬浮的状态。
+     *
+     */
+    EMPTY_OVER,
     /**
      * 输入错误状态。
      *
@@ -5787,10 +6299,42 @@ export declare enum TWidgetCursor {
     CURSOR_SIZEALL
 }
 /**
- * widget_t* button = button_create(win, 10, 10, 128, 30);
- *widget_set_text(button, L"OK");
- *widget_on(button, EVT_CLICK, on_click, NULL);
+ * **widget_t** 是所有控件、窗口和窗口管理器的基类。
+ ***widget_t**也是一个容器，可放其它**widget_t**到它的内部，形成一个树形结构。
+ *
+ *
+ *
+ *通常**widget_t**通过一个矩形区域向用户呈现一些信息，接受用户的输入，并据此做出适当的反应。
+ *它负责控件的生命周期、通用状态、事件分发和Style的管理。
+ *本类提供的接口(函数和属性)除非特别说明，一般都适用于子类控件。
+ *
+ *为了便于解释，这里特别说明一下几个术语：
+ *
+ ** **父控件与子控件**：父控件与子控件指的两个控件的组合关系(这是在运行时决定的)。
+ *比如：在窗口中放一个按钮，此时，我们称按钮是窗口的子控件，窗口是按钮的父控件。
+ *
+ *
+ *
+ ** **子类控件与父类控件**：子类控件与父类控件指的两类控件的继承关系(这是在设计时决定的)。
+ *比如：我们称**button_t**是**widget_t**的子类控件，**widget_t**是**button_t**的父类控件。
+ *
+ *
+ *
+ *widget相关的函数都只能在GUI线程中执行，如果需在非GUI线程中想调用widget相关函数，
+ *请用idle\_queue或timer\_queue进行串行化。
+ *请参考[demo thread](https://github.com/zlgopen/awtk/blob/master/demos/demo_thread_app.c)
+ *
+ ***widget\_t**是抽象类，不要直接创建**widget\_t**的实例。控件支持两种创建方式：
+ *
+ ** 通过XML创建。如：
+ *
+ *```xml
+ *<button x="c" y="m" w="80" h="30" text="OK"/>
  *```
+ *
+ ** 通过代码创建。如：
+ *
+ *
  *
  */
 export declare class TWidget {
@@ -5811,6 +6355,22 @@ export declare class TWidget {
      * @returns 子控件。
      */
     getChild(index: number): TWidget;
+    /**
+     * 通过名称查找父控件。
+     *
+     * @param name 名称。
+     *
+     * @returns 父控件。
+     */
+    findParentByName(name: string): TWidget;
+    /**
+     * 通过类型查找父控件。
+     *
+     * @param type 类型。
+     *
+     * @returns 父控件。
+     */
+    findParentByType(type: string): TWidget;
     /**
      * 获取当前窗口中的焦点控件。
      *
@@ -5870,6 +6430,13 @@ export declare class TWidget {
      */
     move(x: number, y: number): TRet;
     /**
+     * 移动控件到父控件中间。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    moveToCenter(): TRet;
+    /**
      * 调整控件的大小。
      *
      * @param w 宽度
@@ -5890,6 +6457,25 @@ export declare class TWidget {
      */
     moveResize(x: number, y: number, w: number, h: number): TRet;
     /**
+     * 移动控件并调整控件的大小。
+     *
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     * @param update_layout 是否更新布局
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    moveResizeEx(x: number, y: number, w: number, h: number, update_layout: boolean): TRet;
+    /**
+     * 获取控件的值。只是对widget\_get\_prop的包装，值的意义由子类控件决定。
+     *
+     *
+     * @returns 返回值。
+     */
+    getValue(): number;
+    /**
      * 设置控件的值。
      *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
      *
@@ -5898,6 +6484,40 @@ export declare class TWidget {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setValue(value: any): TRet;
+    /**
+     * 增加控件的值。
+     *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
+     *
+     * @param delta 增量。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    addValue(delta: number): TRet;
+    /**
+     * 获取控件的值。只是对widget\_get\_prop的包装，值的意义由子类控件决定。
+     *
+     *
+     * @returns 返回值。
+     */
+    getValueInt(): number;
+    /**
+     * 设置控件的值。
+     *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
+     *
+     * @param value 值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setValueInt(value: any): TRet;
+    /**
+     * 增加控件的值。
+     *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
+     *
+     * @param delta 增量。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    addValueInt(delta: number): TRet;
     /**
      * 设置控件的值(以动画形式变化到指定的值)。
      *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
@@ -5909,15 +6529,6 @@ export declare class TWidget {
      */
     animateValueTo(value: any, duration: number): TRet;
     /**
-     * 增加控件的值。
-     *只是对widget\_set\_prop的包装，值的意义由子类控件决定。
-     *
-     * @param delta 增量。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    addValue(delta: number): TRet;
-    /**
      * 查询指定的style是否存在。
      *
      * @param style_name style的名称（如果为 NULL，则默认为 default）。
@@ -5927,6 +6538,20 @@ export declare class TWidget {
      */
     isStyleExist(style_name: string, state_name: string): boolean;
     /**
+     * 判断widget是否支持高亮。
+     *
+     *
+     * @returns 支持返回 TRUE，不支持返回 FALSE。
+     */
+    isSupportHighlighter(): boolean;
+    /**
+     * 判断widget拥有高亮属性。
+     *
+     *
+     * @returns 拥有返回 TRUE，没有返回 FALSE。
+     */
+    hasHighlighter(): boolean;
+    /**
      * 启用指定的style。
      *
      * @param style style的名称。
@@ -5935,14 +6560,22 @@ export declare class TWidget {
      */
     useStyle(style: string): TRet;
     /**
-     * 设置控件的文本。
-     *只是对widget\_set\_prop的包装，文本的意义由子类控件决定。
+     * 设置控件的文本。（如果字符串相同，则不会重复设置以及触发事件）
      *
      * @param text 文本。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setText(text: string): TRet;
+    /**
+     * 设置控件的文本。
+     *
+     * @param text 文本。
+     * @param check_diff 是否检查设置的文本是否和控件中的文本一样。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setTextEx(text: string, check_diff: boolean): TRet;
     /**
      * 设置子控件的文本。
      *只是对widget\_set\_prop的包装，文本的意义由子类控件决定。
@@ -5983,13 +6616,6 @@ export declare class TWidget {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setTrText(text: string): TRet;
-    /**
-     * 获取控件的值。只是对widget\_get\_prop的包装，值的意义由子类控件决定。
-     *
-     *
-     * @returns 返回值。
-     */
-    getValue(): number;
     /**
      * 获取控件enable属性值。
      *
@@ -6047,12 +6673,12 @@ export declare class TWidget {
      */
     getFeedback(): boolean;
     /**
-     * str_t str;
-     *str_init(&str, 0);
-     *str_from_wstr(&str, widget_get_text(target));
-     *log_debug("%s: %s\n", target->name, str.str);
-     *str_reset(&str);
-     *```
+     * 获取控件的文本。
+     *只是对widget\_get\_prop的包装，文本的意义由子类控件决定。
+     *
+     *如果希望获取UTF8格式的文本，可以参考下面的代码：
+     *
+     *
      *
      *
      * @returns 返回文本。
@@ -6069,13 +6695,18 @@ export declare class TWidget {
     /**
      * 设置theme的名称，用于动态切换主题。名称与当前主题名称相同，则重新加载全部资源。
      *
-     *> 目前只支持带有文件系统的平台。
-     *
      * @param name 主题的名称。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setTheme(name: string): TRet;
+    /**
+     * 获取 theme 的名称
+     *
+     *
+     * @returns 成功返回主题名称，失败否则 NULL。
+     */
+    getThemeName(): string;
     /**
      * 设置鼠标指针的图片名。
      *
@@ -6223,7 +6854,7 @@ export declare class TWidget {
     /**
      * 设置控件的状态。
      *
-     * @param state 状态(必须为真正的常量字符串，在widget的整个生命周期有效)。
+     * @param state 状态。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -6337,10 +6968,10 @@ export declare class TWidget {
      */
     setSensitive(sensitive: boolean): TRet;
     /**
-     * widget_t* ok = button_create(win, 10, 10, 80, 30);
-     *widget_on(ok, EVT_CLICK, on_click, NULL);
+     * 注册指定事件的处理函数。
+     *使用示例：
      *
-     *```
+     *
      *
      * @param type 事件类型。
      * @param on_event 事件处理函数。
@@ -6348,7 +6979,7 @@ export declare class TWidget {
      *
      * @returns 返回id，用于widget_off。
      */
-    on(type: TEventType, on_event: Function, ctx: any): number;
+    on(type: number, on_event: Function, ctx: any): number;
     /**
      * 注销指定事件的处理函数。
      *
@@ -6365,6 +6996,33 @@ export declare class TWidget {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     invalidateForce(r: TRect): TRet;
+    /**
+     * 获取控件指定属性的值。
+     *
+     * @param name 属性的名称。
+     * @param v 返回属性的值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    getProp(name: string, v: TValue): TRet;
+    /**
+     * 设置控件指定属性的值。
+     *
+     * @param name 属性的名称。
+     * @param v 属性的值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setProp(name: string, v: TValue): TRet;
+    /**
+     * 设置多个参数。
+     *>参数之间用&分隔，名称和值之间用=分隔。如: name=awtk&min=10&max=100
+     *
+     * @param params 参数列表。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setProps(params: string): TRet;
     /**
      * 设置字符串格式的属性。
      *
@@ -6400,6 +7058,24 @@ export declare class TWidget {
      * @returns 返回属性的值。
      */
     getPropPointer(name: string): any;
+    /**
+     * 设置浮点数格式的属性。
+     *
+     * @param name 属性的名称。
+     * @param v 属性的值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setPropFloat(name: string, v: number): TRet;
+    /**
+     * 获取浮点数格式的属性。
+     *
+     * @param name 属性的名称。
+     * @param defval 缺省值。
+     *
+     * @returns 返回属性的值。
+     */
+    getPropFloat(name: string, defval: number): number;
     /**
      * 设置整数格式的属性。
      *
@@ -6488,6 +7164,13 @@ export declare class TWidget {
      */
     isNormalWindow(): boolean;
     /**
+     * 检查控件是否是全屏窗口。
+     *
+     *
+     * @returns 返回FALSE表示不是，否则表示是。
+     */
+    isFullscreenWindow(): boolean;
+    /**
      * 检查控件是否是对话框类型。
      *
      *
@@ -6509,6 +7192,13 @@ export declare class TWidget {
      */
     isOverlay(): boolean;
     /**
+     * 检查控件是否总在最上层。
+     *
+     *
+     * @returns 返回FALSE表示不是，否则表示是。
+     */
+    isAlwaysOnTop(): boolean;
+    /**
      * 检查控件弹出对话框控件是否已经打开了（而非挂起状态）。
      *
      *
@@ -6523,8 +7213,13 @@ export declare class TWidget {
      */
     isOpenedPopup(): boolean;
     /**
-     * widget_set_prop_bool(group, WIDGET_PROP_IS_KEYBOARD, TRUE);
-     *```
+     * 判断当前控件是否是keyboard。
+     *
+     *> keyboard收到pointer事件时，不会让当前控件失去焦点。
+     *
+     *在自定义软键盘时，将所有按钮放到一个容器当中，并设置为is_keyboard。
+     *
+     *
      *
      *
      * @returns 返回FALSE表示不是，否则表示是。
@@ -6732,6 +7427,7 @@ export declare class TWidget {
     layout(): TRet;
     /**
      * 设置控件自己的布局参数。
+     *备注：下一帧才会生效数据
      *
      * @param params 布局参数。
      *
@@ -6740,6 +7436,7 @@ export declare class TWidget {
     setSelfLayout(params: string): TRet;
     /**
      * 设置子控件的布局参数。
+     *备注：下一帧才会生效数据
      *
      * @param params 布局参数。
      *
@@ -6748,6 +7445,7 @@ export declare class TWidget {
     setChildrenLayout(params: string): TRet;
     /**
      * 设置控件自己的布局(缺省布局器)参数(过时，请用widget\_set\_self\_layout)。
+     *备注：下一帧才会生效数据
      *
      * @param x x参数。
      * @param y y参数。
@@ -6782,8 +7480,15 @@ export declare class TWidget {
      */
     setStyleStr(state_and_name: string, value: string): TRet;
     /**
-     * widget_set_style_color(label, "normal:bg_color", 0xFF332211);
-     *```
+     * 设置颜色类型的style。
+     *
+     *> * [state 的取值](https://github.com/zlgopen/awtk/blob/master/docs/manual/widget_state_t.md)
+     *> * [name 的取值](https://github.com/zlgopen/awtk/blob/master/docs/theme.md)
+     *
+     *
+     *在下面这个例子中，R=0x11 G=0x22 B=0x33 A=0xFF
+     *
+     *
      *
      * @param state_and_name 状态和名字，用英文的冒号分隔。
      * @param value 值。颜色值一般用十六进制表示，每两个数字表示一个颜色通道，从高位到低位，依次是ABGR。
@@ -6791,6 +7496,14 @@ export declare class TWidget {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setStyleColor(state_and_name: string, value: any): TRet;
+    /**
+     * 加入一个子控件默认实现(供子类调用)。
+     *
+     * @param child 子控件对象。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    addChildDefault(child: TWidget): TRet;
     /**
      * x坐标(相对于父控件的x坐标)。
      *
@@ -6879,7 +7592,7 @@ export declare class TWidget {
     /**
      * 是否根据子控件和文本自动调整控件自身大小。
      *
-     *> 为true时，最好不要使用child_layout，否则可能有冲突。
+     *> 为true时，最好不要使用 layout 的相关东西，否则可能有冲突。
      *> 注意：只是调整控件的本身的宽高，不会修改控件本身的位置。
      *
      */
@@ -6891,6 +7604,12 @@ export declare class TWidget {
      */
     get floating(): boolean;
     set floating(v: boolean);
+    /**
+     * 不透明度(0-255)，0完全透明，255完全不透明。
+     *
+     */
+    get opacity(): number;
+    set opacity(v: number);
     /**
      * 脏矩形超出控件本身大小的最大范围(一般不用指定)。
      *
@@ -6906,8 +7625,15 @@ export declare class TWidget {
     get parent(): TWidget;
 }
 /**
- * #include "conf_io/app_conf.h"
- *```
+ * 应用程序的配置信息。
+ *
+ *底层实现可以是任何格式，比如INI，XML，JSON和UBJSON。
+ *
+ *对于树状的文档，key可以是多级的，用.分隔。如network.ip。
+ *
+ *conf-io是可选组件，需要自己包含头文件，否则64位数据类型会被截断成32位的数据。
+ *
+ *
  *
  */
 export declare class TAppConf {
@@ -7182,6 +7908,21 @@ export declare class TAssetInfo {
      */
     getName(): string;
     /**
+     * 资源是否在ROM中。
+     *
+     *
+     * @returns 返回 TRUE 为在 ROM 中，返回 FALSE 则不在。
+     */
+    isInRom(): boolean;
+    /**
+     * 设置资源是否在ROM中的标记位。
+     *
+     * @param is_in_rom 资源是否在ROM中。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setIsInRom(is_in_rom: boolean): TRet;
+    /**
      * 类型。
      *
      */
@@ -7192,10 +7933,10 @@ export declare class TAssetInfo {
      */
     get subtype(): number;
     /**
-     * 资源是否在ROM中。
+     * 资源标志。
      *
      */
-    get isInRom(): number;
+    get flags(): number;
     /**
      * 大小。
      *
@@ -7207,11 +7948,6 @@ export declare class TAssetInfo {
      *
      */
     get refcount(): number;
-    /**
-     * 名称。
-     *
-     */
-    get name(): string;
 }
 /**
  * 颜色。
@@ -7226,13 +7962,13 @@ export declare class TColor {
      *> 主要供脚本语言使用。
      *
      * @param r 红色通道。
-     * @param b 蓝色通道。
      * @param g 绿色通道。
+     * @param b 蓝色通道。
      * @param a alpha通道。
      *
      * @returns color对象。
      */
-    static create(r: number, b: number, g: number, a: number): TColor;
+    static create(r: number, g: number, b: number, a: number): TColor;
     /**
      * 创建color对象。
      *
@@ -7385,7 +8121,7 @@ export declare class TDateTime {
      */
     set(): TRet;
     /**
-     * 从time转换而来。
+     * 从time转换而来(按GMT转换)。
      *
      * @param time 时间。
      *
@@ -7393,7 +8129,7 @@ export declare class TDateTime {
      */
     fromTime(time: number): TRet;
     /**
-     * 转换成time。
+     * 转换成time(按GMT转换)。
      *
      *
      * @returns 返回time。
@@ -7419,29 +8155,29 @@ export declare class TDateTime {
      * 获取指定年份月份的天数。
      *
      * @param year 年份。
-     * @param montn 月份(1-12)。
+     * @param month 月份(1-12)。
      *
      * @returns 返回大于0表示天数，否则表示失败。
      */
-    static getDays(year: number, montn: number): number;
+    static getDays(year: number, month: number): number;
     /**
      * 获取指定日期是周几(0-6, Sunday = 0)。。
      *
      * @param year 年份。
-     * @param montn 月份(1-12)。
+     * @param month 月份(1-12)。
      * @param day 日(1-31)。
      *
      * @returns 返回大于等于0表示周几(0-6)，否则表示失败。
      */
-    static getWday(year: number, montn: number, day: number): number;
+    static getWday(year: number, month: number, day: number): number;
     /**
      * 获取指定月份的英文名称(简写)。
      *
-     * @param montn 月份(1-12)。
+     * @param month 月份(1-12)。
      *
      * @returns 返回指定月份的英文名称(简写)。
      */
-    static getMonthName(montn: number): string;
+    static getMonthName(month: number): string;
     /**
      * 获取周几的英文名称(简写)。
      *
@@ -8281,12 +9017,17 @@ export declare enum TObjectProp {
      * 属性的个数。
      *
      */
-    SIZE,
+    TK_SIZE,
     /**
      * 属性是否勾选。
      *
      */
-    CHECKED
+    TK_CHECKED,
+    /**
+     * 选中的索引。
+     *
+     */
+    TK_SELECTED_INDEX
 }
 /**
  * 循环记录日志(支持多线程访问)。
@@ -8301,10 +9042,9 @@ export declare class TRlog {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * rlog_t* log = rlog_create("./logs/%d.log", 1020*1024, 256);
-     *rlog_write(log, "hello\n");
-     *rlog_destroy(log);
-     *```
+     * 创建rlog对象。
+     *
+     *
      *
      * @param filename_pattern 用来确定文件名的路径和文件名。
      * @param max_size log文件占用最大磁盘空间(字节)。
@@ -8324,13 +9064,15 @@ export declare class TRlog {
 }
 /**
  * 获取当前时间的函数。
- *这里的当前时间是相对的，在嵌入式系统一般相对于开机时间。
+ *这里的当前时间是相对的，在嵌入式系统一般相对于开机时间(毫秒)。
  *它本身并没有任何意义，一般用来计算时间间隔，如实现定时器和动画等等。
  *
  */
 export declare class TTimeNow {
     /**
      * 获取当前时间(秒)。
+     *
+     *备注: 时间本身并不代表任何时间系，一般用来计算时间间隔。
      *
      *
      * @returns 返回当前时间(秒)。
@@ -8339,12 +9081,16 @@ export declare class TTimeNow {
     /**
      * 获取当前时间(毫秒)。
      *
+     *备注: 时间本身并不代表任何时间系，一般用来计算时间间隔。
+     *
      *
      * @returns 返回当前时间(毫秒)。
      */
     static ms(): number;
     /**
      * 获取当前时间(微秒)。
+     *
+     *备注: 时间本身并不代表任何时间系，一般用来计算时间间隔。
      *
      *
      * @returns 返回当前时间(微秒)。
@@ -8473,7 +9219,27 @@ export declare enum TRet {
      * 没有改变。
      *
      */
-    NOT_MODIFIED
+    NOT_MODIFIED,
+    /**
+     * 没有权限。
+     *
+     */
+    NO_PERMISSION,
+    /**
+     * 无效地址。
+     *
+     */
+    INVALID_ADDR,
+    /**
+     * 超出范围。
+     *
+     */
+    EXCEED_RANGE,
+    /**
+     * 最大值。
+     *
+     */
+    MAX_NR
 }
 /**
  * 类型常量定义。
@@ -8561,7 +9327,7 @@ export declare enum TValueType {
      */
     WSTRING,
     /**
-     * object_t*类型。
+     * tk_object_t*类型。
      *
      */
     OBJECT,
@@ -8589,7 +9355,37 @@ export declare enum TValueType {
      * 渐变颜色。
      *
      */
-    GRADIENT
+    GRADIENT,
+    /**
+     * id。
+     *
+     */
+    ID,
+    /**
+     * func。
+     *
+     */
+    FUNC,
+    /**
+     * func definition。
+     *
+     */
+    FUNC_DEF,
+    /**
+     * void*类型。
+     *
+     */
+    POINTER_REF,
+    /**
+     * 位图类型。
+     *
+     */
+    BITMAP,
+    /**
+     * 矩形类型。
+     *
+     */
+    RECT
 }
 /**
  * 资源管理器。
@@ -8670,6 +9466,63 @@ export declare class TAssetsManager extends TEmitter {
     unref(info: TAssetInfo): TRet;
 }
 /**
+ * 控件动画事件。
+ *
+ */
+export declare class TWidgetAnimatorEvent extends TEvent {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 把event对象转widget_animator_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event对象。
+     */
+    static cast(event: TEvent): TWidgetAnimatorEvent;
+    /**
+     * 控件对象。
+     *
+     */
+    get widget(): TWidget;
+    /**
+     * 控件动画句柄。
+     *
+     */
+    get animator(): any;
+}
+/**
+ * model变化事件。
+ *
+ */
+export declare class TModelEvent extends TEvent {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 把event对象转model_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event对象。
+     */
+    static cast(event: TEvent): TModelEvent;
+    /**
+     * 模型名称。
+     *
+     */
+    get name(): string;
+    /**
+     * 变化类型(update/add/remove)。
+     *
+     */
+    get changeType(): string;
+    /**
+     * 模型。
+     *
+     */
+    get model(): TTkObject;
+}
+/**
  * 滚轮事件。
  *
  */
@@ -8677,13 +9530,23 @@ export declare class TWheelEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转wheel_event_t对象，主要给脚本语言使用。
+     * 把event对象转wheel_event_t对象。
      *
      * @param event event对象。
      *
      * @returns event对象。
      */
     static cast(event: TEvent): TWheelEvent;
+    /**
+     * x坐标。
+     *
+     */
+    get x(): number;
+    /**
+     * y坐标。
+     *
+     */
+    get y(): number;
     /**
      * 滚轮的y值。
      *
@@ -8713,7 +9576,7 @@ export declare class TOrientationEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转orientation_event_t对象，主要给脚本语言使用。
+     * 把event对象转orientation_event_t对象。
      *
      * @param event event对象。
      *
@@ -8724,28 +9587,28 @@ export declare class TOrientationEvent extends TEvent {
      * 屏幕方向。
      *
      */
-    get orientation(): number;
+    get orientation(): any;
     /**
      * 旧的屏幕方向。
      *
      */
-    get oldOrientation(): number;
+    get oldOrientation(): any;
 }
 /**
- * 值变化事件。
+ * offset变化事件。
  *
  */
-export declare class TValueChangeEvent extends TEvent {
+export declare class TOffsetChangeEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转value_change_event_t对象，主要给脚本语言使用。
+     * 把event对象转offset_change_event_t对象。
      *
      * @param event event对象。
      *
      * @returns event对象。
      */
-    static cast(event: TEvent): TValueChangeEvent;
+    static cast(event: TEvent): TOffsetChangeEvent;
 }
 /**
  * 指针事件。
@@ -8755,7 +9618,7 @@ export declare class TPointerEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转pointer_event_t对象，主要给脚本语言使用。
+     * 把event对象转pointer_event_t对象。
      *
      * @param event event对象。
      *
@@ -8774,6 +9637,9 @@ export declare class TPointerEvent extends TEvent {
     get y(): number;
     /**
      * button。
+     *在不同的平台，该属性会发生变化，
+     *PC ：左键为 1，中键为 2，右键为 3
+     *嵌入式：默认为 1
      *
      */
     get button(): number;
@@ -8816,7 +9682,7 @@ export declare class TKeyEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转key_event_t对象，主要给脚本语言使用。
+     * 把event对象转key_event_t对象。
      *
      * @param event event对象。
      *
@@ -8844,8 +9710,7 @@ export declare class TKeyEvent extends TEvent {
      */
     get ralt(): boolean;
     /**
-     * right alt键是否按下。
-     *ctrl键是否按下。
+     * ctrl键是否按下。
      *
      */
     get ctrl(): boolean;
@@ -8875,8 +9740,7 @@ export declare class TKeyEvent extends TEvent {
      */
     get rshift(): boolean;
     /**
-     * left shift键是否按下。
-     *cmd/win键是否按下。
+     * cmd/win键是否按下。
      *
      */
     get cmd(): boolean;
@@ -8890,6 +9754,11 @@ export declare class TKeyEvent extends TEvent {
      *
      */
     get capslock(): boolean;
+    /**
+     * numlock键是否按下。
+     *
+     */
+    get numlock(): boolean;
 }
 /**
  * 绘制事件。
@@ -8899,7 +9768,7 @@ export declare class TPaintEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转paint_event_t对象。主要给脚本语言使用。
+     * 把event对象转paint_event_t对象。
      *
      * @param event event对象。
      *
@@ -8920,7 +9789,7 @@ export declare class TWindowEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转window_event_t对象。主要给脚本语言使用。
+     * 把event对象转window_event_t对象。
      *
      * @param event event对象。
      *
@@ -8941,7 +9810,7 @@ export declare class TMultiGestureEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转multi_gesture_event_t对象，主要给脚本语言使用。
+     * 把event对象转multi_gesture_event_t对象。
      *
      * @param event event对象。
      *
@@ -8968,6 +9837,128 @@ export declare class TMultiGestureEvent extends TEvent {
      *
      */
     get distance(): number;
+}
+/**
+ * 主题变化事件。
+ *
+ */
+export declare class TThemeChangeEvent extends TEvent {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 把event对象转theme_change_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns 返回event对象。
+     */
+    static cast(event: TEvent): TThemeChangeEvent;
+    /**
+     * 主题名称。
+     *
+     */
+    get name(): string;
+}
+/**
+ * 文件拖入事件。
+ *
+ */
+export declare class TDropFileEvent extends TEvent {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 把event对象转drop_file_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event 对象。
+     */
+    static cast(event: TEvent): TDropFileEvent;
+    /**
+     * 文件名。
+     *
+     */
+    get filename(): string;
+}
+/**
+ * 系统事件。
+ *
+ */
+export declare class TSystemEvent extends TEvent {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 把event对象转system_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event 对象。
+     */
+    static cast(event: TEvent): TSystemEvent;
+    /**
+     * SDL_Event。
+     *
+     */
+    get sdlEvent(): any;
+}
+/**
+ * UI加载完成事件。
+ *
+ */
+export declare class TUiLoadEvent extends TEvent {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 把event对象转ui_load_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event 对象。
+     */
+    static cast(event: TEvent): TUiLoadEvent;
+    /**
+     * UI的根控件对象。
+     *
+     */
+    get root(): TWidget;
+    /**
+     * UI的名称。
+     *
+     */
+    get name(): string;
+}
+/**
+ * 字体管理器，负责字体的加载和缓存管理。
+ *(如果使用nanovg，字体由nanovg内部管理)
+ *
+ */
+export declare class TFontManager extends TEmitter {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 卸载指定的字体。
+     *
+     * @param name 字体名，为NULL时使用缺省字体。
+     * @param size 字体的大小(矢量字体指定为0即可)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    unloadFont(name: string, size: number): TRet;
+    /**
+     * 清除最久没有被使用的缓冲字模。
+     *
+     * @param cache_size 每种字体保留缓存字模的个数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    shrinkCache(cache_size: number): TRet;
+    /**
+     * 卸载全部字体。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    unloadAll(): TRet;
 }
 /**
  * 图片控件基类。
@@ -9293,6 +10284,13 @@ export declare class TWindowBase extends TWidget {
      */
     get moveFocusRightKey(): string;
     /**
+     * 小应用程序(applet)的名称。
+     *
+     *> 如果该窗口属于某个独立的小程序应用(applet)，需要指定它的名称，以便到对应的资源目录查找资源。
+     *
+     */
+    get appletName(): string;
+    /**
      * 单例。如果窗口存在，先关闭再打开。
      *
      */
@@ -9383,6 +10381,15 @@ export declare class TWindowManager extends TWidget {
      */
     setShowFps(show_fps: boolean): TRet;
     /**
+     * 设置显示FPS的起始坐标。
+     *
+     * @param x 左上角x坐标。
+     * @param y 左上角x坐标。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setShowFpsPosition(x: number, y: number): TRet;
+    /**
      * 限制最大帧率。
      *
      *> TK\_MAX\_LOOP\_FPS/max\_fps最好是整数，比如TK\_MAX\_LOOP\_FPS为120，max\_fps可取60/30/20/10等。
@@ -9401,7 +10408,7 @@ export declare class TWindowManager extends TWidget {
      */
     setIgnoreInputEvents(ignore_input_events: boolean): TRet;
     /**
-     * 设置屏保时间。
+     * 设置屏保时间(毫秒)。
      *
      * @param screen_saver_time 屏保时间(单位毫秒), 为0关闭屏保。
      *
@@ -9454,6 +10461,14 @@ export declare class TWindowManager extends TWidget {
      */
     resize(w: number, h: number): TRet;
     /**
+     * 设置原生窗口是否全屏。
+     *
+     * @param fullscreen 是否全屏
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setFullscreen(fullscreen: boolean): TRet;
+    /**
      * 关闭全部窗口。
      *
      *
@@ -9480,11 +10495,14 @@ export declare class TWindowManager extends TWidget {
  *在c代码中使用函数canvas\_widget\_create创建画布控件。如：
  *
  *
+ *
  *> 创建之后，需要用widget\_on注册EVT\_PAINT事件，并在EVT\_PAINT事件处理函数中绘制。
+ *
  *
  *
  *绘制时，可以通过canvas接口去绘制，也可以通过vgcanvas接口去绘制。
  *先从evt获取canvas对象，再通过canvas\_get\_vgcanvas从canvas中获取vgcanvas对象。
+ *
  *
  *
  *> 完整示例请参考：
@@ -9647,6 +10665,7 @@ export declare class TColorPicker extends TWidget {
  *在c代码中使用函数draggable\_create创建按钮控件。如：
  *
  *
+ *
  *> draggable本身不可见，故无需style。
  *
  */
@@ -9722,14 +10741,40 @@ export declare class TDraggable extends TWidget {
      */
     setHorizontalOnly(horizontal_only: boolean): TRet;
     /**
+     * 设置是否无范围限制拖动。
+     *备注：可以让窗口拖动到外面去。
+     *
+     * @param allow_out_of_screen 是否无范围限制拖动。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setAllowOutOfScreen(allow_out_of_screen: boolean): TRet;
+    /**
      * 设置drag_window。
      *拖动窗口而不是父控件。比如放在对话框的titlebar上，拖动titlebar其实是希望拖动对话框。
      *
-     * @param drag_window drag_window
+     * @param drag_window 是否拖动窗口。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setDragWindow(drag_window: boolean): TRet;
+    /**
+     * 设置drag_native_window。
+     *
+     * @param drag_native_window 是否拖动原生窗口。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setDragNativeWindow(drag_native_window: boolean): TRet;
+    /**
+     * 设置drag_parent。
+     *拖动窗口而不是父控件。比如放在对话框的titlebar上，拖动titlebar其实是希望拖动对话框。
+     *
+     * @param drag_parent 0表示直系父控件，1表示父控件的父控件，依次类推。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setDragParent(drag_parent: number): TRet;
     /**
      * 拖动范围的顶部限制。缺省为父控件的顶部。
      *
@@ -9755,6 +10800,12 @@ export declare class TDraggable extends TWidget {
     get right(): number;
     set right(v: number);
     /**
+     * 支持超出原生窗口边界拖动。（无法完全移出原生窗口，同时优先受到拖动范围限制的影响）
+     *
+     */
+    get allowOutOfScreen(): boolean;
+    set allowOutOfScreen(v: boolean);
+    /**
      * 只允许垂直拖动。
      *
      */
@@ -9772,6 +10823,18 @@ export declare class TDraggable extends TWidget {
      */
     get dragWindow(): boolean;
     set dragWindow(v: boolean);
+    /**
+     * 拖动原生窗口。
+     *
+     */
+    get dragNativeWindow(): boolean;
+    set dragNativeWindow(v: boolean);
+    /**
+     * 拖动父控件。0表示直系父控件，1表示父控件的父控件，依次类推。
+     *
+     */
+    get dragParent(): number;
+    set dragParent(v: number);
 }
 /**
  * 文件管理/浏览/选择控件。
@@ -9899,6 +10962,22 @@ export declare class TFileBrowserView extends TWidget {
      */
     setSortBy(sort_by: string): TRet;
     /**
+     * 设置 奇数项样式。
+     *
+     * @param odd_item_style 奇数项样式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setOddItemStyle(odd_item_style: string): TRet;
+    /**
+     * 设置 偶数项样式。
+     *
+     * @param even_item_style 奇数项样式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setEvenItemStyle(even_item_style: string): TRet;
+    /**
      * 获取当前路径。
      *
      *
@@ -9965,6 +11044,18 @@ export declare class TFileBrowserView extends TWidget {
      */
     get sortBy(): string;
     set sortBy(v: string);
+    /**
+     * 奇数项样式。
+     *
+     */
+    get oddItemStyle(): string;
+    set oddItemStyle(v: string);
+    /**
+     * 偶数项样式。
+     *
+     */
+    get evenItemStyle(): string;
+    set evenItemStyle(v: string);
 }
 /**
  * 文件/目录选择器
@@ -10077,6 +11168,7 @@ export declare class TFileChooser extends TEmitter {
  *在c代码中使用函数gauge\_pointer\_create创建仪表指针控件。如：
  *
  *
+ *
  *> 创建之后，需要用gauge\_pointer\_set\_image设置仪表指针图片。
  *
  */
@@ -10172,6 +11264,7 @@ export declare class TGaugePointer extends TWidget {
  *在c代码中使用函数gauge\_create创建表盘控件。如：
  *
  *
+ *
  *可用通过style来设置控件的显示风格，如背景和边框等。如：
  *
  *```xml
@@ -10262,6 +11355,7 @@ export declare class TGauge extends TWidget {
  *在c代码中使用函数image\_animation\_create创建图片动画控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[image_animation
  *demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/image_animation.c)
@@ -10301,7 +11395,7 @@ export declare class TImageAnimation extends TWidget {
      */
     setImage(image: string): TRet;
     /**
-     * 设置播放间隔时间。
+     * 设置播放间隔时间(毫秒)。
      *
      * @param interval 间隔时间(毫秒)。
      *
@@ -10526,6 +11620,7 @@ export declare class TImageAnimation extends TWidget {
  *在c代码中使用函数image\_value\_create创建图片值控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[image_value demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/image_value.c)
  *
@@ -10566,11 +11661,11 @@ export declare class TImageValue extends TWidget {
     /**
      * 设置点击时加上的增量。
      *
-     * @param delta 增量。
+     * @param click_add_delta 增量。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    setClickAddDelta(delta: number): TRet;
+    setClickAddDelta(click_add_delta: number): TRet;
     /**
      * 设置值。
      *
@@ -10749,6 +11844,11 @@ export declare class TCandidates extends TWidget {
      */
     get buttonStyle(): string;
     set buttonStyle(v: string);
+    /**
+     * 是否启用候选字预览。
+     *
+     */
+    get enablePreview(): boolean;
 }
 /**
  * 输入法语言指示器。
@@ -10899,6 +11999,37 @@ export declare class TLineNumber extends TWidget {
      * @returns line_number对象。
      */
     static cast(widget: TWidget): TLineNumber;
+    /**
+     * 增加高亮行。
+     *
+     * @param line 行号。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    addHighlightLine(line: number): TRet;
+    /**
+     * 设置active行。
+     *
+     * @param line 行号。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setActiveLine(line: number): TRet;
+    /**
+     * 清除高亮行。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    clearHighlight(): TRet;
+    /**
+     * 判断指定行是否是高亮行。
+     *
+     * @param line 行号。
+     *
+     * @returns 返回TRUE表示是，否则不是。
+     */
+    isHighlightLine(line: number): boolean;
 }
 /**
  * 多行编辑器控件。
@@ -10915,6 +12046,7 @@ export declare class TLineNumber extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/mledit.xml)
  *
  *在c代码中使用函数mledit\_create创建多行编辑器控件。如：
+ *
  *
  *
  *> 完整示例请参考：[mledit demo](
@@ -11197,6 +12329,7 @@ export declare class TMledit extends TWidget {
  *在c代码中使用函数progress\_circle\_create创建进度圆环控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[progress_circle
  *demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/progress_circle.c)
@@ -11326,13 +12459,13 @@ export declare class TProgressCircle extends TWidget {
     get startAngle(): number;
     set startAngle(v: number);
     /**
-     * 环线的厚度(缺省为8)。
+     * 环线的厚度(缺省为8)，line_width r/2时，使用扇形绘制。
      *
      */
     get lineWidth(): number;
     set lineWidth(v: number);
     /**
-     * 线帽类型(round:圆头，square:方头)。
+     * 线帽类型(round:圆头，square:方头，butt:平头)。
      *
      */
     get lineCap(): string;
@@ -11416,6 +12549,7 @@ export declare class TRichTextView extends TWidget {
  *[rich_text.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/rich_text.xml)
  *
  *在c代码中使用函数rich\_text\_create创建图文混排控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -11531,7 +12665,7 @@ export declare class THscrollLabel extends TWidget {
     /**
      * 设置lull。
      *
-     * @param lull 间歇时间(ms)。
+     * @param lull 间歇时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -11539,11 +12673,19 @@ export declare class THscrollLabel extends TWidget {
     /**
      * 设置duration。
      *
-     * @param duration 滚动时间(ms)。
+     * @param duration 滚动时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setDuration(duration: number): TRet;
+    /**
+     * 设置speed（设置后 duration 不生效）。
+     *
+     * @param speed 滚动速度(px/ms)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setSpeed(speed: number): TRet;
     /**
      * 设置only_focus。
      *
@@ -11584,6 +12726,30 @@ export declare class THscrollLabel extends TWidget {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setEllipses(ellipses: boolean): TRet;
+    /**
+     * 设置stop_at_begin。
+     *
+     * @param stop_at_begin 是否在滚动完毕后停在文本结尾。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setStopAtBegin(stop_at_begin: boolean): TRet;
+    /**
+     * 设置开始延迟时间。
+     *
+     * @param delay 开始延迟时间。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setDelay(delay: number): TRet;
+    /**
+     * 设置滚动文本结尾和文本开头间隔距离
+     *
+     * @param loop_interval_distance 间隔距离。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setLoopIntervalDistance(loop_interval_distance: number): TRet;
     /**
      * 设置x偏移(一般无需用户调用)。。
      *
@@ -11645,17 +12811,29 @@ export declare class THscrollLabel extends TWidget {
     get ellipses(): boolean;
     set ellipses(v: boolean);
     /**
-     * 滚动之间的间歇时间(ms)，缺省3000ms。
+     * 滚动之间的间歇时间(毫秒)，缺省3000ms。
      *
      */
     get lull(): number;
     set lull(v: number);
     /**
-     * 完整的滚动一次需要的时间(ms)，缺省5000ms。
+     * 滚动一次需要的时间(毫秒)，缺省5000ms。
      *
      */
     get duration(): number;
     set duration(v: number);
+    /**
+     * 延迟多久才开始滚动，缺省0ms。
+     *
+     */
+    get delay(): number;
+    set delay(v: number);
+    /**
+     * 滚动速度(px/ms)（设置后 duration 不生效）。
+     *
+     */
+    get speed(): number;
+    set speed(v: number);
     /**
      * 偏移量。
      *
@@ -11667,6 +12845,19 @@ export declare class THscrollLabel extends TWidget {
      *
      */
     get textW(): number;
+    /**
+     * 滚动完毕后停在文本开头(缺省FALSE)。
+     *> 注：yoyo 为 TRUE 时，该功能失效。
+     *
+     */
+    get stopAtBegin(): boolean;
+    set stopAtBegin(v: boolean);
+    /**
+     * 滚动文本结尾和文本开头间隔距离(缺省值为 -1，小于 0 视为使用控件宽度作为间隔距离)。
+     *
+     */
+    get loopIntervalDistance(): number;
+    set loopIntervalDistance(v: number);
 }
 /**
  * 列表项控件。
@@ -11695,6 +12886,7 @@ export declare class THscrollLabel extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_m.xml)
  *
  *在c代码中使用函数list\_item\_create创建列表项控件。如：
+ *
  *
  *
  *> 列表项控件大小一般由列表控制，不需指定xywh参数。
@@ -11760,6 +12952,7 @@ export declare class TListItem extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_h.xml)
  *
  *在c代码中使用函数list\_view\_h\_create创建水平列表视图控件。如：
+ *
  *
  *
  *用代码构造列表视图是比较繁琐的事情，最好用XML来构造。
@@ -11858,6 +13051,7 @@ export declare class TListViewH extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_m.xml)
  *
  *在c代码中使用函数list\_view\_create创建列表视图控件。如：
+ *
  *
  *
  *用代码构造列表视图是比较繁琐的事情，最好用XML来构造。
@@ -11985,6 +13179,7 @@ export declare class TListView extends TWidget {
  *在c代码中使用函数scroll\_bar\_create创建列表项控件。如：
  *
  *
+ *
  *```xml
  *<style name="default">
  *<normal bg_color="#c0c0c0" fg_color="#808080"/>
@@ -12059,7 +13254,7 @@ export declare class TScrollBar extends TWidget {
      * 滚动到指定的值。
      *
      * @param value 值。
-     * @param duration 动画持续时间。
+     * @param duration 动画持续时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -12080,14 +13275,6 @@ export declare class TScrollBar extends TWidget {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     addDelta(delta: number): TRet;
-    /**
-     * 在当前的值上增加一个值，并滚动到新的值，并触发EVT_VALUE_CHANGED事件。
-     *
-     * @param delta 值。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    scrollDelta(delta: number): TRet;
     /**
      * 设置值，但不触发EVT_VALUE_CHANGED事件。
      *
@@ -12114,6 +13301,48 @@ export declare class TScrollBar extends TWidget {
      */
     isMobile(): boolean;
     /**
+     * 设置翻页滚动动画时间(毫秒)。
+     *
+     * @param animator_time 时间(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setAnimatorTime(animator_time: number): TRet;
+    /**
+     * 通过动画隐藏滚动条。
+     *
+     * @param duration 动画持续时间(毫秒)。
+     * @param delay 动画执行时间(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    hideByOpacityAnimation(duration: number, delay: number): TRet;
+    /**
+     * 通过动画显示滚动条。
+     *
+     * @param duration 动画持续时间(毫秒)。
+     * @param delay 动画执行时间(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    showByOpacityAnimation(duration: number, delay: number): TRet;
+    /**
+     * 设置鼠标滚轮是否滚动(仅对desktop风格的滚动条有效)。
+     *
+     * @param scroll 是否设置该功能。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setWheelScroll(scroll: boolean): TRet;
+    /**
+     * 设置鼠标滚轮幅度(仅对desktop风格的滚动条有效)。
+     *
+     * @param scroll_delta 滚动幅度。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setScrollDelta(scroll_delta: number): TRet;
+    /**
      * 虚拟宽度或高度。
      *
      */
@@ -12130,6 +13359,18 @@ export declare class TScrollBar extends TWidget {
      */
     get row(): number;
     /**
+     * 翻页滚动动画时间(毫秒)。
+     *
+     */
+    get animatorTime(): number;
+    set animatorTime(v: number);
+    /**
+     * 每次鼠标滚动值。（缺省值为0，0 则使用鼠标滚动默认值）
+     *
+     */
+    get scrollDelta(): number;
+    set scrollDelta(v: number);
+    /**
      * 滚动时是否启用动画。
      *
      */
@@ -12140,6 +13381,12 @@ export declare class TScrollBar extends TWidget {
      */
     get autoHide(): boolean;
     set autoHide(v: boolean);
+    /**
+     * 设置鼠标滚轮是否滚动(仅对desktop风格的滚动条有效)（垂直滚动条缺省值为TRUE，水平滚动条缺省值为FALSE）。
+     *
+     */
+    get wheelScroll(): boolean;
+    set wheelScroll(v: boolean);
 }
 /**
  * 滚动视图。
@@ -12168,6 +13415,7 @@ export declare class TScrollBar extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/list_view_m.xml)
  *
  *在c代码中使用函数scroll\_view\_create创建列表视图控件。如：
+ *
  *
  *
  *可用通过style来设置控件的显示风格，如背景颜色和边框颜色等(一般情况不需要)。
@@ -12280,11 +13528,19 @@ export declare class TScrollView extends TWidget {
      */
     setSpeedScale(xspeed_scale: number, yspeed_scale: number): TRet;
     /**
+     * 设置滑动到极限时可继续滑动区域的占比。
+     *
+     * @param slide_limit_ratio 滑动到极限时可继续滑动区域的占比。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setSlideLimitRatio(slide_limit_ratio: number): TRet;
+    /**
      * 滚动到指定的偏移量。
      *
      * @param xoffset_end x偏移量。
      * @param yoffset_end y偏移量。
-     * @param duration 时间。
+     * @param duration 时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -12294,7 +13550,7 @@ export declare class TScrollView extends TWidget {
      *
      * @param xoffset_delta x偏移量。
      * @param yoffset_delta y偏移量。
-     * @param duration 时间。
+     * @param duration 时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -12361,6 +13617,157 @@ export declare class TScrollView extends TWidget {
      */
     get recursive(): boolean;
     set recursive(v: boolean);
+    /**
+     * 滑动到极限时可继续滑动区域的占比。
+     *
+     */
+    get slideLimitRatio(): number;
+    set slideLimitRatio(v: number);
+}
+/**
+ * 用于串口通信的控件
+ *在xml中使用"serial"标签创建控件。如：
+ *
+ *```xml
+ *<!-- ui -->
+ *<serial device="COM1" baudrate="115200"/>
+ *```
+ *
+ *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
+ *> 本控件默认不可见，无需指定style。
+ *
+ *```xml
+ *<!-- style -->
+ *<serial>
+ *<style name="default" font_size="32">
+ *<normal text_color="black" />
+ *</style>
+ *</serial>
+ *```
+ *
+ */
+export declare class TSerialWidget extends TWidget {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 创建serial_widget对象
+     *
+     * @param parent 父控件
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     *
+     * @returns serial_widget对象。
+     */
+    static create(parent: TWidget, x: number, y: number, w: number, h: number): TSerialWidget;
+    /**
+     * 转换为serial_widget对象(供脚本语言使用)。
+     *
+     * @param widget serial_widget对象。
+     *
+     * @returns serial_widget对象。
+     */
+    static cast(widget: TWidget): TSerialWidget;
+    /**
+     * 设置 波特率。
+     *
+     * @param baudrate 波特率。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setBaudrate(baudrate: number): TRet;
+    /**
+     * 设置 设备。
+     *
+     * @param device 设备。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setDevice(device: string): TRet;
+    /**
+     * 设置 字节位数。
+     *
+     * @param bytesize 字节位数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setBytesize(bytesize: number): TRet;
+    /**
+     * 设置 奇偶校验。
+     *
+     * @param parity 奇偶校验。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setParity(parity: number): TRet;
+    /**
+     * 设置 停止位。
+     *
+     * @param stopbits 停止位。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setStopbits(stopbits: number): TRet;
+    /**
+     * 设置 流控。
+     *
+     * @param flowcontrol 流控。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setFlowcontrol(flowcontrol: number): TRet;
+    /**
+     * 设置 轮询时间(毫秒)。
+     *
+     * @param check_interval 轮询时间（单位：ms）。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setCheckInterval(check_interval: number): TRet;
+    /**
+     * 设备(文件)名。
+     *
+     */
+    get device(): string;
+    set device(v: string);
+    /**
+     * 波特率。
+     *
+     */
+    get baudrate(): number;
+    set baudrate(v: number);
+    /**
+     * 字节位数。
+     *
+     */
+    get bytesize(): number;
+    set bytesize(v: number);
+    /**
+     * 奇偶校验。
+     *
+     */
+    get parity(): number;
+    set parity(v: number);
+    /**
+     * 停止位。
+     *
+     */
+    get stopbits(): number;
+    set stopbits(v: number);
+    /**
+     * 流控。
+     *
+     */
+    get flowcontrol(): number;
+    set flowcontrol(v: number);
+    /**
+     * 轮询时间（单位：ms）。
+     *> 仅在不支持用select等待串口数据的嵌入式设备上有效。
+     *
+     */
+    get checkInterval(): number;
+    set checkInterval(v: number);
 }
 /**
  * 左右滑动菜单控件。
@@ -12387,10 +13794,13 @@ export declare class TScrollView extends TWidget {
  *在c代码中使用函数slide\_menu\_create创建左右滑动菜单控件。如：
  *
  *
+ *
  *可按下面的方法关注当前项改变的事件：
  *
  *
+ *
  *可按下面的方法关注当前按钮被点击的事件：
+ *
  *
  *
  *> 完整示例请参考：[slide_menu demo](
@@ -12456,6 +13866,44 @@ export declare class TSlideMenu extends TWidget {
      */
     setMinScale(min_scale: number): TRet;
     /**
+     * 设置菜单项之间的间距。
+     *
+     * @param spacer 菜单项之间的间距。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setSpacer(spacer: number): TRet;
+    /**
+     * 设置菜单项的宽度。
+     *
+     * @param menu_w 菜单项的宽度。(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)(空字符串则使用控件高度)
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setMenuW(menu_w: string): TRet;
+    /**
+     * 设置是否动态裁剪菜单项。
+     *
+     * @param clip 是否动态裁剪菜单项。(关闭后，如果显示偶数项，左边会多一项)
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setClip(clip: boolean): TRet;
+    /**
+     * 切换至上一项。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    scrollToPrev(): TRet;
+    /**
+     * 切换至下一项。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    scrollToNext(): TRet;
+    /**
      * 值。代表当前选中项的索引。
      *
      */
@@ -12473,6 +13921,24 @@ export declare class TSlideMenu extends TWidget {
      */
     get minScale(): number;
     set minScale(v: number);
+    /**
+     * 菜单项之间的间距。
+     *
+     */
+    get spacer(): number;
+    set spacer(v: number);
+    /**
+     * 菜单项的宽度(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)(空字符串则使用控件高度)。
+     *
+     */
+    get menuW(): string;
+    set menuW(v: string);
+    /**
+     * 是否动态裁剪菜单项(默认裁剪，不裁剪时，如果显示偶数项，左边会多一项)。
+     *
+     */
+    get clip(): boolean;
+    set clip(v: boolean);
 }
 /**
  * slide_view的指示器控件。
@@ -12494,6 +13960,7 @@ export declare class TSlideMenu extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/slide_view.xml)
  *
  *在c代码中使用函数slide\_indicator\_create创建指示器控件。如：
+ *
  *
  *
  *```xml
@@ -12627,6 +14094,14 @@ export declare class TSlideIndicator extends TWidget {
      */
     setIndicatedTarget(target_name: string): TRet;
     /**
+     * 设置是否启用过渡效果。
+     *
+     * @param transition 是否启用过渡效果
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setTransition(transition: boolean): TRet;
+    /**
      * 值(缺省为0)。
      *
      */
@@ -12669,21 +14144,27 @@ export declare class TSlideIndicator extends TWidget {
     get size(): number;
     set size(v: number);
     /**
-     * 锚点x坐标。
+     * 锚点x坐标。(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)
      *
      */
-    get anchorX(): number;
+    get anchorX(): string;
     /**
-     * 锚点y坐标。
+     * 锚点y坐标。(后面加上px为像素点，不加px为相对百分比坐标0.0f到1.0f)
      *
      */
-    get anchorY(): number;
+    get anchorY(): string;
     /**
      * 指示器指示的目标控件的名称。
      *
      */
     get indicatedTarget(): string;
     set indicatedTarget(v: string);
+    /**
+     * 是否启用过渡效果。
+     *
+     */
+    get transition(): boolean;
+    set transition(v: boolean);
 }
 /**
  * 滑动视图。
@@ -12709,6 +14190,7 @@ export declare class TSlideIndicator extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/slide_view.xml)
  *
  *在c代码中使用函数slide\_view\_create创建滑动视图控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -12755,7 +14237,7 @@ export declare class TSlideView extends TWidget {
     /**
      * 设置为自动播放模式。
      *
-     * @param auto_play 0表示禁止自动播放，非0表示自动播放时每一页播放的时间。
+     * @param auto_play 0表示禁止自动播放，非0表示自动播放时每一页播放的时间(毫秒)。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -12813,6 +14295,22 @@ export declare class TSlideView extends TWidget {
      */
     setLoop(loop: boolean): TRet;
     /**
+     * 设置拖拽临界值。
+     *
+     * @param drag_threshold 拖动临界值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setDragThreshold(drag_threshold: number): TRet;
+    /**
+     * 设置动画时间(毫秒)。
+     *
+     * @param animating_time 动画时间(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setAnimatingTime(animating_time: number): TRet;
+    /**
      * 删除指定序号页面。
      *
      * @param index 删除页面的序号。
@@ -12827,7 +14325,7 @@ export declare class TSlideView extends TWidget {
     get vertical(): boolean;
     set vertical(v: boolean);
     /**
-     * 自动播放。0表示禁止自动播放，非0表示自动播放时每一页播放的时间。
+     * 自动播放。0表示禁止自动播放，非0表示自动播放时每一页播放的时间(毫秒)。
      *
      */
     get autoPlay(): number;
@@ -12847,6 +14345,18 @@ export declare class TSlideView extends TWidget {
      */
     get animHint(): string;
     set animHint(v: string);
+    /**
+     * 拖动临界值。
+     *
+     */
+    get dragThreshold(): number;
+    set dragThreshold(v: number);
+    /**
+     * 动画时间（单位：毫秒）。
+     *
+     */
+    get animatingTime(): number;
+    set animatingTime(v: number);
 }
 /**
  * 开关控件。
@@ -12863,6 +14373,7 @@ export declare class TSlideView extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/switch.xml)
  *
  *在c代码中使用函数switch\_create创建开关控件。如：
+ *
  *
  *
  *> 完整示例请参考：[switch demo](
@@ -12940,6 +14451,7 @@ export declare class TSwitch extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/text_selector.xml)
  *
  *在c代码中使用函数text\_selector\_create创建文本选择器控件。如：
+ *
  *
  *
  *> 完整示例请参考：[text\_selector demo](
@@ -13038,7 +14550,7 @@ export declare class TTextSelector extends TWidget {
      *
      * @returns 返回值。
      */
-    getValue(): number;
+    getValueInt(): number;
     /**
      * 设置text_selector的值。
      *
@@ -13119,6 +14631,30 @@ export declare class TTextSelector extends TWidget {
      */
     setEnableValueAnimator(enable_value_animator: boolean): TRet;
     /**
+     * 设置绘制蒙版的变化趋势。
+     *
+     * @param mask_easing 绘制蒙版的变化趋势。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setMaskEasing(mask_easing: TEasingType): TRet;
+    /**
+     * 设置绘制蒙版的区域占比（范围0~1）。
+     *
+     * @param mask_area_scale 绘制蒙版的区域占比（范围0~1）。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setMaskAreaScale(mask_area_scale: number): TRet;
+    /**
+     * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+     *
+     * @param ellipses 是否开启缩写。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setEllipses(ellipses: boolean): TRet;
+    /**
      * 可见的选项数量(只能是1或者3或者5，缺省为5)。
      *
      */
@@ -13131,9 +14667,13 @@ export declare class TTextSelector extends TWidget {
     get selectedIndex(): number;
     set selectedIndex(v: number);
     /**
-     * 设置可选项(冒号分隔值和文本，分号分隔选项，如:1:red;2:green;3:blue)。
-     *对于数值选项，也可以指定一个范围，用『-』分隔起始值、结束值和格式。
+     * 设置可选项(英文冒号(:)分隔值和文本，英文分号(;)分隔选项，如:1:red;2:green;3:blue)。
+     *对于数值选项，也可以指定一个范围，用英文负号(-)分隔起始值、结束值和格式。
      *如："1-7-%02d"表示1到7，格式为『02d』，格式为可选，缺省为『%d』。
+     *> 如果数据本身中有英文冒号(:)、英文分号(;)和英文负号(-)。请用16进制转义。
+     *> * 英文冒号(:)写为\\x3a
+     *> * 英文冒号(;)写为\\x3b
+     *> * 英文冒号(-)写为\\x2d
      *
      */
     get options(): string;
@@ -13168,6 +14708,24 @@ export declare class TTextSelector extends TWidget {
      */
     get enableValueAnimator(): boolean;
     set enableValueAnimator(v: boolean);
+    /**
+     * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+     *
+     */
+    get ellipses(): boolean;
+    set ellipses(v: boolean);
+    /**
+     * 绘制蒙版的变化趋势。
+     *
+     */
+    get maskEasing(): TEasingType;
+    set maskEasing(v: TEasingType);
+    /**
+     * 绘制蒙版的区域占比（范围0~1）。
+     *
+     */
+    get maskAreaScale(): number;
+    set maskAreaScale(v: number);
 }
 /**
  * 模拟时钟控件。
@@ -13185,6 +14743,7 @@ export declare class TTextSelector extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/time_clock.xml)
  *
  *在c代码中使用函数time\_clock\_create创建模拟时钟控件。如：
+ *
  *
  *
  *> 完整示例请参考：[time_clock demo](
@@ -13390,6 +14949,67 @@ export declare class TTimeClock extends TWidget {
     get secondAnchorY(): string;
 }
 /**
+ * 定时器。
+ *> 主要目的是方便以拖拽的方式创建定时器，并用AWBlock编写简单的事件处理程序。
+ *在xml中使用"timer"标签创建控件。如：
+ *
+ *```xml
+ *<!-- ui -->
+ *<timer x="c" y="50" w="100" h="100" duration="1000"/>
+ *```
+ *
+ *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
+ *> 本控件默认不可见，无需指定style。
+ *
+ *```xml
+ *<!-- style -->
+ *<timer>
+ *<style name="default" font_size="32">
+ *<normal text_color="black" />
+ *</style>
+ *</timer>
+ *```
+ *
+ */
+export declare class TTimerWidget extends TWidget {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 创建timer_widget对象
+     *
+     * @param parent 父控件
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     *
+     * @returns timer_widget对象。
+     */
+    static create(parent: TWidget, x: number, y: number, w: number, h: number): TTimerWidget;
+    /**
+     * 转换为timer_widget对象(供脚本语言使用)。
+     *
+     * @param widget timer_widget对象。
+     *
+     * @returns timer_widget对象。
+     */
+    static cast(widget: TWidget): TTimerWidget;
+    /**
+     * 设置 时长(毫秒)。
+     *
+     * @param duration 时长(毫秒)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setDuration(duration: number): TRet;
+    /**
+     * 时长(毫秒)。
+     *
+     */
+    get duration(): number;
+    set duration(v: number);
+}
+/**
  * 虚拟页面(根据情况自动加载/卸载页面，并提供入场/出场动画)。
  *
  *> 虚拟页面只能作为pages的直接子控件使用。
@@ -13480,7 +15100,7 @@ export declare class TPropChangeEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转prop_change_event_t对象，主要给脚本语言使用。
+     * 把event对象转prop_change_event_t对象。
      *
      * @param event event对象。
      *
@@ -13506,7 +15126,7 @@ export declare class TProgressEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转progress_event_t对象，主要给脚本语言使用。
+     * 把event对象转progress_event_t对象。
      *
      * @param event event对象。
      *
@@ -13527,7 +15147,7 @@ export declare class TDoneEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转done_event_t对象，主要给脚本语言使用。
+     * 把event对象转done_event_t对象。
      *
      * @param event event对象。
      *
@@ -13548,7 +15168,7 @@ export declare class TErrorEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转error_event_t对象，主要给脚本语言使用。
+     * 把event对象转error_event_t对象。
      *
      * @param event event对象。
      *
@@ -13574,7 +15194,7 @@ export declare class TCmdExecEvent extends TEvent {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 把event对象转cmd_exec_event_t对象，主要给脚本语言使用。
+     * 把event对象转cmd_exec_event_t对象。
      *
      * @param event event对象。
      *
@@ -13603,6 +15223,38 @@ export declare class TCmdExecEvent extends TEvent {
     get canExec(): boolean;
 }
 /**
+ * 值变化事件。
+ *
+ */
+export declare class TValueChangeEvent extends TEvent {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 把event对象转value_change_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event对象。
+     */
+    static cast(event: TEvent): TValueChangeEvent;
+}
+/**
+ * 日志事件。
+ *
+ */
+export declare class TLogMessageEvent extends TEvent {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 把event对象转log_message_event_t对象。
+     *
+     * @param event event对象。
+     *
+     * @returns event对象。
+     */
+    static cast(event: TEvent): TLogMessageEvent;
+}
+/**
  * app_bar控件。
  *
  *一个简单的容器控件，一般在窗口的顶部，用于显示本窗口的状态和信息。
@@ -13622,6 +15274,7 @@ export declare class TCmdExecEvent extends TEvent {
  *```
  *
  *在c代码中使用函数app\_bar\_create创建app\_bar。如：
+ *
  *
  *
  *可用通过style来设置控件的显示风格，如背景颜色等。如：
@@ -13731,6 +15384,7 @@ export declare class TButtonGroup extends TWidget {
  *在c代码中使用函数button\_create创建按钮控件。如：
  *
  *
+ *
  *> 创建之后，需要用widget\_set\_text或widget\_set\_text\_utf8设置文本内容。
  *
  *> 完整示例请参考：
@@ -13784,7 +15438,7 @@ export declare class TButton extends TWidget {
      */
     setRepeat(repeat: number): TRet;
     /**
-     * 设置触发长按事件的时间。
+     * 设置触发长按事件的时间(毫秒)。
      *
      * @param long_press_time 触发长按事件的时间(毫秒)。
      *
@@ -13799,6 +15453,14 @@ export declare class TButton extends TWidget {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setEnableLongPress(enable_long_press: boolean): TRet;
+    /**
+     * 设置是否启用预览。
+     *
+     * @param enable_preview 是否启用预览。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setEnablePreview(enable_preview: boolean): TRet;
     /**
      * 重复触发EVT\_CLICK事件的时间间隔。
      *
@@ -13817,11 +15479,22 @@ export declare class TButton extends TWidget {
     get enableLongPress(): boolean;
     set enableLongPress(v: boolean);
     /**
-     * 触发长按事件的时间(ms)
+     * 是否启用预览(主要用于软键盘)。
+     *
+     */
+    get enablePreview(): boolean;
+    set enablePreview(v: boolean);
+    /**
+     * 触发长按事件的时间(毫秒)
      *
      */
     get longPressTime(): number;
     set longPressTime(v: number);
+    /**
+     * 当前是否按下。
+     *
+     */
+    get pressed(): boolean;
 }
 /**
  * 勾选按钮控件(单选/多选)。
@@ -13846,7 +15519,9 @@ export declare class TButton extends TWidget {
  *在c代码中使用函数check\_button\_create创建多选按钮控件。如：
  *
  *
+ *
  *在c代码中使用函数check\_button\_create\_radio创建单选按钮控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -13913,6 +15588,20 @@ export declare class TCheckButton extends TWidget {
      * @returns check_button对象。
      */
     static cast(widget: TWidget): TCheckButton;
+    /**
+     * 创建check button对象
+     *
+     * @param parent 父控件
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     * @param type 类型。
+     * @param radio 是否单选。
+     *
+     * @returns widget对象。
+     */
+    static createEx(parent: TWidget, x: number, y: number, w: number, h: number, type: string, radio: boolean): TCheckButton;
     /**
      * 值(勾选为TRUE，非勾选为FALSE)。
      *
@@ -13991,6 +15680,7 @@ export declare class TClipView extends TWidget {
  *[color_tile](https://github.com/zlgopen/awtk/blob/master/design/default/ui/color_picker_rgb.xml)
  *
  *在c代码中使用函数color_tile\_create创建色块控件。如：
+ *
  *
  *> 创建之后，用color\_tile\_set\_bg\_color设置背景颜色。
  *
@@ -14278,6 +15968,7 @@ export declare class TDialogTitle extends TWidget {
  *在c代码中使用函数digit\_clock\_create创建数字时钟控件。如：
  *
  *
+ *
  *> 完整示例请参考：[digit\_clock demo](
  *https://github.com/zlgopen/awtk-c-demos/blob/master/demos/digit_clock.c)
  *
@@ -14331,14 +16022,17 @@ export declare class TDigitClock extends TWidget {
      ** M 代表月(1-12)
      ** D 代表日(1-31)
      ** h 代表时(0-23)
+     ** H 代表时(1-12)
      ** m 代表分(0-59)
      ** s 代表秒(0-59)
      ** w 代表星期(0-6)
      ** W 代表星期的英文缩写(支持翻译)
+     ** T 代表时段AM/PM(支持翻译)
      ** YY 代表年(只显示末两位)
      ** MM 代表月(01-12)
      ** DD 代表日(01-31)
      ** hh 代表时(00-23)
+     ** HH 代表时(01-12)
      ** mm 代表分(00-59)
      ** ss 代表秒(00-59)
      ** MMM 代表月的英文缩写(支持翻译)
@@ -14445,6 +16139,7 @@ export declare class TDragger extends TWidget {
  *在c代码中使用函数edit\_create创建编辑器控件。如：
  *
  *
+ *
  *> 创建之后，可以用widget\_set\_text或widget\_set\_text\_utf8设置文本内容。
  *
  *> 完整示例请参考：
@@ -14520,6 +16215,15 @@ export declare class TEdit extends TWidget {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setDouble(value: any): TRet;
+    /**
+     * 设置double类型的值。
+     *
+     * @param format 格式(缺省为"%2.2lf")。
+     * @param value 值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setDoubleEx(format: string, value: any): TRet;
     /**
      * 设置为文本输入及其长度限制，不允许输入超过max个字符，少于min个字符时进入error状态。
      *
@@ -14689,6 +16393,14 @@ export declare class TEdit extends TWidget {
      */
     getSelectedText(): string;
     /**
+     * 设置输入回车后是否跳到下一个控件中。
+     *
+     * @param focus_next_when_enter 是否跳入下一个控件中。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setFocusNextWhenEnter(focus_next_when_enter: boolean): TRet;
+    /**
      * 输入提示。
      *
      */
@@ -14711,6 +16423,13 @@ export declare class TEdit extends TWidget {
      */
     get actionText(): string;
     set actionText(v: string);
+    /**
+     * fscript脚本，用输入校验，如：(len(text) 3) && (len(text) < 10)。
+     *
+     *> 用于校验输入的文本是否合法。
+     *
+     */
+    get validator(): string;
     /**
      * 自定义软键盘名称。AWTK优先查找keyboard属性设置的键盘文件名（该键盘的XML文件需要在default\raw\ui目录下存在），如果没有指定keyboard，就找input_type设置的键盘类型。如果指定为空字符串，则表示不需要软键盘。
      *
@@ -14788,6 +16507,12 @@ export declare class TEdit extends TWidget {
      */
     get cancelable(): boolean;
     set cancelable(v: boolean);
+    /**
+     * 输入回车后是否跳到下一个控件中。
+     *
+     */
+    get focusNextWhenEnter(): boolean;
+    set focusNextWhenEnter(v: boolean);
 }
 /**
  * grid_item。一个简单的容器控件，一般作为grid的子控件。
@@ -14852,31 +16577,23 @@ export declare class TGridItem extends TWidget {
     static cast(widget: TWidget): TGridItem;
 }
 /**
- * grid控件。一个简单的容器控件，用于网格排列一组控件。
- *
- *它本身不提供布局功能，仅提供具有语义的标签，让xml更具有可读性。
- *子控件的布局可用layout\_children属性指定。
- *请参考[布局参数](https://github.com/zlgopen/awtk/blob/master/docs/layout.md)。
- *
- *grid\_t是[widget\_t](widget_t.md)的子类控件，widget\_t的函数均适用于grid\_t控件。
- *
- *在xml中使用"grid"标签创建grid。如：
+ * 网格。
+ *在xml中使用"grid"标签创建控件。如：
  *
  *```xml
- *<grid x="0" y="0" w="100%" h="100%" children_layout="default(c=2,r=2,m=5,s=5)">
- *<button name="open:basic" text="Basic"/>
- *<button name="open:button" text="Buttons"/>
- *<button name="open:edit" text="Edits"/>
- *<button name="open:keyboard" text="KeyBoard"/>
- *</grid>
+ *<!-- ui -->
+ *<grid x="c" y="50" w="100" h="100"/>
  *```
  *
- *可用通过style来设置控件的显示风格，如背景颜色等。如：
+ *可用通过style来设置控件的显示风格，如字体的大小和颜色等等。如：
  *
  *```xml
- *<style name="default" border_color="#a0a0a0">
- *<normal     bg_color="#f0f0f0" />
+ *<!-- style -->
+ *<grid>
+ *<style name="default" grid_color="gray" border_color="black" odd_bg_color="#f5f5f5" even_bg_color="#eeeeee">
+ *<normal />
  *</style>
+ *</grid>
  *```
  *
  */
@@ -14892,7 +16609,7 @@ export declare class TGrid extends TWidget {
      * @param w 宽度
      * @param h 高度
      *
-     * @returns 对象。
+     * @returns grid对象。
      */
     static create(parent: TWidget, x: number, y: number, w: number, h: number): TGrid;
     /**
@@ -14903,6 +16620,60 @@ export declare class TGrid extends TWidget {
      * @returns grid对象。
      */
     static cast(widget: TWidget): TGrid;
+    /**
+     * 设置 行数。
+     *
+     * @param rows 行数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setRows(rows: number): TRet;
+    /**
+     * 设置 各列的参数。
+     *
+     * @param columns_definition 各列的参数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setColumnsDefinition(columns_definition: string): TRet;
+    /**
+     * 设置 是否显示网格。
+     *
+     * @param show_grid 是否显示网格。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setShowGrid(show_grid: boolean): TRet;
+    /**
+     * 行数。
+     *
+     */
+    get rows(): number;
+    set rows(v: number);
+    /**
+     * 各列的参数。
+     *各列的参数之间用英文的分号(;)分隔，每列参数的格式为：
+     *
+     *col(w=?,left_margin=?,right_margin=?,top_maorgin=?,bottom_margin=?)
+     *
+     ** w 为列的宽度(必须存在)。取值在(0-1]区间时，视为grid控件宽度的比例，否则为像素宽度。
+     *(如果为负数，将计算结果加上控件的宽度)
+     ** left_margin(可选，可缩写为l) 该列左边的边距。
+     ** right_margin(可选，可缩写为r) 该列右边的边距。
+     ** top_margin(可选，可缩写为t) 该列顶部的边距。
+     ** bottom_margin(可选，可缩写为b) 该列底部的边距。
+     ** margin(可选，可缩写为m) 同时指定上面4个边距。
+     ** fill_available(可选，可缩写为f) 填充剩余宽度(只有一列可以指定)。
+     *
+     */
+    get columnsDefinition(): string;
+    set columnsDefinition(v: string);
+    /**
+     * 是否显示网格。
+     *
+     */
+    get showGrid(): boolean;
+    set showGrid(v: boolean);
 }
 /**
  * 分组控件。
@@ -14950,6 +16721,14 @@ export declare class TGroupBox extends TWidget {
      */
     static create(parent: TWidget, x: number, y: number, w: number, h: number): TGroupBox;
     /**
+     * 设置选中的单选按钮的索引。
+     *
+     * @param value 选中的单选按钮的索引。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setValue(value: any): TRet;
+    /**
      * 转换为group_box对象(供脚本语言使用)。
      *
      * @param widget group_box对象。
@@ -14957,6 +16736,12 @@ export declare class TGroupBox extends TWidget {
      * @returns group_box对象。
      */
     static cast(widget: TWidget): TGroupBox;
+    /**
+     * 选中的单选按钮的索引。
+     *
+     */
+    get value(): number;
+    set value(v: number);
 }
 /**
  * 文本控件。用于显示一行或多行文本。
@@ -14977,6 +16762,7 @@ export declare class TGroupBox extends TWidget {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/label.xml)
  *
  *在c代码中使用函数label\_create创建文本控件。如：
+ *
  *
  *
  *> 创建之后，需要用widget\_set\_text或widget\_set\_text\_utf8设置文本内容。
@@ -15013,7 +16799,7 @@ export declare class TLabel extends TWidget {
      */
     static create(parent: TWidget, x: number, y: number, w: number, h: number): TLabel;
     /**
-     * 设置显示字符的个数(小余0时全部显示)。
+     * 设置显示字符的个数(小于0时全部显示)。
      *
      * @param length 最大可显示字符个数。
      *
@@ -15045,6 +16831,14 @@ export declare class TLabel extends TWidget {
      */
     setWordWrap(word_wrap: boolean): TRet;
     /**
+     * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+     *
+     * @param ellipses 是否开启缩写。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setEllipses(ellipses: boolean): TRet;
+    /**
      * 根据文本内容调节控件大小。
      *
      * @param min_w 最小宽度。
@@ -15064,7 +16858,7 @@ export declare class TLabel extends TWidget {
      */
     static cast(widget: TWidget): TLabel;
     /**
-     * 显示字符的个数(小余0时全部显示)。
+     * 显示字符的个数(小于0时全部显示)。
      *主要用于动态改变显示字符的个数，来实现类似[拨号中...]的动画效果。
      *
      */
@@ -15083,6 +16877,13 @@ export declare class TLabel extends TWidget {
      */
     get wordWrap(): boolean;
     set wordWrap(v: boolean);
+    /**
+     * 是否开启缩写，开启后，当文字长度操作控件长度后，自动变为...
+     *> 和换行是冲突的，换行后，该属性不生效
+     *
+     */
+    get ellipses(): boolean;
+    set ellipses(v: boolean);
     /**
      * 当auto_adjust_size为TRUE时，用于控制控件的最大宽度，超出该宽度后才自动换行。
      *>为0表示忽略该参数。小于0时取父控件宽度加上max_w。
@@ -15149,6 +16950,14 @@ export declare class TPages extends TWidget {
      */
     setActive(index: number): TRet;
     /**
+     * 设置切换界面时是否自动聚焦。
+     *
+     * @param auto_focused 切换界面时是否自动聚焦。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setAutoFocused(auto_focused: boolean): TRet;
+    /**
      * 通过页面的名字设置当前的Page。
      *
      * @param name 当前Page的名字。
@@ -15157,11 +16966,17 @@ export declare class TPages extends TWidget {
      */
     setActiveByName(name: string): TRet;
     /**
-     * 当前活跃的page。
+     * 当前活跃的page。(需要用到 MVVM 数据绑定请设置 value 属性)
      *
      */
     get active(): number;
     set active(v: number);
+    /**
+     * 选择切换界面时是否自动聚焦上一次保存的焦点。（默认为TRUE）
+     *
+     */
+    get autoFocused(): boolean;
+    set autoFocused(v: boolean);
 }
 /**
  * 进度条控件。
@@ -15181,6 +16996,7 @@ export declare class TPages extends TWidget {
  *[basic demo](https://github.com/zlgopen/awtk/blob/master/design/default/ui/basic.xml)
  *
  *在c代码中使用函数progress\_bar\_create创建进度条控件。如：
+ *
  *
  *
  *> 完整示例请参考：
@@ -15388,6 +17204,7 @@ export declare class TRow extends TWidget {
  *在c代码中使用函数slider\_create创建滑块控件。如：
  *
  *
+ *
  *> 完整示例请参考：
  *[slider demo](https://github.com/zlgopen/awtk-c-demos/blob/master/demos/slider.c)
  *
@@ -15454,6 +17271,14 @@ export declare class TSlider extends TWidget {
      */
     setMax(max: number): TRet;
     /**
+     * 设置前景色的线帽形状。（默认为跟随风格的圆角设置，但是在没有设置圆角的时候无法使用 "round" 来设置圆角）
+     *
+     * @param line_cap 前景色的线帽形状，取值为：butt|round
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setLineCap(line_cap: string): TRet;
+    /**
      * 设置滑块的拖动的最小单位。
      *
      * @param step 拖动的最小单位。
@@ -15502,22 +17327,28 @@ export declare class TSlider extends TWidget {
     get step(): number;
     set step(v: number);
     /**
-     * 滑块的是否为垂直方向。
-     *
-     */
-    get vertical(): boolean;
-    set vertical(v: boolean);
-    /**
      * 轴的宽度或高度（单位：像素），为0表示为控件的宽度或高度的一半，缺省为0。
      *
      */
     get barSize(): number;
     set barSize(v: number);
     /**
-     * 滑块的宽度或高度（单位：像素），缺省为10。
+     * 滑块的宽度或高度（单位：像素），缺省为 bar_size * 1.5。
      *
      */
     get draggerSize(): number;
+    /**
+     * 前景色的线帽形状。（取值：butt|round，默认为跟随风格的圆角设置, 但是在没有设置圆角的时候无法使用 "round" 来设置圆角）
+     *
+     */
+    get lineCap(): string;
+    set lineCap(v: string);
+    /**
+     * 滑块的是否为垂直方向。
+     *
+     */
+    get vertical(): boolean;
+    set vertical(v: boolean);
     /**
      * 滑块的宽度或高度是否与icon适应，缺省为true。
      *
@@ -15919,10 +17750,13 @@ export declare class TView extends TWidget {
  *打开非模态对话框时，其用法与普通窗口一样。打开非模态对话框时，还需要调用dialog\_modal。
  *
  *
+ *
  *关闭模态对话框用dialog\_quit
  *
  *
+ *
  *关闭非模态对话框用window\_close。
+ *
  *
  *
  *> 更多用法请参考：
@@ -16018,9 +17852,10 @@ export declare class TDialog extends TWindowBase {
      * 模态显示对话框。
      *dialog_modal返回后，dialog对象将在下一个idle函数中回收。
      *也就是在dialog_modal调用完成后仍然可以访问dialog中控件，直到本次事件结束。
+     *调用该函数会使线程进入阻塞状态，需要调用dialog_quit来解除阻塞。
      *
      *
-     * @returns 返回退出码。
+     * @returns 返回退出码，值为dialog_quit函数中传入的参数。
      */
     modal(): TDialogQuitCode;
     /**
@@ -16103,7 +17938,7 @@ export declare class TDialog extends TWindowBase {
  * 原生窗口。
  *
  */
-export declare class TNativeWindow extends TObject {
+export declare class TNativeWindow extends TTkObject {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
@@ -16188,6 +18023,14 @@ export declare class TNativeWindow extends TObject {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setCursor(name: string, img: TBitmap): TRet;
+    /**
+     * 设置程序窗口的名称。
+     *
+     * @param app_name 程序窗口的名称。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setTitle(app_name: string): TRet;
 }
 /**
  * 窗口。
@@ -16208,6 +18051,7 @@ export declare class TNativeWindow extends TObject {
  *更多用法请参考：[window.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/)
  *
  *在c代码中使用函数window\_create创建窗口。如：
+ *
  *
  *
  *> 无需指定父控件、坐标和大小，使用0即可。
@@ -16322,7 +18166,7 @@ export declare class TWindow extends TWindowBase {
  * GIF图片控件。
  *
  *> 注意：GIF图片的尺寸大于控件大小时会自动缩小图片，但一般的嵌入式系统的硬件加速都不支持图片缩放，
- *所以缩放图片会导致性能明显下降。如果性能不满意时，请确认一下GIF图片的尺寸是否小余控件大小。
+ *所以缩放图片会导致性能明显下降。如果性能不满意时，请确认一下GIF图片的尺寸是否小于控件大小。
  *
  *gif\_image\_t是[image\_base\_t](image_base_t.md)的子类控件，image\_base\_t的函数均适用于gif\_image\_t控件。
  *
@@ -16337,6 +18181,7 @@ export declare class TWindow extends TWindowBase {
  *image](https://github.com/zlgopen/awtk/blob/master/design/default/ui/gif_image.xml)
  *
  *在c代码中使用函数gif\_image\_create创建GIF图片控件。如：
+ *
  *
  *
  *> 创建之后:
@@ -16383,7 +18228,7 @@ export declare class TGifImage extends TImageBase {
      */
     play(): TRet;
     /**
-     * 停止(并重置index为-1)。
+     * 停止(并重置index为0)。
      *
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
@@ -16397,6 +18242,14 @@ export declare class TGifImage extends TImageBase {
      */
     pause(): TRet;
     /**
+     * 设置循环播放次数。
+     *
+     * @param loop 循环播放次数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setLoop(loop: number): TRet;
+    /**
      * 转换为gif_image对象(供脚本语言使用)。
      *
      * @param widget gif_image对象。
@@ -16404,6 +18257,12 @@ export declare class TGifImage extends TImageBase {
      * @returns gif_image对象。
      */
     static cast(widget: TWidget): TGifImage;
+    /**
+     * 循环播放的次数。
+     *
+     */
+    get loop(): number;
+    set loop(v: number);
 }
 /**
  * 软键盘。
@@ -16553,6 +18412,7 @@ export declare class TKeyboard extends TWindowBase {
  *在c代码中使用函数mutable\_image\_create创建mutable图片控件。如：
  *
  *
+ *
  *> 创建之后:
  *>
  *> 需要用mutable\_image\_set\_create\_image设置创建图片的回调函数。
@@ -16581,6 +18441,78 @@ export declare class TMutableImage extends TImageBase {
     static create(parent: TWidget, x: number, y: number, w: number, h: number): TMutableImage;
 }
 /**
+ * list_item_seperator。
+ *用来模拟实现风琴控件(accordion)和属性页分组控件。
+ *> 当前控件被点击时，显示/隐藏当前控件到下一个分隔符控件之间的控件。
+ *list_item_seperator\_t是[widget\_t](widget_t.md)的子类控件，widget\_t的函数均适用于list_item_seperator\_t控件。
+ *
+ *在xml中使用"list_item_seperator"标签创建list_item_seperator。如：
+ *
+ *```xml
+ *<list_item_seperator radio="true" text="Group2" h="32"/>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="ASCII"/>
+ *<edit w="70%" text="" tips="ascii" input_type="ascii" focused="true" action_text="next"/>
+ *</list_item>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="Int"/>
+ *<edit w="70%" text="" tips="int" input_type="int"/>
+ *</list_item>
+ *
+ *<list_item_seperator radio="true" text="Group3" h="32"/>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="Float"/>
+ *<edit w="70%" text="" tips="float" input_type="float"/>
+ *</list_item>
+ *<list_item style="empty" children_layout="default(r=1,c=0,ym=1)">
+ *<label w="30%" text="UFloat"/>
+ *<edit w="70%" text="" tips="unsigned float" input_type="ufloat"/>
+ *</list_item>
+ *```
+ *
+ *可用通过style来设置控件的显示风格，如背景颜色等。如：
+ *
+ *```xml
+ *<list_item_seperator text_color="black" bg_color="#e0e0e0">
+ *<style name="default" icon_at="left">
+ *<normal  icon="collapse" />
+ *<pressed icon="collapse" />
+ *<over    icon="collapse" text_color="green"/>
+ *<focused icon="collapse" text_color="green"/>
+ *<normal_of_checked icon="expand" text_color="blue"/>
+ *<pressed_of_checked icon="expand" text_color="blue"/>
+ *<over_of_checked icon="expand" text_color="green"/>
+ *<focused_of_checked icon="expand" text_color="green"/>
+ *</style>
+ *</list_item_seperator>
+ *```
+ *
+ */
+export declare class TListItemSeperator extends TCheckButton {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 创建list_item_seperator对象
+     *
+     * @param parent 父控件
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     *
+     * @returns 对象。
+     */
+    static create(parent: TWidget, x: number, y: number, w: number, h: number): TListItemSeperator;
+    /**
+     * 转换为list_item_seperator对象(供脚本语言使用)。
+     *
+     * @param widget list_item_seperator对象。
+     *
+     * @returns list_item_seperator对象。
+     */
+    static cast(widget: TWidget): TListItemSeperator;
+}
+/**
  * SVG图片控件。
  *
  *svg\_image\_t是[image\_base\_t](image_base_t.md)的子类控件，image\_base\_t的函数均适用于svg\_image\_t控件。
@@ -16595,6 +18527,7 @@ export declare class TMutableImage extends TImageBase {
  *https://github.com/zlgopen/awtk/blob/master/design/default/ui/svg_image.xml)
  *
  *在c代码中使用函数svg\_image\_create创建SVG图片控件。如：
+ *
  *
  *
  *> 创建之后: 需要用widget\_set\_image设置图片名称。
@@ -16642,6 +18575,24 @@ export declare class TSvgImage extends TImageBase {
      */
     setImage(name: string): TRet;
     /**
+     * 控件设置是否开启离线缓存渲染模式。
+     *
+     *> 在确保svg图片不经常变化大小及状态的情况下，开启离线缓存渲染能够减少解析bsvg的开销，提高效率。
+     *
+     * @param is_cache_mode 是否开启缓存模式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setCacheMode(is_cache_mode: boolean): TRet;
+    /**
+     * 控件设置svg图片绘制模式。
+     *
+     * @param draw_type 绘制模式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setDrawType(draw_type: TImageDrawType): TRet;
+    /**
      * 转换为svg_image对象(供脚本语言使用)。
      *
      * @param widget svg_image对象。
@@ -16649,12 +18600,23 @@ export declare class TSvgImage extends TImageBase {
      * @returns svg_image对象。
      */
     static cast(widget: TWidget): TSvgImage;
+    /**
+     * 离线缓存渲染模式。
+     *
+     */
+    get isCacheMode(): boolean;
+    /**
+     * svg图片的绘制方式(支持旋转缩放, 目前仅支持scale、scale_auto模式)。
+     *
+     */
+    get drawType(): TImageDrawType;
+    set drawType(v: TImageDrawType);
 }
 /**
  * 单个idle的信息。
  *
  */
-export declare class TIdleInfo extends TObject {
+export declare class TIdleInfo extends TTkObject {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
@@ -16692,7 +18654,7 @@ export declare class TIdleInfo extends TObject {
  ** index 用于访问属性，-1可以用来追加新元素。
  *
  */
-export declare class TObjectArray extends TObject {
+export declare class TObjectArray extends TTkObject {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
@@ -16758,6 +18720,14 @@ export declare class TObjectArray extends TObject {
      */
     remove(index: number): TRet;
     /**
+     * 删除指定的值。
+     *
+     * @param v 值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    removeValue(v: TValue): TRet;
+    /**
      * 在指定位置删除一个元素，并返回它。
      *
      * @param index 位置。
@@ -16775,10 +18745,14 @@ export declare class TObjectArray extends TObject {
 /**
  * 对象接口的缺省实现。
  *
- *内部使用有序数组保存所有属性，可以快速查找指定名称的属性。
+ *通用当作 map 数据结构使用，内部用有序数组保存所有属性，因此可以快速查找指定名称的属性。
+ *
+ *示例
+ *
+ *
  *
  */
-export declare class TObjectDefault extends TObject {
+export declare class TObjectDefault extends TTkObject {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
@@ -16810,12 +18784,20 @@ export declare class TObjectDefault extends TObject {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     clearProps(): TRet;
+    /**
+     * 设置属性值时不改变属性的类型。
+     *
+     * @param keep_prop_type 不改变属性的类型。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setKeepPropType(keep_prop_type: boolean): TRet;
 }
 /**
  * 单个定时器的信息。
  *
  */
-export declare class TTimerInfo extends TObject {
+export declare class TTimerInfo extends TTkObject {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
@@ -16866,6 +18848,7 @@ export declare class TTimerInfo extends TObject {
  *[window.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/calibration_win.xml)
  *
  *在c代码中使用函数calibration\_win\_create创建窗口。如：
+ *
  *
  *
  *通过calibration\_win\_set\_on\_done注册回调函数，用于保存校准数据。
@@ -16955,6 +18938,7 @@ export declare class TCalibrationWin extends TWindowBase {
  *在c代码中使用函数combo\_box\_create创建下拉列表控件。如：
  *
  *
+ *
  *创建之后：
  *
  ** 用combo\_box\_set\_options设置可选项目。
@@ -16996,6 +18980,22 @@ export declare class TCalibrationWin extends TWindowBase {
  *</style>
  *</popup>
  *```
+ ** 3.combobox的下拉框中的列表项的样式，可以设置combo_box_item的style来改变。
+ *
+ *```xml
+ *<combo_box_item>
+ *<style name="default" icon_at="left" text_color="black" bg_color="#f0f0f0">
+ *<normal  icon="empty"/>
+ *<focused icon="empty" bg_color="#1296db" text_color="gold" />
+ *<pressed icon="empty" bg_color="#1296db" text_color="white" />
+ *<over    icon="empty" bg_color="#1296db" text_color="white" />
+ *<normal_of_checked  icon="check"/>
+ *<focused_of_checked  icon="check" bg_color="#1296db" text_color="gold"/>
+ *<pressed_of_checked icon="check" bg_color="#1296db" text_color="white" />
+ *<over_of_checked    icon="check" bg_color="#1296db" text_color="white" />
+ *</style>
+ *</combo_box_item>
+ *```
  *
  *> 更多用法请参考：[theme
  *default](https://github.com/zlgopen/awtk/blob/master/design/default/styles/default.xml#L422)
@@ -17033,6 +19033,14 @@ export declare class TComboBox extends TEdit {
      */
     setOpenWindow(open_window: string): TRet;
     /**
+     * 设置弹出窗口的主题。
+     *
+     * @param theme_of_popup 弹出的窗口主题。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setThemeOfPopup(theme_of_popup: string): TRet;
+    /**
      * 重置所有选项。
      *
      *
@@ -17054,6 +19062,14 @@ export declare class TComboBox extends TEdit {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setSelectedIndex(index: number): TRet;
+    /**
+     * 根据文本设置当前选中的选项。
+     *
+     * @param text 原生(非翻译的文本)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setSelectedIndexByText(text: string): TRet;
     /**
      * 设置是否本地化(翻译)选项。
      *
@@ -17088,13 +19104,21 @@ export declare class TComboBox extends TEdit {
      */
     appendOption(value: any, text: string): TRet;
     /**
-     * 删除选项。
+     * 删除第一个值为value的选项。
      *
-     * @param value 值。
+     * @param value 选项的值。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     removeOption(value: any): TRet;
+    /**
+     * 删除指定序数的选项。
+     *
+     * @param index 选项的序数(0表示第一个)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    removeOptionByIndex(index: number): TRet;
     /**
      * 设置选项。
      *
@@ -17109,20 +19133,41 @@ export declare class TComboBox extends TEdit {
      *
      * @returns 返回值。
      */
-    getValue(): number;
+    getValueInt(): number;
     /**
-     * 获取combo_box的文本。
+     * 检查选项中是否存在指定的文本。
+     *
+     * @param text option text
+     *
+     * @returns 返回TRUE表示存在，否则表示不存在。
+     */
+    hasOptionText(text: string): boolean;
+    /**
+     * 获取combo_box的文本(可能是翻译后的文本)。
      *
      *
      * @returns 返回文本。
      */
     getTextValue(): string;
     /**
+     * 获取combo_box当前选中项目的文本(原生非翻译的文本)。
+     *
+     *
+     * @returns 返回文本。
+     */
+    getTextOfSelected(): string;
+    /**
      * 为点击按钮时，要打开窗口的名称。
      *
      */
     get openWindow(): string;
     set openWindow(v: string);
+    /**
+     * 弹出窗口的主题(对应的style文件必须存在)，方便为不同combo box的弹出窗口指定不同的样式。
+     *
+     */
+    get themeOfPopup(): string;
+    set themeOfPopup(v: string);
     /**
      * 当前选中的选项。
      *
@@ -17143,6 +19188,9 @@ export declare class TComboBox extends TEdit {
     set localizeOptions(v: boolean);
     /**
      * 设置可选项(冒号分隔值和文本，分号分隔选项，如:1:red;2:green;3:blue)。
+     *> 如果数据本身中有英文冒号(:)和英文分号(;)，请用16进制转义。
+     *> * 英文冒号(:)写为\\x3a
+     *> * 英文冒号(;)写为\\x3b
      *
      */
     get options(): string;
@@ -17179,6 +19227,7 @@ export declare class TComboBox extends TEdit {
  *[image.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/images.xml)
  *
  *在c代码中使用函数image\_create创建图片控件。如：
+ *
  *
  *
  *> 创建之后:
@@ -17226,6 +19275,18 @@ export declare class TImage extends TImageBase {
      */
     static create(parent: TWidget, x: number, y: number, w: number, h: number): TImage;
     /**
+     * 创建icon对象
+     *
+     * @param parent 父控件
+     * @param x x坐标
+     * @param y y坐标
+     * @param w 宽度
+     * @param h 高度
+     *
+     * @returns 对象。
+     */
+    static iconCreate(parent: TWidget, x: number, y: number, w: number, h: number): TImage;
+    /**
      * 设置图片的绘制方式。
      *
      * @param draw_type 绘制方式(仅在没有旋转和缩放时生效)。
@@ -17269,6 +19330,7 @@ export declare class TImage extends TImageBase {
  *更多用法请参考：[overlay.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/)
  *
  *在c代码中使用函数overlay\_create创建窗口。如：
+ *
  *
  *
  *> 完整示例请参考：[overlay
@@ -17318,6 +19380,14 @@ export declare class TOverlay extends TWindowBase {
      */
     setAlwaysOnTop(always_on_top: boolean): TRet;
     /**
+     * 设置是否非模态窗口模式。
+     *
+     * @param modeless 是否非模态窗口模式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setModeless(modeless: boolean): TRet;
+    /**
      * 转换为overlay对象(供脚本语言使用)。
      *
      * @param widget overlay对象。
@@ -17341,6 +19411,14 @@ export declare class TOverlay extends TWindowBase {
      */
     get alwaysOnTop(): boolean;
     set alwaysOnTop(v: boolean);
+    /**
+     * 非模态窗口。
+     *
+     *缺省不启用。
+     *
+     */
+    get modeless(): boolean;
+    set modeless(v: boolean);
 }
 /**
  * 弹出窗口。
@@ -17367,6 +19445,7 @@ export declare class TOverlay extends TWindowBase {
  *更多用法请参考：[popup](https://github.com/zlgopen/awtk/blob/master/design/default/ui/)
  *
  *在c代码中使用函数popup\_create创建弹出窗口。如：
+ *
  *
  *
  *> 创建之后，和使用普通窗口是一样的。
@@ -17427,9 +19506,9 @@ export declare class TPopup extends TWindowBase {
      */
     setCloseWhenClickOutside(close_when_click_outside: boolean): TRet;
     /**
-     * 设置超时关闭时间(ms)。
+     * 设置超时关闭时间(毫秒)。
      *
-     * @param close_when_timeout 大于0时，为定时器时间(ms)，超时关闭窗口。
+     * @param close_when_timeout 大于0时，为定时器时间(毫秒)，超时关闭窗口。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -17447,7 +19526,7 @@ export declare class TPopup extends TWindowBase {
     get closeWhenClickOutside(): boolean;
     set closeWhenClickOutside(v: boolean);
     /**
-     * 超时后自动关闭窗口(ms)。
+     * 超时后自动关闭窗口(毫秒)。
      *
      */
     get closeWhenTimeout(): number;
@@ -17473,6 +19552,7 @@ export declare class TPopup extends TWindowBase {
  *更多用法请参考：[spin_box.xml](https://github.com/zlgopen/awtk/blob/master/design/default/ui/spinbox.xml)
  *
  *在c代码中使用函数spin_box\_create创建spinbox控件。如：
+ *
  *
  *
  *> 创建之后:
@@ -17523,6 +19603,52 @@ export declare class TSpinBox extends TEdit {
      * @returns spin_box对象。
      */
     static cast(widget: TWidget): TSpinBox;
+    /**
+     * 设置是否启用易点击模式。
+     *
+     * @param easy_touch_mode 易点击模式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setEasyTouchMode(easy_touch_mode: boolean): TRet;
+    /**
+     * 设置按钮位置样式。
+     *
+     * @param button_position 按钮位置样式。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setButtonPosition(button_position: string): TRet;
+    /**
+     * 设置连击的时间间隔。
+     *备注：时间间隔越低，速度越快。
+     *
+     * @param repeat 连击的时间间隔。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    spinSetRepeat(repeat: number): TRet;
+    /**
+     * 是否启用易点击模式(在电容屏设备上建议启用)。
+     *> 在该模式下：
+     *> * 1.当高度大于font size的3倍时，inc按钮在顶部(style名为spinbox_top)，dec按钮在底部(style名为spinbox_bottom)。
+     *> * 2.当高度正常时，dec按钮在左边(style名为spinbox_left)，inc按钮在右边(style名为spinbox_right)。
+     *> 不在该模式下：
+     *> inc按钮在右上角(style名为spinbox_up)，dec按钮在右下角(style名为spinbox_down)。
+     *
+     */
+    get easyTouchMode(): boolean;
+    set easyTouchMode(v: boolean);
+    /**
+     * 按钮位置样式选择，优先级高于easy_touch_mode，各模式对应样式如下,默认为none。
+     *none：按照easy_touch_mode选择样式
+     *default：inc按钮在右上角，dec按钮在右下角。
+     *left_right：dec按钮在左边，inc按钮在右边。
+     *top_bottom：inc按钮在顶部，dec按钮在底部。
+     *
+     */
+    get buttonPosition(): string;
+    set buttonPosition(v: string);
 }
 /**
  * system\_bar窗口。
@@ -17555,6 +19681,7 @@ export declare class TSpinBox extends TEdit {
  *[system_bar](https://github.com/zlgopen/awtk/blob/master/design/default/ui/system_bar.xml)
  *
  *在c代码中使用函数system\_bar\_create创建system\_bar窗口。如：
+ *
  *
  *
  *> 创建之后，和使用普通窗口是一样的。
@@ -17598,7 +19725,10 @@ export declare class TSystemBar extends TWindowBase {
     static cast(widget: TWidget): TSystemBar;
 }
 /**
- * 可滚动的combo_box控件。
+ * 扩展combo_box控件。支持以下功能：
+ ** 支持滚动。项目比较多时显示滚动条。
+ ** 自动调整弹出窗口的宽度。根据最长文本自动调整弹出窗口的宽度。
+ ** 支持分组显示。如果item的文本以"seperator."开头，视为一个分组开始，其后的文本为分组的标题。比如: "seperator.basic"，会创建一个basic为标题的分组。
  *
  */
 export declare class TComboBoxEx extends TComboBox {
