@@ -1,0 +1,7 @@
+{
+  "name":"button_xml",
+  "version":"1.0",
+  "app_type":"js",
+  "assets" : "./design",
+  "sources":["./button.js"]
+}
