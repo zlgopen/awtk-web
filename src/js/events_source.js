@@ -227,8 +227,6 @@ EventsSource.prototype.onDoubleClickGlobal = function (event) {
 	if (!this.isRightMouseEvent(e)) {
 		//this.onDoubleClick(this.getAbsPoint(e), e);
 	}
-
-	return this.cancelDefaultAction(e);
 }
 
 EventsSource.prototype.onMouseDownGlobal = function (event) {
@@ -240,8 +238,6 @@ EventsSource.prototype.onMouseDownGlobal = function (event) {
 	if (!this.isRightMouseEvent(e)) {
 		this.onPointerDown(this.getAbsPoint(e), e);
 	}
-
-	return this.cancelDefaultAction(e);
 }
 
 EventsSource.prototype.onMouseMoveGlobal = function (event) {
@@ -251,8 +247,6 @@ EventsSource.prototype.onMouseMoveGlobal = function (event) {
 	}
 
 	this.onPointerMove(this.getAbsPoint(e), e);
-
-	return this.cancelDefaultAction(e);
 }
 
 EventsSource.prototype.onMouseUpGlobal = function (event) {
@@ -266,8 +260,6 @@ EventsSource.prototype.onMouseUpGlobal = function (event) {
 	} else {
 		this.onPointerUp(this.getAbsPoint(e), e);
 	}
-
-	return this.cancelDefaultAction(e);
 }
 
 EventsSource.prototype.getTouchList = function (event) {
