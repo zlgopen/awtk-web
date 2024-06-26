@@ -45,9 +45,17 @@ EventsSource.prototype.shouldIgnoreKey = function (event) {
 	return false;
 }
 
+function keyToLower(code) {
+  if (code >= 65 && code <= 90) {
+    return code + 32;
+  } else {
+    return code;
+  }
+}
+
 EventsSource.prototype.onKeyDownGlobal = function (event) {
 	var e = event || window.event;
-	var code = e.keyCode;
+	var code = keyToLower(e.keyCode);
 
 	if (this.shouldIgnoreKey(e)) {
 		return true;
@@ -59,7 +67,8 @@ EventsSource.prototype.onKeyDownGlobal = function (event) {
 
 EventsSource.prototype.onKeyUpGlobal = function (event) {
 	var e = event || window.event;
-	var code = e.keyCode;
+	var code = keyToLower(e.keyCode);
+
 	if (this.shouldIgnoreKey(e)) {
 		return true;
 	} else {
