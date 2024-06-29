@@ -22,6 +22,10 @@ EventsSource.prototype.targetIsEditor = function (e) {
 	var tag = e.srcElement ? e.srcElement : e.target;
 	var name = tag.localName ? tag.localName : tag.tagName;
 
+  if (!name) {
+    return false;
+  }
+
 	name = name.toLowerCase();
 	if (name != "body" && name != "canvas") {
 		return true;

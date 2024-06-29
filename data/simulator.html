@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ZLG AWTK 演示</title>
+  <script type="text/javascript" src="js/awtk_web.js"></script>
+  <script>
+    TBrowser.init();
+
+    function isPointInRect(x, y, rx, ry, rw, rh) {
+      return x >= rx && x <= rx + rw && y >= ry && y <= ry + rh;
+    }
+
+    function sendKeyEvent(code, name) {
+      var iframe = document.getElementById('app');
+      var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+      // 创建一个新的键盘事件
+      var event = new KeyboardEvent('keydown', {
+        key: name,
+        keyCode: code,
+        code: name,
+        which: code,
+        bubbles: true
+      });
+
+      // 将事件分派到iframe的文档中
+      iframeDocument.dispatchEvent(event);
+
+      // 创建一个新的键盘事件
+      var event = new KeyboardEvent('keyup', {
+        key: name,
+        keyCode: code,
+        code: name,
+        which: code,
+        bubbles: true
+      });
+
+      iframeDocument.dispatchEvent(event);
+    }
+
+    function handleSimulatorClicked(event) {
+      var localX = event.offsetX;
+      var localY = event.offsetY;
+
+      if (isPointInRect(localX, localY, 418, 684, 32, 32)) {
+        sendKeyEvent(37, 'Left');
+      } else if (isPointInRect(localX, localY, 446, 656, 32, 32)) {
+        sendKeyEvent(38, 'Up');
+      } else if (isPointInRect(localX, localY, 446, 716, 32, 32)) {
+        sendKeyEvent(40, 'Down');
+      } else if (isPointInRect(localX, localY, 480, 684, 32, 32)) {
+        sendKeyEvent(39, 'Right');
+      } else if (isPointInRect(localX, localY, 450, 684, 32, 32)) {
+        sendKeyEvent(13, 'Enter');
+      }
+    }
+
+    window.onload = function () {
+      const target = 'app.html' + window.location.search;
+
+      if (TBrowser.isMobile()) {
+        window.location.href = target
+      } else {
+        let iframe = document.getElementById('app');
+        iframe.width = TBrowser.getParam('width', 800);
+        iframe.height = TBrowser.getParam('height', 600);
+        iframe.src = target;
+
+        var simulator = document.getElementById('simulator');
+        simulator.addEventListener('click', handleSimulatorClicked);
+      }
+    }
+  </script>
+
+  <style>
+    .simulator {
+      position: relative;
+      width: 900px;
+      height: 760px;
+      background-color: lightgray;
+      background-image: url('simulator_bg.png');
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .awtk_app {
+      position: relative;
+      top: 37px;
+      width: 800px;
+      height: 600px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+    <div id="simulator" class="simulator">
+      <iframe id="app" class="awtk_app"></iframe>
+    </div>
+  </center>
+
+</html>
