@@ -12,8 +12,8 @@
     function isPointInRect(x, y, rx, ry, rw, rh) {
       return x >= rx && x <= rx + rw && y >= ry && y <= ry + rh;
     }
-
-    function sendKeyEvent(code, name) {
+    
+    function sendKeyDownEvent(code, name) {
       var iframe = document.getElementById('app');
       var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
 
@@ -28,6 +28,11 @@
 
       // 将事件分派到iframe的文档中
       iframeDocument.dispatchEvent(event);
+    }
+
+    function sendKeyUpEvent(code, name) {
+      var iframe = document.getElementById('app');
+      var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
 
       // 创建一个新的键盘事件
       var event = new KeyboardEvent('keyup', {
@@ -39,6 +44,11 @@
       });
 
       iframeDocument.dispatchEvent(event);
+    }
+    
+    function sendKeyEvent(code, name) {
+      sendKeyDownEvent(code, name);
+      sendKeyUpEvent(code, name);
     }
 
     // 确保在文档加载完毕后绑定事件监听器
@@ -71,8 +81,12 @@
       });
       
       // 为回车按钮绑定点击事件
-      buttonEnter.addEventListener('click', function() {
-        sendKeyEvent(13, 'Enter');
+      buttonEnter.addEventListener('mousedown', function() {
+        sendKeyDownEvent(13, 'Enter');
+      });
+      // 为回车按钮绑定点击事件
+      buttonEnter.addEventListener('mouseup', function() {
+        sendKeyUpEvent(13, 'Enter');
       });
     });
 
