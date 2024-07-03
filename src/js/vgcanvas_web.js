@@ -331,7 +331,9 @@ VGCanvas.setTextBaseline = function (value) {
 
 VGCanvas.fillText = function (text, x, y, max_width) {
   let str = pointerToString(text);
-  VGCanvas.ctx.fillText(str, x, y, max_width);
+  let yy = y + (TBrowser.config.fontOffset || 0);
+
+  VGCanvas.ctx.fillText(str, x, yy, max_width);
 
   return true;
 }

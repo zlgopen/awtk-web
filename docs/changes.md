@@ -1,3 +1,7 @@
+* 2024/07/3
+  * 增加参数 fontOffset
+  * 完善 simulator.html
+
 * 2024/06/26
   * 字母按键browser默认发的大写字母，转换为小写字母。
 

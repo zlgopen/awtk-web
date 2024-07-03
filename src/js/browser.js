@@ -253,6 +253,7 @@ TBrowser.init = function (rootUri, nonce) {
   TBrowser.config.nowebgl = TBrowser.getParam('nowebgl', TBrowser.config.nowebgl);
   TBrowser.config.fontScale = TBrowser.getParam('fontScale', TBrowser.config.fontScale || 1);
   TBrowser.config.defaultFont = TBrowser.getParam('defaultFont', TBrowser.config.defaultFont || "sans");
+  TBrowser.config.fontOffset = parseInt(TBrowser.getParam('fontOffset', TBrowser.config.fontOffset || 0));
 
   if (!TBrowser.supportWebGL()) {
     TBrowser.getActiveContext = function () {
