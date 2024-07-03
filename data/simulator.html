@@ -41,22 +41,40 @@
       iframeDocument.dispatchEvent(event);
     }
 
-    function handleSimulatorClicked(event) {
-      var localX = event.offsetX;
-      var localY = event.offsetY;
-
-      if (isPointInRect(localX, localY, 418, 684, 32, 32)) {
+    // 确保在文档加载完毕后绑定事件监听器
+    document.addEventListener('DOMContentLoaded', function() {
+      // 获取各个按钮元素
+      var buttonLeft = document.getElementById('buttonLeft');
+      var buttonUp = document.getElementById('buttonUp');
+      var buttonDown = document.getElementById('buttonDown');
+      var buttonRight = document.getElementById('buttonRight');
+      var buttonEnter = document.getElementById('buttonEnter');
+      
+      // 为左按钮绑定点击事件
+      buttonLeft.addEventListener('click', function() {
         sendKeyEvent(37, 'Left');
-      } else if (isPointInRect(localX, localY, 446, 656, 32, 32)) {
+      });
+      
+      // 为上按钮绑定点击事件
+      buttonUp.addEventListener('click', function() {
         sendKeyEvent(38, 'Up');
-      } else if (isPointInRect(localX, localY, 446, 716, 32, 32)) {
+      });
+      
+      // 为下按钮绑定点击事件
+      buttonDown.addEventListener('click', function() {
         sendKeyEvent(40, 'Down');
-      } else if (isPointInRect(localX, localY, 480, 684, 32, 32)) {
+      });
+      
+      // 为右按钮绑定点击事件
+      buttonRight.addEventListener('click', function() {
         sendKeyEvent(39, 'Right');
-      } else if (isPointInRect(localX, localY, 450, 684, 32, 32)) {
+      });
+      
+      // 为回车按钮绑定点击事件
+      buttonEnter.addEventListener('click', function() {
         sendKeyEvent(13, 'Enter');
-      }
-    }
+      });
+    });
 
     window.onload = function () {
       const target = 'app.html' + window.location.search;
@@ -84,6 +102,10 @@
       background-image: url('simulator_bg.png');
       background-position: center;
       background-repeat: no-repeat;
+      -moz-user-select: none; /*火狐*//*选中文字时避免出现蓝色背景*/
+      -webkit-user-select: none; /*webkit浏览器*//*选中文字时避免出现蓝色背景*/
+      -ms-user-select: none; /*IE10*//*选中文字时避免出现蓝色背景*/
+      user-select: none;/*选中文字时避免出现蓝色背景*/
     }
 
     .awtk_app {
@@ -93,14 +115,70 @@
       height: 600px;
       background-color: skyblue;
     }
+      
+    /* 在CSS中设置按钮样式 */
+    .button {
+      position: absolute;
+      border: none;
+      background-color: transparent;
+      cursor: pointer; /* 将鼠标样式设置为指针，表示可点击 */
+    }
+    
+    .button-left {
+    left: 418px;
+    top: 684px;
+    width: 32px;
+    height: 32px;
+    }
+    
+    .button-up {
+    left: 446px;
+    top: 656px;
+    width: 32px;
+    height: 32px;
+    }
+    
+    .button-down {
+    left: 446px;
+    top: 716px;
+    width: 32px;
+    height: 32px;
+    }
+    
+    .button-right {
+    left: 480px;
+    top: 684px;
+    width: 32px;
+    height: 32px;
+    }
+    
+    .button-enter {
+    left: 450px;
+    top: 684px;
+    width: 32px;
+    height: 32px;
+    }
+    
+    /* 可以添加一个活动状态样式，用于当按钮被点击时 */
+    .button:active {
+      /* 添加点击效果，例如改变背景颜色 */
+      border: 1px solid #00ffff;
+    }
+    
   </style>
 </head>
 
 <body>
   <center>
     <div id="simulator" class="simulator">
-      <iframe id="app" class="awtk_app"></iframe>
+      <iframe id="app" scrolling="no" class="awtk_app"></iframe>
+      <button id="buttonLeft" class="button button-left"></button>
+      <button id="buttonUp" class="button button-up"></button>
+      <button id="buttonDown" class="button button-down"></button>
+      <button id="buttonRight" class="button button-right"></button>
+      <button id="buttonEnter" class="button button-enter"></button>
     </div>
   </center>
 
 </html>
+
