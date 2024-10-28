@@ -79,6 +79,7 @@
 #include "time_clock/time_clock.h"
 #include "timer_widget/timer_widget.h"
 #include "tkc/event.h"
+#include "tkc/named_value_hash.h"
 #include "widgets/app_bar.h"
 #include "widgets/button_group.h"
 #include "widgets/button.h"
@@ -114,6 +115,7 @@
 #include "tkc/idle_info.h"
 #include "tkc/object_array.h"
 #include "tkc/object_default.h"
+#include "tkc/object_hash.h"
 #include "tkc/timer_info.h"
 #include "widgets/calibration_win.h"
 #include "widgets/combo_box.h"
@@ -2119,6 +2121,10 @@ const char* get_WIDGET_PROP_ELLIPSES (void) {
   return WIDGET_PROP_ELLIPSES;
 }
 
+const char* get_WIDGET_PROP_VISIBLE_REVEAL_IN_SCROLL (void) {
+  return WIDGET_PROP_VISIBLE_REVEAL_IN_SCROLL;
+}
+
 const char* get_WIDGET_PROP_TEXT (void) {
   return WIDGET_PROP_TEXT;
 }
@@ -2997,6 +3003,26 @@ const char* get_WIDGET_STATE_DISABLE_OF_ACTIVE (void) {
 
 const char* get_WIDGET_STATE_FOCUSED_OF_ACTIVE (void) {
   return WIDGET_STATE_FOCUSED_OF_ACTIVE;
+}
+
+const char* get_WIDGET_STATE_NORMAL_OF_INDETERMINATE (void) {
+  return WIDGET_STATE_NORMAL_OF_INDETERMINATE;
+}
+
+const char* get_WIDGET_STATE_PRESSED_OF_INDETERMINATE (void) {
+  return WIDGET_STATE_PRESSED_OF_INDETERMINATE;
+}
+
+const char* get_WIDGET_STATE_OVER_OF_INDETERMINATE (void) {
+  return WIDGET_STATE_OVER_OF_INDETERMINATE;
+}
+
+const char* get_WIDGET_STATE_DISABLE_OF_INDETERMINATE (void) {
+  return WIDGET_STATE_DISABLE_OF_INDETERMINATE;
+}
+
+const char* get_WIDGET_STATE_FOCUSED_OF_INDETERMINATE (void) {
+  return WIDGET_STATE_FOCUSED_OF_INDETERMINATE;
 }
 
 const char* get_WIDGET_CURSOR_DEFAULT (void) {
@@ -5296,12 +5322,20 @@ bool_t slider_t_get_prop_slide_with_bar (slider_t* obj) {
   return obj->slide_with_bar;
 }
 
+uint32_t slider_t_get_prop_drag_threshold (slider_t* obj) {
+  return obj->drag_threshold;
+}
+
 bool_t tab_button_group_t_get_prop_compact (tab_button_group_t* obj) {
   return obj->compact;
 }
 
 bool_t tab_button_group_t_get_prop_scrollable (tab_button_group_t* obj) {
   return obj->scrollable;
+}
+
+bool_t tab_button_group_t_get_prop_drag_child (tab_button_group_t* obj) {
+  return obj->drag_child;
 }
 
 bool_t tab_button_t_get_prop_value (tab_button_t* obj) {
@@ -5318,6 +5352,10 @@ char* tab_button_t_get_prop_active_icon (tab_button_t* obj) {
 
 char* tab_button_t_get_prop_icon (tab_button_t* obj) {
   return obj->icon;
+}
+
+int32_t tab_button_t_get_prop_max_w (tab_button_t* obj) {
+  return obj->max_w;
 }
 
 char* view_t_get_prop_default_focused_child (view_t* obj) {

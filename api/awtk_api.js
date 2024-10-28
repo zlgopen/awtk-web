@@ -15,10 +15,11 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TIndicatorDefaultPaint = exports.TExtWidgets = exports.TAppConf = exports.TWidget = exports.TWidgetCursor = exports.TWidgetState = exports.TWindowClosable = exports.TWindowStage = exports.TWidgetType = exports.TWidgetProp = exports.TVgcanvasLineJoin = exports.TVgcanvasLineCap = exports.TVgcanvas = exports.TBitmapFlag = exports.TBitmapFormat = exports.TAppType = exports.TAlignH = exports.TAlignV = exports.TTimer = exports.TTheme = exports.TSystemInfoFlag = exports.TStyle = exports.TStyleId = exports.TLocaleInfos = exports.TLocaleInfo = exports.TKeyCode = exports.TInputMethod = exports.TInputType = exports.TImageManager = exports.TIdle = exports.TGlyphFormat = exports.TEvent = exports.TEventType = exports.TDialogQuitCode = exports.TClipBoard = exports.TClipBoardDataType = exports.TCanvas = exports.TCanvasOffline = exports.TImageDrawType = exports.TBidiType = exports.TGlobal = exports.TValue = exports.TTkObject = exports.TBitmap = exports.TRect = exports.TRectf = exports.TPointf = exports.TPoint = exports.TEmitter = exports.init = void 0;
-exports.TMledit = exports.TLineNumber = exports.TLangIndicator = exports.TCandidates = exports.TImageValue = exports.TImageAnimation = exports.TGauge = exports.TGaugePointer = exports.TFileChooser = exports.TFileBrowserView = exports.TDraggable = exports.TColorPicker = exports.TColorComponent = exports.TCanvasWidget = exports.TWindowManager = exports.TWindowBase = exports.TStyleMutable = exports.TImageBase = exports.TFontManager = exports.TUiLoadEvent = exports.TSystemEvent = exports.TDropFileEvent = exports.TThemeChangeEvent = exports.TMultiGestureEvent = exports.TWindowEvent = exports.TPaintEvent = exports.TKeyEvent = exports.TPointerEvent = exports.TOffsetChangeEvent = exports.TOrientationEvent = exports.TWheelEvent = exports.TModelEvent = exports.TWidgetAnimatorEvent = exports.TAssetsManager = exports.TValueType = exports.TRet = exports.TTimerManager = exports.TTimeNow = exports.TRlog = exports.TObjectProp = exports.TObjectCmd = exports.TNamedValue = exports.TMIME_TYPE = exports.TIdleManager = exports.TEasingType = exports.TDateTime = exports.TColor = exports.TAssetInfo = exports.TAssetType = exports.TVpageEvent = void 0;
-exports.TView = exports.TTabControl = exports.TTabButton = exports.TTabButtonGroup = exports.TSlider = exports.TRow = exports.TProgressBar = exports.TPages = exports.TLabel = exports.TGroupBox = exports.TGrid = exports.TGridItem = exports.TEdit = exports.TDragger = exports.TDigitClock = exports.TDialogTitle = exports.TDialogClient = exports.TComboBoxItem = exports.TColumn = exports.TColorTile = exports.TClipView = exports.TCheckButton = exports.TButton = exports.TButtonGroup = exports.TAppBar = exports.TLogMessageEvent = exports.TValueChangeEvent = exports.TCmdExecEvent = exports.TErrorEvent = exports.TDoneEvent = exports.TProgressEvent = exports.TPropChangeEvent = exports.TVpage = exports.TTimerWidget = exports.TTimeClock = exports.TTextSelector = exports.TSwitch = exports.TSlideView = exports.TSlideIndicator = exports.TSlideMenu = exports.TSerialWidget = exports.TScrollView = exports.TScrollBar = exports.TListView = exports.TListViewH = exports.TListItem = exports.THscrollLabel = exports.TRichText = exports.TRichTextView = exports.TProgressCircle = void 0;
-exports.TComboBoxEx = exports.TSystemBar = exports.TSpinBox = exports.TPopup = exports.TOverlay = exports.TImage = exports.TComboBox = exports.TCalibrationWin = exports.TTimerInfo = exports.TObjectDefault = exports.TObjectArray = exports.TIdleInfo = exports.TSvgImage = exports.TListItemSeperator = exports.TMutableImage = exports.TKeyboard = exports.TGifImage = exports.TWindow = exports.TNativeWindow = exports.TDialog = void 0;
+exports.TVpageEvent = exports.TIndicatorDefaultPaint = exports.TExtWidgets = exports.TAppConf = exports.TWidget = exports.TWidgetCursor = exports.TWidgetState = exports.TWindowClosable = exports.TWindowStage = exports.TWidgetType = exports.TWidgetProp = exports.TVgcanvasLineJoin = exports.TVgcanvasLineCap = exports.TVgcanvas = exports.TBitmapFlag = exports.TBitmapFormat = exports.TAppType = exports.TAlignH = exports.TAlignV = exports.TTimer = exports.TTheme = exports.TSystemInfoFlag = exports.TStyle = exports.TStyleId = exports.TLocaleInfos = exports.TLocaleInfo = exports.TKeyCode = exports.TInputMethod = exports.TInputType = exports.TImageManager = exports.TIdle = exports.TGlyphFormat = exports.TEvent = exports.TEventType = exports.TDialogQuitCode = exports.TClipBoard = exports.TClipBoardDataType = exports.TCanvas = exports.TCanvasOffline = exports.TImageDrawType = exports.TBidiType = exports.TGlobal = exports.TValue = exports.TTkObject = exports.TBitmap = exports.TRect = exports.TRectf = exports.TPointf = exports.TPoint = exports.TEmitter = void 0;
+exports.TProgressCircle = exports.TMledit = exports.TLineNumber = exports.TLangIndicator = exports.TCandidates = exports.TImageValue = exports.TImageAnimation = exports.TGauge = exports.TGaugePointer = exports.TFileChooser = exports.TFileBrowserView = exports.TDraggable = exports.TColorPicker = exports.TColorComponent = exports.TCanvasWidget = exports.TWindowManager = exports.TWindowBase = exports.TStyleMutable = exports.TImageBase = exports.TFontManager = exports.TUiLoadEvent = exports.TSystemEvent = exports.TDropFileEvent = exports.TThemeChangeEvent = exports.TMultiGestureEvent = exports.TWindowEvent = exports.TPaintEvent = exports.TKeyEvent = exports.TPointerEvent = exports.TOffsetChangeEvent = exports.TOrientationEvent = exports.TWheelEvent = exports.TModelEvent = exports.TWidgetAnimatorEvent = exports.TAssetsManager = exports.TValueType = exports.TRet = exports.TTimerManager = exports.TTimeNow = exports.TRlog = exports.TObjectProp = exports.TObjectCmd = exports.TNamedValue = exports.TMIME_TYPE = exports.TIdleManager = exports.TEasingType = exports.TDateTime = exports.TColor = exports.TAssetInfo = exports.TAssetType = void 0;
+exports.TView = exports.TTabControl = exports.TTabButton = exports.TTabButtonGroup = exports.TSlider = exports.TRow = exports.TProgressBar = exports.TPages = exports.TLabel = exports.TGroupBox = exports.TGrid = exports.TGridItem = exports.TEdit = exports.TDragger = exports.TDigitClock = exports.TDialogTitle = exports.TDialogClient = exports.TComboBoxItem = exports.TColumn = exports.TColorTile = exports.TClipView = exports.TCheckButton = exports.TButton = exports.TButtonGroup = exports.TAppBar = exports.TNamedValueHash = exports.TLogMessageEvent = exports.TValueChangeEvent = exports.TCmdExecEvent = exports.TErrorEvent = exports.TDoneEvent = exports.TProgressEvent = exports.TPropChangeEvent = exports.TVpage = exports.TTimerWidget = exports.TTimeClock = exports.TTextSelector = exports.TSwitch = exports.TSlideView = exports.TSlideIndicator = exports.TSlideMenu = exports.TSerialWidget = exports.TScrollView = exports.TScrollBar = exports.TListView = exports.TListViewH = exports.TListItem = exports.THscrollLabel = exports.TRichText = exports.TRichTextView = void 0;
+exports.TComboBoxEx = exports.TSystemBar = exports.TSpinBox = exports.TPopup = exports.TOverlay = exports.TImage = exports.TComboBox = exports.TCalibrationWin = exports.TTimerInfo = exports.TObjectHash = exports.TObjectDefault = exports.TObjectArray = exports.TIdleInfo = exports.TSvgImage = exports.TListItemSeperator = exports.TMutableImage = exports.TKeyboard = exports.TGifImage = exports.TWindow = exports.TNativeWindow = exports.TDialog = void 0;
+exports.init = init;
 var Module = window.Module || {};
 var TBrowser = window.TBrowser || {};
 function wrap_on_event(func) {
@@ -34,7 +35,6 @@ function wrap_on_visit(func) {
 function init(w, h, title, isDesktop) {
     console.log('init(for compatible)');
 }
-exports.init = init;
 var emitter_create = Module.cwrap("emitter_create", "number", []);
 var emitter_dispatch = Module.cwrap("emitter_dispatch", "number", ["number", "number"]);
 var emitter_dispatch_simple_event = Module.cwrap("emitter_dispatch_simple_event", "number", ["number", "number"]);
@@ -129,6 +129,7 @@ var tk_object_get_prop_int64 = Module.cwrap("tk_object_get_prop_int64", "number"
 var tk_object_set_prop_int64 = Module.cwrap("tk_object_set_prop_int64", "number", ["number", "string", "number"]);
 var tk_object_get_prop_uint64 = Module.cwrap("tk_object_get_prop_uint64", "number", ["number", "string", "number"]);
 var tk_object_set_prop_uint64 = Module.cwrap("tk_object_set_prop_uint64", "number", ["number", "string", "number"]);
+var tk_object_clear_props = Module.cwrap("tk_object_clear_props", "number", ["number"]);
 var tk_object_t_get_prop_ref_count = Module.cwrap("tk_object_t_get_prop_ref_count", "number", ["number"]);
 var tk_object_t_get_prop_name = Module.cwrap("tk_object_t_get_prop_name", "string", ["number"]);
 var value_set_bool = Module.cwrap("value_set_bool", "number", ["number", "number"]);
@@ -157,7 +158,6 @@ var value_str = Module.cwrap("value_str", "string", ["number"]);
 var value_str_ex = Module.cwrap("value_str_ex", "string", ["number", "string", "number"]);
 var value_is_null = Module.cwrap("value_is_null", "number", ["number"]);
 var value_equal = Module.cwrap("value_equal", "number", ["number", "number"]);
-var value_int = Module.cwrap("value_int", "number", ["number"]);
 var value_set_int = Module.cwrap("value_set_int", "number", ["number", "number"]);
 var value_set_object = Module.cwrap("value_set_object", "number", ["number", "number"]);
 var value_object = Module.cwrap("value_object", "number", ["number"]);
@@ -370,6 +370,8 @@ var EVT_VALUE_CHANGED = Module.cwrap("get_EVT_VALUE_CHANGED", "number", []);
 var EVT_VALUE_CHANGING = Module.cwrap("get_EVT_VALUE_CHANGING", "number", []);
 var EVT_LOG_MESSAGE = Module.cwrap("get_EVT_LOG_MESSAGE", "number", []);
 var event_from_name = Module.cwrap("event_from_name", "number", ["string"]);
+var event_register_custom_name = Module.cwrap("event_register_custom_name", "number", ["number", "string"]);
+var event_unregister_custom_name = Module.cwrap("event_unregister_custom_name", "number", ["string"]);
 var event_cast = Module.cwrap("event_cast", "number", ["number"]);
 var event_get_type = Module.cwrap("event_get_type", "number", ["number"]);
 var event_create = Module.cwrap("event_create", "number", ["number"]);
@@ -789,6 +791,7 @@ var WIDGET_PROP_LENGTH = Module.cwrap("get_WIDGET_PROP_LENGTH", "string", []);
 var WIDGET_PROP_LINE_WRAP = Module.cwrap("get_WIDGET_PROP_LINE_WRAP", "string", []);
 var WIDGET_PROP_WORD_WRAP = Module.cwrap("get_WIDGET_PROP_WORD_WRAP", "string", []);
 var WIDGET_PROP_ELLIPSES = Module.cwrap("get_WIDGET_PROP_ELLIPSES", "string", []);
+var WIDGET_PROP_VISIBLE_REVEAL_IN_SCROLL = Module.cwrap("get_WIDGET_PROP_VISIBLE_REVEAL_IN_SCROLL", "string", []);
 var WIDGET_PROP_TEXT = Module.cwrap("get_WIDGET_PROP_TEXT", "string", []);
 var WIDGET_PROP_TR_TEXT = Module.cwrap("get_WIDGET_PROP_TR_TEXT", "string", []);
 var WIDGET_PROP_STYLE = Module.cwrap("get_WIDGET_PROP_STYLE", "string", []);
@@ -1009,6 +1012,11 @@ var WIDGET_STATE_PRESSED_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_PRESSED_OF_A
 var WIDGET_STATE_OVER_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_OVER_OF_ACTIVE", "string", []);
 var WIDGET_STATE_DISABLE_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_DISABLE_OF_ACTIVE", "string", []);
 var WIDGET_STATE_FOCUSED_OF_ACTIVE = Module.cwrap("get_WIDGET_STATE_FOCUSED_OF_ACTIVE", "string", []);
+var WIDGET_STATE_NORMAL_OF_INDETERMINATE = Module.cwrap("get_WIDGET_STATE_NORMAL_OF_INDETERMINATE", "string", []);
+var WIDGET_STATE_PRESSED_OF_INDETERMINATE = Module.cwrap("get_WIDGET_STATE_PRESSED_OF_INDETERMINATE", "string", []);
+var WIDGET_STATE_OVER_OF_INDETERMINATE = Module.cwrap("get_WIDGET_STATE_OVER_OF_INDETERMINATE", "string", []);
+var WIDGET_STATE_DISABLE_OF_INDETERMINATE = Module.cwrap("get_WIDGET_STATE_DISABLE_OF_INDETERMINATE", "string", []);
+var WIDGET_STATE_FOCUSED_OF_INDETERMINATE = Module.cwrap("get_WIDGET_STATE_FOCUSED_OF_INDETERMINATE", "string", []);
 var WIDGET_CURSOR_DEFAULT = Module.cwrap("get_WIDGET_CURSOR_DEFAULT", "string", []);
 var WIDGET_CURSOR_EDIT = Module.cwrap("get_WIDGET_CURSOR_EDIT", "string", []);
 var WIDGET_CURSOR_HAND = Module.cwrap("get_WIDGET_CURSOR_HAND", "string", []);
@@ -1525,6 +1533,8 @@ var system_event_t_get_prop_sdl_event = Module.cwrap("system_event_t_get_prop_sd
 var ui_load_event_cast = Module.cwrap("ui_load_event_cast", "number", ["number"]);
 var ui_load_event_t_get_prop_root = Module.cwrap("ui_load_event_t_get_prop_root", "number", ["number"]);
 var ui_load_event_t_get_prop_name = Module.cwrap("ui_load_event_t_get_prop_name", "string", ["number"]);
+var font_manager_set_standard_font_size = Module.cwrap("font_manager_set_standard_font_size", "number", ["number", "number"]);
+var font_manager_get_standard_font_size = Module.cwrap("font_manager_get_standard_font_size", "number", ["number"]);
 var font_manager_unload_font = Module.cwrap("font_manager_unload_font", "number", ["number", "string", "number"]);
 var font_manager_shrink_cache = Module.cwrap("font_manager_shrink_cache", "number", ["number", "number"]);
 var font_manager_unload_all = Module.cwrap("font_manager_unload_all", "number", ["number"]);
@@ -1575,6 +1585,7 @@ var window_manager = Module.cwrap("window_manager", "number", []);
 var window_manager_cast = Module.cwrap("window_manager_cast", "number", ["number"]);
 var window_manager_get_top_main_window = Module.cwrap("window_manager_get_top_main_window", "number", ["number"]);
 var window_manager_get_top_window = Module.cwrap("window_manager_get_top_window", "number", ["number"]);
+var window_manager_get_foreground_window = Module.cwrap("window_manager_get_foreground_window", "number", ["number"]);
 var window_manager_get_prev_window = Module.cwrap("window_manager_get_prev_window", "number", ["number"]);
 var window_manager_get_pointer_x = Module.cwrap("window_manager_get_pointer_x", "number", ["number"]);
 var window_manager_get_pointer_y = Module.cwrap("window_manager_get_pointer_y", "number", ["number"]);
@@ -1760,6 +1771,8 @@ var mledit_set_open_im_when_focused = Module.cwrap("mledit_set_open_im_when_focu
 var mledit_set_close_im_when_blured = Module.cwrap("mledit_set_close_im_when_blured", "number", ["number", "number"]);
 var mledit_set_select = Module.cwrap("mledit_set_select", "number", ["number", "number", "number"]);
 var mledit_get_selected_text = Module.cwrap("mledit_get_selected_text", "string", ["number"]);
+var mledit_get_current_line_index = Module.cwrap("mledit_get_current_line_index", "number", ["number"]);
+var mledit_get_current_row_index = Module.cwrap("mledit_get_current_row_index", "number", ["number"]);
 var mledit_insert_text = Module.cwrap("mledit_insert_text", "number", ["number", "number", "string"]);
 var mledit_cast = Module.cwrap("mledit_cast", "number", ["number"]);
 var mledit_t_get_prop_tips = Module.cwrap("mledit_t_get_prop_tips", "string", ["number"]);
@@ -2065,6 +2078,11 @@ var cmd_exec_event_t_get_prop_result = Module.cwrap("cmd_exec_event_t_get_prop_r
 var cmd_exec_event_t_get_prop_can_exec = Module.cwrap("cmd_exec_event_t_get_prop_can_exec", "number", ["number"]);
 var value_change_event_cast = Module.cwrap("value_change_event_cast", "number", ["number"]);
 var log_message_event_cast = Module.cwrap("log_message_event_cast", "number", ["number"]);
+var named_value_hash_create = Module.cwrap("named_value_hash_create", "number", []);
+var named_value_hash_set_name = Module.cwrap("named_value_hash_set_name", "number", ["number", "string"]);
+var named_value_hash_destroy = Module.cwrap("named_value_hash_destroy", "number", ["number"]);
+var named_value_hash_clone = Module.cwrap("named_value_hash_clone", "number", ["number"]);
+var named_value_hash_get_hash_from_str = Module.cwrap("named_value_hash_get_hash_from_str", "number", ["string"]);
 var app_bar_create = Module.cwrap("app_bar_create", "number", ["number", "number", "number", "number", "number"]);
 var app_bar_cast = Module.cwrap("app_bar_cast", "number", ["number"]);
 var button_group_create = Module.cwrap("button_group_create", "number", ["number", "number", "number", "number", "number"]);
@@ -2083,6 +2101,8 @@ var button_t_get_prop_pressed = Module.cwrap("button_t_get_prop_pressed", "numbe
 var check_button_create = Module.cwrap("check_button_create", "number", ["number", "number", "number", "number", "number"]);
 var check_button_create_radio = Module.cwrap("check_button_create_radio", "number", ["number", "number", "number", "number", "number"]);
 var check_button_set_value = Module.cwrap("check_button_set_value", "number", ["number", "number"]);
+var check_button_set_indeterminate = Module.cwrap("check_button_set_indeterminate", "number", ["number", "number"]);
+var check_button_get_indeterminate = Module.cwrap("check_button_get_indeterminate", "number", ["number"]);
 var check_button_cast = Module.cwrap("check_button_cast", "number", ["number"]);
 var check_button_create_ex = Module.cwrap("check_button_create_ex", "number", ["number", "number", "number", "number", "number", "string", "number"]);
 var check_button_t_get_prop_value = Module.cwrap("check_button_t_get_prop_value", "number", ["number"]);
@@ -2223,6 +2243,7 @@ var slider_set_line_cap = Module.cwrap("slider_set_line_cap", "number", ["number
 var slider_set_step = Module.cwrap("slider_set_step", "number", ["number", "number"]);
 var slider_set_bar_size = Module.cwrap("slider_set_bar_size", "number", ["number", "number"]);
 var slider_set_vertical = Module.cwrap("slider_set_vertical", "number", ["number", "number"]);
+var slider_set_drag_threshold = Module.cwrap("slider_set_drag_threshold", "number", ["number", "number"]);
 var slider_t_get_prop_value = Module.cwrap("slider_t_get_prop_value", "number", ["number"]);
 var slider_t_get_prop_min = Module.cwrap("slider_t_get_prop_min", "number", ["number"]);
 var slider_t_get_prop_max = Module.cwrap("slider_t_get_prop_max", "number", ["number"]);
@@ -2233,22 +2254,28 @@ var slider_t_get_prop_line_cap = Module.cwrap("slider_t_get_prop_line_cap", "str
 var slider_t_get_prop_vertical = Module.cwrap("slider_t_get_prop_vertical", "number", ["number"]);
 var slider_t_get_prop_dragger_adapt_to_icon = Module.cwrap("slider_t_get_prop_dragger_adapt_to_icon", "number", ["number"]);
 var slider_t_get_prop_slide_with_bar = Module.cwrap("slider_t_get_prop_slide_with_bar", "number", ["number"]);
+var slider_t_get_prop_drag_threshold = Module.cwrap("slider_t_get_prop_drag_threshold", "number", ["number"]);
 var tab_button_group_create = Module.cwrap("tab_button_group_create", "number", ["number", "number", "number", "number", "number"]);
 var tab_button_group_set_compact = Module.cwrap("tab_button_group_set_compact", "number", ["number", "number"]);
 var tab_button_group_set_scrollable = Module.cwrap("tab_button_group_set_scrollable", "number", ["number", "number"]);
+var tab_button_group_set_drag_child = Module.cwrap("tab_button_group_set_drag_child", "number", ["number", "number"]);
 var tab_button_group_cast = Module.cwrap("tab_button_group_cast", "number", ["number"]);
 var tab_button_group_t_get_prop_compact = Module.cwrap("tab_button_group_t_get_prop_compact", "number", ["number"]);
 var tab_button_group_t_get_prop_scrollable = Module.cwrap("tab_button_group_t_get_prop_scrollable", "number", ["number"]);
+var tab_button_group_t_get_prop_drag_child = Module.cwrap("tab_button_group_t_get_prop_drag_child", "number", ["number"]);
 var tab_button_create = Module.cwrap("tab_button_create", "number", ["number", "number", "number", "number", "number"]);
 var tab_button_cast = Module.cwrap("tab_button_cast", "number", ["number"]);
 var tab_button_set_value = Module.cwrap("tab_button_set_value", "number", ["number", "number"]);
 var tab_button_set_icon = Module.cwrap("tab_button_set_icon", "number", ["number", "string"]);
 var tab_button_set_active_icon = Module.cwrap("tab_button_set_active_icon", "number", ["number", "string"]);
+var tab_button_set_max_w = Module.cwrap("tab_button_set_max_w", "number", ["number", "number"]);
+var tab_button_restack = Module.cwrap("tab_button_restack", "number", ["number", "number"]);
 var tab_button_set_load_ui = Module.cwrap("tab_button_set_load_ui", "number", ["number", "string"]);
 var tab_button_t_get_prop_value = Module.cwrap("tab_button_t_get_prop_value", "number", ["number"]);
 var tab_button_t_get_prop_load_ui = Module.cwrap("tab_button_t_get_prop_load_ui", "string", ["number"]);
 var tab_button_t_get_prop_active_icon = Module.cwrap("tab_button_t_get_prop_active_icon", "string", ["number"]);
 var tab_button_t_get_prop_icon = Module.cwrap("tab_button_t_get_prop_icon", "string", ["number"]);
+var tab_button_t_get_prop_max_w = Module.cwrap("tab_button_t_get_prop_max_w", "number", ["number"]);
 var tab_control_create = Module.cwrap("tab_control_create", "number", ["number", "number", "number", "number", "number"]);
 var tab_control_cast = Module.cwrap("tab_control_cast", "number", ["number"]);
 var view_create = Module.cwrap("view_create", "number", ["number", "number", "number", "number", "number"]);
@@ -2331,6 +2358,10 @@ var object_default_create_ex = Module.cwrap("object_default_create_ex", "number"
 var object_default_unref = Module.cwrap("object_default_unref", "number", ["number"]);
 var object_default_clear_props = Module.cwrap("object_default_clear_props", "number", ["number"]);
 var object_default_set_keep_prop_type = Module.cwrap("object_default_set_keep_prop_type", "number", ["number", "number"]);
+var object_default_set_name_case_insensitive = Module.cwrap("object_default_set_name_case_insensitive", "number", ["number", "number"]);
+var object_hash_create = Module.cwrap("object_hash_create", "number", []);
+var object_hash_create_ex = Module.cwrap("object_hash_create_ex", "number", ["number"]);
+var object_hash_set_keep_prop_type = Module.cwrap("object_hash_set_keep_prop_type", "number", ["number", "number"]);
 var timer_info_cast = Module.cwrap("timer_info_cast", "number", ["number"]);
 var timer_info_t_get_prop_ctx = Module.cwrap("timer_info_t_get_prop_ctx", "number", ["number"]);
 var timer_info_t_get_prop_extra_ctx = Module.cwrap("timer_info_t_get_prop_extra_ctx", "number", ["number"]);
@@ -3488,6 +3519,15 @@ var TTkObject = /** @class */ (function (_super) {
     TTkObject.prototype.setPropUint64 = function (name, value) {
         return tk_object_set_prop_uint64(this != null ? (this.nativeObj || this) : null, name, value);
     };
+    /**
+     * 清除全部属性。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TTkObject.prototype.clearProps = function () {
+        return tk_object_clear_props(this != null ? (this.nativeObj || this) : null);
+    };
     Object.defineProperty(TTkObject.prototype, "refCount", {
         /**
          * 引用计数。
@@ -3779,15 +3819,6 @@ var TValue = /** @class */ (function () {
      */
     TValue.prototype.equal = function (other) {
         return value_equal(this != null ? (this.nativeObj || this) : null, other != null ? (other.nativeObj || other) : null);
-    };
-    /**
-     * 转换为int的值。
-     *
-     *
-     * @returns 值。
-     */
-    TValue.prototype.int = function () {
-        return value_int(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 设置类型为int的值。
@@ -5292,14 +5323,35 @@ var TEvent = /** @class */ (function () {
         this.nativeObj = nativeObj;
     }
     /**
-     * 将事件名转换成事件的值。
+     * 将事件名转换成事件的类型。
      *
      * @param name 事件名。
      *
-     * @returns 返回事件的值。
+     * @returns 返回事件的类型。
      */
     TEvent.fromName = function (name) {
         return event_from_name(name);
+    };
+    /**
+     * 给事件注册名称。
+     *
+     * @param event_type 事件类型。
+     * @param name 事件名。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TEvent.registerCustomName = function (event_type, name) {
+        return event_register_custom_name(event_type, name);
+    };
+    /**
+     * 注销事件名称。
+     *
+     * @param name 事件名。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TEvent.unregisterCustomName = function (name) {
+        return event_unregister_custom_name(name);
     };
     /**
      * 转换为event对象。
@@ -7434,8 +7486,8 @@ var TVgcanvas = /** @class */ (function () {
      * @param x 原点x坐标。
      * @param y 原点y坐标。
      * @param r 半径。
-     * @param start_angle 起始角度。
-     * @param end_angle 结束角度。
+     * @param start_angle 起始角度（单位：弧度）。
+     * @param end_angle 结束角度（单位：弧度）。
      * @param ccw 是否逆时针。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
@@ -7520,7 +7572,7 @@ var TVgcanvas = /** @class */ (function () {
     /**
      * 旋转。
      *
-     * @param rad 旋转角度(单位弧度)
+     * @param rad 旋转角度(单位：弧度)
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
@@ -8392,6 +8444,11 @@ var TWidgetProp;
      *
      */
     TWidgetProp[TWidgetProp["ELLIPSES"] = WIDGET_PROP_ELLIPSES()] = "ELLIPSES";
+    /**
+     * 可见控件在滚动控件中的可见处理方案。（影响 widget_ensure_visible_in_viewport 函数）
+     *
+     */
+    TWidgetProp[TWidgetProp["VISIBLE_REVEAL_IN_SCROLL"] = WIDGET_PROP_VISIBLE_REVEAL_IN_SCROLL()] = "VISIBLE_REVEAL_IN_SCROLL";
     /**
      * 文本。
      *
@@ -9528,6 +9585,31 @@ var TWidgetState;
      *
      */
     TWidgetState[TWidgetState["FOCUSED_OF_ACTIVE"] = WIDGET_STATE_FOCUSED_OF_ACTIVE()] = "FOCUSED_OF_ACTIVE";
+    /**
+     * 正常状态(选项不确定)。
+     *
+     */
+    TWidgetState[TWidgetState["NORMAL_OF_INDETERMINATE"] = WIDGET_STATE_NORMAL_OF_INDETERMINATE()] = "NORMAL_OF_INDETERMINATE";
+    /**
+     * 指针按下状态(选项不确定)。
+     *
+     */
+    TWidgetState[TWidgetState["PRESSED_OF_INDETERMINATE"] = WIDGET_STATE_PRESSED_OF_INDETERMINATE()] = "PRESSED_OF_INDETERMINATE";
+    /**
+     * 指针悬浮状态(选项不确定)。
+     *
+     */
+    TWidgetState[TWidgetState["OVER_OF_INDETERMINATE"] = WIDGET_STATE_OVER_OF_INDETERMINATE()] = "OVER_OF_INDETERMINATE";
+    /**
+     * 禁用状态(选项不确定)。
+     *
+     */
+    TWidgetState[TWidgetState["DISABLE_OF_INDETERMINATE"] = WIDGET_STATE_DISABLE_OF_INDETERMINATE()] = "DISABLE_OF_INDETERMINATE";
+    /**
+     * 焦点状态(选项不确定)。
+     *
+     */
+    TWidgetState[TWidgetState["FOCUSED_OF_INDETERMINATE"] = WIDGET_STATE_FOCUSED_OF_INDETERMINATE()] = "FOCUSED_OF_INDETERMINATE";
 })(TWidgetState || (exports.TWidgetState = TWidgetState = {}));
 ;
 /**
@@ -14325,6 +14407,25 @@ var TFontManager = /** @class */ (function (_super) {
         return _super.call(this, nativeObj) || this;
     }
     /**
+     * 设置是否使用标准字号
+     *
+     * @param is_standard 是否使用标准字号
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TFontManager.prototype.setStandardFontSize = function (is_standard) {
+        return font_manager_set_standard_font_size(this != null ? (this.nativeObj || this) : null, is_standard);
+    };
+    /**
+     * 获取是否使用标准字号
+     *
+     *
+     * @returns 返回TRUE表示使用标准字号，否则表示不是。
+     */
+    TFontManager.prototype.getStandardFontSize = function () {
+        return font_manager_get_standard_font_size(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
      * 卸载指定的字体。
      *
      * @param name 字体名，为NULL时使用缺省字体。
@@ -14977,6 +15078,15 @@ var TWindowManager = /** @class */ (function (_super) {
      */
     TWindowManager.prototype.getTopWindow = function () {
         return new TWidget(window_manager_get_top_window(this != null ? (this.nativeObj || this) : null));
+    };
+    /**
+     * 获取前景窗口。
+     *
+     *
+     * @returns 返回窗口对象。
+     */
+    TWindowManager.prototype.getForegroundWindow = function () {
+        return new TWidget(window_manager_get_foreground_window(this != null ? (this.nativeObj || this) : null));
     };
     /**
      * 获取前一个的窗口。
@@ -17587,6 +17697,24 @@ var TMledit = /** @class */ (function (_super) {
         return mledit_get_selected_text(this != null ? (this.nativeObj || this) : null);
     };
     /**
+     * 获取光标所在视觉行号(一行文本可能分多行显示)。
+     *
+     *
+     * @returns 返回光标所在行号。
+     */
+    TMledit.prototype.getCurrentLineIndex = function () {
+        return mledit_get_current_line_index(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 获取光标所在物理行号。
+     *
+     *
+     * @returns 返回光标所在行号。
+     */
+    TMledit.prototype.getCurrentRowIndex = function () {
+        return mledit_get_current_row_index(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
      * 插入一段文本。
      *
      * @param offset 插入的偏移位置。
@@ -18836,10 +18964,10 @@ exports.TListViewH = TListViewH;
  *备注：list_view 下的 scroll_view 控件不支持遍历所有子控件的效果。
  *
  *下面是针对 scroll_bar_d （桌面版）有效果，scroll_bar_m（移动版）没有效果。
- *如果 floating_scroll_bar 属性为 TRUE 和 auto_hide_scroll_bar 属性为 TRUE，scroll_view 宽默认为 list_view 的 100% 宽，鼠标在 list_view 上滚动条才显示，不在的就自动隐藏，如果 scroll_view 的高比虚拟高要大的话，滚动条变成不可见，scroll_view 宽不会变。
- *如果 floating_scroll_bar 属性为 TRUE 和 auto_hide_scroll_bar 属性为 FALSE ，scroll_view 宽默认为 list_view 的 100% 宽，滚动条不隐藏，如果 scroll_view 的高比虚拟高要大的话，滚动条变成不可见，scroll_view 宽不会变。
- *如果 floating_scroll_bar 属性为 FALSE 和 auto_hide_scroll_bar 属性为 FALSE，如果 scroll_view 的高比虚拟高要大的话，滚动条变成不可用，scroll_view 宽不会变。
- *如果 floating_scroll_bar 属性为 FALSE 和 auto_hide_scroll_bar 属性为 TRUE，如果 scroll_view 的高比虚拟高要大的话，滚动条变成不可见，scroll_view 宽会合并原来滚动条的宽。
+ *如果 floating_scroll_bar 属性为 TRUE 和 auto_hide_scroll_bar 属性为 TRUE， 如果 scroll_view 的高比虚拟高要小的话，鼠标在 list_view 上滚动条才显示，鼠标移开的就自动隐藏，scroll_view 宽为控件宽度。
+ *如果 floating_scroll_bar 属性为 TRUE 和 auto_hide_scroll_bar 属性为 FALSE ，如果 scroll_view 的高比虚拟高要大的话，滚动条变成不可见，如果 scroll_view 的高比虚拟高要小的话，滚动条固定显示（不管鼠标是否悬停），scroll_view 宽为控件宽度。
+ *如果 floating_scroll_bar 属性为 FALSE 和 auto_hide_scroll_bar 属性为 FALSE，如果 scroll_view 的高比虚拟高要大的话，滚动条变成不可用（滚动条固定显示，不管鼠标是否悬停），scroll_view 宽不会变。
+ *如果 floating_scroll_bar 属性为 FALSE 和 auto_hide_scroll_bar 属性为 TRUE，如果 scroll_view 的高比虚拟高要大的话，滚动条变成不可见，scroll_view 宽会合并原来滚动条的宽，如果 scroll_view 的高比虚拟高要小的话，滚动条固定显示（不管鼠标是否悬停），scroll_view 宽会变为 list_view 宽度减去滚动条宽度。
  *
  */
 var TListView = /** @class */ (function (_super) {
@@ -22092,6 +22220,66 @@ var TLogMessageEvent = /** @class */ (function (_super) {
 exports.TLogMessageEvent = TLogMessageEvent;
 ;
 /**
+ * 带有散列值的命名的值。
+ *
+ */
+var TNamedValueHash = /** @class */ (function (_super) {
+    __extends(TNamedValueHash, _super);
+    function TNamedValueHash(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 创建named_value_hash对象。
+     *
+     *
+     * @returns 返回named_value_hash对象。
+     */
+    TNamedValueHash.create = function () {
+        return new TNamedValueHash(named_value_hash_create());
+    };
+    /**
+     * 设置散列值。
+     *
+     * @param name 名称。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TNamedValueHash.prototype.setName = function (name) {
+        return named_value_hash_set_name(this != null ? (this.nativeObj || this) : null, name);
+    };
+    /**
+     * 销毁named_value_hash对象。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TNamedValueHash.prototype.destroy = function () {
+        return named_value_hash_destroy(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 克隆named_value_hash对象。
+     *
+     *
+     * @returns 返回named_value_hash对象。
+     */
+    TNamedValueHash.prototype.clone = function () {
+        return new TNamedValueHash(named_value_hash_clone(this != null ? (this.nativeObj || this) : null));
+    };
+    /**
+     * 获取字符串散列值。
+     *
+     * @param str 字符串。
+     *
+     * @returns 返回散列值。
+     */
+    TNamedValueHash.getHashFromStr = function (str) {
+        return named_value_hash_get_hash_from_str(str);
+    };
+    return TNamedValueHash;
+}(TNamedValue));
+exports.TNamedValueHash = TNamedValueHash;
+;
+/**
  * app_bar控件。
  *
  *一个简单的容器控件，一般在窗口的顶部，用于显示本窗口的状态和信息。
@@ -22497,6 +22685,25 @@ var TCheckButton = /** @class */ (function (_super) {
      */
     TCheckButton.prototype.setValue = function (value) {
         return check_button_set_value(this != null ? (this.nativeObj || this) : null, value);
+    };
+    /**
+     * 设置控件的不确定状态。
+     *
+     * @param indeterminate 不确定状态。（该值为TRUE的话，value 值存于不确定状态，该值为FALSE的话，value 值存于确定状态）
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TCheckButton.prototype.setIndeterminate = function (indeterminate) {
+        return check_button_set_indeterminate(this != null ? (this.nativeObj || this) : null, indeterminate);
+    };
+    /**
+     * 获取控件的是否存于不确定状态。
+     *
+     *
+     * @returns 返回控件的是否存于不确定状态。
+     */
+    TCheckButton.prototype.getIndeterminate = function () {
+        return check_button_get_indeterminate(this != null ? (this.nativeObj || this) : null);
     };
     /**
      * 转换check_button对象(供脚本语言使用)。
@@ -24831,6 +25038,16 @@ var TSlider = /** @class */ (function (_super) {
     TSlider.prototype.setVertical = function (vertical) {
         return slider_set_vertical(this != null ? (this.nativeObj || this) : null, vertical);
     };
+    /**
+     * 设置拖拽临界值。
+     *
+     * @param drag_threshold 拖拽临界值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TSlider.prototype.setDragThreshold = function (drag_threshold) {
+        return slider_set_drag_threshold(this != null ? (this.nativeObj || this) : null, drag_threshold);
+    };
     Object.defineProperty(TSlider.prototype, "value", {
         /**
          * 值。
@@ -24962,6 +25179,20 @@ var TSlider = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(TSlider.prototype, "dragThreshold", {
+        /**
+         * 拖动临界值。
+         *
+         */
+        get: function () {
+            return slider_t_get_prop_drag_threshold(this.nativeObj);
+        },
+        set: function (v) {
+            this.setDragThreshold(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TSlider;
 }(TWidget));
 exports.TSlider = TSlider;
@@ -25038,6 +25269,16 @@ var TTabButtonGroup = /** @class */ (function (_super) {
         return tab_button_group_set_scrollable(this != null ? (this.nativeObj || this) : null, scrollable);
     };
     /**
+     * 设置拖拽 tab_button 控件位置。
+     *
+     * @param drag_child 是否拖拽(缺省FALSE)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TTabButtonGroup.prototype.setDragChild = function (drag_child) {
+        return tab_button_group_set_drag_child(this != null ? (this.nativeObj || this) : null, drag_child);
+    };
+    /**
      * 转换tab_button_group对象(供脚本语言使用)。
      *
      * @param widget tab_button_group对象。
@@ -25073,6 +25314,22 @@ var TTabButtonGroup = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setScrollable(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TTabButtonGroup.prototype, "dragChild", {
+        /**
+         * 是否支持拖拽并且修改 tab_button 控件的位置(缺省FALSE)。
+         *
+         *> 紧凑型排版子控件时才支持滚动，开启该功能后，就不能拖拽滚动了，只能鼠标滚轮滚动了。
+         *
+         */
+        get: function () {
+            return tab_button_group_t_get_prop_drag_child(this.nativeObj);
+        },
+        set: function (v) {
+            this.setDragChild(v);
         },
         enumerable: false,
         configurable: true
@@ -25202,6 +25459,26 @@ var TTabButton = /** @class */ (function (_super) {
         return tab_button_set_active_icon(this != null ? (this.nativeObj || this) : null, name);
     };
     /**
+     * 设置控件的最大宽度。
+     *
+     * @param max_w 最大宽度。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TTabButton.prototype.setMaxW = function (max_w) {
+        return tab_button_set_max_w(this != null ? (this.nativeObj || this) : null, max_w);
+    };
+    /**
+     * 调整控件在父控件中的位置序数。
+     *
+     * @param index 位置序数(大于等于总个数，则放到最后)。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TTabButton.prototype.restack = function (index) {
+        return tab_button_restack(this != null ? (this.nativeObj || this) : null, index);
+    };
+    /**
      * 设置控件动态加载显示UI。
      *
      * @param name 动态加载UI的资源名称。
@@ -25263,6 +25540,20 @@ var TTabButton = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.setIcon(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TTabButton.prototype, "maxW", {
+        /**
+         * 最大宽度。（缺省值为-1，小于 0 则最大宽度无效）
+         *
+         */
+        get: function () {
+            return tab_button_t_get_prop_max_w(this.nativeObj);
+        },
+        set: function (v) {
+            this.setMaxW(v);
         },
         enumerable: false,
         configurable: true
@@ -26750,9 +27041,67 @@ var TObjectDefault = /** @class */ (function (_super) {
     TObjectDefault.prototype.setKeepPropType = function (keep_prop_type) {
         return object_default_set_keep_prop_type(this != null ? (this.nativeObj || this) : null, keep_prop_type);
     };
+    /**
+     * 设置属性名是否大小写不敏感。
+     *
+     * @param name_case_insensitive 属性名是否大小写不敏感。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TObjectDefault.prototype.setNameCaseInsensitive = function (name_case_insensitive) {
+        return object_default_set_name_case_insensitive(this != null ? (this.nativeObj || this) : null, name_case_insensitive);
+    };
     return TObjectDefault;
 }(TTkObject));
 exports.TObjectDefault = TObjectDefault;
+;
+/**
+ * 对象接口的散列值查询属性的object实现。
+ *
+ *通用当作 map 数据结构使用，内部用有序数组保存所有属性，因此可以快速查找指定名称的属性。
+ *
+ *示例
+ *
+ *
+ *
+ */
+var TObjectHash = /** @class */ (function (_super) {
+    __extends(TObjectHash, _super);
+    function TObjectHash(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 创建对象。
+     *
+     *
+     * @returns 返回object对象。
+     */
+    TObjectHash.create = function () {
+        return new TObjectHash(object_hash_create());
+    };
+    /**
+     * 创建对象。
+     *
+     * @param enable_path 是否支持按路径访问属性。
+     *
+     * @returns 返回object对象。
+     */
+    TObjectHash.createEx = function (enable_path) {
+        return new TObjectHash(object_hash_create_ex(enable_path));
+    };
+    /**
+     * 设置属性值时不改变属性的类型。
+     *
+     * @param keep_prop_type 不改变属性的类型。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TObjectHash.prototype.setKeepPropType = function (keep_prop_type) {
+        return object_hash_set_keep_prop_type(this != null ? (this.nativeObj || this) : null, keep_prop_type);
+    };
+    return TObjectHash;
+}(TTkObject));
+exports.TObjectHash = TObjectHash;
 ;
 /**
  * 单个定时器的信息。
