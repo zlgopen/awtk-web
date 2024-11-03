@@ -4,92 +4,51 @@ import glob
 import json
 import shutil
 
-def join_path(root, subdir):
-    return os.path.abspath(os.path.normpath(os.path.join(root, subdir)))
+AWTK_ROOT = os.path.normpath(os.path.abspath(os.path.join(os.getcwd(), "../awtk")))
+sys.path.append(os.path.join(AWTK_ROOT, "scripts"))
+
+import mobile_project_helper as helper
   
 WEB_ROOT = os.path.abspath('webroot')
-AWTK_ROOT_DIR = os.path.abspath('../awtk')
 TARGET_PLATFORM="web"
 
-os.environ['AWTK_ROOT_DIR'] = AWTK_ROOT_DIR
-sys.path.append(join_path(AWTK_ROOT_DIR, 'staticcheck/common'))
+os.environ['AWTK_ROOT_DIR'] = AWTK_ROOT
+sys.path.append(helper.join_path(AWTK_ROOT, 'staticcheck/common'))
 import awtk_files as awtk
-import config_helper as helper
-
-
-def mkdir_if_not_exist(fullpath):
-    if os.path.exists(fullpath):
-        print(fullpath+" exist.")
-    else:
-        os.makedirs(fullpath)
-
-
-def copy_folder(src, dst):
-    print(src + '=>' + dst)
-    if os.path.exists(dst):
-        shutil.rmtree(dst)
-    shutil.copytree(src, dst)
-    print(src + "=>" + dst)
-
-
-def copy_file(src, dst):
-    print(src + '=>' + dst)
-    with open(dst, 'w') as outfile:
-        with open(src) as infile:
-            outfile.write(infile.read())
-            outfile.write("\n")
-
-
-def merge_files(srcs, dst):
-    print(dst)
-    with open(dst, 'w') as outfile:
-        for fname in srcs:
-            print(fname)
-            with open(fname, encoding='utf-8-sig') as infile:
-                outfile.write(infile.read())
-                outfile.write("\n")
-
-
-def append_file(src, dst):
-    with open(dst, 'a') as outfile:
-        with open(src) as infile:
-            outfile.write(infile.read())
-            outfile.write("\n")
-
 
 def config_get_app_target_dir(config):
-    return join_path(WEB_ROOT, config['name'])
+    return helper.join_path(WEB_ROOT, config['name'])
 
 
 def config_get_js_dir(config):
-    return join_path(config_get_app_target_dir(config), "js")
+    return helper.join_path(config_get_app_target_dir(config), "js")
 
 
 def config_get_target_assets_dir(config):
-    return join_path(config_get_app_target_dir(config), "design")
+    return helper.join_path(config_get_app_target_dir(config), "design")
 
 
 def config_get_src_assets_dir(src_app_root, config):
     if 'assets' in config:
         assets_dir = config['assets']
-        return join_path(src_app_root, assets_dir)
+        return helper.join_path(src_app_root, assets_dir)
     else:
-        return join_path(src_app_root, "design")
+        return helper.join_path(src_app_root, "design")
 
 
 def config_get_target_project_json(config):
-    return join_path(config_get_app_target_dir(config), "project.json")
+    return helper.join_path(config_get_app_target_dir(config), "project.json")
 
 
 def config_get_src_project_json(src_app_root, config):
-    return join_path(src_app_root, 'project.json')
+    return helper.join_path(src_app_root, 'project.json')
 
 
 def prepare_update_res(config):
     src = 'scripts'
-    dst = join_path(config_get_app_target_dir(config), 'scripts')
+    dst = helper.join_path(config_get_app_target_dir(config), 'scripts')
 
-    copy_folder(src, dst)
+    helper.copy_folder(src, dst)
 
 
 def update_assets(config):
@@ -119,22 +78,22 @@ def gen_app_config(config, filename):
 def build_app_js(config):
     app_files = []
     sources = config['sources']
-    output = join_path(config_get_js_dir(config), 'app.js')
+    output = helper.join_path(config_get_js_dir(config), 'app.js')
     if(need_awtk_api_js(config)):
         app_files.append('api/awtk_api_browser_prefix.js')
         app_files.append('api/awtk_api.js')
     for f in sources:
         if f.endswith('.js'):
-            app_files = app_files + glob.glob(join_path(app_root, f))
-    merge_files(app_files, output)
+            app_files = app_files + glob.glob(helper.join_path(app_root, f))
+    helper.merge_files(app_files, output)
     print(app_files, output)
 
 
 def build_awtk_web_js(config):
     build_app_js(config)
     app_target_dir = config_get_app_target_dir(config)
-    assets_js = join_path(app_target_dir, 'assets_web.js')
-    outfile = join_path(config_get_js_dir(config), 'awtk_web.js')
+    assets_js = helper.join_path(app_target_dir, 'assets_web.js')
+    outfile = helper.join_path(config_get_js_dir(config), 'awtk_web.js')
     gen_app_config(config, 'gen/app_config.js')
     awtk_web_js_files = [assets_js,
                          'src/js/browser.js',
@@ -151,7 +110,7 @@ def build_awtk_web_js(config):
                          'src/js/key_event.js',
                          'src/js/events_source.js',
                          'src/js/main_loop_web.js']
-    merge_files(awtk_web_js_files, outfile)
+    helper.merge_files(awtk_web_js_files, outfile)
 
 
 def is_js_app(config):
@@ -170,22 +129,22 @@ def need_awtk_api_js(config):
 
 def prepare_app_target_dir(config):
     js_dir = config_get_js_dir(config)
-    mkdir_if_not_exist(js_dir)
-    mkdir_if_not_exist("gen")
-    mkdir_if_not_exist("gen/c")
-    mkdir_if_not_exist("gen/ts")
+    helper.mkdir_if_not_exist(js_dir)
+    helper.mkdir_if_not_exist("gen")
+    helper.mkdir_if_not_exist("gen/c")
+    helper.mkdir_if_not_exist("gen/ts")
 
 
 def copy_data_file(config, filename):
     src = 'data/' + filename
-    dst = join_path(config_get_app_target_dir(config), filename)
+    dst = helper.join_path(config_get_app_target_dir(config), filename)
     shutil.copyfile(src, dst)
 
 
 def copy_assets(src_app_root, config):
     target_assets_dir = config_get_target_assets_dir(config)
     src_assets_dir = config_get_src_assets_dir(src_app_root, config)
-    copy_folder(src_assets_dir, target_assets_dir)
+    helper.copy_folder(src_assets_dir, target_assets_dir)
 
 
 def copy_project_json(src_app_root, config):
@@ -196,10 +155,10 @@ def copy_project_json(src_app_root, config):
 
 def build_romfs(src_app_root, config):
     if 'romfs' in config:
-        romfs = join_path(src_app_root, config['romfs'])
-        romfs_make = join_path(AWTK_ROOT_DIR, 'bin/romfs_make')
-        output = join_path(config_get_app_target_dir(config), "data/romfs")
-        mkdir_if_not_exist(join_path(config_get_app_target_dir(config), "data"))
+        romfs = helper.join_path(src_app_root, config['romfs'])
+        romfs_make = helper.join_path(AWTK_ROOT, 'bin/romfs_make')
+        output = helper.join_path(config_get_app_target_dir(config), "data/romfs")
+        helper.mkdir_if_not_exist(helper.join_path(config_get_app_target_dir(config), "data"))
         
         cmd = romfs_make + " " + romfs + " " + output + " true"
         os.system(cmd)
@@ -224,7 +183,7 @@ def prepare_export_funcs(src_app_root, config):
         awtk_export = "configs/export_awtk_web_funcs.json"
 
     if 'exports' in config:
-        app_export = join_path(src_app_root, config['exports'])
+        app_export = helper.join_path(src_app_root, config['exports'])
         with open(app_export, 'r') as f:
             data_app_exprot = json.load(f)
         with open(awtk_export, 'r') as f:
@@ -242,7 +201,7 @@ def build_awtk_js(src_app_root, config, flags):
     app_files = []
 
     if(is_js_app(config)):
-        app_files.append(join_path('./', 'gen/c/awtk_wrap.c'))
+        app_files.append(helper.join_path('./', 'gen/c/awtk_wrap.c'))
 
     sources = config['sources']
     for f in sources:
@@ -256,7 +215,7 @@ def build_awtk_js(src_app_root, config, flags):
     for f in files:
         all_files.append(os.path.normpath(os.path.abspath(f)))
 
-    includes_path = ' -I' + join_path(app_target_dir, 'res') + ' '
+    includes_path = ' -I' + helper.join_path(app_target_dir, 'res') + ' '
 
     if 'includes' in config:
         includes_files = config['includes']
@@ -285,11 +244,11 @@ def build_awtk_js(src_app_root, config, flags):
     COMMON_FLAGS = COMMON_FLAGS + ' -DWITH_DATA_READER_WRITER '
     COMMON_FLAGS = COMMON_FLAGS + ' -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB -Isrc/c '
     COMMON_FLAGS = COMMON_FLAGS + ' -DWITH_WINDOW_ANIMATORS -DWITH_NANOVG_GPU '
-    output = join_path(config_get_js_dir(config), "awtk.js")
+    output = helper.join_path(config_get_js_dir(config), "awtk.js")
     CPPFLAGS_JS = ' -o ' + output + ' -s WASM=0 ' + COMMON_FLAGS + includes_path
     awtk.runArgsInFile('emcc -v ', CPPFLAGS_JS, all_files)
 
-    output = join_path(config_get_js_dir(config), "awtk_asm.js")
+    output = helper.join_path(config_get_js_dir(config), "awtk_asm.js")
     CPPFLAGS_ASM = ' -o ' + output + COMMON_FLAGS + includes_path
     awtk.runArgsInFile('emcc -v ', CPPFLAGS_ASM, all_files)
 
@@ -324,7 +283,7 @@ else:
 
 def clean_temp_files(config):
     app_target_dir = config_get_app_target_dir(config)
-    os.remove(join_path(app_target_dir, 'assets_web.js'))
+    os.remove(helper.join_path(app_target_dir, 'assets_web.js'))
 
 ##########################################
 
