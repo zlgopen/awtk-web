@@ -1,18 +1,16 @@
 # AWTK-WEB
 
+![](docs/images//ui.png)
+
+老用户请花点时间看看[新版改动](docs/new_build.md)
+
 ## 一、介绍
 
-[AWTK-WEB](https://github.com/zlgopen/awtk-web) 让 [AWTK](https://github.com/zlgopen/awtk) 能够在浏览器中运行，其包括几个方面的意思：
+[AWTK-WEB](https://github.com/zlgopen/awtk-web) 让 [AWTK](https://github.com/zlgopen/awtk) 能够在浏览器中运行，这除了看起来比较酷，也有具有实际的意义：
 
-* 1. 让用 C 语言开发的 [AWTK](https://github.com/zlgopen/awtk) 应用程序，在不需要修改源码的情况下，能在浏览器中运行。
+* 让用 C 语言开发的 [AWTK](https://github.com/zlgopen/awtk) 应用程序，在不需要修改源码的情况下，能在浏览器中运行。可以方便的向客户展示项目，只需分享一个链接，客户就可以在浏览器中看到实际的运行效果。
 
-> 这样做的意义主要在于，可以很方便的向客户展示项目。你只需分享一个链接，客户就可以在浏览器中打开，并看到实际的运行效果。
-
-* 2. 把 AWTK 编译成一个 JS 库，你可以用 JS 开发 AWTK 应用程序，并在浏览器中运行。
-
-> [AWTK-JS](https://github.com/zlgopen/awtk-js) 让 [AWTK](https://github.com/zlgopen/awtk) 支持用 JS 来开发 [AWTK](https://github.com/zlgopen/awtk) 应用程序，并在嵌入式系统中运行，但不能在浏览器中运行。而 [AWTK-WEB](https://github.com/zlgopen/awtk-web) 则是让  [AWTK](https://github.com/zlgopen/awtk)  支持用 JS 来开发 AWTK 应用程序，并且能够在浏览器中运行（我们尽量保证 AWTK-JS 和 AWTK-WEB 对外提供的 API 保持兼容）。
-
-* 3.[AWTK](https://github.com/zlgopen/awtk) 在浏览器中运行是在各种小程序中运行的基础。
+* 把 AWTK 编译成一个 JS 库，你可以用 JS 开发 AWTK 应用程序，并在浏览器中运行。
 
 在线演示：[demoui](https://awtk.zlg.cn/demos/awtk/demoui/index.html)
 
@@ -28,11 +26,11 @@
 
 我们可以对比一下各个 GUI 的 wasm 文件的大小。
 
-| GUI          | wasm 大小   |  网址  |
-| --------     | -----:     | :---- |
-| QT           | 9M        |   http://example.qt.io/qt-webassembly/SensorTagDemo/SensorTagDemo.html    |
-| QT           | 3M        |   http://example.qt.io/qt-webassembly/opengl/hellowindow/hellowindow.html    |
-| AWTK         | 3M      |   https://awtk.zlg.cn/demos/awtk/demoui/index.html  |
+| GUI  | wasm 大小 | 网址                                                                    |
+| ---- | --------: | :---------------------------------------------------------------------- |
+| QT   |        9M | http://example.qt.io/qt-webassembly/SensorTagDemo/SensorTagDemo.html    |
+| QT   |        3M | http://example.qt.io/qt-webassembly/opengl/hellowindow/hellowindow.html |
+| AWTK |        3M | https://awtk.zlg.cn/demos/awtk/demoui/index.html                        |
 
 * 快。Android 手机浏览器性能普遍不高，要到达实用价值，性能优化至关重要。
 
@@ -52,16 +50,11 @@
 
 * [scons](https://scons.org/)
 * [python](https://www.python.org/)
-* [emscripten](https://emscripten.org/docs/getting_started/downloads.html#sdk-download-and-install)
-* python PIL 模块
+* [cmake](https://cmake.org/)
+* [git](https://git-scm.com/)
+* [emscripten](https://emscripten.org/docs/getting_started/downloads.html)
 
-```
-pip install Pillow
-```
-
-> 设置 emscripten 的环境变量。
-
-2. 编译 awtk 本身
+1. 编译 awtk 本身
 
 ```
 git clone https://github.com/zlgopen/awtk.git
@@ -83,7 +76,7 @@ cd awtk-web
 > 请先修改 build_mac.sh 中 emsdk_env.sh 和 python 的路径，然后运行：
 
 ```
-./build_mac.sh ../awtk/build.json debug
+./build_mac.sh ../awtk/build.json release
 ```
 
 * Linux
@@ -91,30 +84,63 @@ cd awtk-web
 > 请先修改 build_linux.sh 中 emsdk_env.sh 和 python 的路径，然后运行：
 
 ```
-./build_linux.sh ../awtk/build.json debug
+./build_linux.sh ../awtk/build.json release
 ```
 
-
-* Windows(git bash)
+* Windows（请在 git 的 bash 终端下运行）
 
 > 请先修改 build_win32.sh 中 emsdk_env.sh 和 python 的路径，然后运行：
 
 ```
-./build_win32.sh ../awtk/build.json debug
+./build_win32.sh ../awtk/build.json release
 ```
 
+> 编译脚本有更多选项，比如可以根据需要只更新资源或代码。
+
+```shell
+Usage: ./build_mac.sh app.json action(all|debug|release|assets|awtk_web_js|awtk_js|js)
+=============================================================
+  debug:        build debug version.
+  release:      build release version.
+  assets:       build assets only.
+  awtk_js:      build awtk_js only.
+  awtk_web_js:  build awtk_web_js only.
+  js:           build awtk_js and awtk_web_js only.
+  all:          same as debug. build debug version.
+=============================================================
+```
 
 ## 四、运行
 
 1. 启动 web 服务器
 
+* release 版本
+  
 ```
 python -m http.server 8080 --directory webroot
 ```
 
+或者
+
+```sh
+./start_web.sh
+```
+
+* debug 版本
+
+```
+python -m http.server 8080 --directory build
+```
+
+或者
+
+```sh
+./start_web_debug.sh
+```
+
 > 使用其它 web 服务器均可。
 
-2. 用浏览器打开 [http://localhost:8080/demoui/index.html](http://localhost:8080/demoui/index.html)
+1. 用浏览器打开 [http://localhost:8080/demoui/index.html](http://localhost:8080/demoui/index.html)
 
 ## 五、已知问题
 
@@ -149,4 +175,3 @@ python -m http.server 8080 --directory webroot
 * [C 示例 ](https://github.com/zlgopen/awtk/blob/master/build.json)
 
 * [调试](https://www.cnblogs.com/bigben0123/articles/15753240.html)
-

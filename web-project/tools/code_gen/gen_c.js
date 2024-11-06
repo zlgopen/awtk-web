@@ -162,7 +162,7 @@ class CodeGenerator {
 
   static gen() {
     const gen = new CodeGenerator();
-    const input = '../../../awtk-binding/tools/code_gen/js/filter.json';
+    const input = '../../../../awtk-binding/tools/code_gen/js/filter.json';
     const output = '../../gen/c/awtk_wrap.c';
 
     gen.genAll(input);

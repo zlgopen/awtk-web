@@ -98,7 +98,11 @@ Awtk.init = function () {
     bodyURL = TBrowser.rootUri + '/' + bodyURL;
   }
 
-  downloadMultipleBinaryFiles([headerURL, bodyURL], onAllDone, onFail);
+  if (TBrowser.config && TBrowser.config.romfs) {
+    downloadMultipleBinaryFiles([headerURL, bodyURL], onAllDone, onFail);
+  } else {
+    Awtk._init(0, 0, 0, 0);
+  }
 
   return 0;
 }

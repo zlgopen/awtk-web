@@ -1,0 +1,55 @@
+cmake_minimum_required(VERSION 3.8)
+
+project(awtk_web)
+
+set(PROJECT_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+include(awtk_common.mk)
+
+# include directory
+include_directories(${PROJECT_ROOT_PATH}
+  ${AWTK_COMMON_INCLUDES}
+  ${PROJECT_ROOT_PATH}/res
+  ${PROJECT_ROOT_PATH}/res/assets
+  ${PROJECT_ROOT_PATH}/awtk-port/c
+  EXTRA_INCLUDES
+  )
+
+
+set(AWTK_AWTK_WEB_FLAGS "-DSAFE_HEAP=1 -DASSERTIONS=1 -DSTACK_OVERFLOW_CHECK=1 DEBUG_FLAGS ")
+set(AWTK_AWTK_WEB_FLAGS "${AWTK_AWTK_WEB_FLAGS} -DWITH_DATA_READER_WRITER  -DHAS_STD_MALLOC -DNDEBUG -DAWTK_WEB=1 ")
+set(AWTK_AWTK_WEB_FLAGS "${AWTK_AWTK_WEB_FLAGS} -DWITH_WINDOW_ANIMATORS -DWITH_NANOVG_GPU ")
+set(AWTK_AWTK_WEB_FLAGS "${AWTK_AWTK_WEB_FLAGS} -s USE_SDL=2 ")
+
+set(AWTK_AWTK_WEB_LINK_FLAGS "-s USE_SDL=2 ")
+set(AWTK_AWTK_WEB_LINK_FLAGS "${AWTK_AWTK_WEB_LINK_FLAGS} -s EXPORTED_RUNTIME_METHODS=@${PROJECT_ROOT_PATH}/configs/export_runtime_funcs.json ")
+set(AWTK_AWTK_WEB_LINK_FLAGS "${AWTK_AWTK_WEB_LINK_FLAGS} -s ALLOW_MEMORY_GROWTH=1 ")
+set(AWTK_AWTK_WEB_LINK_FLAGS "${AWTK_AWTK_WEB_LINK_FLAGS} -s RESERVED_FUNCTION_POINTERS=1000 ")
+set(AWTK_AWTK_WEB_LINK_FLAGS "${AWTK_AWTK_WEB_LINK_FLAGS} -s EXPORTED_FUNCTIONS=@${PROJECT_ROOT_PATH}/gen/export_all_funcs.json ")
+
+
+set(AWTK_FLAGS " ${AWTK_AWTK_WEB_FLAGS}")
+set(AWTK_SOURCE_FILES 
+  ${AWTK_BASE_SOURCE_FILES}
+  awtk/src/romfs/romfs.c
+  awtk/src/input_methods/input_method_creator.c
+  awtk/src/native_window/native_window_raw.c
+)
+
+file(GLOB AWTK_PORT_SOURCE_FILES
+  awtk-port/c/*.c
+  awtk-port/c/*.cpp
+)
+
+set(CMAKE_C_FLAGS "${AWTK_FLAGS} ${AWTK_APP_FLAGS} EXTRA_CFLAGS")
+set(CMAKE_CXX_FLAGS "${AWTK_FLAGS} ${AWTK_APP_FLAGS} EXTRA_CPPFLAGS")
+
+add_library(awtk STATIC
+            ${AWTK_SOURCE_FILES}
+            ${AWTK_PORT_SOURCE_FILES}
+            )
+
+set(AWTK_APP_SOURCE_FILES ${AWTK_APP_SOURCE_FILES} gen/c/awtk_wrap.c)
+add_executable(awtk_asm ${AWTK_APP_SOURCE_FILES})
+set_target_properties(awtk_asm PROPERTIES LINK_FLAGS ${AWTK_AWTK_WEB_LINK_FLAGS})
+target_link_libraries(awtk_asm PUBLIC awtk)

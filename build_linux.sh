@@ -14,7 +14,7 @@ if [ "$#" -ne 2 ]; then
 else
   source ~/work/tools/emsdk/emsdk_env.sh
   #use abs path of python, to avoid use python in emsdk 
-  /usr/bin/python3 build.py $* 
+  /usr/bin/python3 create_project.py $* 
 fi
 
 cd ${AWTK_WEB}

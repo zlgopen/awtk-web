@@ -9,6 +9,9 @@ extern ret_t assets_init(void);
 #ifdef AWTK_WEB_JS
 #include <emscripten.h>
 #include "assets.inc"
+ret_t application_init(void) {
+  return RET_NOT_IMPL;
+}
 #else
 extern ret_t application_init(void);
 #endif/*AWTK_WEB_JS*/
@@ -21,7 +24,7 @@ int32_t awtk_web_init(uint8_t* header_data, uint32_t header_size, uint8_t* body_
 
   romfs_init(header_data, header_size, body_data, body_size);
 #ifdef AWTK_WEB_JS
-  EM_ASM_INT({ TBrowser.loadScript("js/app.js"); }, 0);
+  EM_ASM_INT({ TBrowser.loadScript("js/awtk_api.js"); }, 0);
 #else
   application_init();
 #endif/*AWTK_WEB_JS*/

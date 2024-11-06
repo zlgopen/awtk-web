@@ -13,13 +13,14 @@ if [ "$#" -ne 2 ]; then
   echo "============================================================="
 else
   #use abs path of python, to avoid use python in emsdk
-  PYTHON_PATH=`where 'python'` #'/d/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/python.exe'
-  echo "python path : $PYTHON_PATH"
+  #PYTHON=`where 'python'` #'/d/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/python.exe'
+  PYTHON='python'
+  echo "python path : $PYTHON"
 
   source /d/work/tools/emsdk/emsdk_env.sh
-  ${PYTHON_PATH} -m pip install --upgrade pip
-  ${PYTHON_PATH} -m pip install Pillow
-  ${PYTHON_PATH} build.py $*
+  ${PYTHON} -m pip install --upgrade pip
+  ${PYTHON} -m pip install Pillow
+  ${PYTHON} create_project.py $*
 fi
 
 cd ${AWTK_WEB}
