@@ -302,7 +302,7 @@ def run(app_root, config, action):
         build_awtk_web_js(config)
     elif action == 'release':
         build_app_assets(app_root, config)
-        build_awtk_js(app_root, config, '-Os --memory-init-file 0')
+        build_awtk_js(app_root, config, '-Os ')
         build_awtk_web_js(config)
         clean_temp_files(config)
     elif action == 'assets':
