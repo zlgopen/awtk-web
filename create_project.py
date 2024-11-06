@@ -114,6 +114,8 @@ def update_assets(config):
     cwd = os.getcwd()
     app_target_dir = config_get_app_target_dir(config)
     os.chdir(app_target_dir)
+    os.remove('design/default/data/gpinyin.dat')
+    os.remove('design/default/data/suggest_words_zh_cn.dat')
     os.system('"' + sys.executable + '"' + " scripts/update_res.py res")
     os.system('"' + sys.executable + '"' + " scripts/update_res.py json")
     os.system('"' + sys.executable + '"' + " scripts/update_res.py web")
