@@ -2,7 +2,7 @@
 
 ![](docs/images//ui.png)
 
-老用户请花点时间看看[新版改动](docs/new_build.md)
+老用户请花点时间看看 [新版改动](docs/new_build.md)
 
 ## 一、介绍
 
@@ -53,6 +53,12 @@
 * [cmake](https://cmake.org/)
 * [git](https://git-scm.com/)
 * [emscripten](https://emscripten.org/docs/getting_started/downloads.html)
+
+> Windows 下，如果没有 gnu make，可以用 choco 安装 ninja（在管理员权限下运行命令提示符 cmd，然后执行下面的命令)
+
+```
+choco install ninja
+```
 
 1. 编译 awtk 本身
 
