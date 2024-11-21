@@ -6,29 +6,7 @@
 
 ## 二、构建脚本 build.py 的用法
 
-```
-$ build.py
-Usage: python build.py app.json action(all|debug|release|assets|awtk_web_js|awtk_js|js)
-=============================================================
-  debug:        build debug version.
-  release:      build release version.
-  assets:       build assets only.
-  awtk_js:      build awtk_js only.
-  awtk_web_js:  build awtk_web_js only.
-  js:           build awtk_js and awtk_web_js only.
-  all:          same as debug. build debug version.
-=============================================================
-```
-
-bash 下运行的方式：
-```
-python build.py app.json all
-```
-
-cmd 下运行的方式：
-```
-build.py app.json all
-```
+请参考 README.md
 
 ## 三、开发 C 语言版本的 AWTK 应用程序
 
