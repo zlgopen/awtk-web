@@ -1,3 +1,3 @@
 <window name="home_page">
-  <button name="close" x="334" y="216" w="100" h="36" text="关闭"/>
+  <button name="close" x="c" y="m" w="100" h="36" text="关闭"/>
 </window>

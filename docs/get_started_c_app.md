@@ -78,9 +78,7 @@ static ret_t visit_init_child(void* ctx, const void* iter) {
      "src/pages/*.c",
      "src/*.h",
      "src/common/*.h",
-     "src/pages/*.c",
-     "res/assets.inc",
-     "res/assets/__assets_default.inc"
+     "src/pages/*.c"
   ],
   "web": {
     "app_type": "c",
@@ -100,14 +98,20 @@ static ret_t visit_init_child(void* ctx, const void* iter) {
       "defaultFont": "default_full"
     },
     "sources": [
+       "res/assets.inc",
+       "res/assets/__assets_default.inc"
     ]
   },
   "android": {
     "sources": [
+       "res/assets.inc",
+       "res/assets/__assets_default.inc"
     ]
   },
   "ios": {
     "sources": [
+       "res/assets.inc",
+       "res/assets/__assets_default.inc"
     ]
   }
 }
