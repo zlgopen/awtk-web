@@ -1,9 +1,9 @@
 {
   "compileSDK": {
     "awtk": {
-      "path": "c:/AWStudio/AWTK/SDK/awtk",
-      "release_id": "2210",
-      "nanovg_backend": "AGGE"
+      "path": "/Users/jim/work/awtk-root/awtk",
+      "release_id": "",
+      "nanovg_backend": "GL3"
     }
   }
 }
