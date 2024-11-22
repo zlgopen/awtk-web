@@ -156,28 +156,38 @@ python -m http.server 8080 --directory build
 
 ## 六、注意事项
 
-## 七、文档
+## 七、实现笔记
 
-1.[C/C++应用程序快速入门](docs/get_started_c_app.md)
+1.[移植笔记-序](docs/porting_notes_0.md)
 
-2.[移植笔记-序](docs/porting_notes_0.md)
+2.[移植笔记-基础知识](docs/porting_notes_1.md)
 
-3.[移植笔记-基础知识](docs/porting_notes_1.md)
+3.[移植笔记-字体](docs/porting_notes_2.md)
 
-4.[移植笔记-字体](docs/porting_notes_2.md)
+4.[移植笔记-图片](docs/porting_notes_3.md)
 
-5.[移植笔记-图片](docs/porting_notes_3.md)
+5.[移植笔记-输入法](docs/porting_notes_4.md)
 
-6.[移植笔记-输入法](docs/porting_notes_4.md)
+6.[移植笔记-画布](docs/porting_notes_5.md)
 
-7.[移植笔记-画布](docs/porting_notes_5.md)
+## 八、开发文档
 
-8.[emscripten api 参考](https://emscripten.org/docs/api_reference/index.html)
+* [C/C++ 应用程序快速入门](docs/get_started_c_app.md)
 
-## 八、示例
+* [JS 应用程序快速入门](docs/get_started_js_app.md)
 
-* [JS 示例 ](https://github.com/zlgopen/awtk-web/blob/master/examples/button/build.json)
+* [emscripten api 参考](https://emscripten.org/docs/api_reference/index.html)
 
-* [C 示例 ](https://github.com/zlgopen/awtk/blob/master/build.json)
+* [调试方法](https://www.cnblogs.com/bigben0123/articles/15753240.html)
 
-* [调试](https://www.cnblogs.com/bigben0123/articles/15753240.html)
+## 九、示例
+
+* [JS 示例 1 ](https://github.com/zlgopen/awtk-web/blob/master/examples/button/build.json)
+
+* [JS 示例 2 ](https://github.com/zlgopen/awtk-web/blob/master/examples/button_xml/build.json)
+
+* [JS 示例 3 ](https://github.com/zlgopen/awtk-web/blob/master/examples/AwtkApplicationJS/build.json)
+
+* [C/C++ 示例 1 ](https://github.com/zlgopen/awtk/blob/master/build.json)
+
+* [C/C++ 示例 2 ](https://github.com/zlgopen/awtk-web/blob/master/examples/AwtkApplicationC/build.json)
