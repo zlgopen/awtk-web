@@ -169,7 +169,7 @@ start_web_debug.sh
 
 可以看到
 
-![](images/app_c5.png)
+![](images/app_c6.png)
 
 
 ## 6、AWTK-WEB-JS 和 AWTK-JS 不同
