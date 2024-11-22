@@ -1,0 +1,48 @@
+{
+  "name": "AwtkApplicationC",
+  "version": "1.0",
+  "assets": "res/assets",
+  "vendor": "zlgopen",
+  "app_name": "org.zlgopen.AwtkApplicationC",
+  "author": "xianjimli@hotmail.com",
+  "copyright": "Guangzhou ZHIYUAN Electronics Co.,Ltd.",
+  "themes":["default"],
+  "sources": [
+     "src/*.c",
+     "src/common/*.c",
+     "src/pages/*.c",
+     "src/*.h",
+     "src/common/*.h",
+     "src/pages/*.c",
+     "res/assets.inc",
+     "res/assets/__assets_default.inc"
+  ],
+  "web": {
+    "app_type": "c",
+    "assets": "design",
+    "config": {
+      "fontScale": "0.8",
+      "defaultFont": "sans"
+    }
+  },
+  "harmonyos": {
+    "icon": "design/default/images/xx/app_icon.png",
+    "title": {
+      "en_US": "MyApp",
+      "zh_CN": "AwtkApp"
+    },
+    "config": {
+      "defaultFont": "default_full"
+    },
+    "sources": [
+    ]
+  },
+  "android": {
+    "sources": [
+    ]
+  },
+  "ios": {
+    "sources": [
+    ]
+  }
+}

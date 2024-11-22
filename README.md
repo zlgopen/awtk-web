@@ -54,7 +54,7 @@
 * [git](https://git-scm.com/)
 * [emscripten](https://emscripten.org/docs/getting_started/downloads.html)
 
-> Windows 下，如果没有 gnu make，可以用 choco 安装 ninja（在管理员权限下运行命令提示符 cmd，然后执行下面的命令)
+> Windows 下，如果没有 gnu make，可以用 choco 安装 ninja（在管理员权限下运行命令提示符 cmd，然后执行下面的命令）
 
 ```
 choco install ninja
@@ -158,7 +158,7 @@ python -m http.server 8080 --directory build
 
 ## 七、文档
 
-1.[快速入门](docs/get_started.md)
+1.[C/C++应用程序快速入门](docs/get_started_c_app.md)
 
 2.[移植笔记-序](docs/porting_notes_0.md)
 
