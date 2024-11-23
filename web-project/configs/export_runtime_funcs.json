@@ -7,5 +7,6 @@
     "addOnPostRun",
     "addOnInit",
     "addOnExit",
-    "UTF8ToString"
+    "UTF8ToString",
+    "UTF32ToString"
 ]
