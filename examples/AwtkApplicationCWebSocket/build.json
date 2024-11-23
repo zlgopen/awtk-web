@@ -22,31 +22,5 @@
       "fontScale": "0.8",
       "defaultFont": "sans"
     }
-  },
-  "harmonyos": {
-    "icon": "design/default/images/xx/app_icon.png",
-    "title": {
-      "en_US": "MyApp",
-      "zh_CN": "AwtkApp"
-    },
-    "config": {
-      "defaultFont": "default_full"
-    },
-    "sources": [
-       "res/assets.inc",
-       "res/assets/__assets_default.inc"
-    ]
-  },
-  "android": {
-    "sources": [
-       "res/assets.inc",
-       "res/assets/__assets_default.inc"
-    ]
-  },
-  "ios": {
-    "sources": [
-       "res/assets.inc",
-       "res/assets/__assets_default.inc"
-    ]
   }
 }

@@ -138,7 +138,7 @@ static ret_t visit_init_child(void* ctx, const void* iter) {
 * MacOS 平台
 
 ```sh
-./build_macos.sh examples/AwtkApplicationC/build.json release
+./build_mac.sh examples/AwtkApplicationC/build.json release
 ```
 
 > 请根据应用程序所在目录，修改配置文件的路径。
