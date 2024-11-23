@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TVpageEvent = exports.TIndicatorDefaultPaint = exports.TExtWidgets = exports.TAppConf = exports.TWidget = exports.TWidgetCursor = exports.TWidgetState = exports.TWindowClosable = exports.TWindowStage = exports.TWidgetType = exports.TWidgetProp = exports.TVgcanvasLineJoin = exports.TVgcanvasLineCap = exports.TVgcanvas = exports.TBitmapFlag = exports.TBitmapFormat = exports.TAppType = exports.TAlignH = exports.TAlignV = exports.TTimer = exports.TTheme = exports.TSystemInfoFlag = exports.TStyle = exports.TStyleId = exports.TLocaleInfos = exports.TLocaleInfo = exports.TKeyCode = exports.TInputMethod = exports.TInputType = exports.TImageManager = exports.TIdle = exports.TGlyphFormat = exports.TEvent = exports.TEventType = exports.TDialogQuitCode = exports.TClipBoard = exports.TClipBoardDataType = exports.TCanvas = exports.TCanvasOffline = exports.TImageDrawType = exports.TBidiType = exports.TGlobal = exports.TValue = exports.TTkObject = exports.TBitmap = exports.TRect = exports.TRectf = exports.TPointf = exports.TPoint = exports.TEmitter = void 0;
-exports.TProgressCircle = exports.TMledit = exports.TLineNumber = exports.TLangIndicator = exports.TCandidates = exports.TImageValue = exports.TImageAnimation = exports.TGauge = exports.TGaugePointer = exports.TFileChooser = exports.TFileBrowserView = exports.TDraggable = exports.TColorPicker = exports.TColorComponent = exports.TCanvasWidget = exports.TWindowManager = exports.TWindowBase = exports.TStyleMutable = exports.TImageBase = exports.TFontManager = exports.TUiLoadEvent = exports.TSystemEvent = exports.TDropFileEvent = exports.TThemeChangeEvent = exports.TMultiGestureEvent = exports.TWindowEvent = exports.TPaintEvent = exports.TKeyEvent = exports.TPointerEvent = exports.TOffsetChangeEvent = exports.TOrientationEvent = exports.TWheelEvent = exports.TModelEvent = exports.TWidgetAnimatorEvent = exports.TAssetsManager = exports.TValueType = exports.TRet = exports.TTimerManager = exports.TTimeNow = exports.TRlog = exports.TObjectProp = exports.TObjectCmd = exports.TNamedValue = exports.TMIME_TYPE = exports.TIdleManager = exports.TEasingType = exports.TDateTime = exports.TColor = exports.TAssetInfo = exports.TAssetType = void 0;
-exports.TView = exports.TTabControl = exports.TTabButton = exports.TTabButtonGroup = exports.TSlider = exports.TRow = exports.TProgressBar = exports.TPages = exports.TLabel = exports.TGroupBox = exports.TGrid = exports.TGridItem = exports.TEdit = exports.TDragger = exports.TDigitClock = exports.TDialogTitle = exports.TDialogClient = exports.TComboBoxItem = exports.TColumn = exports.TColorTile = exports.TClipView = exports.TCheckButton = exports.TButton = exports.TButtonGroup = exports.TAppBar = exports.TNamedValueHash = exports.TLogMessageEvent = exports.TValueChangeEvent = exports.TCmdExecEvent = exports.TErrorEvent = exports.TDoneEvent = exports.TProgressEvent = exports.TPropChangeEvent = exports.TVpage = exports.TTimerWidget = exports.TTimeClock = exports.TTextSelector = exports.TSwitch = exports.TSlideView = exports.TSlideIndicator = exports.TSlideMenu = exports.TSerialWidget = exports.TScrollView = exports.TScrollBar = exports.TListView = exports.TListViewH = exports.TListItem = exports.THscrollLabel = exports.TRichText = exports.TRichTextView = void 0;
-exports.TComboBoxEx = exports.TSystemBar = exports.TSpinBox = exports.TPopup = exports.TOverlay = exports.TImage = exports.TComboBox = exports.TCalibrationWin = exports.TTimerInfo = exports.TObjectHash = exports.TObjectDefault = exports.TObjectArray = exports.TIdleInfo = exports.TSvgImage = exports.TListItemSeperator = exports.TMutableImage = exports.TKeyboard = exports.TGifImage = exports.TWindow = exports.TNativeWindow = exports.TDialog = void 0;
+exports.TRichTextView = exports.TProgressCircle = exports.TMledit = exports.TLineNumber = exports.TLangIndicator = exports.TCandidates = exports.TImageValue = exports.TImageAnimation = exports.TGauge = exports.TGaugePointer = exports.TFileChooser = exports.TFileBrowserView = exports.TDraggable = exports.TColorPicker = exports.TColorComponent = exports.TCanvasWidget = exports.TWindowManager = exports.TWindowBase = exports.TStyleMutable = exports.TImageBase = exports.TFontManager = exports.TUiLoadEvent = exports.TSystemEvent = exports.TDropFileEvent = exports.TThemeChangeEvent = exports.TMultiGestureEvent = exports.TWindowEvent = exports.TPaintEvent = exports.TKeyEvent = exports.TPointerEvent = exports.TOffsetChangeEvent = exports.TOrientationEvent = exports.TWheelEvent = exports.TModelEvent = exports.TWidgetAnimatorEvent = exports.TAssetsManager = exports.TValueType = exports.TRet = exports.TTimerManager = exports.TTimeNow = exports.TRlog = exports.TObjectProp = exports.TObjectCmd = exports.TMIME_TYPE = exports.TIdleManager = exports.TEasingType = exports.TDateTime = exports.TColor = exports.TAssetInfo = exports.TAssetType = void 0;
+exports.TDialog = exports.TView = exports.TTabControl = exports.TTabButton = exports.TTabButtonGroup = exports.TSlider = exports.TRow = exports.TProgressBar = exports.TPages = exports.TLabel = exports.TGroupBox = exports.TGrid = exports.TGridItem = exports.TEdit = exports.TDragger = exports.TDigitClock = exports.TDialogTitle = exports.TDialogClient = exports.TComboBoxItem = exports.TColumn = exports.TColorTile = exports.TClipView = exports.TCheckButton = exports.TButton = exports.TButtonGroup = exports.TAppBar = exports.TNamedValue = exports.TLogMessageEvent = exports.TValueChangeEvent = exports.TCmdExecEvent = exports.TErrorEvent = exports.TDoneEvent = exports.TProgressEvent = exports.TPropChangeEvent = exports.TVpage = exports.TTimerWidget = exports.TTimeClock = exports.TTextSelector = exports.TSwitch = exports.TSlideView = exports.TSlideIndicator = exports.TSlideMenu = exports.TSerialWidget = exports.TScrollView = exports.TScrollBar = exports.TListView = exports.TListViewH = exports.TListItem = exports.THscrollLabel = exports.TRichText = void 0;
+exports.TComboBoxEx = exports.TSystemBar = exports.TSpinBox = exports.TPopup = exports.TOverlay = exports.TImage = exports.TComboBox = exports.TCalibrationWin = exports.TTimerInfo = exports.TObjectHash = exports.TObjectDefault = exports.TObjectArray = exports.TNamedValueHash = exports.TIdleInfo = exports.TSvgImage = exports.TListItemSeperator = exports.TMutableImage = exports.TKeyboard = exports.TGifImage = exports.TWindow = exports.TNativeWindow = void 0;
 exports.init = init;
 var Module = window.Module || {};
 var TBrowser = window.TBrowser || {};
@@ -1388,13 +1388,6 @@ var MIME_TYPE_TEXT_X_VCARD = Module.cwrap("get_MIME_TYPE_TEXT_X_VCARD", "string"
 var MIME_TYPE_VIDEO_MPEG = Module.cwrap("get_MIME_TYPE_VIDEO_MPEG", "string", []);
 var MIME_TYPE_VIDEO_QUICKTIME = Module.cwrap("get_MIME_TYPE_VIDEO_QUICKTIME", "string", []);
 var MIME_TYPE_VIDEO_X_MSVIDEO = Module.cwrap("get_MIME_TYPE_VIDEO_X_MSVIDEO", "string", []);
-var named_value_create = Module.cwrap("named_value_create", "number", []);
-var named_value_cast = Module.cwrap("named_value_cast", "number", ["number"]);
-var named_value_set_name = Module.cwrap("named_value_set_name", "number", ["number", "string"]);
-var named_value_set_value = Module.cwrap("named_value_set_value", "number", ["number", "number"]);
-var named_value_get_value = Module.cwrap("named_value_get_value", "number", ["number"]);
-var named_value_destroy = Module.cwrap("named_value_destroy", "number", ["number"]);
-var named_value_t_get_prop_name = Module.cwrap("named_value_t_get_prop_name", "string", ["number"]);
 var TK_OBJECT_CMD_SAVE = Module.cwrap("get_TK_OBJECT_CMD_SAVE", "string", []);
 var TK_OBJECT_CMD_RELOAD = Module.cwrap("get_TK_OBJECT_CMD_RELOAD", "string", []);
 var TK_OBJECT_CMD_MOVE_UP = Module.cwrap("get_TK_OBJECT_CMD_MOVE_UP", "string", []);
@@ -1732,12 +1725,14 @@ var candidates_cast = Module.cwrap("candidates_cast", "number", ["number"]);
 var candidates_set_pre = Module.cwrap("candidates_set_pre", "number", ["number", "number"]);
 var candidates_set_select_by_num = Module.cwrap("candidates_set_select_by_num", "number", ["number", "number"]);
 var candidates_set_auto_hide = Module.cwrap("candidates_set_auto_hide", "number", ["number", "number"]);
+var candidates_set_visible_num = Module.cwrap("candidates_set_visible_num", "number", ["number", "number"]);
 var candidates_set_button_style = Module.cwrap("candidates_set_button_style", "number", ["number", "string"]);
 var candidates_t_get_prop_pre = Module.cwrap("candidates_t_get_prop_pre", "number", ["number"]);
 var candidates_t_get_prop_select_by_num = Module.cwrap("candidates_t_get_prop_select_by_num", "number", ["number"]);
 var candidates_t_get_prop_auto_hide = Module.cwrap("candidates_t_get_prop_auto_hide", "number", ["number"]);
 var candidates_t_get_prop_button_style = Module.cwrap("candidates_t_get_prop_button_style", "string", ["number"]);
 var candidates_t_get_prop_enable_preview = Module.cwrap("candidates_t_get_prop_enable_preview", "number", ["number"]);
+var candidates_t_get_prop_visible_num = Module.cwrap("candidates_t_get_prop_visible_num", "number", ["number"]);
 var lang_indicator_create = Module.cwrap("lang_indicator_create", "number", ["number", "number", "number", "number", "number"]);
 var lang_indicator_set_image = Module.cwrap("lang_indicator_set_image", "number", ["number", "string"]);
 var lang_indicator_cast = Module.cwrap("lang_indicator_cast", "number", ["number"]);
@@ -2078,11 +2073,13 @@ var cmd_exec_event_t_get_prop_result = Module.cwrap("cmd_exec_event_t_get_prop_r
 var cmd_exec_event_t_get_prop_can_exec = Module.cwrap("cmd_exec_event_t_get_prop_can_exec", "number", ["number"]);
 var value_change_event_cast = Module.cwrap("value_change_event_cast", "number", ["number"]);
 var log_message_event_cast = Module.cwrap("log_message_event_cast", "number", ["number"]);
-var named_value_hash_create = Module.cwrap("named_value_hash_create", "number", []);
-var named_value_hash_set_name = Module.cwrap("named_value_hash_set_name", "number", ["number", "string"]);
-var named_value_hash_destroy = Module.cwrap("named_value_hash_destroy", "number", ["number"]);
-var named_value_hash_clone = Module.cwrap("named_value_hash_clone", "number", ["number"]);
-var named_value_hash_get_hash_from_str = Module.cwrap("named_value_hash_get_hash_from_str", "number", ["string"]);
+var named_value_create = Module.cwrap("named_value_create", "number", []);
+var named_value_cast = Module.cwrap("named_value_cast", "number", ["number"]);
+var named_value_set_name = Module.cwrap("named_value_set_name", "number", ["number", "string"]);
+var named_value_set_value = Module.cwrap("named_value_set_value", "number", ["number", "number"]);
+var named_value_get_value = Module.cwrap("named_value_get_value", "number", ["number"]);
+var named_value_destroy = Module.cwrap("named_value_destroy", "number", ["number"]);
+var named_value_t_get_prop_name = Module.cwrap("named_value_t_get_prop_name", "string", ["number"]);
 var app_bar_create = Module.cwrap("app_bar_create", "number", ["number", "number", "number", "number", "number"]);
 var app_bar_cast = Module.cwrap("app_bar_cast", "number", ["number"]);
 var button_group_create = Module.cwrap("button_group_create", "number", ["number", "number", "number", "number", "number"]);
@@ -2342,6 +2339,11 @@ var idle_info_cast = Module.cwrap("idle_info_cast", "number", ["number"]);
 var idle_info_t_get_prop_ctx = Module.cwrap("idle_info_t_get_prop_ctx", "number", ["number"]);
 var idle_info_t_get_prop_extra_ctx = Module.cwrap("idle_info_t_get_prop_extra_ctx", "number", ["number"]);
 var idle_info_t_get_prop_id = Module.cwrap("idle_info_t_get_prop_id", "number", ["number"]);
+var named_value_hash_create = Module.cwrap("named_value_hash_create", "number", []);
+var named_value_hash_set_name = Module.cwrap("named_value_hash_set_name", "number", ["number", "string"]);
+var named_value_hash_destroy = Module.cwrap("named_value_hash_destroy", "number", ["number"]);
+var named_value_hash_clone = Module.cwrap("named_value_hash_clone", "number", ["number"]);
+var named_value_hash_get_hash_from_str = Module.cwrap("named_value_hash_get_hash_from_str", "number", ["string"]);
 var object_array_create = Module.cwrap("object_array_create", "number", []);
 var object_array_unref = Module.cwrap("object_array_unref", "number", ["number"]);
 var object_array_clear_props = Module.cwrap("object_array_clear_props", "number", ["number"]);
@@ -2362,6 +2364,7 @@ var object_default_set_name_case_insensitive = Module.cwrap("object_default_set_
 var object_hash_create = Module.cwrap("object_hash_create", "number", []);
 var object_hash_create_ex = Module.cwrap("object_hash_create_ex", "number", ["number"]);
 var object_hash_set_keep_prop_type = Module.cwrap("object_hash_set_keep_prop_type", "number", ["number", "number"]);
+var object_hash_set_keep_props_order = Module.cwrap("object_hash_set_keep_props_order", "number", ["number", "number"]);
 var timer_info_cast = Module.cwrap("timer_info_cast", "number", ["number"]);
 var timer_info_t_get_prop_ctx = Module.cwrap("timer_info_t_get_prop_ctx", "number", ["number"]);
 var timer_info_t_get_prop_extra_ctx = Module.cwrap("timer_info_t_get_prop_extra_ctx", "number", ["number"]);
@@ -10144,7 +10147,8 @@ var TWidget = /** @class */ (function () {
      * @returns 返回文本。
      */
     TWidget.prototype.getText = function () {
-        return widget_get_text(this != null ? (this.nativeObj || this) : null);
+        return window.wstrToString(widget_get_text(this != null ? (this.nativeObj || this) : null));
+        ;
     };
     /**
      * 设置控件的名称。
@@ -12903,89 +12907,6 @@ var TMIME_TYPE;
      */
     TMIME_TYPE[TMIME_TYPE["VIDEO_X_MSVIDEO"] = MIME_TYPE_VIDEO_X_MSVIDEO()] = "VIDEO_X_MSVIDEO";
 })(TMIME_TYPE || (exports.TMIME_TYPE = TMIME_TYPE = {}));
-;
-/**
- * 命名的值。
- *
- */
-var TNamedValue = /** @class */ (function () {
-    function TNamedValue(nativeObj) {
-        this.nativeObj = nativeObj;
-    }
-    /**
-     * 创建named_value对象。
-     *
-     *
-     * @returns 返回named_value对象。
-     */
-    TNamedValue.create = function () {
-        return new TNamedValue(named_value_create());
-    };
-    /**
-     * 转换为named_value对象(供脚本语言使用)。
-     *
-     * @param nv named_value对象。
-     *
-     * @returns 返回named_value对象。
-     */
-    TNamedValue.cast = function (nv) {
-        return new TNamedValue(named_value_cast(nv != null ? (nv.nativeObj || nv) : null));
-    };
-    /**
-     * 设置名称。
-     *
-     * @param name 名称。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    TNamedValue.prototype.setName = function (name) {
-        return named_value_set_name(this != null ? (this.nativeObj || this) : null, name);
-    };
-    /**
-     * 设置值。
-     *
-     * @param value 值。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    TNamedValue.prototype.setValue = function (value) {
-        return named_value_set_value(this != null ? (this.nativeObj || this) : null, value != null ? (value.nativeObj || value) : null);
-    };
-    /**
-     * 获取值对象(主要给脚本语言使用)。
-     *
-     *
-     * @returns 返回值对象。
-     */
-    TNamedValue.prototype.getValue = function () {
-        return new TValue(named_value_get_value(this != null ? (this.nativeObj || this) : null));
-    };
-    /**
-     * 销毁named_value对象。
-     *
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    TNamedValue.prototype.destroy = function () {
-        return named_value_destroy(this != null ? (this.nativeObj || this) : null);
-    };
-    Object.defineProperty(TNamedValue.prototype, "name", {
-        /**
-         * 名称。
-         *
-         */
-        get: function () {
-            return named_value_t_get_prop_name(this.nativeObj);
-        },
-        set: function (v) {
-            this.setName(v);
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return TNamedValue;
-}());
-exports.TNamedValue = TNamedValue;
 ;
 /**
  * 对象常见命令定义
@@ -17162,6 +17083,16 @@ var TCandidates = /** @class */ (function (_super) {
         return candidates_set_auto_hide(this != null ? (this.nativeObj || this) : null, auto_hide);
     };
     /**
+     * 设置可见候选词个数。
+     *
+     * @param visible_num 可见个数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TCandidates.prototype.setVisibleNum = function (visible_num) {
+        return candidates_set_visible_num(this != null ? (this.nativeObj || this) : null, visible_num);
+    };
+    /**
      * 设置按钮的style名称。
      *
      * @param button_style 按钮的style名称。
@@ -17237,6 +17168,20 @@ var TCandidates = /** @class */ (function (_super) {
          */
         get: function () {
             return candidates_t_get_prop_enable_preview(this.nativeObj);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(TCandidates.prototype, "visibleNum", {
+        /**
+         * 候选字可见个数。
+         *
+         */
+        get: function () {
+            return candidates_t_get_prop_visible_num(this.nativeObj);
+        },
+        set: function (v) {
+            this.setVisibleNum(v);
         },
         enumerable: false,
         configurable: true
@@ -22220,64 +22165,88 @@ var TLogMessageEvent = /** @class */ (function (_super) {
 exports.TLogMessageEvent = TLogMessageEvent;
 ;
 /**
- * 带有散列值的命名的值。
+ * 命名的值。
  *
  */
-var TNamedValueHash = /** @class */ (function (_super) {
-    __extends(TNamedValueHash, _super);
-    function TNamedValueHash(nativeObj) {
+var TNamedValue = /** @class */ (function (_super) {
+    __extends(TNamedValue, _super);
+    function TNamedValue(nativeObj) {
         return _super.call(this, nativeObj) || this;
     }
     /**
-     * 创建named_value_hash对象。
+     * 创建named_value对象。
      *
      *
-     * @returns 返回named_value_hash对象。
+     * @returns 返回named_value对象。
      */
-    TNamedValueHash.create = function () {
-        return new TNamedValueHash(named_value_hash_create());
+    TNamedValue.create = function () {
+        return new TNamedValue(named_value_create());
     };
     /**
-     * 设置散列值。
+     * 转换为named_value对象(供脚本语言使用)。
+     *
+     * @param nv named_value对象。
+     *
+     * @returns 返回named_value对象。
+     */
+    TNamedValue.cast = function (nv) {
+        return new TNamedValue(named_value_cast(nv != null ? (nv.nativeObj || nv) : null));
+    };
+    /**
+     * 设置名称。
      *
      * @param name 名称。
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TNamedValueHash.prototype.setName = function (name) {
-        return named_value_hash_set_name(this != null ? (this.nativeObj || this) : null, name);
+    TNamedValue.prototype.setName = function (name) {
+        return named_value_set_name(this != null ? (this.nativeObj || this) : null, name);
     };
     /**
-     * 销毁named_value_hash对象。
+     * 设置值。
+     *
+     * @param value 值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TNamedValue.prototype.setValue = function (value) {
+        return named_value_set_value(this != null ? (this.nativeObj || this) : null, value != null ? (value.nativeObj || value) : null);
+    };
+    /**
+     * 获取值对象(主要给脚本语言使用)。
+     *
+     *
+     * @returns 返回值对象。
+     */
+    TNamedValue.prototype.getValue = function () {
+        return new TValue(named_value_get_value(this != null ? (this.nativeObj || this) : null));
+    };
+    /**
+     * 销毁named_value对象。
      *
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
-    TNamedValueHash.prototype.destroy = function () {
-        return named_value_hash_destroy(this != null ? (this.nativeObj || this) : null);
+    TNamedValue.prototype.destroy = function () {
+        return named_value_destroy(this != null ? (this.nativeObj || this) : null);
     };
-    /**
-     * 克隆named_value_hash对象。
-     *
-     *
-     * @returns 返回named_value_hash对象。
-     */
-    TNamedValueHash.prototype.clone = function () {
-        return new TNamedValueHash(named_value_hash_clone(this != null ? (this.nativeObj || this) : null));
-    };
-    /**
-     * 获取字符串散列值。
-     *
-     * @param str 字符串。
-     *
-     * @returns 返回散列值。
-     */
-    TNamedValueHash.getHashFromStr = function (str) {
-        return named_value_hash_get_hash_from_str(str);
-    };
-    return TNamedValueHash;
-}(TNamedValue));
-exports.TNamedValueHash = TNamedValueHash;
+    Object.defineProperty(TNamedValue.prototype, "name", {
+        /**
+         * 名称。
+         *
+         */
+        get: function () {
+            return named_value_t_get_prop_name(this.nativeObj);
+        },
+        set: function (v) {
+            this.setName(v);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return TNamedValue;
+}(TValue));
+exports.TNamedValue = TNamedValue;
 ;
 /**
  * app_bar控件。
@@ -26852,6 +26821,66 @@ var TIdleInfo = /** @class */ (function (_super) {
 exports.TIdleInfo = TIdleInfo;
 ;
 /**
+ * 带有散列值的命名的值。
+ *
+ */
+var TNamedValueHash = /** @class */ (function (_super) {
+    __extends(TNamedValueHash, _super);
+    function TNamedValueHash(nativeObj) {
+        return _super.call(this, nativeObj) || this;
+    }
+    /**
+     * 创建named_value_hash对象。
+     *
+     *
+     * @returns 返回named_value_hash对象。
+     */
+    TNamedValueHash.create = function () {
+        return new TNamedValueHash(named_value_hash_create());
+    };
+    /**
+     * 设置散列值。
+     *
+     * @param name 名称。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TNamedValueHash.prototype.setName = function (name) {
+        return named_value_hash_set_name(this != null ? (this.nativeObj || this) : null, name);
+    };
+    /**
+     * 销毁named_value_hash对象。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TNamedValueHash.prototype.destroy = function () {
+        return named_value_hash_destroy(this != null ? (this.nativeObj || this) : null);
+    };
+    /**
+     * 克隆named_value_hash对象。
+     *
+     *
+     * @returns 返回named_value_hash对象。
+     */
+    TNamedValueHash.prototype.clone = function () {
+        return new TNamedValueHash(named_value_hash_clone(this != null ? (this.nativeObj || this) : null));
+    };
+    /**
+     * 获取字符串散列值。
+     *
+     * @param str 字符串。
+     *
+     * @returns 返回散列值。
+     */
+    TNamedValueHash.getHashFromStr = function (str) {
+        return named_value_hash_get_hash_from_str(str);
+    };
+    return TNamedValueHash;
+}(TNamedValue));
+exports.TNamedValueHash = TNamedValueHash;
+;
+/**
  * 简单的动态数组，内部存放value对象。
  *
  *访问时属性名称为：
@@ -27098,6 +27127,16 @@ var TObjectHash = /** @class */ (function (_super) {
      */
     TObjectHash.prototype.setKeepPropType = function (keep_prop_type) {
         return object_hash_set_keep_prop_type(this != null ? (this.nativeObj || this) : null, keep_prop_type);
+    };
+    /**
+     * 设置是否保持属性间的顺序。
+     *
+     * @param keep_props_order 保持属性间的顺序。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    TObjectHash.prototype.setKeepPropsOrder = function (keep_props_order) {
+        return object_hash_set_keep_props_order(this != null ? (this.nativeObj || this) : null, keep_props_order);
     };
     return TObjectHash;
 }(TTkObject));

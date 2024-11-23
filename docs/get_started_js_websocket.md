@@ -36,9 +36,8 @@ function home_page_open() {
 
   send.on(TEventType.CLICK, function (evt) {
     const message = send_text.getText();
-    const str = wstrToString(message);
 
-    ws.send(str);
+    ws.send(message);
     return TRet.OK;
   });
 

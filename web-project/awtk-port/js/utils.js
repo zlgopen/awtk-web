@@ -6,3 +6,6 @@ function wstrToString(pointer) {
   return pointer && Module.UTF32ToString(pointer) || null;
 }
 
+window.wstrToString = wstrToString;
+window.pointerToString = pointerToString;
+

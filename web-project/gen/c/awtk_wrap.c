@@ -37,7 +37,6 @@
 #include "tkc/easing.h"
 #include "tkc/idle_manager.h"
 #include "tkc/mime_types.h"
-#include "tkc/named_value.h"
 #include "tkc/rlog.h"
 #include "tkc/time_now.h"
 #include "tkc/timer_manager.h"
@@ -79,7 +78,7 @@
 #include "time_clock/time_clock.h"
 #include "timer_widget/timer_widget.h"
 #include "tkc/event.h"
-#include "tkc/named_value_hash.h"
+#include "tkc/named_value.h"
 #include "widgets/app_bar.h"
 #include "widgets/button_group.h"
 #include "widgets/button.h"
@@ -113,6 +112,7 @@
 #include "scroll_view/list_item_seperator.h"
 #include "svg_image/svg_image.h"
 #include "tkc/idle_info.h"
+#include "tkc/named_value_hash.h"
 #include "tkc/object_array.h"
 #include "tkc/object_default.h"
 #include "tkc/object_hash.h"
@@ -3782,10 +3782,6 @@ const char* get_MIME_TYPE_VIDEO_X_MSVIDEO (void) {
   return MIME_TYPE_VIDEO_X_MSVIDEO;
 }
 
-char* named_value_t_get_prop_name (named_value_t* obj) {
-  return obj->name;
-}
-
 const char* get_TK_OBJECT_CMD_SAVE (void) {
   return TK_OBJECT_CMD_SAVE;
 }
@@ -4558,6 +4554,10 @@ bool_t candidates_t_get_prop_enable_preview (candidates_t* obj) {
   return obj->enable_preview;
 }
 
+uint32_t candidates_t_get_prop_visible_num (candidates_t* obj) {
+  return obj->visible_num;
+}
+
 char* lang_indicator_t_get_prop_image (lang_indicator_t* obj) {
   return obj->image;
 }
@@ -5084,6 +5084,10 @@ ret_t cmd_exec_event_t_get_prop_result (cmd_exec_event_t* obj) {
 
 bool_t cmd_exec_event_t_get_prop_can_exec (cmd_exec_event_t* obj) {
   return obj->can_exec;
+}
+
+char* named_value_t_get_prop_name (named_value_t* obj) {
+  return obj->name;
 }
 
 int32_t button_t_get_prop_repeat (button_t* obj) {

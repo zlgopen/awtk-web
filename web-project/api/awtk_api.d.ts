@@ -2,6 +2,8 @@ declare global {
     interface Window {
         Module: any;
         TBrowser: any;
+        wstrToString: any;
+        pointerToString: any;
     }
 }
 export declare function init(w: number, h: number, title: string, isDesktop: boolean): void;
@@ -8933,65 +8935,6 @@ export declare enum TMIME_TYPE {
     VIDEO_X_MSVIDEO
 }
 /**
- * 命名的值。
- *
- */
-export declare class TNamedValue {
-    nativeObj: any;
-    constructor(nativeObj: any);
-    /**
-     * 创建named_value对象。
-     *
-     *
-     * @returns 返回named_value对象。
-     */
-    static create(): TNamedValue;
-    /**
-     * 转换为named_value对象(供脚本语言使用)。
-     *
-     * @param nv named_value对象。
-     *
-     * @returns 返回named_value对象。
-     */
-    static cast(nv: TNamedValue): TNamedValue;
-    /**
-     * 设置名称。
-     *
-     * @param name 名称。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    setName(name: string): TRet;
-    /**
-     * 设置值。
-     *
-     * @param value 值。
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    setValue(value: TValue): TRet;
-    /**
-     * 获取值对象(主要给脚本语言使用)。
-     *
-     *
-     * @returns 返回值对象。
-     */
-    getValue(): TValue;
-    /**
-     * 销毁named_value对象。
-     *
-     *
-     * @returns 返回RET_OK表示成功，否则表示失败。
-     */
-    destroy(): TRet;
-    /**
-     * 名称。
-     *
-     */
-    get name(): string;
-    set name(v: string);
-}
-/**
  * 对象常见命令定义
  *
  */
@@ -11879,6 +11822,14 @@ export declare class TCandidates extends TWidget {
      */
     setAutoHide(auto_hide: boolean): TRet;
     /**
+     * 设置可见候选词个数。
+     *
+     * @param visible_num 可见个数。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setVisibleNum(visible_num: number): TRet;
+    /**
      * 设置按钮的style名称。
      *
      * @param button_style 按钮的style名称。
@@ -11918,6 +11869,12 @@ export declare class TCandidates extends TWidget {
      *
      */
     get enablePreview(): boolean;
+    /**
+     * 候选字可见个数。
+     *
+     */
+    get visibleNum(): number;
+    set visibleNum(v: number);
 }
 /**
  * 输入法语言指示器。
@@ -15338,21 +15295,29 @@ export declare class TLogMessageEvent extends TEvent {
     static cast(event: TEvent): TLogMessageEvent;
 }
 /**
- * 带有散列值的命名的值。
+ * 命名的值。
  *
  */
-export declare class TNamedValueHash extends TNamedValue {
+export declare class TNamedValue extends TValue {
     nativeObj: any;
     constructor(nativeObj: any);
     /**
-     * 创建named_value_hash对象。
+     * 创建named_value对象。
      *
      *
-     * @returns 返回named_value_hash对象。
+     * @returns 返回named_value对象。
      */
-    static create(): TNamedValueHash;
+    static create(): TNamedValue;
     /**
-     * 设置散列值。
+     * 转换为named_value对象(供脚本语言使用)。
+     *
+     * @param nv named_value对象。
+     *
+     * @returns 返回named_value对象。
+     */
+    static cast(nv: TNamedValue): TNamedValue;
+    /**
+     * 设置名称。
      *
      * @param name 名称。
      *
@@ -15360,27 +15325,33 @@ export declare class TNamedValueHash extends TNamedValue {
      */
     setName(name: string): TRet;
     /**
-     * 销毁named_value_hash对象。
+     * 设置值。
+     *
+     * @param value 值。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setValue(value: TValue): TRet;
+    /**
+     * 获取值对象(主要给脚本语言使用)。
+     *
+     *
+     * @returns 返回值对象。
+     */
+    getValue(): TValue;
+    /**
+     * 销毁named_value对象。
      *
      *
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     destroy(): TRet;
     /**
-     * 克隆named_value_hash对象。
+     * 名称。
      *
-     *
-     * @returns 返回named_value_hash对象。
      */
-    clone(): TNamedValueHash;
-    /**
-     * 获取字符串散列值。
-     *
-     * @param str 字符串。
-     *
-     * @returns 返回散列值。
-     */
-    static getHashFromStr(str: string): number;
+    get name(): string;
+    set name(v: string);
 }
 /**
  * app_bar控件。
@@ -18841,6 +18812,51 @@ export declare class TIdleInfo extends TTkObject {
     get id(): number;
 }
 /**
+ * 带有散列值的命名的值。
+ *
+ */
+export declare class TNamedValueHash extends TNamedValue {
+    nativeObj: any;
+    constructor(nativeObj: any);
+    /**
+     * 创建named_value_hash对象。
+     *
+     *
+     * @returns 返回named_value_hash对象。
+     */
+    static create(): TNamedValueHash;
+    /**
+     * 设置散列值。
+     *
+     * @param name 名称。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setName(name: string): TRet;
+    /**
+     * 销毁named_value_hash对象。
+     *
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    destroy(): TRet;
+    /**
+     * 克隆named_value_hash对象。
+     *
+     *
+     * @returns 返回named_value_hash对象。
+     */
+    clone(): TNamedValueHash;
+    /**
+     * 获取字符串散列值。
+     *
+     * @param str 字符串。
+     *
+     * @returns 返回散列值。
+     */
+    static getHashFromStr(str: string): number;
+}
+/**
  * 简单的动态数组，内部存放value对象。
  *
  *访问时属性名称为：
@@ -19032,6 +19048,14 @@ export declare class TObjectHash extends TTkObject {
      * @returns 返回RET_OK表示成功，否则表示失败。
      */
     setKeepPropType(keep_prop_type: boolean): TRet;
+    /**
+     * 设置是否保持属性间的顺序。
+     *
+     * @param keep_props_order 保持属性间的顺序。
+     *
+     * @returns 返回RET_OK表示成功，否则表示失败。
+     */
+    setKeepPropsOrder(keep_props_order: boolean): TRet;
 }
 /**
  * 单个定时器的信息。

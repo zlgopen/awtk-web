@@ -1,6 +1,6 @@
 ﻿
 declare global {
-    interface Window { Module: any; TBrowser:any}
+    interface Window { Module: any; TBrowser:any; wstrToString:any; pointerToString:any}
 }
 
 var Module : any = window.Module || {};
@@ -2726,20 +2726,6 @@ const MIME_TYPE_VIDEO_QUICKTIME = Module.cwrap("get_MIME_TYPE_VIDEO_QUICKTIME",
     "string", []);
 const MIME_TYPE_VIDEO_X_MSVIDEO = Module.cwrap("get_MIME_TYPE_VIDEO_X_MSVIDEO", 
     "string", []);
-const named_value_create = Module.cwrap("named_value_create", 
-    "number", []);
-const named_value_cast = Module.cwrap("named_value_cast", 
-    "number", ["number"]);
-const named_value_set_name = Module.cwrap("named_value_set_name", 
-    "number", ["number","string"]);
-const named_value_set_value = Module.cwrap("named_value_set_value", 
-    "number", ["number","number"]);
-const named_value_get_value = Module.cwrap("named_value_get_value", 
-    "number", ["number"]);
-const named_value_destroy = Module.cwrap("named_value_destroy", 
-    "number", ["number"]);
-const named_value_t_get_prop_name = Module.cwrap("named_value_t_get_prop_name", 
-    "string", ["number"]);
 const TK_OBJECT_CMD_SAVE = Module.cwrap("get_TK_OBJECT_CMD_SAVE", 
     "string", []);
 const TK_OBJECT_CMD_RELOAD = Module.cwrap("get_TK_OBJECT_CMD_RELOAD", 
@@ -3414,6 +3400,8 @@ const candidates_set_select_by_num = Module.cwrap("candidates_set_select_by_num"
     "number", ["number","number"]);
 const candidates_set_auto_hide = Module.cwrap("candidates_set_auto_hide", 
     "number", ["number","number"]);
+const candidates_set_visible_num = Module.cwrap("candidates_set_visible_num", 
+    "number", ["number","number"]);
 const candidates_set_button_style = Module.cwrap("candidates_set_button_style", 
     "number", ["number","string"]);
 const candidates_t_get_prop_pre = Module.cwrap("candidates_t_get_prop_pre", 
@@ -3425,6 +3413,8 @@ const candidates_t_get_prop_auto_hide = Module.cwrap("candidates_t_get_prop_auto
 const candidates_t_get_prop_button_style = Module.cwrap("candidates_t_get_prop_button_style", 
     "string", ["number"]);
 const candidates_t_get_prop_enable_preview = Module.cwrap("candidates_t_get_prop_enable_preview", 
+    "number", ["number"]);
+const candidates_t_get_prop_visible_num = Module.cwrap("candidates_t_get_prop_visible_num", 
     "number", ["number"]);
 const lang_indicator_create = Module.cwrap("lang_indicator_create", 
     "number", ["number","number","number","number","number"]);
@@ -4106,16 +4096,20 @@ const value_change_event_cast = Module.cwrap("value_change_event_cast",
     "number", ["number"]);
 const log_message_event_cast = Module.cwrap("log_message_event_cast", 
     "number", ["number"]);
-const named_value_hash_create = Module.cwrap("named_value_hash_create", 
+const named_value_create = Module.cwrap("named_value_create", 
     "number", []);
-const named_value_hash_set_name = Module.cwrap("named_value_hash_set_name", 
+const named_value_cast = Module.cwrap("named_value_cast", 
+    "number", ["number"]);
+const named_value_set_name = Module.cwrap("named_value_set_name", 
     "number", ["number","string"]);
-const named_value_hash_destroy = Module.cwrap("named_value_hash_destroy", 
+const named_value_set_value = Module.cwrap("named_value_set_value", 
+    "number", ["number","number"]);
+const named_value_get_value = Module.cwrap("named_value_get_value", 
     "number", ["number"]);
-const named_value_hash_clone = Module.cwrap("named_value_hash_clone", 
+const named_value_destroy = Module.cwrap("named_value_destroy", 
     "number", ["number"]);
-const named_value_hash_get_hash_from_str = Module.cwrap("named_value_hash_get_hash_from_str", 
-    "number", ["string"]);
+const named_value_t_get_prop_name = Module.cwrap("named_value_t_get_prop_name", 
+    "string", ["number"]);
 const app_bar_create = Module.cwrap("app_bar_create", 
     "number", ["number","number","number","number","number"]);
 const app_bar_cast = Module.cwrap("app_bar_cast", 
@@ -4634,6 +4628,16 @@ const idle_info_t_get_prop_extra_ctx = Module.cwrap("idle_info_t_get_prop_extra_
     "number", ["number"]);
 const idle_info_t_get_prop_id = Module.cwrap("idle_info_t_get_prop_id", 
     "number", ["number"]);
+const named_value_hash_create = Module.cwrap("named_value_hash_create", 
+    "number", []);
+const named_value_hash_set_name = Module.cwrap("named_value_hash_set_name", 
+    "number", ["number","string"]);
+const named_value_hash_destroy = Module.cwrap("named_value_hash_destroy", 
+    "number", ["number"]);
+const named_value_hash_clone = Module.cwrap("named_value_hash_clone", 
+    "number", ["number"]);
+const named_value_hash_get_hash_from_str = Module.cwrap("named_value_hash_get_hash_from_str", 
+    "number", ["string"]);
 const object_array_create = Module.cwrap("object_array_create", 
     "number", []);
 const object_array_unref = Module.cwrap("object_array_unref", 
@@ -4673,6 +4677,8 @@ const object_hash_create = Module.cwrap("object_hash_create",
 const object_hash_create_ex = Module.cwrap("object_hash_create_ex", 
     "number", ["number"]);
 const object_hash_set_keep_prop_type = Module.cwrap("object_hash_set_keep_prop_type", 
+    "number", ["number","number"]);
+const object_hash_set_keep_props_order = Module.cwrap("object_hash_set_keep_props_order", 
     "number", ["number","number"]);
 const timer_info_cast = Module.cwrap("timer_info_cast", 
     "number", ["number"]);
@@ -13711,7 +13717,8 @@ export class TWidget {
    * @returns 返回文本。
    */
  getText() : any  {
-    return widget_get_text(this != null ? (this.nativeObj || this) : null);
+    return window.wstrToString(widget_get_text(this != null ? (this.nativeObj || this) : null));
+;
  }
 
 
@@ -16833,99 +16840,6 @@ export enum TMIME_TYPE {
 };
 
 
-/**
- * 命名的值。
- *
- */
-export class TNamedValue { 
- public nativeObj : any;
- constructor(nativeObj : any) {
-   this.nativeObj = nativeObj;
- }
-
-
-  /**
-   * 创建named_value对象。
-   * 
-   *
-   * @returns 返回named_value对象。
-   */
- static create() : TNamedValue  {
-    return new TNamedValue(named_value_create());
- }
-
-
-  /**
-   * 转换为named_value对象(供脚本语言使用)。
-   * 
-   * @param nv named_value对象。
-   *
-   * @returns 返回named_value对象。
-   */
- static cast(nv : TNamedValue) : TNamedValue  {
-    return new TNamedValue(named_value_cast(nv != null ? (nv.nativeObj || nv) : null));
- }
-
-
-  /**
-   * 设置名称。
-   * 
-   * @param name 名称。
-   *
-   * @returns 返回RET_OK表示成功，否则表示失败。
-   */
- setName(name : string) : TRet  {
-    return named_value_set_name(this != null ? (this.nativeObj || this) : null, name);
- }
-
-
-  /**
-   * 设置值。
-   * 
-   * @param value 值。
-   *
-   * @returns 返回RET_OK表示成功，否则表示失败。
-   */
- setValue(value : TValue) : TRet  {
-    return named_value_set_value(this != null ? (this.nativeObj || this) : null, value != null ? (value.nativeObj || value) : null);
- }
-
-
-  /**
-   * 获取值对象(主要给脚本语言使用)。
-   * 
-   *
-   * @returns 返回值对象。
-   */
- getValue() : TValue  {
-    return new TValue(named_value_get_value(this != null ? (this.nativeObj || this) : null));
- }
-
-
-  /**
-   * 销毁named_value对象。
-   * 
-   *
-   * @returns 返回RET_OK表示成功，否则表示失败。
-   */
- destroy() : TRet  {
-    return named_value_destroy(this != null ? (this.nativeObj || this) : null);
- }
-
-
-  /**
-   * 名称。
-   *
-   */
- get name() : string {
-   return named_value_t_get_prop_name(this.nativeObj);
- }
-
- set name(v : string) {
-   this.setName(v);
- }
-
-};
 /**
  * 对象常见命令定义
  *
@@ -21204,6 +21118,18 @@ export class TCandidates extends TWidget {
 
 
   /**
+   * 设置可见候选词个数。
+   * 
+   * @param visible_num 可见个数。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setVisibleNum(visible_num : number) : TRet  {
+    return candidates_set_visible_num(this != null ? (this.nativeObj || this) : null, visible_num);
+ }
+
+
+  /**
    * 设置按钮的style名称。
    * 
    * @param button_style 按钮的style名称。
@@ -21276,6 +21202,19 @@ export class TCandidates extends TWidget {
    */
  get enablePreview() : boolean {
    return candidates_t_get_prop_enable_preview(this.nativeObj);
+ }
+
+
+  /**
+   * 候选字可见个数。
+   *
+   */
+ get visibleNum() : number {
+   return candidates_t_get_prop_visible_num(this.nativeObj);
+ }
+
+ set visibleNum(v : number) {
+   this.setVisibleNum(v);
  }
 
 };
@@ -26454,10 +26393,10 @@ export class TLogMessageEvent extends TEvent {
 
 };
 /**
- * 带有散列值的命名的值。
+ * 命名的值。
  *
  */
-export class TNamedValueHash extends TNamedValue { 
+export class TNamedValue extends TValue { 
  public nativeObj : any;
  constructor(nativeObj : any) {
    super(nativeObj);
@@ -26465,59 +26404,84 @@ export class TNamedValueHash extends TNamedValue {
 
 
   /**
-   * 创建named_value_hash对象。
+   * 创建named_value对象。
    * 
    *
-   * @returns 返回named_value_hash对象。
+   * @returns 返回named_value对象。
    */
- static create() : TNamedValueHash  {
-    return new TNamedValueHash(named_value_hash_create());
+ static create() : TNamedValue  {
+    return new TNamedValue(named_value_create());
  }
 
 
   /**
-   * 设置散列值。
+   * 转换为named_value对象(供脚本语言使用)。
+   * 
+   * @param nv named_value对象。
+   *
+   * @returns 返回named_value对象。
+   */
+ static cast(nv : TNamedValue) : TNamedValue  {
+    return new TNamedValue(named_value_cast(nv != null ? (nv.nativeObj || nv) : null));
+ }
+
+
+  /**
+   * 设置名称。
    * 
    * @param name 名称。
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  setName(name : string) : TRet  {
-    return named_value_hash_set_name(this != null ? (this.nativeObj || this) : null, name);
+    return named_value_set_name(this != null ? (this.nativeObj || this) : null, name);
  }
 
 
   /**
-   * 销毁named_value_hash对象。
+   * 设置值。
+   * 
+   * @param value 值。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setValue(value : TValue) : TRet  {
+    return named_value_set_value(this != null ? (this.nativeObj || this) : null, value != null ? (value.nativeObj || value) : null);
+ }
+
+
+  /**
+   * 获取值对象(主要给脚本语言使用)。
+   * 
+   *
+   * @returns 返回值对象。
+   */
+ getValue() : TValue  {
+    return new TValue(named_value_get_value(this != null ? (this.nativeObj || this) : null));
+ }
+
+
+  /**
+   * 销毁named_value对象。
    * 
    *
    * @returns 返回RET_OK表示成功，否则表示失败。
    */
  destroy() : TRet  {
-    return named_value_hash_destroy(this != null ? (this.nativeObj || this) : null);
+    return named_value_destroy(this != null ? (this.nativeObj || this) : null);
  }
 
 
   /**
-   * 克隆named_value_hash对象。
-   * 
+   * 名称。
    *
-   * @returns 返回named_value_hash对象。
    */
- clone() : TNamedValueHash  {
-    return new TNamedValueHash(named_value_hash_clone(this != null ? (this.nativeObj || this) : null));
+ get name() : string {
+   return named_value_t_get_prop_name(this.nativeObj);
  }
 
-
-  /**
-   * 获取字符串散列值。
-   * 
-   * @param str 字符串。
-   *
-   * @returns 返回散列值。
-   */
- static getHashFromStr(str : string) : number  {
-    return named_value_hash_get_hash_from_str(str);
+ set name(v : string) {
+   this.setName(v);
  }
 
 };
@@ -31295,6 +31259,74 @@ export class TIdleInfo extends TTkObject {
 
 };
 /**
+ * 带有散列值的命名的值。
+ *
+ */
+export class TNamedValueHash extends TNamedValue { 
+ public nativeObj : any;
+ constructor(nativeObj : any) {
+   super(nativeObj);
+ }
+
+
+  /**
+   * 创建named_value_hash对象。
+   * 
+   *
+   * @returns 返回named_value_hash对象。
+   */
+ static create() : TNamedValueHash  {
+    return new TNamedValueHash(named_value_hash_create());
+ }
+
+
+  /**
+   * 设置散列值。
+   * 
+   * @param name 名称。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setName(name : string) : TRet  {
+    return named_value_hash_set_name(this != null ? (this.nativeObj || this) : null, name);
+ }
+
+
+  /**
+   * 销毁named_value_hash对象。
+   * 
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ destroy() : TRet  {
+    return named_value_hash_destroy(this != null ? (this.nativeObj || this) : null);
+ }
+
+
+  /**
+   * 克隆named_value_hash对象。
+   * 
+   *
+   * @returns 返回named_value_hash对象。
+   */
+ clone() : TNamedValueHash  {
+    return new TNamedValueHash(named_value_hash_clone(this != null ? (this.nativeObj || this) : null));
+ }
+
+
+  /**
+   * 获取字符串散列值。
+   * 
+   * @param str 字符串。
+   *
+   * @returns 返回散列值。
+   */
+ static getHashFromStr(str : string) : number  {
+    return named_value_hash_get_hash_from_str(str);
+ }
+
+};
+/**
  * 简单的动态数组，内部存放value对象。
  *
  *访问时属性名称为：
@@ -31573,6 +31605,18 @@ export class TObjectHash extends TTkObject {
    */
  setKeepPropType(keep_prop_type : boolean) : TRet  {
     return object_hash_set_keep_prop_type(this != null ? (this.nativeObj || this) : null, keep_prop_type);
+ }
+
+
+  /**
+   * 设置是否保持属性间的顺序。
+   * 
+   * @param keep_props_order 保持属性间的顺序。
+   *
+   * @returns 返回RET_OK表示成功，否则表示失败。
+   */
+ setKeepPropsOrder(keep_props_order : boolean) : TRet  {
+    return object_hash_set_keep_props_order(this != null ? (this.nativeObj || this) : null, keep_props_order);
  }
 
 };
