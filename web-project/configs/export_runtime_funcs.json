@@ -1,6 +1,7 @@
 [
     "ccall",
     "cwrap",
+    "getValue",
     "addFunction",
     "removeFunction",
     "addOnPostRun",

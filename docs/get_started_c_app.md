@@ -78,7 +78,7 @@ static ret_t visit_init_child(void* ctx, const void* iter) {
      "src/pages/*.c",
      "src/*.h",
      "src/common/*.h",
-     "src/pages/*.c"
+     "src/pages/*.h"
   ],
   "web": {
     "app_type": "c",

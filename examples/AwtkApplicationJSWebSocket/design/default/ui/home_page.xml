@@ -1,0 +1,7 @@
+<window name="home_page">
+  <view name="view" x="c" y="m" w="480" h="200">
+    <edit min="0" max="1024" step="1" name="send_text" x="26" y="34" w="295" h="28" tips="Please enter your text" auto_fix="true" text="hello"/>
+    <button name="send" x="344" y="34" w="69" h="28" text="Send"/>
+    <label x="26" y="142" w="396" h="28" name="recv_text" style:normal:border="all" style:normal:border_color="#0070C0"/>
+  </view>
+</window>
