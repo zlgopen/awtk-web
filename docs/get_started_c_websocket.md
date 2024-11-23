@@ -239,6 +239,8 @@ node websocket_echo_server.js
 
 * 用浏览器打开 URL：http://localhost:8080/AwtkApplicationCWebSocket
 
+![](images/app_websocket_ui1.png)
+
 ## 6、AWTK-WEB-JS 和 AWTK-JS 不同
 
 两者在 API 上基本上是一样的，但是由于浏览器和 Jerryscript 的差异，导致少量功能无法做到完全一致，需要应用程序自行规避。

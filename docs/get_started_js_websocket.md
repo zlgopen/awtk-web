@@ -136,6 +136,7 @@ node websocket_echo_server.js
 
 * 用浏览器打开 URL：http://localhost:8080/AwtkApplicationJSWebSocket
 
+![](images/app_websocket_ui1.png)
 
 ## 6、AWTK-WEB-JS 和 AWTK-JS 不同
 
