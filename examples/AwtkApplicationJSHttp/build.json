@@ -1,0 +1,11 @@
+{
+  "name": "AwtkApplicationJSHttp",
+  "version": "1.0",
+  "app_type":"js",
+  "author": "xianjimli@hotmail.com",
+  "copyright": "Guangzhou ZHIYUAN Electronics Co.,Ltd.",
+  "themes":["default"],
+  "sources": [
+     "src/js/*.js"
+  ]
+}
