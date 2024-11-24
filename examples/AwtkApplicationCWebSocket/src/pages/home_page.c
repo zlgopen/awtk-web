@@ -101,7 +101,6 @@ EMSCRIPTEN_WEBSOCKET_T create_socket(void* user_data, const char* url) {
   emscripten_websocket_init_create_attributes(&attr);
 
   attr.url = url;
-  attr.protocols = "binary,base64";
   EMSCRIPTEN_WEBSOCKET_T socket = emscripten_websocket_new(&attr);
 
   emscripten_websocket_set_onopen_callback(socket, user_data, WebSocketOpen);
