@@ -1,5 +1,6 @@
 # AWTK-WEB 快速入门 - JS 应用程序
 
+
 > 先安装 [AWTK Designer](https://awtk.zlg.cn/web/index.html)
 
 ## 用 AWTK Designer 新建一个应用程序
