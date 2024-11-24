@@ -46,6 +46,8 @@ static ret_t visit_init_child(void* ctx, const void* iter) {
 }
 ```
 
+> 注意：控件的名称一定要和 home_page.xml 保持一致。
+
 ### 2.3. 在 AWTK Designer 中，执行“打包” “编译” “模拟运行”
 
 ![](images/app_c2.png)

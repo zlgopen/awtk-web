@@ -147,6 +147,8 @@ ret_t home_page_init(widget_t* win, void* ctx) {
 }
 ```
 
+> 注意：控件的名称一定要和 home_page.xml 保持一致。
+
 ### 2.3. 在 AWTK Designer 中，执行“打包” “编译” “模拟运行”
 
 ![](images/app_c2.png)
@@ -241,11 +243,3 @@ node websocket_echo_server.js
 
 ![](images/app_websocket_ui1.png)
 
-## 6、AWTK-WEB-JS 和 AWTK-JS 不同
-
-两者在 API 上基本上是一样的，但是由于浏览器和 Jerryscript 的差异，导致少量功能无法做到完全一致，需要应用程序自行规避。
-
-* 1.AWTK-WEB-JS 不支持模态对话框。
-* 2.AWTK-WEB-JS 中的 print 函数是打印。请使用 console.log 输出调试信息。
-* 3.AWTK-WEB-JS 不支持自动回收在 wasm 中分配的对象（如：color/rect/value 等）。如果希望两者通用，请避免使用这类函数。
-* 4.tk_quit 函数并不能退出应用程序。
