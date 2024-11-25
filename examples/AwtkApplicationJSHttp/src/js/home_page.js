@@ -2,7 +2,7 @@ async function on_update_clicked(evt) {
   var e = TPointerEvent.cast(evt);
   var widget = TButton.cast(e.target);  
   const win = widget.getWindow();
-  const url = "http://localhost:8080/AwtkApplicationJSHttp/design/default/data/weather.json";
+  const url = "/AwtkApplicationJSHttp/design/default/data/weather.json";
 
   try {
     const response = await fetch(url);

@@ -37,7 +37,7 @@ void home_page_on_fetch_error(void* ctx, const char* error_message) {
 
 static ret_t on_update(void* ctx, event_t* e) {
   widget_t* win = WIDGET(ctx);
-  const char* url = "http://localhost:8080/AwtkApplicationCHttp/design/default/data/weather.json";
+  const char* url = "/AwtkApplicationCHttp/design/default/data/weather.json";
   return_value_if_fail(win != NULL, RET_BAD_PARAMS);
 
   fetch_data(win, "GET", url, home_page_on_fetch_data, home_page_on_fetch_error, NULL);
