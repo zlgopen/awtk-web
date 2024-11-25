@@ -561,3 +561,4 @@ vgcanvas_t *vgcanvas_create(uint32_t w, uint32_t h, uint32_t stride,
 
   return &(web->base);
 }
+

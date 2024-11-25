@@ -426,6 +426,26 @@ VGCanvas.createMutableImage = function (addr, w, h, line_length, format) {
   return id;
 }
 
+VGCanvas.mutableImageFillRect = function(id, x, y, w, h, color) {
+  let mutableImage = ImageCache.get(id);
+  const ctx = mutableImage.getContext("2d");
+  const c = pointerToString(color);
+  ctx.fillStyle = c;
+  ctx.fillRect(x, y, w, h);
+
+  return true;
+}
+
+VGCanvas.mutableImageClearRect = function(id, x, y, w, h, color) {
+  let mutableImage = ImageCache.get(id);
+  const ctx = mutableImage.getContext("2d");
+  const c = pointerToString(color);
+  ctx.fillStyle = c;
+  ctx.fillRect(x, y, w, h);
+
+  return true;
+}
+
 VGCanvas.updateMutableImage = function (id) {
   let mutableImage = ImageCache.get(id);
 
