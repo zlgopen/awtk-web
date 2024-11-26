@@ -1,0 +1,10 @@
+<window name="home_page">
+  <edit name="n1" x="c:-120" y="m" w="40" h="36" text="1" input_type="int"/>
+  <label x="c:-90" y="m" w="20" h="36" text="+" />
+  <edit name="n2" x="c:-60" y="m" w="40" h="36" text="2" input_type="int"/>
+  <label x="c:-30" y="m" w="20" h="36" text="+" />
+  <edit name="n3" x="c" y="m" w="40" h="36" text="3" input_type="int"/>
+  <label x="c:30" y="m" w="20" h="36" text="=" />
+  <edit name="n4" x="c:80" y="m" w="80" h="36" text="6" input_type="int" readonly="true"/>
+  <button name="compute" x="c" y="m:60" w="80" h="36" text="计算"/>
+</window>

@@ -1,0 +1,30 @@
+{
+  "name": "AwtkApplicationC3rdLib",
+  "version": "1.0",
+  "assets": "res/assets",
+  "vendor": "zlgopen",
+  "app_name": "org.zlgopen.AwtkApplicationC3rdLib",
+  "author": "xianjimli@hotmail.com",
+  "copyright": "Guangzhou ZHIYUAN Electronics Co.,Ltd.",
+  "themes":["default"],
+  "sources": [
+     "src/*.c",
+     "src/common/*.c",
+     "src/pages/*.c",
+     "src/*.h",
+     "src/common/*.h",
+     "src/pages/*.h"
+  ],
+  "web": {
+    "app_type": "c",
+    "assets": "design",
+    "includes": ["/Users/jim/work/awtk-root/awtk-web/examples/AwtkApplicationC3rdLib/3rd"],
+    "cflags":"-DUSE_FOO",
+    "cxxflags":"-DUSE_FOO",
+    "linkflags":"-L/Users/jim/work/awtk-root/awtk-web/examples/AwtkApplicationC3rdLib/3rd/lib/ -lfoo ",
+    "config": {
+      "fontScale": "0.8",
+      "defaultFont": "sans"
+    }
+  }
+}

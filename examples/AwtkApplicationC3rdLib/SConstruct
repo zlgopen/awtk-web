@@ -1,0 +1,16 @@
+﻿import os
+import scripts.app_helper as app
+
+CUSTOM_WIDGET_LIBS = []
+
+DEPENDS_LIBS = CUSTOM_WIDGET_LIBS + []
+
+helper = app.Helper(ARGUMENTS)
+helper.set_deps(DEPENDS_LIBS)
+
+helper.add_cpppath([helper.APP_ROOT + '/3rd']);
+app.prepare_depends_libs(ARGUMENTS, helper, DEPENDS_LIBS)
+helper.call(DefaultEnvironment)
+
+SConscriptFiles = ['3rd/foo/SConscript', 'src/SConscript', 'tests/SConscript']
+helper.SConscript(SConscriptFiles)
