@@ -6,6 +6,7 @@
 #define IMAGE_WIDTH 32
 #define IMAGE_HEIGHT 32
 
+static bitmap_t* s_bitmap = NULL;
 static bitmap_t* s_bitmap_r = NULL;
 static bitmap_t* s_bitmap_g = NULL;
 static bitmap_t* s_bitmap_b = NULL;
@@ -49,6 +50,11 @@ static ret_t on_close(void* ctx, event_t* evt) {
     s_bitmap_b = NULL;
   }
 
+  if (s_bitmap != NULL) {
+    bitmap_destroy(s_bitmap);
+    s_bitmap = NULL;
+  }
+
   return tk_quit();
 }
 
@@ -72,17 +78,23 @@ static ret_t on_paint(void* ctx, event_t* evt) {
     vgcanvas_draw_image(vg, img, 0, 0, img->w, img->h, 300, 100, img->w * 2, img->h * 2);
   }
 
-  img = bitmap_create_ex(IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_WIDTH * 4, BITMAP_FMT_RGBA8888);
+  img = s_bitmap;
   if (img != NULL) {
-    uint32_t* data = (uint32_t*)bitmap_lock_buffer_for_write(img);
     uint32_t n = img->w * img->h;
     uint32_t color = (0xff1122 << 8) | ((s_count * 10) % 255);
+    uint32_t* data = (uint32_t*)bitmap_lock_buffer_for_write(img);
 
     tk_memset32(data, color, n);
-
     bitmap_unlock_buffer(img);
+
+    bitmap_t num;
+    if (image_manager_get_bitmap(image_manager(), "num8", &num) == RET_OK) {
+      rectf_t src_r = rectf_init(0, 0, num.w, num.h);
+      rectf_t dst_r = rectf_init(0, 0, img->w, img->h);
+      image_blend(img, &num, &dst_r, &src_r, 0xff);
+    }
+
     vgcanvas_draw_image(vg, img, 0, 0, img->w, img->h, 400, 100, img->w * 2, img->h * 2);
-    bitmap_destroy(img);
   }
 
   return RET_OK;
@@ -134,6 +146,8 @@ ret_t home_page_init(widget_t* win, void* ctx) {
     rect_t r = rect_init(0, 0, w, h);
     image_fill(s_bitmap_b, &r, c);
   }
+
+  s_bitmap = bitmap_create_ex(w, h, w * 4, BITMAP_FMT_RGBA8888);
 
   widget_on(win, EVT_PAINT, on_paint, win);
   widget_foreach(win, visit_init_child, win);

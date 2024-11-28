@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.rmd": "markdown",
+        "soft_g2d.h": "c",
+        "utils.h": "c"
+    }
+}

@@ -432,6 +432,7 @@ VGCanvas.mutableImageFillRect = function(id, x, y, w, h, color) {
   const c = pointerToString(color);
   ctx.fillStyle = c;
   ctx.fillRect(x, y, w, h);
+  VGCanvas.updateMutableImageRevert(id);
 
   return true;
 }
@@ -442,6 +443,45 @@ VGCanvas.mutableImageClearRect = function(id, x, y, w, h, color) {
   const c = pointerToString(color);
   ctx.fillStyle = c;
   ctx.fillRect(x, y, w, h);
+  VGCanvas.updateMutableImageRevert(id);
+
+  return true;
+}
+
+
+VGCanvas.mutableImageDrawImage = function(id, imageid, sx, sy, sw, sh, dx, dy, dw, dh, alpha) {
+  let mutableImage = ImageCache.get(id);
+  let image = ImageCache.get(imageid);
+  const ctx = mutableImage.getContext("2d");
+  ctx.globalAlpha = alpha/255.0;
+
+
+  VGCanvas.updateMutableImage(id);
+  ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
+  VGCanvas.updateMutableImageRevert(id);
+
+  return true;
+}
+
+VGCanvas.updateMutableImageRevert = function (id) {
+  let mutableImage = ImageCache.get(id);
+
+  let w = mutableImage.width;
+  let h = mutableImage.height;
+  let size = mutableImage.width * mutableImage.height;
+  let start = mutableImage.addr >> 2;
+  let end = start + size;
+  let dst = Module.HEAP32.subarray(start, end);
+  let ctx = mutableImage.getContext('2d', { willReadFrequently: true });
+  let imageData = ctx.getImageData(0, 0, w, h);
+  let src = new Int32Array(imageData.data.buffer);
+
+  for (let i = 0; i < size; i++) {
+    dst[i] = src[i];
+  }
+  ctx.putImageData(imageData, 0, 0, 0, 0, w, h);
+
+  //console.log(`VGCanvas.updateMutableImage ${id} ${start} ${size}`);
 
   return true;
 }
@@ -454,13 +494,13 @@ VGCanvas.updateMutableImage = function (id) {
   let size = mutableImage.width * mutableImage.height;
   let start = mutableImage.addr >> 2;
   let end = start + size;
-  let array = Module.HEAP32.subarray(start, end);
+  let src = Module.HEAP32.subarray(start, end);
   let ctx = mutableImage.getContext('2d', { willReadFrequently: true });
   let imageData = ctx.getImageData(0, 0, w, h);
-  let data = new Int32Array(imageData.data.buffer);
+  let dst = new Int32Array(imageData.data.buffer);
 
   for (let i = 0; i < size; i++) {
-    data[i] = array[i];
+    dst[i] = src[i];
   }
   ctx.putImageData(imageData, 0, 0, 0, 0, w, h);
 
