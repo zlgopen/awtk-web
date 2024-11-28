@@ -327,8 +327,9 @@ static ret_t vgcanvas_web_draw_image(vgcanvas_t *vgcanvas, bitmap_t *img,
   int32_t id = tk_pointer_to_int(img->specific);
   return_value_if_fail(id > 0, RET_BAD_PARAMS);
 
-  if(img->flags & BITMAP_FLAG_CHANGED) {
+  if(bitmap_is_dirty(img)) {
     EM_ASM_INT({ return VGCanvas.updateMutableImage($0); }, id);
+    bitmap_set_dirty(img, FALSE);
   }
 
   EM_ASM_INT({ return VGCanvas.drawImage($0, $1, $2, $3, $4, $5, $6, $7, $8); },

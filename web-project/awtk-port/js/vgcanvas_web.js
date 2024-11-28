@@ -455,7 +455,7 @@ VGCanvas.updateMutableImage = function (id) {
   let start = mutableImage.addr >> 2;
   let end = start + size;
   let array = Module.HEAP32.subarray(start, end);
-  let ctx = mutableImage.getContext('2d');
+  let ctx = mutableImage.getContext('2d', { willReadFrequently: true });
   let imageData = ctx.getImageData(0, 0, w, h);
   let data = new Int32Array(imageData.data.buffer);
 
