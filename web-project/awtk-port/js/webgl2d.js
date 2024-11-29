@@ -1,24 +1,23 @@
 (function () {
-var sinTable = [];
-for(var i = 0; i < 360; i++) {
-	var rad = i/57.2957;
-	sinTable.push(Math.sin(rad) + 0.000001);
-}
+  var sinTable = [];
+  for (var i = 0; i < 360; i++) {
+    var rad = i / 57.2957;
+    sinTable.push(Math.sin(rad) + 0.000001);
+  }
 
-Math.sinFast = function(rad) {
-	var index = ((rad * 57.2957)>>0)%360;
-	if(index < 0) {
-		index += 360;
-	}
+  Math.sinFast = function (rad) {
+    var index = ((rad * 57.2957) >> 0) % 360;
+    if (index < 0) {
+      index += 360;
+    }
 
-	return sinTable[index];
-}
+    return sinTable[index];
+  };
 
-Math.cosFast = function(rad) {
-	return Math.sinFast(rad + Math.PI*0.5);
-}
-
-}());
+  Math.cosFast = function (rad) {
+    return Math.sinFast(rad + Math.PI * 0.5);
+  };
+})();
 
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
@@ -40,7 +39,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE. */
 
-"use strict";
+("use strict");
 
 /**
  * @class Common utilities
@@ -50,12 +49,14 @@ var glMatrix = {};
 
 // Configuration Constants
 glMatrix.EPSILON = 0.000001;
-glMatrix.ARRAY_TYPE = (typeof Float32Array !== 'undefined') ? Float32Array : Array;
+glMatrix.ARRAY_TYPE =
+  typeof Float32Array !== "undefined" ? Float32Array : Array;
 glMatrix.RANDOM = Math.random;
 glMatrix.ENABLE_SIMD = false;
 
 // Capability detection
-glMatrix.SIMD_AVAILABLE = (glMatrix.ARRAY_TYPE === this.Float32Array) && ('SIMD' in this);
+glMatrix.SIMD_AVAILABLE =
+  glMatrix.ARRAY_TYPE === this.Float32Array && "SIMD" in this;
 glMatrix.USE_SIMD = glMatrix.ENABLE_SIMD && glMatrix.SIMD_AVAILABLE;
 
 /**
@@ -63,33 +64,36 @@ glMatrix.USE_SIMD = glMatrix.ENABLE_SIMD && glMatrix.SIMD_AVAILABLE;
  *
  * @param {Type} type Array type, such as Float32Array or Array
  */
-glMatrix.setMatrixArrayType = function(type) {
-    glMatrix.ARRAY_TYPE = type;
-}
+glMatrix.setMatrixArrayType = function (type) {
+  glMatrix.ARRAY_TYPE = type;
+};
 
 var degree = Math.PI / 180;
 
 /**
-* Convert Degree To Radian
-*
-* @param {Number} a Angle in Degrees
-*/
-glMatrix.toRadian = function(a){
-     return a * degree;
-}
+ * Convert Degree To Radian
+ *
+ * @param {Number} a Angle in Degrees
+ */
+glMatrix.toRadian = function (a) {
+  return a * degree;
+};
 
 /**
  * Tests whether or not the arguments have approximately the same value, within an absolute
- * or relative tolerance of glMatrix.EPSILON (an absolute tolerance is used for values less 
+ * or relative tolerance of glMatrix.EPSILON (an absolute tolerance is used for values less
  * than or equal to 1.0, and a relative tolerance is used for larger values)
- * 
+ *
  * @param {Number} a The first number to test.
  * @param {Number} b The second number to test.
  * @returns {Boolean} True if the numbers are approximately equal, false otherwise.
  */
-glMatrix.equals = function(a, b) {
-	return Math.abs(a - b) <= glMatrix.EPSILON*Math.max(1.0, Math.abs(a), Math.abs(b));
-}
+glMatrix.equals = function (a, b) {
+  return (
+    Math.abs(a - b) <=
+    glMatrix.EPSILON * Math.max(1.0, Math.abs(a), Math.abs(b))
+  );
+};
 
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
@@ -114,8 +118,8 @@ THE SOFTWARE. */
 /**
  * @class 2x3 Matrix
  * @name mat2d
- * 
- * @description 
+ *
+ * @description
  * A mat2d contains six elements defined as:
  * <pre>
  * [a, c, tx,
@@ -136,15 +140,15 @@ var mat2d = {};
  *
  * @returns {mat2d} a new 2x3 matrix
  */
-mat2d.create = function() {
-    var out = new glMatrix.ARRAY_TYPE(6);
-    out[0] = 1;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 1;
-    out[4] = 0;
-    out[5] = 0;
-    return out;
+mat2d.create = function () {
+  var out = new glMatrix.ARRAY_TYPE(6);
+  out[0] = 1;
+  out[1] = 0;
+  out[2] = 0;
+  out[3] = 1;
+  out[4] = 0;
+  out[5] = 0;
+  return out;
 };
 
 /**
@@ -153,15 +157,15 @@ mat2d.create = function() {
  * @param {mat2d} a matrix to clone
  * @returns {mat2d} a new 2x3 matrix
  */
-mat2d.clone = function(a) {
-    var out = new glMatrix.ARRAY_TYPE(6);
-    out[0] = a[0];
-    out[1] = a[1];
-    out[2] = a[2];
-    out[3] = a[3];
-    out[4] = a[4];
-    out[5] = a[5];
-    return out;
+mat2d.clone = function (a) {
+  var out = new glMatrix.ARRAY_TYPE(6);
+  out[0] = a[0];
+  out[1] = a[1];
+  out[2] = a[2];
+  out[3] = a[3];
+  out[4] = a[4];
+  out[5] = a[5];
+  return out;
 };
 
 /**
@@ -171,14 +175,14 @@ mat2d.clone = function(a) {
  * @param {mat2d} a the source matrix
  * @returns {mat2d} out
  */
-mat2d.copy = function(out, a) {
-    out[0] = a[0];
-    out[1] = a[1];
-    out[2] = a[2];
-    out[3] = a[3];
-    out[4] = a[4];
-    out[5] = a[5];
-    return out;
+mat2d.copy = function (out, a) {
+  out[0] = a[0];
+  out[1] = a[1];
+  out[2] = a[2];
+  out[3] = a[3];
+  out[4] = a[4];
+  out[5] = a[5];
+  return out;
 };
 
 /**
@@ -187,14 +191,14 @@ mat2d.copy = function(out, a) {
  * @param {mat2d} out the receiving matrix
  * @returns {mat2d} out
  */
-mat2d.identity = function(out) {
-    out[0] = 1;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 1;
-    out[4] = 0;
-    out[5] = 0;
-    return out;
+mat2d.identity = function (out) {
+  out[0] = 1;
+  out[1] = 0;
+  out[2] = 0;
+  out[3] = 1;
+  out[4] = 0;
+  out[5] = 0;
+  return out;
 };
 
 /**
@@ -209,14 +213,14 @@ mat2d.identity = function(out) {
  * @param {Number} ty Component TY (index 5)
  * @returns {mat2d} out
  */
-mat2d.set = function(out, a, b, c, d, tx, ty) {
-    out[0] = a;
-    out[1] = b;
-    out[2] = c;
-    out[3] = d;
-    out[4] = tx;
-    out[5] = ty;
-    return out;
+mat2d.set = function (out, a, b, c, d, tx, ty) {
+  out[0] = a;
+  out[1] = b;
+  out[2] = c;
+  out[3] = d;
+  out[4] = tx;
+  out[5] = ty;
+  return out;
 };
 
 /**
@@ -228,15 +232,25 @@ mat2d.set = function(out, a, b, c, d, tx, ty) {
  * @returns {mat2d} out
  */
 mat2d.multiply = function (out, a, b) {
-    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5],
-        b0 = b[0], b1 = b[1], b2 = b[2], b3 = b[3], b4 = b[4], b5 = b[5];
-    out[0] = a0 * b0 + a2 * b1;
-    out[1] = a1 * b0 + a3 * b1;
-    out[2] = a0 * b2 + a2 * b3;
-    out[3] = a1 * b2 + a3 * b3;
-    out[4] = a0 * b4 + a2 * b5 + a4;
-    out[5] = a1 * b4 + a3 * b5 + a5;
-    return out;
+  var a0 = a[0],
+    a1 = a[1],
+    a2 = a[2],
+    a3 = a[3],
+    a4 = a[4],
+    a5 = a[5],
+    b0 = b[0],
+    b1 = b[1],
+    b2 = b[2],
+    b3 = b[3],
+    b4 = b[4],
+    b5 = b[5];
+  out[0] = a0 * b0 + a2 * b1;
+  out[1] = a1 * b0 + a3 * b1;
+  out[2] = a0 * b2 + a2 * b3;
+  out[3] = a1 * b2 + a3 * b3;
+  out[4] = a0 * b4 + a2 * b5 + a4;
+  out[5] = a1 * b4 + a3 * b5 + a5;
+  return out;
 };
 
 /**
@@ -244,18 +258,22 @@ mat2d.multiply = function (out, a, b) {
  * @function
  */
 mat2d.mult = function (out, a, b0, b1, b2, b3, b4, b5) {
-    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5];
+  var a0 = a[0],
+    a1 = a[1],
+    a2 = a[2],
+    a3 = a[3],
+    a4 = a[4],
+    a5 = a[5];
 
-    out[0] = a0 * b0 + a2 * b1;
-    out[1] = a1 * b0 + a3 * b1;
-    out[2] = a0 * b2 + a2 * b3;
-    out[3] = a1 * b2 + a3 * b3;
-    out[4] = a0 * b4 + a2 * b5 + a4;
-    out[5] = a1 * b4 + a3 * b5 + a5;
+  out[0] = a0 * b0 + a2 * b1;
+  out[1] = a1 * b0 + a3 * b1;
+  out[2] = a0 * b2 + a2 * b3;
+  out[3] = a1 * b2 + a3 * b3;
+  out[4] = a0 * b4 + a2 * b5 + a4;
+  out[5] = a1 * b4 + a3 * b5 + a5;
 
-    return out;
+  return out;
 };
-
 
 /**
  * Rotates a mat2d by the given angle
@@ -279,13 +297,16 @@ mat2d.mult = function (out, a, b0, b1, b2, b3, b4, b5) {
 //};
 
 mat2d.rotate = function (a, rad) {
-    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3],
-        s = mat2d.sin(rad),
-        c = mat2d.cos(rad);
-    a[0] = a0 *  c + a2 * s;
-    a[1] = a1 *  c + a3 * s;
-    a[2] = a0 * -s + a2 * c;
-    a[3] = a1 * -s + a3 * c;
+  var a0 = a[0],
+    a1 = a[1],
+    a2 = a[2],
+    a3 = a[3],
+    s = mat2d.sin(rad),
+    c = mat2d.cos(rad);
+  a[0] = a0 * c + a2 * s;
+  a[1] = a1 * c + a3 * s;
+  a[2] = a0 * -s + a2 * c;
+  a[3] = a1 * -s + a3 * c;
 };
 /**
  * Scales the mat2d by the dimensions in the given vec2
@@ -306,11 +327,11 @@ mat2d.rotate = function (a, rad) {
 //    return out;
 //};
 
-mat2d.scale = function(a, v0, v1) {
-    a[0] *= v0;
-    a[1] *= v0;
-    a[2] *= v1;
-    a[3] *= v1;
+mat2d.scale = function (a, v0, v1) {
+  a[0] *= v0;
+  a[1] *= v0;
+  a[2] *= v1;
+  a[3] *= v1;
 };
 
 /**
@@ -333,42 +354,52 @@ mat2d.scale = function(a, v0, v1) {
 //    return out;
 //};
 
-mat2d.translate = function(a, v0, v1) {
-    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3], a4 = a[4], a5 = a[5];
-    a[4] = a0 * v0 + a2 * v1 + a4;
-    a[5] = a1 * v0 + a3 * v1 + a5;
+mat2d.translate = function (a, v0, v1) {
+  var a0 = a[0],
+    a1 = a[1],
+    a2 = a[2],
+    a3 = a[3],
+    a4 = a[4],
+    a5 = a[5];
+  a[4] = a0 * v0 + a2 * v1 + a4;
+  a[5] = a1 * v0 + a3 * v1 + a5;
 };
 
-mat2d.points = [{x:0, y:0}, {x:0, y:0}, {x:0, y:0}, {x:0, y:0}];
+mat2d.points = [
+  { x: 0, y: 0 },
+  { x: 0, y: 0 },
+  { x: 0, y: 0 },
+  { x: 0, y: 0 },
+];
 
-mat2d.transformPoint = function(m, x, y, index) {
-	var p = mat2d.points[index||0];
+mat2d.transformPoint = function (m, x, y, index) {
+  var p = mat2d.points[index || 0];
 
-    p.x = m[0] * x + m[2] * y + m[4];
-    p.y = m[1] * x + m[3] * y + m[5];
-    
-    return p;
+  p.x = m[0] * x + m[2] * y + m[4];
+  p.y = m[1] * x + m[3] * y + m[5];
+
+  return p;
 };
 
-mat2d.transformPointInt = function(m, x, y, index) {
-	var p = mat2d.points[index||0];
+mat2d.transformPointInt = function (m, x, y, index) {
+  var p = mat2d.points[index || 0];
 
-    p.x = ((m[0] * x + m[2] * y + m[4]) * 10) >> 0;
-    p.y = ((m[1] * x + m[3] * y + m[5]) * 10) >> 0;
-    
-    return p;
+  p.x = ((m[0] * x + m[2] * y + m[4]) * 10) >> 0;
+  p.y = ((m[1] * x + m[3] * y + m[5]) * 10) >> 0;
+
+  return p;
 };
 
-mat2d.transformPoints = function(m, arr) {
-	for(var i = 0; i < arr.length; i+=2) {
-		var x = arr[i];
-		var y = arr[i+1];
-		arr[i] = m[0] * x + m[2] * y + m[4];
-		arr[i+1] = m[1] * x + m[3] * y + m[5];
-	}
+mat2d.transformPoints = function (m, arr) {
+  for (var i = 0; i < arr.length; i += 2) {
+    var x = arr[i];
+    var y = arr[i + 1];
+    arr[i] = m[0] * x + m[2] * y + m[4];
+    arr[i + 1] = m[1] * x + m[3] * y + m[5];
+  }
 
-	return arr;
-}
+  return arr;
+};
 
 mat2d.sin = Math.sinFast;
 mat2d.cos = Math.cosFast;
@@ -377,1924 +408,2247 @@ mat2d.cos = Math.cosFast;
  * File: shader.js
  * Author:  Li XianJing <xianjimli@hotmail.com>
  * Brief: webgl shader program
- * 
+ *
  * Copyright (c) 2015 - 2016 Holaverse Inc.
  * Copyright (c) 2018 - 2019  Guangzhou ZHIYUAN Electronics Co.,Ltd.
- * 
+ *
  */
 
-function WebGLProgram() {
-}
+function WebGLProgram() {}
 
 WebGLProgram.activeProgram = null;
-WebGLProgram.prototype.create = function(gl, buffer, fsSource, vsSource) {
-	this.gl = gl;
-	this.buffer = buffer;
+WebGLProgram.prototype.create = function (gl, buffer, fsSource, vsSource) {
+  this.gl = gl;
+  this.buffer = buffer;
 
-	var program = gl.createProgram();
-	var fragmentShader = this.createShader(gl.FRAGMENT_SHADER, fsSource);
-	var vertexShader = this.createShader(gl.VERTEX_SHADER, vsSource);
+  var program = gl.createProgram();
+  var fragmentShader = this.createShader(gl.FRAGMENT_SHADER, fsSource);
+  var vertexShader = this.createShader(gl.VERTEX_SHADER, vsSource);
 
-	gl.attachShader(program, vertexShader);
-	gl.attachShader(program, fragmentShader);
-	gl.linkProgram(program);
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+  gl.linkProgram(program);
 
-	var lineStatus = gl.getProgramParameter(program, gl.LINK_STATUS);
-	if(!lineStatus) {
-		alert("Could not initialise shaders:" + gl.getProgramInfoLog(program));
-	}
+  var lineStatus = gl.getProgramParameter(program, gl.LINK_STATUS);
+  if (!lineStatus) {
+    alert("Could not initialise shaders:" + gl.getProgramInfoLog(program));
+  }
 
-	this.program = program;
-	this.init();
+  this.program = program;
+  this.init();
 
-	return this;
-}
+  return this;
+};
 
-WebGLProgram.prototype.init = function() {
-}
+WebGLProgram.prototype.init = function () {};
 
-WebGLProgram.prototype.createShader = function(type, source) {
-	var gl = this.gl;
-	var shader = gl.createShader(type);
+WebGLProgram.prototype.createShader = function (type, source) {
+  var gl = this.gl;
+  var shader = gl.createShader(type);
 
-	gl.shaderSource(shader, source);
-	gl.compileShader(shader);
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
 
-	if(!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-		alert(gl.getShaderInfoLog(shader));
-		return null;
-	}
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    alert(gl.getShaderInfoLog(shader));
+    return null;
+  }
 
-	return shader;
-}
+  return shader;
+};
 
-WebGLProgram.prototype.use = function() {
-	if(WebGLProgram.activeProgram !== this.program) {
-		this.gl.useProgram(this.program);
-		WebGLProgram.activeProgram = this.program;
-	}
-}
+WebGLProgram.prototype.use = function () {
+  if (WebGLProgram.activeProgram !== this.program) {
+    this.gl.useProgram(this.program);
+    WebGLProgram.activeProgram = this.program;
+  }
+};
 
-WebGLProgram.prototype.destroy = function() {
-	this.gl.deleteProgram(this.program);
-	this.gl.program = null;
-}
+WebGLProgram.prototype.destroy = function () {
+  this.gl.deleteProgram(this.program);
+  this.gl.program = null;
+};
 
-WebGLProgram.prototype.createDataBuffer = function(data) {
-	return Int16DataBuffer.create(data);
-}
+WebGLProgram.prototype.createDataBuffer = function (data) {
+  return Int16DataBuffer.create(data);
+};
 
-WebGLProgram.prototype.getDataBufferElementSize = function() {
-	return 2;
-}
+WebGLProgram.prototype.getDataBufferElementSize = function () {
+  return 2;
+};
 
-WebGLProgram.prototype.getDataBufferElementType = function() {
-	return this.gl.SHORT;
-}
+WebGLProgram.prototype.getDataBufferElementType = function () {
+  return this.gl.SHORT;
+};
 
 /*
  * File: draw_image.js
  * Author:  Li XianJing <xianjimli@hotmail.com>
  * Brief: shader to draw image.
- * 
+ *
  * Copyright (c) 2015 - 2016 Holaverse Inc.
  * Copyright (c) 2018 - 2019  Guangzhou ZHIYUAN Electronics Co.,Ltd.
- * 
+ *
  */
 
 function WebGLProgramDrawImage(name, gl, buffer, custom) {
-	var fs = this.fs.replace(/custom-shader/, custom);
+  var fs = this.fs.replace(/custom-shader/, custom);
 
-	this.name = name;
-	this.create(gl, buffer, fs, this.vs);
+  this.name = name;
+  this.create(gl, buffer, fs, this.vs);
 
-	WebGLProgramDrawImage.programs[name] = this;
+  WebGLProgramDrawImage.programs[name] = this;
 }
 
 WebGLProgramDrawImage.prototype = new WebGLProgram();
 WebGLProgramDrawImage.prototype.fs = [
-	"precision mediump float;",
-	"varying vec4 color;",
-	"varying vec2 vTextureCoord;",
-	"uniform vec4 size;",
-	"uniform sampler2D texture;",
-	"void main(void) {",
-	"custom-shader",
-	"}"].join("\n");
+  "precision mediump float;",
+  "varying vec4 color;",
+  "varying vec2 vTextureCoord;",
+  "uniform vec4 size;",
+  "uniform sampler2D texture;",
+  "void main(void) {",
+  "custom-shader",
+  "}",
+].join("\n");
 
 WebGLProgramDrawImage.prototype.vs = [
-	"precision mediump float;",
-	"attribute vec4 aTextureCoord;",
-	"attribute vec2 aVertexPosition;",
-	"uniform vec4 size;",
-	"varying vec4 color;",
-	"varying vec2 vTextureCoord;",
-	"void main(void) {",
-	"    vec2 viewSize = size.xy;",
-	"    vec2 textureSize = size.zw;",
-	"    vec2 pos = (vec2(aVertexPosition.x/10.0, viewSize.y-aVertexPosition.y/10.0)/ viewSize) * 2.0 - 1.0;",
-	"    gl_Position = vec4(pos, 0, 1.0);",
-	"    vec2 v = vec2(aTextureCoord.x, aTextureCoord.y)/textureSize;",
-	"    vTextureCoord = vec2(v.s, 1.0-v.t);",
-	"    float alpha = aTextureCoord.z/256.0;",
-	"    float tint = aTextureCoord.w/256.0;",
-	"    color = vec4(tint, tint, tint, alpha);",
-	"}"].join("\n");
+  "precision mediump float;",
+  "attribute vec4 aTextureCoord;",
+  "attribute vec2 aVertexPosition;",
+  "uniform vec4 size;",
+  "varying vec4 color;",
+  "varying vec2 vTextureCoord;",
+  "void main(void) {",
+  "    vec2 viewSize = size.xy;",
+  "    vec2 textureSize = size.zw;",
+  "    vec2 pos = (vec2(aVertexPosition.x/10.0, viewSize.y-aVertexPosition.y/10.0)/ viewSize) * 2.0 - 1.0;",
+  "    gl_Position = vec4(pos, 0, 1.0);",
+  "    vec2 v = vec2(aTextureCoord.x, aTextureCoord.y)/textureSize;",
+  "    vTextureCoord = vec2(v.s, 1.0-v.t);",
+  "    float alpha = aTextureCoord.z/256.0;",
+  "    float tint = aTextureCoord.w/256.0;",
+  "    color = vec4(tint, tint, tint, alpha);",
+  "}",
+].join("\n");
 
-WebGLProgramDrawImage.prototype.init = function() {
-	var gl = this.gl;
-	var program = this.program;
+WebGLProgramDrawImage.prototype.init = function () {
+  var gl = this.gl;
+  var program = this.program;
 
-	program.aTextureCoord = gl.getAttribLocation(program, "aTextureCoord");
-	program.aVertexPosition = gl.getAttribLocation(program, "aVertexPosition");
+  program.aTextureCoord = gl.getAttribLocation(program, "aTextureCoord");
+  program.aVertexPosition = gl.getAttribLocation(program, "aVertexPosition");
 
-	program.size = gl.getUniformLocation(program, "size");
-	program.samplerUniform = gl.getUniformLocation(program, "texture");
+  program.size = gl.getUniformLocation(program, "size");
+  program.samplerUniform = gl.getUniformLocation(program, "texture");
 
-	return;
-}
-	
-WebGLProgramDrawImage.prototype.addTriangle = function(dataBuffer, alpha, tint, u0, v0, x0, y0, u1, v1, x1, y1, u2, v2, x2, y2) {
-	var isClockWise = (x1-x0)*(y2-y1)-(y1-y0)*(x2-x1) >= 0;
-	if(isClockWise) {
-		return dataBuffer.pushX(
-				u0, v0, alpha, tint, x0, y0, 
-				u1, v1, alpha, tint, x1, y1, 
-				u2, v2, alpha, tint, x2, y2
-			);
-	}else{
-		return dataBuffer.pushX(
-				u0, v0, alpha, tint, x0, y0, 
-				u2, v2, alpha, tint, x2, y2,
-				u1, v1, alpha, tint, x1, y1 
-			);
-	}
-}
+  return;
+};
 
-WebGLProgramDrawImage.prototype.draw = function(image, _bufferData) {
-	this.use();
+WebGLProgramDrawImage.prototype.addTriangle = function (
+  dataBuffer,
+  alpha,
+  tint,
+  u0,
+  v0,
+  x0,
+  y0,
+  u1,
+  v1,
+  x1,
+  y1,
+  u2,
+  v2,
+  x2,
+  y2
+) {
+  var isClockWise = (x1 - x0) * (y2 - y1) - (y1 - y0) * (x2 - x1) >= 0;
+  if (isClockWise) {
+    return dataBuffer.pushX(
+      u0,
+      v0,
+      alpha,
+      tint,
+      x0,
+      y0,
+      u1,
+      v1,
+      alpha,
+      tint,
+      x1,
+      y1,
+      u2,
+      v2,
+      alpha,
+      tint,
+      x2,
+      y2
+    );
+  } else {
+    return dataBuffer.pushX(
+      u0,
+      v0,
+      alpha,
+      tint,
+      x0,
+      y0,
+      u2,
+      v2,
+      alpha,
+      tint,
+      x2,
+      y2,
+      u1,
+      v1,
+      alpha,
+      tint,
+      x1,
+      y1
+    );
+  }
+};
 
-	var gl = this.gl;
-	var program = this.program;
-	var elementType = this.getDataBufferElementType();
-	var elementSize = this.getDataBufferElementSize();
-	var stride = elementSize * 6;
+WebGLProgramDrawImage.prototype.draw = function (image, _bufferData) {
+  this.use();
 
-	var texture = image.texture;
-	if(image.dirty) {
-		texture.update();
-	}
+  var gl = this.gl;
+  var program = this.program;
+  var elementType = this.getDataBufferElementType();
+  var elementSize = this.getDataBufferElementSize();
+  var stride = elementSize * 6;
 
-	var bufferData = _bufferData;
-	var vetexCount = bufferData.size/6;
-	gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
-	gl.bufferData(gl.ARRAY_BUFFER, bufferData, gl.DYNAMIC_DRAW);
+  var texture = image.texture;
+  if (image.dirty) {
+    texture.update();
+  }
 
-	gl.activeTexture(gl.TEXTURE0);
-	gl.bindTexture(gl.TEXTURE_2D, texture);
+  var bufferData = _bufferData;
+  var vetexCount = bufferData.size / 6;
+  gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
+  gl.bufferData(gl.ARRAY_BUFFER, bufferData, gl.DYNAMIC_DRAW);
 
-	gl.vertexAttribPointer(program.aTextureCoord, 4, elementType, false, stride, 0);
-	gl.enableVertexAttribArray(program.aTextureCoord);
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, texture);
 
-	gl.vertexAttribPointer(program.aVertexPosition, 2, elementType, false, stride, elementSize * 4);
-	gl.enableVertexAttribArray(program.aVertexPosition);
-	
-	gl.uniform4f(program.size, gl.w, gl.h, texture.w, texture.h);
-	
-	gl.drawArrays(gl.TRIANGLES, 0, vetexCount);
-}
+  gl.vertexAttribPointer(
+    program.aTextureCoord,
+    4,
+    elementType,
+    false,
+    stride,
+    0
+  );
+  gl.enableVertexAttribArray(program.aTextureCoord);
+
+  gl.vertexAttribPointer(
+    program.aVertexPosition,
+    2,
+    elementType,
+    false,
+    stride,
+    elementSize * 4
+  );
+  gl.enableVertexAttribArray(program.aVertexPosition);
+
+  gl.uniform4f(program.size, gl.w, gl.h, texture.w, texture.h);
+
+  gl.drawArrays(gl.TRIANGLES, 0, vetexCount);
+};
 
 WebGLProgramDrawImage.defaultCustomFs = [
-	"  vec4 c = texture2D(texture, vTextureCoord);",
-	"  gl_FragColor = vec4(c.xyz*color.w,color.w);",
-	""].join("\n");
+  "  vec4 c = texture2D(texture, vTextureCoord);",
+  "  gl_FragColor = vec4(c.xyz*color.w,color.w);",
+  "",
+].join("\n");
 
-WebGLProgramDrawImage.create = function(gl, buffer) {
-	var program = new WebGLProgramDrawImage("normal", gl, buffer, WebGLProgramDrawImage.defaultCustomFs);
+WebGLProgramDrawImage.create = function (gl, buffer) {
+  var program = new WebGLProgramDrawImage(
+    "normal",
+    gl,
+    buffer,
+    WebGLProgramDrawImage.defaultCustomFs
+  );
 
-	return program;
-}
+  return program;
+};
 
 WebGLProgramDrawImage.grayCustomFs = [
-	"    vec4 c = texture2D(texture, vTextureCoord);",
-	"    float gray = c.r*0.3 + c.g*0.59 + c.b*0.11;",
-	"    gl_FragColor = vec4(gray, gray, gray, c.a) * color;"].join("\n");
+  "    vec4 c = texture2D(texture, vTextureCoord);",
+  "    float gray = c.r*0.3 + c.g*0.59 + c.b*0.11;",
+  "    gl_FragColor = vec4(gray, gray, gray, c.a) * color;",
+].join("\n");
 
-WebGLProgramDrawImage.createGray = function(gl, buffer) {
-	var program = new WebGLProgramDrawImage("gray", gl, buffer, WebGLProgramDrawImage.grayCustomFs);
+WebGLProgramDrawImage.createGray = function (gl, buffer) {
+  var program = new WebGLProgramDrawImage(
+    "gray",
+    gl,
+    buffer,
+    WebGLProgramDrawImage.grayCustomFs
+  );
 
-	return program;
-}
+  return program;
+};
 
 WebGLProgramDrawImage.programs = {};
-WebGLProgramDrawImage.init = function(gl, buffer) {
-	WebGLProgramDrawImage.create(gl, buffer);
-	WebGLProgramDrawImage.createGray(gl, buffer);
-}
+WebGLProgramDrawImage.init = function (gl, buffer) {
+  WebGLProgramDrawImage.create(gl, buffer);
+  WebGLProgramDrawImage.createGray(gl, buffer);
+};
 
-WebGLProgramDrawImage.get = function(name) {
-	return WebGLProgramDrawImage.programs[name] || WebGLProgramDrawImage.programs.normal;
-}
+WebGLProgramDrawImage.get = function (name) {
+  return (
+    WebGLProgramDrawImage.programs[name] ||
+    WebGLProgramDrawImage.programs.normal
+  );
+};
 /*
  * File: draw_primitives.js
  * Author:  Li XianJing <xianjimli@hotmail.com>
  * Brief: shader to stroke/fill lines and curve.
- * 
+ *
  * Copyright (c) 2015 - 2016 Holaverse Inc.
  * Copyright (c) 2018 - 2019  Guangzhou ZHIYUAN Electronics Co.,Ltd.
- * 
+ *
  */
 
 function WebGLProgramDrawPrimitives(gl, buffer) {
-	this.create(gl, buffer, this.fs, this.vs);
+  this.create(gl, buffer, this.fs, this.vs);
 }
 
 WebGLProgramDrawPrimitives.prototype = new WebGLProgram();
 WebGLProgramDrawPrimitives.prototype.fs = [
-	"precision mediump float;",
-	'varying vec4 vColor;',
-	"void main(void) {",
-	"    gl_FragColor = vColor;",
-	"}"].join("\n");
+  "precision mediump float;",
+  "varying vec4 vColor;",
+  "void main(void) {",
+  "    gl_FragColor = vColor;",
+  "}",
+].join("\n");
 
 WebGLProgramDrawPrimitives.prototype.vs = [
-	"precision mediump float;",
-	'attribute vec2 aVertexPosition;',
-	"uniform vec4 aSizeAlphaTint;",
-	"uniform vec4 aColor;",
-	'varying vec4 vColor;',
-	"void main(void) {",
-	"   vec2 size = vec2(aSizeAlphaTint.x, aSizeAlphaTint.y);",
-	"   float tint = aSizeAlphaTint.z/256.0;",
-	"	float alpha = aSizeAlphaTint.w/256.0;",
-	"   vec3 pos = vec3(aVertexPosition.x/10.0, aVertexPosition.y/10.0, 1.0);",
-	"   vec2 pos2 = (vec2(pos.x, size.y-pos.y)/size) * 2.0 - 1.0;",
-	"   gl_Position = vec4(pos2, 0, 1.0);",
-	"	vColor = aColor * vec4(tint, tint, tint, alpha);",
-	"}"].join("\n");
+  "precision mediump float;",
+  "attribute vec2 aVertexPosition;",
+  "uniform vec4 aSizeAlphaTint;",
+  "uniform vec4 aColor;",
+  "varying vec4 vColor;",
+  "void main(void) {",
+  "   vec2 size = vec2(aSizeAlphaTint.x, aSizeAlphaTint.y);",
+  "   float tint = aSizeAlphaTint.z/256.0;",
+  "	float alpha = aSizeAlphaTint.w/256.0;",
+  "   vec3 pos = vec3(aVertexPosition.x/10.0, aVertexPosition.y/10.0, 1.0);",
+  "   vec2 pos2 = (vec2(pos.x, size.y-pos.y)/size) * 2.0 - 1.0;",
+  "   gl_Position = vec4(pos2, 0, 1.0);",
+  "	vColor = aColor * vec4(tint, tint, tint, alpha);",
+  "}",
+].join("\n");
 
-WebGLProgramDrawPrimitives.prototype.init = function() {
-	var gl = this.gl;
-	var program = this.program;
+WebGLProgramDrawPrimitives.prototype.init = function () {
+  var gl = this.gl;
+  var program = this.program;
 
-	program.aVertexPosition = gl.getAttribLocation(program, "aVertexPosition");
+  program.aVertexPosition = gl.getAttribLocation(program, "aVertexPosition");
 
-	program.aColor = gl.getUniformLocation(program, "aColor");
-	program.aSizeAlphaTint = gl.getUniformLocation(program, "aSizeAlphaTint");
+  program.aColor = gl.getUniformLocation(program, "aColor");
+  program.aSizeAlphaTint = gl.getUniformLocation(program, "aSizeAlphaTint");
 
-	return;
-}
+  return;
+};
 
-WebGLProgramDrawPrimitives.prototype.clip = function(start, end) {
-	this.draw(this.gl.TRIANGLE_FAN, start, end);
-}
+WebGLProgramDrawPrimitives.prototype.clip = function (start, end) {
+  this.draw(this.gl.TRIANGLE_FAN, start, end);
+};
 
-WebGLProgramDrawPrimitives.prototype.stroke = function(start, end) {
-	this.draw(this.gl.LINE_STRIP, start, end);
-}
+WebGLProgramDrawPrimitives.prototype.stroke = function (start, end) {
+  this.draw(this.gl.LINE_STRIP, start, end);
+};
 
-WebGLProgramDrawPrimitives.prototype.fill = function(start, end) {
-	this.draw(this.gl.TRIANGLE_FAN, start, end);
-}
+WebGLProgramDrawPrimitives.prototype.fill = function (start, end) {
+  this.draw(this.gl.TRIANGLE_FAN, start, end);
+};
 
-WebGLProgramDrawPrimitives.prototype.prepareDraw = function(bufferData, color, alpha, tint) {
-	this.use();
+WebGLProgramDrawPrimitives.prototype.prepareDraw = function (
+  bufferData,
+  color,
+  alpha,
+  tint
+) {
+  this.use();
 
-	var gl = this.gl;
-	var program = this.program;
-	var elementType = this.getDataBufferElementType();
-	var elementSize = this.getDataBufferElementSize();
+  var gl = this.gl;
+  var program = this.program;
+  var elementType = this.getDataBufferElementType();
+  var elementSize = this.getDataBufferElementSize();
 
-	gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
-	gl.bufferData(gl.ARRAY_BUFFER, bufferData, gl.DYNAMIC_DRAW);
+  gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
+  gl.bufferData(gl.ARRAY_BUFFER, bufferData, gl.DYNAMIC_DRAW);
 
-	gl.vertexAttribPointer(program.aVertexPosition, 2, elementType, false, 0, 0);
-	gl.enableVertexAttribArray(program.aVertexPosition);
-	
-	gl.uniform4f(program.aColor, color.r, color.g, color.b, color.a);
-	gl.uniform4f(program.aSizeAlphaTint, gl.w, gl.h, tint, alpha);
-}
+  gl.vertexAttribPointer(program.aVertexPosition, 2, elementType, false, 0, 0);
+  gl.enableVertexAttribArray(program.aVertexPosition);
 
-WebGLProgramDrawPrimitives.prototype.draw = function(type, start, end) {
-	var gl = this.gl;
-	var begin = start >> 1;
-	var n = (end - start) >> 1;
+  gl.uniform4f(program.aColor, color.r, color.g, color.b, color.a);
+  gl.uniform4f(program.aSizeAlphaTint, gl.w, gl.h, tint, alpha);
+};
 
-	gl.drawArrays(type, begin, n);
-}
+WebGLProgramDrawPrimitives.prototype.draw = function (type, start, end) {
+  var gl = this.gl;
+  var begin = start >> 1;
+  var n = (end - start) >> 1;
 
+  gl.drawArrays(type, begin, n);
+};
 
-WebGLProgramDrawPrimitives.prototype.createDataBuffer = function(data) {
-	return Int16DataBuffer.create(data);
-}
+WebGLProgramDrawPrimitives.prototype.createDataBuffer = function (data) {
+  return Int16DataBuffer.create(data);
+};
 
-WebGLProgramDrawPrimitives.prototype.getDataBufferElementSize = function() {
-	return 2;
-}
+WebGLProgramDrawPrimitives.prototype.getDataBufferElementSize = function () {
+  return 2;
+};
 
-WebGLProgramDrawPrimitives.prototype.getDataBufferElementType = function() {
-	return this.gl.SHORT;
-}
-
+WebGLProgramDrawPrimitives.prototype.getDataBufferElementType = function () {
+  return this.gl.SHORT;
+};
 
 function isArrayish(obj) {
-	if (!obj) {
-		return false;
-	}
+  if (!obj) {
+    return false;
+  }
 
-	return obj instanceof Array || Array.isArray(obj) ||
-		(obj.length >= 0 && (obj.splice instanceof Function ||
-			(Object.getOwnPropertyDescriptor(obj, (obj.length - 1)) && obj.constructor.name !== 'String')));
-};
+  return (
+    obj instanceof Array ||
+    Array.isArray(obj) ||
+    (obj.length >= 0 &&
+      (obj.splice instanceof Function ||
+        (Object.getOwnPropertyDescriptor(obj, obj.length - 1) &&
+          obj.constructor.name !== "String")))
+  );
+}
 
 var concat = Array.prototype.concat;
 var slice = Array.prototype.slice;
 
 function swizzle(args) {
-	var results = [];
+  var results = [];
 
-	for (var i = 0, len = args.length; i < len; i++) {
-		var arg = args[i];
+  for (var i = 0, len = args.length; i < len; i++) {
+    var arg = args[i];
 
-		if (isArrayish(arg)) {
-			// http://jsperf.com/javascript-array-concat-vs-push/98
-			results = concat.call(results, slice.call(arg));
-		} else {
-			results.push(arg);
-		}
-	}
+    if (isArrayish(arg)) {
+      // http://jsperf.com/javascript-array-concat-vs-push/98
+      results = concat.call(results, slice.call(arg));
+    } else {
+      results.push(arg);
+    }
+  }
 
-	return results;
-};
+  return results;
+}
 
 swizzle.wrap = function (fn) {
-	return function () {
-		return fn(swizzle(arguments));
-	};
+  return function () {
+    return fn(swizzle(arguments));
+  };
 };
 
 var colorNames = {
-	"aliceblue": [240, 248, 255],
-	"antiquewhite": [250, 235, 215],
-	"aqua": [0, 255, 255],
-	"aquamarine": [127, 255, 212],
-	"azure": [240, 255, 255],
-	"beige": [245, 245, 220],
-	"bisque": [255, 228, 196],
-	"black": [0, 0, 0],
-	"blanchedalmond": [255, 235, 205],
-	"blue": [0, 0, 255],
-	"blueviolet": [138, 43, 226],
-	"brown": [165, 42, 42],
-	"burlywood": [222, 184, 135],
-	"cadetblue": [95, 158, 160],
-	"chartreuse": [127, 255, 0],
-	"chocolate": [210, 105, 30],
-	"coral": [255, 127, 80],
-	"cornflowerblue": [100, 149, 237],
-	"cornsilk": [255, 248, 220],
-	"crimson": [220, 20, 60],
-	"cyan": [0, 255, 255],
-	"darkblue": [0, 0, 139],
-	"darkcyan": [0, 139, 139],
-	"darkgoldenrod": [184, 134, 11],
-	"darkgray": [169, 169, 169],
-	"darkgreen": [0, 100, 0],
-	"darkgrey": [169, 169, 169],
-	"darkkhaki": [189, 183, 107],
-	"darkmagenta": [139, 0, 139],
-	"darkolivegreen": [85, 107, 47],
-	"darkorange": [255, 140, 0],
-	"darkorchid": [153, 50, 204],
-	"darkred": [139, 0, 0],
-	"darksalmon": [233, 150, 122],
-	"darkseagreen": [143, 188, 143],
-	"darkslateblue": [72, 61, 139],
-	"darkslategray": [47, 79, 79],
-	"darkslategrey": [47, 79, 79],
-	"darkturquoise": [0, 206, 209],
-	"darkviolet": [148, 0, 211],
-	"deeppink": [255, 20, 147],
-	"deepskyblue": [0, 191, 255],
-	"dimgray": [105, 105, 105],
-	"dimgrey": [105, 105, 105],
-	"dodgerblue": [30, 144, 255],
-	"firebrick": [178, 34, 34],
-	"floralwhite": [255, 250, 240],
-	"forestgreen": [34, 139, 34],
-	"fuchsia": [255, 0, 255],
-	"gainsboro": [220, 220, 220],
-	"ghostwhite": [248, 248, 255],
-	"gold": [255, 215, 0],
-	"goldenrod": [218, 165, 32],
-	"gray": [128, 128, 128],
-	"green": [0, 128, 0],
-	"greenyellow": [173, 255, 47],
-	"grey": [128, 128, 128],
-	"honeydew": [240, 255, 240],
-	"hotpink": [255, 105, 180],
-	"indianred": [205, 92, 92],
-	"indigo": [75, 0, 130],
-	"ivory": [255, 255, 240],
-	"khaki": [240, 230, 140],
-	"lavender": [230, 230, 250],
-	"lavenderblush": [255, 240, 245],
-	"lawngreen": [124, 252, 0],
-	"lemonchiffon": [255, 250, 205],
-	"lightblue": [173, 216, 230],
-	"lightcoral": [240, 128, 128],
-	"lightcyan": [224, 255, 255],
-	"lightgoldenrodyellow": [250, 250, 210],
-	"lightgray": [211, 211, 211],
-	"lightgreen": [144, 238, 144],
-	"lightgrey": [211, 211, 211],
-	"lightpink": [255, 182, 193],
-	"lightsalmon": [255, 160, 122],
-	"lightseagreen": [32, 178, 170],
-	"lightskyblue": [135, 206, 250],
-	"lightslategray": [119, 136, 153],
-	"lightslategrey": [119, 136, 153],
-	"lightsteelblue": [176, 196, 222],
-	"lightyellow": [255, 255, 224],
-	"lime": [0, 255, 0],
-	"limegreen": [50, 205, 50],
-	"linen": [250, 240, 230],
-	"magenta": [255, 0, 255],
-	"maroon": [128, 0, 0],
-	"mediumaquamarine": [102, 205, 170],
-	"mediumblue": [0, 0, 205],
-	"mediumorchid": [186, 85, 211],
-	"mediumpurple": [147, 112, 219],
-	"mediumseagreen": [60, 179, 113],
-	"mediumslateblue": [123, 104, 238],
-	"mediumspringgreen": [0, 250, 154],
-	"mediumturquoise": [72, 209, 204],
-	"mediumvioletred": [199, 21, 133],
-	"midnightblue": [25, 25, 112],
-	"mintcream": [245, 255, 250],
-	"mistyrose": [255, 228, 225],
-	"moccasin": [255, 228, 181],
-	"navajowhite": [255, 222, 173],
-	"navy": [0, 0, 128],
-	"oldlace": [253, 245, 230],
-	"olive": [128, 128, 0],
-	"olivedrab": [107, 142, 35],
-	"orange": [255, 165, 0],
-	"orangered": [255, 69, 0],
-	"orchid": [218, 112, 214],
-	"palegoldenrod": [238, 232, 170],
-	"palegreen": [152, 251, 152],
-	"paleturquoise": [175, 238, 238],
-	"palevioletred": [219, 112, 147],
-	"papayawhip": [255, 239, 213],
-	"peachpuff": [255, 218, 185],
-	"peru": [205, 133, 63],
-	"pink": [255, 192, 203],
-	"plum": [221, 160, 221],
-	"powderblue": [176, 224, 230],
-	"purple": [128, 0, 128],
-	"rebeccapurple": [102, 51, 153],
-	"red": [255, 0, 0],
-	"rosybrown": [188, 143, 143],
-	"royalblue": [65, 105, 225],
-	"saddlebrown": [139, 69, 19],
-	"salmon": [250, 128, 114],
-	"sandybrown": [244, 164, 96],
-	"seagreen": [46, 139, 87],
-	"seashell": [255, 245, 238],
-	"sienna": [160, 82, 45],
-	"silver": [192, 192, 192],
-	"skyblue": [135, 206, 235],
-	"slateblue": [106, 90, 205],
-	"slategray": [112, 128, 144],
-	"slategrey": [112, 128, 144],
-	"snow": [255, 250, 250],
-	"springgreen": [0, 255, 127],
-	"steelblue": [70, 130, 180],
-	"tan": [210, 180, 140],
-	"teal": [0, 128, 128],
-	"thistle": [216, 191, 216],
-	"tomato": [255, 99, 71],
-	"turquoise": [64, 224, 208],
-	"violet": [238, 130, 238],
-	"wheat": [245, 222, 179],
-	"white": [255, 255, 255],
-	"whitesmoke": [245, 245, 245],
-	"yellow": [255, 255, 0],
-	"yellowgreen": [154, 205, 50]
+  aliceblue: [240, 248, 255],
+  antiquewhite: [250, 235, 215],
+  aqua: [0, 255, 255],
+  aquamarine: [127, 255, 212],
+  azure: [240, 255, 255],
+  beige: [245, 245, 220],
+  bisque: [255, 228, 196],
+  black: [0, 0, 0],
+  blanchedalmond: [255, 235, 205],
+  blue: [0, 0, 255],
+  blueviolet: [138, 43, 226],
+  brown: [165, 42, 42],
+  burlywood: [222, 184, 135],
+  cadetblue: [95, 158, 160],
+  chartreuse: [127, 255, 0],
+  chocolate: [210, 105, 30],
+  coral: [255, 127, 80],
+  cornflowerblue: [100, 149, 237],
+  cornsilk: [255, 248, 220],
+  crimson: [220, 20, 60],
+  cyan: [0, 255, 255],
+  darkblue: [0, 0, 139],
+  darkcyan: [0, 139, 139],
+  darkgoldenrod: [184, 134, 11],
+  darkgray: [169, 169, 169],
+  darkgreen: [0, 100, 0],
+  darkgrey: [169, 169, 169],
+  darkkhaki: [189, 183, 107],
+  darkmagenta: [139, 0, 139],
+  darkolivegreen: [85, 107, 47],
+  darkorange: [255, 140, 0],
+  darkorchid: [153, 50, 204],
+  darkred: [139, 0, 0],
+  darksalmon: [233, 150, 122],
+  darkseagreen: [143, 188, 143],
+  darkslateblue: [72, 61, 139],
+  darkslategray: [47, 79, 79],
+  darkslategrey: [47, 79, 79],
+  darkturquoise: [0, 206, 209],
+  darkviolet: [148, 0, 211],
+  deeppink: [255, 20, 147],
+  deepskyblue: [0, 191, 255],
+  dimgray: [105, 105, 105],
+  dimgrey: [105, 105, 105],
+  dodgerblue: [30, 144, 255],
+  firebrick: [178, 34, 34],
+  floralwhite: [255, 250, 240],
+  forestgreen: [34, 139, 34],
+  fuchsia: [255, 0, 255],
+  gainsboro: [220, 220, 220],
+  ghostwhite: [248, 248, 255],
+  gold: [255, 215, 0],
+  goldenrod: [218, 165, 32],
+  gray: [128, 128, 128],
+  green: [0, 128, 0],
+  greenyellow: [173, 255, 47],
+  grey: [128, 128, 128],
+  honeydew: [240, 255, 240],
+  hotpink: [255, 105, 180],
+  indianred: [205, 92, 92],
+  indigo: [75, 0, 130],
+  ivory: [255, 255, 240],
+  khaki: [240, 230, 140],
+  lavender: [230, 230, 250],
+  lavenderblush: [255, 240, 245],
+  lawngreen: [124, 252, 0],
+  lemonchiffon: [255, 250, 205],
+  lightblue: [173, 216, 230],
+  lightcoral: [240, 128, 128],
+  lightcyan: [224, 255, 255],
+  lightgoldenrodyellow: [250, 250, 210],
+  lightgray: [211, 211, 211],
+  lightgreen: [144, 238, 144],
+  lightgrey: [211, 211, 211],
+  lightpink: [255, 182, 193],
+  lightsalmon: [255, 160, 122],
+  lightseagreen: [32, 178, 170],
+  lightskyblue: [135, 206, 250],
+  lightslategray: [119, 136, 153],
+  lightslategrey: [119, 136, 153],
+  lightsteelblue: [176, 196, 222],
+  lightyellow: [255, 255, 224],
+  lime: [0, 255, 0],
+  limegreen: [50, 205, 50],
+  linen: [250, 240, 230],
+  magenta: [255, 0, 255],
+  maroon: [128, 0, 0],
+  mediumaquamarine: [102, 205, 170],
+  mediumblue: [0, 0, 205],
+  mediumorchid: [186, 85, 211],
+  mediumpurple: [147, 112, 219],
+  mediumseagreen: [60, 179, 113],
+  mediumslateblue: [123, 104, 238],
+  mediumspringgreen: [0, 250, 154],
+  mediumturquoise: [72, 209, 204],
+  mediumvioletred: [199, 21, 133],
+  midnightblue: [25, 25, 112],
+  mintcream: [245, 255, 250],
+  mistyrose: [255, 228, 225],
+  moccasin: [255, 228, 181],
+  navajowhite: [255, 222, 173],
+  navy: [0, 0, 128],
+  oldlace: [253, 245, 230],
+  olive: [128, 128, 0],
+  olivedrab: [107, 142, 35],
+  orange: [255, 165, 0],
+  orangered: [255, 69, 0],
+  orchid: [218, 112, 214],
+  palegoldenrod: [238, 232, 170],
+  palegreen: [152, 251, 152],
+  paleturquoise: [175, 238, 238],
+  palevioletred: [219, 112, 147],
+  papayawhip: [255, 239, 213],
+  peachpuff: [255, 218, 185],
+  peru: [205, 133, 63],
+  pink: [255, 192, 203],
+  plum: [221, 160, 221],
+  powderblue: [176, 224, 230],
+  purple: [128, 0, 128],
+  rebeccapurple: [102, 51, 153],
+  red: [255, 0, 0],
+  rosybrown: [188, 143, 143],
+  royalblue: [65, 105, 225],
+  saddlebrown: [139, 69, 19],
+  salmon: [250, 128, 114],
+  sandybrown: [244, 164, 96],
+  seagreen: [46, 139, 87],
+  seashell: [255, 245, 238],
+  sienna: [160, 82, 45],
+  silver: [192, 192, 192],
+  skyblue: [135, 206, 235],
+  slateblue: [106, 90, 205],
+  slategray: [112, 128, 144],
+  slategrey: [112, 128, 144],
+  snow: [255, 250, 250],
+  springgreen: [0, 255, 127],
+  steelblue: [70, 130, 180],
+  tan: [210, 180, 140],
+  teal: [0, 128, 128],
+  thistle: [216, 191, 216],
+  tomato: [255, 99, 71],
+  turquoise: [64, 224, 208],
+  violet: [238, 130, 238],
+  wheat: [245, 222, 179],
+  white: [255, 255, 255],
+  whitesmoke: [245, 245, 245],
+  yellow: [255, 255, 0],
+  yellowgreen: [154, 205, 50],
 };
 
 var reverseNames = {};
 // create a list of reverse color names
 for (var name in colorNames) {
-	if (colorNames.hasOwnProperty(name)) {
-		reverseNames[colorNames[name]] = name;
-	}
+  if (colorNames.hasOwnProperty(name)) {
+    reverseNames[colorNames[name]] = name;
+  }
 }
 
 var cs = {
-	to: {}
+  to: {},
 };
 
 cs.get = function (string) {
-	var prefix = string.substring(0, 3).toLowerCase();
-	var val;
-	var model;
-	switch (prefix) {
-		case 'hsl':
-			val = cs.get.hsl(string);
-			model = 'hsl';
-			break;
-		case 'hwb':
-			val = cs.get.hwb(string);
-			model = 'hwb';
-			break;
-		default:
-			val = cs.get.rgb(string);
-			model = 'rgb';
-			break;
-	}
+  var prefix = string.substring(0, 3).toLowerCase();
+  var val;
+  var model;
+  switch (prefix) {
+    case "hsl":
+      val = cs.get.hsl(string);
+      model = "hsl";
+      break;
+    case "hwb":
+      val = cs.get.hwb(string);
+      model = "hwb";
+      break;
+    default:
+      val = cs.get.rgb(string);
+      model = "rgb";
+      break;
+  }
 
-	if (!val) {
-		return null;
-	}
+  if (!val) {
+    return null;
+  }
 
-	return {model: model, value: val};
+  return { model: model, value: val };
 };
 
 cs.abbrreg = /^#([a-fA-F0-9]{3})$/;
 cs.hexreg = /^#([a-fA-F0-9]{6})$/;
-cs.rgbareg = /^rgba?\(\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)$/;
-cs.perreg = /^rgba?\(\s*([+-]?[\d\.]+)\%\s*,\s*([+-]?[\d\.]+)\%\s*,\s*([+-]?[\d\.]+)\%\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)$/;
+cs.rgbareg =
+  /^rgba?\(\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)$/;
+cs.perreg =
+  /^rgba?\(\s*([+-]?[\d\.]+)\%\s*,\s*([+-]?[\d\.]+)\%\s*,\s*([+-]?[\d\.]+)\%\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)$/;
 cs.keywordreg = /(\D+)/;
 
 cs.cache = {};
 cs.get.rgb = function (string) {
-	var color = cs.cache[string];
+  var color = cs.cache[string];
 
-	if(!color) {
-		color = cs.get.rgbSlow(string);
-		cs.cache[string] = color;
-	}
+  if (!color) {
+    color = cs.get.rgbSlow(string);
+    cs.cache[string] = color;
+  }
 
-	return color;
-}
+  return color;
+};
 
 cs.get.rgbSlow = function (string) {
-	var i;
-	var match;
+  var i;
+  var match;
 
-	var rgb = [0, 0, 0, 1];
-	if (!string) {
-		return rgb;
-	}
+  var rgb = [0, 0, 0, 1];
+  if (!string) {
+    return rgb;
+  }
 
-	if (match = string.match(cs.abbrreg)) {
-		match = match[1];
+  if ((match = string.match(cs.abbrreg))) {
+    match = match[1];
 
-		for (i = 0; i < 3; i++) {
-			rgb[i] = parseInt(match[i] + match[i], 16);
-		}
-	} else if (match = string.match(cs.hexreg)) {
-		match = match[1];
+    for (i = 0; i < 3; i++) {
+      rgb[i] = parseInt(match[i] + match[i], 16);
+    }
+  } else if ((match = string.match(cs.hexreg))) {
+    match = match[1];
 
-		for (i = 0; i < 3; i++) {
-			// https://jsperf.com/slice-vs-substr-vs-substring-methods-long-string/19
-			var i2 = i * 2;
-			rgb[i] = parseInt(match.slice(i2, i2 + 2), 16);
-		}
-	} else if (match = string.match(cs.rgbareg)) {
-		for (i = 0; i < 3; i++) {
-			rgb[i] = parseInt(match[i + 1], 0);
-		}
+    for (i = 0; i < 3; i++) {
+      // https://jsperf.com/slice-vs-substr-vs-substring-methods-long-string/19
+      var i2 = i * 2;
+      rgb[i] = parseInt(match.slice(i2, i2 + 2), 16);
+    }
+  } else if ((match = string.match(cs.rgbareg))) {
+    for (i = 0; i < 3; i++) {
+      rgb[i] = parseInt(match[i + 1], 0);
+    }
 
-		if (match[4]) {
-			rgb[3] = parseFloat(match[4]);
-		}
-	} else if (match = string.match(cs.perreg)) {
-		for (i = 0; i < 3; i++) {
-			rgb[i] = Math.round(parseFloat(match[i + 1]) * 2.55);
-		}
+    if (match[4]) {
+      rgb[3] = parseFloat(match[4]);
+    }
+  } else if ((match = string.match(cs.perreg))) {
+    for (i = 0; i < 3; i++) {
+      rgb[i] = Math.round(parseFloat(match[i + 1]) * 2.55);
+    }
 
-		if (match[4]) {
-			rgb[3] = parseFloat(match[4]);
-		}
-	} else if (match = string.match(cs.keywordreg)) {
-		if (match[1] === 'transparent') {
-			return [0, 0, 0, 0];
-		}
+    if (match[4]) {
+      rgb[3] = parseFloat(match[4]);
+    }
+  } else if ((match = string.match(cs.keywordreg))) {
+    if (match[1] === "transparent") {
+      return [0, 0, 0, 0];
+    }
 
-		rgb = colorNames[match[1]];
+    rgb = colorNames[match[1]];
 
-		if (!rgb) {
-			return null;
-		}
+    if (!rgb) {
+      return null;
+    }
 
-		rgb[3] = 1;
+    rgb[3] = 1;
 
-		return rgb;
-	}
+    return rgb;
+  }
 
-	for (i = 0; i < rgb.length; i++) {
-		rgb[i] = clamp(rgb[i], 0, 255);
-	}
-	rgb[3] = clamp(rgb[3], 0, 1);
+  for (i = 0; i < rgb.length; i++) {
+    rgb[i] = clamp(rgb[i], 0, 255);
+  }
+  rgb[3] = clamp(rgb[3], 0, 1);
 
-	return rgb;
+  return rgb;
 };
 
 cs.get.hsl = function (string) {
-	if (!string) {
-		return null;
-	}
+  if (!string) {
+    return null;
+  }
 
-	var hsl = /^hsla?\(\s*([+-]?\d*[\.]?\d+)(?:deg)?\s*,\s*([+-]?[\d\.]+)%\s*,\s*([+-]?[\d\.]+)%\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)/;
-	var match = string.match(hsl);
+  var hsl =
+    /^hsla?\(\s*([+-]?\d*[\.]?\d+)(?:deg)?\s*,\s*([+-]?[\d\.]+)%\s*,\s*([+-]?[\d\.]+)%\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)/;
+  var match = string.match(hsl);
 
-	if (match) {
-		var alpha = parseFloat(match[4]);
-		var h = ((parseFloat(match[1]) % 360) + 360) % 360;
-		var s = clamp(parseFloat(match[2]), 0, 100);
-		var l = clamp(parseFloat(match[3]), 0, 100);
-		var a = clamp(isNaN(alpha) ? 1 : alpha, 0, 1);
+  if (match) {
+    var alpha = parseFloat(match[4]);
+    var h = ((parseFloat(match[1]) % 360) + 360) % 360;
+    var s = clamp(parseFloat(match[2]), 0, 100);
+    var l = clamp(parseFloat(match[3]), 0, 100);
+    var a = clamp(isNaN(alpha) ? 1 : alpha, 0, 1);
 
-		return [h, s, l, a];
-	}
+    return [h, s, l, a];
+  }
 };
 
 cs.get.hwb = function (string) {
-	if (!string) {
-		return null;
-	}
+  if (!string) {
+    return null;
+  }
 
-	var hwb = /^hwb\(\s*([+-]?\d*[\.]?\d+)(?:deg)?\s*,\s*([+-]?[\d\.]+)%\s*,\s*([+-]?[\d\.]+)%\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)/;
-	var match = string.match(hwb);
+  var hwb =
+    /^hwb\(\s*([+-]?\d*[\.]?\d+)(?:deg)?\s*,\s*([+-]?[\d\.]+)%\s*,\s*([+-]?[\d\.]+)%\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)/;
+  var match = string.match(hwb);
 
-	if (match) {
-		var alpha = parseFloat(match[4]);
-		var h = ((parseFloat(match[1]) % 360) + 360) % 360;
-		var w = clamp(parseFloat(match[2]), 0, 100);
-		var b = clamp(parseFloat(match[3]), 0, 100);
-		var a = clamp(isNaN(alpha) ? 1 : alpha, 0, 1);
-		return [h, w, b, a];
-	}
+  if (match) {
+    var alpha = parseFloat(match[4]);
+    var h = ((parseFloat(match[1]) % 360) + 360) % 360;
+    var w = clamp(parseFloat(match[2]), 0, 100);
+    var b = clamp(parseFloat(match[3]), 0, 100);
+    var a = clamp(isNaN(alpha) ? 1 : alpha, 0, 1);
+    return [h, w, b, a];
+  }
 };
 
 cs.to.hex = function (rgb) {
-	return '#' + hexDouble(rgb[0]) + hexDouble(rgb[1]) + hexDouble(rgb[2]);
+  return "#" + hexDouble(rgb[0]) + hexDouble(rgb[1]) + hexDouble(rgb[2]);
 };
 
 cs.to.rgb = function () {
-	var rgba = swizzle(arguments);
+  var rgba = swizzle(arguments);
 
-	return rgba.length < 4 || rgba[3] === 1
-		? 'rgb(' + rgba[0] + ', ' + rgba[1] + ', ' + rgba[2] + ')'
-		: 'rgba(' + rgba[0] + ', ' + rgba[1] + ', ' + rgba[2] + ', ' + rgba[3] + ')';
+  return rgba.length < 4 || rgba[3] === 1
+    ? "rgb(" + rgba[0] + ", " + rgba[1] + ", " + rgba[2] + ")"
+    : "rgba(" +
+        rgba[0] +
+        ", " +
+        rgba[1] +
+        ", " +
+        rgba[2] +
+        ", " +
+        rgba[3] +
+        ")";
 };
 
 cs.to.rgb.percent = function () {
-	var rgba = swizzle(arguments);
+  var rgba = swizzle(arguments);
 
-	var r = Math.round(rgba[0] / 255 * 100);
-	var g = Math.round(rgba[1] / 255 * 100);
-	var b = Math.round(rgba[2] / 255 * 100);
+  var r = Math.round((rgba[0] / 255) * 100);
+  var g = Math.round((rgba[1] / 255) * 100);
+  var b = Math.round((rgba[2] / 255) * 100);
 
-	return rgba.length < 4 || rgba[3] === 1
-		? 'rgb(' + r + '%, ' + g + '%, ' + b + '%)'
-		: 'rgba(' + r + '%, ' + g + '%, ' + b + '%, ' + rgba[3] + ')';
+  return rgba.length < 4 || rgba[3] === 1
+    ? "rgb(" + r + "%, " + g + "%, " + b + "%)"
+    : "rgba(" + r + "%, " + g + "%, " + b + "%, " + rgba[3] + ")";
 };
 
 cs.to.hsl = function () {
-	var hsla = swizzle(arguments);
-	return hsla.length < 4 || hsla[3] === 1
-		? 'hsl(' + hsla[0] + ', ' + hsla[1] + '%, ' + hsla[2] + '%)'
-		: 'hsla(' + hsla[0] + ', ' + hsla[1] + '%, ' + hsla[2] + '%, ' + hsla[3] + ')';
+  var hsla = swizzle(arguments);
+  return hsla.length < 4 || hsla[3] === 1
+    ? "hsl(" + hsla[0] + ", " + hsla[1] + "%, " + hsla[2] + "%)"
+    : "hsla(" +
+        hsla[0] +
+        ", " +
+        hsla[1] +
+        "%, " +
+        hsla[2] +
+        "%, " +
+        hsla[3] +
+        ")";
 };
 
 // hwb is a bit different than rgb(a) & hsl(a) since there is no alpha specific syntax
 // (hwb have alpha optional & 1 is default value)
 cs.to.hwb = function () {
-	var hwba = swizzle(arguments);
+  var hwba = swizzle(arguments);
 
-	var a = '';
-	if (hwba.length >= 4 && hwba[3] !== 1) {
-		a = ', ' + hwba[3];
-	}
+  var a = "";
+  if (hwba.length >= 4 && hwba[3] !== 1) {
+    a = ", " + hwba[3];
+  }
 
-	return 'hwb(' + hwba[0] + ', ' + hwba[1] + '%, ' + hwba[2] + '%' + a + ')';
+  return "hwb(" + hwba[0] + ", " + hwba[1] + "%, " + hwba[2] + "%" + a + ")";
 };
 
 cs.to.keyword = function (rgb) {
-	return reverseNames[rgb.slice(0, 3)];
+  return reverseNames[rgb.slice(0, 3)];
 };
 
 // helpers
 function clamp(num, min, max) {
-	return Math.min(Math.max(min, num), max);
+  return Math.min(Math.max(min, num), max);
 }
 
 function hexDouble(num) {
-	var str = num.toString(16).toUpperCase();
-	return (str.length < 2) ? '0' + str : str;
+  var str = num.toString(16).toUpperCase();
+  return str.length < 2 ? "0" + str : str;
 }
 
 /*
  * File: typed_array_ext.js
  * Author:  Li XianJing <xianjimli@hotmail.com>
  * Brief: some functions to extend typed array.
- * 
+ *
  * Copyright (c) 2015 - 2016 Holaverse Inc.
  * Copyright (c) 2018 - 2019  Guangzhou ZHIYUAN Electronics Co.,Ltd.
- * 
+ *
  */
 
-Int16Array.prototype.push = function() {
-	var arr = arguments;
-	var size = this.size;
-	var length = this.length;
+Int16Array.prototype.push = function () {
+  var arr = arguments;
+  var size = this.size;
+  var length = this.length;
 
-	var n = arr.length;
-	for(var i = 0; i < n && size < length; i++) {
-		this[size++] = arr[i];
-	}
-	this.size = size;
+  var n = arr.length;
+  for (var i = 0; i < n && size < length; i++) {
+    this[size++] = arr[i];
+  }
+  this.size = size;
 
-	return this;
-}
+  return this;
+};
 
-Int16Array.prototype.extend = function() {
-	var size = this.size;
-	var newSize = this.length + 1024;
-	var newDataBuffer = Int16Array.create(newSize);
+Int16Array.prototype.extend = function () {
+  var size = this.size;
+  var newSize = this.length + 1024;
+  var newDataBuffer = Int16Array.create(newSize);
 
-	newDataBuffer.size = size;
-	for(var i = 0; i < size; i++) {
-		newDataBuffer[i] = this[i];
-	}
+  newDataBuffer.size = size;
+  for (var i = 0; i < size; i++) {
+    newDataBuffer[i] = this[i];
+  }
 
-	return newDataBuffer;
-}
+  return newDataBuffer;
+};
 
-Float32Array.prototype.extend = function() {
-	var size = this.size;
-	var newSize = this.length + 1024;
-	var newDataBuffer = Float32Array.create(newSize);
+Float32Array.prototype.extend = function () {
+  var size = this.size;
+  var newSize = this.length + 1024;
+  var newDataBuffer = Float32Array.create(newSize);
 
-	newDataBuffer.size = size;
-	for(var i = 0; i < size; i++) {
-		newDataBuffer[i] = this[i];
-	}
+  newDataBuffer.size = size;
+  for (var i = 0; i < size; i++) {
+    newDataBuffer[i] = this[i];
+  }
 
-	return newDataBuffer;
-}
+  return newDataBuffer;
+};
 
-Int16Array.prototype.pushX = function() {
-	var me = this;
-	var arr = arguments;
-	var n = arr.length;
+Int16Array.prototype.pushX = function () {
+  var me = this;
+  var arr = arguments;
+  var n = arr.length;
 
-	if((this.size + 1024 + n) > this.length) {
-		me = this.extend();
-	}
+  if (this.size + 1024 + n > this.length) {
+    me = this.extend();
+  }
 
-	var start = this.size;
-	for(var i = 0; i < n; i++, start++) {
-		me[start] = arr[i];
-	}
-	me.size += n;
+  var start = this.size;
+  for (var i = 0; i < n; i++, start++) {
+    me[start] = arr[i];
+  }
+  me.size += n;
 
-	return me;
-}
+  return me;
+};
 
-Int16Array.prototype.push1 = function(a) {
-	var me = this;
-	if((this.size + 10) >= this.length) {
-		me = this.extend();
-	}
-	
-	me[this.size++] = a;
+Int16Array.prototype.push1 = function (a) {
+  var me = this;
+  if (this.size + 10 >= this.length) {
+    me = this.extend();
+  }
 
-	return me;
-}
+  me[this.size++] = a;
 
-Float32Array.prototype.push1 = function(a) {
-	var me = this;
-	if((this.size + 10) >= this.length) {
-		me = this.extend();
-	}
-	
-	me[this.size++] = a;
+  return me;
+};
 
-	return me;
-}
+Float32Array.prototype.push1 = function (a) {
+  var me = this;
+  if (this.size + 10 >= this.length) {
+    me = this.extend();
+  }
 
-Int16Array.prototype.push2 = function(a, b) {
-	var me = this;
-	if((this.size + 10) >= this.length) {
-		me = this.extend();
-	}
-	
-	me[this.size++] = a;
-	me[this.size++] = b;
+  me[this.size++] = a;
 
-	return me;
-}
+  return me;
+};
 
-Float32Array.prototype.push2 = function(a, b) {
-	var me = this;
-	if((this.size + 10) >= this.length) {
-		me = this.extend();
-	}
-	
-	me[this.size++] = a;
-	me[this.size++] = b;
+Int16Array.prototype.push2 = function (a, b) {
+  var me = this;
+  if (this.size + 10 >= this.length) {
+    me = this.extend();
+  }
 
-	return me;
-}
+  me[this.size++] = a;
+  me[this.size++] = b;
 
-Float32Array.prototype.pushX = function() {
-	var me = this;
-	var arr = arguments;
-	var n = arr.length;
+  return me;
+};
 
-	if((this.size + 1024 + n) > this.length) {
-		me = this.extend();
-	}
+Float32Array.prototype.push2 = function (a, b) {
+  var me = this;
+  if (this.size + 10 >= this.length) {
+    me = this.extend();
+  }
 
-	var start = this.size;
-	for(var i = 0; i < n; i++, start++) {
-		me[start] = arr[i];
-	}
-	me.size += n;
+  me[this.size++] = a;
+  me[this.size++] = b;
 
-	return me;
-}
+  return me;
+};
 
-Float32Array.prototype.pushArr = Int16Array.prototype.pushArr = function(arr) {
-	var me = this;
-	var n = arr.length;
+Float32Array.prototype.pushX = function () {
+  var me = this;
+  var arr = arguments;
+  var n = arr.length;
 
-	if((this.size + 1024 + n) > this.length) {
-		me = this.extend();
-	}
+  if (this.size + 1024 + n > this.length) {
+    me = this.extend();
+  }
 
-	var start = this.size;
-	for(var i = 0; i < n; i++, start++) {
-		me[start] = arr[i];
-	}
-	me.size += n;
+  var start = this.size;
+  for (var i = 0; i < n; i++, start++) {
+    me[start] = arr[i];
+  }
+  me.size += n;
 
-	return me;
-}
+  return me;
+};
 
-Float32Array.prototype.reset = Int16Array.prototype.reset = function() {
-	this.size = 0;
+Float32Array.prototype.pushArr = Int16Array.prototype.pushArr = function (arr) {
+  var me = this;
+  var n = arr.length;
 
-	return this;
-}
+  if (this.size + 1024 + n > this.length) {
+    me = this.extend();
+  }
 
-Int16Array.create = function(data) {
-	var arr = new Int16Array(data);	
-	arr.size = 0;
+  var start = this.size;
+  for (var i = 0; i < n; i++, start++) {
+    me[start] = arr[i];
+  }
+  me.size += n;
 
-	return arr;
-}
+  return me;
+};
 
-Float32Array.create = function(data) {
-	var arr = new Float32Array(data);	
-	arr.size = 0;
+Float32Array.prototype.reset = Int16Array.prototype.reset = function () {
+  this.size = 0;
 
-	return arr;
-}
+  return this;
+};
 
-Int16Array.prototype.dup = function() {
-	var size = this.size;
-	var newDataBuffer = Int16Array.create(size);
+Int16Array.create = function (data) {
+  var arr = new Int16Array(data);
+  arr.size = 0;
 
-	for(var i = 0; i < size; i++) {
-		newDataBuffer[i] = this[i];
-	}
-	newDataBuffer.size = size;
+  return arr;
+};
 
-	return newDataBuffer;
-}
+Float32Array.create = function (data) {
+  var arr = new Float32Array(data);
+  arr.size = 0;
 
-Float32Array.prototype.dup = function() {
-	var size = this.size;
-	var newDataBuffer = Float32Array.create(size);
+  return arr;
+};
 
-	for(var i = 0; i < size; i++) {
-		newDataBuffer[i] = this[i];
-	}
-	newDataBuffer.size = size;
+Int16Array.prototype.dup = function () {
+  var size = this.size;
+  var newDataBuffer = Int16Array.create(size);
 
-	return newDataBuffer;
-}
+  for (var i = 0; i < size; i++) {
+    newDataBuffer[i] = this[i];
+  }
+  newDataBuffer.size = size;
 
-Float32Array.prototype.slice = Int16Array.prototype.slice = Array.prototype.slice;
+  return newDataBuffer;
+};
+
+Float32Array.prototype.dup = function () {
+  var size = this.size;
+  var newDataBuffer = Float32Array.create(size);
+
+  for (var i = 0; i < size; i++) {
+    newDataBuffer[i] = this[i];
+  }
+  newDataBuffer.size = size;
+
+  return newDataBuffer;
+};
+
+Float32Array.prototype.slice = Int16Array.prototype.slice =
+  Array.prototype.slice;
 
 function Int16DataBuffer(initSize) {
-	this.size = 0;
-	this.capacity = initSize;
+  this.size = 0;
+  this.capacity = initSize;
 
-	this.buffer = new ArrayBuffer(initSize * 2);
-	this.init16Buffer = new Int16Array(this.buffer);
+  this.buffer = new ArrayBuffer(initSize * 2);
+  this.init16Buffer = new Int16Array(this.buffer);
 }
 
-Int16DataBuffer.prototype.extendTo = function(size) {
-	var buffer = new ArrayBuffer(size * 2);
-	var init16Buffer = new Int16Array(buffer);
+Int16DataBuffer.prototype.extendTo = function (size) {
+  var buffer = new ArrayBuffer(size * 2);
+  var init16Buffer = new Int16Array(buffer);
 
-	init16Buffer.set(this.init16Buffer, 0);
+  init16Buffer.set(this.init16Buffer, 0);
 
-	this.capacity = size; 
-	this.buffer = buffer;
-	this.init16Buffer = init16Buffer;
-}
+  this.capacity = size;
+  this.buffer = buffer;
+  this.init16Buffer = init16Buffer;
+};
 
-Int16DataBuffer.prototype.extendIfFull = function(n) {
-	if((this.size + n) > this.capacity) {
-		this.extendTo(Math.round(this.capacity * 1.2) + n);
-	}
-}
+Int16DataBuffer.prototype.extendIfFull = function (n) {
+  if (this.size + n > this.capacity) {
+    this.extendTo(Math.round(this.capacity * 1.2) + n);
+  }
+};
 
-Int16DataBuffer.prototype.pushX = function() {
-	var arr = arguments;
-	var n = arr.length;
-	var offset = this.size;
-	this.extendIfFull(n);
+Int16DataBuffer.prototype.pushX = function () {
+  var arr = arguments;
+  var n = arr.length;
+  var offset = this.size;
+  this.extendIfFull(n);
 
-	this.size += n;
-	var buffer = this.init16Buffer;
-	for(var i = 0; i < n; i++, offset++) {
-		buffer[offset] = arr[i];
-	}
+  this.size += n;
+  var buffer = this.init16Buffer;
+  for (var i = 0; i < n; i++, offset++) {
+    buffer[offset] = arr[i];
+  }
 
-	return this;
-}
+  return this;
+};
 
-Int16DataBuffer.prototype.push1 = function(a) {
-	this.extendIfFull(1);
-	this.init16Buffer[this.size++] = a;
+Int16DataBuffer.prototype.push1 = function (a) {
+  this.extendIfFull(1);
+  this.init16Buffer[this.size++] = a;
 
-	return this;
-}
+  return this;
+};
 
-Int16DataBuffer.prototype.push2 = function(a, b) {
-	this.extendIfFull(2);
-	this.init16Buffer[this.size++] = a;
-	this.init16Buffer[this.size++] = b;
+Int16DataBuffer.prototype.push2 = function (a, b) {
+  this.extendIfFull(2);
+  this.init16Buffer[this.size++] = a;
+  this.init16Buffer[this.size++] = b;
 
-	return this;
-}
+  return this;
+};
 
-Int16DataBuffer.prototype.push3 = function(a, b, c) {
-	this.extendIfFull(3);
-	this.init16Buffer[this.size++] = a;
-	this.init16Buffer[this.size++] = b;
-	this.init16Buffer[this.size++] = c;
+Int16DataBuffer.prototype.push3 = function (a, b, c) {
+  this.extendIfFull(3);
+  this.init16Buffer[this.size++] = a;
+  this.init16Buffer[this.size++] = b;
+  this.init16Buffer[this.size++] = c;
 
-	return this;
-}
+  return this;
+};
 
-Int16DataBuffer.prototype.push4 = function(a, b, c, d) {
-	this.extendIfFull(4);
-	this.init16Buffer[this.size++] = a;
-	this.init16Buffer[this.size++] = b;
-	this.init16Buffer[this.size++] = c;
-	this.init16Buffer[this.size++] = d;
+Int16DataBuffer.prototype.push4 = function (a, b, c, d) {
+  this.extendIfFull(4);
+  this.init16Buffer[this.size++] = a;
+  this.init16Buffer[this.size++] = b;
+  this.init16Buffer[this.size++] = c;
+  this.init16Buffer[this.size++] = d;
 
-	return this;
-}
+  return this;
+};
 
-Int16DataBuffer.prototype.push5 = function(a, b, c, d, e) {
-	this.extendIfFull(5);
-	this.init16Buffer[this.size++] = a;
-	this.init16Buffer[this.size++] = b;
-	this.init16Buffer[this.size++] = c;
-	this.init16Buffer[this.size++] = d;
-	this.init16Buffer[this.size++] = e;
+Int16DataBuffer.prototype.push5 = function (a, b, c, d, e) {
+  this.extendIfFull(5);
+  this.init16Buffer[this.size++] = a;
+  this.init16Buffer[this.size++] = b;
+  this.init16Buffer[this.size++] = c;
+  this.init16Buffer[this.size++] = d;
+  this.init16Buffer[this.size++] = e;
 
-	return this;
-}
+  return this;
+};
 
-Int16DataBuffer.prototype.push6 = function(a, b, c, d, e, f) {
-	this.extendIfFull(6);
-	this.init16Buffer[this.size++] = a;
-	this.init16Buffer[this.size++] = b;
-	this.init16Buffer[this.size++] = c;
-	this.init16Buffer[this.size++] = d;
-	this.init16Buffer[this.size++] = e;
-	this.init16Buffer[this.size++] = f;
+Int16DataBuffer.prototype.push6 = function (a, b, c, d, e, f) {
+  this.extendIfFull(6);
+  this.init16Buffer[this.size++] = a;
+  this.init16Buffer[this.size++] = b;
+  this.init16Buffer[this.size++] = c;
+  this.init16Buffer[this.size++] = d;
+  this.init16Buffer[this.size++] = e;
+  this.init16Buffer[this.size++] = f;
 
-	return this;
-}
+  return this;
+};
 
-Int16DataBuffer.prototype.reset = function() {
-	this.size = 0;
-}
+Int16DataBuffer.prototype.reset = function () {
+  this.size = 0;
+};
 
-Int16DataBuffer.prototype.getReadBuffer = function() {
-	var buffer = new Int16Array(this.buffer, 0, this.size);
-	buffer.size = this.size;
+Int16DataBuffer.prototype.getReadBuffer = function () {
+  var buffer = new Int16Array(this.buffer, 0, this.size);
+  buffer.size = this.size;
 
-	return buffer;
-}
+  return buffer;
+};
 
-Int16DataBuffer.prototype.getWriteBuffer = function(n) {
-	this.extendIfFull(n);
-	var buffer = this.init16Buffer;
+Int16DataBuffer.prototype.getWriteBuffer = function (n) {
+  this.extendIfFull(n);
+  var buffer = this.init16Buffer;
 
-	return buffer;
-}
+  return buffer;
+};
 
-Int16DataBuffer.prototype.getBufferType = function() {
-	return "init16";
-}
+Int16DataBuffer.prototype.getBufferType = function () {
+  return "init16";
+};
 
-Int16DataBuffer.prototype.getElementBytes = function() {
-	return 2;
-}
+Int16DataBuffer.prototype.getElementBytes = function () {
+  return 2;
+};
 
-Int16DataBuffer.prototype.dup = function() {
-	var db = Int16DataBuffer.create(this.size);
+Int16DataBuffer.prototype.dup = function () {
+  var db = Int16DataBuffer.create(this.size);
 
-	var n = this.size;
-	db.size = this.size;
-	var src = this.init16Buffer;
-	var dst = db.init16Buffer;
+  var n = this.size;
+  db.size = this.size;
+  var src = this.init16Buffer;
+  var dst = db.init16Buffer;
 
-	for(var i = 0; i < n; i++) {
-		dst[i] = src[i];
-	}
+  for (var i = 0; i < n; i++) {
+    dst[i] = src[i];
+  }
 
-	return db;
-}
+  return db;
+};
 
-Int16DataBuffer.create = function(initSize) {
-	var db = new Int16DataBuffer(initSize);
+Int16DataBuffer.create = function (initSize) {
+  var db = new Int16DataBuffer(initSize);
 
-	return db;
-}
+  return db;
+};
 
+Math.normalize = function (x, y, r) {
+  var d = Math.sqrt(x * x + y * y);
+  if (d > 0.000001) {
+    var id = 1.0 / d;
+    r.x = x * id;
+    r.y = y * id;
+  }
+  r.d = d;
 
-Math.normalize = function(x, y, r)
-{
-    var d = Math.sqrt(x*x+y*y);
-    if (d > 0.000001) {
-        var id = 1.0 / d;
-        r.x = x * id;
-        r.y = y * id;
-    }
-	r.d = d;
+  return r;
+};
 
-    return r;
-}
+Math.cross = function (dx0, dy0, dx1, dy1) {
+  return dx1 * dy0 - dx0 * dy1;
+};
 
-Math.cross = function(dx0, dy0, dx1, dy1) 
-{ 
-	return dx1*dy0 - dx0*dy1; 
-}
+Math.ptEquals = function (x1, y1, x2, y2, tol) {
+  var dx = x2 - x1;
+  var dy = y2 - y1;
+  return dx * dx + dy * dy < tol * tol;
+};
 
-Math.ptEquals = function(x1, y1, x2, y2, tol)
-{
-	var dx = x2 - x1;
-	var dy = y2 - y1;
-	return dx*dx + dy*dy < tol*tol;
-}
-
-Math.distPtSeg = function(x, y, px, py, qx, qy)
-{
-	var pqx, pqy, dx, dy, d, t;
-	pqx = qx-px;
-	pqy = qy-py;
-	dx = x-px;
-	dy = y-py;
-	d = pqx*pqx + pqy*pqy;
-	t = pqx*dx + pqy*dy;
-	if (d > 0) t /= d;
-	if (t < 0) t = 0;
-	else if (t > 1) t = 1;
-	dx = px + t*pqx - x;
-	dy = py + t*pqy - y;
-	return dx*dx + dy*dy;
-}
+Math.distPtSeg = function (x, y, px, py, qx, qy) {
+  var pqx, pqy, dx, dy, d, t;
+  pqx = qx - px;
+  pqy = qy - py;
+  dx = x - px;
+  dy = y - py;
+  d = pqx * pqx + pqy * pqy;
+  t = pqx * dx + pqy * dy;
+  if (d > 0) t /= d;
+  if (t < 0) t = 0;
+  else if (t > 1) t = 1;
+  dx = px + t * pqx - x;
+  dy = py + t * pqy - y;
+  return dx * dx + dy * dy;
+};
 
 function parseFontSize(font) {
-	var fontSize = 12;
-	var arr = font.match(/\d+pt|\d+px/g);
-	if(arr) {
-		var size = arr[0];
-		fontSize = parseInt(size);
-		if(size.indexOf("pt") > 0) {
-			fontSize = Math.round(fontSize * 1.2);
-		}
-	}
+  var fontSize = 12;
+  var arr = font.match(/\d+pt|\d+px/g);
+  if (arr) {
+    var size = arr[0];
+    fontSize = parseInt(size);
+    if (size.indexOf("pt") > 0) {
+      fontSize = Math.round(fontSize * 1.2);
+    }
+  }
 
-	return fontSize;
+  return fontSize;
 }
 
-function CanvasRenderingContext2DWebGL(options){
-	this.distTol = 0.01;
-	this.tessTol = 0.0025;
-	this.currentID = 1000;
+function CanvasRenderingContext2DWebGL(options) {
+  this.distTol = 0.01;
+  this.tessTol = 0.0025;
+  this.currentID = 1000;
 
-	this.fps = 0;
-	this.lastX = 0;
-	this.lastY = 0;
-	this.firstX = 0;
-	this.firstY = 0;
-	this.showFPS = false;
-	this.renderTimes = 0;
-	this.startTime = Date.now();
-	this.lastSeconds = (this.startTime/1000) >> 0;
-	this.drawCalls = 0;
-	this.drawImageCalls = 0;
-	this.drawImageCount = 0;
-	this.fillCount = 0;
-	this.strokeCount = 0;
-	this.clipLevel = 0;
-	this.canvasWidth = 0;
-	this.canvasHeight = 0;
-	this.canvasWidth10 = 0;
-	this.canvasHeight10 = 0;
-	this.zeroPoint = {x:0, y:0};
-	this.tempRect = {x:0, y:0, w:0, h:0};
-	this.webglOptions = options || CanvasRenderingContext2DWebGL.webglOptions;
+  this.fps = 0;
+  this.lastX = 0;
+  this.lastY = 0;
+  this.firstX = 0;
+  this.firstY = 0;
+  this.showFPS = false;
+  this.renderTimes = 0;
+  this.startTime = Date.now();
+  this.lastSeconds = (this.startTime / 1000) >> 0;
+  this.drawCalls = 0;
+  this.drawImageCalls = 0;
+  this.drawImageCount = 0;
+  this.fillCount = 0;
+  this.strokeCount = 0;
+  this.clipLevel = 0;
+  this.canvasWidth = 0;
+  this.canvasHeight = 0;
+  this.canvasWidth10 = 0;
+  this.canvasHeight10 = 0;
+  this.zeroPoint = { x: 0, y: 0 };
+  this.tempRect = { x: 0, y: 0, w: 0, h: 0 };
+  this.webglOptions = options || CanvasRenderingContext2DWebGL.webglOptions;
 }
 
 CanvasRenderingContext2DWebGL.webglOptions = {
-	antialias: false, 
-	stencil: true, 
-	preserveDrawingBuffer:true, 
-	premultipliedAlpha:false
+  antialias: false,
+  stencil: true,
+  preserveDrawingBuffer: true,
+  premultipliedAlpha: false,
 };
 
-CanvasRenderingContext2DWebGL.prototype.save = function() {
-	this.stack.push(this.state.clone());
-}
-
-CanvasRenderingContext2DWebGL.prototype.restore = function() {
-	var oldState = this.state;	
-	var state = this.stack.pop();
-
-	if(state) {
-		if(state.clipRect || oldState.clipRect) {
-			if(!state.clipRect || !oldState.clipRect || state.clipRect !== oldState.clipRect) {
-				this.doClipRect(state.clipRect);
-			}
-		}
-
-		if(state.clipPaths || oldState.clipPaths) {
-			if(!state.clipPaths || !oldState.clipPaths || state.clipPaths.id !== oldState.clipPaths.id) {
-				this.clearClip(oldState.clipPaths);
-			}
-		}
-
-		this.state = state;
-		if(oldState.globalCompositeOperation !== state.globalCompositeOperation) {
-			this.globalCompositeOperationApply(state.globalCompositeOperation);
-		}
-	}else{
-		console.log("restore times > save times.");
-	}
-
-	CanvasRenderingContext2DWebGL.destroyState(oldState);
-}
-
-CanvasRenderingContext2DWebGL.prototype.scale = function(x, y) {
-	mat2d.scale(this.state.m, x, y);
+CanvasRenderingContext2DWebGL.prototype.save = function () {
+  this.stack.push(this.state.clone());
 };
 
-CanvasRenderingContext2DWebGL.prototype.rotate = function(angle) {
-	mat2d.rotate(this.state.m, angle);
+CanvasRenderingContext2DWebGL.prototype.restore = function () {
+  var oldState = this.state;
+  var state = this.stack.pop();
+
+  if (state) {
+    if (state.clipRect || oldState.clipRect) {
+      if (
+        !state.clipRect ||
+        !oldState.clipRect ||
+        state.clipRect !== oldState.clipRect
+      ) {
+        this.doClipRect(state.clipRect);
+      }
+    }
+
+    if (state.clipPaths || oldState.clipPaths) {
+      if (
+        !state.clipPaths ||
+        !oldState.clipPaths ||
+        state.clipPaths.id !== oldState.clipPaths.id
+      ) {
+        this.clearClip(oldState.clipPaths);
+      }
+    }
+
+    this.state = state;
+    if (oldState.globalCompositeOperation !== state.globalCompositeOperation) {
+      this.globalCompositeOperationApply(state.globalCompositeOperation);
+    }
+  } else {
+    console.log("restore times > save times.");
+  }
+
+  CanvasRenderingContext2DWebGL.destroyState(oldState);
 };
 
-CanvasRenderingContext2DWebGL.prototype.translate = function(x, y) {
-	mat2d.translate(this.state.m, x, y);
+CanvasRenderingContext2DWebGL.prototype.scale = function (x, y) {
+  mat2d.scale(this.state.m, x, y);
 };
 
-CanvasRenderingContext2DWebGL.prototype.transform = function(a, b, c, d, e, f) {
-	var m = this.state.m;
-	mat2d.mult(m, m, a, b, c, d, e, f);
+CanvasRenderingContext2DWebGL.prototype.rotate = function (angle) {
+  mat2d.rotate(this.state.m, angle);
 };
 
-CanvasRenderingContext2DWebGL.prototype.setTransform = function(a, b, c, d, e, f) {
-	mat2d.set(this.state.m, a, b, c, d, e, f);
+CanvasRenderingContext2DWebGL.prototype.translate = function (x, y) {
+  mat2d.translate(this.state.m, x, y);
 };
 
-CanvasRenderingContext2DWebGL.prototype.scaleArr = function(arr, x, y) {
-	mat2d.scale(this.state.m, arr[x], arr[y]);
-}
-
-CanvasRenderingContext2DWebGL.prototype.rotateArr = function(arr, index) {
-	mat2d.rotate(this.state.m, arr[index]);
-}
-
-CanvasRenderingContext2DWebGL.prototype.translateArr = function(arr, x, y) {
-	mat2d.translate(this.state.m, arr[x], arr[y]);
-}
-
-CanvasRenderingContext2DWebGL.prototype.transformMatrix = function(matrix) {
-	var m = this.state.m;
-	mat2d.multiply(m, m, matrix);
-}
-
-CanvasRenderingContext2DWebGL.prototype.setTransformMatrix = function(matrix) {
-	mat2d.copy(this.state.m, matrix);
+CanvasRenderingContext2DWebGL.prototype.transform = function (
+  a,
+  b,
+  c,
+  d,
+  e,
+  f
+) {
+  var m = this.state.m;
+  mat2d.mult(m, m, a, b, c, d, e, f);
 };
 
+CanvasRenderingContext2DWebGL.prototype.setTransform = function (
+  a,
+  b,
+  c,
+  d,
+  e,
+  f
+) {
+  mat2d.set(this.state.m, a, b, c, d, e, f);
+};
+
+CanvasRenderingContext2DWebGL.prototype.scaleArr = function (arr, x, y) {
+  mat2d.scale(this.state.m, arr[x], arr[y]);
+};
+
+CanvasRenderingContext2DWebGL.prototype.rotateArr = function (arr, index) {
+  mat2d.rotate(this.state.m, arr[index]);
+};
+
+CanvasRenderingContext2DWebGL.prototype.translateArr = function (arr, x, y) {
+  mat2d.translate(this.state.m, arr[x], arr[y]);
+};
+
+CanvasRenderingContext2DWebGL.prototype.transformMatrix = function (matrix) {
+  var m = this.state.m;
+  mat2d.multiply(m, m, matrix);
+};
+
+CanvasRenderingContext2DWebGL.prototype.setTransformMatrix = function (matrix) {
+  mat2d.copy(this.state.m, matrix);
+};
 
 Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "globalTint", {
-	get: function () {
-		return this.state.globalTint;
-	},
-	set: function(value) {
-		this.state.globalTint = value;
-	},
-	enumerable: false,
-	configurable: true
+  get: function () {
+    return this.state.globalTint;
+  },
+  set: function (value) {
+    this.state.globalTint = value;
+  },
+  enumerable: false,
+  configurable: true,
 });
 
-Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "globalImageFilter", {
-	get: function () {
-		return this.state.globalImageFilter;
-	},
-	set: function(value) {
-		this.state.globalImageFilter = value;
-	},
-	enumerable: false,
-	configurable: true
-});
+Object.defineProperty(
+  CanvasRenderingContext2DWebGL.prototype,
+  "globalImageFilter",
+  {
+    get: function () {
+      return this.state.globalImageFilter;
+    },
+    set: function (value) {
+      this.state.globalImageFilter = value;
+    },
+    enumerable: false,
+    configurable: true,
+  }
+);
 
 Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "globalAlpha", {
-	get: function () {
-		return this.state.globalAlpha;
-	},
-	set: function(value) {
-		this.state.globalAlpha = value;
-	},
-	enumerable: false,
-	configurable: true
+  get: function () {
+    return this.state.globalAlpha;
+  },
+  set: function (value) {
+    this.state.globalAlpha = value;
+  },
+  enumerable: false,
+  configurable: true,
 });
 
-CanvasRenderingContext2DWebGL.prototype.globalCompositeOperationApply = function(compositeOperation) {
-	var gl = this.gl;
-	this.commitDrawImage();
+CanvasRenderingContext2DWebGL.prototype.globalCompositeOperationApply =
+  function (compositeOperation) {
+    var gl = this.gl;
+    this.commitDrawImage();
 
-	//FIXME: not test yet
-	if ("darker" == compositeOperation) {
-		gl.blendEquation(gl.FUNC_SUBTRACT);
-	} else {
-		gl.blendEquation(gl.FUNC_ADD);
-	}
+    //FIXME: not test yet
+    if ("darker" == compositeOperation) {
+      gl.blendEquation(gl.FUNC_SUBTRACT);
+    } else {
+      gl.blendEquation(gl.FUNC_ADD);
+    }
 
-	switch(compositeOperation) {
-		case "source-over":
-			//
-			//gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-			//
-			gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-			break;
-		case "destination-over":
-			gl.blendFunc(gl.ONE_MINUS_DST_ALPHA, gl.ONE);
-			break;
-		case "clear":
-			gl.blendFunc(gl.ZERO, gl.ZERO);
-			break;
-		case "copy":
-		case "source":
-			gl.blendFunc(gl.ONE, gl.ZERO);
-			break;
-		case "destination":
-			gl.blendFunc(gl.ZERO, gl.ONE);
-			break;
-		case "source-atop":
-			gl.blendFunc(gl.DST_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-			break;
-		case "destination-atop":
-			gl.blendFunc(gl.ONE_MINUS_DST_ALPHA, gl.SRC_ALPHA);
-			break;
-		case "source-in":
-			gl.blendFunc(gl.DST_ALPHA, gl.ZERO);
-			break;
-		case "destination-in":
-			gl.blendFunc(gl.ZERO, gl.SRC_ALPHA);
-			break;
-		case "source-out":
-			gl.blendFunc(gl.ONE_MINUS_DST_ALPHA, gl.ZERO);
-			break;
-		case "destination-out":
-			gl.blendFunc(gl.ZERO, gl.ONE_MINUS_SRC_ALPHA);
-			break;
-		case "lighter":
-		case "darker":
-			gl.blendFunc(gl.ONE, gl.ONE);
-			break;
-		case "xor":
-			gl.blendFunc(gl.ONE_MINUS_DST_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-			break;
-		case "normal":
-		default:
-			gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-			break;
-	}
-}
+    switch (compositeOperation) {
+      case "source-over":
+        //
+        //gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        //
+        gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+        break;
+      case "destination-over":
+        gl.blendFunc(gl.ONE_MINUS_DST_ALPHA, gl.ONE);
+        break;
+      case "clear":
+        gl.blendFunc(gl.ZERO, gl.ZERO);
+        break;
+      case "copy":
+      case "source":
+        gl.blendFunc(gl.ONE, gl.ZERO);
+        break;
+      case "destination":
+        gl.blendFunc(gl.ZERO, gl.ONE);
+        break;
+      case "source-atop":
+        gl.blendFunc(gl.DST_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        break;
+      case "destination-atop":
+        gl.blendFunc(gl.ONE_MINUS_DST_ALPHA, gl.SRC_ALPHA);
+        break;
+      case "source-in":
+        gl.blendFunc(gl.DST_ALPHA, gl.ZERO);
+        break;
+      case "destination-in":
+        gl.blendFunc(gl.ZERO, gl.SRC_ALPHA);
+        break;
+      case "source-out":
+        gl.blendFunc(gl.ONE_MINUS_DST_ALPHA, gl.ZERO);
+        break;
+      case "destination-out":
+        gl.blendFunc(gl.ZERO, gl.ONE_MINUS_SRC_ALPHA);
+        break;
+      case "lighter":
+      case "darker":
+        gl.blendFunc(gl.ONE, gl.ONE);
+        break;
+      case "xor":
+        gl.blendFunc(gl.ONE_MINUS_DST_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        break;
+      case "normal":
+      default:
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        break;
+    }
+  };
 
-Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "globalCompositeOperation", {
-	get: function () {
-		return this.state.globalCompositeOperation;
-	},
-	set: function(value) {
-		if(value !== this.state.globalCompositeOperation) {
-			this.state.globalCompositeOperation = value;
-			this.globalCompositeOperationApply(value);
-		}
-	},
-	enumerable: false,
-	configurable: true
-});
+Object.defineProperty(
+  CanvasRenderingContext2DWebGL.prototype,
+  "globalCompositeOperation",
+  {
+    get: function () {
+      return this.state.globalCompositeOperation;
+    },
+    set: function (value) {
+      if (value !== this.state.globalCompositeOperation) {
+        this.state.globalCompositeOperation = value;
+        this.globalCompositeOperationApply(value);
+      }
+    },
+    enumerable: false,
+    configurable: true,
+  }
+);
 
 Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "strokeStyle", {
-	get: function () {
-		return this.state.strokeStyle.str;
-	},
-	set: function(value) {
-		var color = this.state.strokeStyle.str;
-		if(value && color !== value) {
-			this.state.strokeStyle =  CanvasRenderingContext2DWebGL.parseColor(value);
-		}
-	},
-	enumerable: false,
-	configurable: true
+  get: function () {
+    return this.state.strokeStyle.str;
+  },
+  set: function (value) {
+    var color = this.state.strokeStyle.str;
+    if (value && color !== value) {
+      this.state.strokeStyle = CanvasRenderingContext2DWebGL.parseColor(value);
+    }
+  },
+  enumerable: false,
+  configurable: true,
 });
 
 Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "fillStyle", {
-	get: function () {
-		return this.state.fillStyle.str;
-	},
-	set: function(value) {
-		var color = this.state.fillStyle.str;
-		if(value && color !== value) {
-			this.state.fillStyle = CanvasRenderingContext2DWebGL.parseColor(value);
-		}
-	},
-	enumerable: false,
-	configurable: true
+  get: function () {
+    return this.state.fillStyle.str;
+  },
+  set: function (value) {
+    var color = this.state.fillStyle.str;
+    if (value && color !== value) {
+      this.state.fillStyle = CanvasRenderingContext2DWebGL.parseColor(value);
+    }
+  },
+  enumerable: false,
+  configurable: true,
 });
 
-CanvasRenderingContext2DWebGL.prototype.clearRect = function(x, y, w, h) {
-	this.beginPath();
-	this.rect(x, y, w, h);
-	this.fill();
-	this.beginPath();
+CanvasRenderingContext2DWebGL.prototype.clearRect = function (x, y, w, h) {
+  this.beginPath();
+  this.rect(x, y, w, h);
+  this.fill();
+  this.beginPath();
 };
 
-CanvasRenderingContext2DWebGL.prototype.fillRect = function(x, y, w, h) {
-	this.beginPath();
-	this.rect(x, y, w, h);
-	this.fill();
-	this.beginPath();
+CanvasRenderingContext2DWebGL.prototype.fillRect = function (x, y, w, h) {
+  this.beginPath();
+  this.rect(x, y, w, h);
+  this.fill();
+  this.beginPath();
 };
 
-CanvasRenderingContext2DWebGL.prototype.strokeRect = function(x, y, w, h) {
-	this.beginPath();
-	this.rect(x, y, w, h);
-	this.stroke();
-	this.beginPath();
+CanvasRenderingContext2DWebGL.prototype.strokeRect = function (x, y, w, h) {
+  this.beginPath();
+  this.rect(x, y, w, h);
+  this.stroke();
+  this.beginPath();
 };
 
-CanvasRenderingContext2DWebGL.prototype.stroke = function() {
-	if(this.lineWidth && this.strokeStyle) {
-		this.gl.lineWidth(this.lineWidth);
-		this.commitDrawImage();
-		
-		this.strokeCount++;
-		var program = this.drawPrimitivesProgram;
-		this.drawPrimitives(program, this.drawPrimitiveQueue, program.stroke, this.state.strokeStyle);
-	}
-}
+CanvasRenderingContext2DWebGL.prototype.stroke = function () {
+  if (this.lineWidth && this.strokeStyle) {
+    this.gl.lineWidth(this.lineWidth);
+    this.commitDrawImage();
 
-CanvasRenderingContext2DWebGL.prototype.fill = function() {
-	if(this.fillStyle) {
-		this.commitDrawImage();
-
-		this.fillCount++;
-		var program = this.drawPrimitivesProgram;
-		this.drawPrimitives(program, this.drawPrimitiveQueue, program.fill, this.state.fillStyle);
-	}
-}
-
-CanvasRenderingContext2DWebGL.prototype.drawStencil = function(drawPrimitiveQueue, level, clear) {
-	var gl = this.gl;
-	var program = this.drawPrimitivesProgram;
-	var passOp = clear ? gl.DECR : gl.INCR;
-	
-	gl.stencilMask(0xff);
-	gl.stencilFunc(gl.ALWAYS, 1, 0xff);
-	gl.stencilOp(gl.KEEP, gl.KEEP, passOp);
-	gl.colorMask(false, false, false, false);
-
-	this.drawPrimitives(program, drawPrimitiveQueue, program.clip, this.stencilColor);
-
-	gl.stencilMask(0);
-	gl.stencilFunc(gl.EQUAL, level, 0xff);
-	gl.colorMask(true, true, true, true);
-//  for test	
-//	this.drawPrimitives(program, drawPrimitiveQueue, program.stroke, this.strokeStyle);
-}
-
-CanvasRenderingContext2DWebGL.prototype.clearClip = function(drawPrimitiveQueue) {
-	var gl = this.gl;
-	if(!drawPrimitiveQueue) {
-		gl.disable(gl.STENCIL_TEST);	
-
-		return;
-	}
-
-	this.commitDrawImage();
-	this.drawStencil(drawPrimitiveQueue, --this.clipLevel, true);
-}
-
-CanvasRenderingContext2DWebGL.prototype.clip = function() {
-	this.savePrimitiveQueueForClip();
-
-	var gl = this.gl;
-	if(this.clipLevel === 0) {
-		gl.enable(gl.STENCIL_TEST);	
-	}
-
-	this.commitDrawImage();
-	var drawPrimitiveQueue = this.state.clipPaths;
-	if(drawPrimitiveQueue) {
-		this.drawStencil(drawPrimitiveQueue, ++this.clipLevel, false);
-	}
-}
-
-
-CanvasRenderingContext2DWebGL.prototype.drawPrimitives = function(program, drawPrimitiveQueue, drawFunc, color) {
-	var dataBuffer = drawPrimitiveQueue.dataBuffer.getReadBuffer();
-	var paths = drawPrimitiveQueue.paths;
-	var state = this.state;
-
-	var end = 0;
-	var start = 0;
-	var arr = null;
-	var n = paths.size;
-	var tint = state.globalTint * 256 >> 0;
-	var alpha = state.globalAlpha * 256 >> 0;
-
-	program.prepareDraw(dataBuffer, color, alpha, tint);
-	for(var i = 0; i < n; i++) {
-		var start = paths[i];
-		if(i < (n-1)) {
-			end = paths[i+1]
-		}else{
-			end = dataBuffer.size;
-		}
-
-		if(end > start) {
-			this.drawCalls++;
-			drawFunc.call(program, start, end);
-		}
-	}
+    this.strokeCount++;
+    var program = this.drawPrimitivesProgram;
+    this.drawPrimitives(
+      program,
+      this.drawPrimitiveQueue,
+      program.stroke,
+      this.state.strokeStyle
+    );
+  }
 };
 
-CanvasRenderingContext2DWebGL.prototype.doClipRect = function(rect) {
-	var gl = this.gl;
-	var canvas = this.canvas;
-	var canvasWidth = canvas.width;
-	var canvasHeight = canvas.height;
+CanvasRenderingContext2DWebGL.prototype.fill = function () {
+  if (this.fillStyle) {
+    this.commitDrawImage();
 
-	this.commitDrawImage();
-	gl.enable(gl.SCISSOR_TEST);
-
-	if(!rect || !rect.w || !rect.h) {
-		gl.scissor(0, 0, canvasWidth, canvasHeight);
-	}else{
-
-		var virtualWidth = gl.w;
-		var virtualHeight = gl.h;
-		var scaleX = canvasWidth/virtualWidth;
-		var scaleY = canvasHeight/virtualHeight;
-
-		var yy = (rect.y-1) * scaleY;
-		var x = rect.x * scaleX;
-		var w = rect.w * scaleX;
-		var h = rect.h * scaleY;
-		var y = canvasHeight-(yy+h);
-		gl.scissor(x, y, w, h);
-	}
-}
-
-CanvasRenderingContext2DWebGL.prototype.clipRect = function(x, y, w, h) {
-	var state = this.state;
-	var m = state.m;
-	var p = mat2d.transformPoint(m, x, y);
-	var oldClipRect = state.clipRect;
-	
-	state.clipRect = {x:p.x, y:p.y, w:w, h:h};
-
-	if(oldClipRect) {
-		state.clipRect = Rect.intersection(state.clipRect, oldClipRect);
-	}
-
-	if(state.clipRect) {
-		this.doClipRect(state.clipRect);
-	}
+    this.fillCount++;
+    var program = this.drawPrimitivesProgram;
+    this.drawPrimitives(
+      program,
+      this.drawPrimitiveQueue,
+      program.fill,
+      this.state.fillStyle
+    );
+  }
 };
 
-CanvasRenderingContext2DWebGL.prototype.drawGlyph = function(image, program, sx, sy, sw, sh, dx, dy, dw, dh) {
-	this.prepareDrawImage(image, program);
-	this.drawImageEx(image, sx, sy, sw, sh, dx*10, dy*10, (dx+dw)*10, dy*10, (dx+dw)*10, (dy+dh)*10, dx*10, (dy+dh)*10); 
-}
+CanvasRenderingContext2DWebGL.prototype.drawStencil = function (
+  drawPrimitiveQueue,
+  level,
+  clear
+) {
+  var gl = this.gl;
+  var program = this.drawPrimitivesProgram;
+  var passOp = clear ? gl.DECR : gl.INCR;
 
-CanvasRenderingContext2DWebGL.prototype.doFillText = function(text, x, y, maxWidth) {
-	return;
-}
+  gl.stencilMask(0xff);
+  gl.stencilFunc(gl.ALWAYS, 1, 0xff);
+  gl.stencilOp(gl.KEEP, gl.KEEP, passOp);
+  gl.colorMask(false, false, false, false);
 
-CanvasRenderingContext2DWebGL.prototype.fillText = function(text, x, y, maxWidth) {
-	var m = this.state.m;
-	var p = mat2d.transformPointInt(m, x, y);
-	this.doFillText(text, p.x/10, p.y/10, maxWidth);
+  this.drawPrimitives(
+    program,
+    drawPrimitiveQueue,
+    program.clip,
+    this.stencilColor
+  );
+
+  gl.stencilMask(0);
+  gl.stencilFunc(gl.EQUAL, level, 0xff);
+  gl.colorMask(true, true, true, true);
+  //  for test
+  //	this.drawPrimitives(program, drawPrimitiveQueue, program.stroke, this.strokeStyle);
 };
 
-CanvasRenderingContext2DWebGL.prototype.strokeText = function() {
-	console.log("strokeText NOT IMPL");
+CanvasRenderingContext2DWebGL.prototype.clearClip = function (
+  drawPrimitiveQueue
+) {
+  var gl = this.gl;
+  if (!drawPrimitiveQueue) {
+    gl.disable(gl.STENCIL_TEST);
+
+    return;
+  }
+
+  this.commitDrawImage();
+  this.drawStencil(drawPrimitiveQueue, --this.clipLevel, true);
 };
 
+CanvasRenderingContext2DWebGL.prototype.clip = function () {
+  this.savePrimitiveQueueForClip();
 
-CanvasRenderingContext2DWebGL.prototype.drawImageTriArr = function(image, arr) {
-	var offset = 0;
-	var n = (arr.length/12) >> 0;
+  var gl = this.gl;
+  if (this.clipLevel === 0) {
+    gl.enable(gl.STENCIL_TEST);
+  }
 
-	for(var i = 0; i < n; i++) {
-		this.drawImageTri(image, arr[offset++], arr[offset++], arr[offset++], arr[offset++],
-			arr[offset++], arr[offset++], arr[offset++], arr[offset++],
-			arr[offset++], arr[offset++], arr[offset++], arr[offset++]);
-	}
-}
-
-CanvasRenderingContext2DWebGL.prototype.drawImageTri = function(image, u0, v0, x0, y0, u1, v1, x1, y1, u2, v2, x2, y2) {
-	var m = this.state.m;
-	var p0 = mat2d.transformPointInt(m, x0, y0, 0);
-	var p1 = mat2d.transformPointInt(m, x1, y1, 1);
-	var p2 = mat2d.transformPointInt(m, x2, y2, 2);
-	
-	var isClockWise = (p1.x-p0.x)*(p2.y-p1.y)-(p1.y-p0.y)*(p2.x-p1.x) >= 0;
-	if(isClockWise) {
-		this.doDrawImageTri(image, u0, v0, p0.x, p0.y, u1, v1, p1.x, p1.y, u2, v2, p2.x, p2.y);
-	}else{
-		this.doDrawImageTri(image, u0, v0, p0.x, p0.y, u2, v2, p2.x, p2.y, u1, v1, p1.x, p1.y);
-	}
-}
-
-CanvasRenderingContext2DWebGL.prototype.doDrawImageTri = function(image, u0, v0, x0, y0, u1, v1, x1, y1, u2, v2, x2, y2) {
-	this.drawImageCount++;
-
-	if(image.complete) {
-		var ox = image.ox;
-		var oy = image.oy;
-		var state = this.state;
-		var drawImageQueue = this.drawImageQueue;
-		var program = WebGLProgramDrawImage.get(state.globalImageFilter);
-
-		this.prepareDrawImage(image, program);
-		drawImageQueue.dataBuffer = program.addTriangle(drawImageQueue.dataBuffer, 
-			state.globalAlpha * 256 >>0, state.globalTint * 256 >> 0,  
-			u0+ox, v0+oy, x0, y0, u1+ox, v1+oy, x1, y1, u2+ox, v2+oy, x2, y2);
-	}
+  this.commitDrawImage();
+  var drawPrimitiveQueue = this.state.clipPaths;
+  if (drawPrimitiveQueue) {
+    this.drawStencil(drawPrimitiveQueue, ++this.clipLevel, false);
+  }
 };
 
-CanvasRenderingContext2DWebGL.prototype.drawImage = function(image, _sx, _sy, _sw, _sh, _dx, _dy, _dw, _dh) {
-	var sx, sy, sw, sh, dx, dy, dw, dh;
+CanvasRenderingContext2DWebGL.prototype.drawPrimitives = function (
+  program,
+  drawPrimitiveQueue,
+  drawFunc,
+  color
+) {
+  var dataBuffer = drawPrimitiveQueue.dataBuffer.getReadBuffer();
+  var paths = drawPrimitiveQueue.paths;
+  var state = this.state;
 
-	if(!image.width) {
-		return;
-	}
+  var end = 0;
+  var start = 0;
+  var arr = null;
+  var n = paths.size;
+  var tint = (state.globalTint * 256) >> 0;
+  var alpha = (state.globalAlpha * 256) >> 0;
 
-	if(_dh) {
-		sx = _sx;
-		sy = _sy;
-		sw = _sw;
-		sh = _sh;
-		dx = _dx;
-		dy = _dy;
-		dw = _dw;
-		dh = _dh;
-	}else if(_sw) {
-		sx = 0;
-		sy = 0;
-		sw = image.width;
-		sh = image.height;
-		dx = _sx;
-		dy = _sy;
-		dw = _sw;
-		dh = _sh;
-	}else {
-		sx = 0;
-		sy = 0;
-		sw = image.width;
-		sh = image.height;
-		dx = _sx;
-		dy = _sy;
-		dw = sw;
-		dh = sh;
-	}
-	
-	var state = this.state;
-	var program = WebGLProgramDrawImage.get(state.globalImageFilter);
-	this.prepareDrawImage(image, program);
+  program.prepareDraw(dataBuffer, color, alpha, tint);
+  for (var i = 0; i < n; i++) {
+    var start = paths[i];
+    if (i < n - 1) {
+      end = paths[i + 1];
+    } else {
+      end = dataBuffer.size;
+    }
 
-	var m = state.m;
-   	var a = m[0];
-   	var b = m[1];
-   	var c = m[2];
-   	var d = m[3];
-   	var e = m[4];
-   	var f = m[5];
-	var top = dy;
-	var left = dx;
-	var right = dx+dw;
-	var bottom = dy+dh;
+    if (end > start) {
+      this.drawCalls++;
+      drawFunc.call(program, start, end);
+    }
+  }
+};
 
-    var x1 = ((a * left + c * top + e) * 10) >> 0;
-	var y1 = ((b * left + d * top + f) * 10) >> 0;
+CanvasRenderingContext2DWebGL.prototype.doClipRect = function (rect) {
+  var gl = this.gl;
+  var canvas = this.canvas;
+  var canvasWidth = canvas.width;
+  var canvasHeight = canvas.height;
 
-    var x2 = ((a * right + c * top + e) * 10) >> 0;
-	var y2 = ((b * right + d * top + f) * 10) >> 0;
-    
-    var x3 = ((a * right + c * bottom + e) * 10) >> 0;
-	var y3 = ((b * right + d * bottom + f) * 10) >> 0;
-    
-    var x4 = ((a * left + c * bottom + e) * 10) >> 0;
-	var y4 = ((b * left + d * bottom + f) * 10) >> 0;
+  this.commitDrawImage();
+  gl.enable(gl.SCISSOR_TEST);
 
-	var cw10 = this.canvasWidth10;
-	var ch10 = this.canvasHeight10;
-	if((x1 < 0 && x2 < 0 && x3 < 0 && x4 < 0) 
-		|| (y1 < 0 && y2 < 0 && y3 < 0 && y4 < 0)
-		|| (x1 > cw10 && x2 > cw10 && x3 > cw10 && x4 > cw10) 
-		|| (y1 > ch10 && y2 > ch10 && y3 > ch10 && y4 > ch10)) {
-		this.drawImageCount++;
-		return;
-	}
+  if (!rect || !rect.w || !rect.h) {
+    gl.scissor(0, 0, canvasWidth, canvasHeight);
+  } else {
+    var virtualWidth = gl.w;
+    var virtualHeight = gl.h;
+    var scaleX = canvasWidth / virtualWidth;
+    var scaleY = canvasHeight / virtualHeight;
 
-	this.drawImageEx(image, sx+image.ox, sy+image.oy, sw, sh, x1, y1, x2, y2, x3, y3, x4, y4);
-}
+    var yy = (rect.y - 1) * scaleY;
+    var x = rect.x * scaleX;
+    var w = rect.w * scaleX;
+    var h = rect.h * scaleY;
+    var y = canvasHeight - (yy + h);
+    gl.scissor(x, y, w, h);
+  }
+};
 
-CanvasRenderingContext2DWebGL.prototype.prepareDrawImage = function(image, program) {
-	var drawImageQueue = this.drawImageQueue;
-	if(drawImageQueue.image) {
-		if(drawImageQueue.image.texture !== image.texture || drawImageQueue.program !== program
-				|| drawImageQueue.globalCompositeOperation !== this.state.globalCompositeOperation) {
+CanvasRenderingContext2DWebGL.prototype.clipRect = function (x, y, w, h) {
+  var state = this.state;
+  var m = state.m;
+  var p = mat2d.transformPoint(m, x, y);
+  var oldClipRect = state.clipRect;
 
-			this.commitDrawImage();
-			drawImageQueue.image = image; 
-			drawImageQueue.program = program;
-		  this.loadTextureWithImage(image);
-		}
-	}else{
-		this.loadTextureWithImage(image);
+  state.clipRect = { x: p.x, y: p.y, w: w, h: h };
 
-		drawImageQueue.image = image; 
-		drawImageQueue.program = program;
-	}
-}
+  if (oldClipRect) {
+    state.clipRect = Rect.intersection(state.clipRect, oldClipRect);
+  }
 
-CanvasRenderingContext2DWebGL.prototype.drawImageEx = function(image, sx, sy, sw, sh, x1, y1, x2, y2, x3, y3, x4, y4) {
-	this.drawImageCount++;
-	var dataBuffer = this.drawImageQueue.dataBuffer;
-	var out = dataBuffer.getWriteBuffer(100);
-	
-	var offset = dataBuffer.size;
-	var tint = this.state.globalTint * 256 >> 0;
-	var alpha = this.state.globalAlpha * 256 >> 0;
+  if (state.clipRect) {
+    this.doClipRect(state.clipRect);
+  }
+};
 
-	out[offset++] = sx;
-	out[offset++] = sy;
-	out[offset++] = alpha;
-	out[offset++] = tint;
-	out[offset++] = x1;
-	out[offset++] = y1;
+CanvasRenderingContext2DWebGL.prototype.drawGlyph = function (
+  image,
+  program,
+  sx,
+  sy,
+  sw,
+  sh,
+  dx,
+  dy,
+  dw,
+  dh
+) {
+  this.prepareDrawImage(image, program);
+  this.drawImageEx(
+    image,
+    sx,
+    sy,
+    sw,
+    sh,
+    dx * 10,
+    dy * 10,
+    (dx + dw) * 10,
+    dy * 10,
+    (dx + dw) * 10,
+    (dy + dh) * 10,
+    dx * 10,
+    (dy + dh) * 10
+  );
+};
 
-	out[offset++] = sx+sw;
-	out[offset++] = sy;
-	out[offset++] = alpha;
-	out[offset++] = tint;
-	out[offset++] = x2;
-	out[offset++] = y2;
-	
-	out[offset++] = sx+sw;
-	out[offset++] = sy+sh;
-	out[offset++] = alpha;
-	out[offset++] = tint;
-	out[offset++] = x3;
-	out[offset++] = y3;
-	
-	out[offset++] = sx+sw;
-	out[offset++] = sy+sh;
-	out[offset++] = alpha;
-	out[offset++] = tint;
-	out[offset++] = x3;
-	out[offset++] = y3;
-	
-	out[offset++] = sx;
-	out[offset++] = sy+sh;
-	out[offset++] = alpha;
-	out[offset++] = tint;
-	out[offset++] = x4;
-	out[offset++] = y4;
-	
-	out[offset++] = sx;
-	out[offset++] = sy;
-	out[offset++] = alpha;
-	out[offset++] = tint;
-	out[offset++] = x1;
-	out[offset++] = y1;
-	dataBuffer.size = offset;
+CanvasRenderingContext2DWebGL.prototype.doFillText = function (
+  text,
+  x,
+  y,
+  maxWidth
+) {
+  return;
+};
 
-	return;
-}
+CanvasRenderingContext2DWebGL.prototype.fillText = function (
+  text,
+  x,
+  y,
+  maxWidth
+) {
+  var m = this.state.m;
+  var p = mat2d.transformPointInt(m, x, y);
+  this.doFillText(text, p.x / 10, p.y / 10, maxWidth);
+};
 
-CanvasRenderingContext2DWebGL.prototype.commitDrawImage = function() {
-	var drawImageQueue = this.drawImageQueue;
-	var dataBuffer = drawImageQueue.dataBuffer.getReadBuffer();
-	
-	if(dataBuffer.size < 1 || !drawImageQueue.image) {
-		return;
-	}
-	
-	this.drawImageBatch(drawImageQueue.image, drawImageQueue.program, dataBuffer);
+CanvasRenderingContext2DWebGL.prototype.strokeText = function () {
+  console.log("strokeText NOT IMPL");
+};
 
-	drawImageQueue.dataBuffer.reset();
-	drawImageQueue.image = null;
-	drawImageQueue.program = null;
-	drawImageQueue.globalCompositeOperation = this.globalCompositeOperation;
+CanvasRenderingContext2DWebGL.prototype.drawImageTriArr = function (
+  image,
+  arr
+) {
+  var offset = 0;
+  var n = (arr.length / 12) >> 0;
 
-	return;
-}
+  for (var i = 0; i < n; i++) {
+    this.drawImageTri(
+      image,
+      arr[offset++],
+      arr[offset++],
+      arr[offset++],
+      arr[offset++],
+      arr[offset++],
+      arr[offset++],
+      arr[offset++],
+      arr[offset++],
+      arr[offset++],
+      arr[offset++],
+      arr[offset++],
+      arr[offset++]
+    );
+  }
+};
 
+CanvasRenderingContext2DWebGL.prototype.drawImageTri = function (
+  image,
+  u0,
+  v0,
+  x0,
+  y0,
+  u1,
+  v1,
+  x1,
+  y1,
+  u2,
+  v2,
+  x2,
+  y2
+) {
+  var m = this.state.m;
+  var p0 = mat2d.transformPointInt(m, x0, y0, 0);
+  var p1 = mat2d.transformPointInt(m, x1, y1, 1);
+  var p2 = mat2d.transformPointInt(m, x2, y2, 2);
+
+  var isClockWise =
+    (p1.x - p0.x) * (p2.y - p1.y) - (p1.y - p0.y) * (p2.x - p1.x) >= 0;
+  if (isClockWise) {
+    this.doDrawImageTri(
+      image,
+      u0,
+      v0,
+      p0.x,
+      p0.y,
+      u1,
+      v1,
+      p1.x,
+      p1.y,
+      u2,
+      v2,
+      p2.x,
+      p2.y
+    );
+  } else {
+    this.doDrawImageTri(
+      image,
+      u0,
+      v0,
+      p0.x,
+      p0.y,
+      u2,
+      v2,
+      p2.x,
+      p2.y,
+      u1,
+      v1,
+      p1.x,
+      p1.y
+    );
+  }
+};
+
+CanvasRenderingContext2DWebGL.prototype.doDrawImageTri = function (
+  image,
+  u0,
+  v0,
+  x0,
+  y0,
+  u1,
+  v1,
+  x1,
+  y1,
+  u2,
+  v2,
+  x2,
+  y2
+) {
+  this.drawImageCount++;
+
+  if (image.complete) {
+    var ox = image.ox;
+    var oy = image.oy;
+    var state = this.state;
+    var drawImageQueue = this.drawImageQueue;
+    var program = WebGLProgramDrawImage.get(state.globalImageFilter);
+
+    this.prepareDrawImage(image, program);
+    drawImageQueue.dataBuffer = program.addTriangle(
+      drawImageQueue.dataBuffer,
+      (state.globalAlpha * 256) >> 0,
+      (state.globalTint * 256) >> 0,
+      u0 + ox,
+      v0 + oy,
+      x0,
+      y0,
+      u1 + ox,
+      v1 + oy,
+      x1,
+      y1,
+      u2 + ox,
+      v2 + oy,
+      x2,
+      y2
+    );
+  }
+};
+
+CanvasRenderingContext2DWebGL.prototype.drawImage = function (
+  image,
+  _sx,
+  _sy,
+  _sw,
+  _sh,
+  _dx,
+  _dy,
+  _dw,
+  _dh
+) {
+  var sx, sy, sw, sh, dx, dy, dw, dh;
+
+  if (!image.width) {
+    return;
+  }
+
+  if (_dh) {
+    sx = _sx;
+    sy = _sy;
+    sw = _sw;
+    sh = _sh;
+    dx = _dx;
+    dy = _dy;
+    dw = _dw;
+    dh = _dh;
+  } else if (_sw) {
+    sx = 0;
+    sy = 0;
+    sw = image.width;
+    sh = image.height;
+    dx = _sx;
+    dy = _sy;
+    dw = _sw;
+    dh = _sh;
+  } else {
+    sx = 0;
+    sy = 0;
+    sw = image.width;
+    sh = image.height;
+    dx = _sx;
+    dy = _sy;
+    dw = sw;
+    dh = sh;
+  }
+
+  var state = this.state;
+  var program = WebGLProgramDrawImage.get(state.globalImageFilter);
+  this.prepareDrawImage(image, program);
+
+  var m = state.m;
+  var a = m[0];
+  var b = m[1];
+  var c = m[2];
+  var d = m[3];
+  var e = m[4];
+  var f = m[5];
+  var top = dy;
+  var left = dx;
+  var right = dx + dw;
+  var bottom = dy + dh;
+
+  var x1 = ((a * left + c * top + e) * 10) >> 0;
+  var y1 = ((b * left + d * top + f) * 10) >> 0;
+
+  var x2 = ((a * right + c * top + e) * 10) >> 0;
+  var y2 = ((b * right + d * top + f) * 10) >> 0;
+
+  var x3 = ((a * right + c * bottom + e) * 10) >> 0;
+  var y3 = ((b * right + d * bottom + f) * 10) >> 0;
+
+  var x4 = ((a * left + c * bottom + e) * 10) >> 0;
+  var y4 = ((b * left + d * bottom + f) * 10) >> 0;
+
+  var cw10 = this.canvasWidth10;
+  var ch10 = this.canvasHeight10;
+  if (
+    (x1 < 0 && x2 < 0 && x3 < 0 && x4 < 0) ||
+    (y1 < 0 && y2 < 0 && y3 < 0 && y4 < 0) ||
+    (x1 > cw10 && x2 > cw10 && x3 > cw10 && x4 > cw10) ||
+    (y1 > ch10 && y2 > ch10 && y3 > ch10 && y4 > ch10)
+  ) {
+    this.drawImageCount++;
+    return;
+  }
+
+  this.drawImageEx(
+    image,
+    sx + image.ox,
+    sy + image.oy,
+    sw,
+    sh,
+    x1,
+    y1,
+    x2,
+    y2,
+    x3,
+    y3,
+    x4,
+    y4
+  );
+};
+
+CanvasRenderingContext2DWebGL.prototype.prepareDrawImage = function (
+  image,
+  program
+) {
+  var drawImageQueue = this.drawImageQueue;
+  if (drawImageQueue.image) {
+    if (
+      drawImageQueue.image.texture !== image.texture ||
+      drawImageQueue.program !== program ||
+      drawImageQueue.globalCompositeOperation !==
+        this.state.globalCompositeOperation
+    ) {
+      this.commitDrawImage();
+      drawImageQueue.image = image;
+      drawImageQueue.program = program;
+      this.loadTextureWithImage(image);
+    }
+  } else {
+    this.loadTextureWithImage(image);
+
+    drawImageQueue.image = image;
+    drawImageQueue.program = program;
+  }
+};
+
+CanvasRenderingContext2DWebGL.prototype.drawImageEx = function (
+  image,
+  sx,
+  sy,
+  sw,
+  sh,
+  x1,
+  y1,
+  x2,
+  y2,
+  x3,
+  y3,
+  x4,
+  y4
+) {
+  this.drawImageCount++;
+  var dataBuffer = this.drawImageQueue.dataBuffer;
+  var out = dataBuffer.getWriteBuffer(100);
+
+  var offset = dataBuffer.size;
+  var tint = (this.state.globalTint * 256) >> 0;
+  var alpha = (this.state.globalAlpha * 256) >> 0;
+
+  out[offset++] = sx;
+  out[offset++] = sy;
+  out[offset++] = alpha;
+  out[offset++] = tint;
+  out[offset++] = x1;
+  out[offset++] = y1;
+
+  out[offset++] = sx + sw;
+  out[offset++] = sy;
+  out[offset++] = alpha;
+  out[offset++] = tint;
+  out[offset++] = x2;
+  out[offset++] = y2;
+
+  out[offset++] = sx + sw;
+  out[offset++] = sy + sh;
+  out[offset++] = alpha;
+  out[offset++] = tint;
+  out[offset++] = x3;
+  out[offset++] = y3;
+
+  out[offset++] = sx + sw;
+  out[offset++] = sy + sh;
+  out[offset++] = alpha;
+  out[offset++] = tint;
+  out[offset++] = x3;
+  out[offset++] = y3;
+
+  out[offset++] = sx;
+  out[offset++] = sy + sh;
+  out[offset++] = alpha;
+  out[offset++] = tint;
+  out[offset++] = x4;
+  out[offset++] = y4;
+
+  out[offset++] = sx;
+  out[offset++] = sy;
+  out[offset++] = alpha;
+  out[offset++] = tint;
+  out[offset++] = x1;
+  out[offset++] = y1;
+  dataBuffer.size = offset;
+
+  return;
+};
+
+CanvasRenderingContext2DWebGL.prototype.commitDrawImage = function () {
+  var drawImageQueue = this.drawImageQueue;
+  var dataBuffer = drawImageQueue.dataBuffer.getReadBuffer();
+
+  if (dataBuffer.size < 1 || !drawImageQueue.image) {
+    return;
+  }
+
+  this.drawImageBatch(drawImageQueue.image, drawImageQueue.program, dataBuffer);
+
+  drawImageQueue.dataBuffer.reset();
+  drawImageQueue.image = null;
+  drawImageQueue.program = null;
+  drawImageQueue.globalCompositeOperation = this.globalCompositeOperation;
+
+  return;
+};
 
 Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "lineWidth", {
-	get: function () {
-		return this.state.lineWidth;
-	},
-	set: function(value) {
-		this.state.lineWidth = value;
-	},
-	enumerable: false,
-	configurable: true
+  get: function () {
+    return this.state.lineWidth;
+  },
+  set: function (value) {
+    this.state.lineWidth = value;
+  },
+  enumerable: false,
+  configurable: true,
 });
 
 Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "lineCap", {
-	get: function () {
-		return this.state.lineCap;
-	},
-	set: function(value) {
-		this.state.lineCap = value;
-	},
-	enumerable: false,
-	configurable: true
+  get: function () {
+    return this.state.lineCap;
+  },
+  set: function (value) {
+    this.state.lineCap = value;
+  },
+  enumerable: false,
+  configurable: true,
 });
 
 Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "lineJoin", {
-	get: function () {
-		return this.state.lineJoin;
-	},
-	set: function(value) {
-		this.state.lineJoin = value;
-	},
-	enumerable: false,
-	configurable: true
+  get: function () {
+    return this.state.lineJoin;
+  },
+  set: function (value) {
+    this.state.lineJoin = value;
+  },
+  enumerable: false,
+  configurable: true,
 });
 
 Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "miterLimit", {
-	get: function () {
-		return this.state.miterLimit;
-	},
-	set: function(value) {
-		this.state.miterLimit = value;
-	},
-	enumerable: false,
-	configurable: true
+  get: function () {
+    return this.state.miterLimit;
+  },
+  set: function (value) {
+    this.state.miterLimit = value;
+  },
+  enumerable: false,
+  configurable: true,
 });
 
 Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "font", {
-	get: function () {
-		return this.state.font;
-	},
-	set: function(value) {
-		this.state.font = value;
-	},
-	enumerable: false,
-	configurable: true
+  get: function () {
+    return this.state.font;
+  },
+  set: function (value) {
+    this.state.font = value;
+  },
+  enumerable: false,
+  configurable: true,
 });
 
 Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "textAlign", {
-	get: function () {
-		return this.state.textAlign;
-	},
-	set: function(value) {
-		this.state.textAlign = value;
-	},
-	enumerable: false,
-	configurable: true
+  get: function () {
+    return this.state.textAlign;
+  },
+  set: function (value) {
+    this.state.textAlign = value;
+  },
+  enumerable: false,
+  configurable: true,
 });
 
 Object.defineProperty(CanvasRenderingContext2DWebGL.prototype, "textBaseline", {
-	get: function () {
-		return this.state.textBaseline;
-	},
-	set: function(value) {
-		this.state.textBaseline = value;
-	},
-	enumerable: false,
-	configurable: true
+  get: function () {
+    return this.state.textBaseline;
+  },
+  set: function (value) {
+    this.state.textBaseline = value;
+  },
+  enumerable: false,
+  configurable: true,
 });
 
-CanvasRenderingContext2DWebGL.prototype.beginPath = function() {
-	this.drawPrimitiveQueue.dataBuffer.reset();
-	this.drawPrimitiveQueue.paths.reset();
-}
-
-CanvasRenderingContext2DWebGL.prototype.closePath = function() {
-	this.addPoint(this.firstX, this.firstY, false);
+CanvasRenderingContext2DWebGL.prototype.beginPath = function () {
+  this.drawPrimitiveQueue.dataBuffer.reset();
+  this.drawPrimitiveQueue.paths.reset();
 };
 
-CanvasRenderingContext2DWebGL.prototype.savePrimitiveQueueForClip = function() {
-	var drawPrimitiveQueue = this.drawPrimitiveQueue;
-	if(drawPrimitiveQueue.dataBuffer.size < 6) {
-		return;
-	}
-	
-	this.state.clipPaths = {
-		id : this.currentID++,
-		paths : drawPrimitiveQueue.paths.dup(),
-		dataBuffer : drawPrimitiveQueue.dataBuffer.dup()
-	}
-}
-
-CanvasRenderingContext2DWebGL.prototype.hasPoint = function() {
-	return this.drawPrimitiveQueue.dataBuffer.size > 0;
-}
-
-CanvasRenderingContext2DWebGL.prototype.addPoint = function(x, y, newPath) {
-	var drawPrimitiveQueue = this.drawPrimitiveQueue;
-	var dataBuffer = drawPrimitiveQueue.dataBuffer;
-	
-	if(newPath) {
-		this.firstX = x;
-		this.firstY = y;
-		drawPrimitiveQueue.paths.push1(dataBuffer.size);
-	}
-	
-	this.lastX = x;
-	this.lastY = y;
-	drawPrimitiveQueue.dataBuffer = dataBuffer.pushX(x, y);
-
-	return;
-}
-
-CanvasRenderingContext2DWebGL.prototype.moveTo = function(x, y) {
-	var m = this.state.m;
-	var p = mat2d.transformPointInt(m, x, y);
-
-	this.addPoint(p.x, p.y, true);
+CanvasRenderingContext2DWebGL.prototype.closePath = function () {
+  this.addPoint(this.firstX, this.firstY, false);
 };
 
-CanvasRenderingContext2DWebGL.prototype.lineTo = function(x, y) {
-	var m = this.state.m;
-	var p = mat2d.transformPointInt(m, x, y);
+CanvasRenderingContext2DWebGL.prototype.savePrimitiveQueueForClip =
+  function () {
+    var drawPrimitiveQueue = this.drawPrimitiveQueue;
+    if (drawPrimitiveQueue.dataBuffer.size < 6) {
+      return;
+    }
 
-	this.addPoint(p.x, p.y, false);
+    this.state.clipPaths = {
+      id: this.currentID++,
+      paths: drawPrimitiveQueue.paths.dup(),
+      dataBuffer: drawPrimitiveQueue.dataBuffer.dup(),
+    };
+  };
+
+CanvasRenderingContext2DWebGL.prototype.hasPoint = function () {
+  return this.drawPrimitiveQueue.dataBuffer.size > 0;
 };
 
-CanvasRenderingContext2DWebGL.prototype.getWidth = function() {
-	return this.canvas.w || this.canvas.width;
-}
+CanvasRenderingContext2DWebGL.prototype.addPoint = function (x, y, newPath) {
+  var drawPrimitiveQueue = this.drawPrimitiveQueue;
+  var dataBuffer = drawPrimitiveQueue.dataBuffer;
 
-CanvasRenderingContext2DWebGL.prototype.getHeight = function() {
-	return this.canvas.h || this.canvas.height;
-}
+  if (newPath) {
+    this.firstX = x;
+    this.firstY = y;
+    drawPrimitiveQueue.paths.push1(dataBuffer.size);
+  }
 
-CanvasRenderingContext2DWebGL.prototype.rect = function(x, y, w, h) {
-	var m = this.state.m;
-	var p1 = mat2d.transformPointInt(m, x, y, 0);
-	var p2 = mat2d.transformPointInt(m, x+w, y, 1);
-	var p3 = mat2d.transformPointInt(m, x+w, y+h, 2);
-	var p4 = mat2d.transformPointInt(m, x, y+h, 3);
-	var cw = this.canvasWidth;
-	var ch = this.canvasHeight;
-	var cw10 = this.canvasWidth10;
-	var ch10 = this.canvasHeight10;
+  this.lastX = x;
+  this.lastY = y;
+  drawPrimitiveQueue.dataBuffer = dataBuffer.pushX(x, y);
 
-	if((p1.x < 0 && p2.x < 0 && p3.x < 0 && p4.x < 0) 
-		|| (p1.y < 0 && p2.y < 0 && p3.y < 0 && p4.y < 0)
-		|| (p1.x > cw10 && p2.x > cw10 && p3.x > cw10 && p4.x > cw10) 
-		|| (p1.y > ch10 && p2.y > ch10 && p3.y > ch10 && p4.y > ch10)) {
-		return;
-	}
+  return;
+};
+
+CanvasRenderingContext2DWebGL.prototype.moveTo = function (x, y) {
+  var m = this.state.m;
+  var p = mat2d.transformPointInt(m, x, y);
+
+  this.addPoint(p.x, p.y, true);
+};
+
+CanvasRenderingContext2DWebGL.prototype.lineTo = function (x, y) {
+  var m = this.state.m;
+  var p = mat2d.transformPointInt(m, x, y);
+
+  this.addPoint(p.x, p.y, false);
+};
+
+CanvasRenderingContext2DWebGL.prototype.getWidth = function () {
+  return this.canvas.w || this.canvas.width;
+};
+
+CanvasRenderingContext2DWebGL.prototype.getHeight = function () {
+  return this.canvas.h || this.canvas.height;
+};
+
+CanvasRenderingContext2DWebGL.prototype.rect = function (x, y, w, h) {
+  var m = this.state.m;
+  var p1 = mat2d.transformPointInt(m, x, y, 0);
+  var p2 = mat2d.transformPointInt(m, x + w, y, 1);
+  var p3 = mat2d.transformPointInt(m, x + w, y + h, 2);
+  var p4 = mat2d.transformPointInt(m, x, y + h, 3);
+  var cw = this.canvasWidth;
+  var ch = this.canvasHeight;
+  var cw10 = this.canvasWidth10;
+  var ch10 = this.canvasHeight10;
+
+  if (
+    (p1.x < 0 && p2.x < 0 && p3.x < 0 && p4.x < 0) ||
+    (p1.y < 0 && p2.y < 0 && p3.y < 0 && p4.y < 0) ||
+    (p1.x > cw10 && p2.x > cw10 && p3.x > cw10 && p4.x > cw10) ||
+    (p1.y > ch10 && p2.y > ch10 && p3.y > ch10 && p4.y > ch10)
+  ) {
+    return;
+  }
 
   this.addPoint(p1.x, p1.y, true);
   this.addPoint(p2.x, p2.y, false);
@@ -2303,552 +2657,669 @@ CanvasRenderingContext2DWebGL.prototype.rect = function(x, y, w, h) {
   this.addPoint(p1.x, p1.y, false);
 };
 
-
 //
 // code adapted from nanovg begin {
 // https://github.com/memononen/nanovg
 //
-CanvasRenderingContext2DWebGL.prototype.tesselateBezier = function(x1, y1, x2, y2, x3, y3, x4, y4, level, type) {
-	var x12,y12,x23,y23,x34,y34,x123,y123,x234,y234,x1234,y1234;
-	var dx,dy,d2,d3;
+CanvasRenderingContext2DWebGL.prototype.tesselateBezier = function (
+  x1,
+  y1,
+  x2,
+  y2,
+  x3,
+  y3,
+  x4,
+  y4,
+  level,
+  type
+) {
+  var x12, y12, x23, y23, x34, y34, x123, y123, x234, y234, x1234, y1234;
+  var dx, dy, d2, d3;
 
-	if (level > 10) return;
+  if (level > 10) return;
 
-	x12 = (x1+x2)*0.5;
-	y12 = (y1+y2)*0.5;
-	x23 = (x2+x3)*0.5;
-	y23 = (y2+y3)*0.5;
-	x34 = (x3+x4)*0.5;
-	y34 = (y3+y4)*0.5;
-	x123 = (x12+x23)*0.5;
-	y123 = (y12+y23)*0.5;
+  x12 = (x1 + x2) * 0.5;
+  y12 = (y1 + y2) * 0.5;
+  x23 = (x2 + x3) * 0.5;
+  y23 = (y2 + y3) * 0.5;
+  x34 = (x3 + x4) * 0.5;
+  y34 = (y3 + y4) * 0.5;
+  x123 = (x12 + x23) * 0.5;
+  y123 = (y12 + y23) * 0.5;
 
-	dx = x4 - x1;
-	dy = y4 - y1;
-	d2 = Math.abs(((x2 - x4) * dy - (y2 - y4) * dx));
-	d3 = Math.abs(((x3 - x4) * dy - (y3 - y4) * dx));
+  dx = x4 - x1;
+  dy = y4 - y1;
+  d2 = Math.abs((x2 - x4) * dy - (y2 - y4) * dx);
+  d3 = Math.abs((x3 - x4) * dy - (y3 - y4) * dx);
 
-	if ((d2 + d3)*(d2 + d3) < this.tessTol * (dx*dx + dy*dy)) {
-		this.addPoint(x4, y4, type);
-		return;
-	}
+  if ((d2 + d3) * (d2 + d3) < this.tessTol * (dx * dx + dy * dy)) {
+    this.addPoint(x4, y4, type);
+    return;
+  }
 
-	x234 = (x23+x34)*0.5;
-	y234 = (y23+y34)*0.5;
-	x1234 = (x123+x234)*0.5;
-	y1234 = (y123+y234)*0.5;
+  x234 = (x23 + x34) * 0.5;
+  y234 = (y23 + y34) * 0.5;
+  x1234 = (x123 + x234) * 0.5;
+  y1234 = (y123 + y234) * 0.5;
 
-	this.tesselateBezier(x1,y1, x12,y12, x123,y123, x1234,y1234, level+1, 0); 
-	this.tesselateBezier(x1234,y1234, x234,y234, x34,y34, x4,y4, level+1, type); 
-}
+  this.tesselateBezier(
+    x1,
+    y1,
+    x12,
+    y12,
+    x123,
+    y123,
+    x1234,
+    y1234,
+    level + 1,
+    0
+  );
+  this.tesselateBezier(
+    x1234,
+    y1234,
+    x234,
+    y234,
+    x34,
+    y34,
+    x4,
+    y4,
+    level + 1,
+    type
+  );
+};
 
-CanvasRenderingContext2DWebGL.prototype.doArcTo = function(x1, y1, x2, y2, radius) {
-	var rn = {x:0, y:0};
-	var x0 = this.lastX;
-	var y0 = this.lastY;
-	var dx0,dy0, dx1,dy1, a, d, cx,cy, a0,a1;
-	var ccw = false;
+CanvasRenderingContext2DWebGL.prototype.doArcTo = function (
+  x1,
+  y1,
+  x2,
+  y2,
+  radius
+) {
+  var rn = { x: 0, y: 0 };
+  var x0 = this.lastX;
+  var y0 = this.lastY;
+  var dx0, dy0, dx1, dy1, a, d, cx, cy, a0, a1;
+  var ccw = false;
 
-	if (!this.hasPoint()) {
-		return;
-	}
+  if (!this.hasPoint()) {
+    return;
+  }
 
-	if (Math.ptEquals(x0,y0, x1,y1, this.distTol) ||
-			Math.ptEquals(x1,y1, x2,y2, this.distTol) ||
-			Math.distPtSeg(x1,y1, x0,y0, x2,y2) < this.distTol*this.distTol ||
-			radius < this.distTol) {
-		this.addPoint(x1, y1, false);
-		return;
-	}
+  if (
+    Math.ptEquals(x0, y0, x1, y1, this.distTol) ||
+    Math.ptEquals(x1, y1, x2, y2, this.distTol) ||
+    Math.distPtSeg(x1, y1, x0, y0, x2, y2) < this.distTol * this.distTol ||
+    radius < this.distTol
+  ) {
+    this.addPoint(x1, y1, false);
+    return;
+  }
 
-	dx0 = x0-x1;
-	dy0 = y0-y1;
-	dx1 = x2-x1;
-	dy1 = y2-y1;
-	Math.normalize(dx0, dy0, rn);
-	dx0 = rn.x;
-	dy0 = rn.y;
+  dx0 = x0 - x1;
+  dy0 = y0 - y1;
+  dx1 = x2 - x1;
+  dy1 = y2 - y1;
+  Math.normalize(dx0, dy0, rn);
+  dx0 = rn.x;
+  dy0 = rn.y;
 
-	Math.normalize(dx1, dy1, rn);
-	dx1 = rn.x;
-	dy1 = rn.y;
+  Math.normalize(dx1, dy1, rn);
+  dx1 = rn.x;
+  dy1 = rn.y;
 
-	a = Math.acos(dx0*dx1 + dy0*dy1);
-	d = radius / Math.tan(a/2.0);
+  a = Math.acos(dx0 * dx1 + dy0 * dy1);
+  d = radius / Math.tan(a / 2.0);
 
-	if (d > 10000.0) {
-		this.addPoint(x1, y1, false);
-		return;
-	}
+  if (d > 10000.0) {
+    this.addPoint(x1, y1, false);
+    return;
+  }
 
-	if (Math.cross(dx0,dy0, dx1,dy1) > 0.0) {
-		cx = x1 + dx0*d + dy0*radius;
-		cy = y1 + dy0*d + -dx0*radius;
-		a0 = Math.atan2(dx0, -dy0);
-		a1 = Math.atan2(-dx1, dy1);
-		ccw = false;
-	} else {
-		cx = x1 + dx0*d + -dy0*radius;
-		cy = y1 + dy0*d + dx0*radius;
-		a0 = Math.atan2(-dx0, dy0);
-		a1 = Math.atan2(dx1, -dy1);
-		ccw = true;
-	}
+  if (Math.cross(dx0, dy0, dx1, dy1) > 0.0) {
+    cx = x1 + dx0 * d + dy0 * radius;
+    cy = y1 + dy0 * d + -dx0 * radius;
+    a0 = Math.atan2(dx0, -dy0);
+    a1 = Math.atan2(-dx1, dy1);
+    ccw = false;
+  } else {
+    cx = x1 + dx0 * d + -dy0 * radius;
+    cy = y1 + dy0 * d + dx0 * radius;
+    a0 = Math.atan2(-dx0, dy0);
+    a1 = Math.atan2(dx1, -dy1);
+    ccw = true;
+  }
 
-	this.doArc(cx, cy, radius, a0, a1, ccw);
-}
+  this.doArc(cx, cy, radius, a0, a1, ccw);
+};
 
-CanvasRenderingContext2DWebGL.prototype.doArc = function(cx, cy, r, a0, a1, ccw)
-{
-	var a = 0, da = 0, hda = 0, kappa = 0;
-	var dx = 0, dy = 0, x = 0, y = 0, tanx = 0, tany = 0;
-	var px = 0, py = 0, ptanx = 0, ptany = 0;
-	var vals = new Array(3 + 5*7 + 100);
-	var i, ndivs, nvals;
-	var newPath = !this.hasPoint();
+CanvasRenderingContext2DWebGL.prototype.doArc = function (
+  cx,
+  cy,
+  r,
+  a0,
+  a1,
+  ccw
+) {
+  var a = 0,
+    da = 0,
+    hda = 0,
+    kappa = 0;
+  var dx = 0,
+    dy = 0,
+    x = 0,
+    y = 0,
+    tanx = 0,
+    tany = 0;
+  var px = 0,
+    py = 0,
+    ptanx = 0,
+    ptany = 0;
+  var vals = new Array(3 + 5 * 7 + 100);
+  var i, ndivs, nvals;
+  var newPath = !this.hasPoint();
 
-	da = a1 - a0;
-	if (!ccw) {
-		if (Math.abs(da) >= Math.PI*2) {
-			da = Math.PI*2;
-		} else {
-			while (da < 0.0) da += Math.PI*2;
-		}
-	} else {
-		if (Math.abs(da) >= Math.PI*2) {
-			da = -Math.PI*2;
-		} else {
-			while (da > 0.0) da -= Math.PI*2;
-		}
-	}
+  da = a1 - a0;
+  if (!ccw) {
+    if (Math.abs(da) >= Math.PI * 2) {
+      da = Math.PI * 2;
+    } else {
+      while (da < 0.0) da += Math.PI * 2;
+    }
+  } else {
+    if (Math.abs(da) >= Math.PI * 2) {
+      da = -Math.PI * 2;
+    } else {
+      while (da > 0.0) da -= Math.PI * 2;
+    }
+  }
 
-	// Split arc into max 90 degree segments.
-	ndivs = Math.floor(Math.max(1, Math.min((Math.abs(da) / (Math.PI*0.5) + 0.5), 5)));
-	hda = (da / ndivs) / 2.0;
-	kappa = Math.abs(4.0 / 3.0 * (1.0 - Math.cos(hda)) / Math.sin(hda));
+  // Split arc into max 90 degree segments.
+  ndivs = Math.floor(
+    Math.max(1, Math.min(Math.abs(da) / (Math.PI * 0.5) + 0.5, 5))
+  );
+  hda = da / ndivs / 2.0;
+  kappa = Math.abs(((4.0 / 3.0) * (1.0 - Math.cos(hda))) / Math.sin(hda));
 
-	if (ccw) {
-		kappa = -kappa;
-	}
+  if (ccw) {
+    kappa = -kappa;
+  }
 
-	nvals = 0;
-	for (i = 0; i <= ndivs; i++) {
-		a = a0 + da * (i/ndivs);
-		dx = Math.cos(a);
-		dy = Math.sin(a);
-		x = cx + dx*r;
-		y = cy + dy*r;
-		tanx = -dy*r*kappa;
-		tany = dx*r*kappa;
+  nvals = 0;
+  for (i = 0; i <= ndivs; i++) {
+    a = a0 + da * (i / ndivs);
+    dx = Math.cos(a);
+    dy = Math.sin(a);
+    x = cx + dx * r;
+    y = cy + dy * r;
+    tanx = -dy * r * kappa;
+    tany = dx * r * kappa;
 
-		if (i == 0) {
-			this.addPoint(x, y, newPath);
-		} else {
-			this.bezierTo(px+ptanx, py+ptany, x-tanx, y-tany, x, y);
-		}
-		px = x;
-		py = y;
-		ptanx = tanx;
-		ptany = tany;
-	}
+    if (i == 0) {
+      this.addPoint(x, y, newPath);
+    } else {
+      this.bezierTo(px + ptanx, py + ptany, x - tanx, y - tany, x, y);
+    }
+    px = x;
+    py = y;
+    ptanx = tanx;
+    ptany = tany;
+  }
 
-	return;
-}
+  return;
+};
 
-CanvasRenderingContext2DWebGL.prototype.quadTo = function(cx, cy, x, y) {
-	var x0 = this.lastX;
-	var y0 = this.lastY;
-	var c1x = x0 + 2.0/3.0*(cx - x0);
-	var c1y = y0 + 2.0/3.0*(cy - y0);
-	var c2x = x + 2.0/3.0*(cx - x);
-	var c2y = y + 2.0/3.0*(cy - y);
+CanvasRenderingContext2DWebGL.prototype.quadTo = function (cx, cy, x, y) {
+  var x0 = this.lastX;
+  var y0 = this.lastY;
+  var c1x = x0 + (2.0 / 3.0) * (cx - x0);
+  var c1y = y0 + (2.0 / 3.0) * (cy - y0);
+  var c2x = x + (2.0 / 3.0) * (cx - x);
+  var c2y = y + (2.0 / 3.0) * (cy - y);
 
-	this.bezierTo(c1x, c1y, c2x, c2y, x, y);
-}
+  this.bezierTo(c1x, c1y, c2x, c2y, x, y);
+};
 
-CanvasRenderingContext2DWebGL.prototype.bezierTo = function(c1x, c1y, c2x, c2y, x, y) {
-	this.tesselateBezier(this.lastX, this.lastY, c1x, c1y, c2x, c2y, x, y, 0, 0);
-}
+CanvasRenderingContext2DWebGL.prototype.bezierTo = function (
+  c1x,
+  c1y,
+  c2x,
+  c2y,
+  x,
+  y
+) {
+  this.tesselateBezier(this.lastX, this.lastY, c1x, c1y, c2x, c2y, x, y, 0, 0);
+};
 
 //
 // } code adapted from nanovg end
 //
 
-CanvasRenderingContext2DWebGL.prototype.quadraticCurveTo = function(cpx, cpy, x, y) {
-	var m = this.state.m;
-	var cp = mat2d.transformPointInt(m, cpx, cpy, 0);
-	var p = mat2d.transformPointInt(m, x, y, 1);
+CanvasRenderingContext2DWebGL.prototype.quadraticCurveTo = function (
+  cpx,
+  cpy,
+  x,
+  y
+) {
+  var m = this.state.m;
+  var cp = mat2d.transformPointInt(m, cpx, cpy, 0);
+  var p = mat2d.transformPointInt(m, x, y, 1);
 
-	this.quadTo(cp.x, cp.y, p.x, p.y);
+  this.quadTo(cp.x, cp.y, p.x, p.y);
 };
 
-CanvasRenderingContext2DWebGL.prototype.bezierCurveTo = function(cp1x, cp1y, cp2x, cp2y, x, y) {
-	var m = this.state.m;
-	var cp1 = mat2d.transformPointInt(m, cp1x, cp1y, 0);
-	var cp2 = mat2d.transformPointInt(m, cp2x, cp2y, 1);
-	var p = mat2d.transformPointInt(m, x, y, 2);
+CanvasRenderingContext2DWebGL.prototype.bezierCurveTo = function (
+  cp1x,
+  cp1y,
+  cp2x,
+  cp2y,
+  x,
+  y
+) {
+  var m = this.state.m;
+  var cp1 = mat2d.transformPointInt(m, cp1x, cp1y, 0);
+  var cp2 = mat2d.transformPointInt(m, cp2x, cp2y, 1);
+  var p = mat2d.transformPointInt(m, x, y, 2);
 
-	this.bezierTo(cp1.x, cp1.y, cp2.x, cp2.y, p.x, p.y);
+  this.bezierTo(cp1.x, cp1.y, cp2.x, cp2.y, p.x, p.y);
 };
 
-CanvasRenderingContext2DWebGL.prototype.arcTo = function(x1, y1, x2, y2, radius) {
-	var m = this.state.m;
-	var r = radius*10 >> 0;
-	var p1 = mat2d.transformPointInt(m, x1, y1, 0);
-	var p2 = mat2d.transformPointInt(m, x2, y2, 1);
+CanvasRenderingContext2DWebGL.prototype.arcTo = function (
+  x1,
+  y1,
+  x2,
+  y2,
+  radius
+) {
+  var m = this.state.m;
+  var r = (radius * 10) >> 0;
+  var p1 = mat2d.transformPointInt(m, x1, y1, 0);
+  var p2 = mat2d.transformPointInt(m, x2, y2, 1);
 
-	this.doArcTo(p1.x, p1.y, p2.x, p2.y, r);
+  this.doArcTo(p1.x, p1.y, p2.x, p2.y, r);
 };
 
-CanvasRenderingContext2DWebGL.prototype.arc = function(x, y, radius, startAngle, endAngle, ccw) {
-	var r = radius*10 >> 0;
-	var m = this.state.m;
-	var p = mat2d.transformPointInt(m, x, y);
-	var cw10 = this.canvasWidth10;
-	var ch10 = this.canvasHeight10;
+CanvasRenderingContext2DWebGL.prototype.arc = function (
+  x,
+  y,
+  radius,
+  startAngle,
+  endAngle,
+  ccw
+) {
+  var r = (radius * 10) >> 0;
+  var m = this.state.m;
+  var p = mat2d.transformPointInt(m, x, y);
+  var cw10 = this.canvasWidth10;
+  var ch10 = this.canvasHeight10;
 
-	if((p.x - r) > cw10 || (p.x + r) < 0 || (p.y - r) > ch10 || (p.y + r) < 0) {
-		return;
-	}
+  if (p.x - r > cw10 || p.x + r < 0 || p.y - r > ch10 || p.y + r < 0) {
+    return;
+  }
 
-	this.doArc(p.x, p.y, r, startAngle, endAngle, ccw);
+  this.doArc(p.x, p.y, r, startAngle, endAngle, ccw);
 };
 
-CanvasRenderingContext2DWebGL.getWebGLContext = function(canvas, webglOptions) {
-	var gl = null;
-	var names = ["webgl", "experimental-webgl", "webkit-3d", "moz-webgl"];
-	var options = webglOptions || CanvasRenderingContext2DWebGL.webglOptions;
-	for (var i = 0; i < names.length; i++) {
-		try {
-      		gl = canvas.getContext(names[i], options);
-		} catch(e) {}
-    
-		if (gl) {
-			break;
-		}
-	}
+CanvasRenderingContext2DWebGL.getWebGLContext = function (
+  canvas,
+  webglOptions
+) {
+  var gl = null;
+  var names = ["webgl", "experimental-webgl", "webkit-3d", "moz-webgl"];
+  var options = webglOptions || CanvasRenderingContext2DWebGL.webglOptions;
+  for (var i = 0; i < names.length; i++) {
+    try {
+      gl = canvas.getContext(names[i], options);
+    } catch (e) {}
 
-	return gl;
-}
+    if (gl) {
+      break;
+    }
+  }
 
-CanvasRenderingContext2DWebGL.prototype.initGL = function(canvas) {
-	var gl = CanvasRenderingContext2DWebGL.getWebGLContext(canvas, this.webglOptions);
+  return gl;
+};
 
-	gl.w = canvas.width;
-	gl.h = canvas.height;
+CanvasRenderingContext2DWebGL.prototype.initGL = function (canvas) {
+  var gl = CanvasRenderingContext2DWebGL.getWebGLContext(
+    canvas,
+    this.webglOptions
+  );
 
-//	gl.cullFace(gl.BACK);
-//	gl.frontFace(gl.CW);
-//	gl.enable(gl.CULL_FACE);
-	gl.enable(gl.BLEND);
-	gl.enable(gl.STENCIL_TEST);
-	gl.disable(gl.DEPTH_TEST);
-	gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  gl.w = canvas.width;
+  gl.h = canvas.height;
 
-	this.gl = gl;
-	this.canvas = canvas;
-	this.buffer = gl.createBuffer();
-	
-	WebGLProgramDrawImage.init(gl, this.buffer);
-	this.drawPrimitivesProgram = new WebGLProgramDrawPrimitives(gl, this.buffer);
+  //	gl.cullFace(gl.BACK);
+  //	gl.frontFace(gl.CW);
+  //	gl.enable(gl.CULL_FACE);
+  gl.enable(gl.BLEND);
+  gl.enable(gl.STENCIL_TEST);
+  gl.disable(gl.DEPTH_TEST);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
-	return gl;
-}
+  this.gl = gl;
+  this.canvas = canvas;
+  this.buffer = gl.createBuffer();
 
-CanvasRenderingContext2DWebGL.prototype.isPOT = function(n) {
-	return n > 0 && (n & (n - 1)) === 0;
-}
+  WebGLProgramDrawImage.init(gl, this.buffer);
+  this.drawPrimitivesProgram = new WebGLProgramDrawPrimitives(gl, this.buffer);
 
-CanvasRenderingContext2DWebGL.prototype.loadTextureWithImage = function(image) {
-	if(image.texture || !image.width) {
-		return image;
-	}
+  return gl;
+};
 
-	var gl = this.gl;
-	var texture = gl.createTexture();
-	gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-	
-	image.texture = texture;
-	image.ox = 0;
-	image.oy = 0;
-	texture.w = image.width;
-	texture.h = image.height;
-	texture.src = image.src;
+CanvasRenderingContext2DWebGL.prototype.isPOT = function (n) {
+  return n > 0 && (n & (n - 1)) === 0;
+};
 
-	gl.bindTexture(gl.TEXTURE_2D, texture);
-	gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+CanvasRenderingContext2DWebGL.prototype.loadTextureWithImage = function (
+  image
+) {
+  if (image.texture || !image.width) {
+    return image;
+  }
 
-	//NPOT
-	if(this.isPOT(image.width) && this.isPOT(image.height)) {
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-	}
-	else {
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-	}
+  var gl = this.gl;
+  var texture = gl.createTexture();
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
 
-	gl.bindTexture(gl.TEXTURE_2D, null);
+  image.texture = texture;
+  image.ox = 0;
+  image.oy = 0;
+  texture.w = image.width;
+  texture.h = image.height;
+  texture.src = image.src;
 
-	texture.update = function() {
-    if(image.dirty) {
+  gl.bindTexture(gl.TEXTURE_2D, texture);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+
+  //NPOT
+  if (this.isPOT(image.width) && this.isPOT(image.height)) {
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  } else {
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  }
+
+  gl.bindTexture(gl.TEXTURE_2D, null);
+
+  texture.update = function () {
+    if (image.dirty) {
       image.dirty = false;
       this.w = image.width;
       this.h = image.height;
       gl.bindTexture(gl.TEXTURE_2D, this);
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
       gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+      gl.texImage2D(
+        gl.TEXTURE_2D,
+        0,
+        gl.RGBA,
+        gl.RGBA,
+        gl.UNSIGNED_BYTE,
+        image
+      );
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       gl.bindTexture(gl.TEXTURE_2D, null);
     }
-	}
+  };
 
-	return image;
-}
+  return image;
+};
 
-CanvasRenderingContext2DWebGL.prototype.drawImageBatch = function(image, program, bufferData) {
-	this.drawCalls++;
-	this.drawImageCalls++;
+CanvasRenderingContext2DWebGL.prototype.drawImageBatch = function (
+  image,
+  program,
+  bufferData
+) {
+  this.drawCalls++;
+  this.drawImageCalls++;
 
-	program.draw(image, bufferData);
-}
+  program.draw(image, bufferData);
+};
 
-CanvasRenderingContext2DWebGL.prototype.beginFrame = function() {
-	var gl = this.gl;
-	var w = this.getWidth();
-	var h = this.getHeight();
-	var canvas = this.canvas;
+CanvasRenderingContext2DWebGL.prototype.beginFrame = function () {
+  var gl = this.gl;
+  var w = this.getWidth();
+  var h = this.getHeight();
+  var canvas = this.canvas;
 
-	this.drawCalls = 0;
-	this.drawImageCalls = 0;
-	this.drawImageCount = 0;
-	this.fillCount = 0;
-	this.strokeCount = 0;
-	this.clipLevel = 0;
-	this.canvasWidth = w;
-	this.canvasHeight = h;
-	this.canvasWidth10 = w * 10;
-	this.canvasHeight10 = h * 10;
+  this.drawCalls = 0;
+  this.drawImageCalls = 0;
+  this.drawImageCount = 0;
+  this.fillCount = 0;
+  this.strokeCount = 0;
+  this.clipLevel = 0;
+  this.canvasWidth = w;
+  this.canvasHeight = h;
+  this.canvasWidth10 = w * 10;
+  this.canvasHeight10 = h * 10;
 
-	if(gl.w !== w || gl.h !== h) {
-		gl.w = w;
-		gl.h = h;
-		gl.clearColor(1.0, 1.0, 1.0, 1.0);
-		gl.viewport(0, 0, canvas.width, canvas.height);
-	}
+  if (gl.w !== w || gl.h !== h) {
+    gl.w = w;
+    gl.h = h;
+    gl.clearColor(1.0, 1.0, 1.0, 1.0);
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  }
 
-	if(this.showFPS) {
-		this.renderTimes++;
-		this.startTime = Date.now();
-		this.thisSeconds = (this.startTime/1000) >> 0;	
+  if (this.showFPS) {
+    this.renderTimes++;
+    this.startTime = Date.now();
+    this.thisSeconds = (this.startTime / 1000) >> 0;
 
-		if(this.thisSeconds !== this.lastSeconds) {
-			this.fps = this.renderTimes;
-			this.lastSeconds = this.thisSeconds;
-			this.renderTimes = 0;
-		}
-	}
+    if (this.thisSeconds !== this.lastSeconds) {
+      this.fps = this.renderTimes;
+      this.lastSeconds = this.thisSeconds;
+      this.renderTimes = 0;
+    }
+  }
 
-	if(this.webglOptions.preserveDrawingBuffer) {
-		gl.clear(gl.STENCIL_BUFFER_BIT);
-	}else {
-		gl.clear(gl.STENCIL_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
-	}
+  if (this.webglOptions.preserveDrawingBuffer) {
+    gl.clear(gl.STENCIL_BUFFER_BIT);
+  } else {
+    gl.clear(gl.STENCIL_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
+  }
 
-	this.lastX = 0;
-	this.lastY = 0;
-	this.firstX = 0;
-	this.firstY = 0;
+  this.lastX = 0;
+  this.lastY = 0;
+  this.firstX = 0;
+  this.firstY = 0;
 
-	this.lineWidth = 1;
-	this.globalAlpha = 1;
-	this.globalTint = 1;
-	this.textAlign = "left";
-	mat2d.identity(this.state.m);
-	this.textBaseline = "middle";
-	this.globalImageFilter = "normal";
-	this.state.fillStyle = CanvasRenderingContext2DWebGL.fillStyle;
-	this.state.strokeStyle = CanvasRenderingContext2DWebGL.strokeStyle;
-	this.stencilColor = CanvasRenderingContext2DWebGL.stencilColor;
-	this.globalCompositeOperation = "source-over";
-	this.beginPath();
-}
+  this.lineWidth = 1;
+  this.globalAlpha = 1;
+  this.globalTint = 1;
+  this.textAlign = "left";
+  mat2d.identity(this.state.m);
+  this.textBaseline = "middle";
+  this.globalImageFilter = "normal";
+  this.state.fillStyle = CanvasRenderingContext2DWebGL.fillStyle;
+  this.state.strokeStyle = CanvasRenderingContext2DWebGL.strokeStyle;
+  this.stencilColor = CanvasRenderingContext2DWebGL.stencilColor;
+  this.globalCompositeOperation = "source-over";
+  this.beginPath();
+};
 
-CanvasRenderingContext2DWebGL.prototype.drawStat = function(stat) {
-	this.save();
-    this.fillStyle = this.statusBgColor;
-	this.fillRect(0, 0, 280, 35);
+CanvasRenderingContext2DWebGL.prototype.drawStat = function (stat) {
+  this.save();
+  this.fillStyle = this.statusBgColor;
+  this.fillRect(0, 0, 280, 35);
 
-	var str = stat + " images(" + this.drawImageCount + "/" + this.drawImageCalls + ") calls:" + this.drawCalls;
+  var str =
+    stat +
+    " images(" +
+    this.drawImageCount +
+    "/" +
+    this.drawImageCalls +
+    ") calls:" +
+    this.drawCalls;
 
-	this.font = this.statusFont;
-	this.fillStyle = this.statusFontColor;
-	this.textBaseline = "top";
-	this.textAlign = "left";
-	this.fillText(str, 5, 5);
-	this.restore();
+  this.font = this.statusFont;
+  this.fillStyle = this.statusFontColor;
+  this.textBaseline = "top";
+  this.textAlign = "left";
+  this.fillText(str, 5, 5);
+  this.restore();
 
-	return;
-}
+  return;
+};
 
-CanvasRenderingContext2DWebGL.prototype.onEndFrame = function() {
-	if(this.showFPS) {
-		var stat = this.fps;
-		this.drawStat(stat);
-	}
-}
+CanvasRenderingContext2DWebGL.prototype.onEndFrame = function () {
+  if (this.showFPS) {
+    var stat = this.fps;
+    this.drawStat(stat);
+  }
+};
 
-CanvasRenderingContext2DWebGL.prototype.endFrame = function() {
-	var n = this.stack.length;
+CanvasRenderingContext2DWebGL.prototype.endFrame = function () {
+  var n = this.stack.length;
 
-	if(n > 0) {
-		for(var i = 0; i < n; i++) {
-			this.restore();
-		}
-		console.log("restore times < save times.");
-	}
+  if (n > 0) {
+    for (var i = 0; i < n; i++) {
+      this.restore();
+    }
+    console.log("restore times < save times.");
+  }
 
-	mat2d.identity(this.state.m);
-	this.globalAlpha = 1;
-	this.globalTint = 1;
-	this.globalCompositeOperationApply("source-over");
+  mat2d.identity(this.state.m);
+  this.globalAlpha = 1;
+  this.globalTint = 1;
+  this.globalCompositeOperationApply("source-over");
 
-	this.onEndFrame();
-	this.commitDrawImage();
-}
+  this.onEndFrame();
+  this.commitDrawImage();
+};
 
 CanvasRenderingContext2DWebGL.colors = {};
-CanvasRenderingContext2DWebGL.parseColor = function(str) {
-	var cacheColor = CanvasRenderingContext2DWebGL.colors[str];
-	if(cacheColor) {
-		return cacheColor;
-	}
+CanvasRenderingContext2DWebGL.parseColor = function (str) {
+  var cacheColor = CanvasRenderingContext2DWebGL.colors[str];
+  if (cacheColor) {
+    return cacheColor;
+  }
 
-	var s = str || "white";
-	var c = cs.get(s.toLowerCase());
+  var s = str || "white";
+  var c = cs.get(s.toLowerCase());
 
-	if(!c) {
-		c = cs.get("white");
-	}
+  if (!c) {
+    c = cs.get("white");
+  }
 
-	var value = c.value;
-	var color = {
-		r : value[0]/255,
-		g : value[1]/255,
-		b : value[2]/255,
-		a : value[3],
-		str:str
-	};
+  var value = c.value;
+  var color = {
+    r: value[0] / 255,
+    g: value[1] / 255,
+    b: value[2] / 255,
+    a: value[3],
+    str: str,
+  };
 
-	CanvasRenderingContext2DWebGL.colors[str] = color;
+  CanvasRenderingContext2DWebGL.colors[str] = color;
 
-	return color;
-}
+  return color;
+};
 
-CanvasRenderingContext2DWebGL.State = function() {
-	this.font = "16px sans";
-	this.lineWidth = 1;
-	this.globalAlpha = 1;
-	this.globalTint = 1;
-	this.m = mat2d.create();
-	this.clipRect = null;
-	this.clipPaths = null;
-	this.textAlign = "left";
-	this.textBaseline = "middle";
-	this.globalImageFilter = "normal";
-	this.globalCompositeOperation = "source-over";
-	this.fillStyle = CanvasRenderingContext2DWebGL.fillStyle;
-	this.strokeStyle = CanvasRenderingContext2DWebGL.strokeStyle;
-}
+CanvasRenderingContext2DWebGL.State = function () {
+  this.font = "16px sans";
+  this.lineWidth = 1;
+  this.globalAlpha = 1;
+  this.globalTint = 1;
+  this.m = mat2d.create();
+  this.clipRect = null;
+  this.clipPaths = null;
+  this.textAlign = "left";
+  this.textBaseline = "middle";
+  this.globalImageFilter = "normal";
+  this.globalCompositeOperation = "source-over";
+  this.fillStyle = CanvasRenderingContext2DWebGL.fillStyle;
+  this.strokeStyle = CanvasRenderingContext2DWebGL.strokeStyle;
+};
 
-CanvasRenderingContext2DWebGL.createState = function() {
-	if(CanvasRenderingContext2DWebGL.stateCache.length) {
-		return CanvasRenderingContext2DWebGL.stateCache.pop();
-	}else{
-		return new CanvasRenderingContext2DWebGL.State();
-	}
-}
+CanvasRenderingContext2DWebGL.createState = function () {
+  if (CanvasRenderingContext2DWebGL.stateCache.length) {
+    return CanvasRenderingContext2DWebGL.stateCache.pop();
+  } else {
+    return new CanvasRenderingContext2DWebGL.State();
+  }
+};
 
 CanvasRenderingContext2DWebGL.stateCache = [];
-CanvasRenderingContext2DWebGL.destroyState = function(s) {
-	if(s.clipRect) {
-		s.clipRect = null;
-	}
-	if(s.clipPaths) {
-		s.clipPaths = null;
-	}
-	CanvasRenderingContext2DWebGL.stateCache.push(s);
-}
+CanvasRenderingContext2DWebGL.destroyState = function (s) {
+  if (s.clipRect) {
+    s.clipRect = null;
+  }
+  if (s.clipPaths) {
+    s.clipPaths = null;
+  }
+  CanvasRenderingContext2DWebGL.stateCache.push(s);
+};
 
-CanvasRenderingContext2DWebGL.State.prototype.clone = function() {
-	var s = CanvasRenderingContext2DWebGL.createState();
+CanvasRenderingContext2DWebGL.State.prototype.clone = function () {
+  var s = CanvasRenderingContext2DWebGL.createState();
 
-	if(this.clipRect) {
-		s.clipRect = this.clipRect;
-	}
+  if (this.clipRect) {
+    s.clipRect = this.clipRect;
+  }
 
-	if(this.clipPaths) {
-		s.clipPaths = this.clipPaths;
-	}
+  if (this.clipPaths) {
+    s.clipPaths = this.clipPaths;
+  }
 
-	mat2d.copy(s.m, this.m);
+  mat2d.copy(s.m, this.m);
 
-	s.font = this.font;
-	s.lineWidth = this.lineWidth;
-	s.textAlign = this.textAlign;
-	s.fillStyle = this.fillStyle;
-	s.strokeStyle = this.strokeStyle;
-	s.textBaseline = this.textBaseline;
-	s.globalTint = this.globalTint;
-	s.globalAlpha = this.globalAlpha;
-	s.globalImageFilter = this.globalImageFilter;
-	s.globalCompositeOperation = this.globalCompositeOperation;
+  s.font = this.font;
+  s.lineWidth = this.lineWidth;
+  s.textAlign = this.textAlign;
+  s.fillStyle = this.fillStyle;
+  s.strokeStyle = this.strokeStyle;
+  s.textBaseline = this.textBaseline;
+  s.globalTint = this.globalTint;
+  s.globalAlpha = this.globalAlpha;
+  s.globalImageFilter = this.globalImageFilter;
+  s.globalCompositeOperation = this.globalCompositeOperation;
 
-	return s;
-}
+  return s;
+};
 
-CanvasRenderingContext2DWebGL.prototype.init = function(canvas) {
-	this.stack = [];
-	this.state = CanvasRenderingContext2DWebGL.createState();
-	
-	this.initGL(canvas);
-	this.lastUpdateTime = Date.now();
+CanvasRenderingContext2DWebGL.prototype.init = function (canvas) {
+  this.stack = [];
+  this.state = CanvasRenderingContext2DWebGL.createState();
 
-	var drawImageProgram = WebGLProgramDrawImage.get();
-	this.drawImageQueue = {};
-	this.drawImageQueue.globalAlpha = 256;
-	this.drawImageQueue.globalCompositeOperation = 0;
-	this.drawImageQueue.dataBuffer = drawImageProgram.createDataBuffer(20*1024);
-	
-	this.drawPrimitiveQueue = {};
-	this.drawPrimitiveQueue.paths = Int16Array.create(1024);
-	this.drawPrimitiveQueue.dataBuffer = this.drawPrimitivesProgram.createDataBuffer(20*1024);
-	this.statusFont = "20px sans";
-	this.statusFontColor = "Green";
-	this.statusBgColor = "rgba(0,0,0,1)";
+  this.initGL(canvas);
+  this.lastUpdateTime = Date.now();
 
-	return this;
-}
+  var drawImageProgram = WebGLProgramDrawImage.get();
+  this.drawImageQueue = {};
+  this.drawImageQueue.globalAlpha = 256;
+  this.drawImageQueue.globalCompositeOperation = 0;
+  this.drawImageQueue.dataBuffer = drawImageProgram.createDataBuffer(20 * 1024);
 
-CanvasRenderingContext2DWebGL.prototype.ensureCtx2d = function() {
-}
+  this.drawPrimitiveQueue = {};
+  this.drawPrimitiveQueue.paths = Int16Array.create(1024);
+  this.drawPrimitiveQueue.dataBuffer =
+    this.drawPrimitivesProgram.createDataBuffer(20 * 1024);
+  this.statusFont = "20px sans";
+  this.statusFontColor = "Green";
+  this.statusBgColor = "rgba(0,0,0,1)";
 
-CanvasRenderingContext2DWebGL.prototype.measureText = function(text) {
-}
+  return this;
+};
 
-CanvasRenderingContext2DWebGL.prototype.setShowFPS = function(showFPS) {
-}
+CanvasRenderingContext2DWebGL.prototype.ensureCtx2d = function () {};
 
-CanvasRenderingContext2DWebGL.create = function(canvas, options) {
-	var ctx = new CanvasRenderingContext2DWebGL(options);
+CanvasRenderingContext2DWebGL.prototype.measureText = function (text) {};
 
-	CanvasRenderingContext2DWebGL.fillStyle = CanvasRenderingContext2DWebGL.parseColor("white");
-	CanvasRenderingContext2DWebGL.strokeStyle = CanvasRenderingContext2DWebGL.parseColor("black");
-	CanvasRenderingContext2DWebGL.stencilColor = CanvasRenderingContext2DWebGL.parseColor("white");
+CanvasRenderingContext2DWebGL.prototype.setShowFPS = function (showFPS) {};
 
-	return ctx.init(canvas);
-}
+CanvasRenderingContext2DWebGL.create = function (canvas, options) {
+  var ctx = new CanvasRenderingContext2DWebGL(options);
+
+  CanvasRenderingContext2DWebGL.fillStyle =
+    CanvasRenderingContext2DWebGL.parseColor("white");
+  CanvasRenderingContext2DWebGL.strokeStyle =
+    CanvasRenderingContext2DWebGL.parseColor("black");
+  CanvasRenderingContext2DWebGL.stencilColor =
+    CanvasRenderingContext2DWebGL.parseColor("white");
+
+  return ctx.init(canvas);
+};

@@ -1,6 +1,4 @@
-function ImageCache() {
-
-}
+function ImageCache() {}
 
 ImageCache.nextID = 100;
 ImageCache.images = {};
@@ -13,7 +11,7 @@ ImageCache.add = function (image) {
   ImageCache.images[key] = image;
 
   return id;
-}
+};
 
 ImageCache.remove = function (id) {
   let key = id.toString();
@@ -22,7 +20,7 @@ ImageCache.remove = function (id) {
   delete ImageCache.images[key];
 
   return image;
-}
+};
 
 ImageCache.get = function (id) {
   let key = id.toString();
@@ -31,10 +29,10 @@ ImageCache.get = function (id) {
   } else {
     return null;
   }
-}
+};
 
-ImageCache.getIdOfNameAndTheme = function (name, theme = 'default') {
-  let name_with_theme = theme + ':' + name;
+ImageCache.getIdOfNameAndTheme = function (name, theme = "default") {
+  let name_with_theme = theme + ":" + name;
   const images = ImageCache.images;
 
   for (const key in images) {
@@ -45,4 +43,4 @@ ImageCache.getIdOfNameAndTheme = function (name, theme = 'default') {
   }
 
   return ImageCache.invalidImageId;
-}
+};

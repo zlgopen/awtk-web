@@ -2,20 +2,20 @@ function InputMethodWeb() {}
 
 InputMethodWeb.init = function () {
   if (!InputMethodWeb.mledit) {
-    InputMethodWeb.mledit = EditElement.create('textarea');
+    InputMethodWeb.mledit = EditElement.create("textarea");
   }
-  
+
   if (!InputMethodWeb.sledit) {
-    InputMethodWeb.sledit = EditElement.create('input');
+    InputMethodWeb.sledit = EditElement.create("input");
   }
-}
+};
 
 InputMethodWeb.start = function (x, y, w, h, _inputType, isMLEdit) {
   let inputType = pointerToString(_inputType);
 
   InputMethodWeb.init();
 
-  if(isMLEdit) {
+  if (isMLEdit) {
     InputMethodWeb.edit = InputMethodWeb.mledit;
   } else {
     InputMethodWeb.edit = InputMethodWeb.sledit;
@@ -27,32 +27,38 @@ InputMethodWeb.start = function (x, y, w, h, _inputType, isMLEdit) {
   InputMethodWeb.edit.show();
 
   EventsSource.fixPointerUp();
-  console.log('InputMethodWeb.start');
+  console.log("InputMethodWeb.start");
 
   return true;
-}
+};
 
-InputMethodWeb.initEdit = function (_text, _font, fontSize, _textColor, _bgColor) {
+InputMethodWeb.initEdit = function (
+  _text,
+  _font,
+  fontSize,
+  _textColor,
+  _bgColor
+) {
   let text = pointerToString(_text);
   let font = pointerToString(_font);
   let bgColor = pointerToString(_bgColor);
   let textColor = pointerToString(_textColor);
 
-  InputMethodWeb.edit.setText(text || '');
+  InputMethodWeb.edit.setText(text || "");
   InputMethodWeb.edit.setFont(font);
   InputMethodWeb.edit.setBgColor(bgColor);
   InputMethodWeb.edit.setFontSize(fontSize);
   InputMethodWeb.edit.setTextColor(textColor);
 
   return true;
-}
+};
 
 InputMethodWeb.stop = function () {
-  let value = InputMethodWeb.edit.getText() || '';
+  let value = InputMethodWeb.edit.getText() || "";
 
   Awtk.onImCommit(value, 0);
   InputMethodWeb.edit.hide();
-  console.log('InputMethodWeb.stop');
+  console.log("InputMethodWeb.stop");
 
   return true;
-}
+};
