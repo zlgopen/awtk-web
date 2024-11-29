@@ -1,3 +1,7 @@
+* 2024/11/29
+  * 支持tk_quit
+  * 完善touch event并增加例子。
+
 * 2024/11/28
   * 支持touch event
 

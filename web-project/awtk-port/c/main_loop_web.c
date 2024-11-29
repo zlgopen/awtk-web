@@ -40,7 +40,7 @@ ret_t main_loop_web_step(main_loop_t* l) {
   window_manager_check_and_layout(loop->base.wm);
   window_manager_paint(loop->base.wm);
 
-  return RET_OK;
+  return l->app_quited ? RET_QUIT : RET_OK;
 }
 
 static ret_t main_loop_web_quit(main_loop_t* l) {

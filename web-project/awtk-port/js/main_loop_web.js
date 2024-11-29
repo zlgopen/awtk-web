@@ -6,6 +6,8 @@ function mainLoopPost(event) {
   MainLoopWeb.eventQueue.push(event);
 }
 
+let s_lastTouchIds = {};
+
 function mainLoopDispatchEvents(timestamp) {
   while (MainLoopWeb.eventQueue.length) {
     let e = MainLoopWeb.eventQueue.pop();
@@ -38,22 +40,60 @@ function mainLoopDispatchEvents(timestamp) {
         Awtk.onPointerUp(e.x, e.y, e.timeStamp);
         break;
       }
-      case "touchstart":
-      case "touchmove":
-      case "touchend": {
-        let touch_type = ["touchstart", "touchmove", "touchend"].indexOf(
-          e.type
-        );
-        if (e.touches.length) {
-          for (let i = 0; i < e.touches.length; i++) {
-            let touch = e.touches[i];
-            Awtk.onTouch(touch_type, touch.id, touch.x, touch.y, e.timeStamp);
-          }
-        } else {
-          Awtk.onTouch(touch_type, 0, 0, 0, e.timeStamp);
-        }
+      case "touchstart": {
+        e.touches.forEach((touch) => {
+          Awtk.onTouch(0, touch.id, touch.x, touch.y, e.timeStamp);
+          s_lastTouchIds[touch.id.toString()] = {
+            id: touch.id,
+            x: touch.x,
+            y: touch.y,
+          };
+        });
         break;
       }
+      case "touchmove": {
+        e.touches.forEach((touch) => {
+          Awtk.onTouch(1, touch.id, touch.x, touch.y, e.timeStamp);
+          s_lastTouchIds[touch.id.toString()] = {
+            id: touch.id,
+            x: touch.x,
+            y: touch.y,
+          };
+        });
+        break;
+      }
+      case "touchend": {
+        if (e.touches.length == 0) {
+          for (let key in s_lastTouchIds) {
+            let iter = s_lastTouchIds[key];
+            Awtk.onTouch(2, iter.id, iter.x, iter.y, e.timeStamp);
+          }
+          s_lastTouchIds = {};
+          Awtk.onTouch(2, 0, 0, 0, e.timeStamp);
+        } else {
+          for (let key in s_lastTouchIds) {
+            let iter = s_lastTouchIds[key];
+            let notFound = !e.touches.find((t) => {
+              return t.id === iter.id;
+            });
+
+            if (notFound) {
+              Awtk.onTouch(2, iter.id, iter.x, iter.y, e.timeStamp);
+            }
+          }
+
+          s_lastTouchIds = {};
+          e.touches.forEach((touch) => {
+            s_lastTouchIds[touch.id.toString()] = {
+              id: touch.id,
+              x: touch.x,
+              y: touch.y,
+            };
+          });
+        }
+
+        break;
+      }      
       default:
         break;
     }
@@ -68,12 +108,15 @@ function mainLoopStep(timestamp) {
   }
 
   try {
-    Awtk.mainLoopStep(10);
+    if (Awtk.mainLoopStep(10) == 0) {
+      window.requestAnimationFrame(mainLoopStep);
+    } else {
+      VGCanvas.canvas.remove();
+      console.log("mainLoopStep quit");
+    }
   } catch (e) {
     console.log(e);
   }
-
-  window.requestAnimationFrame(mainLoopStep);
 }
 
 function mainLoopInit() {

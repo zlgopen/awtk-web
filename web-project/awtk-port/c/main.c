@@ -39,9 +39,7 @@ int32_t awtk_web_deinit(void) {
 }
 
 int32_t awtk_web_main_loop_step(double timestamp) {
-  main_loop_web_step(main_loop());
-
-  return 0;
+  return main_loop_web_step(main_loop());
 }
 
 int32_t awtk_web_request_repaint(double reason) {
