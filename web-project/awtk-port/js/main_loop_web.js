@@ -38,6 +38,22 @@ function mainLoopDispatchEvents(timestamp) {
         Awtk.onPointerUp(e.x, e.y, e.timeStamp);
         break;
       }
+      case "touchstart":
+      case "touchmove":
+      case "touchend": {
+        let touch_type = ["touchstart", "touchmove", "touchend"].indexOf(
+          e.type
+        );
+        if (e.touches.length) {
+          for (let i = 0; i < e.touches.length; i++) {
+            let touch = e.touches[i];
+            Awtk.onTouch(touch_type, touch.id, touch.x, touch.y, e.timeStamp);
+          }
+        } else {
+          Awtk.onTouch(touch_type, 0, 0, 0, e.timeStamp);
+        }
+        break;
+      }
       default:
         break;
     }

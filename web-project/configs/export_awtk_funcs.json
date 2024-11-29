@@ -10,6 +10,7 @@
 	"_awtk_web_on_pointer_move",
 	"_awtk_web_on_im_commit",
 	"_awtk_web_on_pointer_up",
+	"_awtk_web_on_touch",
 	"_emitter_create",
 	"_emitter_dispatch",
 	"_emitter_dispatch_simple_event",

@@ -183,3 +183,43 @@ int32_t awtk_web_on_im_commit(const char* text, uint32_t timestamp) {
 
   return input_method_commit_text_ex(input_method(), TRUE, text) == RET_OK;
 }
+
+int32_t awtk_web_on_touch(int32_t touch_type, int32_t id, int32_t x, int32_t y,
+                          uint32_t timestamp) {
+  event_t* e = NULL;
+  touch_event_t event;
+  int type = EVT_TOUCH_DOWN;
+  widget_t* widget = window_manager();
+  float fx = (float)x / (float)(widget->w);
+  float fy = (float)y / (float)(widget->h);
+
+  memset(&event, 0x00, sizeof(event));
+  switch (touch_type) {
+    case 0: {
+      type = EVT_TOUCH_DOWN;
+      break;
+    }
+    case 1: {
+      type = EVT_TOUCH_MOVE;
+      break;
+    }
+    case 2: {
+      type = EVT_TOUCH_UP;
+      break;
+    }
+    default:
+      break;
+  }
+
+  e = touch_event_init(&event, type, widget, 0xffff, id, fx, fy, 0);
+
+  if (e != NULL) {
+    widget_t* win = window_manager_get_top_window(widget);
+    widget_dispatch(win, e);
+  }
+
+  log_debug("awtk_web_on_touch type=%d id=%d x=(%d %f) y=(%d %f)\n", touch_type, (int)id, x, fx, y,
+            fy);
+
+  return TRUE;
+}

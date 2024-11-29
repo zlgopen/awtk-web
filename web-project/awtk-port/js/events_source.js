@@ -438,7 +438,13 @@ EventsSource.prototype.onWheel = function (delta, event) {
   });
 };
 
-EventsSource.prototype.onMultiTouch = function (action, points, event) {};
+EventsSource.prototype.onMultiTouch = function (action, points, event) {
+  mainLoopPost({
+    type: action,
+    touches: points,
+    timeStamp: event.timeStamp,
+  });
+};
 
 EventsSource.prototype.onPointerMove = function (point, event) {
   mainLoopPost({

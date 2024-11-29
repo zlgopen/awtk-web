@@ -93,6 +93,13 @@ Awtk.init = function () {
     "number",
     "number",
   ]);
+  Awtk._onTouch = Module.cwrap("awtk_web_on_touch", "number", [
+    "number",
+    "number",
+    "number",
+    "number",
+    "number",
+  ]);
 
   AssetsManager.preloadFonts();
   EventsSource.init(document.getElementById("awtk-lcd"));
@@ -195,6 +202,10 @@ Awtk.onPointerMove = function (x, y, timestamp) {
 
 Awtk.onPointerUp = function (x, y, timestamp) {
   return Awtk._onPointerUp(x, y, timestamp);
+};
+
+Awtk.onTouch = function (type, id, x, y, timestamp) {
+  return Awtk._onTouch(type, id, x, y, timestamp);
 };
 
 window.isLoaded = false;
