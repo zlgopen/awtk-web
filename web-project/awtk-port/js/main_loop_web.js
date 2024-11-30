@@ -120,5 +120,10 @@ function mainLoopStep(timestamp) {
 }
 
 function mainLoopInit() {
+  //手机上禁止touchmove滑动窗口
+  document.addEventListener('touchmove', function(event) {
+    event.preventDefault();
+  }, { passive: false });
+
   window.requestAnimationFrame(mainLoopStep);
 }
