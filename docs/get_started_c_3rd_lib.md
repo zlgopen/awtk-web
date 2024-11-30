@@ -2,7 +2,7 @@
 
 > 先安装 [AWTK Designer](https://awtk.zlg.cn/web/index.html)
 
-开发应用程序通常需要使用第三方库，在开发 Web 应用程序时，第三方库可以以源码方式提供，也可以以 wasm 格式的库提供。本介绍一下如何使用以源码方式提供的第三方库。
+开发应用程序通常需要使用第三方库，在开发 Web 应用程序时，第三方库可以以源码方式提供，也可以以 wasm 格式的库提供。本介绍一下如何使用以 wasm 库方式提供的第三方库。
 
 假设我们需要使用第三方库中的一个函数。
 
@@ -14,9 +14,9 @@ int sum(int a, int b, int c);
 
 * 头文件为 foo.h
 
-* 源文件为 foo.c
+* 库文件为 3rd/lib/libfoo.a
 
-* 把代码放在 3rd/foo 目录下
+* 头文件放在 3rd/foo 目录下
 
 ## 用 AWTK Designer 新建一个应用程序
 
@@ -102,17 +102,15 @@ ret_t home_page_init(widget_t* win, void* ctx) {
 
 ```json
 {
-  "name": "AwtkApplicationC3rdSource",
+  "name": "AwtkApplicationC3rdLib",
   "version": "1.0",
   "assets": "res/assets",
   "vendor": "zlgopen",
-  "app_name": "org.zlgopen.AwtkApplicationC3rdSource",
+  "app_name": "org.zlgopen.AwtkApplicationC3rdLib",
   "author": "xianjimli@hotmail.com",
   "copyright": "Guangzhou ZHIYUAN Electronics Co.,Ltd.",
   "themes":["default"],
   "sources": [
-     "3rd/foo/*.c",
-     "3rd/foo/*.h",
      "src/*.c",
      "src/common/*.c",
      "src/pages/*.c",
@@ -123,9 +121,10 @@ ret_t home_page_init(widget_t* win, void* ctx) {
   "web": {
     "app_type": "c",
     "assets": "design",
-    "includes":[],
+    "includes": ["/Users/jim/work/awtk-root/awtk-web/examples/AwtkApplicationC3rdLib/3rd"],
     "cflags":"-DUSE_FOO",
     "cxxflags":"-DUSE_FOO",
+    "linkflags":"-L/Users/jim/work/awtk-root/awtk-web/examples/AwtkApplicationC3rdLib/3rd/lib/ -lfoo ",
     "config": {
       "fontScale": "0.8",
       "defaultFont": "sans"
@@ -134,15 +133,17 @@ ret_t home_page_init(widget_t* win, void* ctx) {
 }
 ```
 
-> 第三方源文件统一放的 3rd 目录下。
+> 第三方库可以放到任意位置，不过建议放到3rd目录下。
 
 使用第三方库时，通常需要定义一些宏，设置更多头文件搜索路径。可以用下面的参数：
 
-* includes 设置头文件搜索路径，可以是绝对路径，或应用程序目录下的相对路径。
+* includes 设置头文件搜索路径，因为不会第三方库的头文件到编译目录，所以只能使用绝对路径。
 
 * cflags C 语言文件编译需要的标志（如-DUSE_FOO 定义了宏 USE_FOO)。
 
 * cxxflags C++ 语言文件编译需要的标志（如-DUSE_FOO 定义了宏 USE_FOO)。
+
+* linkflags 用于指定库的路径和名称，路径只能使用绝对路径。
 
 ## 4. 编译 WEB 应用程序
 
@@ -185,3 +186,4 @@ start_web_debug.sh
 * 用浏览器打开 URL：http://localhost:8080/AwtkApplicationC3rdSource
 
 ![](images/app_3rd_ui2.png)
+
