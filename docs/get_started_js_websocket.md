@@ -1,8 +1,10 @@
 # AWTK-WEB 快速入门 - JS WebSocket 应用程序
 
-> 先安装 [AWTK Designer](https://awtk.zlg.cn/web/index.html)
+> 相对于 XMLHttpRequest/fetch，WebSocket 可以实现双向通信，适合实时通信场景，是 Web 应用程序与服务器通讯的重要方式之一。本文介绍一下如何使用 JS 语言开发 AWTK-WEB 应用程序，并用 WebSocket 与服务器通讯。
 
 ## 用 AWTK Designer 新建一个应用程序
+
+> 先安装 [AWTK Designer](https://awtk.zlg.cn/web/index.html)
 
 ### 2.1. 新建应用程序
 

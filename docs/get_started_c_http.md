@@ -1,6 +1,6 @@
 # AWTK-WEB 快速入门 - C 语言 Http 应用程序
 
-> AWTK 可以使用相同的技术栈开发各种平台的应用程序。有时我们需要使用 Web 界面显示设备的信息、控制设备的行为和与设备进行交互，这时就该 AWTK-WEB 上场了。本文介绍一下如何使用 C 语言开发 AWTK-WEB 应用程序，并用 HTTP 访问远程数据。
+> XMLHttpRequest 改变了 Web 应用程序与服务器交换数据的方式，fetch 是 XMLHttpRequest 继任者，具有更简洁的语法和更好的 Promise 集成。本文介绍一下如何使用 C 语言开发 AWTK-WEB 应用程序，并用 fetch 访问远程数据。
 
 ## 用 AWTK Designer 新建一个应用程序
 
@@ -166,4 +166,3 @@ start_web_debug.sh
 > 点击 “更新” 按钮，可以看到数据更新。
 
 ![](images/app_http_ui2.png)
-

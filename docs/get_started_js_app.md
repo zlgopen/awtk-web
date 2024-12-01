@@ -1,9 +1,10 @@
 # AWTK-WEB 快速入门 - JS 应用程序
 
-
-> 先安装 [AWTK Designer](https://awtk.zlg.cn/web/index.html)
+> AWTK 可以使用相同的技术栈开发各种平台的应用程序。有时我们需要使用 Web 界面显示设备的信息、控制设备的行为和与设备进行交互，这时就该 AWTK-WEB 上场了。本文介绍一下如何使用 JS 语言开发 AWTK-WEB 应用程序。
 
 ## 用 AWTK Designer 新建一个应用程序
+
+> 先安装 [AWTK Designer](https://awtk.zlg.cn/web/index.html)
 
 ### 2.1. 新建应用程序
 
