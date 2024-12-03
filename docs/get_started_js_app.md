@@ -145,4 +145,3 @@ start_web_debug.sh
 * 1.AWTK-WEB-JS 不支持模态对话框。
 * 2.AWTK-WEB-JS 中的 print 函数是打印。请使用 console.log 输出调试信息。
 * 3.AWTK-WEB-JS 不支持自动回收在 wasm 中分配的对象（如：color/rect/value 等）。如果希望两者通用，请避免使用这类函数。
-* 4.tk_quit 函数并不能退出应用程序。
