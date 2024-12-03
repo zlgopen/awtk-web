@@ -74,6 +74,7 @@ static ret_t on_touch_down(void* ctx, event_t* evt) {
 
   darray_push(&s_fingers_status, finger_status);
 
+  log_debug("on_touch_down : %d size=%u\n", (int)(e->finger_id), s_fingers_status.size);
   widget_invalidate(win, NULL);
 
   return RET_OK;
@@ -83,7 +84,7 @@ static ret_t on_touch_up(void* ctx, event_t* evt) {
   widget_t* win = WIDGET(ctx);
   touch_event_t* e = (touch_event_t*)evt;
 
-  if (e->finger_id) {
+  if (e->finger_id >= 0) {
     fingers_status_remove(e->finger_id);
   } else {
     darray_clear(&s_fingers_status);
@@ -107,6 +108,7 @@ static ret_t on_touch_move(void* ctx, event_t* evt) {
     finger_status_add_point(finger_status, x, y);
   }
 
+  log_debug("on_touch_move: %d size=%u\n", (int)(e->finger_id), s_fingers_status.size);
   widget_invalidate(win, NULL);
 
   return RET_OK;
@@ -138,6 +140,7 @@ static ret_t on_paint(void* ctx, event_t* evt) {
       }
     }
     vgcanvas_stroke(vg);
+    log_debug("on_paint: %u %u %d\n", count, points_count, (int)(finger_status->id));
   }
 
   return RET_OK;

@@ -69,7 +69,7 @@ function mainLoopDispatchEvents(timestamp) {
             Awtk.onTouch(2, iter.id, iter.x, iter.y, e.timeStamp);
           }
           s_lastTouchIds = {};
-          Awtk.onTouch(2, 0, 0, 0, e.timeStamp);
+          Awtk.onTouch(2, -1, 0, 0, e.timeStamp);
         } else {
           for (let key in s_lastTouchIds) {
             let iter = s_lastTouchIds[key];
