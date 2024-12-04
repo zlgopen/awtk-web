@@ -30,7 +30,7 @@
 | ---- | --------: | :---------------------------------------------------------------------- |
 | QT   |        9M | http://example.qt.io/qt-webassembly/SensorTagDemo/SensorTagDemo.html    |
 | QT   |        3M | http://example.qt.io/qt-webassembly/opengl/hellowindow/hellowindow.html |
-| AWTK |        1.5M | 与应用程序资源有关，通常比这个小                                      |
+| AWTK |      0.7M | 与应用程序资源有关                                                      |
 
 * 快。Android 手机浏览器性能普遍不高，要到达实用价值，性能优化至关重要。
 
@@ -42,7 +42,6 @@
 
 * 跨平台。除了在 PC 的各种浏览器（除老的 IE 浏览器）上运行，还需要在 Android 和 iOS 上运行。[AWTK-WEB](https://github.com/zlgopen/awtk-web) 的基本要求只是浏览器支持 HTML5 的 canvas，在 Chorome、Firefox 和 IE 等主流浏览器，以及目前流行的 Android 和 iOS 设备上都能正常运行。
 
-> 在最新的红米 4 的浏览器中，QT 和 LittleVG 纷纷表示无法运行。
 
 ## 三、编译
 
