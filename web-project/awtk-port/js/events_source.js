@@ -179,6 +179,11 @@ EventsSource.prototype.attachToElement = function (element) {
     element.addEventListener("mousedown", this.onMouseDownGlobal.bind(this));
     element.addEventListener("mousemove", this.onMouseMoveGlobal.bind(this));
     element.addEventListener("mouseup", this.onMouseUpGlobal.bind(this));
+    if (window.navigator.maxTouchPoints > 1) { 
+      element.addEventListener("touchstart", this.onTouchStartGlobal.bind(this));
+      element.addEventListener("touchmove", this.onTouchMoveGlobal.bind(this));
+      element.addEventListener("touchend", this.onTouchEndGlobal.bind(this));
+    }
   }
   window.addEventListener("keyup", this.onKeyUpGlobal.bind(this));
   window.addEventListener("keydown", this.onKeyDownGlobal.bind(this));
