@@ -1,6 +1,6 @@
 # AWTK-WEB 快速入门 - JS Http 应用程序
 
-> XMLHttpRequest 改变了 Web 应用程序与服务器交换数据的方式，fetch 是 XMLHttpRequest 继任者，具有更简洁的语法和更好的 Promise 集成。本文介绍一下如何使用 C 语言开发 AWTK-WEB 应用程序，并用 fetch 访问远程数据。
+> XMLHttpRequest 改变了 Web 应用程序与服务器交换数据的方式，fetch 是 XMLHttpRequest 继任者，具有更简洁的语法和更好的 Promise 集成。本文介绍一下如何使用 JS 语言开发 AWTK-WEB 应用程序，并用 fetch 访问远程数据。
 
 ## 用 AWTK Designer 新建一个应用程序
 
