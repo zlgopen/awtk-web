@@ -288,9 +288,17 @@ def create_project(config, app_root_src):
         build_awtk_web_js(app_root_src, app_root_dst, config)
 
     if build_awtk_js:
+        import platform
+        import subprocess
         helper.copy_awtk_files(awtk_dst_source_dir)
         helper.copy_app_sources(config, app_dst_source_dir, app_root_src)
-        os.system("cd " + app_root_dst + " && sh build.sh")
+        if platform.system() == 'Windows' :
+          curr_path = os.getcwd()
+          os.chdir(app_root_dst)
+          subprocess.run("build.bat", shell=True)
+          os.chdir(curr_path)
+        else :
+          os.system("cd " + app_root_dst + " && sh build.sh")
 
     show_result(app_name)
     release_to_web(app_name)
