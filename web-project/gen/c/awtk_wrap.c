@@ -44,6 +44,7 @@
 #include "base/assets_manager.h"
 #include "base/font_manager.h"
 #include "base/image_base.h"
+#include "base/locale_info_xml.h"
 #include "base/style_mutable.h"
 #include "base/window_base.h"
 #include "base/window_manager.h"
@@ -106,6 +107,7 @@
 #include "widgets/view.h"
 #include "base/native_window.h"
 #include "base/window.h"
+#include "edit_ex/edit_ex.h"
 #include "gif_image/gif_image.h"
 #include "keyboard/keyboard.h"
 #include "mutable_image/mutable_image.h"
@@ -743,6 +745,18 @@ int32_t get_EVT_UNACTIVATED (void) {
 
 int32_t get_EVT_UI_LOAD (void) {
   return EVT_UI_LOAD;
+}
+
+int32_t get_EVT_TOUCH_DOWN (void) {
+  return EVT_TOUCH_DOWN;
+}
+
+int32_t get_EVT_TOUCH_MOVE (void) {
+  return EVT_TOUCH_MOVE;
+}
+
+int32_t get_EVT_TOUCH_UP (void) {
+  return EVT_TOUCH_UP;
 }
 
 int32_t get_EVT_REQ_START (void) {
@@ -2421,6 +2435,10 @@ const char* get_WIDGET_PROP_ENABLE_PREVIEW (void) {
   return WIDGET_PROP_ENABLE_PREVIEW;
 }
 
+const char* get_WIDGET_PROP_IS_ACCEPT_STATUS (void) {
+  return WIDGET_PROP_IS_ACCEPT_STATUS;
+}
+
 const char* get_WIDGET_PROP_CLICK_THROUGH (void) {
   return WIDGET_PROP_CLICK_THROUGH;
 }
@@ -2593,6 +2611,22 @@ const char* get_WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY (void) {
   return WIDGET_PROP_MOVE_FOCUS_RIGHT_KEY;
 }
 
+const char* get_WIDGET_PROP_ACCEPT_BUTTON (void) {
+  return WIDGET_PROP_ACCEPT_BUTTON;
+}
+
+const char* get_WIDGET_PROP_CANCEL_BUTTON (void) {
+  return WIDGET_PROP_CANCEL_BUTTON;
+}
+
+const char* get_WIDGET_PROP_ACCEPT_RETRUN (void) {
+  return WIDGET_PROP_ACCEPT_RETRUN;
+}
+
+const char* get_WIDGET_PROP_ACCEPT_TAB (void) {
+  return WIDGET_PROP_ACCEPT_TAB;
+}
+
 const char* get_WIDGET_PROP_ROWS (void) {
   return WIDGET_PROP_ROWS;
 }
@@ -2639,6 +2673,14 @@ const char* get_WIDGET_PROP_MAX_FPS (void) {
 
 const char* get_WIDGET_PROP_VALIDATOR (void) {
   return WIDGET_PROP_VALIDATOR;
+}
+
+const char* get_WIDGET_PROP_SYNC_STATE_TO_CHILDREN (void) {
+  return WIDGET_PROP_SYNC_STATE_TO_CHILDREN;
+}
+
+const char* get_WIDGET_PROP_STATE_FROM_PARENT_SYNC (void) {
+  return WIDGET_PROP_STATE_FROM_PARENT_SYNC;
 }
 
 const char* get_WIDGET_TYPE_NONE (void) {
@@ -3135,6 +3177,14 @@ bool_t widget_t_get_prop_auto_adjust_size (widget_t* obj) {
 
 bool_t widget_t_get_prop_floating (widget_t* obj) {
   return obj->floating;
+}
+
+bool_t widget_t_get_prop_sync_state_to_children (widget_t* obj) {
+  return obj->sync_state_to_children;
+}
+
+bool_t widget_t_get_prop_state_from_parent_sync (widget_t* obj) {
+  return obj->state_from_parent_sync;
 }
 
 uint8_t widget_t_get_prop_opacity (widget_t* obj) {
@@ -4138,6 +4188,10 @@ bool_t pointer_event_t_get_prop_shift (pointer_event_t* obj) {
   return obj->shift;
 }
 
+int32_t pointer_event_t_get_prop_finger_id (pointer_event_t* obj) {
+  return obj->finger_id;
+}
+
 uint32_t key_event_t_get_prop_key (key_event_t* obj) {
   return obj->key;
 }
@@ -4228,6 +4282,26 @@ const char* drop_file_event_t_get_prop_filename (drop_file_event_t* obj) {
 
 void* system_event_t_get_prop_sdl_event (system_event_t* obj) {
   return obj->sdl_event;
+}
+
+int64_t touch_event_t_get_prop_touch_id (touch_event_t* obj) {
+  return obj->touch_id;
+}
+
+int64_t touch_event_t_get_prop_finger_id (touch_event_t* obj) {
+  return obj->finger_id;
+}
+
+float touch_event_t_get_prop_x (touch_event_t* obj) {
+  return obj->x;
+}
+
+float touch_event_t_get_prop_y (touch_event_t* obj) {
+  return obj->y;
+}
+
+float touch_event_t_get_prop_pressure (touch_event_t* obj) {
+  return obj->pressure;
 }
 
 widget_t* ui_load_event_t_get_prop_root (ui_load_event_t* obj) {
@@ -4344,6 +4418,14 @@ char* window_base_t_get_prop_move_focus_left_key (window_base_t* obj) {
 
 char* window_base_t_get_prop_move_focus_right_key (window_base_t* obj) {
   return obj->move_focus_right_key;
+}
+
+char* window_base_t_get_prop_accept_button (window_base_t* obj) {
+  return obj->accept_button;
+}
+
+char* window_base_t_get_prop_cancel_button (window_base_t* obj) {
+  return obj->cancel_button;
 }
 
 char* window_base_t_get_prop_applet_name (window_base_t* obj) {
@@ -4582,10 +4664,6 @@ uint32_t mledit_t_get_prop_max_chars (mledit_t* obj) {
   return obj->max_chars;
 }
 
-uint32_t mledit_t_get_prop_scroll_line (mledit_t* obj) {
-  return obj->scroll_line;
-}
-
 bool_t mledit_t_get_prop_overwrite (mledit_t* obj) {
   return obj->overwrite;
 }
@@ -4608,6 +4686,14 @@ bool_t mledit_t_get_prop_open_im_when_focused (mledit_t* obj) {
 
 bool_t mledit_t_get_prop_close_im_when_blured (mledit_t* obj) {
   return obj->close_im_when_blured;
+}
+
+bool_t mledit_t_get_prop_accept_return (mledit_t* obj) {
+  return obj->accept_return;
+}
+
+bool_t mledit_t_get_prop_accept_tab (mledit_t* obj) {
+  return obj->accept_tab;
 }
 
 float_t progress_circle_t_get_prop_value (progress_circle_t* obj) {
@@ -4724,6 +4810,10 @@ bool_t list_view_t_get_prop_auto_hide_scroll_bar (list_view_t* obj) {
 
 bool_t list_view_t_get_prop_floating_scroll_bar (list_view_t* obj) {
   return obj->floating_scroll_bar;
+}
+
+int32_t list_view_t_get_prop_item_width (list_view_t* obj) {
+  return obj->item_width;
 }
 
 int32_t scroll_bar_t_get_prop_virtual_size (scroll_bar_t* obj) {
@@ -5102,12 +5192,16 @@ bool_t button_t_get_prop_enable_preview (button_t* obj) {
   return obj->enable_preview;
 }
 
-uint32_t button_t_get_prop_long_press_time (button_t* obj) {
-  return obj->long_press_time;
+bool_t button_t_get_prop_is_accept_status (button_t* obj) {
+  return obj->is_accept_status;
 }
 
 bool_t button_t_get_prop_pressed (button_t* obj) {
   return obj->pressed;
+}
+
+uint32_t button_t_get_prop_long_press_time (button_t* obj) {
+  return obj->long_press_time;
 }
 
 bool_t check_button_t_get_prop_value (check_button_t* obj) {
@@ -5372,6 +5466,18 @@ char* dialog_t_get_prop_highlight (dialog_t* obj) {
 
 bool_t window_t_get_prop_fullscreen (window_t* obj) {
   return obj->fullscreen;
+}
+
+tk_object_t* edit_ex_t_get_prop_suggest_words (edit_ex_t* obj) {
+  return obj->suggest_words;
+}
+
+char* edit_ex_t_get_prop_suggest_words_item_formats (edit_ex_t* obj) {
+  return obj->suggest_words_item_formats;
+}
+
+char* edit_ex_t_get_prop_suggest_words_input_name (edit_ex_t* obj) {
+  return obj->suggest_words_input_name;
 }
 
 uint32_t gif_image_t_get_prop_loop (gif_image_t* obj) {
