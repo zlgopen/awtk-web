@@ -4838,7 +4838,7 @@ function mainLoopPost(event) {
 
 function mainLoopDispatchEvents(timestamp) {
   while (MainLoopWeb.eventQueue.length) {
-    let e = MainLoopWeb.eventQueue.pop();
+    let e = MainLoopWeb.eventQueue.shift();
     switch (e.type) {
       case 'keydown':
         {

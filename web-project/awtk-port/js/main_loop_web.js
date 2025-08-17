@@ -10,7 +10,7 @@ let s_lastTouchIds = {};
 
 function mainLoopDispatchEvents(timestamp) {
   while (MainLoopWeb.eventQueue.length) {
-    let e = MainLoopWeb.eventQueue.pop();
+    let e = MainLoopWeb.eventQueue.shift();
     switch (e.type) {
       case "keydown": {
         Awtk.onKeyDown(e.key, e.timeStamp);
