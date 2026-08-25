@@ -20,7 +20,7 @@
  */
 
 #include "tkc/mem.h"
-#include "tkc/cond_var.h"
+#include "tkc/cond.h"
 
 struct _tk_cond_t {
   uint32_t value;

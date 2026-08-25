@@ -179,3 +179,7 @@ VGCanvas.updateMutableImage = function (id) {
 ```
 
 官方文档并没有介绍如何在 C 和 JS 之间传递二进制数据，从 malloc 的实现代码可以看到，malloc 分配的数据在 Module.HEAP32 中，我们把它取出来即可。
+
+## GIF：raw fetch + STB 按帧
+
+普通 PNG/JPG 仍走浏览器 `Image`：`ImageLoader.load` 按 URI 创建 HTML 图片，由浏览器解码后交给 Canvas 绘制。GIF 控件不再依赖浏览器自己播动画，而是通过 `ImageLoader.requestRaw` 按名字 `fetch` 原始字节，拷进 WASM 堆，再由 C 侧 `gif_image` 用 STB（`stb_load_gif_next_frame`）按帧解码。播放节奏与 `play` / `pause` / `stop` / `loop` 都在 C 里控制，与 Native 一致；同一 GIF 多控件共享一份 HEAP 缓存，不必各 fetch 一次。Web 工程需编译 `-DWITH_STB_IMAGE` 并纳入 `image_loader_stb.c`，否则 C 侧无法声明/链接 STB 按帧 API。STB 走 `bitmap_init_from_rgba` 填像素后，还须调用 `bitmap_platform_create` 绑定 mutable image，否则 `vgcanvas_web_draw_image` 的 `specific` 为 0，画面空白。
