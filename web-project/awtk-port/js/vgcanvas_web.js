@@ -538,6 +538,28 @@ VGCanvas.updateMutableImage = function (id) {
   return true;
 };
 
+VGCanvas.updateMutableImageForRect = function (id, x, y, w, h) {
+  let mutableImage = ImageCache.get(id);
+  let size = mutableImage.width * mutableImage.height;
+  let start = (mutableImage.addr >> 2);
+  let end = start + size;
+  let array = Module.HEAP32.subarray(start, end);
+  let ctx = mutableImage.getContext('2d');
+  let imageData = ctx.getImageData(x, y, w, h);
+  let data = new Int32Array(imageData.data.buffer);
+  let i = 0;
+  for (let yy = y; yy < y + h; yy++) {
+    for (let xx = x; xx < x + w; xx++, i++) {
+      data[i] = array[xx + yy * mutableImage.width];
+    }
+  }
+  ctx.putImageData(imageData, x, y);
+
+  // console.log(`VGCanvas.updateMutableImage ${id} ${start} ${size}`);
+
+  return true;
+}
+
 VGCanvas.destroyMutableImage = function (id) {
   console.log(`VGCanvas.destroyMutableImage ${id}`);
   ImageCache.remove(id);

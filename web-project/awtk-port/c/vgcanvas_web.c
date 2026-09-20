@@ -19,15 +19,22 @@
  *
  */
 
+#include "tkc/wstr.h"
 #include "tkc/utils.h"
+#include "base/system_info.h"
 #include <emscripten.h>
 #include "base/vgcanvas.h"
+#include "web_font.inc"
+#include <math.h>
 
 #define MAX_STATES 32
 
 typedef struct _vgcanvas_web_t {
   vgcanvas_t base;
   int nstates;
+  wstr_t tmp_wstr;
+  web_font_t* font;
+  color_t font_color;
   rect_t clip_rect[MAX_STATES + 1];
   char text_color[TK_COLOR_RGBA_LEN + 1];
   char fill_color[TK_COLOR_RGBA_LEN + 1];
@@ -115,7 +122,12 @@ static ret_t vgcanvas_web_fbo_to_bitmap(vgcanvas_t* vg, framebuffer_object_t* fb
   return RET_OK;
 }
 
-static ret_t vgcanvas_web_destroy(vgcanvas_t *vgcanvas) { return RET_OK; }
+static ret_t vgcanvas_web_destroy(vgcanvas_t *vgcanvas) { 
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
+  wstr_reset(&web->tmp_wstr);
+  web_font_destroy(web->font);
+  return RET_OK;
+}
 
 static ret_t vgcanvas_web_reset(vgcanvas_t *vgcanvas) {
   (void)vgcanvas;
@@ -315,6 +327,34 @@ static ret_t vgcanvas_web_fill_text(vgcanvas_t *vgcanvas, const char *text,
   return RET_OK;
 }
 
+static ret_t vgcanvas_web_fill_text_by_glyphs(vgcanvas_t* vgcanvas, glyphs_t* glyphs, uint32_t start, uint32_t len, float_t x, float_t y,
+                                              float_t max_width) {
+  uint32_t i = 0;
+  uint32_t nr = len + start;
+  vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
+  float font_size = (float)glyphs_get_physical_font_size(glyphs);
+  int32_t baseline = glyphs_get_physical_font_ascent(glyphs);
+  float_t ratio = system_info()->device_pixel_ratio;
+  float_t scale = 1.0f / ratio;
+  
+  for (i = start; i < nr; i++) {
+    glyph_t* g = (glyph_t*)glyphs_get(glyphs, i);
+    if (g != NULL) {
+      /* 字模用物理像素1:1绘制，绕过canvas的scale变换，避免非整数倍率下的采样截断 */
+      /* 绘制位置取整保证像素对齐，避免LINEAR采样亚像素插值导致模糊；advance保持浮点累积 */
+      float_t xx = roundf(x * ratio + g->x);
+      float_t yy = roundf(y * ratio + baseline + g->y);
+      web_font_draw_glyph(web->font, g->glyph_index, font_size, (float)xx, (float)yy,
+                          g->w, g->h, g->data, web->font_color);
+      x += (g->advance * scale);
+    } else {
+      x += 4;
+    }
+  }
+
+  return RET_OK;
+}
+
 static float_t vgcanvas_web_measure_text(vgcanvas_t *vgcanvas,
                                          const char *text) {
   return EM_ASM_INT({ return VGCanvas.measureText($0); }, text);
@@ -362,6 +402,7 @@ static ret_t vgcanvas_web_set_global_alpha(vgcanvas_t *vgcanvas,
 static ret_t vgcanvas_web_set_fill_color(vgcanvas_t *vgcanvas, color_t c) {
   vgcanvas_web_t *web = (vgcanvas_web_t *)vgcanvas;
 
+  web->font_color = c;
   color_rgba_str(c, web->fill_color);
   EM_ASM_INT({ return VGCanvas.setFillColor($0); }, web->fill_color);
 
@@ -515,6 +556,7 @@ static const vgcanvas_vtable_t vt = {
     .set_text_align = vgcanvas_web_set_text_align,
     .set_text_baseline = vgcanvas_web_set_text_baseline,
     .fill_text = vgcanvas_web_fill_text,
+    .fill_text_by_glyphs = vgcanvas_web_fill_text_by_glyphs,
     .measure_text = vgcanvas_web_measure_text,
     .draw_image = vgcanvas_web_draw_image,
     .set_antialias = vgcanvas_web_set_antialias,
@@ -558,8 +600,10 @@ vgcanvas_t *vgcanvas_create(uint32_t w, uint32_t h, uint32_t stride,
   web->clip_rect[web->nstates].w = w;
   web->clip_rect[web->nstates].h = h;
 
+  wstr_init(&web->tmp_wstr, 128);
+  web->font = web_font_create(512 * web->base.ratio, 512 * web->base.ratio);
+
   printf("w=%d h=%d r=%lf\n", web->base.w, web->base.h, web->base.ratio);
 
   return &(web->base);
 }
-
