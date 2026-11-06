@@ -17,6 +17,7 @@ typedef struct _web_font_t {
   uint32_t h;
   uint32_t start_x;
   uint32_t start_y;
+  uint32_t row_height;
   uint32_t line_length;
   darray_t glyphs;
   uint8_t* data;
@@ -56,6 +57,7 @@ web_font_t* web_font_create(uint32_t w, uint32_t h) {
 
   web_font->w = w;
   web_font->h = h;
+  web_font->row_height = 0;
   web_font->line_length = w * 4;
 
   size = web_font->line_length * h;
@@ -119,11 +121,13 @@ static web_font_glyph_t* web_font_get_glyph(web_font_t* web_font, uint32_t glyph
       y = web_font->start_y;
       next_x = x + alloc_w;
       next_y = y;
-    } else if (r > web_font->w && b + alloc_h <= web_font->h) {
+      web_font->row_height = web_font->row_height > alloc_h ? web_font->row_height : alloc_h;
+    } else if (r > web_font->w && web_font->start_y + web_font->row_height + alloc_h <= web_font->h) {
       x = 0;
-      y = web_font->start_y + alloc_h;
+      y = web_font->start_y + web_font->row_height;
       next_x = alloc_w;
       next_y = y;
+      web_font->row_height = alloc_h;
     }
 
     if (x >= 0 && y >= 0) {
